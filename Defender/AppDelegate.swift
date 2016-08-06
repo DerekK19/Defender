@@ -7,14 +7,20 @@
 //
 
 import Cocoa
+import Mustang
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
-
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
+        Mustang().detectAmplifiers(
+            didConnect: { (amplifier) in
+                NSLog("Connected")
+            }, didDisconnect: { (amplifier) in
+                NSLog("Disconnected")
+            }
+        )
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
