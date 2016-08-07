@@ -34,9 +34,7 @@ class MainVC: NSViewController {
         presetList.removeAllItems()
 
         amplifiers = Mustang().getConnectedAmplifiers()
-        amplifierList.addItemsWithTitles(amplifiers.map( { $0.name } ))
-        
-//        volumeKnob.setFrameSize(NSSize(width: 100, height: 100))
+        amplifierList.addItemsWithTitles(amplifiers.map( { $0.name } ))        
     }
 
     override var representedObject: AnyObject? {
