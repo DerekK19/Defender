@@ -9,6 +9,13 @@
 import Cocoa
 
 class KnobControl: NSSlider {
-    
-    
+//    
+//    override init(frame frameRect: NSRect) {
+//        super.init(frame: NSRect(origin: frameRect.origin, size: NSSize(width: 60, height: 60)))
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        super.init(coder: coder)
+//    }
+//    
 }

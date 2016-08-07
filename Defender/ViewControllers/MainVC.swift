@@ -35,6 +35,8 @@ class MainVC: NSViewController {
 
         amplifiers = Mustang().getConnectedAmplifiers()
         amplifierList.addItemsWithTitles(amplifiers.map( { $0.name } ))
+        
+//        volumeKnob.setFrameSize(NSSize(width: 100, height: 100))
     }
 
     override var representedObject: AnyObject? {
@@ -96,6 +98,30 @@ class MainVC: NSViewController {
         } else {
             reverbKnob.floatValue = 1.0
         }
+    }
+    
+    @IBAction func didChangeGain(sender: AnyObject) {
+        NSLog("New gain is \(gainKnob.floatValue)")
+    }
+    
+    @IBAction func didChangeVolume(sender: AnyObject) {
+        NSLog("New volume is \(volumeKnob.floatValue)")
+    }
+    
+    @IBAction func didChangeTreble(sender: AnyObject) {
+        NSLog("New treble is \(trebleKnob.floatValue)")
+    }
+    
+    @IBAction func didChangeMiddle(sender: AnyObject) {
+        NSLog("New middle is \(middleKnob.floatValue)")
+    }
+    
+    @IBAction func didChangeBass(sender: AnyObject) {
+        NSLog("New bass is \(bassKnob.floatValue)")
+    }
+    
+    @IBAction func didChangeReverb(sender: AnyObject) {
+        NSLog("New reverb is \(reverbKnob.floatValue)")
     }
 }
 

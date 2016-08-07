@@ -738,7 +738,10 @@
                             </button>
                             <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gma-Hx-mQE" customClass="KnobControl" customModule="Defender" customModuleProvider="target">
                                 <rect key="frame" x="79" y="301" width="32" height="32"/>
-                                <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" numberOfTickMarks="10" sliderType="circular" id="Vcg-Ad-nOF"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" numberOfTickMarks="10" sliderType="circular" id="Vcg-Ad-nOF" customClass="KnobControlCell" customModule="Defender" customModuleProvider="target"/>
+                                <connections>
+                                    <action selector="didChangeGain:" target="XfG-lQ-9wD" id="iO3-vA-QvI"/>
+                                </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cIM-QK-Tzt">
                                 <rect key="frame" x="79" y="276" width="32" height="17"/>
@@ -747,10 +750,16 @@
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <action selector="didChangeGain:" target="XfG-lQ-9wD" id="TgW-Ue-GwV"/>
+                                </connections>
                             </textField>
                             <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xlC-h2-ovX" customClass="KnobControl" customModule="Defender" customModuleProvider="target">
                                 <rect key="frame" x="130" y="301" width="32" height="32"/>
-                                <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" numberOfTickMarks="10" sliderType="circular" id="alG-EV-bZn"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" numberOfTickMarks="10" sliderType="circular" id="alG-EV-bZn" customClass="KnobControlCell" customModule="Defender" customModuleProvider="target"/>
+                                <connections>
+                                    <action selector="didChangeVolume:" target="XfG-lQ-9wD" id="H7X-Yr-E7y"/>
+                                </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MuY-Bj-L0n">
                                 <rect key="frame" x="122" y="276" width="49" height="17"/>
@@ -762,7 +771,10 @@
                             </textField>
                             <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lra-ed-4ao" customClass="KnobControl" customModule="Defender" customModuleProvider="target">
                                 <rect key="frame" x="189" y="301" width="32" height="32"/>
-                                <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" numberOfTickMarks="10" sliderType="circular" id="8rF-4M-AhK"/>
+                                <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" numberOfTickMarks="10" sliderType="circular" id="8rF-4M-AhK" customClass="KnobControlCell" customModule="Defender" customModuleProvider="target"/>
+                                <connections>
+                                    <action selector="didChangeTreble:" target="XfG-lQ-9wD" id="x1u-fk-2is"/>
+                                </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hgU-IM-ZlW">
                                 <rect key="frame" x="184" y="276" width="42" height="17"/>
@@ -774,7 +786,10 @@
                             </textField>
                             <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qaE-26-ckM" customClass="KnobControl" customModule="Defender" customModuleProvider="target">
                                 <rect key="frame" x="244" y="301" width="32" height="32"/>
-                                <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" numberOfTickMarks="10" sliderType="circular" id="hAI-db-NCq"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" numberOfTickMarks="10" sliderType="circular" id="hAI-db-NCq" customClass="KnobControlCell" customModule="Defender" customModuleProvider="target"/>
+                                <connections>
+                                    <action selector="didChangeMiddle:" target="XfG-lQ-9wD" id="tFn-3M-oe3"/>
+                                </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Io5-4A-7lu">
                                 <rect key="frame" x="238" y="276" width="45" height="17"/>
@@ -786,7 +801,10 @@
                             </textField>
                             <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ebo-0e-bq0" customClass="KnobControl" customModule="Defender" customModuleProvider="target">
                                 <rect key="frame" x="296" y="301" width="32" height="32"/>
-                                <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" numberOfTickMarks="10" sliderType="circular" id="UqM-na-bOk"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" numberOfTickMarks="10" sliderType="circular" id="UqM-na-bOk" customClass="KnobControlCell" customModule="Defender" customModuleProvider="target"/>
+                                <connections>
+                                    <action selector="didChangeBass:" target="XfG-lQ-9wD" id="f9L-H3-2W9"/>
+                                </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hwU-I4-D7D">
                                 <rect key="frame" x="296" y="276" width="33" height="17"/>
@@ -798,7 +816,10 @@
                             </textField>
                             <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3rd-x0-nhb" customClass="KnobControl" customModule="Defender" customModuleProvider="target">
                                 <rect key="frame" x="350" y="301" width="32" height="32"/>
-                                <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" numberOfTickMarks="10" sliderType="circular" id="afn-du-8w1"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" numberOfTickMarks="10" sliderType="circular" id="afn-du-8w1" customClass="KnobControlCell" customModule="Defender" customModuleProvider="target"/>
+                                <connections>
+                                    <action selector="didChangeReverb:" target="XfG-lQ-9wD" id="QDR-sp-1NB"/>
+                                </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5BL-xr-hVU">
                                 <rect key="frame" x="343" y="276" width="47" height="17"/>
