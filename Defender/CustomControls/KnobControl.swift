@@ -10,7 +10,7 @@ import Cocoa
 
 class KnobControl: NSView {
 
-    let pixelsPerTick: Float = 5.0
+    let pixelsPerTick: Float = 15.0
     
     var minValue: Float = 1.0
     var maxValue: Float = 11.6

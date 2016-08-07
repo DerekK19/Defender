@@ -854,21 +854,75 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xSx-kh-15V">
+                                <rect key="frame" x="84" y="339" width="14" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xSx-kh-15V" secondAttribute="height" multiplier="1:1" id="HAy-HU-P8P"/>
+                                    <constraint firstAttribute="width" constant="14" id="wnG-ru-uup"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="down-arrow" id="msd-BH-HDu"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5er-xi-FGe">
+                                <rect key="frame" x="154" y="339" width="14" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5er-xi-FGe" secondAttribute="height" multiplier="1:1" id="AAl-PL-NZE"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="down-arrow" id="zAU-b3-Ubd"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="chH-At-FZl">
+                                <rect key="frame" x="224" y="339" width="14" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="chH-At-FZl" secondAttribute="height" multiplier="1:1" id="boc-AW-5xu"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="down-arrow" id="dVh-Dw-CDM"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t27-oL-YFb">
+                                <rect key="frame" x="294" y="339" width="14" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="t27-oL-YFb" secondAttribute="height" multiplier="1:1" id="f9D-DA-5ie"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="down-arrow" id="YSN-Dj-MGg"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wJo-46-hgN">
+                                <rect key="frame" x="364" y="339" width="14" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wJo-46-hgN" secondAttribute="height" multiplier="1:1" id="kW5-uB-etA"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="down-arrow" id="xGC-HP-PyC"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mRB-nj-xNF">
+                                <rect key="frame" x="434" y="339" width="14" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mRB-nj-xNF" secondAttribute="height" multiplier="1:1" id="Vsz-Eh-Wjt"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="down-arrow" id="VYU-Tr-w1i"/>
+                            </imageView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="wJo-46-hgN" firstAttribute="width" secondItem="xSx-kh-15V" secondAttribute="width" id="0eb-Na-Znm"/>
+                            <constraint firstItem="5er-xi-FGe" firstAttribute="centerY" secondItem="xSx-kh-15V" secondAttribute="centerY" id="3Oy-Oo-no0"/>
                             <constraint firstItem="MuY-Bj-L0n" firstAttribute="centerY" secondItem="hgU-IM-ZlW" secondAttribute="centerY" id="6E8-go-wEZ"/>
                             <constraint firstItem="H4M-FA-gye" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="66" id="8TJ-iY-0qp"/>
+                            <constraint firstItem="H4M-FA-gye" firstAttribute="top" secondItem="xSx-kh-15V" secondAttribute="bottom" id="Ags-9D-Tn3"/>
+                            <constraint firstItem="wJo-46-hgN" firstAttribute="centerY" secondItem="xSx-kh-15V" secondAttribute="centerY" id="DvJ-yq-cIb"/>
                             <constraint firstItem="3x6-El-MDe" firstAttribute="centerY" secondItem="5Fc-Zy-LHY" secondAttribute="centerY" id="F2c-aV-QCl"/>
+                            <constraint firstItem="t27-oL-YFb" firstAttribute="width" secondItem="xSx-kh-15V" secondAttribute="width" id="FgH-5a-2Kh"/>
                             <constraint firstItem="H4M-FA-gye" firstAttribute="top" secondItem="5Fc-Zy-LHY" secondAttribute="bottom" constant="20" id="Gtf-Gs-xm8"/>
                             <constraint firstItem="5Fc-Zy-LHY" firstAttribute="baseline" secondItem="eEf-LD-CVP" secondAttribute="baseline" id="HMa-id-p7I"/>
+                            <constraint firstItem="wJo-46-hgN" firstAttribute="centerX" secondItem="Awu-b9-xK3" secondAttribute="centerX" id="Hfy-qK-5go"/>
+                            <constraint firstItem="mRB-nj-xNF" firstAttribute="centerY" secondItem="xSx-kh-15V" secondAttribute="centerY" id="HpY-ua-2pk"/>
                             <constraint firstItem="3x6-El-MDe" firstAttribute="centerY" secondItem="Ui8-8h-TR4" secondAttribute="centerY" id="I8K-Id-Km6"/>
                             <constraint firstItem="3x6-El-MDe" firstAttribute="leading" secondItem="fJa-4f-QVu" secondAttribute="trailing" constant="6" id="Ikb-Sd-OsZ"/>
                             <constraint firstItem="Ui8-8h-TR4" firstAttribute="leading" secondItem="3x6-El-MDe" secondAttribute="trailing" constant="6" id="L9I-Fy-71Z"/>
+                            <constraint firstItem="5er-xi-FGe" firstAttribute="width" secondItem="xSx-kh-15V" secondAttribute="width" id="Let-Ge-3TR"/>
                             <constraint firstItem="svv-dt-LmR" firstAttribute="centerX" secondItem="MuY-Bj-L0n" secondAttribute="centerX" id="LqG-SS-I1n"/>
+                            <constraint firstItem="mRB-nj-xNF" firstAttribute="centerX" secondItem="g3U-Ot-mWR" secondAttribute="centerX" id="MCY-MM-Gjx"/>
                             <constraint firstItem="eEf-LD-CVP" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="MEn-g3-XmO"/>
                             <constraint firstItem="cIM-QK-Tzt" firstAttribute="top" secondItem="H4M-FA-gye" secondAttribute="bottom" constant="6" id="NSQ-L8-wCa"/>
                             <constraint firstItem="mqa-en-iIa" firstAttribute="centerX" secondItem="Io5-4A-7lu" secondAttribute="centerX" id="OmI-vI-0Ij"/>
+                            <constraint firstItem="chH-At-FZl" firstAttribute="centerX" secondItem="C3x-7K-flf" secondAttribute="centerX" id="Vm8-K0-c4k"/>
                             <constraint firstItem="cIM-QK-Tzt" firstAttribute="centerY" secondItem="MuY-Bj-L0n" secondAttribute="centerY" id="ZTJ-IY-oKn"/>
+                            <constraint firstItem="chH-At-FZl" firstAttribute="centerY" secondItem="xSx-kh-15V" secondAttribute="centerY" id="c0q-UA-OsS"/>
                             <constraint firstItem="5Fc-Zy-LHY" firstAttribute="leading" secondItem="eEf-LD-CVP" secondAttribute="trailing" constant="6" id="cPx-b3-EOO"/>
                             <constraint firstItem="C3x-7K-flf" firstAttribute="centerX" secondItem="hgU-IM-ZlW" secondAttribute="centerX" id="dL5-HL-3zu"/>
                             <constraint firstItem="5KL-wd-h4u" firstAttribute="centerX" secondItem="cIM-QK-Tzt" secondAttribute="centerX" id="dch-dw-3IB"/>
@@ -876,7 +930,13 @@
                             <constraint firstItem="Awu-b9-xK3" firstAttribute="centerX" secondItem="hwU-I4-D7D" secondAttribute="centerX" id="f56-Xw-PHu"/>
                             <constraint firstItem="3x6-El-MDe" firstAttribute="baseline" secondItem="fJa-4f-QVu" secondAttribute="baseline" id="gCv-qy-q4f"/>
                             <constraint firstAttribute="trailing" secondItem="Ui8-8h-TR4" secondAttribute="trailing" constant="10" id="gpV-aN-oAW"/>
+                            <constraint firstItem="mRB-nj-xNF" firstAttribute="width" secondItem="xSx-kh-15V" secondAttribute="width" id="h1K-7r-ryN"/>
+                            <constraint firstItem="chH-At-FZl" firstAttribute="width" secondItem="xSx-kh-15V" secondAttribute="width" id="iQw-QL-2Ob"/>
+                            <constraint firstItem="5er-xi-FGe" firstAttribute="centerX" secondItem="svv-dt-LmR" secondAttribute="centerX" id="kSq-fG-XC3"/>
+                            <constraint firstItem="t27-oL-YFb" firstAttribute="centerX" secondItem="mqa-en-iIa" secondAttribute="centerX" id="m3G-k0-ZVe"/>
                             <constraint firstItem="3x6-El-MDe" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="o0Z-9I-gV0"/>
+                            <constraint firstItem="t27-oL-YFb" firstAttribute="centerY" secondItem="xSx-kh-15V" secondAttribute="centerY" id="pr3-ah-pG0"/>
+                            <constraint firstItem="xSx-kh-15V" firstAttribute="centerX" secondItem="5KL-wd-h4u" secondAttribute="centerX" id="qgc-Zj-rn9"/>
                             <constraint firstItem="hwU-I4-D7D" firstAttribute="baseline" secondItem="5BL-xr-hVU" secondAttribute="baseline" id="soE-NH-9Z9"/>
                             <constraint firstItem="hgU-IM-ZlW" firstAttribute="centerY" secondItem="Io5-4A-7lu" secondAttribute="centerY" id="tnG-KN-UFa"/>
                             <constraint firstItem="Io5-4A-7lu" firstAttribute="centerY" secondItem="hwU-I4-D7D" secondAttribute="centerY" id="uCu-p1-eum"/>
@@ -898,4 +958,7 @@
             <point key="canvasLocation" x="75" y="655"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="down-arrow" width="28" height="28"/>
+    </resources>
 </document>
