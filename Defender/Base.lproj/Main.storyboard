@@ -697,6 +697,9 @@
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="didClickPreset:" target="XfG-lQ-9wD" id="LyV-ZY-kAx"/>
+                                </connections>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fJa-4f-QVu">
                                 <rect key="frame" x="360" y="362" width="59" height="17"/>
@@ -733,23 +736,125 @@
                                     <action selector="willOpenAmplifier" target="XfG-lQ-9wD" id="rvO-0u-A1G"/>
                                 </connections>
                             </button>
+                            <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gma-Hx-mQE" customClass="KnobControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="79" y="301" width="32" height="32"/>
+                                <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" numberOfTickMarks="10" sliderType="circular" id="Vcg-Ad-nOF"/>
+                            </slider>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cIM-QK-Tzt">
+                                <rect key="frame" x="79" y="276" width="32" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Gain" id="YWj-nO-UFX">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xlC-h2-ovX" customClass="KnobControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="130" y="301" width="32" height="32"/>
+                                <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" numberOfTickMarks="10" sliderType="circular" id="alG-EV-bZn"/>
+                            </slider>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MuY-Bj-L0n">
+                                <rect key="frame" x="122" y="276" width="49" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Volume" id="dB0-9V-7Gg">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lra-ed-4ao" customClass="KnobControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="189" y="301" width="32" height="32"/>
+                                <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" numberOfTickMarks="10" sliderType="circular" id="8rF-4M-AhK"/>
+                            </slider>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hgU-IM-ZlW">
+                                <rect key="frame" x="184" y="276" width="42" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Treble" id="aP3-iP-1Ia">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qaE-26-ckM" customClass="KnobControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="244" y="301" width="32" height="32"/>
+                                <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" numberOfTickMarks="10" sliderType="circular" id="hAI-db-NCq"/>
+                            </slider>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Io5-4A-7lu">
+                                <rect key="frame" x="238" y="276" width="45" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Middle" id="nz6-An-XUV">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ebo-0e-bq0" customClass="KnobControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="296" y="301" width="32" height="32"/>
+                                <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" numberOfTickMarks="10" sliderType="circular" id="UqM-na-bOk"/>
+                            </slider>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hwU-I4-D7D">
+                                <rect key="frame" x="296" y="276" width="33" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bass" id="fli-fF-gLy">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3rd-x0-nhb" customClass="KnobControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="350" y="301" width="32" height="32"/>
+                                <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" numberOfTickMarks="10" sliderType="circular" id="afn-du-8w1"/>
+                            </slider>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5BL-xr-hVU">
+                                <rect key="frame" x="343" y="276" width="47" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Reverb" id="pgO-Wj-Euu">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="lra-ed-4ao" firstAttribute="leading" secondItem="xlC-h2-ovX" secondAttribute="trailing" constant="27" id="2Bd-Wa-Ez1"/>
+                            <constraint firstItem="lra-ed-4ao" firstAttribute="centerY" secondItem="qaE-26-ckM" secondAttribute="centerY" id="4aN-IV-gFi"/>
+                            <constraint firstItem="MuY-Bj-L0n" firstAttribute="centerY" secondItem="hgU-IM-ZlW" secondAttribute="centerY" id="6E8-go-wEZ"/>
+                            <constraint firstItem="Gma-Hx-mQE" firstAttribute="centerX" secondItem="cIM-QK-Tzt" secondAttribute="centerX" id="BOf-75-cDZ"/>
                             <constraint firstItem="3x6-El-MDe" firstAttribute="centerY" secondItem="5Fc-Zy-LHY" secondAttribute="centerY" id="F2c-aV-QCl"/>
+                            <constraint firstItem="qaE-26-ckM" firstAttribute="leading" secondItem="lra-ed-4ao" secondAttribute="trailing" constant="23" id="Fht-oN-dLg"/>
+                            <constraint firstItem="xlC-h2-ovX" firstAttribute="leading" secondItem="Gma-Hx-mQE" secondAttribute="trailing" constant="19" id="GJX-NL-9Dm"/>
                             <constraint firstItem="5Fc-Zy-LHY" firstAttribute="baseline" secondItem="eEf-LD-CVP" secondAttribute="baseline" id="HMa-id-p7I"/>
                             <constraint firstItem="3x6-El-MDe" firstAttribute="centerY" secondItem="Ui8-8h-TR4" secondAttribute="centerY" id="I8K-Id-Km6"/>
+                            <constraint firstItem="Gma-Hx-mQE" firstAttribute="centerY" secondItem="xlC-h2-ovX" secondAttribute="centerY" id="Iae-90-Nxd"/>
                             <constraint firstItem="3x6-El-MDe" firstAttribute="leading" secondItem="fJa-4f-QVu" secondAttribute="trailing" constant="6" id="Ikb-Sd-OsZ"/>
+                            <constraint firstItem="3rd-x0-nhb" firstAttribute="leading" secondItem="ebo-0e-bq0" secondAttribute="trailing" constant="22" id="JvF-1R-LFf"/>
                             <constraint firstItem="Ui8-8h-TR4" firstAttribute="leading" secondItem="3x6-El-MDe" secondAttribute="trailing" constant="6" id="L9I-Fy-71Z"/>
                             <constraint firstItem="eEf-LD-CVP" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="MEn-g3-XmO"/>
+                            <constraint firstItem="ebo-0e-bq0" firstAttribute="centerX" secondItem="hwU-I4-D7D" secondAttribute="centerX" id="Pcb-hy-af3"/>
+                            <constraint firstItem="hwU-I4-D7D" firstAttribute="centerY" secondItem="5BL-xr-hVU" secondAttribute="centerY" id="TUL-gn-EKX"/>
+                            <constraint firstItem="cIM-QK-Tzt" firstAttribute="centerY" secondItem="MuY-Bj-L0n" secondAttribute="centerY" id="ZTJ-IY-oKn"/>
+                            <constraint firstItem="lra-ed-4ao" firstAttribute="centerX" secondItem="hgU-IM-ZlW" secondAttribute="centerX" id="a3D-a3-gMU"/>
+                            <constraint firstItem="ebo-0e-bq0" firstAttribute="centerY" secondItem="3rd-x0-nhb" secondAttribute="centerY" id="bIA-YM-JqY"/>
+                            <constraint firstItem="ebo-0e-bq0" firstAttribute="leading" secondItem="qaE-26-ckM" secondAttribute="trailing" constant="20" id="beO-yq-oYf"/>
                             <constraint firstItem="5Fc-Zy-LHY" firstAttribute="leading" secondItem="eEf-LD-CVP" secondAttribute="trailing" constant="6" id="cPx-b3-EOO"/>
+                            <constraint firstItem="Gma-Hx-mQE" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="79" id="feB-58-Ioz"/>
                             <constraint firstItem="3x6-El-MDe" firstAttribute="baseline" secondItem="fJa-4f-QVu" secondAttribute="baseline" id="gCv-qy-q4f"/>
                             <constraint firstAttribute="trailing" secondItem="Ui8-8h-TR4" secondAttribute="trailing" constant="10" id="gpV-aN-oAW"/>
+                            <constraint firstItem="Gma-Hx-mQE" firstAttribute="top" secondItem="5Fc-Zy-LHY" secondAttribute="bottom" constant="26" id="k8L-dq-pwe"/>
                             <constraint firstItem="3x6-El-MDe" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="o0Z-9I-gV0"/>
+                            <constraint firstItem="xlC-h2-ovX" firstAttribute="centerY" secondItem="lra-ed-4ao" secondAttribute="centerY" id="qIe-5g-YHk"/>
+                            <constraint firstItem="xlC-h2-ovX" firstAttribute="centerX" secondItem="MuY-Bj-L0n" secondAttribute="centerX" id="s1t-eT-Nqr"/>
+                            <constraint firstItem="hgU-IM-ZlW" firstAttribute="centerY" secondItem="Io5-4A-7lu" secondAttribute="centerY" id="tnG-KN-UFa"/>
+                            <constraint firstItem="Io5-4A-7lu" firstAttribute="centerY" secondItem="hwU-I4-D7D" secondAttribute="centerY" id="uCu-p1-eum"/>
+                            <constraint firstItem="qaE-26-ckM" firstAttribute="centerY" secondItem="ebo-0e-bq0" secondAttribute="centerY" id="uU0-oP-yIS"/>
+                            <constraint firstItem="qaE-26-ckM" firstAttribute="centerX" secondItem="Io5-4A-7lu" secondAttribute="centerX" id="vbb-h6-DWK"/>
+                            <constraint firstItem="cIM-QK-Tzt" firstAttribute="top" secondItem="Gma-Hx-mQE" secondAttribute="bottom" constant="8" id="z1Q-m9-kxg"/>
+                            <constraint firstItem="3rd-x0-nhb" firstAttribute="centerX" secondItem="5BL-xr-hVU" secondAttribute="centerX" id="zbF-Tr-boj"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="amplifierList" destination="3x6-El-MDe" id="WKg-2j-zQF"/>
+                        <outlet property="bassKnob" destination="ebo-0e-bq0" id="Pa1-Q2-jDu"/>
+                        <outlet property="gainKnob" destination="Gma-Hx-mQE" id="msH-Tm-2sh"/>
+                        <outlet property="middleKnob" destination="qaE-26-ckM" id="roN-DS-YJh"/>
                         <outlet property="presetList" destination="5Fc-Zy-LHY" id="AoM-qD-X0F"/>
+                        <outlet property="reverbKnob" destination="3rd-x0-nhb" id="YJv-Id-brk"/>
+                        <outlet property="trebleKnob" destination="lra-ed-4ao" id="Qj9-zc-L7s"/>
+                        <outlet property="volumeKnob" destination="xlC-h2-ovX" id="ynM-dQ-sdD"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
