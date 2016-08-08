@@ -13,7 +13,6 @@ class MainVC: NSViewController {
 
     @IBOutlet weak var amplifierLabel: NSTextField!
     @IBOutlet weak var amplifierList: NSPopUpButton!
-    @IBOutlet weak var presetLabel: NSTextField!
     @IBOutlet weak var presetList: NSPopUpButton!
     @IBOutlet weak var openButton: NSButton!
     @IBOutlet weak var gainArrow: NSImageView!
@@ -63,7 +62,6 @@ class MainVC: NSViewController {
         bassArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
         reverbArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
         amplifierLabel.textColor = contrastColour
-        presetLabel.textColor = contrastColour
         gainLabel.textColor = contrastColour
         volumeLabel.textColor = contrastColour
         trebleLabel.textColor = contrastColour
@@ -111,7 +109,53 @@ class MainVC: NSViewController {
 
     @IBAction func didClickPreset(sender: AnyObject) {
         
-        let preset = presets[presetList.indexOfSelectedItem]
+        let currentSelection = presetList.indexOfSelectedItem
+        let preset = presets[currentSelection]
+        if let _ = preset.gain1 {
+            displayPreset(preset)
+        } else {
+            if let amplifier = amplifiers.filter( { $0.name == amplifierList.title}).first {
+                Mustang().getPreset(
+                    amplifier,
+                    preset: UInt8(currentSelection)) { (preset) in
+                        dispatch_async(dispatch_get_main_queue()) {
+                            if let preset = preset {
+                                if let _ = preset.gain1 {
+                                    self.displayPreset(preset)
+                                }
+                            }
+                        }
+                }
+            }
+        }
+    }
+    
+    @IBAction func didChangeGain(sender: AnyObject) {
+        NSLog("New gain is \(gainKnob.floatValue)")
+    }
+    
+    @IBAction func didChangeVolume(sender: AnyObject) {
+        NSLog("New volume is \(volumeKnob.floatValue)")
+    }
+    
+    @IBAction func didChangeTreble(sender: AnyObject) {
+        NSLog("New treble is \(trebleKnob.floatValue)")
+    }
+    
+    @IBAction func didChangeMiddle(sender: AnyObject) {
+        NSLog("New middle is \(middleKnob.floatValue)")
+    }
+    
+    @IBAction func didChangeBass(sender: AnyObject) {
+        NSLog("New bass is \(bassKnob.floatValue)")
+    }
+    
+    @IBAction func didChangeReverb(sender: AnyObject) {
+        NSLog("New reverb is \(reverbKnob.floatValue)")
+    }
+    
+    // MARK: Private Functions
+    private func displayPreset(preset: DTOPreset) {
         if let gain = preset.gain1 {
             NSLog("Gain: \(gain)")
             gainKnob.floatValue = gain
@@ -148,33 +192,9 @@ class MainVC: NSViewController {
         } else {
             reverbKnob.floatValue = 1.0
         }
-        displayPresetNumber.stringValue = "\(preset.number)"
+        displayPresetNumber.stringValue = String(format: "%02d", preset.number)
         displayPresetName.stringValue = preset.name
-        displayAmplifierName.stringValue = preset.model ?? ""
-    }
-    
-    @IBAction func didChangeGain(sender: AnyObject) {
-        NSLog("New gain is \(gainKnob.floatValue)")
-    }
-    
-    @IBAction func didChangeVolume(sender: AnyObject) {
-        NSLog("New volume is \(volumeKnob.floatValue)")
-    }
-    
-    @IBAction func didChangeTreble(sender: AnyObject) {
-        NSLog("New treble is \(trebleKnob.floatValue)")
-    }
-    
-    @IBAction func didChangeMiddle(sender: AnyObject) {
-        NSLog("New middle is \(middleKnob.floatValue)")
-    }
-    
-    @IBAction func didChangeBass(sender: AnyObject) {
-        NSLog("New bass is \(bassKnob.floatValue)")
-    }
-    
-    @IBAction func didChangeReverb(sender: AnyObject) {
-        NSLog("New reverb is \(reverbKnob.floatValue)")
+        displayAmplifierName.stringValue = preset.modelName ?? ""
     }
 }
 

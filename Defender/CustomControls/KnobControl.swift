@@ -18,10 +18,16 @@ class KnobControl: NSView {
     var minStop: Float = 1.0
     var maxStop: Float = 10.0
     
-    var floatValue: Float = 1.0
-    
     var startMouse: NSPoint!
     var startValue: Float = 1.0
+    
+    private var _floatValue: Float = 1.0
+    var floatValue: Float = 1.0 {
+        didSet {
+            _floatValue = floatValue
+            setNeedsDisplayInRect(self.bounds)
+        }
+    }
     
     // Event handling
     override var acceptsFirstResponder: Bool {
@@ -30,12 +36,12 @@ class KnobControl: NSView {
     
     override func mouseDown(theEvent: NSEvent) {
         startMouse = theEvent.locationInWindow
-        startValue = floatValue
+        startValue = _floatValue
     }
     
     override func mouseDragged(theEvent: NSEvent) {
         let yChange = Float(theEvent.locationInWindow.y - startMouse.y)
-        floatValue = min(max(startValue + (yChange / pixelsPerTick), minStop), maxStop)
+        _floatValue = min(max(startValue + (yChange / pixelsPerTick), minStop), maxStop)
         setNeedsDisplayInRect(self.bounds)
     }
     
@@ -47,7 +53,7 @@ class KnobControl: NSView {
     // MARK: Draw function
     override func drawRect(dirtyRect: NSRect) {
         if let knobImage = NSImage(named: "knob") {
-            let fraction = (self.floatValue - self.minValue) / (self.maxValue - self.minValue)
+            let fraction = (self._floatValue - self.minValue) / (self.maxValue - self.minValue)
             let angle = -CGFloat(fraction * 360.0)
             let rotatedKnob = self.imageRotatedByDegrees(knobImage, degrees: angle)
             let copyRect = NSMakeRect((rotatedKnob.size.width-dirtyRect.size.width)/2.0, (rotatedKnob.size.height-dirtyRect.size.height)/2.0, dirtyRect.width, dirtyRect.height)
