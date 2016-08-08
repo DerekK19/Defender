@@ -11,7 +11,9 @@ import Mustang
 
 class MainVC: NSViewController {
 
+    @IBOutlet weak var amplifierLabel: NSTextField!
     @IBOutlet weak var amplifierList: NSPopUpButton!
+    @IBOutlet weak var presetLabel: NSTextField!
     @IBOutlet weak var presetList: NSPopUpButton!
     @IBOutlet weak var openButton: NSButton!
     @IBOutlet weak var gainArrow: NSImageView!
@@ -20,6 +22,12 @@ class MainVC: NSViewController {
     @IBOutlet weak var middleArrow: NSImageView!
     @IBOutlet weak var bassArrow: NSImageView!
     @IBOutlet weak var reverbArrow: NSImageView!
+    @IBOutlet weak var gainLabel: NSTextField!
+    @IBOutlet weak var volumeLabel: NSTextField!
+    @IBOutlet weak var trebleLabel: NSTextField!
+    @IBOutlet weak var middleLabel: NSTextField!
+    @IBOutlet weak var bassLabel: NSTextField!
+    @IBOutlet weak var reverbLabel: NSTextField!
     @IBOutlet weak var gainKnob: KnobControl!
     @IBOutlet weak var volumeKnob: KnobControl!
     @IBOutlet weak var trebleKnob: KnobControl!
@@ -34,6 +42,8 @@ class MainVC: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.view.wantsLayer = true
+
         // Do any additional setup after loading the view.
         
         amplifierList.removeAllItems()
@@ -41,18 +51,37 @@ class MainVC: NSViewController {
 
         amplifiers = Mustang().getConnectedAmplifiers()
         amplifierList.addItemsWithTitles(amplifiers.map( { $0.name } ))
-        gainArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(NSColor.whiteColor())
-        volumeArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(NSColor.whiteColor())
-        trebleArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(NSColor.whiteColor())
-        middleArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(NSColor.whiteColor())
-        bassArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(NSColor.whiteColor())
-        reverbArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(NSColor.whiteColor())
+        let contrastColour = NSColor.whiteColor()
+        gainArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
+        volumeArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
+        trebleArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
+        middleArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
+        bassArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
+        reverbArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
+        amplifierLabel.textColor = contrastColour
+        presetLabel.textColor = contrastColour
+        gainLabel.textColor = contrastColour
+        volumeLabel.textColor = contrastColour
+        trebleLabel.textColor = contrastColour
+        middleLabel.textColor = contrastColour
+        bassLabel.textColor = contrastColour
+        reverbLabel.textColor = contrastColour
     }
 
     override var representedObject: AnyObject? {
         didSet {
         // Update the view, if already loaded.
         }
+    }
+
+    override func awakeFromNib() {
+        if self.view.layer != nil {
+            if let image = NSImage(named: "background-texture") {
+                let pattern = NSColor(patternImage: image).CGColor
+                self.view.layer?.backgroundColor = pattern
+            }
+        }
+        
     }
 
     @IBAction func willOpenAmplifier(sender: AnyObject) {
