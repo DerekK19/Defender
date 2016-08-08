@@ -816,13 +816,27 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2x2-4Q-ta7">
+                                        <rect key="frame" x="6" y="6" width="75" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="C5M-li-FRM"/>
+                                            <constraint firstAttribute="width" constant="75" id="RaO-1Q-fsM"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" title="--" drawsBackground="YES" id="9Wp-yI-HHX">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="PGb-dy-Bmo" secondAttribute="trailing" constant="6" id="1ZX-W7-kc3"/>
+                                    <constraint firstItem="2x2-4Q-ta7" firstAttribute="leading" secondItem="EIg-7z-zJc" secondAttribute="leading" constant="6" id="Ccj-9S-oa5"/>
                                     <constraint firstItem="SZZ-PW-Phw" firstAttribute="top" secondItem="EIg-7z-zJc" secondAttribute="top" constant="6" id="FgG-xH-aiA"/>
                                     <constraint firstItem="PGb-dy-Bmo" firstAttribute="leading" secondItem="SZZ-PW-Phw" secondAttribute="trailing" constant="6" id="fYo-jT-UeT"/>
                                     <constraint firstItem="SZZ-PW-Phw" firstAttribute="leading" secondItem="EIg-7z-zJc" secondAttribute="leading" constant="6" id="g1X-Uc-srI"/>
                                     <constraint firstItem="SZZ-PW-Phw" firstAttribute="centerY" secondItem="PGb-dy-Bmo" secondAttribute="centerY" id="hXF-vL-U0P"/>
+                                    <constraint firstAttribute="bottom" secondItem="2x2-4Q-ta7" secondAttribute="bottom" constant="6" id="oST-ay-J7y"/>
                                     <constraint firstAttribute="width" constant="176" id="pLX-Pg-PFg"/>
                                     <constraint firstAttribute="height" constant="96" id="tiD-s0-G82"/>
                                 </constraints>
@@ -985,6 +999,7 @@
                         <outlet property="bassKnob" destination="Awu-b9-xK3" id="Rry-PS-elr"/>
                         <outlet property="bassLabel" destination="hwU-I4-D7D" id="d6t-wl-8h3"/>
                         <outlet property="display" destination="EIg-7z-zJc" id="4PS-f2-poO"/>
+                        <outlet property="displayAmplifierName" destination="2x2-4Q-ta7" id="4cT-zF-1mF"/>
                         <outlet property="displayPresetName" destination="PGb-dy-Bmo" id="9oq-eu-a3z"/>
                         <outlet property="displayPresetNumber" destination="SZZ-PW-Phw" id="Fru-KZ-eD2"/>
                         <outlet property="gainArrow" destination="xSx-kh-15V" id="OqR-LW-9Lt"/>

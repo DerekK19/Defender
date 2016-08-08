@@ -37,6 +37,7 @@ class MainVC: NSViewController {
     @IBOutlet weak var display: DisplayControl!
     @IBOutlet weak var displayPresetNumber: NSTextField!
     @IBOutlet weak var displayPresetName: NSTextField!
+    @IBOutlet weak var displayAmplifierName: NSTextField!
     
     var presets = [DTOPreset] ()
     
@@ -74,6 +75,8 @@ class MainVC: NSViewController {
         displayPresetNumber.textColor = displayForegroundColour
         displayPresetName.backgroundColor = displayForegroundColour
         displayPresetName.textColor = display.backgroundColour
+        displayAmplifierName.backgroundColor = displayForegroundColour
+        displayAmplifierName.textColor = display.backgroundColour
     }
 
     override var representedObject: AnyObject? {
@@ -147,6 +150,7 @@ class MainVC: NSViewController {
         }
         displayPresetNumber.stringValue = "\(preset.number)"
         displayPresetName.stringValue = preset.name
+        displayAmplifierName.stringValue = preset.model ?? ""
     }
     
     @IBAction func didChangeGain(sender: AnyObject) {
