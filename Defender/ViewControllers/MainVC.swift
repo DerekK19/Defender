@@ -34,6 +34,9 @@ class MainVC: NSViewController {
     @IBOutlet weak var middleKnob: KnobControl!
     @IBOutlet weak var bassKnob: KnobControl!
     @IBOutlet weak var reverbKnob: KnobControl!
+    @IBOutlet weak var display: DisplayControl!
+    @IBOutlet weak var displayPresetNumber: NSTextField!
+    @IBOutlet weak var displayPresetName: NSTextField!
     
     var presets = [DTOPreset] ()
     
@@ -66,6 +69,11 @@ class MainVC: NSViewController {
         middleLabel.textColor = contrastColour
         bassLabel.textColor = contrastColour
         reverbLabel.textColor = contrastColour
+//        let displayBorderColour = NSColor(red: 0.33, green: 0.47, blue: 0.59, alpha: 1.0)
+        let displayForegroundColour = NSColor(red: 0.3, green: 0.38, blue: 0.6, alpha: 1.0)
+        displayPresetNumber.textColor = displayForegroundColour
+        displayPresetName.backgroundColor = displayForegroundColour
+        displayPresetName.textColor = display.backgroundColour
     }
 
     override var representedObject: AnyObject? {
@@ -137,6 +145,8 @@ class MainVC: NSViewController {
         } else {
             reverbKnob.floatValue = 1.0
         }
+        displayPresetNumber.stringValue = "\(preset.number)"
+        displayPresetName.stringValue = preset.name
     }
     
     @IBAction func didChangeGain(sender: AnyObject) {
