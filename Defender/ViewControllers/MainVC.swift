@@ -76,6 +76,14 @@ class MainVC: NSViewController {
         displayPresetName.textColor = display.backgroundColour
         displayAmplifierName.backgroundColor = displayForegroundColour
         displayAmplifierName.textColor = display.backgroundColour
+        
+        gainKnob.delegate = self
+        volumeKnob.delegate = self
+        trebleKnob.delegate = self
+        middleKnob.delegate = self
+        bassKnob.delegate = self
+        reverbKnob.delegate = self
+        wheel.delegate = self
     }
 
     override var representedObject: AnyObject? {
@@ -131,30 +139,6 @@ class MainVC: NSViewController {
         }
     }
     
-    @IBAction func didChangeGain(sender: AnyObject) {
-        NSLog("New gain is \(gainKnob.floatValue)")
-    }
-    
-    @IBAction func didChangeVolume(sender: AnyObject) {
-        NSLog("New volume is \(volumeKnob.floatValue)")
-    }
-    
-    @IBAction func didChangeTreble(sender: AnyObject) {
-        NSLog("New treble is \(trebleKnob.floatValue)")
-    }
-    
-    @IBAction func didChangeMiddle(sender: AnyObject) {
-        NSLog("New middle is \(middleKnob.floatValue)")
-    }
-    
-    @IBAction func didChangeBass(sender: AnyObject) {
-        NSLog("New bass is \(bassKnob.floatValue)")
-    }
-    
-    @IBAction func didChangeReverb(sender: AnyObject) {
-        NSLog("New reverb is \(reverbKnob.floatValue)")
-    }
-    
     // MARK: Private Functions
     private func displayPreset(preset: DTOPreset) {
         if let gain = preset.gain1 {
@@ -196,6 +180,71 @@ class MainVC: NSViewController {
         displayPresetNumber.stringValue = String(format: "%02d", preset.number)
         displayPresetName.stringValue = preset.name
         displayAmplifierName.stringValue = preset.modelName ?? ""
+    }
+}
+
+extension MainVC: KnobDelegate {
+    
+    func valueDidChangeForKnob(sender: KnobControl, value: Float) {
+        switch sender {
+        case gainKnob:
+            NSLog("New gain is \(value)")
+        case volumeKnob:
+            NSLog("New volume is \(value)")
+        case trebleKnob:
+            NSLog("New treble is \(value)")
+        case middleKnob:
+            NSLog("New middle is \(value)")
+        case bassKnob:
+            NSLog("New bass is \(value)")
+        case reverbKnob:
+            NSLog("New reverb is \(value)")
+        default:
+            NSLog("Don't know what knob sent this event")
+        }
+    }
+}
+
+extension MainVC: WheelDelegate {
+    
+    func valueIsChangingForWheel(sender: WheelControl, value: Int) {
+        switch sender {
+        case wheel:
+            NSLog("Wheel value is changing to \(value)")
+            displayPresetNumber.stringValue = String(format: "%02d", value)
+
+        default:
+            NSLog("Don't know what wheel sent this event")
+        }
+    }
+    
+    func valueDidChangeForWheel(sender: WheelControl, value: Int) {
+        switch sender {
+        case wheel:
+            NSLog("Wheel value changed to \(value)")
+            if value >= 0 && value < presets.count {
+                let preset = presets[value]
+                if let _ = preset.gain1 {
+                    displayPreset(preset)
+                } else {
+                    if let amplifier = amplifiers.filter( { $0.name == amplifierList.title}).first {
+                        Mustang().getPreset(
+                            amplifier,
+                            preset: UInt8(value)) { (preset) in
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    if let preset = preset {
+                                        if let _ = preset.gain1 {
+                                            self.displayPreset(preset)
+                                        }
+                                    }
+                                }
+                        }
+                    }
+                }
+            }
+        default:
+            NSLog("Don't know what wheel sent this event")
+        }
     }
 }
 

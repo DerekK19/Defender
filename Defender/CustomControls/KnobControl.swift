@@ -8,6 +8,10 @@
 
 import Cocoa
 
+protocol KnobDelegate {
+    func valueDidChangeForKnob(sender: KnobControl, value: Float)
+}
+
 class KnobControl: NSView {
 
     let pixelsPerTick: Float = 15.0
@@ -20,6 +24,8 @@ class KnobControl: NSView {
     
     var startMouse: NSPoint!
     var startValue: Float = 1.0
+    
+    var delegate: KnobDelegate?
     
     private var _floatValue: Float = 1.0
     var floatValue: Float = 1.0 {
@@ -48,6 +54,7 @@ class KnobControl: NSView {
     override func mouseUp(theEvent: NSEvent) {
         let yChange = Float(theEvent.locationInWindow.y - startMouse.y)
         floatValue = min(max(startValue + (yChange / pixelsPerTick), minStop), maxStop)
+        delegate?.valueDidChangeForKnob(self, value: floatValue)
     }
     
     // MARK: Draw function

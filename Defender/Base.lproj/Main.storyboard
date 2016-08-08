@@ -877,9 +877,6 @@
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <action selector="didChangeGain:" target="XfG-lQ-9wD" id="TgW-Ue-GwV"/>
-                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MuY-Bj-L0n">
                                 <rect key="frame" x="140" y="264" width="49" height="17"/>
@@ -1035,6 +1032,7 @@
                         <outlet property="volumeArrow" destination="5er-xi-FGe" id="kZT-Jg-n1B"/>
                         <outlet property="volumeKnob" destination="svv-dt-LmR" id="cyO-0a-Fo6"/>
                         <outlet property="volumeLabel" destination="MuY-Bj-L0n" id="Hof-de-Hrg"/>
+                        <outlet property="wheel" destination="s3o-Ji-Bjw" id="Ivz-pg-gj2"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
