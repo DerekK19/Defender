@@ -18,6 +18,7 @@
 		6581F99D1D4C5D97005BB5C9 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6581F99B1D4C5D97005BB5C9 /* ObjectMapper.framework */; };
 		7167FEDA1D58032C0059A276 /* NSImage+Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FED91D58032C0059A276 /* NSImage+Colour.swift */; };
 		7167FEDC1D5815270059A276 /* DisplayControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FEDB1D5815270059A276 /* DisplayControl.swift */; };
+		7167FF3E1D592E070059A276 /* WheelControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FF3D1D592E070059A276 /* WheelControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		6581F99B1D4C5D97005BB5C9 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/Mac/ObjectMapper.framework; sourceTree = "<group>"; };
 		7167FED91D58032C0059A276 /* NSImage+Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Colour.swift"; sourceTree = "<group>"; };
 		7167FEDB1D5815270059A276 /* DisplayControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayControl.swift; sourceTree = "<group>"; };
+		7167FF3D1D592E070059A276 /* WheelControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WheelControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				657C3AC71D56DB8E002DEF17 /* KnobControl.swift */,
+				7167FF3D1D592E070059A276 /* WheelControl.swift */,
 				7167FEDB1D5815270059A276 /* DisplayControl.swift */,
 			);
 			name = "Custom Controls";
@@ -352,6 +355,7 @@
 				655A5A431D4C555500E15E1F /* MainVC.swift in Sources */,
 				7167FEDA1D58032C0059A276 /* NSImage+Colour.swift in Sources */,
 				655A5A411D4C555400E15E1F /* AppDelegate.swift in Sources */,
+				7167FF3E1D592E070059A276 /* WheelControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

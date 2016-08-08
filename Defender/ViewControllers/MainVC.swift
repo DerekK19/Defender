@@ -34,6 +34,7 @@ class MainVC: NSViewController {
     @IBOutlet weak var bassKnob: KnobControl!
     @IBOutlet weak var reverbKnob: KnobControl!
     @IBOutlet weak var display: DisplayControl!
+    @IBOutlet weak var wheel: WheelControl!
     @IBOutlet weak var displayPresetNumber: NSTextField!
     @IBOutlet weak var displayPresetName: NSTextField!
     @IBOutlet weak var displayAmplifierName: NSTextField!
