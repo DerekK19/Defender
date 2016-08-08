@@ -14,6 +14,12 @@ class MainVC: NSViewController {
     @IBOutlet weak var amplifierList: NSPopUpButton!
     @IBOutlet weak var presetList: NSPopUpButton!
     @IBOutlet weak var openButton: NSButton!
+    @IBOutlet weak var gainArrow: NSImageView!
+    @IBOutlet weak var volumeArrow: NSImageView!
+    @IBOutlet weak var trebleArrow: NSImageView!
+    @IBOutlet weak var middleArrow: NSImageView!
+    @IBOutlet weak var bassArrow: NSImageView!
+    @IBOutlet weak var reverbArrow: NSImageView!
     @IBOutlet weak var gainKnob: KnobControl!
     @IBOutlet weak var volumeKnob: KnobControl!
     @IBOutlet weak var trebleKnob: KnobControl!
@@ -34,7 +40,13 @@ class MainVC: NSViewController {
         presetList.removeAllItems()
 
         amplifiers = Mustang().getConnectedAmplifiers()
-        amplifierList.addItemsWithTitles(amplifiers.map( { $0.name } ))        
+        amplifierList.addItemsWithTitles(amplifiers.map( { $0.name } ))
+        gainArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(NSColor.whiteColor())
+        volumeArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(NSColor.whiteColor())
+        trebleArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(NSColor.whiteColor())
+        middleArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(NSColor.whiteColor())
+        bassArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(NSColor.whiteColor())
+        reverbArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(NSColor.whiteColor())
     }
 
     override var representedObject: AnyObject? {

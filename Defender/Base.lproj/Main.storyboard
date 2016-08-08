@@ -862,13 +862,6 @@
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="down-arrow" id="msd-BH-HDu"/>
                             </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5er-xi-FGe">
-                                <rect key="frame" x="154" y="339" width="14" height="14"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="5er-xi-FGe" secondAttribute="height" multiplier="1:1" id="AAl-PL-NZE"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="down-arrow" id="zAU-b3-Ubd"/>
-                            </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="chH-At-FZl">
                                 <rect key="frame" x="224" y="339" width="14" height="14"/>
                                 <constraints>
@@ -896,6 +889,13 @@
                                     <constraint firstAttribute="width" secondItem="mRB-nj-xNF" secondAttribute="height" multiplier="1:1" id="Vsz-Eh-Wjt"/>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="down-arrow" id="VYU-Tr-w1i"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5er-xi-FGe">
+                                <rect key="frame" x="154" y="339" width="14" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5er-xi-FGe" secondAttribute="height" multiplier="1:1" id="AAl-PL-NZE"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="down-arrow" id="zAU-b3-Ubd"/>
                             </imageView>
                         </subviews>
                         <constraints>
@@ -944,12 +944,18 @@
                     </view>
                     <connections>
                         <outlet property="amplifierList" destination="3x6-El-MDe" id="WKg-2j-zQF"/>
+                        <outlet property="bassArrow" destination="wJo-46-hgN" id="huZ-I8-Xdy"/>
                         <outlet property="bassKnob" destination="Awu-b9-xK3" id="Rry-PS-elr"/>
+                        <outlet property="gainArrow" destination="xSx-kh-15V" id="OqR-LW-9Lt"/>
                         <outlet property="gainKnob" destination="5KL-wd-h4u" id="hBe-Q8-GRt"/>
+                        <outlet property="middleArrow" destination="t27-oL-YFb" id="qcQ-oP-NT2"/>
                         <outlet property="middleKnob" destination="mqa-en-iIa" id="pZ0-Sq-wTU"/>
                         <outlet property="presetList" destination="5Fc-Zy-LHY" id="AoM-qD-X0F"/>
+                        <outlet property="reverbArrow" destination="mRB-nj-xNF" id="er9-IR-t7s"/>
                         <outlet property="reverbKnob" destination="g3U-Ot-mWR" id="ISY-fS-YEj"/>
+                        <outlet property="trebleArrow" destination="chH-At-FZl" id="5VD-AN-hg0"/>
                         <outlet property="trebleKnob" destination="C3x-7K-flf" id="8W2-US-ckf"/>
+                        <outlet property="volumeArrow" destination="5er-xi-FGe" id="kZT-Jg-n1B"/>
                         <outlet property="volumeKnob" destination="svv-dt-LmR" id="cyO-0a-Fo6"/>
                     </connections>
                 </viewController>

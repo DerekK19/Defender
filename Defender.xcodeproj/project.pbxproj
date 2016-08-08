@@ -16,6 +16,7 @@
 		657C3AC81D56DB8E002DEF17 /* KnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C3AC71D56DB8E002DEF17 /* KnobControl.swift */; };
 		6581F99C1D4C5D97005BB5C9 /* Mustang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6581F99A1D4C5D97005BB5C9 /* Mustang.framework */; };
 		6581F99D1D4C5D97005BB5C9 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6581F99B1D4C5D97005BB5C9 /* ObjectMapper.framework */; };
+		7167FEDA1D58032C0059A276 /* NSImage+Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FED91D58032C0059A276 /* NSImage+Colour.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		657C3AC71D56DB8E002DEF17 /* KnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobControl.swift; sourceTree = "<group>"; };
 		6581F99A1D4C5D97005BB5C9 /* Mustang.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mustang.framework; path = Carthage/Build/Mac/Mustang.framework; sourceTree = "<group>"; };
 		6581F99B1D4C5D97005BB5C9 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/Mac/ObjectMapper.framework; sourceTree = "<group>"; };
+		7167FED91D58032C0059A276 /* NSImage+Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Colour.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +108,9 @@
 		655A5A3F1D4C555400E15E1F /* Defender */ = {
 			isa = PBXGroup;
 			children = (
-				657C3AC61D56DB78002DEF17 /* Custom Controls */,
 				657C3AC51D56DB5C002DEF17 /* View Controllers */,
+				657C3AC61D56DB78002DEF17 /* Custom Controls */,
+				7167FED81D5803000059A276 /* Extensions */,
 				657C3AC91D56DB95002DEF17 /* Resources */,
 				655A5A401D4C555400E15E1F /* AppDelegate.swift */,
 				655A5A491D4C555500E15E1F /* Info.plist */,
@@ -167,6 +170,14 @@
 				6581F99B1D4C5D97005BB5C9 /* ObjectMapper.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7167FED81D5803000059A276 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7167FED91D58032C0059A276 /* NSImage+Colour.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +346,7 @@
 			files = (
 				657C3AC81D56DB8E002DEF17 /* KnobControl.swift in Sources */,
 				655A5A431D4C555500E15E1F /* MainVC.swift in Sources */,
+				7167FEDA1D58032C0059A276 /* NSImage+Colour.swift in Sources */,
 				655A5A411D4C555400E15E1F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
