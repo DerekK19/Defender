@@ -24,6 +24,7 @@ class KnobControl: NSView {
     
     var startMouse: NSPoint!
     var startValue: Float = 1.0
+    var direction: Float = 1.0
     
     var delegate: KnobDelegate?
     
@@ -43,16 +44,18 @@ class KnobControl: NSView {
     override func mouseDown(theEvent: NSEvent) {
         startMouse = theEvent.locationInWindow
         startValue = _floatValue
+        let midX = (self.frame.origin.x + (self.frame.width / 2.0))
+        direction = startMouse.x < midX ? 1.0 : -1.0
     }
     
     override func mouseDragged(theEvent: NSEvent) {
-        let yChange = Float(theEvent.locationInWindow.y - startMouse.y)
+        let yChange = Float(theEvent.locationInWindow.y - startMouse.y) * direction
         _floatValue = min(max(startValue + (yChange / pixelsPerTick), minStop), maxStop)
         setNeedsDisplayInRect(self.bounds)
     }
     
     override func mouseUp(theEvent: NSEvent) {
-        let yChange = Float(theEvent.locationInWindow.y - startMouse.y)
+        let yChange = Float(theEvent.locationInWindow.y - startMouse.y) * direction
         floatValue = min(max(startValue + (yChange / pixelsPerTick), minStop), maxStop)
         delegate?.valueDidChangeForKnob(self, value: floatValue)
     }

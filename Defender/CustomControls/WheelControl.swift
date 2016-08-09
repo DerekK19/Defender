@@ -22,6 +22,7 @@ class WheelControl: NSView {
     
     var startMouse: NSPoint!
     var startValue: Float = 1.0
+    var direction: Float = 1.0
     
     var delegate: WheelDelegate?
     
@@ -41,10 +42,12 @@ class WheelControl: NSView {
     override func mouseDown(theEvent: NSEvent) {
         startMouse = theEvent.locationInWindow
         startValue = _floatValue
+        let midX = (self.frame.origin.x + (self.frame.width / 2.0))
+        direction = startMouse.x < midX ? 1.0 : -1.0
     }
     
     override func mouseDragged(theEvent: NSEvent) {
-        let yChange = Float(theEvent.locationInWindow.y - startMouse.y)
+        let yChange = Float(theEvent.locationInWindow.y - startMouse.y) * direction
         _floatValue = startValue + (yChange / pixelsPerTick)
         var intValue = Int(_floatValue) % 100
         if intValue < 0 { intValue = 100 + intValue }
@@ -53,7 +56,7 @@ class WheelControl: NSView {
     }
     
     override func mouseUp(theEvent: NSEvent) {
-        let yChange = Float(theEvent.locationInWindow.y - startMouse.y)
+        let yChange = Float(theEvent.locationInWindow.y - startMouse.y) * direction
         floatValue = startValue + (yChange / pixelsPerTick)
         var intValue = Int(floatValue) % 100
         if intValue < 0 { intValue = 100 + intValue }
