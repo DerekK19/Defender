@@ -13,7 +13,6 @@ class MainVC: NSViewController {
 
     @IBOutlet weak var amplifierLabel: NSTextField!
     @IBOutlet weak var amplifierList: NSPopUpButton!
-    @IBOutlet weak var presetList: NSPopUpButton!
     @IBOutlet weak var openButton: NSButton!
     @IBOutlet weak var gainArrow: NSImageView!
     @IBOutlet weak var volumeArrow: NSImageView!
@@ -43,7 +42,7 @@ class MainVC: NSViewController {
     @IBOutlet weak var displayPresetName: NSTextField!
     @IBOutlet weak var displayAmplifierName: NSTextField!
     
-    var presets = [DTOPreset] ()
+    var presets = [UInt8 : DTOPreset] ()
     
     var amplifiers = [DTOAmplifier]()
     
@@ -55,7 +54,6 @@ class MainVC: NSViewController {
         // Do any additional setup after loading the view.
         
         amplifierList.removeAllItems()
-        presetList.removeAllItems()
 
         amplifiers = Mustang().getConnectedAmplifiers()
         amplifierList.addItemsWithTitles(amplifiers.map( { $0.name } ))
@@ -110,80 +108,61 @@ class MainVC: NSViewController {
         if let amplifier = amplifiers.filter( { $0.name == amplifierList.title}).first {
             Mustang().getPresets(amplifier) { (presets) in
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.presets = presets
-                    self.presetList.removeAllItems()
-                    self.presetList.addItemsWithTitles(presets.map( { $0.name } ))
-                    self.presetList.selectItemAtIndex(0)
-                    self.didClickPreset(self.presetList)
-                }
-            }
-        }
-    }
-
-    @IBAction func didClickPreset(sender: AnyObject) {
-        
-        let currentSelection = presetList.indexOfSelectedItem
-        let preset = presets[currentSelection]
-        if let _ = preset.gain1 {
-            displayPreset(preset)
-        } else {
-            if let amplifier = amplifiers.filter( { $0.name == amplifierList.title}).first {
-                Mustang().getPreset(
-                    amplifier,
-                    preset: UInt8(currentSelection)) { (preset) in
-                        dispatch_async(dispatch_get_main_queue()) {
-                            if let preset = preset {
-                                if let _ = preset.gain1 {
-                                    self.displayPreset(preset)
-                                }
-                            }
-                        }
+                    for preset in presets {
+                        self.presets[preset.number] = preset
+                    }
+                    self.valueDidChangeForWheel(self.wheel, value: 0)
                 }
             }
         }
     }
     
     // MARK: Private Functions
-    private func displayPreset(preset: DTOPreset) {
-        if let gain = preset.gain1 {
+    private func displayPreset(value: Int) {
+        let preset = presets[UInt8(value)]
+        displayPreset(preset)
+    }
+    
+    private func displayPreset(preset: DTOPreset?) {
+        if let gain = preset?.gain1 {
             NSLog("Gain: \(gain)")
             gainKnob.floatValue = gain
         } else {
             gainKnob.floatValue = 1.0
         }
-        if let volume = preset.volume {
+        if let volume = preset?.volume {
             NSLog("Volume: \(volume)")
             volumeKnob.floatValue = volume
         } else {
             volumeKnob.floatValue = 1.0
         }
-        if let treble = preset.treble {
+        if let treble = preset?.treble {
             NSLog("Treble: \(treble)")
             trebleKnob.floatValue = treble
         } else {
             trebleKnob.floatValue = 1.0
         }
-        if let middle = preset.middle {
+        if let middle = preset?.middle {
             NSLog("Middle: \(middle)")
             middleKnob.floatValue = middle
         } else {
             middleKnob.floatValue = 1.0
         }
-        if let bass = preset.bass {
+        if let bass = preset?.bass {
             NSLog("Bass: \(bass)")
             bassKnob.floatValue = bass
         } else {
             bassKnob.floatValue = 1.0
         }
-        if let presence = preset.presence {
+        if let presence = preset?.presence {
             NSLog("Reverb/Presence: \(presence)")
             reverbKnob.floatValue = presence
         } else {
             reverbKnob.floatValue = 1.0
         }
-        displayPresetNumber.stringValue = String(format: "%02d", preset.number)
-        displayPresetName.stringValue = preset.name
-        displayAmplifierName.stringValue = preset.modelName ?? ""
+        displayPresetNumber.stringValue = preset != nil ? String(format: "%02d", preset!.number) : ""
+        displayPresetName.stringValue = preset?.name ?? ""
+        displayAmplifierName.stringValue = preset?.modelName ?? ""
     }
 }
 
@@ -218,6 +197,7 @@ extension MainVC: WheelDelegate {
         case wheel:
             NSLog("Wheel value is changing to \(value)")
             displayPresetNumber.stringValue = String(format: "%02d", value)
+            displayPreset(value)
         default:
             NSLog("Don't know what wheel sent this event")
         }
@@ -230,8 +210,7 @@ extension MainVC: WheelDelegate {
             saveButton.setState(.Initial)
             exitButton.setState(.Initial)
             if value >= 0 && value < presets.count {
-                let preset = presets[value]
-                if let _ = preset.gain1 {
+                if let preset = presets[UInt8(value)],  _ = preset.gain1 {
                     displayPreset(preset)
                 } else {
                     if let amplifier = amplifiers.filter( { $0.name == amplifierList.title}).first {
@@ -240,6 +219,7 @@ extension MainVC: WheelDelegate {
                             preset: UInt8(value)) { (preset) in
                                 dispatch_async(dispatch_get_main_queue()) {
                                     if let preset = preset {
+                                        self.presets[preset.number] = preset
                                         if let _ = preset.gain1 {
                                             self.displayPreset(preset)
                                         }
