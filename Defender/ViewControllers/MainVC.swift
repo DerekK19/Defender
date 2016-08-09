@@ -35,6 +35,10 @@ class MainVC: NSViewController {
     @IBOutlet weak var reverbKnob: KnobControl!
     @IBOutlet weak var display: DisplayControl!
     @IBOutlet weak var wheel: WheelControl!
+    @IBOutlet weak var utilButton: ActionButtonControl!
+    @IBOutlet weak var saveButton: ActionButtonControl!
+    @IBOutlet weak var exitButton: ActionButtonControl!
+    @IBOutlet weak var tapButton: ActionButtonControl!
     @IBOutlet weak var displayPresetNumber: NSTextField!
     @IBOutlet weak var displayPresetName: NSTextField!
     @IBOutlet weak var displayAmplifierName: NSTextField!
@@ -202,6 +206,8 @@ extension MainVC: KnobDelegate {
         default:
             NSLog("Don't know what knob sent this event")
         }
+        saveButton.setState(.Warning)
+        exitButton.setState(.Warning)
     }
 }
 
@@ -212,7 +218,6 @@ extension MainVC: WheelDelegate {
         case wheel:
             NSLog("Wheel value is changing to \(value)")
             displayPresetNumber.stringValue = String(format: "%02d", value)
-
         default:
             NSLog("Don't know what wheel sent this event")
         }
@@ -222,6 +227,8 @@ extension MainVC: WheelDelegate {
         switch sender {
         case wheel:
             NSLog("Wheel value changed to \(value)")
+            saveButton.setState(.Initial)
+            exitButton.setState(.Initial)
             if value >= 0 && value < presets.count {
                 let preset = presets[value]
                 if let _ = preset.gain1 {
