@@ -55,6 +55,13 @@ class MainVC: NSViewController {
         configureAmplifiers()
 
         powerButton.setState(.Off)
+        
+        wheel.enabled = false
+        utilButton.enabled = false
+        saveButton.enabled = false
+        exitButton.enabled = false
+        tapButton.enabled = false
+        
         let contrastColour = NSColor.whiteColor()
         gainArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
         volumeArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
@@ -119,6 +126,11 @@ class MainVC: NSViewController {
                         }
                         self.valueDidChangeForWheel(self.wheel, value: 0)
                         sender.state = NSOnState
+                        self.wheel.enabled = true
+                        self.utilButton.enabled = true
+                        self.saveButton.enabled = true
+                        self.exitButton.enabled = true
+                        self.tapButton.enabled = true
                         self.powerButton.setState(.On)
                         self.utilButton.setState(.On)
                         self.saveButton.setState(.On)
@@ -140,10 +152,6 @@ class MainVC: NSViewController {
     private func configureAmplifier(amplifier: DTOAmplifier?) {
         let canPowerOn = currentAmplifier != nil
         powerButton.enabled = canPowerOn
-        utilButton.enabled = canPowerOn
-        saveButton.enabled = canPowerOn
-        exitButton.enabled = canPowerOn
-        tapButton.enabled = canPowerOn
         utilButton.setState(.Off)
         saveButton.setState(.Off)
         exitButton.setState(.Off)

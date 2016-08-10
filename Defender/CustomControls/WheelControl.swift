@@ -33,6 +33,12 @@ class WheelControl: NSView {
             setNeedsDisplayInRect(self.bounds)
         }
     }
+    private var _enabled: Bool = true
+    var enabled: Bool = true {
+        didSet {
+            _enabled = enabled
+        }
+    }
     
     // Event handling
     override var acceptsFirstResponder: Bool {
@@ -40,6 +46,7 @@ class WheelControl: NSView {
     }
     
     override func mouseDown(theEvent: NSEvent) {
+        if !_enabled { return }
         startMouse = theEvent.locationInWindow
         startValue = _floatValue
         let midX = (self.frame.origin.x + (self.frame.width / 2.0))
@@ -47,6 +54,7 @@ class WheelControl: NSView {
     }
     
     override func mouseDragged(theEvent: NSEvent) {
+        if !_enabled { return }
         let yChange = Float(theEvent.locationInWindow.y - startMouse.y) * direction
         _floatValue = startValue + (yChange / pixelsPerTick)
         var intValue = Int(_floatValue) % 100
@@ -56,6 +64,7 @@ class WheelControl: NSView {
     }
     
     override func mouseUp(theEvent: NSEvent) {
+        if !_enabled { return }
         let yChange = Float(theEvent.locationInWindow.y - startMouse.y) * direction
         floatValue = startValue + (yChange / pixelsPerTick)
         var intValue = Int(floatValue) % 100

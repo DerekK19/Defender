@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -990,10 +990,10 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2x2-4Q-ta7">
-                                                <rect key="frame" x="6" y="6" width="75" height="17"/>
+                                                <rect key="frame" x="6" y="6" width="100" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="17" id="C5M-li-FRM"/>
-                                                    <constraint firstAttribute="width" constant="75" id="RaO-1Q-fsM"/>
+                                                    <constraint firstAttribute="width" constant="100" id="RaO-1Q-fsM"/>
                                                 </constraints>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" title="--" drawsBackground="YES" id="9Wp-yI-HHX">
                                                     <font key="font" metaFont="system"/>
@@ -1034,7 +1034,7 @@
                                                 </buttonCell>
                                             </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YK0-Z5-9jc" customClass="ActionButtonControl" customModule="Defender" customModuleProvider="target">
-                                                <rect key="frame" x="57" y="63" width="62" height="32"/>
+                                                <rect key="frame" x="57" y="62" width="62" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="vV2-jL-cYV"/>
                                                 </constraints>
