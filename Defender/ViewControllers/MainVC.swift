@@ -11,9 +11,8 @@ import Mustang
 
 class MainVC: NSViewController {
 
-    @IBOutlet weak var amplifierLabel: NSTextField!
-    @IBOutlet weak var amplifierList: NSPopUpButton!
     @IBOutlet weak var openButton: NSButton!
+    @IBOutlet weak var powerButton: ActionButtonControl!
     @IBOutlet weak var gainArrow: NSImageView!
     @IBOutlet weak var volumeArrow: NSImageView!
     @IBOutlet weak var trebleArrow: NSImageView!
@@ -42,9 +41,9 @@ class MainVC: NSViewController {
     @IBOutlet weak var displayPresetName: NSTextField!
     @IBOutlet weak var displayAmplifierName: NSTextField!
     
-    var presets = [UInt8 : DTOPreset] ()
-    
     var amplifiers = [DTOAmplifier]()
+    var currentAmplifier: DTOAmplifier?
+    var presets = [UInt8 : DTOPreset] ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,11 +51,10 @@ class MainVC: NSViewController {
         self.view.wantsLayer = true
 
         // Do any additional setup after loading the view.
-        
-        amplifierList.removeAllItems()
 
-        amplifiers = Mustang().getConnectedAmplifiers()
-        amplifierList.addItemsWithTitles(amplifiers.map( { $0.name } ))
+        configureAmplifiers()
+
+        powerButton.setState(.Off)
         let contrastColour = NSColor.whiteColor()
         gainArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
         volumeArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
@@ -64,7 +62,6 @@ class MainVC: NSViewController {
         middleArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
         bassArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
         reverbArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
-        amplifierLabel.textColor = contrastColour
         gainLabel.textColor = contrastColour
         volumeLabel.textColor = contrastColour
         trebleLabel.textColor = contrastColour
@@ -100,24 +97,59 @@ class MainVC: NSViewController {
                 let pattern = NSColor(patternImage: image).CGColor
                 self.view.layer?.backgroundColor = pattern
             }
-        }
-        
+        }        
     }
 
-    @IBAction func willOpenAmplifier(sender: AnyObject) {
-        if let amplifier = amplifiers.filter( { $0.name == amplifierList.title}).first {
-            Mustang().getPresets(amplifier) { (presets) in
-                dispatch_async(dispatch_get_main_queue()) {
-                    for preset in presets {
-                        self.presets[preset.number] = preset
+    @IBAction func willPowerAmplifier(sender: ActionButtonControl) {
+        if sender.state == NSOffState {
+            NSLog("Going off")
+            self.powerButton.setState(.Off)
+            self.utilButton.setState(.Off)
+            self.saveButton.setState(.Off)
+            self.exitButton.setState(.Off)
+            self.tapButton.setState(.Off)
+        } else {
+            NSLog("Going on")
+            sender.state = NSOffState
+            if let amplifier = currentAmplifier {
+                Mustang().getPresets(amplifier) { (presets) in
+                    dispatch_async(dispatch_get_main_queue()) {
+                        for preset in presets {
+                            self.presets[preset.number] = preset
+                        }
+                        self.valueDidChangeForWheel(self.wheel, value: 0)
+                        sender.state = NSOnState
+                        self.powerButton.setState(.On)
+                        self.utilButton.setState(.On)
+                        self.saveButton.setState(.On)
+                        self.exitButton.setState(.On)
+                        self.tapButton.setState(.On)
                     }
-                    self.valueDidChangeForWheel(self.wheel, value: 0)
                 }
             }
         }
     }
     
     // MARK: Private Functions
+    private func configureAmplifiers() {
+        amplifiers = Mustang().getConnectedAmplifiers()
+        currentAmplifier = amplifiers.first
+        configureAmplifier(currentAmplifier)
+    }
+    
+    private func configureAmplifier(amplifier: DTOAmplifier?) {
+        let canPowerOn = currentAmplifier != nil
+        powerButton.enabled = canPowerOn
+        utilButton.enabled = canPowerOn
+        saveButton.enabled = canPowerOn
+        exitButton.enabled = canPowerOn
+        tapButton.enabled = canPowerOn
+        utilButton.setState(.Off)
+        saveButton.setState(.Off)
+        exitButton.setState(.Off)
+        tapButton.setState(.Off)
+    }
+    
     private func displayPreset(value: Int) {
         let preset = presets[UInt8(value)]
         displayPreset(preset)
@@ -207,13 +239,13 @@ extension MainVC: WheelDelegate {
         switch sender {
         case wheel:
             NSLog("Wheel value changed to \(value)")
-            saveButton.setState(.Initial)
-            exitButton.setState(.Initial)
+            saveButton.setState(.On)
+            exitButton.setState(.On)
             if value >= 0 && value < presets.count {
                 if let preset = presets[UInt8(value)],  _ = preset.gain1 {
                     displayPreset(preset)
                 } else {
-                    if let amplifier = amplifiers.filter( { $0.name == amplifierList.title}).first {
+                    if let amplifier = currentAmplifier {
                         Mustang().getPreset(
                             amplifier,
                             preset: UInt8(value)) { (preset) in

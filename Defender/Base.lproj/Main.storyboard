@@ -676,41 +676,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1166" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fJa-4f-QVu">
-                                <rect key="frame" x="234" y="362" width="59" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Amplifier" id="3wH-df-xt3">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3x6-El-MDe">
-                                <rect key="frame" x="295" y="356" width="105" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="1y3-BJ-inN"/>
-                                </constraints>
-                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="5iU-tQ-Frd">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="X28-5G-Lg5">
-                                        <items>
-                                            <menuItem title="Item 1" id="ehE-2B-8dW"/>
-                                            <menuItem title="Item 2" id="2X7-Yu-5Ll"/>
-                                            <menuItem title="Item 3" id="atL-sR-NnV"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                            </popUpButton>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ui8-8h-TR4">
-                                <rect key="frame" x="397" y="352" width="73" height="32"/>
-                                <buttonCell key="cell" type="push" title="Open" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c4n-gB-MSm">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="willOpenAmplifier" target="XfG-lQ-9wD" id="rvO-0u-A1G"/>
-                                </connections>
-                            </button>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Msa-i8-6gy">
                                 <rect key="frame" x="20" y="206" width="1126" height="125"/>
                                 <subviews>
@@ -1132,23 +1097,29 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
+                            <button verticalHuggingPriority="750" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSP-LL-at5" customClass="ActionButtonControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="14" y="335" width="62" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="NiB-Nk-783"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Off" alternateTitle="On" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IOW-PJ-eJT" customClass="ActionButtonCell" customModule="Defender" customModuleProvider="target">
+                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="willPowerAmplifier:" target="XfG-lQ-9wD" id="fYd-te-fe5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="fJa-4f-QVu" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="236" id="EbF-Cw-XNH"/>
-                            <constraint firstItem="3x6-El-MDe" firstAttribute="centerY" secondItem="Ui8-8h-TR4" secondAttribute="centerY" id="I8K-Id-Km6"/>
-                            <constraint firstItem="3x6-El-MDe" firstAttribute="leading" secondItem="fJa-4f-QVu" secondAttribute="trailing" constant="6" id="Ikb-Sd-OsZ"/>
+                            <constraint firstItem="Msa-i8-6gy" firstAttribute="top" secondItem="DSP-LL-at5" secondAttribute="bottom" constant="11" id="86R-Nr-bZe"/>
                             <constraint firstItem="Msa-i8-6gy" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="69" id="Ilt-c2-8fz"/>
-                            <constraint firstItem="Ui8-8h-TR4" firstAttribute="leading" secondItem="3x6-El-MDe" secondAttribute="trailing" constant="6" id="L9I-Fy-71Z"/>
-                            <constraint firstItem="fJa-4f-QVu" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="21" id="VuN-LM-gxK"/>
-                            <constraint firstItem="3x6-El-MDe" firstAttribute="baseline" secondItem="fJa-4f-QVu" secondAttribute="baseline" id="gCv-qy-q4f"/>
+                            <constraint firstItem="DSP-LL-at5" firstAttribute="leading" secondItem="Msa-i8-6gy" secondAttribute="leading" id="Tbx-JF-M8z"/>
                             <constraint firstItem="Msa-i8-6gy" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="l15-0A-7A1"/>
-                            <constraint firstItem="3x6-El-MDe" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="o0Z-9I-gV0"/>
                             <constraint firstAttribute="trailing" secondItem="Msa-i8-6gy" secondAttribute="trailing" constant="20" id="sJs-t4-ren"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="amplifierLabel" destination="fJa-4f-QVu" id="3NL-om-sAL"/>
-                        <outlet property="amplifierList" destination="3x6-El-MDe" id="WKg-2j-zQF"/>
                         <outlet property="bassArrow" destination="wJo-46-hgN" id="huZ-I8-Xdy"/>
                         <outlet property="bassKnob" destination="Awu-b9-xK3" id="Rry-PS-elr"/>
                         <outlet property="bassLabel" destination="hwU-I4-D7D" id="d6t-wl-8h3"/>
@@ -1163,6 +1134,7 @@
                         <outlet property="middleArrow" destination="t27-oL-YFb" id="qcQ-oP-NT2"/>
                         <outlet property="middleKnob" destination="mqa-en-iIa" id="pZ0-Sq-wTU"/>
                         <outlet property="middleLabel" destination="Io5-4A-7lu" id="ieC-Zd-6p7"/>
+                        <outlet property="powerButton" destination="DSP-LL-at5" id="y5A-VS-JKC"/>
                         <outlet property="reverbArrow" destination="mRB-nj-xNF" id="er9-IR-t7s"/>
                         <outlet property="reverbKnob" destination="g3U-Ot-mWR" id="ISY-fS-YEj"/>
                         <outlet property="reverbLabel" destination="5BL-xr-hVU" id="wdc-9L-aiJ"/>

@@ -10,6 +10,7 @@ import Cocoa
 
 class ActionButtonCell: NSButtonCell {
     
+    var clearColour: NSColor = NSColor(colorLiteralRed: 0.39, green: 0.31, blue: 0.24, alpha: 1.0)
     var whiteColour: NSColor = NSColor(colorLiteralRed: 1.00, green: 0.91, blue: 0.85, alpha: 1.0)
     var greenColour: NSColor = NSColor(colorLiteralRed: 0.95, green: 0.98, blue: 0.66, alpha: 1.0)
     var redColour: NSColor = NSColor(colorLiteralRed: 0.99, green: 0.54, blue: 0.68, alpha: 1.0)
@@ -39,7 +40,9 @@ class ActionButtonCell: NSButtonCell {
     
     private func colourForState(state: ActionButtonState) -> NSColor {
         switch state {
-        case .Initial:
+        case .Off:
+            return clearColour
+        case .On:
             return whiteColour
         case .Warning:
             return redColour

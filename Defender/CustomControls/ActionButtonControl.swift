@@ -9,14 +9,15 @@
 import Cocoa
 
 enum ActionButtonState {
-    case Initial
+    case On
     case Warning
     case OK
+    case Off
 }
 
 class ActionButtonControl: NSButton {
 
-    var currentState: ActionButtonState = .Initial
+    var currentState: ActionButtonState = .Off
     
     func setState(state: ActionButtonState) {
         currentState = state
