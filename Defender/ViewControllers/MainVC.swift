@@ -43,6 +43,19 @@ class MainVC: NSViewController {
     var currentAmplifier: DTOAmplifier?
     var presets = [UInt8 : DTOPreset] ()
     
+    private var powerState: PowerState = .Off {
+        didSet {
+            self.powerButton.powerState = powerState
+            self.powerButton.enabled = true // currentAmplifier != nil
+            self.utilButton.powerState = powerState
+            self.saveButton.powerState = powerState
+            self.exitButton.powerState = powerState
+            self.tapButton.powerState = powerState
+            self.wheel.powerState = powerState
+            self.displayVC?.powerState = powerState
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,14 +65,6 @@ class MainVC: NSViewController {
 
         configureAmplifiers()
 
-        powerButton.setState(.Off)
-        
-        wheel.enabled = false
-        utilButton.enabled = false
-        saveButton.enabled = false
-        exitButton.enabled = false
-        tapButton.enabled = false
-        
         let contrastColour = NSColor.whiteColor()
         gainArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
         volumeArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
@@ -107,14 +112,13 @@ class MainVC: NSViewController {
     @IBAction func willPowerAmplifier(sender: ActionButtonControl) {
         if sender.state == NSOffState {
             NSLog("Going off")
-            self.powerButton.setState(.Off)
-            self.utilButton.setState(.Off)
-            self.saveButton.setState(.Off)
-            self.exitButton.setState(.Off)
-            self.tapButton.setState(.Off)
+            self.powerState = .Off
         } else {
             NSLog("Going on")
-            sender.state = NSOffState
+//            sender.state = NSOffState
+/* TEMP */            self.powerState = .On
+/* TEMP */            sender.state = NSOnState
+
             if let amplifier = currentAmplifier {
                 Mustang().getPresets(amplifier) { (presets) in
                     dispatch_async(dispatch_get_main_queue()) {
@@ -123,16 +127,7 @@ class MainVC: NSViewController {
                         }
                         self.valueDidChangeForWheel(self.wheel, value: 0)
                         sender.state = NSOnState
-                        self.wheel.enabled = true
-                        self.utilButton.enabled = true
-                        self.saveButton.enabled = true
-                        self.exitButton.enabled = true
-                        self.tapButton.enabled = true
-                        self.powerButton.setState(.On)
-                        self.utilButton.setState(.On)
-                        self.saveButton.setState(.On)
-                        self.exitButton.setState(.On)
-                        self.tapButton.setState(.On)
+                        self.powerState = .On
                     }
                 }
             }
@@ -147,12 +142,7 @@ class MainVC: NSViewController {
     }
     
     private func configureAmplifier(amplifier: DTOAmplifier?) {
-        let canPowerOn = currentAmplifier != nil
-        powerButton.enabled = canPowerOn
-        utilButton.setState(.Off)
-        saveButton.setState(.Off)
-        exitButton.setState(.Off)
-        tapButton.setState(.Off)
+        powerState = .Off
     }
     
     private func displayPreset(value: Int) {
@@ -241,8 +231,8 @@ extension MainVC: WheelDelegate {
         switch sender {
         case wheel:
             NSLog("Wheel value changed to \(value)")
-            saveButton.setState(.On)
-            exitButton.setState(.On)
+            saveButton.setState(.Active)
+            exitButton.setState(.Active)
             if value >= 0 && value < presets.count {
                 if let preset = presets[UInt8(value)],  _ = preset.gain1 {
                     displayPreset(preset)

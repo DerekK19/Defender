@@ -33,21 +33,24 @@ class ActionButtonCell: NSButtonCell {
         }
     }
     
-    func setState(state: ActionButtonState) {
-        self.backgroundColor = colourForState(state)
+    func setState(state: ActionButtonState, powerState: PowerState) {
+        self.backgroundColor = colourForState(state, powerState: powerState)
         self.controlView?.needsDisplay = true
     }
     
-    private func colourForState(state: ActionButtonState) -> NSColor {
-        switch state {
+    private func colourForState(state: ActionButtonState, powerState: PowerState) -> NSColor {
+        switch powerState {
         case .Off:
             return clearColour
         case .On:
-            return whiteColour
-        case .Warning:
-            return redColour
-        case .OK:
-            return greenColour
+            switch state {
+            case .Active:
+                return whiteColour
+            case .Warning:
+                return redColour
+            case .OK:
+                return greenColour
+            }
         }
     }
     

@@ -9,22 +9,31 @@
 import Cocoa
 
 enum ActionButtonState {
-    case On
+    case Active
     case Warning
     case OK
-    case Off
 }
 
 class ActionButtonControl: NSButton {
 
-    var currentState: ActionButtonState = .Off
+    var currentState: ActionButtonState = .Active
+    
+    var powerState: PowerState = .Off {
+        didSet {
+            if powerState == .Off {
+                currentState = .Active
+            } else {
+            }
+            setState(currentState)
+        }
+    }
     
     func setState(state: ActionButtonState) {
         currentState = state
         if let cell = cell as? ActionButtonCell {
-            cell.setState(state)
+            cell.setState(state, powerState: powerState)
+            self.enabled = powerState != .Off
         }
     }
-    
     
 }
