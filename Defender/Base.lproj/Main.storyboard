@@ -677,29 +677,29 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Msa-i8-6gy">
-                                <rect key="frame" x="20" y="206" width="1126" height="125"/>
+                                <rect key="frame" x="20" y="204" width="1126" height="127"/>
                                 <subviews>
                                     <stackView distribution="equalSpacing" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H4M-FA-gye" userLabel="Knob container">
-                                        <rect key="frame" x="0.0" y="0.0" width="625" height="125"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="635" height="127"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eM2-VT-L7g">
-                                                <rect key="frame" x="0.0" y="0.0" width="90" height="125"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="92" height="127"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xSx-kh-15V">
-                                                        <rect key="frame" x="0.0" y="111" width="90" height="14"/>
+                                                        <rect key="frame" x="0.0" y="113" width="92" height="14"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="14" id="7Uh-FQ-hDT"/>
                                                         </constraints>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="proportionallyDown" image="down-arrow" id="msd-BH-HDu"/>
                                                     </imageView>
                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="5KL-wd-h4u" customClass="KnobControl" customModule="Defender" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="19" width="90" height="90"/>
+                                                        <rect key="frame" x="0.0" y="19" width="92" height="92"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="5KL-wd-h4u" secondAttribute="height" multiplier="1:1" id="W7o-76-VDh"/>
                                                         </constraints>
                                                     </customView>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cIM-QK-Tzt">
-                                                        <rect key="frame" x="-2" y="0.0" width="94" height="17"/>
+                                                        <rect key="frame" x="-2" y="0.0" width="96" height="17"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Gain" id="YWj-nO-UFX">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -725,23 +725,23 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5gL-rH-CnV">
-                                                <rect key="frame" x="107" y="0.0" width="90" height="125"/>
+                                                <rect key="frame" x="109" y="0.0" width="92" height="127"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5er-xi-FGe">
-                                                        <rect key="frame" x="0.0" y="111" width="90" height="14"/>
+                                                        <rect key="frame" x="0.0" y="113" width="92" height="14"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="14" id="ngM-aD-KuP"/>
                                                         </constraints>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="down-arrow" id="zAU-b3-Ubd"/>
                                                     </imageView>
                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="svv-dt-LmR" customClass="KnobControl" customModule="Defender" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="19" width="90" height="90"/>
+                                                        <rect key="frame" x="0.0" y="19" width="92" height="92"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="svv-dt-LmR" secondAttribute="height" multiplier="1:1" id="68W-rS-H2B"/>
                                                         </constraints>
                                                     </customView>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MuY-Bj-L0n">
-                                                        <rect key="frame" x="-2" y="0.0" width="94" height="17"/>
+                                                        <rect key="frame" x="-2" y="0.0" width="96" height="17"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Volume" id="dB0-9V-7Gg">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -767,23 +767,23 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="blo-qD-T5R">
-                                                <rect key="frame" x="214" y="0.0" width="90" height="125"/>
+                                                <rect key="frame" x="217" y="0.0" width="92" height="127"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="chH-At-FZl">
-                                                        <rect key="frame" x="0.0" y="111" width="90" height="14"/>
+                                                        <rect key="frame" x="0.0" y="113" width="92" height="14"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="14" id="6Ug-Bg-1fP"/>
                                                         </constraints>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="down-arrow" id="dVh-Dw-CDM"/>
                                                     </imageView>
                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="C3x-7K-flf" customClass="KnobControl" customModule="Defender" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="19" width="90" height="90"/>
+                                                        <rect key="frame" x="0.0" y="19" width="92" height="92"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="C3x-7K-flf" secondAttribute="height" multiplier="1:1" id="dP3-7j-qbf"/>
                                                         </constraints>
                                                     </customView>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hgU-IM-ZlW">
-                                                        <rect key="frame" x="-2" y="0.0" width="94" height="17"/>
+                                                        <rect key="frame" x="-2" y="0.0" width="96" height="17"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Treble" id="aP3-iP-1Ia">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -809,23 +809,23 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cQ4-Mx-gax">
-                                                <rect key="frame" x="321" y="0.0" width="90" height="125"/>
+                                                <rect key="frame" x="326" y="0.0" width="92" height="127"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t27-oL-YFb">
-                                                        <rect key="frame" x="0.0" y="111" width="90" height="14"/>
+                                                        <rect key="frame" x="0.0" y="113" width="92" height="14"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="14" id="YYi-vZ-bed"/>
                                                         </constraints>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="down-arrow" id="YSN-Dj-MGg"/>
                                                     </imageView>
                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="mqa-en-iIa" customClass="KnobControl" customModule="Defender" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="19" width="90" height="90"/>
+                                                        <rect key="frame" x="0.0" y="19" width="92" height="92"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="mqa-en-iIa" secondAttribute="height" multiplier="1:1" id="5Uy-Mp-UN8"/>
                                                         </constraints>
                                                     </customView>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Io5-4A-7lu">
-                                                        <rect key="frame" x="-2" y="0.0" width="94" height="17"/>
+                                                        <rect key="frame" x="-2" y="0.0" width="96" height="17"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Middle" id="nz6-An-XUV">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -851,23 +851,23 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O6d-sX-XTV">
-                                                <rect key="frame" x="428" y="0.0" width="90" height="125"/>
+                                                <rect key="frame" x="434" y="0.0" width="92" height="127"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wJo-46-hgN">
-                                                        <rect key="frame" x="0.0" y="111" width="90" height="14"/>
+                                                        <rect key="frame" x="0.0" y="113" width="92" height="14"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="14" id="9eU-ep-YW8"/>
                                                         </constraints>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="down-arrow" id="xGC-HP-PyC"/>
                                                     </imageView>
                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Awu-b9-xK3" customClass="KnobControl" customModule="Defender" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="19" width="90" height="90"/>
+                                                        <rect key="frame" x="0.0" y="19" width="92" height="92"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Awu-b9-xK3" secondAttribute="height" multiplier="1:1" id="qu0-bB-EgF"/>
                                                         </constraints>
                                                     </customView>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hwU-I4-D7D">
-                                                        <rect key="frame" x="-2" y="0.0" width="94" height="17"/>
+                                                        <rect key="frame" x="-2" y="0.0" width="96" height="17"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Bass" id="fli-fF-gLy">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -893,23 +893,23 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w6Y-wG-5x2">
-                                                <rect key="frame" x="535" y="0.0" width="90" height="125"/>
+                                                <rect key="frame" x="543" y="0.0" width="92" height="127"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mRB-nj-xNF">
-                                                        <rect key="frame" x="0.0" y="111" width="90" height="14"/>
+                                                        <rect key="frame" x="0.0" y="113" width="92" height="14"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="14" id="L5c-WA-3oU"/>
                                                         </constraints>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="down-arrow" id="VYU-Tr-w1i"/>
                                                     </imageView>
                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="g3U-Ot-mWR" customClass="KnobControl" customModule="Defender" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="19" width="90" height="90"/>
+                                                        <rect key="frame" x="0.0" y="19" width="92" height="92"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="g3U-Ot-mWR" secondAttribute="height" multiplier="1:1" id="W6I-Lz-VOh"/>
                                                         </constraints>
                                                     </customView>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5BL-xr-hVU">
-                                                        <rect key="frame" x="-2" y="0.0" width="94" height="17"/>
+                                                        <rect key="frame" x="-2" y="0.0" width="96" height="17"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Reverb" id="pgO-Wj-Euu">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -966,65 +966,27 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="EIg-7z-zJc" customClass="DisplayControl" customModule="Defender" customModuleProvider="target">
-                                        <rect key="frame" x="633" y="29" width="176" height="96"/>
-                                        <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SZZ-PW-Phw">
-                                                <rect key="frame" x="6" y="65" width="37" height="25"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="37" id="Rcq-f6-MmW"/>
-                                                    <constraint firstAttribute="height" constant="25" id="zSu-43-leR"/>
-                                                </constraints>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="border" alignment="center" title="00" id="w8X-9n-oiI">
-                                                    <font key="font" size="19" name="LucidaConsole"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField horizontalHuggingPriority="248" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PGb-dy-Bmo">
-                                                <rect key="frame" x="49" y="67" width="121" height="21"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" title="--" drawsBackground="YES" id="FoX-HC-0PU">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2x2-4Q-ta7">
-                                                <rect key="frame" x="6" y="6" width="100" height="17"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="17" id="C5M-li-FRM"/>
-                                                    <constraint firstAttribute="width" constant="100" id="RaO-1Q-fsM"/>
-                                                </constraints>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" title="--" drawsBackground="YES" id="9Wp-yI-HHX">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                        </subviews>
+                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="SM8-At-uon">
+                                        <rect key="frame" x="643" y="1" width="240" height="126"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="PGb-dy-Bmo" secondAttribute="trailing" constant="6" id="1ZX-W7-kc3"/>
-                                            <constraint firstItem="2x2-4Q-ta7" firstAttribute="leading" secondItem="EIg-7z-zJc" secondAttribute="leading" constant="6" id="Ccj-9S-oa5"/>
-                                            <constraint firstItem="SZZ-PW-Phw" firstAttribute="top" secondItem="EIg-7z-zJc" secondAttribute="top" constant="6" id="FgG-xH-aiA"/>
-                                            <constraint firstItem="PGb-dy-Bmo" firstAttribute="leading" secondItem="SZZ-PW-Phw" secondAttribute="trailing" constant="6" id="fYo-jT-UeT"/>
-                                            <constraint firstItem="SZZ-PW-Phw" firstAttribute="leading" secondItem="EIg-7z-zJc" secondAttribute="leading" constant="6" id="g1X-Uc-srI"/>
-                                            <constraint firstItem="SZZ-PW-Phw" firstAttribute="centerY" secondItem="PGb-dy-Bmo" secondAttribute="centerY" id="hXF-vL-U0P"/>
-                                            <constraint firstAttribute="bottom" secondItem="2x2-4Q-ta7" secondAttribute="bottom" constant="6" id="oST-ay-J7y"/>
-                                            <constraint firstAttribute="width" constant="176" id="pLX-Pg-PFg"/>
-                                            <constraint firstAttribute="height" constant="96" id="tiD-s0-G82"/>
+                                            <constraint firstAttribute="height" constant="126" id="M4r-FG-uNi"/>
+                                            <constraint firstAttribute="width" constant="240" id="jmU-uN-AMu"/>
                                         </constraints>
-                                    </customView>
+                                        <connections>
+                                            <segue destination="EpF-Po-wJQ" kind="embed" identifier="embedDisplay" id="CeM-0t-AVR"/>
+                                        </connections>
+                                    </containerView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="s3o-Ji-Bjw" customClass="WheelControl" customModule="Defender" customModuleProvider="target">
-                                        <rect key="frame" x="817" y="0.0" width="125" height="125"/>
+                                        <rect key="frame" x="891" y="0.0" width="127" height="127"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="s3o-Ji-Bjw" secondAttribute="height" multiplier="1:1" id="sI3-ot-EfQ"/>
                                         </constraints>
                                     </customView>
                                     <stackView distribution="equalSpacing" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="251" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9rp-4D-a5u" userLabel="Button container">
-                                        <rect key="frame" x="950" y="0.0" width="176" height="125"/>
+                                        <rect key="frame" x="1026" y="0.0" width="100" height="127"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ixx-2Q-EOl" customClass="ActionButtonControl" customModule="Defender" customModuleProvider="target">
-                                                <rect key="frame" x="57" y="97" width="62" height="32"/>
+                                                <rect key="frame" x="19" y="99" width="62" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="nTu-RF-Bas"/>
                                                 </constraints>
@@ -1034,7 +996,7 @@
                                                 </buttonCell>
                                             </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YK0-Z5-9jc" customClass="ActionButtonControl" customModule="Defender" customModuleProvider="target">
-                                                <rect key="frame" x="57" y="62" width="62" height="32"/>
+                                                <rect key="frame" x="19" y="64" width="62" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="vV2-jL-cYV"/>
                                                 </constraints>
@@ -1044,7 +1006,7 @@
                                                 </buttonCell>
                                             </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pfQ-BH-FLF" customClass="ActionButtonControl" customModule="Defender" customModuleProvider="target">
-                                                <rect key="frame" x="57" y="28" width="62" height="32"/>
+                                                <rect key="frame" x="19" y="28" width="62" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="o5w-DB-3yu"/>
                                                 </constraints>
@@ -1054,7 +1016,7 @@
                                                 </buttonCell>
                                             </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Sv-rg-gjk" customClass="ActionButtonControl" customModule="Defender" customModuleProvider="target">
-                                                <rect key="frame" x="57" y="-7" width="62" height="32"/>
+                                                <rect key="frame" x="19" y="-7" width="62" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="Ws2-BE-QTr"/>
                                                 </constraints>
@@ -1064,6 +1026,9 @@
                                                 </buttonCell>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="JZ7-FB-clK"/>
+                                        </constraints>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
@@ -1123,10 +1088,6 @@
                         <outlet property="bassArrow" destination="wJo-46-hgN" id="huZ-I8-Xdy"/>
                         <outlet property="bassKnob" destination="Awu-b9-xK3" id="Rry-PS-elr"/>
                         <outlet property="bassLabel" destination="hwU-I4-D7D" id="d6t-wl-8h3"/>
-                        <outlet property="display" destination="EIg-7z-zJc" id="4PS-f2-poO"/>
-                        <outlet property="displayAmplifierName" destination="2x2-4Q-ta7" id="4cT-zF-1mF"/>
-                        <outlet property="displayPresetName" destination="PGb-dy-Bmo" id="9oq-eu-a3z"/>
-                        <outlet property="displayPresetNumber" destination="SZZ-PW-Phw" id="Fru-KZ-eD2"/>
                         <outlet property="exitButton" destination="pfQ-BH-FLF" id="dYi-1d-HpD"/>
                         <outlet property="gainArrow" destination="xSx-kh-15V" id="OqR-LW-9Lt"/>
                         <outlet property="gainKnob" destination="5KL-wd-h4u" id="hBe-Q8-GRt"/>
@@ -1153,6 +1114,14 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="125" y="782"/>
+        </scene>
+        <!--Display-->
+        <scene sceneID="0Ua-VQ-w2T">
+            <objects>
+                <controllerPlaceholder storyboardName="Display" id="EpF-Po-wJQ" sceneMemberID="viewController"/>
+                <customObject id="08O-4T-CMS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="856.5" y="664"/>
         </scene>
     </scenes>
     <resources>

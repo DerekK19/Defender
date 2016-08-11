@@ -31,15 +31,13 @@ class MainVC: NSViewController {
     @IBOutlet weak var middleKnob: KnobControl!
     @IBOutlet weak var bassKnob: KnobControl!
     @IBOutlet weak var reverbKnob: KnobControl!
-    @IBOutlet weak var display: DisplayControl!
     @IBOutlet weak var wheel: WheelControl!
     @IBOutlet weak var utilButton: ActionButtonControl!
     @IBOutlet weak var saveButton: ActionButtonControl!
     @IBOutlet weak var exitButton: ActionButtonControl!
     @IBOutlet weak var tapButton: ActionButtonControl!
-    @IBOutlet weak var displayPresetNumber: NSTextField!
-    @IBOutlet weak var displayPresetName: NSTextField!
-    @IBOutlet weak var displayAmplifierName: NSTextField!
+
+    @IBOutlet weak var displayVC: DisplayVC?
     
     var amplifiers = [DTOAmplifier]()
     var currentAmplifier: DTOAmplifier?
@@ -75,13 +73,6 @@ class MainVC: NSViewController {
         middleLabel.textColor = contrastColour
         bassLabel.textColor = contrastColour
         reverbLabel.textColor = contrastColour
-//        let displayBorderColour = NSColor(red: 0.33, green: 0.47, blue: 0.59, alpha: 1.0)
-        let displayForegroundColour = NSColor(red: 0.3, green: 0.38, blue: 0.6, alpha: 1.0)
-        displayPresetNumber.textColor = displayForegroundColour
-        displayPresetName.backgroundColor = displayForegroundColour
-        displayPresetName.textColor = display.backgroundColour
-        displayAmplifierName.backgroundColor = displayForegroundColour
-        displayAmplifierName.textColor = display.backgroundColour
         
         gainKnob.delegate = self
         volumeKnob.delegate = self
@@ -107,6 +98,12 @@ class MainVC: NSViewController {
         }        
     }
 
+    override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "embedDisplay" {
+            self.displayVC = segue.destinationController as? DisplayVC
+        }
+    }
+    
     @IBAction func willPowerAmplifier(sender: ActionButtonControl) {
         if sender.state == NSOffState {
             NSLog("Going off")
@@ -200,9 +197,7 @@ class MainVC: NSViewController {
         } else {
             reverbKnob.floatValue = 1.0
         }
-        displayPresetNumber.stringValue = preset != nil ? String(format: "%02d", preset!.number) : ""
-        displayPresetName.stringValue = preset?.name ?? ""
-        displayAmplifierName.stringValue = preset?.modelName ?? ""
+        displayVC?.configureWithPreset(preset)
     }
 }
 
@@ -236,7 +231,6 @@ extension MainVC: WheelDelegate {
         switch sender {
         case wheel:
             NSLog("Wheel value is changing to \(value)")
-            displayPresetNumber.stringValue = String(format: "%02d", value)
             displayPreset(value)
         default:
             NSLog("Don't know what wheel sent this event")
