@@ -194,39 +194,46 @@ class MainVC: NSViewController {
             DebugPrint("   Gain: \(gain)")
             gainKnob.floatValue = gain
         } else {
+            DebugPrint("   Gain: -unset-")
             gainKnob.floatValue = 1.0
         }
         if let volume = preset?.volume {
             DebugPrint("   Volume: \(volume)")
             volumeKnob.floatValue = volume
         } else {
+            DebugPrint("   Volume: -unset-")
             volumeKnob.floatValue = 1.0
         }
         if let treble = preset?.treble {
             DebugPrint("   Treble: \(treble)")
             trebleKnob.floatValue = treble
         } else {
+            DebugPrint("   Treble: -unset-")
             trebleKnob.floatValue = 1.0
         }
         if let middle = preset?.middle {
             DebugPrint("   Middle: \(middle)")
             middleKnob.floatValue = middle
         } else {
+            DebugPrint("   Middle: -unset-")
             middleKnob.floatValue = 1.0
         }
         if let bass = preset?.bass {
             DebugPrint("   Bass: \(bass)")
             bassKnob.floatValue = bass
         } else {
+            DebugPrint("   Bass: -unset-")
             bassKnob.floatValue = 1.0
         }
         if let presence = preset?.presence {
             DebugPrint("   Reverb/Presence: \(presence)")
             reverbKnob.floatValue = presence
         } else {
+            DebugPrint("   Reverb/Presence: -unset-")
             reverbKnob.floatValue = 1.0
         }
         DebugPrint("   Model: \(preset?.modelName ?? "-unknown-")")
+        DebugPrint("   Cabinet: \(preset?.cabinetName ?? "-unknown-")")
         DebugPrint("   Stomp: \(preset?.stompName ?? "-empty-")")
         DebugPrint("   Mod: \(preset?.modName ?? "-empty-")")
         DebugPrint("   Delay: \(preset?.delayName ?? "-empty-")")
@@ -271,7 +278,7 @@ extension MainVC: WheelDelegate {
     func valueIsChangingForWheel(sender: WheelControl, value: Int) {
         switch sender {
         case wheel:
-            DebugPrint("Wheel value is changing to \(value)")
+            //DebugPrint("Wheel value is changing to \(value)")
             displayPreset(value)
         default:
             NSLog("Don't know what wheel sent this event")
