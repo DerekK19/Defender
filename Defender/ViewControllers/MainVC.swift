@@ -42,11 +42,13 @@ class MainVC: NSViewController {
     var amplifiers = [DTOAmplifier]()
     var currentAmplifier: DTOAmplifier?
     var presets = [UInt8 : DTOPreset] ()
+
+    let verbose = false
     
     private var powerState: PowerState = .Off {
         didSet {
             self.powerButton.powerState = powerState
-            self.powerButton.enabled = true // currentAmplifier != nil
+            self.powerButton.enabled = currentAmplifier != nil
             self.utilButton.powerState = powerState
             self.saveButton.powerState = powerState
             self.exitButton.powerState = powerState
@@ -63,6 +65,7 @@ class MainVC: NSViewController {
 
         // Do any additional setup after loading the view.
 
+        configureNotifications()
         configureAmplifiers()
 
         let contrastColour = NSColor.whiteColor()
@@ -86,6 +89,7 @@ class MainVC: NSViewController {
         bassKnob.delegate = self
         reverbKnob.delegate = self
         wheel.delegate = self
+        
     }
 
     override var representedObject: AnyObject? {
@@ -111,23 +115,20 @@ class MainVC: NSViewController {
     
     @IBAction func willPowerAmplifier(sender: ActionButtonControl) {
         if sender.state == NSOffState {
-            NSLog("Going off")
+            DebugPrint(" Powering off")
             self.powerState = .Off
         } else {
-            NSLog("Going on")
-//            sender.state = NSOffState
-/* TEMP */            self.powerState = .On
-/* TEMP */            sender.state = NSOnState
-
+            DebugPrint(" Powering on")
+            sender.state = NSOffState
             if let amplifier = currentAmplifier {
                 Mustang().getPresets(amplifier) { (presets) in
                     dispatch_async(dispatch_get_main_queue()) {
                         for preset in presets {
                             self.presets[preset.number] = preset
                         }
+                        self.powerState = .On
                         self.valueDidChangeForWheel(self.wheel, value: 0)
                         sender.state = NSOnState
-                        self.powerState = .On
                     }
                 }
             }
@@ -135,10 +136,47 @@ class MainVC: NSViewController {
     }
     
     // MARK: Private Functions
+    private func reset() {
+        presets = [UInt8 : DTOPreset] ()
+        currentAmplifier = nil
+        amplifiers = [DTOAmplifier]()
+        powerButton.state = NSOffState
+        powerState = .Off
+    }
+    
+    private func configureNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(deviceConnected), name: Mustang.deviceConnectedNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(deviceOpened), name: Mustang.deviceOpenedNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(deviceClosed), name: Mustang.deviceClosedNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(deviceDisconnected), name: Mustang.deviceDisconnectedNotificationName, object: nil)
+    }
+
+    @objc private func deviceConnected() {
+        DebugPrint(" Connected")
+    }
+    
+    @objc private func deviceOpened() {
+        DebugPrint(" Opened")
+        configureAmplifiers()
+    }
+    
+    @objc private func deviceClosed() {
+        DebugPrint(" Closed")
+    }
+    
+    @objc private func deviceDisconnected() {
+        DebugPrint(" Disconnected")
+        dispatch_async(dispatch_get_main_queue()) {
+            self.reset()
+        }
+    }
+    
     private func configureAmplifiers() {
         amplifiers = Mustang().getConnectedAmplifiers()
-        currentAmplifier = amplifiers.first
-        configureAmplifier(currentAmplifier)
+        dispatch_async(dispatch_get_main_queue()) {
+            self.currentAmplifier = self.amplifiers.first
+            self.configureAmplifier(self.currentAmplifier)
+        }
     }
     
     private func configureAmplifier(amplifier: DTOAmplifier?) {
@@ -151,43 +189,56 @@ class MainVC: NSViewController {
     }
     
     private func displayPreset(preset: DTOPreset?) {
+        if preset != nil { DebugPrint("  Preset \(preset!.number) (\(preset!.name))") }
         if let gain = preset?.gain1 {
-            NSLog("Gain: \(gain)")
+            DebugPrint("   Gain: \(gain)")
             gainKnob.floatValue = gain
         } else {
             gainKnob.floatValue = 1.0
         }
         if let volume = preset?.volume {
-            NSLog("Volume: \(volume)")
+            DebugPrint("   Volume: \(volume)")
             volumeKnob.floatValue = volume
         } else {
             volumeKnob.floatValue = 1.0
         }
         if let treble = preset?.treble {
-            NSLog("Treble: \(treble)")
+            DebugPrint("   Treble: \(treble)")
             trebleKnob.floatValue = treble
         } else {
             trebleKnob.floatValue = 1.0
         }
         if let middle = preset?.middle {
-            NSLog("Middle: \(middle)")
+            DebugPrint("   Middle: \(middle)")
             middleKnob.floatValue = middle
         } else {
             middleKnob.floatValue = 1.0
         }
         if let bass = preset?.bass {
-            NSLog("Bass: \(bass)")
+            DebugPrint("   Bass: \(bass)")
             bassKnob.floatValue = bass
         } else {
             bassKnob.floatValue = 1.0
         }
         if let presence = preset?.presence {
-            NSLog("Reverb/Presence: \(presence)")
+            DebugPrint("   Reverb/Presence: \(presence)")
             reverbKnob.floatValue = presence
         } else {
             reverbKnob.floatValue = 1.0
         }
+        DebugPrint("   Model: \(preset?.modelName ?? "-unknown-")")
+        DebugPrint("   Stomp: \(preset?.stompName ?? "-empty-")")
+        DebugPrint("   Mod: \(preset?.modName ?? "-empty-")")
+        DebugPrint("   Delay: \(preset?.delayName ?? "-empty-")")
+        DebugPrint("   Reverb: \(preset?.reverbName ?? "-empty-")")
         displayVC?.configureWithPreset(preset)
+    }
+
+    // MARK: Debug logging
+    internal func DebugPrint(text: String) {
+        if (verbose) {
+            print(text)
+        }
     }
 }
 
@@ -196,17 +247,17 @@ extension MainVC: KnobDelegate {
     func valueDidChangeForKnob(sender: KnobControl, value: Float) {
         switch sender {
         case gainKnob:
-            NSLog("New gain is \(value)")
+            DebugPrint("New gain is \(value)")
         case volumeKnob:
-            NSLog("New volume is \(value)")
+            DebugPrint("New volume is \(value)")
         case trebleKnob:
-            NSLog("New treble is \(value)")
+            DebugPrint("New treble is \(value)")
         case middleKnob:
-            NSLog("New middle is \(value)")
+            DebugPrint("New middle is \(value)")
         case bassKnob:
-            NSLog("New bass is \(value)")
+            DebugPrint("New bass is \(value)")
         case reverbKnob:
-            NSLog("New reverb is \(value)")
+            DebugPrint("New reverb is \(value)")
         default:
             NSLog("Don't know what knob sent this event")
         }
@@ -220,7 +271,7 @@ extension MainVC: WheelDelegate {
     func valueIsChangingForWheel(sender: WheelControl, value: Int) {
         switch sender {
         case wheel:
-            NSLog("Wheel value is changing to \(value)")
+            DebugPrint("Wheel value is changing to \(value)")
             displayPreset(value)
         default:
             NSLog("Don't know what wheel sent this event")
@@ -230,7 +281,7 @@ extension MainVC: WheelDelegate {
     func valueDidChangeForWheel(sender: WheelControl, value: Int) {
         switch sender {
         case wheel:
-            NSLog("Wheel value changed to \(value)")
+            //DebugPrint("Wheel value changed to \(value)")
             saveButton.setState(.Active)
             exitButton.setState(.Active)
             if value >= 0 && value < presets.count {

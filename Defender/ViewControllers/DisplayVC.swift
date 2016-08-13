@@ -32,14 +32,18 @@ class DisplayVC: NSViewController {
         didSet {
             var newBackgroundColour = NSColor()
             if powerState == .Off {
-                NSLog("Display powering off")
                 newBackgroundColour = NSColor(red: 0.31, green: 0.39, blue: 0.44, alpha: 1.0)
             } else {
-                NSLog("Display powering on")
                 newBackgroundColour = NSColor(red: 0.62, green: 0.78, blue: 0.88, alpha: 1.0)
             }
             self.displayBackgroundColour = newBackgroundColour
             self.display.backgroundColour = newBackgroundColour
+            self.presetNumber.backgroundColor = displayBackgroundColour
+            self.presetNumber.textColor = displayForegroundColour
+            self.presetName.backgroundColor = displayForegroundColour
+            self.presetName.textColor = displayBackgroundColour
+            self.amplifierName.backgroundColor = displayForegroundColour
+            self.amplifierName.textColor = displayBackgroundColour
             self.configureWithPreset(nil)
         }
     }
@@ -56,12 +60,6 @@ class DisplayVC: NSViewController {
     
     override func viewDidLoad() {
         self.powerState = .Off
-        presetNumber.backgroundColor = displayBackgroundColour
-        presetNumber.textColor = displayForegroundColour
-        presetName.backgroundColor = displayForegroundColour
-        presetName.textColor = displayBackgroundColour
-        amplifierName.backgroundColor = displayForegroundColour
-        amplifierName.textColor = displayBackgroundColour
         stompValue.enabled = false
         modValue.enabled = false
         delayValue.enabled = false
@@ -82,13 +80,11 @@ class DisplayVC: NSViewController {
     private func setValueForFxField(textField: NSTextField, text: String?, presetKnown: Bool) {
         switch powerState {
         case .Off:
-            NSLog("Set off state for field")
             textField.hidden = true
             textField.backgroundColor = displayBackgroundColour
             textField.textColor = displayBackgroundColour
             textField.stringValue = ""
         case .On:
-            NSLog("Set on state for field")
             textField.hidden = false
             textField.backgroundColor = text != nil ? displayForegroundColour : displayBackgroundColour
             textField.textColor = text != nil ? displayBackgroundColour : displayForegroundColour
