@@ -21,7 +21,7 @@ class DisplayVC: NSViewController {
     @IBOutlet weak var presetName: NSTextField!
     @IBOutlet weak var amplifierName: NSTextField!
     @IBOutlet weak var stompValue: NSTextField!
-    @IBOutlet weak var modValue: NSTextField!
+    @IBOutlet weak var modulationValue: NSTextField!
     @IBOutlet weak var delayValue: NSTextField!
     @IBOutlet weak var reverbValue: NSTextField!
 
@@ -61,7 +61,7 @@ class DisplayVC: NSViewController {
     override func viewDidLoad() {
         self.powerState = .Off
         stompValue.enabled = false
-        modValue.enabled = false
+        modulationValue.enabled = false
         delayValue.enabled = false
         reverbValue.enabled = false
     }
@@ -72,7 +72,7 @@ class DisplayVC: NSViewController {
         presetName.stringValue = preset?.name ?? ""
         amplifierName.stringValue = preset?.modelName ?? ""
         setValueForFxField(stompValue, text: preset?.stompName, presetKnown: presetKnown)
-        setValueForFxField(modValue, text: preset?.modName, presetKnown: presetKnown)
+        setValueForFxField(modulationValue, text: preset?.modulationName, presetKnown: presetKnown)
         setValueForFxField(delayValue, text: preset?.delayName, presetKnown: presetKnown)
         setValueForFxField(reverbValue, text: preset?.reverbName, presetKnown: presetKnown)
     }

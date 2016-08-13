@@ -235,7 +235,7 @@ class MainVC: NSViewController {
         DebugPrint("   Model: \(preset?.modelName ?? "-unknown-")")
         DebugPrint("   Cabinet: \(preset?.cabinetName ?? "-unknown-")")
         DebugPrint("   Stomp: \(preset?.stompName ?? "-empty-")")
-        DebugPrint("   Mod: \(preset?.modName ?? "-empty-")")
+        DebugPrint("   Mod: \(preset?.modulationName ?? "-empty-")")
         DebugPrint("   Delay: \(preset?.delayName ?? "-empty-")")
         DebugPrint("   Reverb: \(preset?.reverbName ?? "-empty-")")
         displayVC?.configureWithPreset(preset)
