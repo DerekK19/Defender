@@ -18,6 +18,8 @@
 		657C3AD61D5C50B8002DEF17 /* Display.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 657C3AD41D5C50B8002DEF17 /* Display.storyboard */; };
 		6581F99C1D4C5D97005BB5C9 /* Mustang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6581F99A1D4C5D97005BB5C9 /* Mustang.framework */; };
 		6581F99D1D4C5D97005BB5C9 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6581F99B1D4C5D97005BB5C9 /* ObjectMapper.framework */; };
+		658CEBF21DA0D8A6006890A4 /* Mustang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6581F99A1D4C5D97005BB5C9 /* Mustang.framework */; };
+		658CEBF31DA0D8AA006890A4 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6581F99B1D4C5D97005BB5C9 /* ObjectMapper.framework */; };
 		7167FEDA1D58032C0059A276 /* NSImage+Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FED91D58032C0059A276 /* NSImage+Colour.swift */; };
 		7167FEDC1D5815270059A276 /* DisplayControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FEDB1D5815270059A276 /* DisplayControl.swift */; };
 		7167FF3E1D592E070059A276 /* WheelControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FF3D1D592E070059A276 /* WheelControl.swift */; };
@@ -82,6 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				658CEBF31DA0D8AA006890A4 /* ObjectMapper.framework in Frameworks */,
+				658CEBF21DA0D8A6006890A4 /* Mustang.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +559,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = DefenderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.DefenderTests;
@@ -569,6 +577,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = DefenderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.DefenderTests;

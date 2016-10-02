@@ -43,7 +43,7 @@ class MainVC: NSViewController {
     var currentAmplifier: DTOAmplifier?
     var presets = [UInt8 : DTOPreset] ()
 
-    let verbose = false
+    let verbose = true
     
     fileprivate var powerState: PowerState = .off {
         didSet {
