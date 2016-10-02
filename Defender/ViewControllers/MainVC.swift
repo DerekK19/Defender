@@ -45,10 +45,10 @@ class MainVC: NSViewController {
 
     let verbose = false
     
-    private var powerState: PowerState = .Off {
+    fileprivate var powerState: PowerState = .off {
         didSet {
             self.powerButton.powerState = powerState
-            self.powerButton.enabled = currentAmplifier != nil
+            self.powerButton.isEnabled = currentAmplifier != nil
             self.utilButton.powerState = powerState
             self.saveButton.powerState = powerState
             self.exitButton.powerState = powerState
@@ -68,7 +68,7 @@ class MainVC: NSViewController {
         configureNotifications()
         configureAmplifiers()
 
-        let contrastColour = NSColor.whiteColor()
+        let contrastColour = NSColor.white
         gainArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
         volumeArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
         trebleArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
@@ -92,7 +92,7 @@ class MainVC: NSViewController {
         
     }
 
-    override var representedObject: AnyObject? {
+    override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
         }
@@ -101,32 +101,32 @@ class MainVC: NSViewController {
     override func awakeFromNib() {
         if self.view.layer != nil {
             if let image = NSImage(named: "background-texture") {
-                let pattern = NSColor(patternImage: image).CGColor
+                let pattern = NSColor(patternImage: image).cgColor
                 self.view.layer?.backgroundColor = pattern
             }
         }        
     }
 
-    override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if segue.identifier == "embedDisplay" {
             self.displayVC = segue.destinationController as? DisplayVC
         }
     }
     
-    @IBAction func willPowerAmplifier(sender: ActionButtonControl) {
+    @IBAction func willPowerAmplifier(_ sender: ActionButtonControl) {
         if sender.state == NSOffState {
             DebugPrint(" Powering off")
-            self.powerState = .Off
+            self.powerState = .off
         } else {
             DebugPrint(" Powering on")
             sender.state = NSOffState
             if let amplifier = currentAmplifier {
                 Mustang().getPresets(amplifier) { (presets) in
-                    dispatch_async(dispatch_get_main_queue()) {
+                    DispatchQueue.main.async {
                         for preset in presets {
                             self.presets[preset.number] = preset
                         }
-                        self.powerState = .On
+                        self.powerState = .on
                         self.valueDidChangeForWheel(self.wheel, value: 0)
                         sender.state = NSOnState
                     }
@@ -136,59 +136,59 @@ class MainVC: NSViewController {
     }
     
     // MARK: Private Functions
-    private func reset() {
+    fileprivate func reset() {
         presets = [UInt8 : DTOPreset] ()
         currentAmplifier = nil
         amplifiers = [DTOAmplifier]()
         powerButton.state = NSOffState
-        powerState = .Off
+        powerState = .off
     }
     
-    private func configureNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(deviceConnected), name: Mustang.deviceConnectedNotificationName, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(deviceOpened), name: Mustang.deviceOpenedNotificationName, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(deviceClosed), name: Mustang.deviceClosedNotificationName, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(deviceDisconnected), name: Mustang.deviceDisconnectedNotificationName, object: nil)
+    fileprivate func configureNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceConnected), name: NSNotification.Name(rawValue: Mustang.deviceConnectedNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceOpened), name: NSNotification.Name(rawValue: Mustang.deviceOpenedNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceClosed), name: NSNotification.Name(rawValue: Mustang.deviceClosedNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceDisconnected), name: NSNotification.Name(rawValue: Mustang.deviceDisconnectedNotificationName), object: nil)
     }
 
-    @objc private func deviceConnected() {
+    @objc fileprivate func deviceConnected() {
         DebugPrint(" Connected")
     }
     
-    @objc private func deviceOpened() {
+    @objc fileprivate func deviceOpened() {
         DebugPrint(" Opened")
         configureAmplifiers()
     }
     
-    @objc private func deviceClosed() {
+    @objc fileprivate func deviceClosed() {
         DebugPrint(" Closed")
     }
     
-    @objc private func deviceDisconnected() {
+    @objc fileprivate func deviceDisconnected() {
         DebugPrint(" Disconnected")
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             self.reset()
         }
     }
     
-    private func configureAmplifiers() {
+    fileprivate func configureAmplifiers() {
         amplifiers = Mustang().getConnectedAmplifiers()
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             self.currentAmplifier = self.amplifiers.first
             self.configureAmplifier(self.currentAmplifier)
         }
     }
     
-    private func configureAmplifier(amplifier: DTOAmplifier?) {
-        powerState = .Off
+    fileprivate func configureAmplifier(_ amplifier: DTOAmplifier?) {
+        powerState = .off
     }
     
-    private func displayPreset(value: Int) {
+    fileprivate func displayPreset(_ value: Int) {
         let preset = presets[UInt8(value)]
         displayPreset(preset)
     }
     
-    private func displayPreset(preset: DTOPreset?) {
+    fileprivate func displayPreset(_ preset: DTOPreset?) {
         if preset != nil { DebugPrint("  Preset \(preset!.number) (\(preset!.name))") }
         if let gain = preset?.gain1 {
             DebugPrint("   Gain: \(gain)")
@@ -242,7 +242,7 @@ class MainVC: NSViewController {
     }
 
     // MARK: Debug logging
-    internal func DebugPrint(text: String) {
+    internal func DebugPrint(_ text: String) {
         if (verbose) {
             print(text)
         }
@@ -251,7 +251,7 @@ class MainVC: NSViewController {
 
 extension MainVC: KnobDelegate {
     
-    func valueDidChangeForKnob(sender: KnobControl, value: Float) {
+    func valueDidChangeForKnob(_ sender: KnobControl, value: Float) {
         switch sender {
         case gainKnob:
             DebugPrint("New gain is \(value)")
@@ -268,14 +268,14 @@ extension MainVC: KnobDelegate {
         default:
             NSLog("Don't know what knob sent this event")
         }
-        saveButton.setState(.Warning)
-        exitButton.setState(.Warning)
+        saveButton.setState(.warning)
+        exitButton.setState(.warning)
     }
 }
 
 extension MainVC: WheelDelegate {
     
-    func valueIsChangingForWheel(sender: WheelControl, value: Int) {
+    func valueIsChangingForWheel(_ sender: WheelControl, value: Int) {
         switch sender {
         case wheel:
             //DebugPrint("Wheel value is changing to \(value)")
@@ -285,21 +285,21 @@ extension MainVC: WheelDelegate {
         }
     }
     
-    func valueDidChangeForWheel(sender: WheelControl, value: Int) {
+    func valueDidChangeForWheel(_ sender: WheelControl, value: Int) {
         switch sender {
         case wheel:
             //DebugPrint("Wheel value changed to \(value)")
-            saveButton.setState(.Active)
-            exitButton.setState(.Active)
+            saveButton.setState(.active)
+            exitButton.setState(.active)
             if value >= 0 && value < presets.count {
-                if let preset = presets[UInt8(value)],  _ = preset.gain1 {
+                if let preset = presets[UInt8(value)],  let _ = preset.gain1 {
                     displayPreset(preset)
                 } else {
                     if let amplifier = currentAmplifier {
                         Mustang().getPreset(
                             amplifier,
                             preset: UInt8(value)) { (preset) in
-                                dispatch_async(dispatch_get_main_queue()) {
+                                DispatchQueue.main.async {
                                     if let preset = preset {
                                         self.presets[preset.number] = preset
                                         if let _ = preset.gain1 {

@@ -9,7 +9,7 @@
 import Cocoa
 
 protocol KnobDelegate {
-    func valueDidChangeForKnob(sender: KnobControl, value: Float)
+    func valueDidChangeForKnob(_ sender: KnobControl, value: Float)
 }
 
 class KnobControl: NSView {
@@ -28,11 +28,11 @@ class KnobControl: NSView {
     
     var delegate: KnobDelegate?
     
-    private var _floatValue: Float = 1.0
+    fileprivate var _floatValue: Float = 1.0
     var floatValue: Float = 1.0 {
         didSet {
             _floatValue = floatValue
-            setNeedsDisplayInRect(self.bounds)
+            setNeedsDisplay(self.bounds)
         }
     }
     
@@ -41,44 +41,44 @@ class KnobControl: NSView {
         return true
     }
     
-    override func mouseDown(theEvent: NSEvent) {
+    override func mouseDown(with theEvent: NSEvent) {
         startMouse = theEvent.locationInWindow
         startValue = _floatValue
         let midX = (self.frame.origin.x + (self.frame.width / 2.0))
         direction = startMouse.x < midX ? 1.0 : -1.0
     }
     
-    override func mouseDragged(theEvent: NSEvent) {
+    override func mouseDragged(with theEvent: NSEvent) {
         let yChange = Float(theEvent.locationInWindow.y - startMouse.y) * direction
         _floatValue = min(max(startValue + (yChange / pixelsPerTick), minStop), maxStop)
-        setNeedsDisplayInRect(self.bounds)
+        setNeedsDisplay(self.bounds)
     }
     
-    override func mouseUp(theEvent: NSEvent) {
+    override func mouseUp(with theEvent: NSEvent) {
         let yChange = Float(theEvent.locationInWindow.y - startMouse.y) * direction
         floatValue = min(max(startValue + (yChange / pixelsPerTick), minStop), maxStop)
         delegate?.valueDidChangeForKnob(self, value: floatValue)
     }
     
     // MARK: Draw function
-    override func drawRect(dirtyRect: NSRect) {
+    override func draw(_ dirtyRect: NSRect) {
         if let knobImage = NSImage(named: "knob") {
             let fraction = (self._floatValue - self.minValue) / (self.maxValue - self.minValue)
             let angle = -CGFloat(fraction * 360.0)
             let rotatedKnob = self.imageRotatedByDegrees(knobImage, degrees: angle)
             let copyRect = NSMakeRect((rotatedKnob.size.width-dirtyRect.size.width)/2.0, (rotatedKnob.size.height-dirtyRect.size.height)/2.0, dirtyRect.width, dirtyRect.height)
-            rotatedKnob.drawInRect(dirtyRect, fromRect: copyRect, operation: .CompositeSourceOver, fraction: 1.0)
+            rotatedKnob.draw(in: dirtyRect, from: copyRect, operation: .sourceOver, fraction: 1.0)
         }
     }
     
     // MARK: Private methods
-    private func imageRotatedByDegrees(image: NSImage, degrees: CGFloat) -> NSImage {
+    fileprivate func imageRotatedByDegrees(_ image: NSImage, degrees: CGFloat) -> NSImage {
         var imageBounds = NSRect(origin: NSZeroPoint, size: self.bounds.size)
         
         let boundsPath = NSBezierPath(rect: imageBounds)
-        var transform = NSAffineTransform()
-        transform.rotateByDegrees(degrees)
-        boundsPath.transformUsingAffineTransform(transform)
+        var transform = AffineTransform.identity
+        transform.rotate(byDegrees: degrees)
+        boundsPath.transform(using: transform)
         let rotatedBounds = NSRect(origin: NSZeroPoint, size: boundsPath.bounds.size)
         let rotatedImage = NSImage(size: rotatedBounds.size)
         
@@ -87,15 +87,15 @@ class KnobControl: NSView {
         imageBounds.origin.y = NSMidY(rotatedBounds) - (NSHeight (imageBounds) / 2)
         
         // Set up the rotation transform
-        transform = NSAffineTransform()
-        transform.translateXBy((NSWidth(rotatedBounds) / 2), yBy: (NSHeight(rotatedBounds) / 2))
-        transform.rotateByDegrees(degrees)
-        transform.translateXBy(-(NSWidth(rotatedBounds) / 2), yBy: -(NSHeight(rotatedBounds) / 2))
+        transform = AffineTransform.identity
+        transform.translate(x: (NSWidth(rotatedBounds) / 2), y: (NSHeight(rotatedBounds) / 2))
+        transform.rotate(byDegrees: degrees)
+        transform.translate(x: -(NSWidth(rotatedBounds) / 2), y: -(NSHeight(rotatedBounds) / 2))
         
         // draw the original image, rotated, into the new image
         rotatedImage.lockFocus()
-        transform.concat()
-        image.drawInRect(imageBounds, fromRect:NSZeroRect, operation: NSCompositingOperation.CompositeCopy, fraction:1.0)
+        (transform as NSAffineTransform).concat()
+        image.draw(in: imageBounds, from:NSZeroRect, operation: NSCompositingOperation.copy, fraction:1.0)
         rotatedImage.unlockFocus()
         
         return rotatedImage

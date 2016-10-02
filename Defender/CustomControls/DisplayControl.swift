@@ -12,11 +12,11 @@ class DisplayControl: NSView {
 
     var backgroundColour: NSColor = NSColor(red: 0.62, green: 0.78, blue: 0.88, alpha: 1.0) {
         didSet {
-            setNeedsDisplayInRect(self.bounds)
+            setNeedsDisplay(self.bounds)
         }
     }
     
-    override func drawRect(dirtyRect: NSRect) {
+    override func draw(_ dirtyRect: NSRect) {
         lockFocus()
         let colour = backgroundColour
         colour.setFill()

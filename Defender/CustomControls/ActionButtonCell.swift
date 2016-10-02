@@ -15,13 +15,13 @@ class ActionButtonCell: NSButtonCell {
     var greenColour: NSColor = NSColor(colorLiteralRed: 0.95, green: 0.98, blue: 0.66, alpha: 1.0)
     var redColour: NSColor = NSColor(colorLiteralRed: 0.99, green: 0.54, blue: 0.68, alpha: 1.0)
     
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.backgroundColor = whiteColour
     }
  
-    override func drawBezelWithFrame(frame: NSRect, inView controlView: NSView) {
-        if let ctx = NSGraphicsContext.currentContext() {
+    override func drawBezel(withFrame frame: NSRect, in controlView: NSView) {
+        if let ctx = NSGraphicsContext.current() {
             ctx.saveGraphicsState()
             
             let innerRect = frame.insetBy(dx: 6.0, dy: 6.0)
@@ -33,22 +33,22 @@ class ActionButtonCell: NSButtonCell {
         }
     }
     
-    func setState(state: ActionButtonState, powerState: PowerState) {
+    func setState(_ state: ActionButtonState, powerState: PowerState) {
         self.backgroundColor = colourForState(state, powerState: powerState)
         self.controlView?.needsDisplay = true
     }
     
-    private func colourForState(state: ActionButtonState, powerState: PowerState) -> NSColor {
+    fileprivate func colourForState(_ state: ActionButtonState, powerState: PowerState) -> NSColor {
         switch powerState {
-        case .Off:
+        case .off:
             return clearColour
-        case .On:
+        case .on:
             switch state {
-            case .Active:
+            case .active:
                 return whiteColour
-            case .Warning:
+            case .warning:
                 return redColour
-            case .OK:
+            case .ok:
                 return greenColour
             }
         }

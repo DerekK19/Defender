@@ -10,8 +10,8 @@ import Cocoa
 import Mustang
 
 enum PowerState {
-    case On
-    case Off
+    case on
+    case off
 }
 
 class DisplayVC: NSViewController {
@@ -28,10 +28,10 @@ class DisplayVC: NSViewController {
     var displayBackgroundColour = NSColor(red: 0.62, green: 0.78, blue: 0.88, alpha: 1.0)
     var displayForegroundColour = NSColor(red: 0.3, green: 0.38, blue: 0.6, alpha: 1.0)
     
-    var powerState: PowerState = .Off {
+    var powerState: PowerState = .off {
         didSet {
             var newBackgroundColour = NSColor()
-            if powerState == .Off {
+            if powerState == .off {
                 newBackgroundColour = NSColor(red: 0.31, green: 0.39, blue: 0.44, alpha: 1.0)
             } else {
                 newBackgroundColour = NSColor(red: 0.62, green: 0.78, blue: 0.88, alpha: 1.0)
@@ -52,21 +52,21 @@ class DisplayVC: NSViewController {
         super.init(coder: coder)
     }
     
-    override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         // Initialization code here
         
     }
     
     override func viewDidLoad() {
-        self.powerState = .Off
-        stompValue.enabled = false
-        modulationValue.enabled = false
-        delayValue.enabled = false
-        reverbValue.enabled = false
+        self.powerState = .off
+        stompValue.isEnabled = false
+        modulationValue.isEnabled = false
+        delayValue.isEnabled = false
+        reverbValue.isEnabled = false
     }
     
-    func configureWithPreset(preset: DTOPreset?) {
+    func configureWithPreset(_ preset: DTOPreset?) {
         let presetKnown = preset != nil
         presetNumber.stringValue = presetKnown ? String(format: "%02d", preset?.number ?? 0) : ""
         presetName.stringValue = preset?.name ?? ""
@@ -77,15 +77,15 @@ class DisplayVC: NSViewController {
         setValueForFxField(reverbValue, text: preset?.reverbName, presetKnown: presetKnown)
     }
     
-    private func setValueForFxField(textField: NSTextField, text: String?, presetKnown: Bool) {
+    fileprivate func setValueForFxField(_ textField: NSTextField, text: String?, presetKnown: Bool) {
         switch powerState {
-        case .Off:
-            textField.hidden = true
+        case .off:
+            textField.isHidden = true
             textField.backgroundColor = displayBackgroundColour
             textField.textColor = displayBackgroundColour
             textField.stringValue = ""
-        case .On:
-            textField.hidden = false
+        case .on:
+            textField.isHidden = false
             textField.backgroundColor = text != nil ? displayForegroundColour : displayBackgroundColour
             textField.textColor = text != nil ? displayBackgroundColour : displayForegroundColour
             textField.stringValue = text ?? (presetKnown ? "- EMPTY -" : "")
