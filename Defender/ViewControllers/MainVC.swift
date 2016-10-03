@@ -234,10 +234,14 @@ class MainVC: NSViewController {
         }
         DebugPrint("   Model: \(preset?.modelName ?? "-unknown-")")
         DebugPrint("   Cabinet: \(preset?.cabinetName ?? "-unknown-")")
-        DebugPrint("   Stomp: \(preset?.stompName ?? "-empty-")")
-        DebugPrint("   Mod: \(preset?.modulationName ?? "-empty-")")
-        DebugPrint("   Delay: \(preset?.delayName ?? "-empty-")")
-        DebugPrint("   Reverb: \(preset?.reverbName ?? "-empty-")")
+        DebugPrint("    Stomp: \(preset?.stompEffect?.name ?? "-empty-")")
+        DebugKnobs(forEffect: preset?.stompEffect)
+        DebugPrint("      Mod: \(preset?.modulationEffect?.name ?? "-empty-")")
+        DebugKnobs(forEffect: preset?.modulationEffect)
+        DebugPrint("    Delay: \(preset?.delayEffect?.name ?? "-empty-")")
+        DebugKnobs(forEffect: preset?.delayEffect)
+        DebugPrint("   Reverb: \(preset?.reverbEffect?.name ?? "-empty-")")
+        DebugKnobs(forEffect: preset?.reverbEffect)
         displayVC?.configureWithPreset(preset)
     }
 
@@ -245,6 +249,13 @@ class MainVC: NSViewController {
     internal func DebugPrint(_ text: String) {
         if (verbose) {
             print(text)
+        }
+    }
+    internal func DebugKnobs(forEffect effect: DTOEffect?) {
+        if (verbose) {
+            print("    Knobs: ", terminator: "")
+            effect?.knobs.forEach { print("\(String(format: "%0.2f", $0.value)) ", terminator:"") }
+            print("")
         }
     }
 }

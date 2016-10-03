@@ -71,10 +71,10 @@ class DisplayVC: NSViewController {
         presetNumber.stringValue = presetKnown ? String(format: "%02d", preset?.number ?? 0) : ""
         presetName.stringValue = preset?.name ?? ""
         amplifierName.stringValue = preset?.modelName ?? ""
-        setValueForFxField(stompValue, text: preset?.stompName, presetKnown: presetKnown)
-        setValueForFxField(modulationValue, text: preset?.modulationName, presetKnown: presetKnown)
-        setValueForFxField(delayValue, text: preset?.delayName, presetKnown: presetKnown)
-        setValueForFxField(reverbValue, text: preset?.reverbName, presetKnown: presetKnown)
+        setValueForFxField(stompValue, text: preset?.stompEffect?.name, presetKnown: presetKnown)
+        setValueForFxField(modulationValue, text: preset?.modulationEffect?.name, presetKnown: presetKnown)
+        setValueForFxField(delayValue, text: preset?.delayEffect?.name, presetKnown: presetKnown)
+        setValueForFxField(reverbValue, text: preset?.reverbEffect?.name, presetKnown: presetKnown)
     }
     
     fileprivate func setValueForFxField(_ textField: NSTextField, text: String?, presetKnown: Bool) {
