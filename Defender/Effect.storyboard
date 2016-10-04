@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="h8b-nj-UXe">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+    </dependencies>
+    <scenes>
+        <!--EffectVC-->
+        <scene sceneID="BYu-V4-VXZ">
+            <objects>
+                <viewController id="h8b-nj-UXe" customClass="EffectVC" customModule="Defender" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="YYF-xQ-V5G" customClass="EffectControl" customModule="Defender" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="512" height="64"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                    <connections>
+                        <outlet property="effect" destination="YYF-xQ-V5G" id="aeC-gy-GBd"/>
+                    </connections>
+                </viewController>
+                <customObject id="QjZ-aF-KBc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="103" y="-14"/>
+        </scene>
+    </scenes>
+</document>

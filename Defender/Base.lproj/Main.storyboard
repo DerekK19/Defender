@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -647,7 +647,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Defender" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="-116" y="-50"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -656,9 +656,9 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="800" height="400"/>
+                        <rect key="contentRect" x="196" y="240" width="800" height="500"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="800" height="400"/>
+                        <value key="minSize" type="size" width="800" height="500"/>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -673,11 +673,24 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="MainVC" customModule="Defender" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="1166" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1166" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <button verticalHuggingPriority="750" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSP-LL-at5" customClass="ActionButtonControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="14" y="535" width="62" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="NiB-Nk-783"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Off" alternateTitle="On" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IOW-PJ-eJT" customClass="ActionButtonCell" customModule="Defender" customModuleProvider="target">
+                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="willPowerAmplifier:" target="XfG-lQ-9wD" id="fYd-te-fe5"/>
+                                </connections>
+                            </button>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Msa-i8-6gy">
-                                <rect key="frame" x="20" y="204" width="1126" height="127"/>
+                                <rect key="frame" x="20" y="404" width="1126" height="127"/>
                                 <subviews>
                                     <stackView distribution="equalSpacing" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H4M-FA-gye" userLabel="Knob container">
                                         <rect key="frame" x="0.0" y="0.0" width="635" height="127"/>
@@ -725,7 +738,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5gL-rH-CnV">
-                                                <rect key="frame" x="108" y="0.0" width="92" height="127"/>
+                                                <rect key="frame" x="109" y="0.0" width="92" height="127"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5er-xi-FGe">
                                                         <rect key="frame" x="0.0" y="113" width="92" height="14"/>
@@ -996,7 +1009,7 @@
                                                 </buttonCell>
                                             </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YK0-Z5-9jc" customClass="ActionButtonControl" customModule="Defender" customModuleProvider="target">
-                                                <rect key="frame" x="19" y="63" width="62" height="32"/>
+                                                <rect key="frame" x="19" y="64" width="62" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="vV2-jL-cYV"/>
                                                 </constraints>
@@ -1062,26 +1075,104 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <button verticalHuggingPriority="750" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSP-LL-at5" customClass="ActionButtonControl" customModule="Defender" customModuleProvider="target">
-                                <rect key="frame" x="14" y="335" width="62" height="32"/>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="hbu-fE-5Az">
+                                <rect key="frame" x="726" y="220" width="400" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="NiB-Nk-783"/>
+                                    <constraint firstAttribute="width" constant="400" id="WL1-LS-Jwa"/>
+                                    <constraint firstAttribute="height" constant="50" id="jIF-Pp-rOo"/>
                                 </constraints>
-                                <buttonCell key="cell" type="push" title="Off" alternateTitle="On" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IOW-PJ-eJT" customClass="ActionButtonCell" customModule="Defender" customModuleProvider="target">
-                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
                                 <connections>
-                                    <action selector="willPowerAmplifier:" target="XfG-lQ-9wD" id="fYd-te-fe5"/>
+                                    <segue destination="hU3-Nk-ffh" kind="embed" identifier="embedEffect1" id="fi7-vF-0aP"/>
                                 </connections>
-                            </button>
+                            </containerView>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="sDS-pw-V5f">
+                                <rect key="frame" x="726" y="160" width="400" height="50"/>
+                                <connections>
+                                    <segue destination="pHg-zd-azy" kind="embed" identifier="embedEffect2" id="xx3-un-ZMJ"/>
+                                </connections>
+                            </containerView>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Lvs-bi-nMf">
+                                <rect key="frame" x="726" y="100" width="400" height="50"/>
+                                <connections>
+                                    <segue destination="T5f-jd-hxw" kind="embed" identifier="embedEffect3" id="H2D-ZD-q9z"/>
+                                </connections>
+                            </containerView>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="J2n-xk-MLx">
+                                <rect key="frame" x="726" y="40" width="400" height="50"/>
+                                <connections>
+                                    <segue destination="QfU-WL-CBV" kind="embed" identifier="embedEffect4" id="YrQ-za-5f0"/>
+                                </connections>
+                            </containerView>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="wkU-uh-6fH">
+                                <rect key="frame" x="40" y="100" width="128" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wkU-uh-6fH" secondAttribute="height" multiplier="3:4" id="ALk-vZ-WIO"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="udG-g8-HdF" kind="embed" identifier="embedPedal1" id="ygF-ym-Lx7"/>
+                                </connections>
+                            </containerView>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="aff-Mk-MKa">
+                                <rect key="frame" x="178" y="100" width="128" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aff-Mk-MKa" secondAttribute="height" multiplier="3:4" id="fgQ-rl-DUQ"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="ZQo-hl-OU1" kind="embed" identifier="embedPedal2" id="hkY-G8-S5D"/>
+                                </connections>
+                            </containerView>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="OHa-iD-BE6">
+                                <rect key="frame" x="316" y="100" width="128" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="OHa-iD-BE6" secondAttribute="height" multiplier="3:4" id="Aoq-vr-eHo"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="nzw-J8-ryU" kind="embed" identifier="embedPedal3" id="O2c-jB-n2a"/>
+                                </connections>
+                            </containerView>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="fdl-Ui-530">
+                                <rect key="frame" x="454" y="100" width="128" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fdl-Ui-530" secondAttribute="height" multiplier="3:4" id="eZz-n5-O7h"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="c1u-G3-1p4" kind="embed" identifier="embedPedal4" id="B4F-tq-wlX"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Lvs-bi-nMf" firstAttribute="trailing" secondItem="J2n-xk-MLx" secondAttribute="trailing" id="0bk-ed-aws"/>
+                            <constraint firstItem="hbu-fE-5Az" firstAttribute="trailing" secondItem="sDS-pw-V5f" secondAttribute="trailing" id="2Hl-oq-AJQ"/>
                             <constraint firstItem="Msa-i8-6gy" firstAttribute="top" secondItem="DSP-LL-at5" secondAttribute="bottom" constant="11" id="86R-Nr-bZe"/>
+                            <constraint firstItem="aff-Mk-MKa" firstAttribute="top" secondItem="wkU-uh-6fH" secondAttribute="top" id="98Z-1Q-KyH"/>
+                            <constraint firstItem="Lvs-bi-nMf" firstAttribute="top" secondItem="sDS-pw-V5f" secondAttribute="bottom" constant="10" id="Bjv-gj-9Zl"/>
+                            <constraint firstItem="fdl-Ui-530" firstAttribute="leading" secondItem="OHa-iD-BE6" secondAttribute="trailing" constant="10" id="Del-Xb-cQw"/>
+                            <constraint firstItem="wkU-uh-6fH" firstAttribute="top" secondItem="hbu-fE-5Az" secondAttribute="top" id="EQH-5K-mdW"/>
                             <constraint firstItem="Msa-i8-6gy" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="69" id="Ilt-c2-8fz"/>
+                            <constraint firstItem="Lvs-bi-nMf" firstAttribute="width" secondItem="J2n-xk-MLx" secondAttribute="width" id="OYT-9g-DN3"/>
+                            <constraint firstAttribute="bottom" secondItem="J2n-xk-MLx" secondAttribute="bottom" constant="40" id="QRf-NM-WHq"/>
+                            <constraint firstItem="sDS-pw-V5f" firstAttribute="trailing" secondItem="Lvs-bi-nMf" secondAttribute="trailing" id="RJI-OI-ZVE"/>
+                            <constraint firstItem="fdl-Ui-530" firstAttribute="top" secondItem="wkU-uh-6fH" secondAttribute="top" id="SXw-M3-Jdm"/>
                             <constraint firstItem="DSP-LL-at5" firstAttribute="leading" secondItem="Msa-i8-6gy" secondAttribute="leading" id="Tbx-JF-M8z"/>
+                            <constraint firstItem="Lvs-bi-nMf" firstAttribute="height" secondItem="J2n-xk-MLx" secondAttribute="height" id="VGT-NK-agR"/>
+                            <constraint firstItem="OHa-iD-BE6" firstAttribute="leading" secondItem="aff-Mk-MKa" secondAttribute="trailing" constant="10" id="XMf-r7-sEK"/>
+                            <constraint firstItem="fdl-Ui-530" firstAttribute="bottom" secondItem="wkU-uh-6fH" secondAttribute="bottom" id="bO4-UN-04O"/>
+                            <constraint firstItem="wkU-uh-6fH" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="40" id="bhn-Zh-8cc"/>
+                            <constraint firstAttribute="trailing" secondItem="Lvs-bi-nMf" secondAttribute="trailing" constant="40" id="dhm-fk-GZd"/>
+                            <constraint firstItem="sDS-pw-V5f" firstAttribute="height" secondItem="Lvs-bi-nMf" secondAttribute="height" id="ekM-Ig-zVc"/>
+                            <constraint firstItem="sDS-pw-V5f" firstAttribute="width" secondItem="Lvs-bi-nMf" secondAttribute="width" id="enm-wM-Qkm"/>
+                            <constraint firstAttribute="trailing" secondItem="J2n-xk-MLx" secondAttribute="trailing" constant="40" id="heK-KJ-AtQ"/>
+                            <constraint firstItem="wkU-uh-6fH" firstAttribute="bottom" secondItem="Lvs-bi-nMf" secondAttribute="bottom" id="jyF-ja-4Eq"/>
+                            <constraint firstItem="J2n-xk-MLx" firstAttribute="top" secondItem="Lvs-bi-nMf" secondAttribute="bottom" constant="10" id="km3-cq-5N4"/>
                             <constraint firstItem="Msa-i8-6gy" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="l15-0A-7A1"/>
+                            <constraint firstItem="aff-Mk-MKa" firstAttribute="leading" secondItem="wkU-uh-6fH" secondAttribute="trailing" constant="10" id="lNX-bh-BbW"/>
+                            <constraint firstItem="sDS-pw-V5f" firstAttribute="top" secondItem="hbu-fE-5Az" secondAttribute="bottom" constant="10" id="o2q-vV-0Re"/>
+                            <constraint firstItem="OHa-iD-BE6" firstAttribute="top" secondItem="wkU-uh-6fH" secondAttribute="top" id="p50-dc-eTU"/>
+                            <constraint firstItem="OHa-iD-BE6" firstAttribute="bottom" secondItem="wkU-uh-6fH" secondAttribute="bottom" id="q97-rk-1BS"/>
                             <constraint firstAttribute="trailing" secondItem="Msa-i8-6gy" secondAttribute="trailing" constant="20" id="sJs-t4-ren"/>
+                            <constraint firstItem="hbu-fE-5Az" firstAttribute="width" secondItem="sDS-pw-V5f" secondAttribute="width" id="v4J-ug-EDn"/>
+                            <constraint firstItem="hbu-fE-5Az" firstAttribute="height" secondItem="sDS-pw-V5f" secondAttribute="height" id="vvA-Tz-Veh"/>
+                            <constraint firstItem="aff-Mk-MKa" firstAttribute="bottom" secondItem="wkU-uh-6fH" secondAttribute="bottom" id="yGa-B4-RZh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1122,6 +1213,70 @@
                 <customObject id="08O-4T-CMS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="856.5" y="664"/>
+        </scene>
+        <!--Effect 2-->
+        <scene sceneID="fUc-Q1-t9g">
+            <objects>
+                <controllerPlaceholder storyboardName="Effect" id="pHg-zd-azy" userLabel="Effect 2" sceneMemberID="viewController"/>
+                <customObject id="hky-Nd-RUu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="823" y="850"/>
+        </scene>
+        <!--Effect 1-->
+        <scene sceneID="Gjr-yB-qSd">
+            <objects>
+                <controllerPlaceholder storyboardName="Effect" id="hU3-Nk-ffh" userLabel="Effect 1" sceneMemberID="viewController"/>
+                <customObject id="sYW-yZ-FtS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="822" y="814"/>
+        </scene>
+        <!--Effect 3-->
+        <scene sceneID="Crx-fr-bnC">
+            <objects>
+                <controllerPlaceholder storyboardName="Effect" id="T5f-jd-hxw" userLabel="Effect 3" sceneMemberID="viewController"/>
+                <customObject id="x6b-WJ-EhT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="824" y="885"/>
+        </scene>
+        <!--Pedal 1-->
+        <scene sceneID="Tux-do-gOI">
+            <objects>
+                <controllerPlaceholder storyboardName="Pedal" id="udG-g8-HdF" userLabel="Pedal 1" sceneMemberID="viewController"/>
+                <customObject id="RSU-fy-iEj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="824" y="960"/>
+        </scene>
+        <!--Pedal 2-->
+        <scene sceneID="vsK-NK-Bcs">
+            <objects>
+                <controllerPlaceholder storyboardName="Pedal" id="ZQo-hl-OU1" userLabel="Pedal 2" sceneMemberID="viewController"/>
+                <customObject id="s2D-w5-5h5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="824" y="997"/>
+        </scene>
+        <!--Pedal 3-->
+        <scene sceneID="peD-gR-g7L">
+            <objects>
+                <controllerPlaceholder storyboardName="Pedal" id="nzw-J8-ryU" userLabel="Pedal 3" sceneMemberID="viewController"/>
+                <customObject id="jpJ-iS-oiP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="824" y="1033"/>
+        </scene>
+        <!--Pedal 4-->
+        <scene sceneID="TcA-d3-JQ0">
+            <objects>
+                <controllerPlaceholder storyboardName="Pedal" id="c1u-G3-1p4" userLabel="Pedal 4" sceneMemberID="viewController"/>
+                <customObject id="KEs-UP-Q7m" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="824" y="1068"/>
+        </scene>
+        <!--Effect 4-->
+        <scene sceneID="nfb-9G-nyZ">
+            <objects>
+                <controllerPlaceholder storyboardName="Effect" id="QfU-WL-CBV" userLabel="Effect 4" sceneMemberID="viewController"/>
+                <customObject id="J9K-6v-PeI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="824" y="920"/>
         </scene>
     </scenes>
     <resources>

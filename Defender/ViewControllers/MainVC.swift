@@ -38,6 +38,14 @@ class MainVC: NSViewController {
     @IBOutlet weak var tapButton: ActionButtonControl!
 
     @IBOutlet weak var displayVC: DisplayVC?
+    @IBOutlet weak var effect1VC: EffectVC?
+    @IBOutlet weak var effect2VC: EffectVC?
+    @IBOutlet weak var effect3VC: EffectVC?
+    @IBOutlet weak var effect4VC: EffectVC?
+    @IBOutlet weak var pedal1VC: PedalVC?
+    @IBOutlet weak var pedal2VC: PedalVC?
+    @IBOutlet weak var pedal3VC: PedalVC?
+    @IBOutlet weak var pedal4VC: PedalVC?
     
     var amplifiers = [DTOAmplifier]()
     var currentAmplifier: DTOAmplifier?
@@ -55,6 +63,14 @@ class MainVC: NSViewController {
             self.tapButton.powerState = powerState
             self.wheel.powerState = powerState
             self.displayVC?.powerState = powerState
+            self.effect1VC?.powerState = powerState
+            self.effect2VC?.powerState = powerState
+            self.effect3VC?.powerState = powerState
+            self.effect4VC?.powerState = powerState
+            self.pedal1VC?.powerState = powerState
+            self.pedal2VC?.powerState = powerState
+            self.pedal3VC?.powerState = powerState
+            self.pedal4VC?.powerState = powerState
         }
     }
     
@@ -108,8 +124,28 @@ class MainVC: NSViewController {
     }
 
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if segue.identifier == "embedDisplay" {
-            self.displayVC = segue.destinationController as? DisplayVC
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "embedDisplay":
+                self.displayVC = segue.destinationController as? DisplayVC
+            case "embedEffect1":
+                self.effect1VC = segue.destinationController as? EffectVC
+            case "embedEffect2":
+                self.effect2VC = segue.destinationController as? EffectVC
+            case "embedEffect3":
+                self.effect3VC = segue.destinationController as? EffectVC
+            case "embedEffect4":
+                self.effect4VC = segue.destinationController as? EffectVC
+            case "embedPedal1":
+                self.pedal1VC = segue.destinationController as? PedalVC
+            case "embedPedal2":
+                self.pedal2VC = segue.destinationController as? PedalVC
+            case "embedPedal3":
+                self.pedal3VC = segue.destinationController as? PedalVC
+            case "embedPedal4":
+                self.pedal4VC = segue.destinationController as? PedalVC
+            default: break
+            }
         }
     }
     
@@ -189,6 +225,16 @@ class MainVC: NSViewController {
     }
     
     fileprivate func displayPreset(_ preset: DTOPreset?) {
+        
+        pedal1VC?.configureWithPedal(nil)
+        pedal2VC?.configureWithPedal(nil)
+        pedal3VC?.configureWithPedal(nil)
+        pedal4VC?.configureWithPedal(nil)
+        effect1VC?.configureWithEffect(nil)
+        effect2VC?.configureWithEffect(nil)
+        effect3VC?.configureWithEffect(nil)
+        effect4VC?.configureWithEffect(nil)
+
         if preset != nil { DebugPrint("  Preset \(preset!.number) (\(preset!.name))") }
         if let gain = preset?.gain1 {
             DebugPrint("   Gain: \(gain)")
@@ -243,8 +289,35 @@ class MainVC: NSViewController {
         DebugPrint("   Reverb: \(preset?.reverbEffect?.name ?? "-empty-")")
         DebugKnobs(forEffect: preset?.reverbEffect)
         displayVC?.configureWithPreset(preset)
+        displayEffect(preset?.modulationEffect)
+        displayEffect(preset?.delayEffect)
+        displayEffect(preset?.reverbEffect)
+        displayEffect(preset?.stompEffect)
     }
 
+    private func displayEffect(_ effect: DTOEffect?) {
+        switch effect?.slot ?? -1 {
+        case 0:
+            pedal1VC?.configureWithPedal(effect)
+        case 1:
+            pedal2VC?.configureWithPedal(effect)
+        case 2:
+            pedal3VC?.configureWithPedal(effect)
+        case 3:
+            pedal4VC?.configureWithPedal(effect)
+        case 4:
+            effect1VC?.configureWithEffect(effect)
+        case 5:
+            effect2VC?.configureWithEffect(effect)
+        case 6:
+            effect3VC?.configureWithEffect(effect)
+        case 7:
+            effect4VC?.configureWithEffect(effect)
+        default:
+            break
+        }
+    }
+    
     // MARK: Debug logging
     internal func DebugPrint(_ text: String) {
         if (verbose) {
@@ -255,7 +328,8 @@ class MainVC: NSViewController {
         if (verbose) {
             print("    Knobs: ", terminator: "")
             effect?.knobs.forEach { print("\(String(format: "%0.2f", $0.value)) ", terminator:"") }
-            print("")
+            if let effect = effect { print("slot \(effect.slot) (\(effect.aValue1) \(effect.aValue2) \(effect.aValue3))") }
+            else { print("") }
         }
     }
 }

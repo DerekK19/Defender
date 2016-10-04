@@ -9,11 +9,6 @@
 import Cocoa
 import Mustang
 
-enum PowerState {
-    case on
-    case off
-}
-
 class DisplayVC: NSViewController {
 
     @IBOutlet weak var display: DisplayControl!
@@ -55,7 +50,6 @@ class DisplayVC: NSViewController {
     override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         // Initialization code here
-        
     }
     
     override func viewDidLoad() {
