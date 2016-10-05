@@ -3,18 +3,129 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--PedalVC-->
         <scene sceneID="4QE-eK-e4N">
             <objects>
                 <viewController id="vSA-pc-29X" customClass="PedalVC" customModule="Defender" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="v30-5F-Dgg" customClass="PedalControl" customModule="Defender" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+                    <view key="view" id="v30-5F-Dgg" customClass="EffectSlotControl" customModule="Defender" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="120" height="200"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="RKf-rE-Usf" customClass="PedalBodyControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="10" y="121" width="100" height="74"/>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="YJe-ax-MA8" customClass="PedalBodyControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="5" y="5" width="110" height="121"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="99X-wj-lRs">
+                                        <rect key="frame" x="49" y="97" width="12" height="14"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="-" usesSingleLineMode="YES" id="rRq-hP-xrk">
+                                            <font key="font" size="11" name="Helvetica"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <box boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="NKL-Np-NFC">
+                                        <rect key="frame" x="4" y="95" width="102" height="1"/>
+                                        <view key="contentView" id="tww-4L-7Dg">
+                                            <rect key="frame" x="1" y="1" width="100" height="0.0"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="bb6-xn-1Cj"/>
+                                        </constraints>
+                                        <color key="borderColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="fillColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </box>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ggS-Se-wjN">
+                                        <rect key="frame" x="49" y="72" width="12" height="23"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="-" usesSingleLineMode="YES" id="gLc-sI-c61">
+                                            <font key="font" size="14" name="Futura-CondensedExtraBold"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="nPh-z4-XNt" customClass="PedalPadControl" customModule="Defender" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="5" width="100" height="67"/>
+                                        <subviews>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KOq-bo-tpV">
+                                                <rect key="frame" x="13" y="6" width="74" height="55"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="KOq-bo-tpV" secondAttribute="height" multiplier="4:3" id="lvC-RW-SHt"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="pedal-logo" id="piC-hn-tOu"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="KOq-bo-tpV" firstAttribute="top" secondItem="nPh-z4-XNt" secondAttribute="top" constant="6" id="MyU-P5-FZl"/>
+                                            <constraint firstItem="KOq-bo-tpV" firstAttribute="centerX" secondItem="nPh-z4-XNt" secondAttribute="centerX" id="QMI-Bc-uWo"/>
+                                            <constraint firstItem="KOq-bo-tpV" firstAttribute="centerY" secondItem="nPh-z4-XNt" secondAttribute="centerY" id="o72-i1-3jY"/>
+                                        </constraints>
+                                    </customView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cus-ON-8eg">
+                                        <rect key="frame" x="-2" y="109" width="30" height="11"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title=" ◀︎INPUT" id="LWy-4t-CO0">
+                                            <font key="font" size="7" name="ArialNarrow"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rnZ-SO-S3h">
+                                        <rect key="frame" x="78" y="109" width="34" height="11"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="OUTPUT▶︎" id="cbW-G6-xSc">
+                                            <font key="font" size="7" name="ArialNarrow"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="99X-wj-lRs" secondAttribute="trailing" constant="5" id="0Z9-BM-2F0"/>
+                                    <constraint firstItem="ggS-Se-wjN" firstAttribute="centerX" secondItem="YJe-ax-MA8" secondAttribute="centerX" id="1af-rv-0Pc"/>
+                                    <constraint firstItem="ggS-Se-wjN" firstAttribute="top" secondItem="NKL-Np-NFC" secondAttribute="bottom" id="30L-gw-kDy"/>
+                                    <constraint firstItem="nPh-z4-XNt" firstAttribute="top" secondItem="ggS-Se-wjN" secondAttribute="bottom" id="8cf-R6-LJG"/>
+                                    <constraint firstAttribute="trailing" secondItem="NKL-Np-NFC" secondAttribute="trailing" constant="4" id="DbW-Yb-UAB"/>
+                                    <constraint firstItem="NKL-Np-NFC" firstAttribute="top" secondItem="99X-wj-lRs" secondAttribute="bottom" constant="1" id="Fmg-Ew-eYB"/>
+                                    <constraint firstItem="NKL-Np-NFC" firstAttribute="leading" secondItem="YJe-ax-MA8" secondAttribute="leading" constant="4" id="Gag-ZX-H1P"/>
+                                    <constraint firstItem="rnZ-SO-S3h" firstAttribute="top" secondItem="YJe-ax-MA8" secondAttribute="top" constant="1" id="HiC-5V-aNM"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ggS-Se-wjN" secondAttribute="trailing" constant="5" id="LNi-uz-ll5"/>
+                                    <constraint firstItem="99X-wj-lRs" firstAttribute="centerX" secondItem="YJe-ax-MA8" secondAttribute="centerX" id="Lu9-sL-i3B"/>
+                                    <constraint firstAttribute="trailing" secondItem="nPh-z4-XNt" secondAttribute="trailing" constant="5" id="Nqi-9Z-zYQ"/>
+                                    <constraint firstItem="99X-wj-lRs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YJe-ax-MA8" secondAttribute="leading" constant="5" id="XLS-5Q-Hr4"/>
+                                    <constraint firstAttribute="bottom" secondItem="nPh-z4-XNt" secondAttribute="bottom" constant="5" id="ZBO-hl-Pt6"/>
+                                    <constraint firstItem="Cus-ON-8eg" firstAttribute="leading" secondItem="YJe-ax-MA8" secondAttribute="leading" id="cp5-gf-EYb"/>
+                                    <constraint firstItem="Cus-ON-8eg" firstAttribute="top" secondItem="YJe-ax-MA8" secondAttribute="top" constant="1" id="etr-TW-A4a"/>
+                                    <constraint firstItem="nPh-z4-XNt" firstAttribute="leading" secondItem="YJe-ax-MA8" secondAttribute="leading" constant="5" id="ifO-Qz-K3H"/>
+                                    <constraint firstAttribute="trailing" secondItem="rnZ-SO-S3h" secondAttribute="trailing" id="jAc-AZ-xnU"/>
+                                    <constraint firstAttribute="width" secondItem="YJe-ax-MA8" secondAttribute="height" multiplier="1:1.1" id="jLO-cK-zCm"/>
+                                    <constraint firstItem="ggS-Se-wjN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YJe-ax-MA8" secondAttribute="leading" constant="5" id="kgd-td-WiO"/>
+                                    <constraint firstItem="99X-wj-lRs" firstAttribute="top" secondItem="YJe-ax-MA8" secondAttribute="top" constant="10" id="wZs-QV-GKL"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="RKf-rE-Usf" firstAttribute="leading" secondItem="v30-5F-Dgg" secondAttribute="leading" constant="10" id="J9v-th-dvB"/>
+                            <constraint firstAttribute="trailing" secondItem="YJe-ax-MA8" secondAttribute="trailing" constant="5" id="NbS-6g-EPi"/>
+                            <constraint firstItem="YJe-ax-MA8" firstAttribute="top" secondItem="RKf-rE-Usf" secondAttribute="bottom" constant="-5" id="Odb-zO-U1e"/>
+                            <constraint firstItem="RKf-rE-Usf" firstAttribute="top" secondItem="v30-5F-Dgg" secondAttribute="top" constant="5" id="pAo-aw-Cul"/>
+                            <constraint firstItem="YJe-ax-MA8" firstAttribute="leading" secondItem="v30-5F-Dgg" secondAttribute="leading" constant="5" id="tH3-Ob-wqF"/>
+                            <constraint firstAttribute="bottom" secondItem="YJe-ax-MA8" secondAttribute="bottom" constant="5" id="wFd-Ds-Dh2"/>
+                            <constraint firstAttribute="trailing" secondItem="RKf-rE-Usf" secondAttribute="trailing" constant="10" id="yZM-eD-J2O"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="pedal" destination="v30-5F-Dgg" id="zA8-LQ-LXm"/>
+                        <outlet property="bodyBottom" destination="YJe-ax-MA8" id="7yg-CG-C7K"/>
+                        <outlet property="bodyTop" destination="RKf-rE-Usf" id="0hq-Tu-FNv"/>
+                        <outlet property="nameLabel" destination="ggS-Se-wjN" id="J2p-Id-Z3m"/>
+                        <outlet property="pad" destination="nPh-z4-XNt" id="dVu-YD-Pni"/>
+                        <outlet property="pedalLogo" destination="KOq-bo-tpV" id="WDx-ts-4eZ"/>
+                        <outlet property="slot" destination="v30-5F-Dgg" id="FDn-Hs-7PR"/>
+                        <outlet property="textBar" destination="NKL-Np-NFC" id="K88-I1-MwK"/>
+                        <outlet property="typeLabel" destination="99X-wj-lRs" id="wx0-jf-NB5"/>
                     </connections>
                 </viewController>
                 <customObject id="KS8-0x-Ctf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -22,4 +133,7 @@
             <point key="canvasLocation" x="-85" y="125"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pedal-logo" width="24" height="18"/>
+    </resources>
 </document>

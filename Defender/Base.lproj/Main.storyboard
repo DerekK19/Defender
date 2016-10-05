@@ -1104,36 +1104,36 @@
                                 </connections>
                             </containerView>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="wkU-uh-6fH">
-                                <rect key="frame" x="40" y="100" width="128" height="170"/>
+                                <rect key="frame" x="40" y="100" width="102" height="170"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="wkU-uh-6fH" secondAttribute="height" multiplier="3:4" id="ALk-vZ-WIO"/>
+                                    <constraint firstAttribute="width" secondItem="wkU-uh-6fH" secondAttribute="height" multiplier="3:5" id="ALk-vZ-WIO"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="udG-g8-HdF" kind="embed" identifier="embedPedal1" id="ygF-ym-Lx7"/>
                                 </connections>
                             </containerView>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="aff-Mk-MKa">
-                                <rect key="frame" x="178" y="100" width="128" height="170"/>
+                                <rect key="frame" x="152" y="100" width="102" height="170"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="aff-Mk-MKa" secondAttribute="height" multiplier="3:4" id="fgQ-rl-DUQ"/>
+                                    <constraint firstAttribute="width" secondItem="aff-Mk-MKa" secondAttribute="height" multiplier="3:5" id="ZO6-7f-6tp"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="ZQo-hl-OU1" kind="embed" identifier="embedPedal2" id="hkY-G8-S5D"/>
                                 </connections>
                             </containerView>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="OHa-iD-BE6">
-                                <rect key="frame" x="316" y="100" width="128" height="170"/>
+                                <rect key="frame" x="264" y="100" width="102" height="170"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="OHa-iD-BE6" secondAttribute="height" multiplier="3:4" id="Aoq-vr-eHo"/>
+                                    <constraint firstAttribute="width" secondItem="OHa-iD-BE6" secondAttribute="height" multiplier="3:5" id="hjj-bG-3rc"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="nzw-J8-ryU" kind="embed" identifier="embedPedal3" id="O2c-jB-n2a"/>
                                 </connections>
                             </containerView>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="fdl-Ui-530">
-                                <rect key="frame" x="454" y="100" width="128" height="170"/>
+                                <rect key="frame" x="376" y="100" width="102" height="170"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="fdl-Ui-530" secondAttribute="height" multiplier="3:4" id="eZz-n5-O7h"/>
+                                    <constraint firstAttribute="width" secondItem="fdl-Ui-530" secondAttribute="height" multiplier="3:5" id="waW-K2-wKt"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="c1u-G3-1p4" kind="embed" identifier="embedPedal4" id="B4F-tq-wlX"/>

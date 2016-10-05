@@ -1,16 +1,16 @@
 //
-//  PedalControl.swift
+//  EffectSlotControl.swift
 //  Defender
 //
-//  Created by Derek Knight on 4/10/16.
+//  Created by Derek Knight on 5/10/16.
 //  Copyright © 2016 Derek Knight. All rights reserved.
 //
 
 import Cocoa
 
-class PedalControl: NSView {
+class EffectSlotControl: NSView {
     
-    var backgroundColour: NSColor = NSColor(red: 0.62, green: 0.78, blue: 0.88, alpha: 1.0) {
+    var backgroundColour: NSColor = NSColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0) {
         didSet {
             setNeedsDisplay(self.bounds)
         }
@@ -20,7 +20,8 @@ class PedalControl: NSView {
         lockFocus()
         let colour = backgroundColour
         colour.setFill()
-        NSRectFill(dirtyRect)
+        let rect = NSBezierPath(roundedRect: dirtyRect, xRadius: 4, yRadius: 4)
+        rect.fill()
         unlockFocus()
     }
 }
