@@ -63,14 +63,14 @@ class MainVC: NSViewController {
             self.tapButton.powerState = powerState
             self.wheel.powerState = powerState
             self.displayVC?.powerState = powerState
-            self.effect1VC?.powerState = powerState
-            self.effect2VC?.powerState = powerState
-            self.effect3VC?.powerState = powerState
-            self.effect4VC?.powerState = powerState
-            self.pedal1VC?.powerState = powerState
-            self.pedal2VC?.powerState = powerState
-            self.pedal3VC?.powerState = powerState
-            self.pedal4VC?.powerState = powerState
+//            self.effect1VC?.powerState = powerState
+//            self.effect2VC?.powerState = powerState
+//            self.effect3VC?.powerState = powerState
+//            self.effect4VC?.powerState = powerState
+//            self.pedal1VC?.powerState = powerState
+//            self.pedal2VC?.powerState = powerState
+//            self.pedal3VC?.powerState = powerState
+//            self.pedal4VC?.powerState = powerState
         }
     }
     
@@ -321,7 +321,7 @@ class MainVC: NSViewController {
     }
     internal func DebugKnobs(forEffect effect: DTOEffect?) {
         if (verbose) {
-            print("    Knobs: ", terminator: "")
+            print("    Knobs: \(effect?.knobCount ?? 0) - ", terminator: "")
             effect?.knobs.forEach { print("\(String(format: "%0.2f", $0.value)) ", terminator:"") }
             if let effect = effect { print("slot \(effect.slot) (\(effect.aValue1) \(effect.aValue2) \(effect.aValue3))") }
             else { print("") }

@@ -15,6 +15,13 @@ class EffectVC: NSViewController {
     @IBOutlet weak var effect: EffectControl!
     @IBOutlet weak var typeLabel: NSTextField!
     @IBOutlet weak var nameLabel: NSTextField!
+    @IBOutlet weak var powerLED: LEDControl!
+    @IBOutlet weak var knob1: EffectKnobControl!
+    @IBOutlet weak var knob2: EffectKnobControl!
+    @IBOutlet weak var knob3: EffectKnobControl!
+    @IBOutlet weak var knob4: EffectKnobControl!
+    @IBOutlet weak var knob5: EffectKnobControl!
+    @IBOutlet weak var knob6: EffectKnobControl!
 
     let slotBackgroundColour = NSColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
     let stompBackgroundColour = NSColor(red: 0.22, green: 0.30, blue: 0.25, alpha: 1.0)
@@ -25,32 +32,23 @@ class EffectVC: NSViewController {
     var fullBackgroundColour = NSColor.black
     var effectBackgroundColour = NSColor.black
 
-    var enabledState: EnabledState = .disabled {
+    var state: EffectState = .disabled {
         didSet {
             var newBackgroundColour = NSColor()
-            if enabledState == .disabled {
+            switch state {
+            case .disabled:
                 newBackgroundColour = slotBackgroundColour
-            } else {
+                self.powerLED.backgroundColour = NSColor.black
+            case .off:
                 newBackgroundColour = fullBackgroundColour
+                self.powerLED.backgroundColour = NSColor.red.withBrightness(0.5)
+            case .on:
+                newBackgroundColour = fullBackgroundColour
+                self.powerLED.backgroundColour = NSColor.red
             }
             self.slot.backgroundColour = slotBackgroundColour
             self.effectBackgroundColour = newBackgroundColour
             self.effect.backgroundColour = newBackgroundColour
-        }
-    }
-    
-    var powerState: PowerState = .off {
-        didSet {
-            if enabledState == .enabled {
-                var newBackgroundColour = NSColor()
-                if powerState == .off {
-                    newBackgroundColour = NSColor(red: fullBackgroundColour.redComponent*0.6, green: fullBackgroundColour.greenComponent*0.6, blue: fullBackgroundColour.blueComponent*0.6, alpha: 1.0)
-                } else {
-                    newBackgroundColour = fullBackgroundColour
-                }
-                self.effectBackgroundColour = newBackgroundColour
-                self.effect.backgroundColour = newBackgroundColour
-            }
         }
     }
     
@@ -65,14 +63,13 @@ class EffectVC: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.enabledState = .disabled
-        self.powerState = .off
+        self.state = .disabled
         self.typeLabel.stringValue = ""
         self.nameLabel.stringValue = ""
     }
     
     func configureWithEffect(_ effect: DTOEffect?) {
-        typeLabel.stringValue = effect?.type.rawValue ?? ""
+        typeLabel.stringValue = effect?.type.rawValue.uppercased() ?? ""
         nameLabel.stringValue = effect?.name?.uppercased() ?? ""
         switch effect?.type ?? .Unknown {
         case .Stomp:
@@ -86,11 +83,17 @@ class EffectVC: NSViewController {
         default:
             fullBackgroundColour = slotBackgroundColour
         }
-        if effect != nil {
-            enabledState = .enabled
+        if effect == nil {
+            state = .disabled
         } else {
-            enabledState = .disabled
+            state = (effect?.enabled ?? false) ? .on : .off
         }
+        knob6.isHidden = effect?.knobCount ?? 0 < 6
+        knob5.isHidden = effect?.knobCount ?? 0 < 5
+        knob4.isHidden = effect?.knobCount ?? 0 < 4
+        knob3.isHidden = effect?.knobCount ?? 0 < 4
+        knob2.isHidden = effect?.knobCount ?? 0 < 2
+        knob1.isHidden = effect?.knobCount ?? 0 < 1
     }
     
 }

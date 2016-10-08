@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--PedalVC-->
@@ -16,13 +17,116 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="RKf-rE-Usf" customClass="PedalBodyControl" customModule="Defender" customModuleProvider="target">
-                                <rect key="frame" x="10" y="121" width="100" height="74"/>
+                                <rect key="frame" x="10" y="120" width="100" height="75"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="wjd-0r-iph" customClass="LEDControl" customModule="Defender" customModuleProvider="target">
+                                        <rect key="frame" x="2" y="66" width="7" height="7"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="7" id="XIB-Y1-77u"/>
+                                            <constraint firstAttribute="width" secondItem="wjd-0r-iph" secondAttribute="height" multiplier="1:1" id="zYb-UW-uQq"/>
+                                        </constraints>
+                                    </customView>
+                                    <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NS8-Yp-TiO">
+                                        <rect key="frame" x="5" y="8" width="90" height="59"/>
+                                        <subviews>
+                                            <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="6" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kTv-ub-vKS">
+                                                <rect key="frame" x="9" y="30" width="72" height="29"/>
+                                                <subviews>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="RVf-gM-3VJ" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="5" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="hfC-g3-xgI"/>
+                                                            <constraint firstAttribute="width" constant="20" id="kOK-rn-6A3"/>
+                                                        </constraints>
+                                                    </customView>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="fCc-mq-tFX" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
+                                                        <rect key="frame" x="26" y="5" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="9te-SP-CzK"/>
+                                                            <constraint firstAttribute="width" constant="20" id="rnv-FE-j49"/>
+                                                        </constraints>
+                                                    </customView>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="BD9-bc-qgn" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
+                                                        <rect key="frame" x="52" y="5" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="5cx-Ut-djI"/>
+                                                            <constraint firstAttribute="width" constant="20" id="DQe-ts-MrB"/>
+                                                        </constraints>
+                                                    </customView>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="6" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vFU-Px-V5O">
+                                                <rect key="frame" x="9" y="0.0" width="72" height="28"/>
+                                                <subviews>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="U4H-Ca-7vP" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="4" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="524-sM-UWO"/>
+                                                            <constraint firstAttribute="width" constant="20" id="KdO-5E-zwL"/>
+                                                        </constraints>
+                                                    </customView>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="C14-oe-lJO" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
+                                                        <rect key="frame" x="26" y="4" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="2Lb-Ul-oc7"/>
+                                                            <constraint firstAttribute="height" constant="20" id="q0S-qH-7Ql"/>
+                                                        </constraints>
+                                                    </customView>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="XdJ-Jq-D9A" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
+                                                        <rect key="frame" x="52" y="4" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="KxC-Qf-wmN"/>
+                                                            <constraint firstAttribute="width" constant="20" id="ypU-yq-6k0"/>
+                                                        </constraints>
+                                                    </customView>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="NS8-Yp-TiO" secondAttribute="trailing" constant="5" id="Dkv-ea-hzP"/>
+                                    <constraint firstAttribute="bottom" secondItem="NS8-Yp-TiO" secondAttribute="bottom" constant="8" id="TaZ-GQ-zXd"/>
+                                    <constraint firstItem="wjd-0r-iph" firstAttribute="width" secondItem="wjd-0r-iph" secondAttribute="height" multiplier="1:1" id="hR9-x6-3X1"/>
+                                    <constraint firstItem="NS8-Yp-TiO" firstAttribute="top" secondItem="RKf-rE-Usf" secondAttribute="top" constant="8" id="jpL-Hs-ZhR"/>
+                                    <constraint firstItem="NS8-Yp-TiO" firstAttribute="leading" secondItem="RKf-rE-Usf" secondAttribute="leading" constant="5" id="r3z-OH-xmM"/>
+                                    <constraint firstItem="wjd-0r-iph" firstAttribute="leading" secondItem="RKf-rE-Usf" secondAttribute="leading" constant="2" id="rqS-xT-Ykf"/>
+                                    <constraint firstItem="wjd-0r-iph" firstAttribute="top" secondItem="RKf-rE-Usf" secondAttribute="top" constant="2" id="u5t-0e-Z6r"/>
+                                </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="YJe-ax-MA8" customClass="PedalBodyControl" customModule="Defender" customModuleProvider="target">
-                                <rect key="frame" x="5" y="5" width="110" height="121"/>
+                                <rect key="frame" x="5" y="5" width="110" height="120"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="99X-wj-lRs">
-                                        <rect key="frame" x="49" y="97" width="12" height="14"/>
+                                        <rect key="frame" x="49" y="96" width="12" height="14"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="-" usesSingleLineMode="YES" id="rRq-hP-xrk">
                                             <font key="font" size="11" name="Helvetica"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -30,7 +134,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <box boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="NKL-Np-NFC">
-                                        <rect key="frame" x="4" y="95" width="102" height="1"/>
+                                        <rect key="frame" x="4" y="94" width="102" height="1"/>
                                         <view key="contentView" id="tww-4L-7Dg">
                                             <rect key="frame" x="1" y="1" width="100" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,7 +146,7 @@
                                         <color key="fillColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </box>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ggS-Se-wjN">
-                                        <rect key="frame" x="49" y="72" width="12" height="23"/>
+                                        <rect key="frame" x="49" y="71" width="12" height="23"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="-" usesSingleLineMode="YES" id="gLc-sI-c61">
                                             <font key="font" size="14" name="Futura-CondensedExtraBold"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -50,10 +154,10 @@
                                         </textFieldCell>
                                     </textField>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="nPh-z4-XNt" customClass="PedalPadControl" customModule="Defender" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="5" width="100" height="67"/>
+                                        <rect key="frame" x="5" y="5" width="100" height="66"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KOq-bo-tpV">
-                                                <rect key="frame" x="13" y="6" width="74" height="55"/>
+                                                <rect key="frame" x="15" y="6" width="71" height="54"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="KOq-bo-tpV" secondAttribute="height" multiplier="4:3" id="lvC-RW-SHt"/>
                                                 </constraints>
@@ -67,7 +171,7 @@
                                         </constraints>
                                     </customView>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cus-ON-8eg">
-                                        <rect key="frame" x="-2" y="109" width="30" height="11"/>
+                                        <rect key="frame" x="-2" y="108" width="30" height="11"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title=" ◀︎INPUT" id="LWy-4t-CO0">
                                             <font key="font" size="7" name="ArialNarrow"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -75,7 +179,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rnZ-SO-S3h">
-                                        <rect key="frame" x="78" y="109" width="34" height="11"/>
+                                        <rect key="frame" x="78" y="108" width="34" height="11"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="OUTPUT▶︎" id="cbW-G6-xSc">
                                             <font key="font" size="7" name="ArialNarrow"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -120,12 +224,21 @@
                     <connections>
                         <outlet property="bodyBottom" destination="YJe-ax-MA8" id="7yg-CG-C7K"/>
                         <outlet property="bodyTop" destination="RKf-rE-Usf" id="0hq-Tu-FNv"/>
+                        <outlet property="knobLowerLeft" destination="U4H-Ca-7vP" id="1Yq-zw-7CF"/>
+                        <outlet property="knobLowerMiddle" destination="C14-oe-lJO" id="pb3-ce-VJc"/>
+                        <outlet property="knobLowerRight" destination="XdJ-Jq-D9A" id="nfO-Tv-Jby"/>
+                        <outlet property="knobUpperLeft" destination="RVf-gM-3VJ" id="6yM-gH-XFP"/>
+                        <outlet property="knobUpperMiddle" destination="fCc-mq-tFX" id="Fwz-NR-ocF"/>
+                        <outlet property="knobUpperRight" destination="BD9-bc-qgn" id="GNc-aY-nBm"/>
+                        <outlet property="lowerKnobs" destination="vFU-Px-V5O" id="APV-cS-cSJ"/>
                         <outlet property="nameLabel" destination="ggS-Se-wjN" id="J2p-Id-Z3m"/>
                         <outlet property="pad" destination="nPh-z4-XNt" id="dVu-YD-Pni"/>
                         <outlet property="pedalLogo" destination="KOq-bo-tpV" id="WDx-ts-4eZ"/>
+                        <outlet property="powerLED" destination="wjd-0r-iph" id="GZo-QU-08J"/>
                         <outlet property="slot" destination="v30-5F-Dgg" id="FDn-Hs-7PR"/>
                         <outlet property="textBar" destination="NKL-Np-NFC" id="K88-I1-MwK"/>
                         <outlet property="typeLabel" destination="99X-wj-lRs" id="wx0-jf-NB5"/>
+                        <outlet property="upperKnobs" destination="kTv-ub-vKS" id="mJK-GQ-SLA"/>
                     </connections>
                 </viewController>
                 <customObject id="KS8-0x-Ctf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

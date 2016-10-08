@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		652564491DA8972A00ACCD4B /* PedalKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652564481DA8972A00ACCD4B /* PedalKnobControl.swift */; };
+		6525644B1DA89FCD00ACCD4B /* EffectKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6525644A1DA89FCD00ACCD4B /* EffectKnobControl.swift */; };
 		655A5A411D4C555400E15E1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A5A401D4C555400E15E1F /* AppDelegate.swift */; };
 		655A5A431D4C555500E15E1F /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A5A421D4C555500E15E1F /* MainVC.swift */; };
 		655A5A451D4C555500E15E1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 655A5A441D4C555500E15E1F /* Assets.xcassets */; };
 		655A5A481D4C555500E15E1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 655A5A461D4C555500E15E1F /* Main.storyboard */; };
 		655A5A531D4C555500E15E1F /* DefenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A5A521D4C555500E15E1F /* DefenderTests.swift */; };
 		655A5A5E1D4C555500E15E1F /* DefenderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A5A5D1D4C555500E15E1F /* DefenderUITests.swift */; };
+		656A5ABB1DA880B700B7BE3E /* LEDControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656A5ABA1DA880B700B7BE3E /* LEDControl.swift */; };
+		656A5ABD1DA883BB00B7BE3E /* NSColor+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656A5ABC1DA883BB00B7BE3E /* NSColor+Brightness.swift */; };
 		657C3AC81D56DB8E002DEF17 /* KnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C3AC71D56DB8E002DEF17 /* KnobControl.swift */; };
 		657C3AD01D5C46E6002DEF17 /* DisplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C3ACF1D5C46E6002DEF17 /* DisplayVC.swift */; };
 		657C3AD61D5C50B8002DEF17 /* Display.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 657C3AD41D5C50B8002DEF17 /* Display.storyboard */; };
@@ -54,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		652564481DA8972A00ACCD4B /* PedalKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalKnobControl.swift; sourceTree = "<group>"; };
+		6525644A1DA89FCD00ACCD4B /* EffectKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectKnobControl.swift; sourceTree = "<group>"; };
 		655A5A3D1D4C555400E15E1F /* Defender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Defender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		655A5A401D4C555400E15E1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		655A5A421D4C555500E15E1F /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -67,6 +73,8 @@
 		655A5A5D1D4C555500E15E1F /* DefenderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefenderUITests.swift; sourceTree = "<group>"; };
 		655A5A5F1D4C555500E15E1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		655A5F4F1D4C57E100E15E1F /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		656A5ABA1DA880B700B7BE3E /* LEDControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEDControl.swift; sourceTree = "<group>"; };
+		656A5ABC1DA883BB00B7BE3E /* NSColor+Brightness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Brightness.swift"; sourceTree = "<group>"; };
 		657C3AC71D56DB8E002DEF17 /* KnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobControl.swift; sourceTree = "<group>"; };
 		657C3ACF1D5C46E6002DEF17 /* DisplayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayVC.swift; sourceTree = "<group>"; };
 		657C3AD51D5C50B8002DEF17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Display.storyboard; sourceTree = "<group>"; };
@@ -188,12 +196,15 @@
 				657C3AC71D56DB8E002DEF17 /* KnobControl.swift */,
 				7167FF3D1D592E070059A276 /* WheelControl.swift */,
 				7167FEDB1D5815270059A276 /* DisplayControl.swift */,
+				656A5ABA1DA880B700B7BE3E /* LEDControl.swift */,
 				71CD6D871D59714A006BD6DF /* ActionButtonControl.swift */,
 				7167FFCF1D595DC70059A276 /* ActionButtonCell.swift */,
 				658CEC101DA44B97006890A4 /* EffectSlotControl.swift */,
 				658CEC0A1DA36977006890A4 /* EffectControl.swift */,
+				6525644A1DA89FCD00ACCD4B /* EffectKnobControl.swift */,
 				658CEC0C1DA36AAA006890A4 /* PedalBodyControl.swift */,
 				65A65BA11DA4740400EDCA32 /* PedalPadControl.swift */,
+				652564481DA8972A00ACCD4B /* PedalKnobControl.swift */,
 				658CEC0E1DA36D85006890A4 /* Enums.swift */,
 			);
 			name = "Custom Controls";
@@ -225,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				7167FED91D58032C0059A276 /* NSImage+Colour.swift */,
+				656A5ABC1DA883BB00B7BE3E /* NSColor+Brightness.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -404,14 +416,18 @@
 				658CEC0D1DA36AAA006890A4 /* PedalBodyControl.swift in Sources */,
 				657C3AC81D56DB8E002DEF17 /* KnobControl.swift in Sources */,
 				658CEC0F1DA36D85006890A4 /* Enums.swift in Sources */,
+				656A5ABD1DA883BB00B7BE3E /* NSColor+Brightness.swift in Sources */,
+				6525644B1DA89FCD00ACCD4B /* EffectKnobControl.swift in Sources */,
 				658CEC111DA44B97006890A4 /* EffectSlotControl.swift in Sources */,
 				655A5A431D4C555500E15E1F /* MainVC.swift in Sources */,
 				658CEC031DA35E63006890A4 /* PedalVC.swift in Sources */,
 				7167FEDA1D58032C0059A276 /* NSImage+Colour.swift in Sources */,
 				7167FFD01D595DC70059A276 /* ActionButtonCell.swift in Sources */,
+				656A5ABB1DA880B700B7BE3E /* LEDControl.swift in Sources */,
 				655A5A411D4C555400E15E1F /* AppDelegate.swift in Sources */,
 				7167FF3E1D592E070059A276 /* WheelControl.swift in Sources */,
 				65A65BA21DA4740400EDCA32 /* PedalPadControl.swift in Sources */,
+				652564491DA8972A00ACCD4B /* PedalKnobControl.swift in Sources */,
 				71CD6D881D59714A006BD6DF /* ActionButtonControl.swift in Sources */,
 				658CEC051DA35E81006890A4 /* EffectVC.swift in Sources */,
 				657C3AD01D5C46E6002DEF17 /* DisplayVC.swift in Sources */,

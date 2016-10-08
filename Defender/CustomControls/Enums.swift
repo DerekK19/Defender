@@ -9,11 +9,12 @@
 import Cocoa
 
 enum PowerState {
-    case on
     case off
+    case on
 }
 
-enum EnabledState {
+enum EffectState {
     case disabled
-    case enabled
+    case off
+    case on
 }
