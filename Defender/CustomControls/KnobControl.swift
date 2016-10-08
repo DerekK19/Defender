@@ -62,12 +62,14 @@ class KnobControl: NSView {
     
     // MARK: Draw function
     override func draw(_ dirtyRect: NSRect) {
-        if let knobImage = NSImage(named: "knob") {
-            let fraction = (self._floatValue - self.minValue) / (self.maxValue - self.minValue)
-            let angle = -CGFloat(fraction * 360.0)
-            let rotatedKnob = self.imageRotatedByDegrees(knobImage, degrees: angle)
-            let copyRect = NSMakeRect((rotatedKnob.size.width-dirtyRect.size.width)/2.0, (rotatedKnob.size.height-dirtyRect.size.height)/2.0, dirtyRect.width, dirtyRect.height)
-            rotatedKnob.draw(in: dirtyRect, from: copyRect, operation: .sourceOver, fraction: 1.0)
+        if !isHidden {
+            if let knobImage = NSImage(named: "knob") {
+                let fraction = (self._floatValue - self.minValue) / (self.maxValue - self.minValue)
+                let angle = -CGFloat(fraction * 360.0)
+                let rotatedKnob = self.imageRotatedByDegrees(knobImage, degrees: angle)
+                let copyRect = NSMakeRect((rotatedKnob.size.width-dirtyRect.size.width)/2.0, (rotatedKnob.size.height-dirtyRect.size.height)/2.0, dirtyRect.width, dirtyRect.height)
+                rotatedKnob.draw(in: dirtyRect, from: copyRect, operation: .sourceOver, fraction: 1.0)
+            }
         }
     }
     

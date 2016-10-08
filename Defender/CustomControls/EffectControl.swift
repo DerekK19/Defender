@@ -17,10 +17,12 @@ class EffectControl: NSView {
     }
     
     override func draw(_ dirtyRect: NSRect) {
-        lockFocus()
-        let colour = backgroundColour
-        colour.setFill()
-        NSRectFill(dirtyRect)
-        unlockFocus()
+        if !isHidden {
+            lockFocus()
+            let colour = backgroundColour
+            colour.setFill()
+            NSRectFill(dirtyRect)
+            unlockFocus()
+        }
     }
 }

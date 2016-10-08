@@ -45,6 +45,12 @@ class PedalVC: NSViewController {
             case .disabled:
                 newBackgroundColour = slotBackgroundColour
                 self.powerLED.backgroundColour = NSColor.black
+                self.knobUpperLeft.isHidden = true
+                self.knobUpperMiddle.isHidden = true
+                self.knobUpperRight.isHidden = true
+                self.knobLowerLeft.isHidden = true
+                self.knobLowerMiddle.isHidden = true
+                self.knobLowerRight.isHidden = true
             case .off:
                 newBackgroundColour = fullBackgroundColour
                 self.powerLED.backgroundColour = NSColor.red.withBrightness(0.5)
@@ -102,6 +108,8 @@ class PedalVC: NSViewController {
             knobLowerLeft.isHidden = true
             knobLowerMiddle.isHidden = false
             knobLowerRight.isHidden = true
+            knobLowerMiddle.floatValue = pedal?.knobs[0].value ?? 0
+
         } else if pedal?.knobCount == 2 {
             knobUpperLeft.isHidden = true
             knobUpperMiddle.isHidden = false
@@ -109,6 +117,8 @@ class PedalVC: NSViewController {
             knobLowerLeft.isHidden = true
             knobLowerMiddle.isHidden = false
             knobLowerRight.isHidden = true
+            knobUpperMiddle.floatValue = pedal?.knobs[0].value ?? 0
+            knobLowerMiddle.floatValue = pedal?.knobs[1].value ?? 0
         } else if pedal?.knobCount == 3 {
             knobUpperLeft.isHidden = true
             knobUpperMiddle.isHidden = false
@@ -116,6 +126,9 @@ class PedalVC: NSViewController {
             knobLowerLeft.isHidden = false
             knobLowerMiddle.isHidden = true
             knobLowerRight.isHidden = false
+            knobUpperMiddle.floatValue = pedal?.knobs[0].value ?? 0
+            knobLowerLeft.floatValue = pedal?.knobs[1].value ?? 0
+            knobLowerRight.floatValue = pedal?.knobs[2].value ?? 0
         } else if pedal?.knobCount == 4 {
             knobUpperLeft.isHidden = false
             knobUpperMiddle.isHidden = true
@@ -123,20 +136,35 @@ class PedalVC: NSViewController {
             knobLowerLeft.isHidden = false
             knobLowerMiddle.isHidden = true
             knobLowerRight.isHidden = false
+            knobUpperLeft.floatValue = pedal?.knobs[0].value ?? 0
+            knobUpperRight.floatValue = pedal?.knobs[1].value ?? 0
+            knobLowerLeft.floatValue = pedal?.knobs[2].value ?? 0
+            knobLowerRight.floatValue = pedal?.knobs[3].value ?? 0
         } else if pedal?.knobCount == 5 {
             knobUpperLeft.isHidden = false
-            knobUpperMiddle.isHidden = true
+            knobUpperMiddle.isHidden = false
             knobUpperRight.isHidden = false
             knobLowerLeft.isHidden = false
-            knobLowerMiddle.isHidden = false
+            knobLowerMiddle.isHidden = true
             knobLowerRight.isHidden = false
-        } else {
+            knobUpperLeft.floatValue = pedal?.knobs[0].value ?? 0
+            knobUpperMiddle.floatValue = pedal?.knobs[1].value ?? 0
+            knobUpperRight.floatValue = pedal?.knobs[2].value ?? 0
+            knobLowerLeft.floatValue = pedal?.knobs[3].value ?? 0
+            knobLowerRight.floatValue = pedal?.knobs[4].value ?? 0
+        } else if pedal?.knobCount == 6 {
             knobUpperLeft.isHidden = false
             knobUpperMiddle.isHidden = false
             knobUpperRight.isHidden = false
             knobLowerLeft.isHidden = false
             knobLowerMiddle.isHidden = false
             knobLowerRight.isHidden = false
+            knobUpperLeft.floatValue = pedal?.knobs[0].value ?? 0
+            knobUpperMiddle.floatValue = pedal?.knobs[1].value ?? 0
+            knobUpperRight.floatValue = pedal?.knobs[2].value ?? 0
+            knobLowerLeft.floatValue = pedal?.knobs[3].value ?? 0
+            knobLowerMiddle.floatValue = pedal?.knobs[4].value ?? 0
+            knobLowerRight.floatValue = pedal?.knobs[5].value ?? 0
         }
     }
     

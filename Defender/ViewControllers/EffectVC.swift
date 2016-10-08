@@ -39,6 +39,12 @@ class EffectVC: NSViewController {
             case .disabled:
                 newBackgroundColour = slotBackgroundColour
                 self.powerLED.backgroundColour = NSColor.black
+                self.knob1.isHidden = true
+                self.knob2.isHidden = true
+                self.knob3.isHidden = true
+                self.knob4.isHidden = true
+                self.knob5.isHidden = true
+                self.knob6.isHidden = true
             case .off:
                 newBackgroundColour = fullBackgroundColour
                 self.powerLED.backgroundColour = NSColor.red.withBrightness(0.5)
@@ -94,6 +100,25 @@ class EffectVC: NSViewController {
         knob3.isHidden = effect?.knobCount ?? 0 < 4
         knob2.isHidden = effect?.knobCount ?? 0 < 2
         knob1.isHidden = effect?.knobCount ?? 0 < 1
+        
+        if effect?.knobCount ?? 0 > 0 {
+            knob1.floatValue = effect?.knobs[0].value ?? 0
+        }
+        if effect?.knobCount ?? 0 > 1 {
+            knob2.floatValue = effect?.knobs[1].value ?? 0
+        }
+        if effect?.knobCount ?? 0 > 2 {
+            knob3.floatValue = effect?.knobs[2].value ?? 0
+        }
+        if effect?.knobCount ?? 0 > 3 {
+            knob4.floatValue = effect?.knobs[3].value ?? 0
+        }
+        if effect?.knobCount ?? 0 > 4 {
+            knob5.floatValue = effect?.knobs[4].value ?? 0
+        }
+        if effect?.knobCount ?? 0 > 5 {
+            knob6.floatValue = effect?.knobs[5].value ?? 0
+        }
     }
     
 }
