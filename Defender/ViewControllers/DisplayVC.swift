@@ -65,13 +65,13 @@ class DisplayVC: NSViewController {
         presetNumber.stringValue = presetKnown ? String(format: "%02d", preset?.number ?? 0) : ""
         presetName.stringValue = preset?.name ?? ""
         amplifierName.stringValue = preset?.modelName ?? ""
-        setValueForFxField(stompValue, text: preset?.stompEffect?.name, presetKnown: presetKnown)
-        setValueForFxField(modulationValue, text: preset?.modulationEffect?.name, presetKnown: presetKnown)
-        setValueForFxField(delayValue, text: preset?.delayEffect?.name, presetKnown: presetKnown)
-        setValueForFxField(reverbValue, text: preset?.reverbEffect?.name, presetKnown: presetKnown)
+        setValueForFxField(stompValue, effect: preset?.effects.filter( { $0.type == .Stomp } ).first, presetKnown: presetKnown)
+        setValueForFxField(modulationValue, effect: preset?.effects.filter( { $0.type == .Modulation } ).first, presetKnown: presetKnown)
+        setValueForFxField(delayValue, effect: preset?.effects.filter( { $0.type == .Delay } ).first, presetKnown: presetKnown)
+        setValueForFxField(reverbValue, effect: preset?.effects.filter( { $0.type == .Reverb } ).first, presetKnown: presetKnown)
     }
     
-    fileprivate func setValueForFxField(_ textField: NSTextField, text: String?, presetKnown: Bool) {
+    fileprivate func setValueForFxField(_ textField: NSTextField, effect: DTOEffect?, presetKnown: Bool) {
         switch powerState {
         case .off:
             textField.isHidden = true
@@ -79,10 +79,18 @@ class DisplayVC: NSViewController {
             textField.textColor = displayBackgroundColour
             textField.stringValue = ""
         case .on:
-            textField.isHidden = false
-            textField.backgroundColor = text != nil ? displayForegroundColour : displayBackgroundColour
-            textField.textColor = text != nil ? displayBackgroundColour : displayForegroundColour
-            textField.stringValue = text ?? (presetKnown ? "- EMPTY -" : "")
+            switch effect?.enabled ?? false {
+            case true:
+                textField.isHidden = false
+                textField.backgroundColor = effect?.name != nil ? displayForegroundColour : displayBackgroundColour
+                textField.textColor = effect?.name != nil ? displayBackgroundColour : displayForegroundColour
+                textField.stringValue = effect?.name ?? (presetKnown ? "- EMPTY -" : "")
+            case false:
+                textField.isHidden = false
+                textField.backgroundColor = displayBackgroundColour
+                textField.textColor = displayForegroundColour
+                textField.stringValue = effect?.name ?? (presetKnown ? "- EMPTY -" : "")
+            }
         }
     }
     

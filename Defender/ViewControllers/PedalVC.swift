@@ -23,6 +23,7 @@ class PedalVC: NSViewController {
     let slotBackgroundColour = NSColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
     let stompBackgroundColour = NSColor(red: 1.0, green: 0.97, blue: 0.31, alpha: 1.0)
     let modBackgroundColour = NSColor(red: 0.17, green: 0.56, blue: 0.98, alpha: 1.0)
+    let delayBackgroundColour = NSColor(red: 0.05, green: 0.87, blue: 0.48, alpha: 1.0)
     let reverbBackgroundColour = NSColor(red: 0.95, green: 0.63, blue: 0.18, alpha: 1.0)
     
     var fullBackgroundColour = NSColor.black
@@ -80,16 +81,16 @@ class PedalVC: NSViewController {
     }
     
     func configureWithPedal(_ pedal: DTOEffect?) {
-        typeLabel.stringValue = pedal?.type ?? ""
+        typeLabel.stringValue = pedal?.type.rawValue ?? ""
         nameLabel.stringValue = pedal?.name?.uppercased() ?? ""
-        switch pedal?.type ?? "" {
-        case "STOMP BOX":
+        switch pedal?.type ?? .Unknown {
+        case .Stomp:
             fullBackgroundColour = stompBackgroundColour
-        case "MODULATION":
+        case .Modulation:
             fullBackgroundColour = modBackgroundColour
-        case "DELAY":
-            fullBackgroundColour = stompBackgroundColour
-        case "REVERB":
+        case .Delay:
+            fullBackgroundColour = delayBackgroundColour
+        case .Reverb:
             fullBackgroundColour = reverbBackgroundColour
         default:
             fullBackgroundColour = slotBackgroundColour

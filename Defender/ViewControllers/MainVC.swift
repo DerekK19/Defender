@@ -280,19 +280,14 @@ class MainVC: NSViewController {
         }
         DebugPrint("   Model: \(preset?.modelName ?? "-unknown-")")
         DebugPrint("   Cabinet: \(preset?.cabinetName ?? "-unknown-")")
-        DebugPrint("    Stomp: \(preset?.stompEffect?.name ?? "-empty-")")
-        DebugKnobs(forEffect: preset?.stompEffect)
-        DebugPrint("      Mod: \(preset?.modulationEffect?.name ?? "-empty-")")
-        DebugKnobs(forEffect: preset?.modulationEffect)
-        DebugPrint("    Delay: \(preset?.delayEffect?.name ?? "-empty-")")
-        DebugKnobs(forEffect: preset?.delayEffect)
-        DebugPrint("   Reverb: \(preset?.reverbEffect?.name ?? "-empty-")")
-        DebugKnobs(forEffect: preset?.reverbEffect)
+        for effect in preset?.effects ?? [DTOEffect]() {
+            DebugPrint("    \(effect.type.rawValue): \(effect.name ?? "-empty-") - \(effect.enabled ? "ON" : "OFF")")
+            DebugKnobs(forEffect: effect)
+        }
         displayVC?.configureWithPreset(preset)
-        displayEffect(preset?.modulationEffect)
-        displayEffect(preset?.delayEffect)
-        displayEffect(preset?.reverbEffect)
-        displayEffect(preset?.stompEffect)
+        for effect in preset?.effects ?? [DTOEffect]() {
+            displayEffect(effect)
+        }
     }
 
     private func displayEffect(_ effect: DTOEffect?) {

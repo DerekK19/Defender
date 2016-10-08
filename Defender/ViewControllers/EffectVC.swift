@@ -17,6 +17,7 @@ class EffectVC: NSViewController {
     @IBOutlet weak var nameLabel: NSTextField!
 
     let slotBackgroundColour = NSColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+    let stompBackgroundColour = NSColor(red: 0.22, green: 0.30, blue: 0.25, alpha: 1.0)
     let modBackgroundColour = NSColor(red: 0.30, green: 0.30, blue: 0.41, alpha: 1.0)
     let delayBackgroundColour = NSColor(red: 0.49, green: 0.49, blue: 0.49, alpha: 1.0)
     let reverbBackgroundColour = NSColor(red: 0.11, green: 0.28, blue: 0.43, alpha: 1.0)
@@ -71,16 +72,16 @@ class EffectVC: NSViewController {
     }
     
     func configureWithEffect(_ effect: DTOEffect?) {
-        typeLabel.stringValue = effect?.type ?? ""
+        typeLabel.stringValue = effect?.type.rawValue ?? ""
         nameLabel.stringValue = effect?.name?.uppercased() ?? ""
-        switch effect?.type ?? "" {
-        case "STOMP BOX":
-            fullBackgroundColour = slotBackgroundColour
-        case "MODULATION":
+        switch effect?.type ?? .Unknown {
+        case .Stomp:
+            fullBackgroundColour = stompBackgroundColour
+        case .Modulation:
             fullBackgroundColour = modBackgroundColour
-        case "DELAY":
+        case .Delay:
             fullBackgroundColour = delayBackgroundColour
-        case "REVERB":
+        case .Reverb:
             fullBackgroundColour = reverbBackgroundColour
         default:
             fullBackgroundColour = slotBackgroundColour
