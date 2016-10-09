@@ -126,7 +126,7 @@
                                 <rect key="frame" x="5" y="5" width="110" height="120"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="99X-wj-lRs">
-                                        <rect key="frame" x="49" y="96" width="12" height="14"/>
+                                        <rect key="frame" x="49" y="76" width="12" height="14"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="-" usesSingleLineMode="YES" id="rRq-hP-xrk">
                                             <font key="font" size="11" name="Helvetica"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -134,7 +134,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <box boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="NKL-Np-NFC">
-                                        <rect key="frame" x="4" y="94" width="102" height="1"/>
+                                        <rect key="frame" x="4" y="74" width="102" height="1"/>
                                         <view key="contentView" id="tww-4L-7Dg">
                                             <rect key="frame" x="1" y="1" width="100" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,7 +146,7 @@
                                         <color key="fillColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </box>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ggS-Se-wjN">
-                                        <rect key="frame" x="49" y="71" width="12" height="23"/>
+                                        <rect key="frame" x="49" y="51" width="12" height="23"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="-" usesSingleLineMode="YES" id="gLc-sI-c61">
                                             <font key="font" size="14" name="Futura-CondensedExtraBold"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -154,10 +154,10 @@
                                         </textFieldCell>
                                     </textField>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="nPh-z4-XNt" customClass="PedalPadControl" customModule="Defender" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="5" width="100" height="66"/>
+                                        <rect key="frame" x="7" y="5" width="96" height="48"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KOq-bo-tpV">
-                                                <rect key="frame" x="15" y="6" width="71" height="54"/>
+                                                <rect key="frame" x="24" y="6" width="48" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="KOq-bo-tpV" secondAttribute="height" multiplier="4:3" id="lvC-RW-SHt"/>
                                                 </constraints>
@@ -191,23 +191,23 @@
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="99X-wj-lRs" secondAttribute="trailing" constant="5" id="0Z9-BM-2F0"/>
                                     <constraint firstItem="ggS-Se-wjN" firstAttribute="centerX" secondItem="YJe-ax-MA8" secondAttribute="centerX" id="1af-rv-0Pc"/>
                                     <constraint firstItem="ggS-Se-wjN" firstAttribute="top" secondItem="NKL-Np-NFC" secondAttribute="bottom" id="30L-gw-kDy"/>
-                                    <constraint firstItem="nPh-z4-XNt" firstAttribute="top" secondItem="ggS-Se-wjN" secondAttribute="bottom" id="8cf-R6-LJG"/>
+                                    <constraint firstItem="nPh-z4-XNt" firstAttribute="top" secondItem="ggS-Se-wjN" secondAttribute="bottom" constant="-2" id="8cf-R6-LJG"/>
                                     <constraint firstAttribute="trailing" secondItem="NKL-Np-NFC" secondAttribute="trailing" constant="4" id="DbW-Yb-UAB"/>
                                     <constraint firstItem="NKL-Np-NFC" firstAttribute="top" secondItem="99X-wj-lRs" secondAttribute="bottom" constant="1" id="Fmg-Ew-eYB"/>
                                     <constraint firstItem="NKL-Np-NFC" firstAttribute="leading" secondItem="YJe-ax-MA8" secondAttribute="leading" constant="4" id="Gag-ZX-H1P"/>
                                     <constraint firstItem="rnZ-SO-S3h" firstAttribute="top" secondItem="YJe-ax-MA8" secondAttribute="top" constant="1" id="HiC-5V-aNM"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ggS-Se-wjN" secondAttribute="trailing" constant="5" id="LNi-uz-ll5"/>
                                     <constraint firstItem="99X-wj-lRs" firstAttribute="centerX" secondItem="YJe-ax-MA8" secondAttribute="centerX" id="Lu9-sL-i3B"/>
-                                    <constraint firstAttribute="trailing" secondItem="nPh-z4-XNt" secondAttribute="trailing" constant="5" id="Nqi-9Z-zYQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="nPh-z4-XNt" secondAttribute="trailing" constant="7" id="Nqi-9Z-zYQ"/>
                                     <constraint firstItem="99X-wj-lRs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YJe-ax-MA8" secondAttribute="leading" constant="5" id="XLS-5Q-Hr4"/>
                                     <constraint firstAttribute="bottom" secondItem="nPh-z4-XNt" secondAttribute="bottom" constant="5" id="ZBO-hl-Pt6"/>
                                     <constraint firstItem="Cus-ON-8eg" firstAttribute="leading" secondItem="YJe-ax-MA8" secondAttribute="leading" id="cp5-gf-EYb"/>
                                     <constraint firstItem="Cus-ON-8eg" firstAttribute="top" secondItem="YJe-ax-MA8" secondAttribute="top" constant="1" id="etr-TW-A4a"/>
-                                    <constraint firstItem="nPh-z4-XNt" firstAttribute="leading" secondItem="YJe-ax-MA8" secondAttribute="leading" constant="5" id="ifO-Qz-K3H"/>
+                                    <constraint firstItem="nPh-z4-XNt" firstAttribute="leading" secondItem="YJe-ax-MA8" secondAttribute="leading" constant="7" id="ifO-Qz-K3H"/>
                                     <constraint firstAttribute="trailing" secondItem="rnZ-SO-S3h" secondAttribute="trailing" id="jAc-AZ-xnU"/>
                                     <constraint firstAttribute="width" secondItem="YJe-ax-MA8" secondAttribute="height" multiplier="1:1.1" id="jLO-cK-zCm"/>
                                     <constraint firstItem="ggS-Se-wjN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YJe-ax-MA8" secondAttribute="leading" constant="5" id="kgd-td-WiO"/>
-                                    <constraint firstItem="99X-wj-lRs" firstAttribute="top" secondItem="YJe-ax-MA8" secondAttribute="top" constant="10" id="wZs-QV-GKL"/>
+                                    <constraint firstItem="99X-wj-lRs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="YJe-ax-MA8" secondAttribute="top" constant="8" id="wZs-QV-GKL"/>
                                 </constraints>
                             </customView>
                         </subviews>
@@ -247,6 +247,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pedal-logo" width="24" height="18"/>
+        <image name="pedal-logo" width="48" height="36"/>
     </resources>
 </document>

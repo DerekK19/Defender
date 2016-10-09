@@ -33,7 +33,7 @@ class EffectKnobControl: NSView {
             lockFocus()
             var colour = backgroundColour
             colour.setFill()
-            let rect = NSBezierPath(roundedRect: dirtyRect, xRadius: bounds.width / 2, yRadius: bounds.height / 2)
+            var rect = NSBezierPath(roundedRect: dirtyRect, xRadius: bounds.width / 2, yRadius: bounds.height / 2)
             rect.fill()
             colour = foregroundColour
             let fraction = self.minValue + (self._floatValue * (self.maxValue - self.minValue))
@@ -43,15 +43,13 @@ class EffectKnobControl: NSView {
             let centreX = bounds.width / 2
             let centreY = bounds.height / 2
             let radius = bounds.width / 2
-            let startPoint = NSMakePoint(centreX + (radius-4) * dirX, centreY + (radius-4) * dirY)
-            let endPoint = NSMakePoint(centreX + radius * dirX, centreY + radius * dirY)
-//            NSLog("Value \(_floatValue) - angle \(angle). In \(bounds). Line from \(startPoint) to \(endPoint)")
-            let line = NSBezierPath()
-            line.move(to: startPoint)
-            line.line(to: endPoint)
-            line.lineWidth = 1.0
+            let dotRadius = CGFloat(1.5)
+            let midPoint = NSMakePoint(centreX + (radius-3) * dirX, centreY + (radius-3) * dirY)
+            let dotRect = NSMakeRect(midPoint.x - dotRadius, midPoint.y - dotRadius, dotRadius * 2.0, dotRadius * 2.0)
+            rect = NSBezierPath(roundedRect: dotRect, xRadius: dotRadius, yRadius: dotRadius)
             colour.set()
-            line.stroke()
+            rect.stroke()
+            rect.fill()
             unlockFocus()
         }
     }

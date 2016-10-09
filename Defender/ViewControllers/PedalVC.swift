@@ -51,12 +51,15 @@ class PedalVC: NSViewController {
                 self.knobLowerLeft.isHidden = true
                 self.knobLowerMiddle.isHidden = true
                 self.knobLowerRight.isHidden = true
+                self.pedalLogo.isHidden = true
             case .off:
                 newBackgroundColour = fullBackgroundColour
                 self.powerLED.backgroundColour = NSColor.red.withBrightness(0.5)
+                self.pedalLogo.isHidden = false
             case .on:
                 newBackgroundColour = fullBackgroundColour
                 self.powerLED.backgroundColour = NSColor.red
+                self.pedalLogo.isHidden = false
             }
             self.slot.backgroundColour = slotBackgroundColour
             self.pedalBackgroundColour = newBackgroundColour
@@ -101,34 +104,38 @@ class PedalVC: NSViewController {
         } else {
             state = (pedal?.enabled ?? false) ? .on : .off
         }
+        upperKnobs.isHidden = false
+        lowerKnobs.isHidden = false
         if pedal?.knobCount == 1 {
-            knobUpperLeft.isHidden = true
-            knobUpperMiddle.isHidden = true
-            knobUpperRight.isHidden = true
-            knobLowerLeft.isHidden = true
-            knobLowerMiddle.isHidden = false
-            knobLowerRight.isHidden = true
-            knobLowerMiddle.floatValue = pedal?.knobs[0].value ?? 0
-
-        } else if pedal?.knobCount == 2 {
+            lowerKnobs.isHidden = true
             knobUpperLeft.isHidden = true
             knobUpperMiddle.isHidden = false
             knobUpperRight.isHidden = true
             knobLowerLeft.isHidden = true
-            knobLowerMiddle.isHidden = false
-            knobLowerRight.isHidden = true
-            knobUpperMiddle.floatValue = pedal?.knobs[0].value ?? 0
-            knobLowerMiddle.floatValue = pedal?.knobs[1].value ?? 0
-        } else if pedal?.knobCount == 3 {
-            knobUpperLeft.isHidden = true
-            knobUpperMiddle.isHidden = false
-            knobUpperRight.isHidden = true
-            knobLowerLeft.isHidden = false
             knobLowerMiddle.isHidden = true
-            knobLowerRight.isHidden = false
+            knobLowerRight.isHidden = true
             knobUpperMiddle.floatValue = pedal?.knobs[0].value ?? 0
-            knobLowerLeft.floatValue = pedal?.knobs[1].value ?? 0
-            knobLowerRight.floatValue = pedal?.knobs[2].value ?? 0
+        } else if pedal?.knobCount == 2 {
+            lowerKnobs.isHidden = true
+            knobUpperLeft.isHidden = false
+            knobUpperMiddle.isHidden = true
+            knobUpperRight.isHidden = false
+            knobLowerLeft.isHidden = true
+            knobLowerMiddle.isHidden = true
+            knobLowerRight.isHidden = true
+            knobUpperLeft.floatValue = pedal?.knobs[0].value ?? 0
+            knobUpperRight.floatValue = pedal?.knobs[1].value ?? 0
+        } else if pedal?.knobCount == 3 {
+            lowerKnobs.isHidden = true
+            knobUpperLeft.isHidden = false
+            knobUpperMiddle.isHidden = false
+            knobUpperRight.isHidden = false
+            knobLowerLeft.isHidden = true
+            knobLowerMiddle.isHidden = true
+            knobLowerRight.isHidden = true
+            knobUpperLeft.floatValue = pedal?.knobs[0].value ?? 0
+            knobUpperMiddle.floatValue = pedal?.knobs[1].value ?? 0
+            knobUpperRight.floatValue = pedal?.knobs[2].value ?? 0
         } else if pedal?.knobCount == 4 {
             knobUpperLeft.isHidden = false
             knobUpperMiddle.isHidden = true
