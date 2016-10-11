@@ -38,6 +38,8 @@ class PedalVC: NSViewController {
     var fullBackgroundColour = NSColor.black
     var pedalBackgroundColour = NSColor.black
     
+    let verbose = true
+    
     var state: EffectState = .disabled {
         didSet {
             var newBackgroundColour = NSColor()
@@ -82,6 +84,13 @@ class PedalVC: NSViewController {
         self.state = .disabled
         self.typeLabel.stringValue = ""
         self.nameLabel.stringValue = ""
+        
+        knobUpperLeft.delegate = self
+        knobUpperMiddle.delegate = self
+        knobUpperRight.delegate = self
+        knobLowerLeft.delegate = self
+        knobLowerMiddle.delegate = self
+        knobLowerRight.delegate = self
     }
     
     func configureWithPedal(_ pedal: DTOEffect?) {
@@ -175,4 +184,36 @@ class PedalVC: NSViewController {
         }
     }
     
+    // MARK: Debug logging
+    internal func DebugPrint(_ text: String) {
+        if (verbose) {
+            print(text)
+        }
+    }
+    
 }
+
+
+extension PedalVC: PedalKnobDelegate {
+    
+    func valueDidChangeForKnob(_ sender: PedalKnobControl, value: Float) {
+        switch sender {
+        case knobUpperLeft:
+            DebugPrint("New upper left knob is \(value)")
+        case knobUpperMiddle:
+            DebugPrint("New upper middle knob is \(value)")
+        case knobUpperRight:
+            DebugPrint("New upper right knob is \(value)")
+        case knobLowerLeft:
+            DebugPrint("New lower left knob is \(value)")
+        case knobLowerMiddle:
+            DebugPrint("New lower middle knob is \(value)")
+        case knobLowerRight:
+            DebugPrint("New lower right knob is \(value)")
+        default:
+            NSLog("Don't know what knob sent this event")
+        }
+    }
+}
+
+

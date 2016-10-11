@@ -8,6 +8,10 @@
 
 import Cocoa
 
+protocol PedalKnobDelegate {
+    func valueDidChangeForKnob(_ sender: PedalKnobControl, value: Float)
+}
+
 class PedalKnobControl: NSView {
     
     var backgroundColour: NSColor = NSColor.black {
@@ -17,8 +21,19 @@ class PedalKnobControl: NSView {
     }
     var foregroundColour: NSColor = NSColor.white
     
+    let pixelsPerTick: Float = 40.0
+    
     var minValue: Float = 0.1
     var maxValue: Float = 0.9
+    
+    var minStop: Float = 0.0
+    var maxStop: Float = 1.0
+    
+    var startMouse: NSPoint!
+    var startValue: Float = 1.0
+    var direction: Float = 1.0
+    
+    var delegate: PedalKnobDelegate?
     
     fileprivate var _floatValue: Float = 0.0
     var floatValue: Float = 0.0 {
@@ -28,6 +43,31 @@ class PedalKnobControl: NSView {
         }
     }
     
+    // Event handling
+    override var acceptsFirstResponder: Bool {
+        return true
+    }
+    
+    override func mouseDown(with theEvent: NSEvent) {
+        startMouse = theEvent.locationInWindow
+        startValue = _floatValue
+        let midX = (self.frame.origin.x + (self.frame.width / 2.0))
+        direction = startMouse.x < midX ? 1.0 : -1.0
+    }
+    
+    override func mouseDragged(with theEvent: NSEvent) {
+        let yChange = Float(theEvent.locationInWindow.y - startMouse.y) * direction
+        _floatValue = min(max(startValue + (yChange / pixelsPerTick), minStop), maxStop)
+        setNeedsDisplay(self.bounds)
+    }
+    
+    override func mouseUp(with theEvent: NSEvent) {
+        let yChange = Float(theEvent.locationInWindow.y - startMouse.y) * direction
+        floatValue = min(max(startValue + (yChange / pixelsPerTick), minStop), maxStop)
+        delegate?.valueDidChangeForKnob(self, value: floatValue)
+    }
+    
+    // Drawing
     override func draw(_ dirtyRect: NSRect) {
         if !isHidden {
             lockFocus()

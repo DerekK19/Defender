@@ -32,6 +32,8 @@ class EffectVC: NSViewController {
     var fullBackgroundColour = NSColor.black
     var effectBackgroundColour = NSColor.black
 
+    let verbose = true
+    
     var state: EffectState = .disabled {
         didSet {
             var newBackgroundColour = NSColor()
@@ -72,6 +74,13 @@ class EffectVC: NSViewController {
         self.state = .disabled
         self.typeLabel.stringValue = ""
         self.nameLabel.stringValue = ""
+        
+        knob1.delegate = self
+        knob2.delegate = self
+        knob3.delegate = self
+        knob4.delegate = self
+        knob5.delegate = self
+        knob6.delegate = self
     }
     
     func configureWithEffect(_ effect: DTOEffect?) {
@@ -121,4 +130,35 @@ class EffectVC: NSViewController {
         }
     }
     
+    // MARK: Debug logging
+    internal func DebugPrint(_ text: String) {
+        if (verbose) {
+            print(text)
+        }
+    }
+
 }
+
+extension EffectVC: EffectKnobDelegate {
+    
+    func valueDidChangeForKnob(_ sender: EffectKnobControl, value: Float) {
+        switch sender {
+        case knob1:
+            DebugPrint("New knob 1 is \(value)")
+        case knob2:
+            DebugPrint("New knob 2 is \(value)")
+        case knob3:
+            DebugPrint("New knob 3 is \(value)")
+        case knob4:
+            DebugPrint("New knob 4 is \(value)")
+        case knob5:
+            DebugPrint("New knob 5 is \(value)")
+        case knob6:
+            DebugPrint("New knob 5 is \(value)")
+        default:
+            NSLog("Don't know what knob sent this event")
+        }
+    }
+}
+
+
