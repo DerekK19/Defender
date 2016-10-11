@@ -11,6 +11,8 @@ import Mustang
 
 class AmpController {
     
+    private let mustang = Mustang(mockMode: false)
+    
     private var amplifiers = [DTOAmplifier]()
     private var currentAmplifier: DTOAmplifier?
     private var presets = [UInt8 : DTOPreset] ()
@@ -24,13 +26,13 @@ class AmpController {
     init() {
         presets = [UInt8 : DTOPreset] ()
         currentAmplifier = nil
-        amplifiers = Mustang().getConnectedAmplifiers()
+        amplifiers = mustang.getConnectedAmplifiers()
         currentAmplifier = amplifiers.first
     }
 
     func getPresets(_ onCompletion: @escaping () -> ()) {
         if let amplifier = currentAmplifier {
-            Mustang().getPresets(amplifier) { (presets) in
+            mustang.getPresets(amplifier) { (presets) in
                 for preset in presets {
                     self.presets[preset.number] = preset
                 }
@@ -44,7 +46,7 @@ class AmpController {
             if preset >= 0 && preset < presets.count && presets[UInt8(preset)]?.gain1 != nil {
                 onCompletion(presets[UInt8(preset)])
             } else {
-                Mustang().getPreset(
+                mustang.getPreset(
                     amplifier,
                     preset: UInt8(preset)) { (preset) in
                         DispatchQueue.main.async {
