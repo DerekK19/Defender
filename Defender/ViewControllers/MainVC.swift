@@ -209,7 +209,7 @@ class MainVC: NSViewController {
     }
     
     fileprivate func displayPreset(_ value: Int) {
-        ampController.getPreset(value) { (preset) in
+        ampController.getCachedPreset(value) { (preset) in
             self.displayPreset(preset)
         }
     }

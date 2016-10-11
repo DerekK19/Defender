@@ -41,6 +41,14 @@ class AmpController {
         }
     }
     
+    open func getCachedPreset(_ preset: Int, onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
+        if let _ = currentAmplifier {
+            if preset >= 0 && preset < presets.count {
+                onCompletion(presets[UInt8(preset)])
+            }
+        }
+    }
+
     open func getPreset(_ preset: Int, onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
         if let amplifier = currentAmplifier {
             if preset >= 0 && preset < presets.count && presets[UInt8(preset)]?.gain1 != nil {
