@@ -47,16 +47,14 @@ class MainVC: NSViewController {
     @IBOutlet weak var pedal3VC: PedalVC?
     @IBOutlet weak var pedal4VC: PedalVC?
     
-    var amplifiers = [DTOAmplifier]()
-    var currentAmplifier: DTOAmplifier?
-    var presets = [UInt8 : DTOPreset] ()
-
+    fileprivate var ampController: AmpController!
+    
     let verbose = true
     
     fileprivate var powerState: PowerState = .off {
         didSet {
             self.powerButton.powerState = powerState
-            self.powerButton.isEnabled = currentAmplifier != nil
+            self.powerButton.isEnabled = ampController.hasAnAmplifier
             self.utilButton.powerState = powerState
             self.saveButton.powerState = powerState
             self.exitButton.powerState = powerState
@@ -156,16 +154,11 @@ class MainVC: NSViewController {
         } else {
             DebugPrint(" Powering on")
             sender.state = NSOffState
-            if let amplifier = currentAmplifier {
-                Mustang().getPresets(amplifier) { (presets) in
-                    DispatchQueue.main.async {
-                        for preset in presets {
-                            self.presets[preset.number] = preset
-                        }
-                        self.powerState = .on
-                        self.valueDidChangeForWheel(self.wheel, value: 0)
-                        sender.state = NSOnState
-                    }
+            ampController.getPresets() {
+                DispatchQueue.main.async {
+                    self.powerState = .on
+                    self.valueDidChangeForWheel(self.wheel, value: 0)
+                    sender.state = NSOnState
                 }
             }
         }
@@ -173,9 +166,6 @@ class MainVC: NSViewController {
     
     // MARK: Private Functions
     fileprivate func reset() {
-        presets = [UInt8 : DTOPreset] ()
-        currentAmplifier = nil
-        amplifiers = [DTOAmplifier]()
         powerButton.state = NSOffState
         powerState = .off
     }
@@ -208,20 +198,20 @@ class MainVC: NSViewController {
     }
     
     fileprivate func configureAmplifiers() {
-        amplifiers = Mustang().getConnectedAmplifiers()
+        ampController = AmpController()
         DispatchQueue.main.async {
-            self.currentAmplifier = self.amplifiers.first
-            self.configureAmplifier(self.currentAmplifier)
+            self.configureAmplifier()
         }
     }
     
-    fileprivate func configureAmplifier(_ amplifier: DTOAmplifier?) {
+    fileprivate func configureAmplifier() {
         powerState = .off
     }
     
     fileprivate func displayPreset(_ value: Int) {
-        let preset = presets[UInt8(value)]
-        displayPreset(preset)
+        ampController.getPreset(value) { (preset) in
+            self.displayPreset(preset)
+        }
     }
     
     fileprivate func displayPreset(_ preset: DTOPreset?) {
@@ -371,24 +361,9 @@ extension MainVC: WheelDelegate {
             //DebugPrint("Wheel value changed to \(value)")
             saveButton.setState(.active)
             exitButton.setState(.active)
-            if value >= 0 && value < presets.count {
-                if let preset = presets[UInt8(value)],  let _ = preset.gain1 {
-                    displayPreset(preset)
-                } else {
-                    if let amplifier = currentAmplifier {
-                        Mustang().getPreset(
-                            amplifier,
-                            preset: UInt8(value)) { (preset) in
-                                DispatchQueue.main.async {
-                                    if let preset = preset {
-                                        self.presets[preset.number] = preset
-                                        if let _ = preset.gain1 {
-                                            self.displayPreset(preset)
-                                        }
-                                    }
-                                }
-                        }
-                    }
+            ampController.getPreset(value) { (preset) in
+                DispatchQueue.main.async {
+                    self.displayPreset(preset)
                 }
             }
         default:
