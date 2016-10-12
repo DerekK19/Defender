@@ -9,10 +9,14 @@
 import Cocoa
 import Mustang
 
+protocol EffectVCDelegate {
+    func settingsDidChangeForEffect(_ sender: EffectVC)
+}
+
 class EffectVC: NSViewController {
 
     @IBOutlet weak var slot: EffectSlotControl!
-    @IBOutlet weak var effect: EffectControl!
+    @IBOutlet weak var chassis: EffectControl!
     @IBOutlet weak var typeLabel: NSTextField!
     @IBOutlet weak var nameLabel: NSTextField!
     @IBOutlet weak var powerLED: LEDControl!
@@ -22,6 +26,10 @@ class EffectVC: NSViewController {
     @IBOutlet weak var knob4: EffectKnobControl!
     @IBOutlet weak var knob5: EffectKnobControl!
     @IBOutlet weak var knob6: EffectKnobControl!
+
+    var effect: DTOEffect?
+    
+    var delegate: EffectVCDelegate?
 
     let slotBackgroundColour = NSColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
     let stompBackgroundColour = NSColor(red: 0.22, green: 0.30, blue: 0.25, alpha: 1.0)
@@ -56,7 +64,7 @@ class EffectVC: NSViewController {
             }
             self.slot.backgroundColour = slotBackgroundColour
             self.effectBackgroundColour = newBackgroundColour
-            self.effect.backgroundColour = newBackgroundColour
+            self.chassis.backgroundColour = newBackgroundColour
         }
     }
     
@@ -84,6 +92,8 @@ class EffectVC: NSViewController {
     }
     
     func configureWithEffect(_ effect: DTOEffect?) {
+        self.effect = effect
+        delegate = nil
         typeLabel.stringValue = effect?.type.rawValue.uppercased() ?? ""
         nameLabel.stringValue = effect?.name?.uppercased() ?? ""
         switch effect?.type ?? .Unknown {
@@ -145,16 +155,28 @@ extension EffectVC: EffectKnobDelegate {
         switch sender {
         case knob1:
             DebugPrint("New knob 1 is \(value)")
+            effect!.knobs[0].value = value
+            delegate?.settingsDidChangeForEffect(self)
         case knob2:
             DebugPrint("New knob 2 is \(value)")
+            effect!.knobs[1].value = value
+            delegate?.settingsDidChangeForEffect(self)
         case knob3:
             DebugPrint("New knob 3 is \(value)")
+            effect!.knobs[2].value = value
+            delegate?.settingsDidChangeForEffect(self)
         case knob4:
             DebugPrint("New knob 4 is \(value)")
+            effect!.knobs[3].value = value
+            delegate?.settingsDidChangeForEffect(self)
         case knob5:
             DebugPrint("New knob 5 is \(value)")
+            effect!.knobs[4].value = value
+            delegate?.settingsDidChangeForEffect(self)
         case knob6:
             DebugPrint("New knob 5 is \(value)")
+            effect!.knobs[5].value = value
+            delegate?.settingsDidChangeForEffect(self)
         default:
             NSLog("Don't know what knob sent this event")
         }

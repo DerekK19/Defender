@@ -1,5 +1,5 @@
 //
-//  KnobControl.swift
+//  AmpKnobControl.swift
 //  Defender
 //
 //  Created by Derek Knight on 7/08/16.
@@ -8,11 +8,11 @@
 
 import Cocoa
 
-protocol KnobDelegate {
-    func valueDidChangeForKnob(_ sender: KnobControl, value: Float)
+protocol AmpKnobDelegate {
+    func valueDidChangeForKnob(_ sender: AmpKnobControl, value: Float)
 }
 
-class KnobControl: NSView {
+class AmpKnobControl: NSView {
 
     let pixelsPerTick: Float = 15.0
     
@@ -26,7 +26,7 @@ class KnobControl: NSView {
     var startValue: Float = 1.0
     var direction: Float = 1.0
     
-    var delegate: KnobDelegate?
+    var delegate: AmpKnobDelegate?
     
     fileprivate var _floatValue: Float = 1.0
     var floatValue: Float = 1.0 {

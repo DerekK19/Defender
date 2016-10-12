@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="h8b-nj-UXe">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11521.1" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="h8b-nj-UXe">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11521.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -51,7 +51,7 @@
                                                 </constraints>
                                             </customView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="y36-ab-NG3" customClass="EffectKnobControl" customModule="Defender" customModuleProvider="target">
-                                                <rect key="frame" x="64" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="64.5" y="0.0" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="y36-ab-NG3" secondAttribute="height" multiplier="1:1" id="4M8-mJ-P4y"/>
                                                 </constraints>
@@ -69,7 +69,7 @@
                                                 </constraints>
                                             </customView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="pTL-au-jgW" customClass="EffectKnobControl" customModule="Defender" customModuleProvider="target">
-                                                <rect key="frame" x="258" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="257.5" y="0.0" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="pTL-au-jgW" secondAttribute="height" multiplier="1:1" id="3TL-DH-576"/>
                                                 </constraints>
@@ -129,7 +129,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="effect" destination="9t8-4r-wlp" id="ABN-4j-GW6"/>
+                        <outlet property="chassis" destination="9t8-4r-wlp" id="hbf-MI-q6p"/>
                         <outlet property="knob1" destination="7ja-hc-XqG" id="KVg-UU-CVJ"/>
                         <outlet property="knob2" destination="y36-ab-NG3" id="jAE-X8-jcF"/>
                         <outlet property="knob3" destination="Wpd-Cd-eX9" id="Ls3-Jr-KId"/>

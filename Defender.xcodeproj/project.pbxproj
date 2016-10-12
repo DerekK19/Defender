@@ -17,7 +17,7 @@
 		655A5A5E1D4C555500E15E1F /* DefenderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A5A5D1D4C555500E15E1F /* DefenderUITests.swift */; };
 		656A5ABB1DA880B700B7BE3E /* LEDControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656A5ABA1DA880B700B7BE3E /* LEDControl.swift */; };
 		656A5ABD1DA883BB00B7BE3E /* NSColor+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656A5ABC1DA883BB00B7BE3E /* NSColor+Brightness.swift */; };
-		657C3AC81D56DB8E002DEF17 /* KnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C3AC71D56DB8E002DEF17 /* KnobControl.swift */; };
+		657C3AC81D56DB8E002DEF17 /* AmpKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C3AC71D56DB8E002DEF17 /* AmpKnobControl.swift */; };
 		657C3AD01D5C46E6002DEF17 /* DisplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C3ACF1D5C46E6002DEF17 /* DisplayVC.swift */; };
 		657C3AD61D5C50B8002DEF17 /* Display.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 657C3AD41D5C50B8002DEF17 /* Display.storyboard */; };
 		6581F99C1D4C5D97005BB5C9 /* Mustang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6581F99A1D4C5D97005BB5C9 /* Mustang.framework */; };
@@ -76,7 +76,7 @@
 		655A5F4F1D4C57E100E15E1F /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		656A5ABA1DA880B700B7BE3E /* LEDControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEDControl.swift; sourceTree = "<group>"; };
 		656A5ABC1DA883BB00B7BE3E /* NSColor+Brightness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Brightness.swift"; sourceTree = "<group>"; };
-		657C3AC71D56DB8E002DEF17 /* KnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobControl.swift; sourceTree = "<group>"; };
+		657C3AC71D56DB8E002DEF17 /* AmpKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmpKnobControl.swift; sourceTree = "<group>"; };
 		657C3ACF1D5C46E6002DEF17 /* DisplayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayVC.swift; sourceTree = "<group>"; };
 		657C3AD51D5C50B8002DEF17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Display.storyboard; sourceTree = "<group>"; };
 		6581F99A1D4C5D97005BB5C9 /* Mustang.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mustang.framework; path = Carthage/Build/Mac/Mustang.framework; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 		657C3AC61D56DB78002DEF17 /* Custom Controls */ = {
 			isa = PBXGroup;
 			children = (
-				657C3AC71D56DB8E002DEF17 /* KnobControl.swift */,
+				657C3AC71D56DB8E002DEF17 /* AmpKnobControl.swift */,
 				7167FF3D1D592E070059A276 /* WheelControl.swift */,
 				7167FEDB1D5815270059A276 /* DisplayControl.swift */,
 				656A5ABA1DA880B700B7BE3E /* LEDControl.swift */,
@@ -425,7 +425,7 @@
 				658CEC0B1DA36977006890A4 /* EffectControl.swift in Sources */,
 				7167FEDC1D5815270059A276 /* DisplayControl.swift in Sources */,
 				658CEC0D1DA36AAA006890A4 /* PedalBodyControl.swift in Sources */,
-				657C3AC81D56DB8E002DEF17 /* KnobControl.swift in Sources */,
+				657C3AC81D56DB8E002DEF17 /* AmpKnobControl.swift in Sources */,
 				658CEC0F1DA36D85006890A4 /* Enums.swift in Sources */,
 				7123C50C1DAC46B900ACFDB5 /* AmpController.swift in Sources */,
 				656A5ABD1DA883BB00B7BE3E /* NSColor+Brightness.swift in Sources */,

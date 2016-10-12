@@ -9,6 +9,10 @@
 import Cocoa
 import Mustang
 
+protocol PedalVCDelegate {
+    func settingsDidChangeForPedal(_ sender: PedalVC)
+}
+
 class PedalVC: NSViewController {
 
     @IBOutlet weak var slot: EffectSlotControl!
@@ -28,6 +32,10 @@ class PedalVC: NSViewController {
     @IBOutlet weak var knobLowerLeft: PedalKnobControl!
     @IBOutlet weak var knobLowerMiddle: PedalKnobControl!
     @IBOutlet weak var knobLowerRight: PedalKnobControl!
+    
+    var effect: DTOEffect?
+    
+    var delegate: PedalVCDelegate?
     
     let slotBackgroundColour = NSColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
     let stompBackgroundColour = NSColor(red: 1.0, green: 0.97, blue: 0.31, alpha: 1.0)
@@ -94,6 +102,8 @@ class PedalVC: NSViewController {
     }
     
     func configureWithPedal(_ pedal: DTOEffect?) {
+        effect = pedal
+        delegate = nil
         typeLabel.stringValue = pedal?.type.rawValue.uppercased() ?? ""
         nameLabel.stringValue = pedal?.name?.uppercased() ?? ""
         switch pedal?.type ?? .Unknown {
@@ -197,21 +207,37 @@ class PedalVC: NSViewController {
 extension PedalVC: PedalKnobDelegate {
     
     func valueDidChangeForKnob(_ sender: PedalKnobControl, value: Float) {
-        switch sender {
-        case knobUpperLeft:
-            DebugPrint("New upper left knob is \(value)")
-        case knobUpperMiddle:
-            DebugPrint("New upper middle knob is \(value)")
-        case knobUpperRight:
-            DebugPrint("New upper right knob is \(value)")
-        case knobLowerLeft:
-            DebugPrint("New lower left knob is \(value)")
-        case knobLowerMiddle:
-            DebugPrint("New lower middle knob is \(value)")
-        case knobLowerRight:
-            DebugPrint("New lower right knob is \(value)")
-        default:
-            NSLog("Don't know what knob sent this event")
+        if effect != nil {
+            switch sender {
+            case knobUpperLeft:
+                DebugPrint("New upper left knob is \(value)")
+                effect!.knobs[0].value = value
+                delegate?.settingsDidChangeForPedal(self)
+            case knobUpperMiddle:
+                DebugPrint("New upper middle knob is \(value)")
+                effect!.knobs[1].value = value
+                delegate?.settingsDidChangeForPedal(self)
+            case knobUpperRight:
+                DebugPrint("New upper right knob is \(value)")
+                effect!.knobs[2].value = value
+                delegate?.settingsDidChangeForPedal(self)
+            case knobLowerLeft:
+                DebugPrint("New lower left knob is \(value)")
+                effect!.knobs[3].value = value
+                delegate?.settingsDidChangeForPedal(self)
+            case knobLowerMiddle:
+                DebugPrint("New lower middle knob is \(value)")
+                effect!.knobs[4].value = value
+                delegate?.settingsDidChangeForPedal(self)
+            case knobLowerRight:
+                DebugPrint("New lower right knob is \(value)")
+                effect!.knobs[5].value = value
+                delegate?.settingsDidChangeForPedal(self)
+            default:
+                NSLog("Don't know what knob sent this event")
+            }
+        } else {
+            NSLog("Can't get a knob change if there is no pedal")
         }
     }
 }

@@ -25,12 +25,12 @@ class MainVC: NSViewController {
     @IBOutlet weak var middleLabel: NSTextField!
     @IBOutlet weak var bassLabel: NSTextField!
     @IBOutlet weak var reverbLabel: NSTextField!
-    @IBOutlet weak var gainKnob: KnobControl!
-    @IBOutlet weak var volumeKnob: KnobControl!
-    @IBOutlet weak var trebleKnob: KnobControl!
-    @IBOutlet weak var middleKnob: KnobControl!
-    @IBOutlet weak var bassKnob: KnobControl!
-    @IBOutlet weak var reverbKnob: KnobControl!
+    @IBOutlet weak var gainKnob: AmpKnobControl!
+    @IBOutlet weak var volumeKnob: AmpKnobControl!
+    @IBOutlet weak var trebleKnob: AmpKnobControl!
+    @IBOutlet weak var middleKnob: AmpKnobControl!
+    @IBOutlet weak var bassKnob: AmpKnobControl!
+    @IBOutlet weak var reverbKnob: AmpKnobControl!
     @IBOutlet weak var wheel: WheelControl!
     @IBOutlet weak var utilButton: ActionButtonControl!
     @IBOutlet weak var saveButton: ActionButtonControl!
@@ -284,20 +284,28 @@ class MainVC: NSViewController {
         switch effect?.slot ?? -1 {
         case 0:
             pedal1VC?.configureWithPedal(effect)
+            pedal1VC?.delegate = self
         case 1:
             pedal2VC?.configureWithPedal(effect)
+            pedal2VC?.delegate = self
         case 2:
             pedal3VC?.configureWithPedal(effect)
+            pedal3VC?.delegate = self
         case 3:
             pedal4VC?.configureWithPedal(effect)
+            pedal4VC?.delegate = self
         case 4:
             effect1VC?.configureWithEffect(effect)
+            effect1VC?.delegate = self
         case 5:
             effect2VC?.configureWithEffect(effect)
+            effect2VC?.delegate = self
         case 6:
             effect3VC?.configureWithEffect(effect)
+            effect3VC?.delegate = self
         case 7:
             effect4VC?.configureWithEffect(effect)
+            effect4VC?.delegate = self
         default:
             break
         }
@@ -319,9 +327,9 @@ class MainVC: NSViewController {
     }
 }
 
-extension MainVC: KnobDelegate {
+extension MainVC: AmpKnobDelegate {
     
-    func valueDidChangeForKnob(_ sender: KnobControl, value: Float) {
+    func valueDidChangeForKnob(_ sender: AmpKnobControl, value: Float) {
         switch sender {
         case gainKnob:
             DebugPrint("New gain is \(value)")
@@ -337,6 +345,52 @@ extension MainVC: KnobDelegate {
             DebugPrint("New reverb is \(value)")
         default:
             NSLog("Don't know what knob sent this event")
+        }
+        saveButton.setState(.warning)
+        exitButton.setState(.warning)
+    }
+}
+
+extension MainVC: PedalVCDelegate {
+    
+    func settingsDidChangeForPedal(_ sender: PedalVC) {
+        if sender == pedal1VC {
+            DebugPrint("New settings for pedal 1")
+        }
+        else if sender == pedal2VC {
+            DebugPrint("New settings for pedal 2")
+        }
+        else if sender == pedal3VC {
+            DebugPrint("New settings for pedal 3")
+        }
+        else if sender == pedal4VC {
+            DebugPrint("New settings for pedal 4")
+        }
+        else {
+            NSLog("Don't know what pedal sent this event")
+        }
+        saveButton.setState(.warning)
+        exitButton.setState(.warning)
+    }
+}
+
+extension MainVC: EffectVCDelegate {
+    
+    func settingsDidChangeForEffect(_ sender: EffectVC) {
+        if sender == effect1VC {
+            DebugPrint("New settings for effect 1")
+        }
+        else if sender == effect2VC {
+            DebugPrint("New settings for effect 2")
+        }
+        else if sender == effect3VC {
+            DebugPrint("New settings for effect 3")
+        }
+        else if sender == effect4VC {
+            DebugPrint("New settings for effect 4")
+        }
+        else {
+            NSLog("Don't know what effect sent this event")
         }
         saveButton.setState(.warning)
         exitButton.setState(.warning)
