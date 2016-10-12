@@ -24,7 +24,7 @@ class PedalKnobControl: NSView {
     let pixelsPerTick: Float = 40.0
     
     var minValue: Float = 0.1
-    var maxValue: Float = 0.9
+    var maxValue: Float = 1.16
     
     var minStop: Float = 0.0
     var maxStop: Float = 1.0
@@ -51,13 +51,16 @@ class PedalKnobControl: NSView {
     override func mouseDown(with theEvent: NSEvent) {
         startMouse = theEvent.locationInWindow
         startValue = _floatValue
-        let midX = (self.frame.origin.x + (self.frame.width / 2.0))
-        direction = startMouse.x < midX ? 1.0 : -1.0
+        let viewMouse = self.convert(startMouse!, from: nil)
+        let midX = self.frame.width / 2.0
+        direction = viewMouse.x < midX ? 1.0 : -1.0
+        NSLog("start - \(startMouse!) [\(viewMouse)], midx - \(midX), direction \(direction)")
     }
     
     override func mouseDragged(with theEvent: NSEvent) {
         let yChange = Float(theEvent.locationInWindow.y - startMouse.y) * direction
         _floatValue = min(max(startValue + (yChange / pixelsPerTick), minStop), maxStop)
+        NSLog("y change - \(yChange) -> floatValue \(_floatValue)")
         setNeedsDisplay(self.bounds)
     }
     
@@ -73,7 +76,7 @@ class PedalKnobControl: NSView {
             lockFocus()
             if let knobImage = NSImage(named: "pedal-knob") {
                 let fraction = (self._floatValue - self.minValue) / (self.maxValue - self.minValue)
-                let angle = -CGFloat(fraction * 360.0)
+                let angle = -CGFloat(fraction * 360.0) - 30.0
                 let rotatedKnob = self.imageRotatedByDegrees(knobImage, degrees: angle)
                 let copyRect = NSMakeRect((rotatedKnob.size.width-dirtyRect.size.width)/2.0, (rotatedKnob.size.height-dirtyRect.size.height)/2.0, dirtyRect.width, dirtyRect.height)
                 rotatedKnob.draw(in: dirtyRect, from: copyRect, operation: .sourceOver, fraction: 1.0)

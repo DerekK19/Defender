@@ -51,8 +51,9 @@ class EffectKnobControl: NSView {
     override func mouseDown(with theEvent: NSEvent) {
         startMouse = theEvent.locationInWindow
         startValue = _floatValue
-        let midX = (self.frame.origin.x + (self.frame.width / 2.0))
-        direction = startMouse.x < midX ? 1.0 : -1.0
+        let viewMouse = self.convert(startMouse!, from: nil)
+        let midX = self.frame.width / 2.0
+        direction = viewMouse.x < midX ? 1.0 : -1.0
     }
     
     override func mouseDragged(with theEvent: NSEvent) {
