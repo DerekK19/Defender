@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		652564491DA8972A00ACCD4B /* PedalKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652564481DA8972A00ACCD4B /* PedalKnobControl.swift */; };
 		6525644B1DA89FCD00ACCD4B /* EffectKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6525644A1DA89FCD00ACCD4B /* EffectKnobControl.swift */; };
+		65426BA21DB0930300E54D35 /* KnobBaseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65426BA11DB0930300E54D35 /* KnobBaseControl.swift */; };
 		655A5A411D4C555400E15E1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A5A401D4C555400E15E1F /* AppDelegate.swift */; };
 		655A5A431D4C555500E15E1F /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A5A421D4C555500E15E1F /* MainVC.swift */; };
 		655A5A451D4C555500E15E1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 655A5A441D4C555500E15E1F /* Assets.xcassets */; };
@@ -61,6 +62,7 @@
 /* Begin PBXFileReference section */
 		652564481DA8972A00ACCD4B /* PedalKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalKnobControl.swift; sourceTree = "<group>"; };
 		6525644A1DA89FCD00ACCD4B /* EffectKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectKnobControl.swift; sourceTree = "<group>"; };
+		65426BA11DB0930300E54D35 /* KnobBaseControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobBaseControl.swift; sourceTree = "<group>"; };
 		655A5A3D1D4C555400E15E1F /* Defender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Defender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		655A5A401D4C555400E15E1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		655A5A421D4C555500E15E1F /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		657C3AC61D56DB78002DEF17 /* Custom Controls */ = {
 			isa = PBXGroup;
 			children = (
+				65426BA11DB0930300E54D35 /* KnobBaseControl.swift */,
 				657C3AC71D56DB8E002DEF17 /* AmpKnobControl.swift */,
 				7167FF3D1D592E070059A276 /* WheelControl.swift */,
 				7167FEDB1D5815270059A276 /* DisplayControl.swift */,
@@ -424,6 +427,7 @@
 			files = (
 				658CEC0B1DA36977006890A4 /* EffectControl.swift in Sources */,
 				7167FEDC1D5815270059A276 /* DisplayControl.swift in Sources */,
+				65426BA21DB0930300E54D35 /* KnobBaseControl.swift in Sources */,
 				658CEC0D1DA36AAA006890A4 /* PedalBodyControl.swift in Sources */,
 				657C3AC81D56DB8E002DEF17 /* AmpKnobControl.swift in Sources */,
 				658CEC0F1DA36D85006890A4 /* Enums.swift in Sources */,

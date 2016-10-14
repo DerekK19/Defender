@@ -11,7 +11,7 @@ import Mustang
 
 class AmpController {
     
-    private let mustang = Mustang(mockMode: true)
+    private let mustang = Mustang(mockMode: false)
     
     private var amplifiers = [DTOAmplifier]()
     private var currentAmplifier: DTOAmplifier?
