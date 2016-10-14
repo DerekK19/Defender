@@ -164,6 +164,34 @@ class MainVC: NSViewController {
         }
     }
     
+    @IBAction func willSave(_ sender: ActionButtonControl) {
+        if sender.powerState == .on {
+            DebugPrint("Saving effect")
+            saveButton.setState(.ok)
+            exitButton.setState(.active)
+            ampController.getPreset(Int(self.wheel.floatValue)) { (preset) in
+                DispatchQueue.main.async {
+                    self.displayPreset(preset)
+                    self.saveButton.setState(.active)
+                }
+            }
+        }
+    }
+    
+    @IBAction func willExit(_ sender: ActionButtonControl) {
+        if sender.powerState == .on {
+            DebugPrint("Cancelling save")
+            saveButton.setState(.active)
+            exitButton.setState(.ok)
+            ampController.getPreset(Int(self.wheel.floatValue)) { (preset) in
+                DispatchQueue.main.async {
+                    self.displayPreset(preset)
+                    self.exitButton.setState(.ok)
+                }
+            }
+        }
+    }
+    
     // MARK: Private Functions
     fileprivate func reset() {
         powerButton.state = NSOffState
