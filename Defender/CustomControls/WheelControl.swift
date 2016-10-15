@@ -33,6 +33,8 @@ class WheelControl: NSView {
             setNeedsDisplay(self.bounds)
         }
     }
+    var intValue: Int = 1
+    
     fileprivate var enabled: Bool = true
 
     var powerState: PowerState = .off {
@@ -58,9 +60,9 @@ class WheelControl: NSView {
         if !enabled { return }
         let yChange = Float(theEvent.locationInWindow.y - startMouse.y) * direction
         _floatValue = startValue + (yChange / pixelsPerTick)
-        var intValue = Int(_floatValue) % 100
-        if intValue < 0 { intValue = 100 + intValue }
-        delegate?.valueIsChangingForWheel(self, value: intValue)
+        var _intValue = Int(_floatValue) % 100
+        if _intValue < 0 { _intValue = 100 + _intValue }
+        delegate?.valueIsChangingForWheel(self, value: _intValue)
         setNeedsDisplay(self.bounds)
     }
     
@@ -68,7 +70,7 @@ class WheelControl: NSView {
         if !enabled { return }
         let yChange = Float(theEvent.locationInWindow.y - startMouse.y) * direction
         floatValue = startValue + (yChange / pixelsPerTick)
-        var intValue = Int(floatValue) % 100
+        intValue = Int(floatValue) % 100
         if intValue < 0 { intValue = 100 + intValue }
         delegate?.valueDidChangeForWheel(self, value: intValue)
     }

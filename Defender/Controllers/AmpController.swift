@@ -48,7 +48,7 @@ class AmpController {
             }
         }
     }
-
+    
     open func getPreset(_ preset: Int, onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
         if let amplifier = currentAmplifier {
             if preset >= 0 && preset < presets.count && presets[UInt8(preset)]?.gain1 != nil {
@@ -64,6 +64,61 @@ class AmpController {
                                     onCompletion(preset)
                                 }
                             }
+                        }
+                }
+            }
+        }
+    }
+    
+    open func resetPreset(_ preset: Int, onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
+        if let amplifier = currentAmplifier {
+            mustang.getPreset(
+                amplifier,
+                preset: UInt8(preset)) { (preset) in
+                    DispatchQueue.main.async {
+                        if let preset = preset {
+                            self.presets[preset.number] = preset
+                            if let _ = preset.gain1 {
+                                onCompletion(preset)
+                            }
+                        }
+                    }
+            }
+        }
+    }
+
+    open func setPreset(_ preset: DTOPreset, onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
+        if let amplifier = currentAmplifier {
+            if preset.gain1 == nil {
+                onCompletion(nil)
+            } else {
+                mustang.setPreset(
+                    amplifier,
+                    preset: preset) { (preset) in
+                        DispatchQueue.main.async {
+                            if let preset = preset {
+                                self.presets[preset.number] = preset
+                                if let _ = preset.gain1 {
+                                    onCompletion(preset)
+                                }
+                            }
+                        }
+                }
+            }
+        }
+    }
+    
+    open func savePreset(_ preset: DTOPreset, onCompletion: @escaping (_ saved: Bool?) ->()) {
+        if let amplifier = currentAmplifier {
+            if preset.gain1 == nil {
+                onCompletion(nil)
+            } else {
+                mustang.savePreset(
+                    amplifier,
+                    preset: preset.number,
+                    name: preset.name) { (saved) in
+                        DispatchQueue.main.async {
+                            onCompletion(saved)
                         }
                 }
             }

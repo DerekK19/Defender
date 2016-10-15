@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		651262511DB1F5EF008DEC4B /* Defender.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 655A5A3D1D4C555400E15E1F /* Defender.app */; };
 		652564491DA8972A00ACCD4B /* PedalKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652564481DA8972A00ACCD4B /* PedalKnobControl.swift */; };
 		6525644B1DA89FCD00ACCD4B /* EffectKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6525644A1DA89FCD00ACCD4B /* EffectKnobControl.swift */; };
 		65426BA21DB0930300E54D35 /* KnobBaseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65426BA11DB0930300E54D35 /* KnobBaseControl.swift */; };
@@ -58,6 +59,19 @@
 			remoteInfo = Defender;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		651262501DB1F5A5008DEC4B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "~/Development/AppStore";
+			dstSubfolderSpec = 0;
+			files = (
+				651262511DB1F5EF008DEC4B /* Defender.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		652564481DA8972A00ACCD4B /* PedalKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalKnobControl.swift; sourceTree = "<group>"; };
@@ -266,7 +280,8 @@
 				655A5A3B1D4C555400E15E1F /* Resources */,
 				655A5A391D4C555400E15E1F /* Sources */,
 				655A5A3A1D4C555400E15E1F /* Frameworks */,
-				6581F99E1D4C6772005BB5C9 /* ShellScript */,
+				6581F99E1D4C6772005BB5C9 /* Copy Carthage frameworks (for App Store submission bug) */,
+				651262501DB1F5A5008DEC4B /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -403,7 +418,7 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage-xcode";
 		};
-		6581F99E1D4C6772005BB5C9 /* ShellScript */ = {
+		6581F99E1D4C6772005BB5C9 /* Copy Carthage frameworks (for App Store submission bug) */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -412,6 +427,7 @@
 				"$(SRCROOT)/Carthage/Build/Mac/Mustang.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/ObjectMapper.framework",
 			);
+			name = "Copy Carthage frameworks (for App Store submission bug)";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

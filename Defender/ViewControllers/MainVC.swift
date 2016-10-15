@@ -18,19 +18,19 @@ class MainVC: NSViewController {
     @IBOutlet weak var trebleArrow: NSImageView!
     @IBOutlet weak var middleArrow: NSImageView!
     @IBOutlet weak var bassArrow: NSImageView!
-    @IBOutlet weak var reverbArrow: NSImageView!
+    @IBOutlet weak var presenceArrow: NSImageView!
     @IBOutlet weak var gainLabel: NSTextField!
     @IBOutlet weak var volumeLabel: NSTextField!
     @IBOutlet weak var trebleLabel: NSTextField!
     @IBOutlet weak var middleLabel: NSTextField!
     @IBOutlet weak var bassLabel: NSTextField!
-    @IBOutlet weak var reverbLabel: NSTextField!
+    @IBOutlet weak var presenceLabel: NSTextField!
     @IBOutlet weak var gainKnob: AmpKnobControl!
     @IBOutlet weak var volumeKnob: AmpKnobControl!
     @IBOutlet weak var trebleKnob: AmpKnobControl!
     @IBOutlet weak var middleKnob: AmpKnobControl!
     @IBOutlet weak var bassKnob: AmpKnobControl!
-    @IBOutlet weak var reverbKnob: AmpKnobControl!
+    @IBOutlet weak var presenceKnob: AmpKnobControl!
     @IBOutlet weak var wheel: WheelControl!
     @IBOutlet weak var utilButton: ActionButtonControl!
     @IBOutlet weak var saveButton: ActionButtonControl!
@@ -48,6 +48,8 @@ class MainVC: NSViewController {
     @IBOutlet weak var pedal4VC: PedalVC?
     
     fileprivate var ampController: AmpController!
+    
+    var currentPreset: DTOPreset?
     
     let verbose = true
     
@@ -88,20 +90,20 @@ class MainVC: NSViewController {
         trebleArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
         middleArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
         bassArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
-        reverbArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
+        presenceArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
         gainLabel.textColor = contrastColour
         volumeLabel.textColor = contrastColour
         trebleLabel.textColor = contrastColour
         middleLabel.textColor = contrastColour
         bassLabel.textColor = contrastColour
-        reverbLabel.textColor = contrastColour
+        presenceLabel.textColor = contrastColour
         
         gainKnob.delegate = self
         volumeKnob.delegate = self
         trebleKnob.delegate = self
         middleKnob.delegate = self
         bassKnob.delegate = self
-        reverbKnob.delegate = self
+        presenceKnob.delegate = self
         wheel.delegate = self
         
     }
@@ -166,13 +168,24 @@ class MainVC: NSViewController {
     
     @IBAction func willSave(_ sender: ActionButtonControl) {
         if sender.powerState == .on {
-            DebugPrint("Saving effect")
-            saveButton.setState(.ok)
-            exitButton.setState(.active)
-            ampController.getPreset(Int(self.wheel.floatValue)) { (preset) in
-                DispatchQueue.main.async {
-                    self.displayPreset(preset)
-                    self.saveButton.setState(.active)
+            if let currentPreset = currentPreset {
+                if sender.currentState == .warning {
+                    DebugPrint("Saving effect")
+                    exitButton.setState(.active)
+                    ampController.setPreset(currentPreset, onCompletion: { (preset) in
+                        self.saveButton.setState(.ok)
+                    })
+                }
+                else if sender.currentState == .ok {
+                    DebugPrint("Confirming effect")
+                    ampController.savePreset(currentPreset) { (saved) in
+                        self.ampController.resetPreset(self.wheel.intValue) { (preset) in
+                            DispatchQueue.main.async {
+                                self.displayPreset(preset)
+                                self.saveButton.setState(.active)
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -183,10 +196,10 @@ class MainVC: NSViewController {
             DebugPrint("Cancelling save")
             saveButton.setState(.active)
             exitButton.setState(.ok)
-            ampController.getPreset(Int(self.wheel.floatValue)) { (preset) in
+            ampController.resetPreset(self.wheel.intValue) { (preset) in
                 DispatchQueue.main.async {
                     self.displayPreset(preset)
-                    self.exitButton.setState(.ok)
+                    self.exitButton.setState(.active)
                 }
             }
         }
@@ -291,10 +304,10 @@ class MainVC: NSViewController {
         }
         if let presence = preset?.presence {
             DebugPrint("   Reverb/Presence: \(presence)")
-            reverbKnob.floatValue = presence
+            presenceKnob.floatValue = presence
         } else {
             DebugPrint("   Reverb/Presence: -unset-")
-            reverbKnob.floatValue = 1.0
+            presenceKnob.floatValue = 1.0
         }
         DebugPrint("   Model: \(preset?.modelName ?? "-unknown-")")
         DebugPrint("   Cabinet: \(preset?.cabinetName ?? "-unknown-")")
@@ -361,16 +374,22 @@ extension MainVC: AmpKnobDelegate {
         switch sender {
         case gainKnob:
             DebugPrint("New gain is \(value)")
+            currentPreset?.gain1 = value
         case volumeKnob:
             DebugPrint("New volume is \(value)")
+            currentPreset?.volume = value
         case trebleKnob:
             DebugPrint("New treble is \(value)")
+            currentPreset?.treble = value
         case middleKnob:
             DebugPrint("New middle is \(value)")
+            currentPreset?.middle = value
         case bassKnob:
             DebugPrint("New bass is \(value)")
-        case reverbKnob:
-            DebugPrint("New reverb is \(value)")
+            currentPreset?.bass = value
+        case presenceKnob:
+            DebugPrint("New presence is \(value)")
+            currentPreset?.presence = value
         default:
             NSLog("Don't know what knob sent this event")
         }
@@ -445,6 +464,7 @@ extension MainVC: WheelDelegate {
             exitButton.setState(.active)
             ampController.getPreset(value) { (preset) in
                 DispatchQueue.main.async {
+                    self.currentPreset = preset
                     self.displayPreset(preset)
                 }
             }

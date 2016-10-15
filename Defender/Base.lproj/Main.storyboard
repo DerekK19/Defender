@@ -1193,9 +1193,9 @@
                         <outlet property="middleKnob" destination="mqa-en-iIa" id="pZ0-Sq-wTU"/>
                         <outlet property="middleLabel" destination="Io5-4A-7lu" id="ieC-Zd-6p7"/>
                         <outlet property="powerButton" destination="DSP-LL-at5" id="y5A-VS-JKC"/>
-                        <outlet property="reverbArrow" destination="mRB-nj-xNF" id="er9-IR-t7s"/>
-                        <outlet property="reverbKnob" destination="g3U-Ot-mWR" id="ISY-fS-YEj"/>
-                        <outlet property="reverbLabel" destination="5BL-xr-hVU" id="wdc-9L-aiJ"/>
+                        <outlet property="presenceArrow" destination="mRB-nj-xNF" id="uwi-f4-QfZ"/>
+                        <outlet property="presenceKnob" destination="g3U-Ot-mWR" id="41s-6h-o4B"/>
+                        <outlet property="presenceLabel" destination="5BL-xr-hVU" id="qXW-1W-vcN"/>
                         <outlet property="saveButton" destination="YK0-Z5-9jc" id="i0I-WF-pxA"/>
                         <outlet property="tapButton" destination="0Sv-rg-gjk" id="I9a-XH-HWU"/>
                         <outlet property="trebleArrow" destination="chH-At-FZl" id="5VD-AN-hg0"/>
