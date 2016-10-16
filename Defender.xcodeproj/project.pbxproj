@@ -63,7 +63,7 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		651262501DB1F5A5008DEC4B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "~/Development/AppStore";
 			dstSubfolderSpec = 0;
 			files = (

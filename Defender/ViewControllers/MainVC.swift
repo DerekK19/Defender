@@ -13,6 +13,8 @@ class MainVC: NSViewController {
 
     @IBOutlet weak var openButton: NSButton!
     @IBOutlet weak var powerButton: ActionButtonControl!
+    @IBOutlet weak var statusLED: LEDControl!
+    @IBOutlet weak var statusLabel: NSTextField!
     @IBOutlet weak var gainArrow: NSImageView!
     @IBOutlet weak var volumeArrow: NSImageView!
     @IBOutlet weak var trebleArrow: NSImageView!
@@ -47,7 +49,7 @@ class MainVC: NSViewController {
     @IBOutlet weak var pedal3VC: PedalVC?
     @IBOutlet weak var pedal4VC: PedalVC?
     
-    fileprivate var ampController: AmpController!
+    fileprivate var ampController = AmpController()
     
     var currentPreset: DTOPreset?
     
@@ -80,6 +82,8 @@ class MainVC: NSViewController {
         self.view.wantsLayer = true
 
         // Do any additional setup after loading the view.
+
+        reset()
 
         configureNotifications()
         configureAmplifiers()
@@ -149,7 +153,10 @@ class MainVC: NSViewController {
         }
     }
     
+    // MARK: Action functions
+    
     @IBAction func willPowerAmplifier(_ sender: ActionButtonControl) {
+        if !ampController.hasAnAmplifier { return }
         if sender.state == NSOffState {
             DebugPrint(" Powering off")
             self.powerState = .off
@@ -207,6 +214,9 @@ class MainVC: NSViewController {
     
     // MARK: Private Functions
     fileprivate func reset() {
+        statusLED.backgroundColour = .red
+        statusLabel.stringValue = "No amplifier connected"
+        statusLabel.textColor = .white
         powerButton.state = NSOffState
         powerState = .off
     }
@@ -220,6 +230,8 @@ class MainVC: NSViewController {
 
     @objc fileprivate func deviceConnected() {
         DebugPrint(" Connected")
+        statusLED.backgroundColour = .green
+        statusLabel.stringValue = ""
     }
     
     @objc fileprivate func deviceOpened() {
