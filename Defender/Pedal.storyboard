@@ -4,6 +4,7 @@
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -210,13 +211,20 @@
                                     <constraint firstItem="99X-wj-lRs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="YJe-ax-MA8" secondAttribute="top" constant="8" id="wZs-QV-GKL"/>
                                 </constraints>
                             </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Xvg-yP-vPO" customClass="ShadeControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="5" y="5" width="110" height="190"/>
+                            </customView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="RKf-rE-Usf" firstAttribute="top" secondItem="Xvg-yP-vPO" secondAttribute="top" id="Dpt-o4-f2r"/>
                             <constraint firstItem="RKf-rE-Usf" firstAttribute="leading" secondItem="v30-5F-Dgg" secondAttribute="leading" constant="10" id="J9v-th-dvB"/>
                             <constraint firstAttribute="trailing" secondItem="YJe-ax-MA8" secondAttribute="trailing" constant="5" id="NbS-6g-EPi"/>
                             <constraint firstItem="YJe-ax-MA8" firstAttribute="top" secondItem="RKf-rE-Usf" secondAttribute="bottom" constant="-5" id="Odb-zO-U1e"/>
+                            <constraint firstItem="YJe-ax-MA8" firstAttribute="leading" secondItem="Xvg-yP-vPO" secondAttribute="leading" id="SkZ-JD-B5i"/>
+                            <constraint firstItem="YJe-ax-MA8" firstAttribute="bottom" secondItem="Xvg-yP-vPO" secondAttribute="bottom" id="iMa-iA-1ty"/>
                             <constraint firstItem="RKf-rE-Usf" firstAttribute="top" secondItem="v30-5F-Dgg" secondAttribute="top" constant="5" id="pAo-aw-Cul"/>
                             <constraint firstItem="YJe-ax-MA8" firstAttribute="leading" secondItem="v30-5F-Dgg" secondAttribute="leading" constant="5" id="tH3-Ob-wqF"/>
+                            <constraint firstItem="Xvg-yP-vPO" firstAttribute="trailing" secondItem="YJe-ax-MA8" secondAttribute="trailing" id="vX3-gu-hmT"/>
                             <constraint firstAttribute="bottom" secondItem="YJe-ax-MA8" secondAttribute="bottom" constant="5" id="wFd-Ds-Dh2"/>
                             <constraint firstAttribute="trailing" secondItem="RKf-rE-Usf" secondAttribute="trailing" constant="10" id="yZM-eD-J2O"/>
                         </constraints>
@@ -235,6 +243,7 @@
                         <outlet property="pad" destination="nPh-z4-XNt" id="dVu-YD-Pni"/>
                         <outlet property="pedalLogo" destination="KOq-bo-tpV" id="WDx-ts-4eZ"/>
                         <outlet property="powerLED" destination="wjd-0r-iph" id="GZo-QU-08J"/>
+                        <outlet property="shade" destination="Xvg-yP-vPO" id="5UE-ws-OJU"/>
                         <outlet property="slot" destination="v30-5F-Dgg" id="FDn-Hs-7PR"/>
                         <outlet property="textBar" destination="NKL-Np-NFC" id="K88-I1-MwK"/>
                         <outlet property="typeLabel" destination="99X-wj-lRs" id="wx0-jf-NB5"/>
@@ -243,7 +252,267 @@
                 </viewController>
                 <customObject id="KS8-0x-Ctf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-85" y="125"/>
+            <point key="canvasLocation" x="-371" y="26"/>
+        </scene>
+        <!--PedalVC-->
+        <scene sceneID="7E7-VX-n3w">
+            <objects>
+                <viewController id="bAg-pW-0LZ" customClass="PedalVC" customModule="Defender" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="1IF-Pl-ybt" customClass="EffectSlotControl" customModule="Defender" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="400"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="dCD-NW-Kcc" customClass="PedalBodyControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="16" y="222" width="211" height="174"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="a8w-8C-sGs" customClass="LEDControl" customModule="Defender" customModuleProvider="target">
+                                        <rect key="frame" x="2" y="165" width="7" height="7"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="a8w-8C-sGs" secondAttribute="height" multiplier="1:1" id="DER-Am-glF"/>
+                                            <constraint firstAttribute="height" constant="7" id="rzR-pu-y0x"/>
+                                        </constraints>
+                                    </customView>
+                                    <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6h4-zL-x7f">
+                                        <rect key="frame" x="2" y="20" width="207" height="146"/>
+                                        <subviews>
+                                            <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="6" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="97N-Hw-ct0">
+                                                <rect key="frame" x="0.0" y="81" width="206" height="65"/>
+                                                <subviews>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="TWI-U0-qPH" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="TWI-U0-qPH" secondAttribute="height" multiplier="1:1" id="NpO-q8-hzf"/>
+                                                        </constraints>
+                                                    </customView>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="aqU-a3-OL8" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
+                                                        <rect key="frame" x="71" y="0.0" width="64" height="65"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="aqU-a3-OL8" secondAttribute="height" multiplier="1:1" id="TMH-SR-ibM"/>
+                                                        </constraints>
+                                                    </customView>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="CaK-1P-7Zc" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
+                                                        <rect key="frame" x="141" y="0.0" width="65" height="65"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="CaK-1P-7Zc" secondAttribute="height" multiplier="1:1" id="BxG-N9-3TW"/>
+                                                        </constraints>
+                                                    </customView>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="6" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D84-ns-izX">
+                                                <rect key="frame" x="0.0" y="0.0" width="206" height="65"/>
+                                                <subviews>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="kSQ-Kn-Lov" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="kSQ-Kn-Lov" secondAttribute="height" multiplier="1:1" id="IXW-Yo-w0l"/>
+                                                        </constraints>
+                                                    </customView>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="LRv-3Y-Dc6" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
+                                                        <rect key="frame" x="71" y="0.0" width="64" height="65"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="LRv-3Y-Dc6" secondAttribute="height" multiplier="1:1" id="a7F-MY-xPV"/>
+                                                        </constraints>
+                                                    </customView>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="Wah-Tf-IwR" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
+                                                        <rect key="frame" x="141" y="0.0" width="65" height="65"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Wah-Tf-IwR" secondAttribute="height" multiplier="1:1" id="PAb-wA-Gfh"/>
+                                                        </constraints>
+                                                    </customView>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="a8w-8C-sGs" firstAttribute="leading" secondItem="dCD-NW-Kcc" secondAttribute="leading" constant="2" id="8ao-z6-reJ"/>
+                                    <constraint firstItem="a8w-8C-sGs" firstAttribute="top" secondItem="dCD-NW-Kcc" secondAttribute="top" constant="2" id="ByF-mH-mCp"/>
+                                    <constraint firstAttribute="bottom" secondItem="6h4-zL-x7f" secondAttribute="bottom" constant="20" id="DJq-Fz-9gO"/>
+                                    <constraint firstItem="6h4-zL-x7f" firstAttribute="top" secondItem="dCD-NW-Kcc" secondAttribute="top" constant="8" id="kJF-LB-6ZP"/>
+                                    <constraint firstItem="6h4-zL-x7f" firstAttribute="leading" secondItem="dCD-NW-Kcc" secondAttribute="leading" constant="2" id="rfv-Fw-fAM"/>
+                                    <constraint firstAttribute="trailing" secondItem="6h4-zL-x7f" secondAttribute="trailing" constant="2" id="yaM-YP-cO6"/>
+                                </constraints>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Aba-Bd-3Ge" customClass="PedalBodyControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="5" y="5" width="231" height="222"/>
+                                <subviews>
+                                    <stackView distribution="equalSpacing" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="16S-46-Naq">
+                                        <rect key="frame" x="7" y="7" width="217" height="207"/>
+                                        <subviews>
+                                            <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFk-Up-B1w">
+                                                <rect key="frame" x="0.0" y="196" width="217" height="11"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tsr-n9-bXq">
+                                                        <rect key="frame" x="-2" y="0.0" width="109" height="11"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title=" ◀︎INPUT" id="ZUf-QW-l1Z">
+                                                            <font key="font" size="7" name="ArialNarrow"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BVT-L3-FCU">
+                                                        <rect key="frame" x="111" y="0.0" width="108" height="11"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="OUTPUT▶︎" id="ppw-11-yUR">
+                                                            <font key="font" size="7" name="ArialNarrow"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Uit-4q-VnF">
+                                                <rect key="frame" x="103" y="174" width="12" height="14"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="-" usesSingleLineMode="YES" id="sPg-4K-s73">
+                                                    <font key="font" size="11" name="Helvetica"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <box boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="RE9-aJ-Zx8">
+                                                <rect key="frame" x="14" y="165" width="189" height="1"/>
+                                                <view key="contentView" id="ljw-9c-9mc">
+                                                    <rect key="frame" x="1" y="1" width="187" height="0.0"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="PB0-54-TB1"/>
+                                                </constraints>
+                                                <color key="borderColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="fillColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </box>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DFG-C6-tph">
+                                                <rect key="frame" x="103" y="134" width="12" height="23"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="-" usesSingleLineMode="YES" id="Gq3-sn-Ih5">
+                                                    <font key="font" size="14" name="Futura-CondensedExtraBold"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hkn-I1-gdo" customClass="PedalPadControl" customModule="Defender" customModuleProvider="target">
+                                                <rect key="frame" x="14" y="0.0" width="189" height="126"/>
+                                                <subviews>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mgf-7h-8GR">
+                                                        <rect key="frame" x="40" y="22" width="109" height="82"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Mgf-7h-8GR" secondAttribute="height" multiplier="4:3" id="Fq5-s1-5vk"/>
+                                                        </constraints>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="pedal-logo" id="boZ-ep-W0O"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="Mgf-7h-8GR" firstAttribute="centerY" secondItem="Hkn-I1-gdo" secondAttribute="centerY" id="LSf-pD-vXl"/>
+                                                    <constraint firstAttribute="width" secondItem="Hkn-I1-gdo" secondAttribute="height" multiplier="3:2" id="O2T-K1-Maa"/>
+                                                    <constraint firstItem="Mgf-7h-8GR" firstAttribute="centerX" secondItem="Hkn-I1-gdo" secondAttribute="centerX" id="rzb-FD-xdL"/>
+                                                    <constraint firstItem="Mgf-7h-8GR" firstAttribute="leading" secondItem="Hkn-I1-gdo" secondAttribute="leading" constant="40" id="uW8-am-7bx"/>
+                                                </constraints>
+                                            </customView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="kFk-Up-B1w" secondAttribute="width" id="DHp-wZ-Hu0"/>
+                                            <constraint firstItem="Hkn-I1-gdo" firstAttribute="width" secondItem="16S-46-Naq" secondAttribute="width" multiplier="216:248" id="lmT-n1-LBk"/>
+                                            <constraint firstItem="RE9-aJ-Zx8" firstAttribute="width" secondItem="Hkn-I1-gdo" secondAttribute="width" id="z5G-YS-Ksq"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="16S-46-Naq" firstAttribute="top" secondItem="Aba-Bd-3Ge" secondAttribute="top" constant="8" id="LfO-JA-Du1"/>
+                                    <constraint firstAttribute="bottom" secondItem="16S-46-Naq" secondAttribute="bottom" constant="7" id="Pwp-SO-MwH"/>
+                                    <constraint firstItem="16S-46-Naq" firstAttribute="leading" secondItem="Aba-Bd-3Ge" secondAttribute="leading" constant="7" id="eMK-aH-6ge"/>
+                                    <constraint firstAttribute="trailing" secondItem="16S-46-Naq" secondAttribute="trailing" constant="7" id="piE-uP-lIQ"/>
+                                </constraints>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="oFQ-7g-l7R" customClass="ShadeControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="5" y="5" width="231" height="391"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Aba-Bd-3Ge" firstAttribute="bottom" secondItem="oFQ-7g-l7R" secondAttribute="bottom" id="2tr-jT-xmK"/>
+                            <constraint firstItem="dCD-NW-Kcc" firstAttribute="centerX" secondItem="1IF-Pl-ybt" secondAttribute="centerX" id="5Av-4w-xHp"/>
+                            <constraint firstItem="Aba-Bd-3Ge" firstAttribute="trailing" secondItem="oFQ-7g-l7R" secondAttribute="trailing" id="Htp-Wq-4h6"/>
+                            <constraint firstItem="Aba-Bd-3Ge" firstAttribute="top" secondItem="dCD-NW-Kcc" secondAttribute="bottom" constant="-5" id="NEa-CD-FQY"/>
+                            <constraint firstItem="dCD-NW-Kcc" firstAttribute="top" secondItem="oFQ-7g-l7R" secondAttribute="top" id="Sft-oh-b52"/>
+                            <constraint firstItem="dCD-NW-Kcc" firstAttribute="top" secondItem="1IF-Pl-ybt" secondAttribute="top" constant="5" id="YMw-Vd-kfy"/>
+                            <constraint firstAttribute="trailing" secondItem="Aba-Bd-3Ge" secondAttribute="trailing" constant="5" id="dFL-NU-CMX"/>
+                            <constraint firstAttribute="bottom" secondItem="Aba-Bd-3Ge" secondAttribute="bottom" constant="5" id="dt9-TY-0ed"/>
+                            <constraint firstItem="Aba-Bd-3Ge" firstAttribute="leading" secondItem="1IF-Pl-ybt" secondAttribute="leading" constant="5" id="fhm-gL-bZb"/>
+                            <constraint firstItem="Aba-Bd-3Ge" firstAttribute="leading" secondItem="oFQ-7g-l7R" secondAttribute="leading" id="oqN-PZ-XaB"/>
+                            <constraint firstItem="dCD-NW-Kcc" firstAttribute="width" secondItem="Aba-Bd-3Ge" secondAttribute="width" constant="-20" id="xc1-cD-klE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bodyBottom" destination="Aba-Bd-3Ge" id="KW1-d0-xmY"/>
+                        <outlet property="bodyTop" destination="dCD-NW-Kcc" id="sdo-hq-Ecu"/>
+                        <outlet property="knobLowerLeft" destination="kSQ-Kn-Lov" id="tKU-XG-d89"/>
+                        <outlet property="knobLowerMiddle" destination="LRv-3Y-Dc6" id="1iQ-IK-j3X"/>
+                        <outlet property="knobLowerRight" destination="Wah-Tf-IwR" id="at3-6b-EKU"/>
+                        <outlet property="knobUpperLeft" destination="TWI-U0-qPH" id="Eb1-Vf-cbu"/>
+                        <outlet property="knobUpperMiddle" destination="aqU-a3-OL8" id="e0G-PQ-ced"/>
+                        <outlet property="knobUpperRight" destination="CaK-1P-7Zc" id="C6l-SV-f43"/>
+                        <outlet property="lowerKnobs" destination="D84-ns-izX" id="ggR-A1-hHM"/>
+                        <outlet property="nameLabel" destination="DFG-C6-tph" id="HYy-2t-XKi"/>
+                        <outlet property="pad" destination="Hkn-I1-gdo" id="IMe-PJ-jbT"/>
+                        <outlet property="pedalLogo" destination="Mgf-7h-8GR" id="kpT-Oc-Oyt"/>
+                        <outlet property="powerLED" destination="a8w-8C-sGs" id="bEY-Z9-UTa"/>
+                        <outlet property="shade" destination="oFQ-7g-l7R" id="P1t-dO-5Xl"/>
+                        <outlet property="slot" destination="1IF-Pl-ybt" id="oba-8f-mGK"/>
+                        <outlet property="textBar" destination="RE9-aJ-Zx8" id="EYj-U0-Kwo"/>
+                        <outlet property="typeLabel" destination="Uit-4q-VnF" id="4IO-Dt-004"/>
+                        <outlet property="upperKnobs" destination="97N-Hw-ct0" id="o7n-ov-puW"/>
+                    </connections>
+                </viewController>
+                <customObject id="Fv8-NG-bZG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-35" y="106"/>
         </scene>
     </scenes>
     <resources>

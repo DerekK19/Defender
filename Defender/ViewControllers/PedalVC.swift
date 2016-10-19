@@ -32,6 +32,7 @@ class PedalVC: NSViewController {
     @IBOutlet weak var knobLowerLeft: PedalKnobControl!
     @IBOutlet weak var knobLowerMiddle: PedalKnobControl!
     @IBOutlet weak var knobLowerRight: PedalKnobControl!
+    @IBOutlet weak var shade: ShadeControl!
     
     var effect: DTOEffect?
     
@@ -75,9 +76,17 @@ class PedalVC: NSViewController {
             self.pedalBackgroundColour = newBackgroundColour
             self.bodyTop.backgroundColour = newBackgroundColour
             self.bodyBottom.backgroundColour = newBackgroundColour
+            let currentState = self.powerState
+            self.powerState = currentState
         }
     }
     
+    var powerState: PowerState = .off {
+        didSet {
+            self.shade.isOpen = powerState == .on || state == .disabled
+        }
+    }
+        
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }

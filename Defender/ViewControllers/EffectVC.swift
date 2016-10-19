@@ -26,6 +26,7 @@ class EffectVC: NSViewController {
     @IBOutlet weak var knob4: EffectKnobControl!
     @IBOutlet weak var knob5: EffectKnobControl!
     @IBOutlet weak var knob6: EffectKnobControl!
+    @IBOutlet weak var shade: ShadeControl!
 
     var effect: DTOEffect?
     
@@ -65,6 +66,14 @@ class EffectVC: NSViewController {
             self.slot.backgroundColour = slotBackgroundColour
             self.effectBackgroundColour = newBackgroundColour
             self.chassis.backgroundColour = newBackgroundColour
+            let currentState = self.powerState
+            self.powerState = currentState
+        }
+    }
+    
+    var powerState: PowerState = .off {
+        didSet {
+            self.shade.isOpen = powerState == .on || state == .disabled
         }
     }
     

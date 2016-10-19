@@ -19,20 +19,15 @@ class DisplayVC: NSViewController {
     @IBOutlet weak var modulationValue: NSTextField!
     @IBOutlet weak var delayValue: NSTextField!
     @IBOutlet weak var reverbValue: NSTextField!
+    @IBOutlet weak var shade: ShadeControl!
 
     var displayBackgroundColour = NSColor(red: 0.62, green: 0.78, blue: 0.88, alpha: 1.0)
     var displayForegroundColour = NSColor(red: 0.3, green: 0.38, blue: 0.6, alpha: 1.0)
     
     var powerState: PowerState = .off {
         didSet {
-            var newBackgroundColour = NSColor()
-            if powerState == .off {
-                newBackgroundColour = NSColor(red: 0.31, green: 0.39, blue: 0.44, alpha: 1.0)
-            } else {
-                newBackgroundColour = NSColor(red: 0.62, green: 0.78, blue: 0.88, alpha: 1.0)
-            }
-            self.displayBackgroundColour = newBackgroundColour
-            self.display.backgroundColour = newBackgroundColour
+            self.shade.isOpen = powerState == .on
+            self.display.backgroundColour = displayBackgroundColour
             self.presetNumber.backgroundColor = displayBackgroundColour
             self.presetNumber.textColor = displayForegroundColour
             self.presetName.backgroundColor = displayForegroundColour

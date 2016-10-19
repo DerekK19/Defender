@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11521.1" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="h8b-nj-UXe">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="h8b-nj-UXe">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11521.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -51,7 +51,7 @@
                                                 </constraints>
                                             </customView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="y36-ab-NG3" customClass="EffectKnobControl" customModule="Defender" customModuleProvider="target">
-                                                <rect key="frame" x="64.5" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="64" y="0.0" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="y36-ab-NG3" secondAttribute="height" multiplier="1:1" id="4M8-mJ-P4y"/>
                                                 </constraints>
@@ -69,7 +69,7 @@
                                                 </constraints>
                                             </customView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="pTL-au-jgW" customClass="EffectKnobControl" customModule="Defender" customModuleProvider="target">
-                                                <rect key="frame" x="257.5" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="258" y="0.0" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="pTL-au-jgW" secondAttribute="height" multiplier="1:1" id="3TL-DH-576"/>
                                                 </constraints>
@@ -120,12 +120,19 @@
                                     <constraint firstAttribute="trailing" secondItem="0qp-LF-Z1R" secondAttribute="trailing" id="zxS-AJ-Lt6"/>
                                 </constraints>
                             </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="ZUl-Vc-3gF" customClass="ShadeControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="5" y="5" width="502" height="54"/>
+                            </customView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="9t8-4r-wlp" firstAttribute="bottom" secondItem="ZUl-Vc-3gF" secondAttribute="bottom" id="Gz3-qA-DOV"/>
+                            <constraint firstItem="9t8-4r-wlp" firstAttribute="trailing" secondItem="ZUl-Vc-3gF" secondAttribute="trailing" id="KUL-jl-lWb"/>
                             <constraint firstAttribute="bottom" secondItem="9t8-4r-wlp" secondAttribute="bottom" constant="5" id="MPI-gh-jtO"/>
                             <constraint firstItem="9t8-4r-wlp" firstAttribute="top" secondItem="YYF-xQ-V5G" secondAttribute="top" constant="5" id="QZz-3T-rGD"/>
                             <constraint firstAttribute="trailing" secondItem="9t8-4r-wlp" secondAttribute="trailing" constant="5" id="RIM-G0-3RW"/>
+                            <constraint firstItem="9t8-4r-wlp" firstAttribute="top" secondItem="ZUl-Vc-3gF" secondAttribute="top" id="VWy-fF-ScY"/>
                             <constraint firstItem="9t8-4r-wlp" firstAttribute="leading" secondItem="YYF-xQ-V5G" secondAttribute="leading" constant="5" id="e0Q-2h-U7S"/>
+                            <constraint firstItem="9t8-4r-wlp" firstAttribute="leading" secondItem="ZUl-Vc-3gF" secondAttribute="leading" id="juF-52-U5L"/>
                         </constraints>
                     </view>
                     <connections>
@@ -138,13 +145,14 @@
                         <outlet property="knob6" destination="a1d-Qs-we6" id="euB-8P-HP7"/>
                         <outlet property="nameLabel" destination="0qp-LF-Z1R" id="veD-Gq-GA4"/>
                         <outlet property="powerLED" destination="daW-Z6-9Lt" id="9FJ-0E-Ex2"/>
+                        <outlet property="shade" destination="ZUl-Vc-3gF" id="8Q9-eJ-bE1"/>
                         <outlet property="slot" destination="YYF-xQ-V5G" id="dPS-6C-4v5"/>
                         <outlet property="typeLabel" destination="6Nt-z5-Mtx" id="syv-xY-LUy"/>
                     </connections>
                 </viewController>
                 <customObject id="QjZ-aF-KBc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="103" y="-14"/>
+            <point key="canvasLocation" x="70" y="-14"/>
         </scene>
     </scenes>
 </document>

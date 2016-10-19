@@ -65,14 +65,14 @@ class MainVC: NSViewController {
             self.tapButton.powerState = powerState
             self.wheel.powerState = powerState
             self.displayVC?.powerState = powerState
-//            self.effect1VC?.powerState = powerState
-//            self.effect2VC?.powerState = powerState
-//            self.effect3VC?.powerState = powerState
-//            self.effect4VC?.powerState = powerState
-//            self.pedal1VC?.powerState = powerState
-//            self.pedal2VC?.powerState = powerState
-//            self.pedal3VC?.powerState = powerState
-//            self.pedal4VC?.powerState = powerState
+            self.effect1VC?.powerState = powerState
+            self.effect2VC?.powerState = powerState
+            self.effect3VC?.powerState = powerState
+            self.effect4VC?.powerState = powerState
+            self.pedal1VC?.powerState = powerState
+            self.pedal2VC?.powerState = powerState
+            self.pedal3VC?.powerState = powerState
+            self.pedal4VC?.powerState = powerState
         }
     }
     
