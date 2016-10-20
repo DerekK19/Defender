@@ -14,47 +14,48 @@
             <objects>
                 <viewController id="vSA-pc-29X" customClass="PedalVC" customModule="Defender" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="v30-5F-Dgg" customClass="EffectSlotControl" customModule="Defender" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="120" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="180" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="RKf-rE-Usf" customClass="PedalBodyControl" customModule="Defender" customModuleProvider="target">
-                                <rect key="frame" x="10" y="120" width="100" height="75"/>
+                                <rect key="frame" x="10" y="201" width="172" height="169"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="wjd-0r-iph" customClass="LEDControl" customModule="Defender" customModuleProvider="target">
-                                        <rect key="frame" x="2" y="66" width="7" height="7"/>
+                                        <rect key="frame" x="2" y="160" width="7" height="7"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="7" id="XIB-Y1-77u"/>
                                             <constraint firstAttribute="width" secondItem="wjd-0r-iph" secondAttribute="height" multiplier="1:1" id="zYb-UW-uQq"/>
                                         </constraints>
                                     </customView>
                                     <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NS8-Yp-TiO">
-                                        <rect key="frame" x="5" y="8" width="90" height="59"/>
+                                        <rect key="frame" x="5" y="8" width="162" height="153"/>
                                         <subviews>
                                             <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="6" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kTv-ub-vKS">
-                                                <rect key="frame" x="9" y="30" width="72" height="29"/>
+                                                <rect key="frame" x="0.0" y="78" width="162" height="75"/>
                                                 <subviews>
                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="RVf-gM-3VJ" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="5" width="20" height="20"/>
+                                                        <rect key="frame" x="0.0" y="12" width="50" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="20" id="hfC-g3-xgI"/>
-                                                            <constraint firstAttribute="width" constant="20" id="kOK-rn-6A3"/>
+                                                            <constraint firstAttribute="width" secondItem="RVf-gM-3VJ" secondAttribute="height" multiplier="1:1" id="7Yf-Ba-bXR"/>
                                                         </constraints>
                                                     </customView>
                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="fCc-mq-tFX" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
-                                                        <rect key="frame" x="26" y="5" width="20" height="20"/>
+                                                        <rect key="frame" x="56" y="12" width="50" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="20" id="9te-SP-CzK"/>
-                                                            <constraint firstAttribute="width" constant="20" id="rnv-FE-j49"/>
+                                                            <constraint firstAttribute="width" secondItem="fCc-mq-tFX" secondAttribute="height" multiplier="1:1" id="Wki-Wu-7vy"/>
                                                         </constraints>
                                                     </customView>
                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="BD9-bc-qgn" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
-                                                        <rect key="frame" x="52" y="5" width="20" height="20"/>
+                                                        <rect key="frame" x="112" y="12" width="50" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="20" id="5cx-Ut-djI"/>
-                                                            <constraint firstAttribute="width" constant="20" id="DQe-ts-MrB"/>
+                                                            <constraint firstAttribute="width" secondItem="BD9-bc-qgn" secondAttribute="height" multiplier="1:1" id="8NB-uH-Czf"/>
                                                         </constraints>
                                                     </customView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="RVf-gM-3VJ" firstAttribute="width" secondItem="fCc-mq-tFX" secondAttribute="width" id="fQs-BX-qvm"/>
+                                                    <constraint firstItem="fCc-mq-tFX" firstAttribute="width" secondItem="BD9-bc-qgn" secondAttribute="width" id="pZ9-Vw-p3h"/>
+                                                </constraints>
                                                 <visibilityPriorities>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
@@ -67,30 +68,31 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="6" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vFU-Px-V5O">
-                                                <rect key="frame" x="9" y="0.0" width="72" height="28"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="162" height="76"/>
                                                 <subviews>
                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="U4H-Ca-7vP" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="4" width="20" height="20"/>
+                                                        <rect key="frame" x="0.0" y="13" width="50" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="20" id="524-sM-UWO"/>
-                                                            <constraint firstAttribute="width" constant="20" id="KdO-5E-zwL"/>
+                                                            <constraint firstAttribute="width" secondItem="U4H-Ca-7vP" secondAttribute="height" multiplier="1:1" id="NI3-qq-d6G"/>
                                                         </constraints>
                                                     </customView>
                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="C14-oe-lJO" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
-                                                        <rect key="frame" x="26" y="4" width="20" height="20"/>
+                                                        <rect key="frame" x="56" y="13" width="50" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="20" id="2Lb-Ul-oc7"/>
-                                                            <constraint firstAttribute="height" constant="20" id="q0S-qH-7Ql"/>
+                                                            <constraint firstAttribute="width" secondItem="C14-oe-lJO" secondAttribute="height" multiplier="1:1" id="xVx-sS-k5a"/>
                                                         </constraints>
                                                     </customView>
                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="XdJ-Jq-D9A" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
-                                                        <rect key="frame" x="52" y="4" width="20" height="20"/>
+                                                        <rect key="frame" x="112" y="13" width="50" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="20" id="KxC-Qf-wmN"/>
-                                                            <constraint firstAttribute="width" constant="20" id="ypU-yq-6k0"/>
+                                                            <constraint firstAttribute="width" secondItem="XdJ-Jq-D9A" secondAttribute="height" multiplier="1:1" id="ib5-lC-NpR"/>
                                                         </constraints>
                                                     </customView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="U4H-Ca-7vP" firstAttribute="width" secondItem="C14-oe-lJO" secondAttribute="width" id="eUj-9w-MhO"/>
+                                                    <constraint firstItem="C14-oe-lJO" firstAttribute="width" secondItem="XdJ-Jq-D9A" secondAttribute="width" id="lYg-cR-uhR"/>
+                                                </constraints>
                                                 <visibilityPriorities>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
@@ -103,6 +105,9 @@
                                                 </customSpacing>
                                             </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="BD9-bc-qgn" firstAttribute="width" secondItem="U4H-Ca-7vP" secondAttribute="width" id="RYn-dL-Zau"/>
+                                        </constraints>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
@@ -124,10 +129,26 @@
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="YJe-ax-MA8" customClass="PedalBodyControl" customModule="Defender" customModuleProvider="target">
-                                <rect key="frame" x="5" y="5" width="110" height="120"/>
+                                <rect key="frame" x="5" y="5" width="182" height="201"/>
                                 <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cus-ON-8eg">
+                                        <rect key="frame" x="-2" y="189" width="30" height="11"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title=" ◀︎INPUT" id="LWy-4t-CO0">
+                                            <font key="font" size="7" name="ArialNarrow"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rnZ-SO-S3h">
+                                        <rect key="frame" x="150" y="189" width="34" height="11"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="OUTPUT▶︎" id="cbW-G6-xSc">
+                                            <font key="font" size="7" name="ArialNarrow"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="99X-wj-lRs">
-                                        <rect key="frame" x="49" y="76" width="12" height="14"/>
+                                        <rect key="frame" x="85" y="140" width="12" height="14"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="-" usesSingleLineMode="YES" id="rRq-hP-xrk">
                                             <font key="font" size="11" name="Helvetica"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -135,9 +156,9 @@
                                         </textFieldCell>
                                     </textField>
                                     <box boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="NKL-Np-NFC">
-                                        <rect key="frame" x="4" y="74" width="102" height="1"/>
+                                        <rect key="frame" x="4" y="138" width="174" height="1"/>
                                         <view key="contentView" id="tww-4L-7Dg">
-                                            <rect key="frame" x="1" y="1" width="100" height="0.0"/>
+                                            <rect key="frame" x="1" y="1" width="172" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                         <constraints>
@@ -147,7 +168,7 @@
                                         <color key="fillColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </box>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ggS-Se-wjN">
-                                        <rect key="frame" x="49" y="51" width="12" height="23"/>
+                                        <rect key="frame" x="85" y="115" width="12" height="23"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="-" usesSingleLineMode="YES" id="gLc-sI-c61">
                                             <font key="font" size="14" name="Futura-CondensedExtraBold"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -155,10 +176,10 @@
                                         </textFieldCell>
                                     </textField>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="nPh-z4-XNt" customClass="PedalPadControl" customModule="Defender" customModuleProvider="target">
-                                        <rect key="frame" x="7" y="5" width="96" height="48"/>
+                                        <rect key="frame" x="7" y="5" width="168" height="112"/>
                                         <subviews>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KOq-bo-tpV">
-                                                <rect key="frame" x="24" y="6" width="48" height="36"/>
+                                            <imageView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="KOq-bo-tpV">
+                                                <rect key="frame" x="18" y="6" width="132" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="KOq-bo-tpV" secondAttribute="height" multiplier="4:3" id="lvC-RW-SHt"/>
                                                 </constraints>
@@ -169,24 +190,9 @@
                                             <constraint firstItem="KOq-bo-tpV" firstAttribute="top" secondItem="nPh-z4-XNt" secondAttribute="top" constant="6" id="MyU-P5-FZl"/>
                                             <constraint firstItem="KOq-bo-tpV" firstAttribute="centerX" secondItem="nPh-z4-XNt" secondAttribute="centerX" id="QMI-Bc-uWo"/>
                                             <constraint firstItem="KOq-bo-tpV" firstAttribute="centerY" secondItem="nPh-z4-XNt" secondAttribute="centerY" id="o72-i1-3jY"/>
+                                            <constraint firstAttribute="width" secondItem="nPh-z4-XNt" secondAttribute="height" multiplier="3:2" id="zwK-Te-KMX"/>
                                         </constraints>
                                     </customView>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cus-ON-8eg">
-                                        <rect key="frame" x="-2" y="108" width="30" height="11"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title=" ◀︎INPUT" id="LWy-4t-CO0">
-                                            <font key="font" size="7" name="ArialNarrow"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rnZ-SO-S3h">
-                                        <rect key="frame" x="78" y="108" width="34" height="11"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="OUTPUT▶︎" id="cbW-G6-xSc">
-                                            <font key="font" size="7" name="ArialNarrow"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="99X-wj-lRs" secondAttribute="trailing" constant="5" id="0Z9-BM-2F0"/>
@@ -208,11 +214,10 @@
                                     <constraint firstAttribute="trailing" secondItem="rnZ-SO-S3h" secondAttribute="trailing" id="jAc-AZ-xnU"/>
                                     <constraint firstAttribute="width" secondItem="YJe-ax-MA8" secondAttribute="height" multiplier="1:1.1" id="jLO-cK-zCm"/>
                                     <constraint firstItem="ggS-Se-wjN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YJe-ax-MA8" secondAttribute="leading" constant="5" id="kgd-td-WiO"/>
-                                    <constraint firstItem="99X-wj-lRs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="YJe-ax-MA8" secondAttribute="top" constant="8" id="wZs-QV-GKL"/>
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Xvg-yP-vPO" customClass="ShadeControl" customModule="Defender" customModuleProvider="target">
-                                <rect key="frame" x="5" y="5" width="110" height="190"/>
+                                <rect key="frame" x="5" y="5" width="182" height="365"/>
                             </customView>
                         </subviews>
                         <constraints>
@@ -222,6 +227,7 @@
                             <constraint firstItem="YJe-ax-MA8" firstAttribute="top" secondItem="RKf-rE-Usf" secondAttribute="bottom" constant="-5" id="Odb-zO-U1e"/>
                             <constraint firstItem="YJe-ax-MA8" firstAttribute="leading" secondItem="Xvg-yP-vPO" secondAttribute="leading" id="SkZ-JD-B5i"/>
                             <constraint firstItem="YJe-ax-MA8" firstAttribute="bottom" secondItem="Xvg-yP-vPO" secondAttribute="bottom" id="iMa-iA-1ty"/>
+                            <constraint firstAttribute="height" secondItem="RVf-gM-3VJ" secondAttribute="height" multiplier="15:2" id="p8Z-ha-lbe"/>
                             <constraint firstItem="RKf-rE-Usf" firstAttribute="top" secondItem="v30-5F-Dgg" secondAttribute="top" constant="5" id="pAo-aw-Cul"/>
                             <constraint firstItem="YJe-ax-MA8" firstAttribute="leading" secondItem="v30-5F-Dgg" secondAttribute="leading" constant="5" id="tH3-Ob-wqF"/>
                             <constraint firstItem="Xvg-yP-vPO" firstAttribute="trailing" secondItem="YJe-ax-MA8" secondAttribute="trailing" id="vX3-gu-hmT"/>
@@ -252,12 +258,12 @@
                 </viewController>
                 <customObject id="KS8-0x-Ctf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-371" y="26"/>
+            <point key="canvasLocation" x="-526" y="6"/>
         </scene>
         <!--PedalVC-->
         <scene sceneID="7E7-VX-n3w">
             <objects>
-                <viewController id="bAg-pW-0LZ" customClass="PedalVC" customModule="Defender" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="alternate_pedal" id="bAg-pW-0LZ" customClass="PedalVC" customModule="Defender" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="1IF-Pl-ybt" customClass="EffectSlotControl" customModule="Defender" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -512,7 +518,7 @@
                 </viewController>
                 <customObject id="Fv8-NG-bZG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-35" y="106"/>
+            <point key="canvasLocation" x="-27" y="6"/>
         </scene>
     </scenes>
     <resources>

@@ -52,25 +52,23 @@ class PedalVC: NSViewController {
     var state: EffectState = .disabled {
         didSet {
             var newBackgroundColour = NSColor()
+            self.knobUpperLeft.alphaValue = state == .disabled ? 0.0 : 1.0
+            self.knobUpperMiddle.alphaValue = state == .disabled ? 0.0 : 1.0
+            self.knobUpperRight.alphaValue = state == .disabled ? 0.0 : 1.0
+            self.knobLowerLeft.alphaValue = state == .disabled ? 0.0 : 1.0
+            self.knobLowerMiddle.alphaValue = state == .disabled ? 0.0 : 1.0
+            self.knobLowerRight.alphaValue = state == .disabled ? 0.0 : 1.0
+            self.pedalLogo.alphaValue = state == .disabled ? 0.0 : 1.0
             switch state {
             case .disabled:
                 newBackgroundColour = slotBackgroundColour
                 self.powerLED.backgroundColour = NSColor.black
-                self.knobUpperLeft.isHidden = true
-                self.knobUpperMiddle.isHidden = true
-                self.knobUpperRight.isHidden = true
-                self.knobLowerLeft.isHidden = true
-                self.knobLowerMiddle.isHidden = true
-                self.knobLowerRight.isHidden = true
-                self.pedalLogo.isHidden = true
             case .off:
                 newBackgroundColour = fullBackgroundColour
                 self.powerLED.backgroundColour = NSColor.red.withBrightness(0.5)
-                self.pedalLogo.isHidden = false
             case .on:
                 newBackgroundColour = fullBackgroundColour
                 self.powerLED.backgroundColour = NSColor.red
-                self.pedalLogo.isHidden = false
             }
             self.slot.backgroundColour = slotBackgroundColour
             self.pedalBackgroundColour = newBackgroundColour
