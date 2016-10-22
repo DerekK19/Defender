@@ -20,7 +20,7 @@ class KnobBaseControl: NSView {
     var minStop: Float = 0.0
     var maxStop: Float = 10.0
     
-    var startMouse: NSPoint!
+    var startMouse: NSPoint?
     var startValue: Float = 1.0
     var direction: Float = 1.0
     
@@ -54,23 +54,35 @@ class KnobBaseControl: NSView {
 
     override func mouseDown(with theEvent: NSEvent) {
         startMouse = theEvent.locationInWindow
-        startValue = _floatValue
-        let viewMouse = self.convert(startMouse!, from: nil)
-        let midX = self.frame.width / 2.0
-        direction = viewMouse.x < midX ? 1.0 : -1.0        
+        if let startMouse = startMouse {
+            startValue = _floatValue
+            let viewMouse = self.convert(startMouse, from: nil)
+            let midX = self.frame.width / 2.0
+            direction = viewMouse.x < midX ? 1.0 : -1.0
+        }
     }
     
     override func mouseDragged(with theEvent: NSEvent) {
-        let yChange = Float(theEvent.locationInWindow.y - startMouse.y) * direction
-        _floatValue = min(max(startValue + (yChange / pixelsPerTick), minValue), maxValue)
-        setNeedsDisplay(self.bounds)
+        let nowMouse = theEvent.locationInWindow
+        if let startMouse = startMouse {
+            _floatValue = yDelta(startPosition: startMouse, endPosition: nowMouse)
+            setNeedsDisplay(self.bounds)
+        }
     }
     
     override func mouseUp(with theEvent: NSEvent) {
-        let yChange = Float(theEvent.locationInWindow.y - startMouse.y) * direction
-        floatValue = min(max(startValue + (yChange / pixelsPerTick), minValue), maxValue)
+        let nowMouse = theEvent.locationInWindow
+        if let startMouse = startMouse {
+            floatValue = yDelta(startPosition: startMouse, endPosition: nowMouse)
+        }
+        startMouse = nil
     }
 
+    internal func yDelta(startPosition: NSPoint, endPosition: NSPoint) -> Float {
+        let yChange = Float(endPosition.y - startPosition.y) * direction
+        return min(max(startValue + (yChange / pixelsPerTick), minValue), maxValue)
+    }
+    
     internal func degreesFromFloatValue(_ floatValue: Float) -> CGFloat {
         let fraction = (floatValue - self.minStop) / (self.maxStop - self.minStop)
         let angle = -CGFloat(fraction * 360.0)

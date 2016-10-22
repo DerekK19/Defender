@@ -215,33 +215,53 @@ extension PedalVC: PedalKnobDelegate {
     
     func valueDidChangeForKnob(_ sender: PedalKnobControl, value: Float) {
         if effect != nil {
+            var currentValue: Float?
             switch sender {
             case knobUpperLeft:
-                DebugPrint("New upper left knob is \(value)")
-                effect!.knobs[0].value = value
-                delegate?.settingsDidChangeForPedal(self)
+                currentValue = effect!.knobs[0].value
             case knobUpperMiddle:
-                DebugPrint("New upper middle knob is \(value)")
-                effect!.knobs[1].value = value
-                delegate?.settingsDidChangeForPedal(self)
+                currentValue = effect!.knobs[1].value
             case knobUpperRight:
-                DebugPrint("New upper right knob is \(value)")
-                effect!.knobs[2].value = value
-                delegate?.settingsDidChangeForPedal(self)
+                currentValue = effect!.knobs[2].value
             case knobLowerLeft:
-                DebugPrint("New lower left knob is \(value)")
-                effect!.knobs[3].value = value
-                delegate?.settingsDidChangeForPedal(self)
+                currentValue = effect!.knobs[3].value
             case knobLowerMiddle:
-                DebugPrint("New lower middle knob is \(value)")
-                effect!.knobs[4].value = value
-                delegate?.settingsDidChangeForPedal(self)
+                currentValue = effect!.knobs[4].value
             case knobLowerRight:
-                DebugPrint("New lower right knob is \(value)")
-                effect!.knobs[5].value = value
-                delegate?.settingsDidChangeForPedal(self)
+                currentValue = effect!.knobs[5].value
             default:
                 NSLog("Don't know what knob sent this event")
+            }
+
+            if value != currentValue {
+                switch sender {
+                case knobUpperLeft:
+                    DebugPrint("New upper left knob is \(value)")
+                    effect!.knobs[0].value = value
+                    delegate?.settingsDidChangeForPedal(self)
+                case knobUpperMiddle:
+                    DebugPrint("New upper middle knob is \(value)")
+                    effect!.knobs[1].value = value
+                    delegate?.settingsDidChangeForPedal(self)
+                case knobUpperRight:
+                    DebugPrint("New upper right knob is \(value)")
+                    effect!.knobs[2].value = value
+                    delegate?.settingsDidChangeForPedal(self)
+                case knobLowerLeft:
+                    DebugPrint("New lower left knob is \(value)")
+                    effect!.knobs[3].value = value
+                    delegate?.settingsDidChangeForPedal(self)
+                case knobLowerMiddle:
+                    DebugPrint("New lower middle knob is \(value)")
+                    effect!.knobs[4].value = value
+                    delegate?.settingsDidChangeForPedal(self)
+                case knobLowerRight:
+                    DebugPrint("New lower right knob is \(value)")
+                    effect!.knobs[5].value = value
+                    delegate?.settingsDidChangeForPedal(self)
+                default:
+                    NSLog("Don't know what knob sent this event")
+                }
             }
         } else {
             NSLog("Can't get a knob change if there is no pedal")

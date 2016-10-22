@@ -38,7 +38,13 @@ class MainVC: NSViewController {
     @IBOutlet weak var saveButton: ActionButtonControl!
     @IBOutlet weak var exitButton: ActionButtonControl!
     @IBOutlet weak var tapButton: ActionButtonControl!
+    
+    @IBOutlet weak var debugButton: NSButton!
 
+    @IBOutlet weak var effectsSettings: NSStackView!
+    @IBOutlet weak var pedalsArea: NSStackView!
+    @IBOutlet weak var effectsArea: NSStackView!
+    
     @IBOutlet weak var displayVC: DisplayVC?
     @IBOutlet weak var effect1VC: EffectVC?
     @IBOutlet weak var effect2VC: EffectVC?
@@ -50,10 +56,11 @@ class MainVC: NSViewController {
     @IBOutlet weak var pedal4VC: PedalVC?
     
     fileprivate var ampController = AmpController()
-    
+
     var currentPreset: DTOPreset?
     
     let verbose = true
+    var debuggingConstraints = false
     
     fileprivate var powerState: PowerState = .off {
         didSet {
@@ -85,9 +92,10 @@ class MainVC: NSViewController {
 
         reset()
 
-        configureNotifications()
         configureAmplifiers()
 
+        debugButton.isHidden = !ampController.mocking
+        
         let contrastColour = NSColor.white
         gainArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
         volumeArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
@@ -110,6 +118,10 @@ class MainVC: NSViewController {
         presenceKnob.delegate = self
         wheel.delegate = self
         
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     override var representedObject: Any? {
@@ -212,46 +224,32 @@ class MainVC: NSViewController {
         }
     }
     
+    @IBAction func willDebug(_ sender: NSButton) {
+        debuggingConstraints = !debuggingConstraints
+        if debuggingConstraints {
+            var debugConstraints = [NSLayoutConstraint]()
+            debugConstraints.append(contentsOf: self.view.constraints)
+            debugConstraints.append(contentsOf: self.effectsSettings.constraints)
+            debugConstraints.append(contentsOf: self.effectsArea.constraints)
+            debugConstraints.append(contentsOf: self.pedalsArea.constraints)
+            self.view.window?.visualizeConstraints(debugConstraints)
+        } else {
+            self.view.window?.visualizeConstraints([NSLayoutConstraint]())
+        }
+    }
+    
     // MARK: Private Functions
     fileprivate func reset() {
-        statusLED.backgroundColour = .red
-        statusLabel.stringValue = "No amplifier connected"
+        statusLED.backgroundColour = ampController.hasAnAmplifier ? .green : .red
+        statusLabel.stringValue = "\(ampController.currentAmplifierName) connected"
         statusLabel.textColor = .white
         powerButton.state = NSOffState
         powerState = .off
     }
     
-    fileprivate func configureNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceConnected), name: NSNotification.Name(rawValue: Mustang.deviceConnectedNotificationName), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceOpened), name: NSNotification.Name(rawValue: Mustang.deviceOpenedNotificationName), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceClosed), name: NSNotification.Name(rawValue: Mustang.deviceClosedNotificationName), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceDisconnected), name: NSNotification.Name(rawValue: Mustang.deviceDisconnectedNotificationName), object: nil)
-    }
-
-    @objc fileprivate func deviceConnected() {
-        DebugPrint(" Connected")
-        statusLED.backgroundColour = .green
-        statusLabel.stringValue = ""
-    }
-    
-    @objc fileprivate func deviceOpened() {
-        DebugPrint(" Opened")
-        configureAmplifiers()
-    }
-    
-    @objc fileprivate func deviceClosed() {
-        DebugPrint(" Closed")
-    }
-    
-    @objc fileprivate func deviceDisconnected() {
-        DebugPrint(" Disconnected")
-        DispatchQueue.main.async {
-            self.reset()
-        }
-    }
-    
     fileprivate func configureAmplifiers() {
         ampController = AmpController()
+        ampController.delegate = self
         DispatchQueue.main.async {
             self.configureAmplifier()
         }
@@ -486,3 +484,33 @@ extension MainVC: WheelDelegate {
     }
 }
 
+extension MainVC: AmpControllerDelegate {
+    
+    func deviceConnected(ampController: AmpController) {
+        DebugPrint(" Connected")
+        DispatchQueue.main.async {
+            self.statusLED.backgroundColour = ampController.hasAnAmplifier ? .green : .red
+            self.statusLabel.stringValue = "\(ampController.currentAmplifierName) connected"
+        }
+    }
+    
+    func deviceOpened(ampController: AmpController) {
+        DebugPrint(" Opened")
+        configureAmplifiers()
+    }
+    
+    func deviceClosed(ampController: AmpController) {
+        DebugPrint(" Closed")
+    }
+    
+    func deviceDisconnected(ampController: AmpController) {
+        DebugPrint(" Disconnected")
+        DispatchQueue.main.async {
+            self.reset()
+            self.statusLED.backgroundColour = ampController.hasAnAmplifier ? .green : .red
+            self.statusLabel.stringValue = "\(ampController.currentAmplifierName) connected"
+        }
+    }
+    
+
+}

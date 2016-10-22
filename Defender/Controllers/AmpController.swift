@@ -9,9 +9,20 @@
 import Cocoa
 import Mustang
 
+protocol AmpControllerDelegate {
+    func deviceConnected(ampController: AmpController)
+    func deviceDisconnected(ampController: AmpController)
+    func deviceOpened(ampController: AmpController)
+    func deviceClosed(ampController: AmpController)
+}
+
 class AmpController {
     
-    private let mustang = Mustang(mockMode: true)
+    var delegate: AmpControllerDelegate?
+    
+    private let mustang: Mustang
+    
+    let mocking = false
     
     private var amplifiers = [DTOAmplifier]()
     private var currentAmplifier: DTOAmplifier?
@@ -23,13 +34,56 @@ class AmpController {
         }
     }
     
+    var currentAmplifierName : String {
+        get {
+            return currentAmplifier?.name ?? "No amplifier"
+        }
+    }
+
     init() {
+        mustang = Mustang(mockMode: mocking)
         presets = [UInt8 : DTOPreset] ()
         currentAmplifier = nil
+        configureNotifications()
         amplifiers = mustang.getConnectedAmplifiers()
         currentAmplifier = amplifiers.first
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    fileprivate func configureNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceConnected), name: NSNotification.Name(rawValue: Mustang.deviceConnectedNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceOpened), name: NSNotification.Name(rawValue: Mustang.deviceOpenedNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceClosed), name: NSNotification.Name(rawValue: Mustang.deviceClosedNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceDisconnected), name: NSNotification.Name(rawValue: Mustang.deviceDisconnectedNotificationName), object: nil)
+    }
+
+    @objc fileprivate func deviceConnected() {
+        presets = [UInt8 : DTOPreset] ()
+        currentAmplifier = nil
+        amplifiers = mustang.getConnectedAmplifiers()
+        currentAmplifier = amplifiers.first
+        delegate?.deviceConnected(ampController: self)
+    }
+    
+    @objc fileprivate func deviceOpened() {
+        delegate?.deviceOpened(ampController: self)
+    }
+    
+    @objc fileprivate func deviceClosed() {
+        delegate?.deviceClosed(ampController: self)
+    }
+    
+    @objc fileprivate func deviceDisconnected() {
+        presets = [UInt8 : DTOPreset] ()
+        currentAmplifier = nil
+        amplifiers = [DTOAmplifier]()
+        currentAmplifier = nil
+        delegate?.deviceDisconnected(ampController: self)
+    }
+    
     func getPresets(_ onCompletion: @escaping () -> ()) {
         if let amplifier = currentAmplifier {
             mustang.getPresets(amplifier) { (presets) in
