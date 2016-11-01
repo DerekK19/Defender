@@ -64,13 +64,13 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		651262501DB1F5A5008DEC4B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			dstPath = "~/Development/AppStore";
 			dstSubfolderSpec = 0;
 			files = (
 				651262511DB1F5EF008DEC4B /* Defender.app in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
