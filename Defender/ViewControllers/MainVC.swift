@@ -319,7 +319,7 @@ class MainVC: NSViewController {
             DebugPrint("   Reverb/Presence: -unset-")
             presenceKnob.floatValue = 1.0
         }
-        DebugPrint("   Model: \(preset?.modelName ?? "-unknown-")")
+        DebugPrint("   Model: \(preset?.moduleName ?? "-unknown-")")
         DebugPrint("   Cabinet: \(preset?.cabinetName ?? "-unknown-")")
         for effect in preset?.effects ?? [DTOEffect]() {
             DebugPrint("    \(effect.type.rawValue): \(effect.name ?? "-empty-") - \(effect.enabled ? "ON" : "OFF")")
