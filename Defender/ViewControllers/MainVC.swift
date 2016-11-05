@@ -39,7 +39,12 @@ class MainVC: NSViewController {
     @IBOutlet weak var exitButton: ActionButtonControl!
     @IBOutlet weak var tapButton: ActionButtonControl!
     
+    @IBOutlet weak var usernameTextField: NSTextField!
+    @IBOutlet weak var passwordTextField: NSSecureTextField!
+    
     @IBOutlet weak var debugButton: NSButton!
+
+    @IBOutlet weak var loginButton: NSButton!
 
     @IBOutlet weak var effectsSettings: NSStackView!
     @IBOutlet weak var pedalsArea: NSStackView!
@@ -238,6 +243,21 @@ class MainVC: NSViewController {
         }
     }
     
+    @IBAction func willLogin(_ sender: NSButton) {
+        if loginButton.title == "Log out" {
+            ampController.logout {(loggedOut: Bool) in
+                self.loginButton.title = loggedOut ? "Log in" : "Log out"
+                
+            }
+        } else {
+            ampController.login(username: usernameTextField.stringValue,
+                                password: passwordTextField.stringValue)
+            { (loggedIn: Bool) in
+                self.loginButton.title = loggedIn ? "Log out" : "Login"
+            }
+        }
+    }
+    
     // MARK: Private Functions
     fileprivate func reset() {
         statusLED.backgroundColour = ampController.hasAnAmplifier ? .green : .red
@@ -319,7 +339,7 @@ class MainVC: NSViewController {
             DebugPrint("   Reverb/Presence: -unset-")
             presenceKnob.floatValue = 1.0
         }
-        DebugPrint("   Model: \(preset?.modelName ?? "-unknown-")")
+        DebugPrint("   Model: \(preset?.moduleName ?? "-unknown-")")
         DebugPrint("   Cabinet: \(preset?.cabinetName ?? "-unknown-")")
         for effect in preset?.effects ?? [DTOEffect]() {
             DebugPrint("    \(effect.type.rawValue): \(effect.name ?? "-empty-") - \(effect.enabled ? "ON" : "OFF")")

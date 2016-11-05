@@ -36,6 +36,8 @@
 		658CEC111DA44B97006890A4 /* EffectSlotControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658CEC101DA44B97006890A4 /* EffectSlotControl.swift */; };
 		658D10E21DB73BA3008C3A45 /* ShadeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658D10E11DB73BA3008C3A45 /* ShadeControl.swift */; };
 		65A65BA21DA4740400EDCA32 /* PedalPadControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A65BA11DA4740400EDCA32 /* PedalPadControl.swift */; };
+		65EF3B3C1DCD8F7A00A01153 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */; };
+		65EF3B3D1DCD8F8500A01153 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */; };
 		7123C50C1DAC46B900ACFDB5 /* AmpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7123C50B1DAC46B900ACFDB5 /* AmpController.swift */; };
 		7167FEDA1D58032C0059A276 /* NSImage+Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FED91D58032C0059A276 /* NSImage+Colour.swift */; };
 		7167FEDC1D5815270059A276 /* DisplayControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FEDB1D5815270059A276 /* DisplayControl.swift */; };
@@ -108,6 +110,7 @@
 		658CEC101DA44B97006890A4 /* EffectSlotControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectSlotControl.swift; sourceTree = "<group>"; };
 		658D10E11DB73BA3008C3A45 /* ShadeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadeControl.swift; sourceTree = "<group>"; };
 		65A65BA11DA4740400EDCA32 /* PedalPadControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalPadControl.swift; sourceTree = "<group>"; };
+		65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/Mac/AFNetworking.framework; sourceTree = "<group>"; };
 		7123C50B1DAC46B900ACFDB5 /* AmpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmpController.swift; sourceTree = "<group>"; };
 		7167FED91D58032C0059A276 /* NSImage+Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Colour.swift"; sourceTree = "<group>"; };
 		7167FEDB1D5815270059A276 /* DisplayControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayControl.swift; sourceTree = "<group>"; };
@@ -122,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6581F99D1D4C5D97005BB5C9 /* ObjectMapper.framework in Frameworks */,
+				65EF3B3C1DCD8F7A00A01153 /* AFNetworking.framework in Frameworks */,
 				6581F99C1D4C5D97005BB5C9 /* Mustang.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				658CEBF31DA0D8AA006890A4 /* ObjectMapper.framework in Frameworks */,
+				65EF3B3D1DCD8F8500A01153 /* AFNetworking.framework in Frameworks */,
 				658CEBF21DA0D8A6006890A4 /* Mustang.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,6 +254,7 @@
 		6581F9991D4C5D76005BB5C9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */,
 				6581F99A1D4C5D97005BB5C9 /* Mustang.framework */,
 				6581F99B1D4C5D97005BB5C9 /* ObjectMapper.framework */,
 			);
@@ -284,6 +290,7 @@
 				655A5A391D4C555400E15E1F /* Sources */,
 				655A5A3A1D4C555400E15E1F /* Frameworks */,
 				6581F99E1D4C6772005BB5C9 /* Copy Carthage frameworks (for App Store submission bug) */,
+				65EF3B3E1DCD921B00A01153 /* Delete previous version from App Store */,
 				651262501DB1F5A5008DEC4B /* CopyFiles */,
 			);
 			buildRules = (
@@ -429,6 +436,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/Mac/Mustang.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/ObjectMapper.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/AFNetworking.framework",
 			);
 			name = "Copy Carthage frameworks (for App Store submission bug)";
 			outputPaths = (
@@ -436,6 +444,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		65EF3B3E1DCD921B00A01153 /* Delete previous version from App Store */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Delete previous version from App Store";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "rm -rf ~/Development/AppStore/Defender.app";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
