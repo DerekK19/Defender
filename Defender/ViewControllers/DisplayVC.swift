@@ -59,7 +59,7 @@ class DisplayVC: NSViewController {
         let presetKnown = preset != nil
         presetNumber.stringValue = presetKnown ? String(format: "%02d", preset?.number ?? 0) : ""
         presetName.stringValue = preset?.name ?? ""
-        amplifierName.stringValue = preset?.modelName ?? ""
+        amplifierName.stringValue = preset?.moduleName ?? ""
         setValueForFxField(stompValue, effect: preset?.effects.filter( { $0.type == .Stomp } ).first, presetKnown: presetKnown)
         setValueForFxField(modulationValue, effect: preset?.effects.filter( { $0.type == .Modulation } ).first, presetKnown: presetKnown)
         setValueForFxField(delayValue, effect: preset?.effects.filter( { $0.type == .Delay } ).first, presetKnown: presetKnown)
