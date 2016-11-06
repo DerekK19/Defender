@@ -1287,17 +1287,42 @@
                                     </allowedInputSourceLocales>
                                 </secureTextFieldCell>
                             </secureTextField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nol-OP-qJs">
+                                <rect key="frame" x="317" y="33" width="83" height="32"/>
+                                <buttonCell key="cell" type="push" title="Search" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ocS-T8-o64">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="wilSearch:" target="XfG-lQ-9wD" id="iMe-a0-iAs"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jDU-2o-yPA">
+                                <rect key="frame" x="406" y="40" width="100" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="iEr-FG-aqB"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="clapton" placeholderString="search title" drawsBackground="YES" id="ZJi-lL-0EM">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Nhy-th-qRX" firstAttribute="leading" secondItem="AN3-vm-qTc" secondAttribute="trailing" constant="9" id="366-FQ-FyM"/>
                             <constraint firstItem="AN3-vm-qTc" firstAttribute="leading" secondItem="8H6-XT-ulE" secondAttribute="trailing" constant="12" id="4bo-wy-dzb"/>
                             <constraint firstItem="Msa-i8-6gy" firstAttribute="top" secondItem="DSP-LL-at5" secondAttribute="bottom" constant="11" id="86R-Nr-bZe"/>
+                            <constraint firstItem="8H6-XT-ulE" firstAttribute="centerY" secondItem="nol-OP-qJs" secondAttribute="centerY" id="A4f-LT-rpI"/>
                             <constraint firstItem="o1q-qf-bba" firstAttribute="leading" secondItem="tQP-kU-jAT" secondAttribute="trailing" constant="8" id="ARg-sz-QbH"/>
                             <constraint firstItem="tQP-kU-jAT" firstAttribute="leading" secondItem="3fo-Jh-Orh" secondAttribute="trailing" constant="6" id="Brw-pZ-exG"/>
+                            <constraint firstItem="jDU-2o-yPA" firstAttribute="leading" secondItem="nol-OP-qJs" secondAttribute="trailing" constant="12" id="Dy4-oO-l5w"/>
                             <constraint firstAttribute="trailing" secondItem="ags-YN-E3L" secondAttribute="trailing" constant="20" id="Hz4-hT-i0N"/>
                             <constraint firstItem="Msa-i8-6gy" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="69" id="Ilt-c2-8fz"/>
+                            <constraint firstItem="nol-OP-qJs" firstAttribute="leading" secondItem="Nhy-th-qRX" secondAttribute="trailing" constant="20" id="Lvv-Mj-Joo"/>
                             <constraint firstItem="AN3-vm-qTc" firstAttribute="centerY" secondItem="Nhy-th-qRX" secondAttribute="centerY" id="P5L-i7-Cg4"/>
                             <constraint firstItem="8H6-XT-ulE" firstAttribute="bottom" secondItem="ags-YN-E3L" secondAttribute="bottom" constant="-20" id="QN8-Gl-cye"/>
+                            <constraint firstItem="nol-OP-qJs" firstAttribute="baseline" secondItem="jDU-2o-yPA" secondAttribute="baseline" id="Rhe-XN-rty"/>
                             <constraint firstItem="3fo-Jh-Orh" firstAttribute="centerY" secondItem="tQP-kU-jAT" secondAttribute="centerY" id="S8o-9m-Jcz"/>
                             <constraint firstItem="DSP-LL-at5" firstAttribute="leading" secondItem="Msa-i8-6gy" secondAttribute="leading" id="Tbx-JF-M8z"/>
                             <constraint firstItem="DSP-LL-at5" firstAttribute="centerY" secondItem="3fo-Jh-Orh" secondAttribute="centerY" id="UOj-DZ-PqN"/>
@@ -1334,6 +1359,8 @@
                         <outlet property="presenceKnob" destination="g3U-Ot-mWR" id="41s-6h-o4B"/>
                         <outlet property="presenceLabel" destination="5BL-xr-hVU" id="qXW-1W-vcN"/>
                         <outlet property="saveButton" destination="YK0-Z5-9jc" id="i0I-WF-pxA"/>
+                        <outlet property="searchButton" destination="nol-OP-qJs" id="UaP-yH-J4H"/>
+                        <outlet property="searchTextField" destination="jDU-2o-yPA" id="EGw-Ev-adE"/>
                         <outlet property="statusLED" destination="3fo-Jh-Orh" id="adh-E7-YE2"/>
                         <outlet property="statusLabel" destination="tQP-kU-jAT" id="bvB-5x-1cJ"/>
                         <outlet property="tapButton" destination="0Sv-rg-gjk" id="I9a-XH-HWU"/>

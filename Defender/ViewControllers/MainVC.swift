@@ -42,10 +42,14 @@ class MainVC: NSViewController {
     @IBOutlet weak var usernameTextField: NSTextField!
     @IBOutlet weak var passwordTextField: NSSecureTextField!
     
-    @IBOutlet weak var debugButton: NSButton!
-
     @IBOutlet weak var loginButton: NSButton!
 
+    @IBOutlet weak var searchTextField: NSTextField!
+    
+    @IBOutlet weak var searchButton: NSButton!
+    
+    @IBOutlet weak var debugButton: NSButton!
+    
     @IBOutlet weak var effectsSettings: NSStackView!
     @IBOutlet weak var pedalsArea: NSStackView!
     @IBOutlet weak var effectsArea: NSStackView!
@@ -229,21 +233,8 @@ class MainVC: NSViewController {
         }
     }
     
-    @IBAction func willDebug(_ sender: NSButton) {
-        debuggingConstraints = !debuggingConstraints
-        if debuggingConstraints {
-            var debugConstraints = [NSLayoutConstraint]()
-            debugConstraints.append(contentsOf: self.view.constraints)
-            debugConstraints.append(contentsOf: self.effectsSettings.constraints)
-            debugConstraints.append(contentsOf: self.effectsArea.constraints)
-            debugConstraints.append(contentsOf: self.pedalsArea.constraints)
-            self.view.window?.visualizeConstraints(debugConstraints)
-        } else {
-            self.view.window?.visualizeConstraints([NSLayoutConstraint]())
-        }
-    }
-    
     @IBAction func willLogin(_ sender: NSButton) {
+        self.resignFirstResponder()
         if loginButton.title == "Log out" {
             ampController.logout {(loggedOut: Bool) in
                 self.loginButton.title = loggedOut ? "Log in" : "Log out"
@@ -255,6 +246,33 @@ class MainVC: NSViewController {
             { (loggedIn: Bool) in
                 self.loginButton.title = loggedIn ? "Log out" : "Login"
             }
+        }
+    }
+    
+    @IBAction func wilSearch(_ sender: NSButton) {
+        self.resignFirstResponder()
+        ampController.search(forTitle: searchTextField.stringValue)
+        { (response: DTOSearchResponse?) in
+            if let items = response?.items {
+                NSLog("Found \(items.count) items")
+                for item in items {
+                    NSLog("\(item.title) - \(item.data?.preset?.effects.count ?? 0) effects")
+                }
+            }
+        }
+    }
+    
+    @IBAction func willDebug(_ sender: NSButton) {
+        debuggingConstraints = !debuggingConstraints
+        if debuggingConstraints {
+            var debugConstraints = [NSLayoutConstraint]()
+            debugConstraints.append(contentsOf: self.view.constraints)
+            debugConstraints.append(contentsOf: self.effectsSettings.constraints)
+            debugConstraints.append(contentsOf: self.effectsArea.constraints)
+            debugConstraints.append(contentsOf: self.pedalsArea.constraints)
+            self.view.window?.visualizeConstraints(debugConstraints)
+        } else {
+            self.view.window?.visualizeConstraints([NSLayoutConstraint]())
         }
     }
     

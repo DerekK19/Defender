@@ -197,6 +197,22 @@ class AmpController {
         )
     }
     
+    open func search(forTitle title: String,
+                     onCompletion: @escaping (_ response: DTOSearchResponse?) ->()) {
+        mustang.search(forTitle: title,
+                       onSuccess: { (response) in
+                        DispatchQueue.main.async {
+                            NSLog("Searched")
+                            onCompletion(response)
+                        }},
+                       onFail: {
+                        DispatchQueue.main.async {
+                            NSLog("Search failure")
+                            onCompletion(nil)
+                        }}
+        )
+    }
+    
     open func logout(onCompletion: @escaping (_ loggedOut: Bool) ->()) {
         mustang.logout(onSuccess: {
                         DispatchQueue.main.async {
