@@ -179,4 +179,51 @@ class AmpController {
         }
     }
 
+    open func login(username: String,
+                    password: String,
+                    onCompletion: @escaping (_ loggedIn: Bool) ->()) {
+        mustang.login(username: username,
+                      password: password,
+                      onSuccess: {
+                        DispatchQueue.main.async {
+                            NSLog("Logged in")
+                            onCompletion(true)
+                        }},
+                      onFail: {
+                        DispatchQueue.main.async {
+                            NSLog("Login failure")
+                            onCompletion(false)
+                        }}
+        )
+    }
+    
+    open func search(forTitle title: String,
+                     onCompletion: @escaping (_ response: DTOSearchResponse?) ->()) {
+        mustang.search(forTitle: title,
+                       onSuccess: { (response) in
+                        DispatchQueue.main.async {
+                            NSLog("Searched")
+                            onCompletion(response)
+                        }},
+                       onFail: {
+                        DispatchQueue.main.async {
+                            NSLog("Search failure")
+                            onCompletion(nil)
+                        }}
+        )
+    }
+    
+    open func logout(onCompletion: @escaping (_ loggedOut: Bool) ->()) {
+        mustang.logout(onSuccess: {
+                        DispatchQueue.main.async {
+                            NSLog("Logged out")
+                            onCompletion(true)
+                        }},
+                      onFail: {
+                        DispatchQueue.main.async {
+                            NSLog("Logout failure")
+                            onCompletion(false)
+                        }}
+        )
+    }
 }

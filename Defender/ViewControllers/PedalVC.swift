@@ -39,10 +39,10 @@ class PedalVC: NSViewController {
     var delegate: PedalVCDelegate?
     
     let slotBackgroundColour = NSColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
-    let stompBackgroundColour = NSColor(red: 1.0, green: 0.97, blue: 0.31, alpha: 1.0)
-    let modBackgroundColour = NSColor(red: 0.17, green: 0.56, blue: 0.98, alpha: 1.0)
-    let delayBackgroundColour = NSColor(red: 0.05, green: 0.87, blue: 0.48, alpha: 1.0)
-    let reverbBackgroundColour = NSColor(red: 0.95, green: 0.63, blue: 0.18, alpha: 1.0)
+    let bgColours: [Int : NSColor] = [1 : NSColor(red: 0.17, green: 0.56, blue: 0.98, alpha: 1.0),
+                                      2 : NSColor(red: 0.05, green: 0.87, blue: 0.48, alpha: 1.0),
+                                      10 : NSColor(red: 0.95, green: 0.63, blue: 0.18, alpha: 1.0),
+                                      14 : NSColor(red: 1.0, green: 0.97, blue: 0.31, alpha: 1.0)]
     
     var fullBackgroundColour = NSColor.black
     var pedalBackgroundColour = NSColor.black
@@ -113,18 +113,7 @@ class PedalVC: NSViewController {
         delegate = nil
         typeLabel.stringValue = pedal?.type.rawValue.uppercased() ?? ""
         nameLabel.stringValue = pedal?.name?.uppercased() ?? ""
-        switch pedal?.type ?? .Unknown {
-        case .Stomp:
-            fullBackgroundColour = stompBackgroundColour
-        case .Modulation:
-            fullBackgroundColour = modBackgroundColour
-        case .Delay:
-            fullBackgroundColour = delayBackgroundColour
-        case .Reverb:
-            fullBackgroundColour = reverbBackgroundColour
-        default:
-            fullBackgroundColour = slotBackgroundColour
-        }
+        fullBackgroundColour = bgColours[pedal?.colour ?? 0] ?? slotBackgroundColour
         if pedal == nil {
             state = .disabled
         } else {
