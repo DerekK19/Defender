@@ -39,15 +39,6 @@ class MainVC: NSViewController {
     @IBOutlet weak var exitButton: ActionButtonControl!
     @IBOutlet weak var tapButton: ActionButtonControl!
     
-    @IBOutlet weak var usernameTextField: NSTextField!
-    @IBOutlet weak var passwordTextField: NSSecureTextField!
-    
-    @IBOutlet weak var loginButton: NSButton!
-
-    @IBOutlet weak var searchTextField: NSTextField!
-    
-    @IBOutlet weak var searchButton: NSButton!
-    
     @IBOutlet weak var debugButton: NSButton!
     
     @IBOutlet weak var effectsSettings: NSStackView!
@@ -55,6 +46,7 @@ class MainVC: NSViewController {
     @IBOutlet weak var effectsArea: NSStackView!
     
     @IBOutlet weak var displayVC: DisplayVC?
+    @IBOutlet weak var webVC: WebVC?
     @IBOutlet weak var effect1VC: EffectVC?
     @IBOutlet weak var effect2VC: EffectVC?
     @IBOutlet weak var effect3VC: EffectVC?
@@ -153,6 +145,9 @@ class MainVC: NSViewController {
             switch identifier {
             case "embedDisplay":
                 self.displayVC = segue.destinationController as? DisplayVC
+            case "embedWeb":
+                self.webVC = segue.destinationController as? WebVC
+                self.webVC?.ampController = self.ampController
             case "embedEffect1":
                 self.effect1VC = segue.destinationController as? EffectVC
             case "embedEffect2":
@@ -228,35 +223,6 @@ class MainVC: NSViewController {
                 DispatchQueue.main.async {
                     self.displayPreset(preset)
                     self.exitButton.setState(.active)
-                }
-            }
-        }
-    }
-    
-    @IBAction func willLogin(_ sender: NSButton) {
-        self.resignFirstResponder()
-        if loginButton.title == "Log out" {
-            ampController.logout {(loggedOut: Bool) in
-                self.loginButton.title = loggedOut ? "Log in" : "Log out"
-                
-            }
-        } else {
-            ampController.login(username: usernameTextField.stringValue,
-                                password: passwordTextField.stringValue)
-            { (loggedIn: Bool) in
-                self.loginButton.title = loggedIn ? "Log out" : "Login"
-            }
-        }
-    }
-    
-    @IBAction func wilSearch(_ sender: NSButton) {
-        self.resignFirstResponder()
-        ampController.search(forTitle: searchTextField.stringValue)
-        { (response: DTOSearchResponse?) in
-            if let items = response?.items {
-                NSLog("Found \(items.count) items")
-                for item in items {
-                    NSLog("\(item.title) - \(item.data?.preset?.effects.count ?? 0) effects")
                 }
             }
         }

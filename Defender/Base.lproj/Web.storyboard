@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="OKd-pB-42O">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--WebVC-->
+        <scene sceneID="Et2-Ij-VNB">
+            <objects>
+                <viewController id="OKd-pB-42O" customClass="WebVC" customModule="Defender" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="MMF-vr-cZk" customClass="WebSlotControl" customModule="Defender" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="650" height="109"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yJM-Z6-fz3">
+                                <rect key="frame" x="14" y="37" width="74" height="32"/>
+                                <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aUF-KR-bT0">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="willLogin:" target="OKd-pB-42O" id="Nzh-Th-hQN"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CPH-gF-mpu">
+                                <rect key="frame" x="94" y="44" width="100" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="sLo-83-GMz"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="derekk19" placeholderString="FUSE username" drawsBackground="YES" id="PN0-mP-lit">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LMl-Ur-xHf">
+                                <rect key="frame" x="206" y="44" width="100" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="DX3-IG-oH4"/>
+                                </constraints>
+                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Fe62h2zj" placeholderString="password" drawsBackground="YES" usesSingleLineMode="YES" id="JT6-ii-qvb">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <allowedInputSourceLocales>
+                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                    </allowedInputSourceLocales>
+                                </secureTextFieldCell>
+                            </secureTextField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EV1-k6-XW3">
+                                <rect key="frame" x="320" y="37" width="83" height="32"/>
+                                <buttonCell key="cell" type="push" title="Search" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5rX-xl-v3Y">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="wilSearch:" target="OKd-pB-42O" id="f3G-he-Ffx"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4XM-dQ-eqS">
+                                <rect key="frame" x="409" y="44" width="100" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="EFU-SC-pXW"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="clapton" placeholderString="search title" drawsBackground="YES" id="kZJ-Tl-kW6">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8RF-fS-7Il">
+                                <rect key="frame" x="527" y="47" width="4" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="x8q-Ar-c7T">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="UM9-6c-75m" customClass="ShadeControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="650" height="109"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="yJM-Z6-fz3" firstAttribute="centerY" secondItem="CPH-gF-mpu" secondAttribute="centerY" id="4E2-MO-6a6"/>
+                            <constraint firstItem="yJM-Z6-fz3" firstAttribute="centerY" secondItem="MMF-vr-cZk" secondAttribute="centerY" id="CMH-Jd-3cS"/>
+                            <constraint firstItem="UM9-6c-75m" firstAttribute="leading" secondItem="MMF-vr-cZk" secondAttribute="leading" id="Et4-rC-HcZ"/>
+                            <constraint firstItem="4XM-dQ-eqS" firstAttribute="leading" secondItem="EV1-k6-XW3" secondAttribute="trailing" constant="12" id="MzL-hl-KKl"/>
+                            <constraint firstItem="LMl-Ur-xHf" firstAttribute="leading" secondItem="CPH-gF-mpu" secondAttribute="trailing" constant="12" id="OpR-qO-qdz"/>
+                            <constraint firstItem="yJM-Z6-fz3" firstAttribute="centerY" secondItem="EV1-k6-XW3" secondAttribute="centerY" id="Q3y-jd-q8x"/>
+                            <constraint firstAttribute="trailing" secondItem="UM9-6c-75m" secondAttribute="trailing" id="RI5-sy-vcB"/>
+                            <constraint firstItem="UM9-6c-75m" firstAttribute="top" secondItem="MMF-vr-cZk" secondAttribute="top" id="V2c-9Y-kk3"/>
+                            <constraint firstItem="CPH-gF-mpu" firstAttribute="baseline" secondItem="LMl-Ur-xHf" secondAttribute="baseline" id="ViD-62-qSn"/>
+                            <constraint firstItem="8RF-fS-7Il" firstAttribute="leading" secondItem="4XM-dQ-eqS" secondAttribute="trailing" constant="20" id="VtT-tS-Fhb"/>
+                            <constraint firstItem="4XM-dQ-eqS" firstAttribute="baseline" secondItem="8RF-fS-7Il" secondAttribute="baseline" id="asd-zZ-XtQ"/>
+                            <constraint firstItem="yJM-Z6-fz3" firstAttribute="leading" secondItem="MMF-vr-cZk" secondAttribute="leading" constant="20" id="cEe-DV-ddj"/>
+                            <constraint firstItem="EV1-k6-XW3" firstAttribute="leading" secondItem="LMl-Ur-xHf" secondAttribute="trailing" constant="20" id="fRe-MY-6wO"/>
+                            <constraint firstItem="CPH-gF-mpu" firstAttribute="leading" secondItem="yJM-Z6-fz3" secondAttribute="trailing" constant="12" id="lBL-IW-Aig"/>
+                            <constraint firstAttribute="bottom" secondItem="UM9-6c-75m" secondAttribute="bottom" id="p8H-Q1-Zud"/>
+                            <constraint firstItem="EV1-k6-XW3" firstAttribute="baseline" secondItem="4XM-dQ-eqS" secondAttribute="baseline" id="wdR-Tg-dAK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="countLabel" destination="8RF-fS-7Il" id="rEj-6X-r3U"/>
+                        <outlet property="loginButton" destination="yJM-Z6-fz3" id="FXq-FA-sR9"/>
+                        <outlet property="passwordTextField" destination="LMl-Ur-xHf" id="SG0-82-cdd"/>
+                        <outlet property="searchButton" destination="EV1-k6-XW3" id="agJ-Dl-1EY"/>
+                        <outlet property="searchTextField" destination="4XM-dQ-eqS" id="OaE-Lx-mvi"/>
+                        <outlet property="shade" destination="UM9-6c-75m" id="3b3-0H-joe"/>
+                        <outlet property="slot" destination="MMF-vr-cZk" id="sZS-Df-Iop"/>
+                        <outlet property="usernameTextField" destination="CPH-gF-mpu" id="u1A-jz-6yg"/>
+                    </connections>
+                </viewController>
+                <customObject id="t4Z-H2-T6W" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="232" y="75.5"/>
+        </scene>
+    </scenes>
+</document>
