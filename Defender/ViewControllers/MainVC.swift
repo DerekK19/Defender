@@ -148,6 +148,8 @@ class MainVC: NSViewController {
             case "embedWeb":
                 self.webVC = segue.destinationController as? WebVC
                 self.webVC?.ampController = self.ampController
+                self.webVC?.delegate = self
+
             case "embedEffect1":
                 self.effect1VC = segue.destinationController as? EffectVC
             case "embedEffect2":
@@ -515,6 +517,11 @@ extension MainVC: AmpControllerDelegate {
             self.statusLabel.stringValue = "\(ampController.currentAmplifierName) connected"
         }
     }
-    
+}
 
+extension MainVC: WebVCDelegate {
+    
+    func didSelectPreset(preset: DTOPreset) {
+        displayPreset(preset)
+    }
 }

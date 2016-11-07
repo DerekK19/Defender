@@ -41,6 +41,7 @@
 		7167FF3E1D592E070059A276 /* WheelControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FF3D1D592E070059A276 /* WheelControl.swift */; };
 		7167FFD01D595DC70059A276 /* ActionButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FFCF1D595DC70059A276 /* ActionButtonCell.swift */; };
 		718C89651DCFCBBA00BC12E8 /* WebSlotControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718C89641DCFCBBA00BC12E8 /* WebSlotControl.swift */; };
+		718C89C51DD122D300BC12E8 /* WebHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718C89C41DD122D300BC12E8 /* WebHeaderCell.swift */; };
 		7194EA3A1DCFC5E7004E2D9C /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194EA391DCFC5E7004E2D9C /* WebVC.swift */; };
 		7194EA3D1DCFC61E004E2D9C /* Web.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7194EA3B1DCFC61E004E2D9C /* Web.storyboard */; };
 		7194EA3E1DCFC62C004E2D9C /* Pedal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7194EA401DCFC62C004E2D9C /* Pedal.storyboard */; };
@@ -104,6 +105,7 @@
 		7167FF3D1D592E070059A276 /* WheelControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WheelControl.swift; sourceTree = "<group>"; };
 		7167FFCF1D595DC70059A276 /* ActionButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButtonCell.swift; sourceTree = "<group>"; };
 		718C89641DCFCBBA00BC12E8 /* WebSlotControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSlotControl.swift; sourceTree = "<group>"; };
+		718C89C41DD122D300BC12E8 /* WebHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebHeaderCell.swift; sourceTree = "<group>"; };
 		7194EA391DCFC5E7004E2D9C /* WebVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
 		7194EA3C1DCFC61E004E2D9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Web.storyboard; sourceTree = "<group>"; };
 		7194EA3F1DCFC62C004E2D9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Pedal.storyboard; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				65A65BA11DA4740400EDCA32 /* PedalPadControl.swift */,
 				652564481DA8972A00ACCD4B /* PedalKnobControl.swift */,
 				718C89641DCFCBBA00BC12E8 /* WebSlotControl.swift */,
+				718C89C41DD122D300BC12E8 /* WebHeaderCell.swift */,
 				658CEC0E1DA36D85006890A4 /* Enums.swift */,
 			);
 			name = "Custom Controls";
@@ -462,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				658CEC0B1DA36977006890A4 /* EffectControl.swift in Sources */,
+				718C89C51DD122D300BC12E8 /* WebHeaderCell.swift in Sources */,
 				7167FEDC1D5815270059A276 /* DisplayControl.swift in Sources */,
 				65426BA21DB0930300E54D35 /* KnobBaseControl.swift in Sources */,
 				658CEC0D1DA36AAA006890A4 /* PedalBodyControl.swift in Sources */,

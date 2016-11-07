@@ -9,6 +9,10 @@
 import Cocoa
 import Mustang
 
+protocol WebVCDelegate {
+    func didSelectPreset(preset: DTOPreset)
+}
+
 class WebVC: NSViewController {
 
     @IBOutlet weak var slot: WebSlotControl!
@@ -26,6 +30,8 @@ class WebVC: NSViewController {
     
     @IBOutlet weak var searchResultsScrollView: NSScrollView!
     @IBOutlet weak var searchResultsTableView: NSTableView!
+
+    var delegate: WebVCDelegate?
     
     let slotBackgroundColour = NSColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
 
@@ -83,6 +89,7 @@ class WebVC: NSViewController {
         super.viewDidLoad()
         self.state = .disabled
         self.loggedIn = false
+        self.customiseTableView()
     }
 
     // MARK: Action functions
@@ -118,6 +125,12 @@ class WebVC: NSViewController {
         }
     }
     
+    // MARK: Private functions
+    private func customiseTableView() {
+        for column in searchResultsTableView.tableColumns {
+            column.headerCell = WebHeaderCell(textCell: "Preset Name")
+        }
+    }
 }
 
 extension WebVC: NSTableViewDataSource, NSTableViewDelegate {
@@ -126,14 +139,19 @@ extension WebVC: NSTableViewDataSource, NSTableViewDelegate {
         return presets.count
     }
     
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        var result: NSTextField? = tableView.make(withIdentifier: "MyView", owner: self) as! NSTextField?
-        if result == nil {
-            result = NSTextField(frame: NSMakeRect(0, 0, 100, 20))
-            result?.identifier = "MyView"
-        }
-        result?.stringValue = presets[row].title
-        return result
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+        let item = presets[row]
+        return item.title
     }
 
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        NSLog("Selection changed")
+        let row = searchResultsTableView.selectedRow
+        if row >= 0 && row < presets.count {
+            let item = presets[row]
+            if let preset = item.data?.preset {
+                delegate?.didSelectPreset(preset: preset)
+            }
+        }
+    }
 }
