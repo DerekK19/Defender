@@ -24,6 +24,9 @@ class WebVC: NSViewController {
     
     @IBOutlet weak var searchButton: NSButton!
     
+    @IBOutlet weak var searchResultsScrollView: NSScrollView!
+    @IBOutlet weak var searchResultsTableView: NSTableView!
+    
     let slotBackgroundColour = NSColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
 
     var fullBackgroundColour = NSColor.black
@@ -53,7 +56,19 @@ class WebVC: NSViewController {
         }
     }
     
+    var loggedIn: Bool = false {
+        didSet {
+            self.loginButton.title = self.loggedIn ? "Log out" : "Log in"
+            self.usernameTextField.isHidden = loggedIn
+            self.passwordTextField.isHidden = loggedIn
+            self.searchButton.isHidden = !loggedIn
+            self.searchTextField.isHidden = !loggedIn
+            self.searchResultsScrollView.isHidden = !loggedIn
+        }
+    }
+    
     internal var ampController: AmpController?
+    fileprivate var presets = [DTOSearchItem]()
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -67,22 +82,22 @@ class WebVC: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.state = .disabled
+        self.loggedIn = false
     }
 
     // MARK: Action functions
     
     @IBAction func willLogin(_ sender: NSButton) {
         self.resignFirstResponder()
-        if loginButton.title == "Log out" {
+        if loggedIn {
             ampController?.logout {(loggedOut: Bool) in
-                self.loginButton.title = loggedOut ? "Log in" : "Log out"
-                
+                self.loggedIn = !loggedOut
             }
         } else {
             ampController?.login(username: usernameTextField.stringValue,
                                 password: passwordTextField.stringValue)
             { (loggedIn: Bool) in
-                self.loginButton.title = loggedIn ? "Log out" : "Login"
+                self.loggedIn = loggedIn
             }
         }
     }
@@ -97,8 +112,28 @@ class WebVC: NSViewController {
                 for item in items {
                     NSLog("\(item.title) - \(item.data?.preset?.effects.count ?? 0) effects")
                 }
+                self.presets = items
+                self.searchResultsTableView.reloadData()
             }
         }
     }
     
+}
+
+extension WebVC: NSTableViewDataSource, NSTableViewDelegate {
+    
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return presets.count
+    }
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        var result: NSTextField? = tableView.make(withIdentifier: "MyView", owner: self) as! NSTextField?
+        if result == nil {
+            result = NSTextField(frame: NSMakeRect(0, 0, 100, 20))
+            result?.identifier = "MyView"
+        }
+        result?.stringValue = presets[row].title
+        return result
+    }
+
 }
