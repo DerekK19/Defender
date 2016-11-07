@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yJM-Z6-fz3">
-                                <rect key="frame" x="14" y="37" width="74" height="32"/>
+                                <rect key="frame" x="2" y="73" width="74" height="32"/>
                                 <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aUF-KR-bT0">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -24,33 +24,33 @@
                                     <action selector="willLogin:" target="OKd-pB-42O" id="Nzh-Th-hQN"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CPH-gF-mpu">
-                                <rect key="frame" x="94" y="44" width="100" height="22"/>
+                            <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CPH-gF-mpu">
+                                <rect key="frame" x="82" y="82" width="100" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="sLo-83-GMz"/>
                                 </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="derekk19" placeholderString="FUSE username" drawsBackground="YES" id="PN0-mP-lit">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" title="derekk19" placeholderString="FUSE username" drawsBackground="YES" id="PN0-mP-lit">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </textFieldCell>
                             </textField>
-                            <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LMl-Ur-xHf">
-                                <rect key="frame" x="206" y="44" width="100" height="22"/>
+                            <secureTextField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LMl-Ur-xHf">
+                                <rect key="frame" x="194" y="82" width="100" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="DX3-IG-oH4"/>
                                 </constraints>
-                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Fe62h2zj" placeholderString="password" drawsBackground="YES" usesSingleLineMode="YES" id="JT6-ii-qvb">
+                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" title="Fe62h2zj" placeholderString="password" drawsBackground="YES" usesSingleLineMode="YES" id="JT6-ii-qvb">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <allowedInputSourceLocales>
                                         <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                                     </allowedInputSourceLocales>
                                 </secureTextFieldCell>
                             </secureTextField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EV1-k6-XW3">
-                                <rect key="frame" x="320" y="37" width="83" height="32"/>
+                                <rect key="frame" x="308" y="73" width="83" height="32"/>
                                 <buttonCell key="cell" type="push" title="Search" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5rX-xl-v3Y">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -59,19 +59,19 @@
                                     <action selector="wilSearch:" target="OKd-pB-42O" id="f3G-he-Ffx"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4XM-dQ-eqS">
-                                <rect key="frame" x="409" y="44" width="100" height="22"/>
+                            <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4XM-dQ-eqS">
+                                <rect key="frame" x="397" y="83" width="100" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="EFU-SC-pXW"/>
                                 </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="clapton" placeholderString="search title" drawsBackground="YES" id="kZJ-Tl-kW6">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" title="clapton" placeholderString="search title" drawsBackground="YES" id="kZJ-Tl-kW6">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8RF-fS-7Il">
-                                <rect key="frame" x="527" y="47" width="4" height="17"/>
+                                <rect key="frame" x="515" y="83" width="4" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="x8q-Ar-c7T">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -84,7 +84,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="yJM-Z6-fz3" firstAttribute="centerY" secondItem="CPH-gF-mpu" secondAttribute="centerY" id="4E2-MO-6a6"/>
-                            <constraint firstItem="yJM-Z6-fz3" firstAttribute="centerY" secondItem="MMF-vr-cZk" secondAttribute="centerY" id="CMH-Jd-3cS"/>
+                            <constraint firstItem="yJM-Z6-fz3" firstAttribute="top" secondItem="MMF-vr-cZk" secondAttribute="top" constant="8" id="87z-Sz-ocO"/>
                             <constraint firstItem="UM9-6c-75m" firstAttribute="leading" secondItem="MMF-vr-cZk" secondAttribute="leading" id="Et4-rC-HcZ"/>
                             <constraint firstItem="4XM-dQ-eqS" firstAttribute="leading" secondItem="EV1-k6-XW3" secondAttribute="trailing" constant="12" id="MzL-hl-KKl"/>
                             <constraint firstItem="LMl-Ur-xHf" firstAttribute="leading" secondItem="CPH-gF-mpu" secondAttribute="trailing" constant="12" id="OpR-qO-qdz"/>
@@ -94,7 +94,7 @@
                             <constraint firstItem="CPH-gF-mpu" firstAttribute="baseline" secondItem="LMl-Ur-xHf" secondAttribute="baseline" id="ViD-62-qSn"/>
                             <constraint firstItem="8RF-fS-7Il" firstAttribute="leading" secondItem="4XM-dQ-eqS" secondAttribute="trailing" constant="20" id="VtT-tS-Fhb"/>
                             <constraint firstItem="4XM-dQ-eqS" firstAttribute="baseline" secondItem="8RF-fS-7Il" secondAttribute="baseline" id="asd-zZ-XtQ"/>
-                            <constraint firstItem="yJM-Z6-fz3" firstAttribute="leading" secondItem="MMF-vr-cZk" secondAttribute="leading" constant="20" id="cEe-DV-ddj"/>
+                            <constraint firstItem="yJM-Z6-fz3" firstAttribute="leading" secondItem="MMF-vr-cZk" secondAttribute="leading" constant="8" id="cEe-DV-ddj"/>
                             <constraint firstItem="EV1-k6-XW3" firstAttribute="leading" secondItem="LMl-Ur-xHf" secondAttribute="trailing" constant="20" id="fRe-MY-6wO"/>
                             <constraint firstItem="CPH-gF-mpu" firstAttribute="leading" secondItem="yJM-Z6-fz3" secondAttribute="trailing" constant="12" id="lBL-IW-Aig"/>
                             <constraint firstAttribute="bottom" secondItem="UM9-6c-75m" secondAttribute="bottom" id="p8H-Q1-Zud"/>
