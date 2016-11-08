@@ -33,6 +33,8 @@
 		658CEC111DA44B97006890A4 /* EffectSlotControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658CEC101DA44B97006890A4 /* EffectSlotControl.swift */; };
 		658D10E21DB73BA3008C3A45 /* ShadeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658D10E11DB73BA3008C3A45 /* ShadeControl.swift */; };
 		65A65BA21DA4740400EDCA32 /* PedalPadControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A65BA11DA4740400EDCA32 /* PedalPadControl.swift */; };
+		65B37C961DD1A8ED00433B89 /* ArrowButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B37C951DD1A8EC00433B89 /* ArrowButtonCell.swift */; };
+		65B37C981DD1AC6500433B89 /* ArrowButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B37C971DD1AC6400433B89 /* ArrowButtonControl.swift */; };
 		65EF3B3C1DCD8F7A00A01153 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */; };
 		65EF3B3D1DCD8F8500A01153 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */; };
 		7123C50C1DAC46B900ACFDB5 /* AmpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7123C50B1DAC46B900ACFDB5 /* AmpController.swift */; };
@@ -98,6 +100,8 @@
 		658CEC101DA44B97006890A4 /* EffectSlotControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectSlotControl.swift; sourceTree = "<group>"; };
 		658D10E11DB73BA3008C3A45 /* ShadeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadeControl.swift; sourceTree = "<group>"; };
 		65A65BA11DA4740400EDCA32 /* PedalPadControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalPadControl.swift; sourceTree = "<group>"; };
+		65B37C951DD1A8EC00433B89 /* ArrowButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowButtonCell.swift; sourceTree = "<group>"; };
+		65B37C971DD1AC6400433B89 /* ArrowButtonControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowButtonControl.swift; sourceTree = "<group>"; };
 		65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/Mac/AFNetworking.framework; sourceTree = "<group>"; };
 		7123C50B1DAC46B900ACFDB5 /* AmpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmpController.swift; sourceTree = "<group>"; };
 		7167FED91D58032C0059A276 /* NSImage+Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Colour.swift"; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 				7167FEDB1D5815270059A276 /* DisplayControl.swift */,
 				658D10E11DB73BA3008C3A45 /* ShadeControl.swift */,
 				656A5ABA1DA880B700B7BE3E /* LEDControl.swift */,
+				65B37C971DD1AC6400433B89 /* ArrowButtonControl.swift */,
+				65B37C951DD1A8EC00433B89 /* ArrowButtonCell.swift */,
 				71CD6D871D59714A006BD6DF /* ActionButtonControl.swift */,
 				7167FFCF1D595DC70059A276 /* ActionButtonCell.swift */,
 				658CEC101DA44B97006890A4 /* EffectSlotControl.swift */,
@@ -465,6 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				658CEC0B1DA36977006890A4 /* EffectControl.swift in Sources */,
+				65B37C961DD1A8ED00433B89 /* ArrowButtonCell.swift in Sources */,
 				718C89C51DD122D300BC12E8 /* WebHeaderCell.swift in Sources */,
 				7167FEDC1D5815270059A276 /* DisplayControl.swift in Sources */,
 				65426BA21DB0930300E54D35 /* KnobBaseControl.swift in Sources */,
@@ -486,6 +493,7 @@
 				7167FF3E1D592E070059A276 /* WheelControl.swift in Sources */,
 				65A65BA21DA4740400EDCA32 /* PedalPadControl.swift in Sources */,
 				652564491DA8972A00ACCD4B /* PedalKnobControl.swift in Sources */,
+				65B37C981DD1AC6500433B89 /* ArrowButtonControl.swift in Sources */,
 				71CD6D881D59714A006BD6DF /* ActionButtonControl.swift in Sources */,
 				7194EA3A1DCFC5E7004E2D9C /* WebVC.swift in Sources */,
 				658CEC051DA35E81006890A4 /* EffectVC.swift in Sources */,

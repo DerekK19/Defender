@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -60,7 +61,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="wilSearch:" target="OKd-pB-42O" id="f3G-he-Ffx"/>
+                                            <action selector="willSearch:" target="OKd-pB-42O" id="5P5-g4-Kl7"/>
                                         </connections>
                                     </button>
                                     <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4XM-dQ-eqS">
@@ -91,13 +92,13 @@
                                 </customSpacing>
                             </stackView>
                             <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1G-BJ-o1I">
-                                <rect key="frame" x="477" y="4" width="165" height="101"/>
+                                <rect key="frame" x="477" y="29" width="165" height="76"/>
                                 <clipView key="contentView" focusRingType="none" drawsBackground="NO" copiesOnScroll="NO" id="FFi-4n-aHY">
-                                    <rect key="frame" x="0.0" y="0.0" width="165" height="86"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="165" height="61"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" headerView="NT2-mv-SC4" id="saw-Cm-iW9">
-                                            <rect key="frame" x="0.0" y="0.0" width="173" height="63"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="173" height="38"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -126,7 +127,7 @@
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="sey-ca-m5w">
-                                    <rect key="frame" x="0.0" y="86" width="165" height="15"/>
+                                    <rect key="frame" x="0.0" y="61" width="165" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="8u8-hg-j7f">
@@ -138,37 +139,119 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8RF-fS-7Il">
-                                <rect key="frame" x="421" y="63" width="4" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="x8q-Ar-c7T">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yi1-VD-nWM">
+                                <rect key="frame" x="485" y="4" width="150" height="21"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vpK-84-JWx">
+                                        <rect key="frame" x="0.0" y="0.0" width="21" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="vpK-84-JWx" secondAttribute="height" multiplier="1:1" id="9Ns-zb-Pc5"/>
+                                            <constraint firstAttribute="height" constant="21" id="uDT-MT-mS6"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" title="&lt;&lt;" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="a0i-xC-4tu" customClass="ArrowButtonCell" customModule="Defender" customModuleProvider="target">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="didPressArrowWithSender:" target="OKd-pB-42O" id="Ll4-MZ-bG9"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k9i-sD-lyW">
+                                        <rect key="frame" x="25" y="0.0" width="21" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="k9i-sD-lyW" secondAttribute="height" multiplier="1:1" id="the-Zn-hnz"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" title="&lt;" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="7Kx-Jt-9ss" customClass="ArrowButtonCell" customModule="Defender" customModuleProvider="target">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="didPressArrowWithSender:" target="OKd-pB-42O" id="Qcb-W0-0so"/>
+                                        </connections>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8RF-fS-7Il">
+                                        <rect key="frame" x="48" y="0.0" width="54" height="21"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="x8q-Ar-c7T">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4mt-Is-cn8">
+                                        <rect key="frame" x="104" y="0.0" width="21" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="4mt-Is-cn8" secondAttribute="height" multiplier="1:1" id="Vma-Sl-H4a"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" title="&gt;" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="zP9-kM-NUA" customClass="ArrowButtonCell" customModule="Defender" customModuleProvider="target">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="didPressArrowWithSender:" target="OKd-pB-42O" id="3r8-5g-W11"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WIb-UG-ovS">
+                                        <rect key="frame" x="129" y="0.0" width="21" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="WIb-UG-ovS" secondAttribute="height" multiplier="1:1" id="qOc-MH-Dme"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" title="&gt;&gt;" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="t5h-kO-geY" customClass="ArrowButtonCell" customModule="Defender" customModuleProvider="target">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="didPressArrowWithSender:" target="OKd-pB-42O" id="X7F-wO-enn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="vpK-84-JWx" firstAttribute="height" secondItem="8RF-fS-7Il" secondAttribute="height" id="0en-8o-hl2"/>
+                                    <constraint firstItem="vpK-84-JWx" firstAttribute="height" secondItem="WIb-UG-ovS" secondAttribute="height" id="1wK-4T-9iz"/>
+                                    <constraint firstItem="vpK-84-JWx" firstAttribute="height" secondItem="k9i-sD-lyW" secondAttribute="height" id="8JN-9c-Iyc"/>
+                                    <constraint firstItem="vpK-84-JWx" firstAttribute="height" secondItem="4mt-Is-cn8" secondAttribute="height" id="XbP-CZ-C0q"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="UM9-6c-75m" customClass="ShadeControl" customModule="Defender" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="650" height="109"/>
                             </customView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="yi1-VD-nWM" firstAttribute="top" secondItem="S1G-BJ-o1I" secondAttribute="bottom" constant="4" id="3bC-vA-PF3"/>
                             <constraint firstAttribute="trailing" secondItem="S1G-BJ-o1I" secondAttribute="trailing" constant="8" id="43g-zW-r64"/>
-                            <constraint firstAttribute="bottom" secondItem="S1G-BJ-o1I" secondAttribute="bottom" constant="4" id="9dn-Ii-Vez"/>
                             <constraint firstItem="3Q2-Rs-D7s" firstAttribute="leading" secondItem="MMF-vr-cZk" secondAttribute="leading" constant="8" id="Brh-B1-QTq"/>
                             <constraint firstItem="UM9-6c-75m" firstAttribute="leading" secondItem="MMF-vr-cZk" secondAttribute="leading" id="Et4-rC-HcZ"/>
                             <constraint firstItem="3Q2-Rs-D7s" firstAttribute="top" secondItem="S1G-BJ-o1I" secondAttribute="top" id="IDe-ic-1yw"/>
-                            <constraint firstItem="4XM-dQ-eqS" firstAttribute="centerX" secondItem="8RF-fS-7Il" secondAttribute="centerX" id="KQE-Ig-sa6"/>
                             <constraint firstAttribute="trailing" secondItem="UM9-6c-75m" secondAttribute="trailing" id="RI5-sy-vcB"/>
                             <constraint firstItem="S1G-BJ-o1I" firstAttribute="leading" secondItem="3Q2-Rs-D7s" secondAttribute="trailing" constant="4" id="STS-te-E9U"/>
                             <constraint firstItem="UM9-6c-75m" firstAttribute="top" secondItem="MMF-vr-cZk" secondAttribute="top" id="V2c-9Y-kk3"/>
-                            <constraint firstItem="8RF-fS-7Il" firstAttribute="top" secondItem="3Q2-Rs-D7s" secondAttribute="bottom" constant="4" id="p8C-yI-eHC"/>
+                            <constraint firstAttribute="bottom" secondItem="yi1-VD-nWM" secondAttribute="bottom" constant="4" id="VDR-zJ-mCq"/>
                             <constraint firstAttribute="bottom" secondItem="UM9-6c-75m" secondAttribute="bottom" id="p8H-Q1-Zud"/>
                             <constraint firstItem="3Q2-Rs-D7s" firstAttribute="top" secondItem="MMF-vr-cZk" secondAttribute="top" constant="4" id="yuZ-fT-r9N"/>
+                            <constraint firstItem="S1G-BJ-o1I" firstAttribute="centerX" secondItem="yi1-VD-nWM" secondAttribute="centerX" id="zDe-td-VAN"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bigLeftArrow" destination="vpK-84-JWx" id="jh3-kO-AOI"/>
+                        <outlet property="bigRightArrow" destination="WIb-UG-ovS" id="sP4-V0-Y5x"/>
                         <outlet property="countLabel" destination="8RF-fS-7Il" id="rEj-6X-r3U"/>
+                        <outlet property="leftArrow" destination="k9i-sD-lyW" id="5M3-v1-Zu3"/>
                         <outlet property="loginButton" destination="yJM-Z6-fz3" id="FXq-FA-sR9"/>
                         <outlet property="passwordTextField" destination="LMl-Ur-xHf" id="SG0-82-cdd"/>
+                        <outlet property="rightArrow" destination="4mt-Is-cn8" id="UdI-bK-lzx"/>
                         <outlet property="searchButton" destination="EV1-k6-XW3" id="agJ-Dl-1EY"/>
                         <outlet property="searchResultsScrollView" destination="S1G-BJ-o1I" id="om1-dD-c43"/>
                         <outlet property="searchResultsTableView" destination="saw-Cm-iW9" id="Y2u-zW-KGZ"/>

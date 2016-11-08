@@ -30,6 +30,11 @@ class WebVC: NSViewController {
     
     @IBOutlet weak var searchResultsScrollView: NSScrollView!
     @IBOutlet weak var searchResultsTableView: NSTableView!
+    
+    @IBOutlet weak var bigLeftArrow: NSButton!
+    @IBOutlet weak var leftArrow: NSButton!
+    @IBOutlet weak var rightArrow: NSButton!
+    @IBOutlet weak var bigRightArrow: NSButton!
 
     var webColumn1: WebHeaderCell?
 
@@ -73,6 +78,19 @@ class WebVC: NSViewController {
             self.searchButton.isHidden = !loggedIn
             self.searchTextField.isHidden = !loggedIn
             self.searchResultsScrollView.isHidden = !loggedIn
+            self.searched = false
+            self.presets = [DTOSearchItem]()
+            self.searchResultsTableView.reloadData()
+        }
+    }
+    
+    var searched: Bool = false {
+        didSet {
+            self.bigLeftArrow.isHidden = !searched
+            self.leftArrow.isHidden = !searched
+            self.rightArrow.isHidden = !searched
+            self.bigRightArrow.isHidden = !searched
+            self.countLabel.isHidden = !searched
         }
     }
     
@@ -112,7 +130,7 @@ class WebVC: NSViewController {
         }
     }
     
-    @IBAction func wilSearch(_ sender: NSButton) {
+    @IBAction func willSearch(_ sender: NSButton) {
         self.resignFirstResponder()
         ampController?.search(forTitle: searchTextField.stringValue,
                               pageNumber: 1,
@@ -127,8 +145,24 @@ class WebVC: NSViewController {
                     NSLog("\(item.title) - \(item.data?.preset?.effects.count ?? 0) effects")
                 }
                 self.presets = items
+                self.searched = true
                 self.searchResultsTableView.reloadData()
             }
+        }
+    }
+    
+    @IBAction func didPressArrow(sender: NSButton) {
+        switch sender {
+        case bigLeftArrow:
+            break
+        case leftArrow:
+            break
+        case rightArrow:
+            break
+        case bigRightArrow:
+            break
+        default:
+            fatalError("There are only left and right arrows")
         }
     }
     
