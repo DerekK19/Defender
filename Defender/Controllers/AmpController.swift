@@ -91,7 +91,7 @@ class AmpController {
                     if let number = preset.number {
                         self.presets[number] = preset
                     } else {
-                        NSLog("Got a preset with num number, cannot use it")
+                        NSLog("Got a preset with no number, cannot use it")
                     }
                 }
                 onCompletion()
