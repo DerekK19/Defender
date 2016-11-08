@@ -115,9 +115,11 @@ class WebVC: NSViewController {
                               pageNumber: 1,
                               maxReturn: 10)
         { (response: DTOSearchResponse?) in
-            if let items = response?.items {
-                self.countLabel.stringValue = "Found \(items.count) items"
-                NSLog("Found \(items.count) items")
+            if let response = response {
+                let items = response.items
+                let pagination = response.pagination
+                self.countLabel.stringValue = "Found \(pagination.total) items"
+                NSLog("Found \(pagination.total) items. Page \(pagination.page) of \(pagination.pages). Limit \(pagination.limit) per page")
                 for item in items {
                     NSLog("\(item.title) - \(item.data?.preset?.effects.count ?? 0) effects")
                 }
