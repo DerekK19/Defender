@@ -111,7 +111,9 @@ class WebVC: NSViewController {
     
     @IBAction func wilSearch(_ sender: NSButton) {
         self.resignFirstResponder()
-        ampController?.search(forTitle: searchTextField.stringValue)
+        ampController?.search(forTitle: searchTextField.stringValue,
+                              pageNumber: 1,
+                              maxReturn: 10)
         { (response: DTOSearchResponse?) in
             if let items = response?.items {
                 self.countLabel.stringValue = "Found \(items.count) items"

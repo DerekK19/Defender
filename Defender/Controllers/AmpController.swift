@@ -202,8 +202,12 @@ class AmpController {
     }
     
     open func search(forTitle title: String,
+                     pageNumber: UInt,
+                     maxReturn: UInt,
                      onCompletion: @escaping (_ response: DTOSearchResponse?) ->()) {
         mustang.search(forTitle: title,
+                       pageNumber: pageNumber,
+                       maxReturn: maxReturn,
                        onSuccess: { (response) in
                         DispatchQueue.main.async {
                             NSLog("Searched")
