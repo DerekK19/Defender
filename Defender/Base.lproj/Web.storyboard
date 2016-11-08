@@ -91,13 +91,13 @@
                                 </customSpacing>
                             </stackView>
                             <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1G-BJ-o1I">
-                                <rect key="frame" x="477" y="0.0" width="165" height="109"/>
+                                <rect key="frame" x="477" y="4" width="165" height="101"/>
                                 <clipView key="contentView" focusRingType="none" drawsBackground="NO" copiesOnScroll="NO" id="FFi-4n-aHY">
-                                    <rect key="frame" x="0.0" y="0.0" width="165" height="94"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="165" height="86"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" headerView="NT2-mv-SC4" id="saw-Cm-iW9">
-                                            <rect key="frame" x="0.0" y="0.0" width="173" height="71"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="173" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -126,7 +126,7 @@
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="sey-ca-m5w">
-                                    <rect key="frame" x="0.0" y="94" width="165" height="15"/>
+                                    <rect key="frame" x="0.0" y="86" width="165" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="8u8-hg-j7f">
@@ -139,7 +139,7 @@
                                 </tableHeaderView>
                             </scrollView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8RF-fS-7Il">
-                                <rect key="frame" x="421" y="64" width="4" height="17"/>
+                                <rect key="frame" x="421" y="63" width="4" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="x8q-Ar-c7T">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -151,16 +151,16 @@
                             </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="S1G-BJ-o1I" firstAttribute="top" secondItem="MMF-vr-cZk" secondAttribute="top" id="1dJ-H7-rb2"/>
                             <constraint firstAttribute="trailing" secondItem="S1G-BJ-o1I" secondAttribute="trailing" constant="8" id="43g-zW-r64"/>
-                            <constraint firstAttribute="bottom" secondItem="S1G-BJ-o1I" secondAttribute="bottom" id="9dn-Ii-Vez"/>
+                            <constraint firstAttribute="bottom" secondItem="S1G-BJ-o1I" secondAttribute="bottom" constant="4" id="9dn-Ii-Vez"/>
                             <constraint firstItem="3Q2-Rs-D7s" firstAttribute="leading" secondItem="MMF-vr-cZk" secondAttribute="leading" constant="8" id="Brh-B1-QTq"/>
                             <constraint firstItem="UM9-6c-75m" firstAttribute="leading" secondItem="MMF-vr-cZk" secondAttribute="leading" id="Et4-rC-HcZ"/>
+                            <constraint firstItem="3Q2-Rs-D7s" firstAttribute="top" secondItem="S1G-BJ-o1I" secondAttribute="top" id="IDe-ic-1yw"/>
                             <constraint firstItem="4XM-dQ-eqS" firstAttribute="centerX" secondItem="8RF-fS-7Il" secondAttribute="centerX" id="KQE-Ig-sa6"/>
                             <constraint firstAttribute="trailing" secondItem="UM9-6c-75m" secondAttribute="trailing" id="RI5-sy-vcB"/>
                             <constraint firstItem="S1G-BJ-o1I" firstAttribute="leading" secondItem="3Q2-Rs-D7s" secondAttribute="trailing" constant="4" id="STS-te-E9U"/>
                             <constraint firstItem="UM9-6c-75m" firstAttribute="top" secondItem="MMF-vr-cZk" secondAttribute="top" id="V2c-9Y-kk3"/>
-                            <constraint firstItem="8RF-fS-7Il" firstAttribute="top" secondItem="3Q2-Rs-D7s" secondAttribute="bottom" constant="3" id="p8C-yI-eHC"/>
+                            <constraint firstItem="8RF-fS-7Il" firstAttribute="top" secondItem="3Q2-Rs-D7s" secondAttribute="bottom" constant="4" id="p8C-yI-eHC"/>
                             <constraint firstAttribute="bottom" secondItem="UM9-6c-75m" secondAttribute="bottom" id="p8H-Q1-Zud"/>
                             <constraint firstItem="3Q2-Rs-D7s" firstAttribute="top" secondItem="MMF-vr-cZk" secondAttribute="top" constant="4" id="yuZ-fT-r9N"/>
                         </constraints>
