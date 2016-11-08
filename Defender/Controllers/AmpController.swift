@@ -88,7 +88,11 @@ class AmpController {
         if let amplifier = currentAmplifier {
             mustang.getPresets(amplifier) { (presets) in
                 for preset in presets {
-                    self.presets[preset.number] = preset
+                    if let number = preset.number {
+                        self.presets[number] = preset
+                    } else {
+                        NSLog("Got a preset with num number, cannot use it")
+                    }
                 }
                 onCompletion()
             }
@@ -113,8 +117,8 @@ class AmpController {
                     preset: UInt8(preset)) { (preset) in
                         DispatchQueue.main.async {
                             if let preset = preset {
-                                self.presets[preset.number] = preset
-                                if let _ = preset.gain1 {
+                                if let number = preset.number {
+                                    self.presets[number] = preset
                                     onCompletion(preset)
                                 }
                             }
@@ -131,8 +135,8 @@ class AmpController {
                 preset: UInt8(preset)) { (preset) in
                     DispatchQueue.main.async {
                         if let preset = preset {
-                            self.presets[preset.number] = preset
-                            if let _ = preset.gain1 {
+                            if let number = preset.number {
+                                self.presets[number] = preset
                                 onCompletion(preset)
                             }
                         }
@@ -151,8 +155,8 @@ class AmpController {
                     preset: preset) { (preset) in
                         DispatchQueue.main.async {
                             if let preset = preset {
-                                self.presets[preset.number] = preset
-                                if let _ = preset.gain1 {
+                                if let number = preset.number {
+                                    self.presets[number] = preset
                                     onCompletion(preset)
                                 }
                             }
@@ -164,17 +168,17 @@ class AmpController {
     
     open func savePreset(_ preset: DTOPreset, onCompletion: @escaping (_ saved: Bool?) ->()) {
         if let amplifier = currentAmplifier {
-            if preset.gain1 == nil {
-                onCompletion(nil)
-            } else {
+            if let number = preset.number {
                 mustang.savePreset(
                     amplifier,
-                    preset: preset.number,
+                    preset: number,
                     name: preset.name) { (saved) in
                         DispatchQueue.main.async {
                             onCompletion(saved)
                         }
                 }
+            } else {
+                onCompletion(nil)
             }
         }
     }

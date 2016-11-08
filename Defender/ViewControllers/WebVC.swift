@@ -10,7 +10,7 @@ import Cocoa
 import Mustang
 
 protocol WebVCDelegate {
-    func didSelectPreset(preset: DTOPreset)
+    func didSelectPreset(preset: DTOPreset?)
 }
 
 class WebVC: NSViewController {
@@ -149,9 +149,7 @@ extension WebVC: NSTableViewDataSource, NSTableViewDelegate {
         let row = searchResultsTableView.selectedRow
         if row >= 0 && row < presets.count {
             let item = presets[row]
-            if let preset = item.data?.preset {
-                delegate?.didSelectPreset(preset: preset)
-            }
+            delegate?.didSelectPreset(preset: item.data?.preset)
         }
     }
 }

@@ -57,7 +57,11 @@ class DisplayVC: NSViewController {
     
     func configureWithPreset(_ preset: DTOPreset?) {
         let presetKnown = preset != nil
-        presetNumber.stringValue = presetKnown ? String(format: "%02d", preset?.number ?? 0) : ""
+        if let number = preset?.number {
+            presetNumber.stringValue = presetKnown ? String(format: "%02d", number) : ""
+        } else {
+            presetNumber.stringValue = ""
+        }
         presetName.stringValue = preset?.name ?? ""
         amplifierName.stringValue = preset?.moduleName ?? ""
         setValueForFxField(stompValue, effect: preset?.effects.filter( { $0.type == .Stomp } ).first, presetKnown: presetKnown)

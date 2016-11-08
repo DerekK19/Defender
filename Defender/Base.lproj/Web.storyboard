@@ -91,9 +91,9 @@
                                 </customSpacing>
                             </stackView>
                             <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1G-BJ-o1I">
-                                <rect key="frame" x="477" y="0.0" width="173" height="109"/>
+                                <rect key="frame" x="477" y="0.0" width="165" height="109"/>
                                 <clipView key="contentView" focusRingType="none" drawsBackground="NO" copiesOnScroll="NO" id="FFi-4n-aHY">
-                                    <rect key="frame" x="0.0" y="0.0" width="173" height="109"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="165" height="109"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" headerView="NT2-mv-SC4" id="saw-Cm-iW9">
@@ -125,8 +125,8 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="sey-ca-m5w">
-                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="sey-ca-m5w">
+                                    <rect key="frame" x="0.0" y="93" width="165" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="8u8-hg-j7f">
@@ -152,7 +152,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="S1G-BJ-o1I" firstAttribute="top" secondItem="MMF-vr-cZk" secondAttribute="top" id="1dJ-H7-rb2"/>
-                            <constraint firstAttribute="trailing" secondItem="S1G-BJ-o1I" secondAttribute="trailing" id="43g-zW-r64"/>
+                            <constraint firstAttribute="trailing" secondItem="S1G-BJ-o1I" secondAttribute="trailing" constant="8" id="43g-zW-r64"/>
                             <constraint firstAttribute="bottom" secondItem="S1G-BJ-o1I" secondAttribute="bottom" id="9dn-Ii-Vez"/>
                             <constraint firstItem="3Q2-Rs-D7s" firstAttribute="leading" secondItem="MMF-vr-cZk" secondAttribute="leading" constant="8" id="Brh-B1-QTq"/>
                             <constraint firstItem="UM9-6c-75m" firstAttribute="leading" secondItem="MMF-vr-cZk" secondAttribute="leading" id="Et4-rC-HcZ"/>

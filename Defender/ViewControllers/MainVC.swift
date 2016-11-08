@@ -521,7 +521,7 @@ extension MainVC: AmpControllerDelegate {
 
 extension MainVC: WebVCDelegate {
     
-    func didSelectPreset(preset: DTOPreset) {
+    func didSelectPreset(preset: DTOPreset?) {
         displayPreset(preset)
     }
 }
