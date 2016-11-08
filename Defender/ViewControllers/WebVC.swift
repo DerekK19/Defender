@@ -31,6 +31,8 @@ class WebVC: NSViewController {
     @IBOutlet weak var searchResultsScrollView: NSScrollView!
     @IBOutlet weak var searchResultsTableView: NSTableView!
 
+    var webColumn1: WebHeaderCell?
+
     var delegate: WebVCDelegate?
     
     let slotBackgroundColour = NSColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
@@ -51,6 +53,7 @@ class WebVC: NSViewController {
             }
             self.slot.backgroundColour = newBackgroundColour
             self.webBackgroundColour = newBackgroundColour
+            self.webColumn1?.backgroundColour = newBackgroundColour
             let currentState = self.powerState
             self.powerState = currentState
         }
@@ -87,9 +90,9 @@ class WebVC: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.customiseTableView()
         self.state = .disabled
         self.loggedIn = false
-        self.customiseTableView()
     }
 
     // MARK: Action functions
@@ -131,8 +134,9 @@ class WebVC: NSViewController {
     
     // MARK: Private functions
     private func customiseTableView() {
-        for column in searchResultsTableView.tableColumns {
-            column.headerCell = WebHeaderCell(textCell: "Preset Name")
+        if searchResultsTableView.tableColumns.count > 0 {
+            webColumn1 = WebHeaderCell(textCell: "Preset Name")
+            searchResultsTableView.tableColumns[0].headerCell = webColumn1!
         }
     }
 }
