@@ -31,10 +31,13 @@ class WebVC: NSViewController {
     @IBOutlet weak var searchResultsScrollView: NSScrollView!
     @IBOutlet weak var searchResultsTableView: NSTableView!
     
-    @IBOutlet weak var bigLeftArrow: NSButton!
     @IBOutlet weak var leftArrow: NSButton!
+    @IBOutlet weak var page1Arrow: NSButton!
+    @IBOutlet weak var page2Arrow: NSButton!
+    @IBOutlet weak var page3Arrow: NSButton!
+    @IBOutlet weak var page4Arrow: NSButton!
+    @IBOutlet weak var page5Arrow: NSButton!
     @IBOutlet weak var rightArrow: NSButton!
-    @IBOutlet weak var bigRightArrow: NSButton!
 
     var webColumn1: WebHeaderCell?
 
@@ -45,6 +48,9 @@ class WebVC: NSViewController {
     var fullBackgroundColour = NSColor.black
     var webBackgroundColour = NSColor.black
 
+    var newPage: UInt = 1
+    var pagination: DTOSearchPagination?
+    
     var state: EffectState = .disabled {
         didSet {
             var newBackgroundColour = NSColor()
@@ -79,6 +85,7 @@ class WebVC: NSViewController {
             self.searchTextField.isHidden = !loggedIn
             self.searchResultsScrollView.isHidden = !loggedIn
             self.searched = false
+            self.pagination = nil
             self.presets = [DTOSearchItem]()
             self.searchResultsTableView.reloadData()
         }
@@ -86,10 +93,13 @@ class WebVC: NSViewController {
     
     var searched: Bool = false {
         didSet {
-            self.bigLeftArrow.isHidden = !searched
             self.leftArrow.isHidden = !searched
+            self.page1Arrow.isHidden = !searched
+            self.page2Arrow.isHidden = !searched
+            self.page3Arrow.isHidden = !searched
+            self.page4Arrow.isHidden = !searched
+            self.page5Arrow.isHidden = !searched
             self.rightArrow.isHidden = !searched
-            self.bigRightArrow.isHidden = !searched
             self.countLabel.isHidden = !searched
         }
     }
@@ -132,37 +142,41 @@ class WebVC: NSViewController {
     
     @IBAction func willSearch(_ sender: NSButton) {
         self.resignFirstResponder()
-        ampController?.search(forTitle: searchTextField.stringValue,
-                              pageNumber: 1,
-                              maxReturn: 10)
-        { (response: DTOSearchResponse?) in
-            if let response = response {
-                let items = response.items
-                let pagination = response.pagination
-                self.countLabel.stringValue = "Found \(pagination.total) items"
-                NSLog("Found \(pagination.total) items. Page \(pagination.page) of \(pagination.pages). Limit \(pagination.limit) per page")
-                for item in items {
-                    NSLog("\(item.title) - \(item.data?.preset?.effects.count ?? 0) effects")
-                }
-                self.presets = items
-                self.searched = true
-                self.searchResultsTableView.reloadData()
-            }
-        }
+        search(forPage: 1)
     }
     
     @IBAction func didPressArrow(sender: NSButton) {
-        switch sender {
-        case bigLeftArrow:
-            break
-        case leftArrow:
-            break
-        case rightArrow:
-            break
-        case bigRightArrow:
-            break
-        default:
-            fatalError("There are only left and right arrows")
+        if let pagination = self.pagination {
+            let firstPage = (UInt(pagination.page / 5) * 5) + 1
+            var nextPage = newPage
+            switch sender {
+            case leftArrow:
+                if firstPage > 5 { nextPage = firstPage-5 }
+                break
+            case page1Arrow:
+                nextPage = firstPage
+                break
+            case page2Arrow:
+                nextPage = min(firstPage+1, pagination.pages)
+                break
+            case page3Arrow:
+                nextPage = min(firstPage+2, pagination.pages)
+                break
+            case page4Arrow:
+                nextPage = min(firstPage+3, pagination.pages)
+                break
+            case page5Arrow:
+                nextPage = min(firstPage+4, pagination.pages)
+                break
+            case rightArrow:
+                nextPage = min(firstPage+5, pagination.pages)
+                break
+            default:
+                fatalError("There are only left and right arrows")
+            }
+            if nextPage != newPage {
+                search(forPage: nextPage)
+            }
         }
     }
     
@@ -172,6 +186,42 @@ class WebVC: NSViewController {
             webColumn1 = WebHeaderCell(textCell: "Preset Name")
             searchResultsTableView.tableColumns[0].headerCell = webColumn1!
         }
+    }
+    
+    private func configureArrows() {
+        if let pagination = self.pagination {
+            let firstPage = (UInt(pagination.page / 5) * 5) + 1
+            leftArrow.title = firstPage > 1 ? "<" : ""
+            page1Arrow.title = "\(firstPage)"
+            page2Arrow.title = firstPage+1 <= pagination.pages ? "\(firstPage+1)" : ""
+            page3Arrow.title = firstPage+2 <= pagination.pages ? "\(firstPage+2)" : ""
+            page4Arrow.title = firstPage+3 <= pagination.pages ? "\(firstPage+3)" : ""
+            page5Arrow.title = firstPage+4 <= pagination.pages ? "\(firstPage+4)" : ""
+            rightArrow.title = firstPage+5 <= pagination.pages ? ">" : ""
+        }
+    }
+    
+    private func search(forPage page: UInt) {
+        ampController?.search(forTitle: searchTextField.stringValue,
+                              pageNumber: page,
+                              maxReturn: 10)
+        { (response: DTOSearchResponse?) in
+            if let response = response {
+                let items = response.items
+                self.pagination = response.pagination
+                self.newPage = self.pagination!.page
+                self.countLabel.stringValue = "Found \(self.pagination!.total) items"
+                NSLog("For page \(self.newPage), found \(self.pagination!.total) items. Page \(self.pagination!.page) of \(self.pagination!.pages). Limit \(self.pagination!.limit) per page")
+                for item in items {
+                    NSLog("\(item.title) - \(item.data?.preset?.effects.count ?? 0) effects")
+                }
+                self.presets = items
+                self.searched = true
+                self.configureArrows()
+                self.searchResultsTableView.reloadData()
+            }
+        }
+
     }
 }
 

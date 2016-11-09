@@ -139,8 +139,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yi1-VD-nWM">
-                                <rect key="frame" x="485" y="4" width="150" height="21"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8RF-fS-7Il">
+                                <rect key="frame" x="466" y="6" width="4" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="x8q-Ar-c7T">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yi1-VD-nWM">
+                                <rect key="frame" x="480" y="4" width="159" height="21"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vpK-84-JWx">
                                         <rect key="frame" x="0.0" y="0.0" width="21" height="21"/>
@@ -148,7 +156,7 @@
                                             <constraint firstAttribute="width" secondItem="vpK-84-JWx" secondAttribute="height" multiplier="1:1" id="9Ns-zb-Pc5"/>
                                             <constraint firstAttribute="height" constant="21" id="uDT-MT-mS6"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="bevel" title="&lt;&lt;" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="a0i-xC-4tu" customClass="ArrowButtonCell" customModule="Defender" customModuleProvider="target">
+                                        <buttonCell key="cell" type="bevel" title="&lt;" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="a0i-xC-4tu" customClass="ArrowButtonCell" customModule="Defender" customModuleProvider="target">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -157,11 +165,11 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k9i-sD-lyW">
-                                        <rect key="frame" x="25" y="0.0" width="21" height="21"/>
+                                        <rect key="frame" x="23" y="0.0" width="21" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="k9i-sD-lyW" secondAttribute="height" multiplier="1:1" id="the-Zn-hnz"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="bevel" title="&lt;" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="7Kx-Jt-9ss" customClass="ArrowButtonCell" customModule="Defender" customModuleProvider="target">
+                                        <buttonCell key="cell" type="bevel" title="1" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="7Kx-Jt-9ss" customClass="ArrowButtonCell" customModule="Defender" customModuleProvider="target">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -169,20 +177,12 @@
                                             <action selector="didPressArrowWithSender:" target="OKd-pB-42O" id="Qcb-W0-0so"/>
                                         </connections>
                                     </button>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8RF-fS-7Il">
-                                        <rect key="frame" x="48" y="0.0" width="54" height="21"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="x8q-Ar-c7T">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4mt-Is-cn8">
-                                        <rect key="frame" x="104" y="0.0" width="21" height="21"/>
+                                        <rect key="frame" x="46" y="0.0" width="21" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="4mt-Is-cn8" secondAttribute="height" multiplier="1:1" id="Vma-Sl-H4a"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="bevel" title="&gt;" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="zP9-kM-NUA" customClass="ArrowButtonCell" customModule="Defender" customModuleProvider="target">
+                                        <buttonCell key="cell" type="bevel" title="2" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="zP9-kM-NUA" customClass="ArrowButtonCell" customModule="Defender" customModuleProvider="target">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -190,12 +190,51 @@
                                             <action selector="didPressArrowWithSender:" target="OKd-pB-42O" id="3r8-5g-W11"/>
                                         </connections>
                                     </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ch2-kw-3Vk">
+                                        <rect key="frame" x="69" y="0.0" width="21" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Ch2-kw-3Vk" secondAttribute="height" multiplier="1:1" id="uFR-qS-6Ab"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" title="3" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="Yfi-9A-zhk" customClass="ArrowButtonCell" customModule="Defender" customModuleProvider="target">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="didPressArrowWithSender:" target="OKd-pB-42O" id="Eag-9w-cYp"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5sV-5z-qUT">
+                                        <rect key="frame" x="92" y="0.0" width="21" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="5sV-5z-qUT" secondAttribute="height" multiplier="1:1" id="dmd-5L-tcI"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" title="4" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="A6M-gx-fBS" customClass="ArrowButtonCell" customModule="Defender" customModuleProvider="target">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="didPressArrowWithSender:" target="OKd-pB-42O" id="btu-c9-dmj"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="map-ut-V0U">
+                                        <rect key="frame" x="115" y="0.0" width="21" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="map-ut-V0U" secondAttribute="height" multiplier="1:1" id="RjH-IG-F1G"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" title="5" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="6Ba-En-Jao" customClass="ArrowButtonCell" customModule="Defender" customModuleProvider="target">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="didPressArrowWithSender:" target="OKd-pB-42O" id="0Jv-hI-MrE"/>
+                                        </connections>
+                                    </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WIb-UG-ovS">
-                                        <rect key="frame" x="129" y="0.0" width="21" height="21"/>
+                                        <rect key="frame" x="138" y="0.0" width="21" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="WIb-UG-ovS" secondAttribute="height" multiplier="1:1" id="qOc-MH-Dme"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="bevel" title="&gt;&gt;" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="t5h-kO-geY" customClass="ArrowButtonCell" customModule="Defender" customModuleProvider="target">
+                                        <buttonCell key="cell" type="bevel" title="&gt;" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="t5h-kO-geY" customClass="ArrowButtonCell" customModule="Defender" customModuleProvider="target">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -205,10 +244,12 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="vpK-84-JWx" firstAttribute="height" secondItem="8RF-fS-7Il" secondAttribute="height" id="0en-8o-hl2"/>
                                     <constraint firstItem="vpK-84-JWx" firstAttribute="height" secondItem="WIb-UG-ovS" secondAttribute="height" id="1wK-4T-9iz"/>
+                                    <constraint firstItem="vpK-84-JWx" firstAttribute="height" secondItem="map-ut-V0U" secondAttribute="height" id="3qr-bl-vQz"/>
                                     <constraint firstItem="vpK-84-JWx" firstAttribute="height" secondItem="k9i-sD-lyW" secondAttribute="height" id="8JN-9c-Iyc"/>
+                                    <constraint firstItem="vpK-84-JWx" firstAttribute="height" secondItem="Ch2-kw-3Vk" secondAttribute="height" id="RmD-Gr-zXW"/>
                                     <constraint firstItem="vpK-84-JWx" firstAttribute="height" secondItem="4mt-Is-cn8" secondAttribute="height" id="XbP-CZ-C0q"/>
+                                    <constraint firstItem="vpK-84-JWx" firstAttribute="height" secondItem="5sV-5z-qUT" secondAttribute="height" id="ukX-bN-zN5"/>
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -216,8 +257,12 @@
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
@@ -235,23 +280,28 @@
                             <constraint firstItem="3Q2-Rs-D7s" firstAttribute="leading" secondItem="MMF-vr-cZk" secondAttribute="leading" constant="8" id="Brh-B1-QTq"/>
                             <constraint firstItem="UM9-6c-75m" firstAttribute="leading" secondItem="MMF-vr-cZk" secondAttribute="leading" id="Et4-rC-HcZ"/>
                             <constraint firstItem="3Q2-Rs-D7s" firstAttribute="top" secondItem="S1G-BJ-o1I" secondAttribute="top" id="IDe-ic-1yw"/>
+                            <constraint firstItem="yi1-VD-nWM" firstAttribute="leading" secondItem="8RF-fS-7Il" secondAttribute="trailing" constant="12" id="R1X-wB-xcd"/>
                             <constraint firstAttribute="trailing" secondItem="UM9-6c-75m" secondAttribute="trailing" id="RI5-sy-vcB"/>
                             <constraint firstItem="S1G-BJ-o1I" firstAttribute="leading" secondItem="3Q2-Rs-D7s" secondAttribute="trailing" constant="4" id="STS-te-E9U"/>
                             <constraint firstItem="UM9-6c-75m" firstAttribute="top" secondItem="MMF-vr-cZk" secondAttribute="top" id="V2c-9Y-kk3"/>
                             <constraint firstAttribute="bottom" secondItem="yi1-VD-nWM" secondAttribute="bottom" constant="4" id="VDR-zJ-mCq"/>
                             <constraint firstAttribute="bottom" secondItem="UM9-6c-75m" secondAttribute="bottom" id="p8H-Q1-Zud"/>
+                            <constraint firstItem="8RF-fS-7Il" firstAttribute="centerY" secondItem="yi1-VD-nWM" secondAttribute="centerY" id="ppQ-R2-VMP"/>
                             <constraint firstItem="3Q2-Rs-D7s" firstAttribute="top" secondItem="MMF-vr-cZk" secondAttribute="top" constant="4" id="yuZ-fT-r9N"/>
                             <constraint firstItem="S1G-BJ-o1I" firstAttribute="centerX" secondItem="yi1-VD-nWM" secondAttribute="centerX" id="zDe-td-VAN"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bigLeftArrow" destination="vpK-84-JWx" id="jh3-kO-AOI"/>
-                        <outlet property="bigRightArrow" destination="WIb-UG-ovS" id="sP4-V0-Y5x"/>
                         <outlet property="countLabel" destination="8RF-fS-7Il" id="rEj-6X-r3U"/>
-                        <outlet property="leftArrow" destination="k9i-sD-lyW" id="5M3-v1-Zu3"/>
+                        <outlet property="leftArrow" destination="vpK-84-JWx" id="GGz-NJ-uj1"/>
                         <outlet property="loginButton" destination="yJM-Z6-fz3" id="FXq-FA-sR9"/>
+                        <outlet property="page1Arrow" destination="k9i-sD-lyW" id="eXM-47-VWk"/>
+                        <outlet property="page2Arrow" destination="4mt-Is-cn8" id="0J5-xL-87H"/>
+                        <outlet property="page3Arrow" destination="Ch2-kw-3Vk" id="ux5-Cd-BD6"/>
+                        <outlet property="page4Arrow" destination="5sV-5z-qUT" id="fkN-K6-LTF"/>
+                        <outlet property="page5Arrow" destination="map-ut-V0U" id="IJD-RO-UpS"/>
                         <outlet property="passwordTextField" destination="LMl-Ur-xHf" id="SG0-82-cdd"/>
-                        <outlet property="rightArrow" destination="4mt-Is-cn8" id="UdI-bK-lzx"/>
+                        <outlet property="rightArrow" destination="WIb-UG-ovS" id="dIQ-Hf-RgH"/>
                         <outlet property="searchButton" destination="EV1-k6-XW3" id="agJ-Dl-1EY"/>
                         <outlet property="searchResultsScrollView" destination="S1G-BJ-o1I" id="om1-dD-c43"/>
                         <outlet property="searchResultsTableView" destination="saw-Cm-iW9" id="Y2u-zW-KGZ"/>
