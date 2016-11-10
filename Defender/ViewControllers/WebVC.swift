@@ -31,13 +31,13 @@ class WebVC: NSViewController {
     @IBOutlet weak var searchResultsScrollView: NSScrollView!
     @IBOutlet weak var searchResultsTableView: NSTableView!
     
-    @IBOutlet weak var leftArrow: NSButton!
-    @IBOutlet weak var page1Arrow: NSButton!
-    @IBOutlet weak var page2Arrow: NSButton!
-    @IBOutlet weak var page3Arrow: NSButton!
-    @IBOutlet weak var page4Arrow: NSButton!
-    @IBOutlet weak var page5Arrow: NSButton!
-    @IBOutlet weak var rightArrow: NSButton!
+    @IBOutlet weak var leftArrow: ArrowButtonControl!
+    @IBOutlet weak var page1Arrow: ArrowButtonControl!
+    @IBOutlet weak var page2Arrow: ArrowButtonControl!
+    @IBOutlet weak var page3Arrow: ArrowButtonControl!
+    @IBOutlet weak var page4Arrow: ArrowButtonControl!
+    @IBOutlet weak var page5Arrow: ArrowButtonControl!
+    @IBOutlet weak var rightArrow: ArrowButtonControl!
 
     var webColumn1: WebHeaderCell?
 
@@ -190,14 +190,28 @@ class WebVC: NSViewController {
     
     private func configureArrows() {
         if let pagination = self.pagination {
-            let firstPage = (UInt(pagination.page / 5) * 5) + 1
-            leftArrow.title = firstPage > 1 ? "<" : ""
-            page1Arrow.title = "\(firstPage)"
-            page2Arrow.title = firstPage+1 <= pagination.pages ? "\(firstPage+1)" : ""
-            page3Arrow.title = firstPage+2 <= pagination.pages ? "\(firstPage+2)" : ""
-            page4Arrow.title = firstPage+3 <= pagination.pages ? "\(firstPage+3)" : ""
-            page5Arrow.title = firstPage+4 <= pagination.pages ? "\(firstPage+4)" : ""
-            rightArrow.title = firstPage+5 <= pagination.pages ? ">" : ""
+            let firstPage = (UInt(pagination.page / 5) * 5) + 1            
+            configureArrow(arrow: leftArrow, showIf: firstPage > 1, title: "<")
+            configureArrow(arrow: page1Arrow, pageNumber: firstPage)
+            configureArrow(arrow: page2Arrow, pageNumber: firstPage+1)
+            configureArrow(arrow: page3Arrow, pageNumber: firstPage+2)
+            configureArrow(arrow: page4Arrow, pageNumber: firstPage+3)
+            configureArrow(arrow: page5Arrow, pageNumber: firstPage+4)
+            configureArrow(arrow: rightArrow, showIf: firstPage+5 <= pagination.pages, title: ">")
+        }
+    }
+    
+    private func configureArrow(arrow: ArrowButtonControl, pageNumber: UInt) {
+        if let pagination = self.pagination {
+            arrow.title = pageNumber <= pagination.pages ? "\(pageNumber)" : ""
+            arrow.setState(arrow.title == "" ? .inactive : pageNumber == pagination.page ? .current : .active)
+        }
+    }
+    
+    private func configureArrow(arrow: ArrowButtonControl, showIf show: Bool, title: String) {
+        if let _ = self.pagination {
+            arrow.title = show ? title : ""
+            arrow.setState(arrow.title == "" ? .inactive : .active)
         }
     }
     

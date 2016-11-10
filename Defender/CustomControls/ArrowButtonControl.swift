@@ -9,31 +9,45 @@
 import Cocoa
 
 enum ArrowButtonState {
+    case inactive
     case active
-    case warning
-    case ok
+    case current
 }
 
 class ArrowButtonControl: NSButton {
     
+    let dullColour: NSColor = NSColor(colorLiteralRed: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
+    let brightColour: NSColor = NSColor(colorLiteralRed: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+
     var currentState: ArrowButtonState = .active
     
-    var powerState: PowerState = .off {
-        didSet {
-            if powerState == .off {
-                currentState = .active
-            } else {
-            }
-            setState(currentState)
+    override var title: String {
+        get {
+            return super.title
+        }
+        set {
+            super.title = newValue
+            super.isEnabled = title != ""
         }
     }
-    
+
     func setState(_ state: ArrowButtonState) {
         currentState = state
-        if let cell = cell as? ArrowButtonCell {
-            cell.setState(state, powerState: powerState)
-            self.isEnabled = powerState != .off
-        }
+        let pstyle = NSMutableParagraphStyle()
+        pstyle.alignment = .center
+        self.attributedTitle = NSAttributedString(string: title,
+                                                  attributes: [NSForegroundColorAttributeName : colourForState(currentState),
+                                                               NSParagraphStyleAttributeName : pstyle])
     }
     
+    fileprivate func colourForState(_ state: ArrowButtonState) -> NSColor {
+        switch state {
+        case .active:
+            return dullColour
+        case .current:
+            return brightColour
+        case .inactive:
+            return (cell as? ArrowButtonCell)?.backgroundColor ?? NSColor.clear
+        }
+    }
 }

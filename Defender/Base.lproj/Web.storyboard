@@ -150,7 +150,7 @@
                             <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yi1-VD-nWM">
                                 <rect key="frame" x="480" y="4" width="159" height="21"/>
                                 <subviews>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vpK-84-JWx">
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vpK-84-JWx" customClass="ArrowButtonControl" customModule="Defender" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="21" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="vpK-84-JWx" secondAttribute="height" multiplier="1:1" id="9Ns-zb-Pc5"/>
@@ -164,7 +164,7 @@
                                             <action selector="didPressArrowWithSender:" target="OKd-pB-42O" id="Ll4-MZ-bG9"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k9i-sD-lyW">
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k9i-sD-lyW" customClass="ArrowButtonControl" customModule="Defender" customModuleProvider="target">
                                         <rect key="frame" x="23" y="0.0" width="21" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="k9i-sD-lyW" secondAttribute="height" multiplier="1:1" id="the-Zn-hnz"/>
@@ -177,7 +177,7 @@
                                             <action selector="didPressArrowWithSender:" target="OKd-pB-42O" id="Qcb-W0-0so"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4mt-Is-cn8">
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4mt-Is-cn8" customClass="ArrowButtonControl" customModule="Defender" customModuleProvider="target">
                                         <rect key="frame" x="46" y="0.0" width="21" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="4mt-Is-cn8" secondAttribute="height" multiplier="1:1" id="Vma-Sl-H4a"/>
@@ -190,7 +190,7 @@
                                             <action selector="didPressArrowWithSender:" target="OKd-pB-42O" id="3r8-5g-W11"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ch2-kw-3Vk">
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ch2-kw-3Vk" customClass="ArrowButtonControl" customModule="Defender" customModuleProvider="target">
                                         <rect key="frame" x="69" y="0.0" width="21" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Ch2-kw-3Vk" secondAttribute="height" multiplier="1:1" id="uFR-qS-6Ab"/>
@@ -203,7 +203,7 @@
                                             <action selector="didPressArrowWithSender:" target="OKd-pB-42O" id="Eag-9w-cYp"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5sV-5z-qUT">
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5sV-5z-qUT" customClass="ArrowButtonControl" customModule="Defender" customModuleProvider="target">
                                         <rect key="frame" x="92" y="0.0" width="21" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="5sV-5z-qUT" secondAttribute="height" multiplier="1:1" id="dmd-5L-tcI"/>
@@ -216,7 +216,7 @@
                                             <action selector="didPressArrowWithSender:" target="OKd-pB-42O" id="btu-c9-dmj"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="map-ut-V0U">
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="map-ut-V0U" customClass="ArrowButtonControl" customModule="Defender" customModuleProvider="target">
                                         <rect key="frame" x="115" y="0.0" width="21" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="map-ut-V0U" secondAttribute="height" multiplier="1:1" id="RjH-IG-F1G"/>
@@ -229,7 +229,7 @@
                                             <action selector="didPressArrowWithSender:" target="OKd-pB-42O" id="0Jv-hI-MrE"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WIb-UG-ovS">
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WIb-UG-ovS" customClass="ArrowButtonControl" customModule="Defender" customModuleProvider="target">
                                         <rect key="frame" x="138" y="0.0" width="21" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="WIb-UG-ovS" secondAttribute="height" multiplier="1:1" id="qOc-MH-Dme"/>
