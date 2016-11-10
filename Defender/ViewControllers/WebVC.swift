@@ -22,11 +22,11 @@ class WebVC: NSViewController {
     @IBOutlet weak var passwordTextField: NSSecureTextField!
     @IBOutlet weak var countLabel: NSTextField!
     
-    @IBOutlet weak var loginButton: NSButton!
+    @IBOutlet weak var loginButton: ActionButtonControl!
     
     @IBOutlet weak var searchTextField: NSTextField!
     
-    @IBOutlet weak var searchButton: NSButton!
+    @IBOutlet weak var searchButton: ActionButtonControl!
     
     @IBOutlet weak var searchResultsScrollView: NSScrollView!
     @IBOutlet weak var searchResultsTableView: NSTableView!
@@ -67,6 +67,8 @@ class WebVC: NSViewController {
             self.webColumn1?.backgroundColour = newBackgroundColour
             let currentState = self.powerState
             self.powerState = currentState
+            self.loginButton.powerState = .on // powerState
+            self.searchButton.powerState = .on // powerState
         }
     }
     
