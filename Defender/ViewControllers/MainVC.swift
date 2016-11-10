@@ -522,6 +522,12 @@ extension MainVC: AmpControllerDelegate {
 extension MainVC: WebVCDelegate {
     
     func didSelectPreset(preset: DTOPreset?) {
-        displayPreset(preset)
+        var newPreset = preset
+        if let _ = newPreset {
+            newPreset!.number = currentPreset?.number
+        }
+        self.currentPreset = newPreset
+        displayPreset(newPreset)
+        saveButton.setState(.warning)
     }
 }
