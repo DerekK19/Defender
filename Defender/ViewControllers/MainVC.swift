@@ -173,6 +173,19 @@ class MainVC: NSViewController {
         }
     }
     
+    // MARK: Public functions
+    func willImportPresetFromXml(_ xml: XMLDocument) {
+        ampController.importPreset(xml) { (preset) in
+            var newPreset = preset
+            if let _ = newPreset {
+                newPreset!.number = self.currentPreset?.number
+            }
+            self.currentPreset = newPreset
+            self.displayPreset(newPreset)
+            self.saveButton.setState(.warning)
+        }
+    }
+    
     // MARK: Action functions
     
     @IBAction func willPowerAmplifier(_ sender: ActionButtonControl) {

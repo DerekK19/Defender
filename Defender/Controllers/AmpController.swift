@@ -234,4 +234,18 @@ class AmpController {
                         }}
         )
     }
+    
+    open func importPreset(_ xml: XMLDocument, onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
+        mustang.importPreset(xml, onCompletion:  { (preset) in
+            DispatchQueue.main.async {
+                if let preset = preset {
+//                    if let number = preset.number {
+//                        self.presets[number] = preset
+                        onCompletion(preset)
+//                    }
+                }
+            }
+        }
+)
+    }
 }
