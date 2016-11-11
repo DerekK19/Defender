@@ -58,6 +58,8 @@ class MainVC: NSViewController {
     
     fileprivate var ampController = AmpController()
 
+    fileprivate var documentController = NSDocumentController.shared()
+    
     var currentPreset: DTOPreset?
     
     let verbose = true

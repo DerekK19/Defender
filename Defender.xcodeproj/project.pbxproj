@@ -38,6 +38,7 @@
 		65EF3B3C1DCD8F7A00A01153 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */; };
 		65EF3B3D1DCD8F8500A01153 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */; };
 		7123C50C1DAC46B900ACFDB5 /* AmpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7123C50B1DAC46B900ACFDB5 /* AmpController.swift */; };
+		71602D7C1DD52284003E2D49 /* PresetDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71602D7B1DD52284003E2D49 /* PresetDocument.swift */; };
 		7167FEDA1D58032C0059A276 /* NSImage+Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FED91D58032C0059A276 /* NSImage+Colour.swift */; };
 		7167FEDC1D5815270059A276 /* DisplayControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FEDB1D5815270059A276 /* DisplayControl.swift */; };
 		7167FF3E1D592E070059A276 /* WheelControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FF3D1D592E070059A276 /* WheelControl.swift */; };
@@ -104,6 +105,7 @@
 		65B37C971DD1AC6400433B89 /* ArrowButtonControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowButtonControl.swift; sourceTree = "<group>"; };
 		65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/Mac/AFNetworking.framework; sourceTree = "<group>"; };
 		7123C50B1DAC46B900ACFDB5 /* AmpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmpController.swift; sourceTree = "<group>"; };
+		71602D7B1DD52284003E2D49 /* PresetDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetDocument.swift; sourceTree = "<group>"; };
 		7167FED91D58032C0059A276 /* NSImage+Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Colour.swift"; sourceTree = "<group>"; };
 		7167FEDB1D5815270059A276 /* DisplayControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayControl.swift; sourceTree = "<group>"; };
 		7167FF3D1D592E070059A276 /* WheelControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WheelControl.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				657C3AC51D56DB5C002DEF17 /* View Controllers */,
 				7123C50A1DAC462000ACFDB5 /* Controllers */,
 				657C3AC61D56DB78002DEF17 /* Custom Controls */,
+				71602D7A1DD5224C003E2D49 /* Classes */,
 				7167FED81D5803000059A276 /* Extensions */,
 				657C3AC91D56DB95002DEF17 /* Resources */,
 				655A5A401D4C555400E15E1F /* AppDelegate.swift */,
@@ -271,6 +274,14 @@
 				7123C50B1DAC46B900ACFDB5 /* AmpController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		71602D7A1DD5224C003E2D49 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				71602D7B1DD52284003E2D49 /* PresetDocument.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		7167FED81D5803000059A276 /* Extensions */ = {
@@ -492,6 +503,7 @@
 				655A5A411D4C555400E15E1F /* AppDelegate.swift in Sources */,
 				7167FF3E1D592E070059A276 /* WheelControl.swift in Sources */,
 				65A65BA21DA4740400EDCA32 /* PedalPadControl.swift in Sources */,
+				71602D7C1DD52284003E2D49 /* PresetDocument.swift in Sources */,
 				652564491DA8972A00ACCD4B /* PedalKnobControl.swift in Sources */,
 				65B37C981DD1AC6500433B89 /* ArrowButtonControl.swift in Sources */,
 				71CD6D881D59714A006BD6DF /* ActionButtonControl.swift in Sources */,
