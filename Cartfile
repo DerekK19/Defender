@@ -1,2 +1,2 @@
 github "Hearst-DD/ObjectMapper" ~> 2.0
-git "https://stash.gordonknight.co.uk:8443/scm/IF/Mustang.git" "feature/web_service_access"
+git "https://stash.gordonknight.co.uk:8443/scm/IF/Mustang.git" "develop"
