@@ -33,11 +33,11 @@ class EffectVC: NSViewController {
     var delegate: EffectVCDelegate?
 
     let slotBackgroundColour = NSColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
-    let stompBackgroundColour = NSColor(red: 0.22, green: 0.30, blue: 0.25, alpha: 1.0)
-    let modBackgroundColour = NSColor(red: 0.30, green: 0.30, blue: 0.41, alpha: 1.0)
-    let delayBackgroundColour = NSColor(red: 0.49, green: 0.49, blue: 0.49, alpha: 1.0)
-    let reverbBackgroundColour = NSColor(red: 0.11, green: 0.28, blue: 0.43, alpha: 1.0)
-
+    let bgColours: [Int : NSColor] = [1 : NSColor(red: 0.30, green: 0.30, blue: 0.41, alpha: 1.0),
+                                      2 : NSColor(red: 0.49, green: 0.49, blue: 0.49, alpha: 1.0),
+                                      10 : NSColor(red: 0.11, green: 0.28, blue: 0.43, alpha: 1.0),
+                                      14 : NSColor(red: 0.22, green: 0.30, blue: 0.25, alpha: 1.0)]
+    
     var fullBackgroundColour = NSColor.black
     var effectBackgroundColour = NSColor.black
 
@@ -105,18 +105,7 @@ class EffectVC: NSViewController {
         delegate = nil
         typeLabel.stringValue = effect?.type.rawValue.uppercased() ?? ""
         nameLabel.stringValue = effect?.name?.uppercased() ?? ""
-        switch effect?.type ?? .Unknown {
-        case .Stomp:
-            fullBackgroundColour = stompBackgroundColour
-        case .Modulation:
-            fullBackgroundColour = modBackgroundColour
-        case .Delay:
-            fullBackgroundColour = delayBackgroundColour
-        case .Reverb:
-            fullBackgroundColour = reverbBackgroundColour
-        default:
-            fullBackgroundColour = slotBackgroundColour
-        }
+        fullBackgroundColour = bgColours[effect?.colour ?? 0] ?? slotBackgroundColour
         if effect == nil {
             state = .disabled
         } else {
