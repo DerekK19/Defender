@@ -35,6 +35,7 @@
 		65A65BA21DA4740400EDCA32 /* PedalPadControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A65BA11DA4740400EDCA32 /* PedalPadControl.swift */; };
 		65B37C961DD1A8ED00433B89 /* ArrowButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B37C951DD1A8EC00433B89 /* ArrowButtonCell.swift */; };
 		65B37C981DD1AC6500433B89 /* ArrowButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B37C971DD1AC6400433B89 /* ArrowButtonControl.swift */; };
+		65B37CB71DD6D05400433B89 /* FuseDocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 65B37CB61DD6D05400433B89 /* FuseDocumentIcon.icns */; };
 		65EF3B3C1DCD8F7A00A01153 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */; };
 		65EF3B3D1DCD8F8500A01153 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */; };
 		7123C50C1DAC46B900ACFDB5 /* AmpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7123C50B1DAC46B900ACFDB5 /* AmpController.swift */; };
@@ -103,6 +104,7 @@
 		65A65BA11DA4740400EDCA32 /* PedalPadControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalPadControl.swift; sourceTree = "<group>"; };
 		65B37C951DD1A8EC00433B89 /* ArrowButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowButtonCell.swift; sourceTree = "<group>"; };
 		65B37C971DD1AC6400433B89 /* ArrowButtonControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowButtonControl.swift; sourceTree = "<group>"; };
+		65B37CB61DD6D05400433B89 /* FuseDocumentIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = FuseDocumentIcon.icns; sourceTree = "<group>"; };
 		65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/Mac/AFNetworking.framework; sourceTree = "<group>"; };
 		7123C50B1DAC46B900ACFDB5 /* AmpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmpController.swift; sourceTree = "<group>"; };
 		71602D7B1DD52284003E2D49 /* PresetDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetDocument.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 		657C3AC91D56DB95002DEF17 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				65B37CB61DD6D05400433B89 /* FuseDocumentIcon.icns */,
 				655A5A441D4C555500E15E1F /* Assets.xcassets */,
 				655A5A461D4C555500E15E1F /* Main.storyboard */,
 				657C3AD41D5C50B8002DEF17 /* Display.storyboard */,
@@ -409,6 +412,7 @@
 				655A5A481D4C555500E15E1F /* Main.storyboard in Resources */,
 				7194EA411DCFC631004E2D9C /* Effect.storyboard in Resources */,
 				7194EA3D1DCFC61E004E2D9C /* Web.storyboard in Resources */,
+				65B37CB71DD6D05400433B89 /* FuseDocumentIcon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,8 @@
 			<array>
 				<string>fuse</string>
 			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>FuseDocumentIcon</string>
 			<key>CFBundleTypeMIMETypes</key>
 			<array/>
 			<key>CFBundleTypeName</key>
@@ -67,6 +69,8 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>FUSE Preset file</string>
+			<key>UTTypeIconFile</key>
+			<string>FuseDocumentIcon</string>
 			<key>UTTypeIdentifier</key>
 			<string>uk.co.gordonknight.defender</string>
 			<key>UTTypeTagSpecification</key>
