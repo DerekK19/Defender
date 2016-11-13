@@ -57,6 +57,7 @@ class MainVC: NSViewController {
     @IBOutlet weak var pedal4VC: PedalVC?
     
     fileprivate var ampController = AmpController()
+    fileprivate var remoteManager = RemoteManager()
 
     fileprivate var documentController = NSDocumentController.shared()
     
