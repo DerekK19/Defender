@@ -554,18 +554,26 @@ extension MainVC: WebVCDelegate {
 
 extension MainVC: RemoteManagerDelegate {
     func remoteManagerDidStart(_ manager: RemoteManager) {
-        bluetoothLabel.stringValue = "Started"
+        DispatchQueue.main.async {
+            self.bluetoothLabel.stringValue = "Started"
+        }
     }
     
     func remoteManagerDidConnect(_ manager: RemoteManager) {
-        bluetoothLabel.stringValue = "Connected"
+        DispatchQueue.main.async {
+            self.bluetoothLabel.stringValue = "Connected"
+        }
     }
 
     func remoteManagerDidDisconnect(_ manager: RemoteManager) {
-        bluetoothLabel.stringValue = "Disconnected"
+        DispatchQueue.main.async {
+            self.bluetoothLabel.stringValue = "Disconnected"
+        }
     }
 
     func remoteManagerDidStop(_ manager: RemoteManager) {
-        bluetoothLabel.stringValue = ""
+        DispatchQueue.main.async {
+            self.bluetoothLabel.stringValue = ""
+        }
     }
 }
