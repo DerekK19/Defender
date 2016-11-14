@@ -305,6 +305,7 @@
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RemoteDefender.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/BluetoothKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
 			);

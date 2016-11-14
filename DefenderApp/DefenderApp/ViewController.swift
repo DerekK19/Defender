@@ -7,14 +7,22 @@
 //
 
 import UIKit
+import RemoteDefender
 
 class ViewController: UIViewController {
 
+    var central = Central()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        central.start()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    deinit {
+        central.stop()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
