@@ -15,6 +15,8 @@ class MainVC: NSViewController {
     @IBOutlet weak var powerButton: ActionButtonControl!
     @IBOutlet weak var statusLED: LEDControl!
     @IBOutlet weak var statusLabel: NSTextField!
+    @IBOutlet weak var bluetoothLogo: NSImageView!
+    @IBOutlet weak var bluetoothLabel: NSTextField!
     @IBOutlet weak var gainArrow: NSImageView!
     @IBOutlet weak var volumeArrow: NSImageView!
     @IBOutlet weak var trebleArrow: NSImageView!
@@ -57,7 +59,7 @@ class MainVC: NSViewController {
     @IBOutlet weak var pedal4VC: PedalVC?
     
     fileprivate var ampController = AmpController()
-    fileprivate var remoteManager = RemoteManager()
+    fileprivate var remoteManager: RemoteManager?
 
     fileprivate var documentController = NSDocumentController.shared()
     
@@ -92,9 +94,9 @@ class MainVC: NSViewController {
 
         self.view.wantsLayer = true
 
-        // Do any additional setup after loading the view.
-
         reset()
+        
+        remoteManager = RemoteManager(delegate: self)
 
         configureAmplifiers()
 
@@ -264,7 +266,9 @@ class MainVC: NSViewController {
     fileprivate func reset() {
         statusLED.backgroundColour = ampController.hasAnAmplifier ? .green : .red
         statusLabel.stringValue = "\(ampController.currentAmplifierName) connected"
+        bluetoothLabel.stringValue = ""
         statusLabel.textColor = .white
+        bluetoothLabel.textColor = .white
         powerButton.state = NSOffState
         powerState = .off
     }
@@ -545,5 +549,23 @@ extension MainVC: WebVCDelegate {
         self.currentPreset = newPreset
         displayPreset(newPreset)
         saveButton.setState(.warning)
+    }
+}
+
+extension MainVC: RemoteManagerDelegate {
+    func remoteManagerDidStart(_ manager: RemoteManager) {
+        bluetoothLabel.stringValue = "Started"
+    }
+    
+    func remoteManagerDidConnect(_ manager: RemoteManager) {
+        bluetoothLabel.stringValue = "Connected"
+    }
+
+    func remoteManagerDidDisconnect(_ manager: RemoteManager) {
+        bluetoothLabel.stringValue = "Disconnected"
+    }
+
+    func remoteManagerDidStop(_ manager: RemoteManager) {
+        bluetoothLabel.stringValue = ""
     }
 }
