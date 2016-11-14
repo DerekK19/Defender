@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:DefenderApp/DefenderApp.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "container:Defender.xcodeproj">
    </FileRef>
 </Workspace>
