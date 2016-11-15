@@ -9,7 +9,7 @@
 import UIKit
 import RemoteDefender
 
-class ViewController: UIViewController {
+class MainVC: UIViewController {
 
     @IBOutlet weak var bluetoothLogo: UIImageView!
     @IBOutlet weak var bluetoothLabel: UILabel!
@@ -22,6 +22,13 @@ class ViewController: UIViewController {
         remoteManager = RemoteManager(delegate: self)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        remoteManager?.start()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        remoteManager?.stop()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -30,7 +37,7 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: RemoteManagerDelegate {
+extension MainVC: RemoteManagerDelegate {
     func remoteManagerAvailable(_ manager: RemoteManager) {
         DispatchQueue.main.async {
             self.bluetoothLabel.text = "Started"

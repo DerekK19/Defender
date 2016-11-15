@@ -36,7 +36,14 @@ class RemoteManager {
         CentralNotification.centralBecameUnavailable.observe() { manager in
             self.delegate?.remoteManagerUnavailable(self)
         }
+    }
+    
+    func start() {
         central.start()
+    }
+    
+    func stop() {
+        central.stop()
     }
     
     deinit {

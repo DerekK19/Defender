@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zu6-vR-tOg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,27 +11,27 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Defender-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DefenderApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Defender" modalPresentationStyle="currentContext" id="BYZ-38-t0r" customClass="MainVC" customModule="DefenderApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wgr-lO-Hh5">
-                                <rect key="frame" x="16" y="20" width="14" height="20"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetooth-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Wgr-lO-Hh5">
+                                <rect key="frame" x="16" y="10" width="14" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="BW0-n5-fQO"/>
                                     <constraint firstAttribute="width" secondItem="Wgr-lO-Hh5" secondAttribute="height" multiplier="2:3" id="Eaz-uF-6Sd"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GoT-f9-hXl">
-                                <rect key="frame" x="44.5" y="19.5" width="42" height="21"/>
+                                <rect key="frame" x="44" y="10" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,10 +41,14 @@
                         <constraints>
                             <constraint firstItem="GoT-f9-hXl" firstAttribute="leading" secondItem="Wgr-lO-Hh5" secondAttribute="trailing" constant="14" id="8Lj-XK-tyd"/>
                             <constraint firstItem="Wgr-lO-Hh5" firstAttribute="centerY" secondItem="GoT-f9-hXl" secondAttribute="centerY" id="FRC-t8-ORn"/>
-                            <constraint firstItem="Wgr-lO-Hh5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="XLq-5K-CZK"/>
+                            <constraint firstItem="Wgr-lO-Hh5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="XLq-5K-CZK"/>
                             <constraint firstItem="Wgr-lO-Hh5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ga0-9s-qbe"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Defender" id="YBe-0T-gMH"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
                         <outlet property="bluetoothLabel" destination="GoT-f9-hXl" id="VCR-pX-zkC"/>
                         <outlet property="bluetoothLogo" destination="Wgr-lO-Hh5" id="EMw-vl-NuL"/>
@@ -52,7 +56,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1076" y="121.88905547226388"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Me9-Bx-4zZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zu6-vR-tOg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Qyz-AQ-QJf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Sqj-Mb-OG7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="opv-sz-RzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="136.80000000000001" y="121.88905547226388"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bluetooth-logo" width="60" height="90"/>
+    </resources>
 </document>
