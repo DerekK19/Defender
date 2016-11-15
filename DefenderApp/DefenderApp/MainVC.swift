@@ -19,7 +19,10 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        remoteManager = RemoteManager(delegate: self)
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            remoteManager = appDelegate.remoteManager
+            remoteManager?.delegate = self
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
