@@ -1,5 +1,5 @@
 github "AFNetworking/AFNetworking" "3.1.0"
 github "derekk19/BluetoothKit" "4a5d88888532522ff56787750b36f4541db6ab50"
 github "Hearst-DD/ObjectMapper" "2.2.1"
-git "https://stash.gordonknight.co.uk:8443/scm/IF/RemoteDefender.git" "9cd4277dfd43f5cf77cce710dee7eb31ffd2c9cb"
+git "https://stash.gordonknight.co.uk:8443/scm/IF/RemoteDefender.git" "4b027f8d60f80e9a4433d0fb74fcbcce62d80f45"
 git "https://stash.gordonknight.co.uk:8443/scm/IF/Mustang.git" "bd788f8c52253d157d1ce68a3bbfce9bae94af0f"

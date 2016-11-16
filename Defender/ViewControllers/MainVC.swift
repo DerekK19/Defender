@@ -569,11 +569,6 @@ extension MainVC: RemoteManagerDelegate {
     func remoteManagerDidConnect(_ manager: RemoteManager) {
         DispatchQueue.main.async {
             self.bluetoothLabel.stringValue = "Connected"
-            if self.remoteManager?.send("Hello world") == true {
-                self.bluetoothLabel.stringValue = "Sending"
-            } else {
-                self.bluetoothLabel.stringValue = "Unsent"
-            }
         }
     }
 
@@ -586,6 +581,13 @@ extension MainVC: RemoteManagerDelegate {
     func remoteManager(_ manager: RemoteManager, didReceive data: Data) {
         DispatchQueue.main.async {
             self.bluetoothLabel.stringValue = "Received"
+            DispatchQueue.main.async {
+                if self.remoteManager?.send("Hello central") == true {
+                    self.bluetoothLabel.stringValue = "Sending"
+                } else {
+                    self.bluetoothLabel.stringValue = "Unsent"
+                }
+            }
         }
     }
     

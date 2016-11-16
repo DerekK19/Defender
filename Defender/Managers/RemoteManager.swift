@@ -39,8 +39,8 @@ class RemoteManager {
             self.delegate?.remoteManagerDidDisconnect(self)
         }
         PeripheralNotification.peripheralDidReceive.observe() { notification in
-            if let data = notification.object as? Data {
-                self.delegate?.remoteManager(self, didReceive: data)
+            if let object = notification.object as? RemoteData {
+                self.delegate?.remoteManager(self, didReceive: object.data)
             }
         }
     }
@@ -50,7 +50,7 @@ class RemoteManager {
     }
     
     func send(_ string: String) -> Bool {
-        if let data = string.data(using: .ascii) {
+        if let data = string.data(using: .utf8) {
             peripheral.send(data: data) { success in
                 self.delegate?.remoteManager(self, didSend: success)
             }

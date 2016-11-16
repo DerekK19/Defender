@@ -50,6 +50,13 @@ extension MainVC: RemoteManagerDelegate {
     func remoteManagerConnected(_ manager: RemoteManager) {
         DispatchQueue.main.async {
             self.bluetoothLabel.text = "Connected"
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+3) {
+                if self.remoteManager?.send("Hello peripheral") == true {
+                    self.bluetoothLabel.text = "Sending"
+                } else {
+                    self.bluetoothLabel.text = "Unsent"
+                }
+            }
         }
     }
     
