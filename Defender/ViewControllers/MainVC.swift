@@ -94,10 +94,13 @@ class MainVC: NSViewController {
 
         self.view.wantsLayer = true
 
+        if let appDelegate = NSApplication.shared().delegate as? AppDelegate {
+            remoteManager = appDelegate.remoteManager
+            remoteManager?.delegate = self
+        }
+
         reset()
         
-        remoteManager = RemoteManager(delegate: self)
-
         configureAmplifiers()
 
         debugButton.isHidden = !ampController.mocking
@@ -124,6 +127,10 @@ class MainVC: NSViewController {
         presenceKnob.delegate = self
         wheel.delegate = self
         
+    }
+    
+    override func viewWillAppear() {
+        remoteManager?.start()
     }
 
     deinit {
@@ -562,9 +569,26 @@ extension MainVC: RemoteManagerDelegate {
     func remoteManagerDidConnect(_ manager: RemoteManager) {
         DispatchQueue.main.async {
             self.bluetoothLabel.stringValue = "Connected"
+            if self.remoteManager?.send("Hello world") == true {
+                self.bluetoothLabel.stringValue = "Sending"
+            } else {
+                self.bluetoothLabel.stringValue = "Unsent"
+            }
         }
     }
 
+    func remoteManager(_ manager: RemoteManager, didSend success: Bool) {
+        DispatchQueue.main.async {
+            self.bluetoothLabel.stringValue = "Sent"
+        }
+    }
+    
+    func remoteManager(_ manager: RemoteManager, didReceive data: Data) {
+        DispatchQueue.main.async {
+            self.bluetoothLabel.stringValue = "Received"
+        }
+    }
+    
     func remoteManagerDidDisconnect(_ manager: RemoteManager) {
         DispatchQueue.main.async {
             self.bluetoothLabel.stringValue = "Disconnected"

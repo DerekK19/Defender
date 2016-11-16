@@ -12,6 +12,8 @@ import RemoteDefender
 protocol RemoteManagerDelegate {
     func remoteManagerAvailable(_ manager: RemoteManager)
     func remoteManagerConnected(_ manager: RemoteManager)
+    func remoteManager(_ manager: RemoteManager, didSend success: Bool)
+    func remoteManager(_ manager: RemoteManager, didReceive data: Data)
     func remoteManagerDisconnected(_ manager: RemoteManager)
     func remoteManagerUnavailable(_ manager: RemoteManager)
 }
@@ -24,22 +26,37 @@ class RemoteManager {
     
     init(delegate: RemoteManagerDelegate? = nil) {
         self.delegate = delegate
-        CentralNotification.centralBecameAvailable.observe() { manager in
+        CentralNotification.centralBecameAvailable.observe() { notification in
             self.delegate?.remoteManagerAvailable(self)
         }
-        CentralNotification.centralDidConnect.observe() { manager in
+        CentralNotification.centralDidConnect.observe() { notification in
             self.delegate?.remoteManagerConnected(self)
         }
-        CentralNotification.centralDidDisconnect.observe() { manager in
+        CentralNotification.centralDidDisconnect.observe() { notification in
             self.delegate?.remoteManagerDisconnected(self)
         }
-        CentralNotification.centralBecameUnavailable.observe() { manager in
+        CentralNotification.centralBecameUnavailable.observe() { notification in
             self.delegate?.remoteManagerUnavailable(self)
+        }
+        CentralNotification.centralDidReceive.observe() { notification in
+            if let data = notification.object as? Data {
+                self.delegate?.remoteManager(self, didReceive: data)
+            }
         }
     }
     
     func start() {
         central.start()
+    }
+    
+    func send(_ string: String) -> Bool {
+        if let data = string.data(using: .ascii) {
+                central.send(data: data) { success in
+                    self.delegate?.remoteManager(self, didSend: success)
+            }
+            return true
+        }
+        return false
     }
     
     func stop() {

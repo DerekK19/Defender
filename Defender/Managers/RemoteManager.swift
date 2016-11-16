@@ -11,9 +11,11 @@ import RemoteDefender
 
 protocol RemoteManagerDelegate {
     func remoteManagerDidStart(_ manager: RemoteManager)
-    func remoteManagerDidStop(_ manager: RemoteManager)
     func remoteManagerDidConnect(_ manager: RemoteManager)
+    func remoteManager(_ manager: RemoteManager, didSend success: Bool)
+    func remoteManager(_ manager: RemoteManager, didReceive data: Data)
     func remoteManagerDidDisconnect(_ manager: RemoteManager)
+    func remoteManagerDidStop(_ manager: RemoteManager)
 }
 
 class RemoteManager {
@@ -24,19 +26,41 @@ class RemoteManager {
     
     init(delegate: RemoteManagerDelegate? = nil) {
         self.delegate = delegate
-        PeripheralNotification.peripheralStarted.observe() { manager in
+        PeripheralNotification.peripheralStarted.observe() { notification in
             self.delegate?.remoteManagerDidStart(self)
         }
-        PeripheralNotification.peripheralStopped.observe() { manager in
+        PeripheralNotification.peripheralStopped.observe() { notification in
             self.delegate?.remoteManagerDidStop(self)
         }
-        PeripheralNotification.peripheralConnected.observe() { manager in
+        PeripheralNotification.peripheralConnected.observe() { notification in
             self.delegate?.remoteManagerDidConnect(self)
         }
-        PeripheralNotification.peripheralDisconnected.observe() { manager in
+        PeripheralNotification.peripheralDisconnected.observe() { notification in
             self.delegate?.remoteManagerDidDisconnect(self)
         }
+        PeripheralNotification.peripheralDidReceive.observe() { notification in
+            if let data = notification.object as? Data {
+                self.delegate?.remoteManager(self, didReceive: data)
+            }
+        }
+    }
+    
+    func start() {
         peripheral.start()
+    }
+    
+    func send(_ string: String) -> Bool {
+        if let data = string.data(using: .ascii) {
+            peripheral.send(data: data) { success in
+                self.delegate?.remoteManager(self, didSend: success)
+            }
+            return true
+        }
+        return false
+    }
+    
+    func stop() {
+        peripheral.stop()
     }
     
     deinit {
