@@ -18,15 +18,14 @@ internal class DXAmplifier : Mappable, Transferable {
         mapping(map: map)
     }
     
-    required init(data: Data) {
+    required init(data: Data) throws {
         if let string = String(data: data, encoding: .utf8),
             let temp = Mapper<DXAmplifier>().map(JSONString: string) {
                 name = temp.name
                 manufacturer = temp.manufacturer
-        } else {
-            name = ""
-            manufacturer = ""
+            return
         }
+        throw TransferError.serialising
     }
     
     init(name: String, manufacturer: String) {
@@ -34,12 +33,14 @@ internal class DXAmplifier : Mappable, Transferable {
         self.manufacturer = manufacturer
     }
     
-    var data: Data {
+    var data: Data? {
         get {
             if let string = self.toJSONString() {
-                return string.data(using: .utf8) ?? Data()
+                if let data = string.data(using: .utf8) {
+                    return data
+                }
             }
-            return Data()
+            return nil
         }
     }
     

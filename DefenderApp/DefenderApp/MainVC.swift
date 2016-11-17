@@ -68,8 +68,12 @@ extension MainVC: RemoteManagerDelegate {
     
     func remoteManager(_ manager: RemoteManager, didReceive data: Data) {
         DispatchQueue.main.async {
-            let amp = DXAmplifier(data: data)
-            self.bluetoothLabel.text = "Received \(amp.name ?? "")"
+            do {
+                let amp = try DXAmplifier(data: data)
+                self.bluetoothLabel.text = "Received \(amp.name ?? "")"
+            } catch {
+                self.bluetoothLabel.text = "Received Badness"
+            }
         }
     }
     

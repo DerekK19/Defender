@@ -8,7 +8,11 @@
 
 import Foundation
 
+internal enum TransferError: Error {
+    case serialising
+}
+
 internal protocol Transferable {
-    init(data: Data)
-    var data: Data { get }
+    init(data: Data) throws
+    var data: Data? { get }
 }

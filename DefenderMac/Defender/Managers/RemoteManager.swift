@@ -50,11 +50,13 @@ class RemoteManager {
     }
     
     func send(_ object: Transferable) -> Bool {
-        let data = object.data
-        peripheral.send(data: data) { success in
-            self.delegate?.remoteManager(self, didSend: success)
+        if let data = object.data {
+            peripheral.send(data: data) { success in
+                self.delegate?.remoteManager(self, didSend: success)
+            }
+            return true
         }
-        return true
+        return false
     }
     
     func stop() {
