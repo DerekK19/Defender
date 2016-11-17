@@ -16,6 +16,8 @@ class MainVC: NSViewController {
     @IBOutlet weak var statusLED: LEDControl!
     @IBOutlet weak var statusLabel: NSTextField!
     @IBOutlet weak var bluetoothLogo: NSImageView!
+    @IBOutlet weak var txLED: LEDControl!
+    @IBOutlet weak var rxLED: LEDControl!
     @IBOutlet weak var bluetoothLabel: NSTextField!
     @IBOutlet weak var gainArrow: NSImageView!
     @IBOutlet weak var volumeArrow: NSImageView!
@@ -94,6 +96,8 @@ class MainVC: NSViewController {
 
         self.view.wantsLayer = true
 
+        txLED.backgroundColour = NSColor.clear
+        rxLED.backgroundColour = NSColor.clear
         if let appDelegate = NSApplication.shared().delegate as? AppDelegate {
             remoteManager = appDelegate.remoteManager
             remoteManager?.delegate = self
@@ -574,12 +578,14 @@ extension MainVC: RemoteManagerDelegate {
 
     func remoteManager(_ manager: RemoteManager, didSend success: Bool) {
         DispatchQueue.main.async {
+            self.txLED.backgroundColour = NSColor.clear
             self.bluetoothLabel.stringValue = "Sent"
         }
     }
     
     func remoteManager(_ manager: RemoteManager, didReceive data: Data) {
         DispatchQueue.main.async {
+            self.rxLED.backgroundColour = NSColor.green
             self.bluetoothLabel.stringValue = "Received"
             DispatchQueue.main.async {
                 do {
@@ -589,6 +595,7 @@ extension MainVC: RemoteManagerDelegate {
                         if let amp = self.ampController.currentAmplifier {
                             let message = DXAmplifier(dto: amp)
                             if self.remoteManager?.send(message) == true {
+                                self.txLED.backgroundColour = NSColor.red
                                 self.bluetoothLabel.stringValue = "Sending"
                             } else {
                                 self.bluetoothLabel.stringValue = "Unsent"
@@ -598,6 +605,7 @@ extension MainVC: RemoteManagerDelegate {
                 } catch {
                     self.bluetoothLabel.stringValue = "Failed"
                 }
+                self.rxLED.backgroundColour = NSColor.clear
             }
         }
     }
