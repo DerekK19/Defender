@@ -1,0 +1,2 @@
+github "Hearst-DD/ObjectMapper" ~> 2.0
+github "AFNetworking/AFNetworking" ~> 3.0

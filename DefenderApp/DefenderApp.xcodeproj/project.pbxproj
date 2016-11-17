@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65F69F0D1DDD70AB0017188D /* DXAmplifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F0C1DDD70AB0017188D /* DXAmplifier.swift */; };
+		65F69F181DDD745D0017188D /* Transferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F171DDD745D0017188D /* Transferable.swift */; };
 		7198C2DC1DD93601003238D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C2DB1DD93601003238D7 /* AppDelegate.swift */; };
 		7198C2DE1DD93601003238D7 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C2DD1DD93601003238D7 /* MainVC.swift */; };
 		7198C2E11DD93601003238D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7198C2DF1DD93601003238D7 /* Main.storyboard */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		65F69F0C1DDD70AB0017188D /* DXAmplifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXAmplifier.swift; sourceTree = "<group>"; };
+		65F69F171DDD745D0017188D /* Transferable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transferable.swift; sourceTree = "<group>"; };
 		7198C2D81DD93601003238D7 /* DefenderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DefenderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7198C2DB1DD93601003238D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7198C2DD1DD93601003238D7 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -87,6 +91,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65F69F0B1DDD703F0017188D /* Common Models */ = {
+			isa = PBXGroup;
+			children = (
+				65F69F0C1DDD70AB0017188D /* DXAmplifier.swift */,
+				65F69F171DDD745D0017188D /* Transferable.swift */,
+			);
+			name = "Common Models";
+			path = "../Common Models";
+			sourceTree = SOURCE_ROOT;
+		};
 		7198C2CF1DD93601003238D7 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +128,7 @@
 			children = (
 				7198C3401DDA9C20003238D7 /* View Controllers */,
 				7198C33C1DDA8317003238D7 /* Managers */,
+				65F69F0B1DDD703F0017188D /* Common Models */,
 				7198C33F1DDA9C08003238D7 /* Resources */,
 				7198C2DB1DD93601003238D7 /* AppDelegate.swift */,
 				7198C2E71DD93601003238D7 /* Info.plist */,
@@ -351,7 +366,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65F69F181DDD745D0017188D /* Transferable.swift in Sources */,
 				7198C33E1DDA833B003238D7 /* RemoteManager.swift in Sources */,
+				65F69F0D1DDD70AB0017188D /* DXAmplifier.swift in Sources */,
 				7198C2DE1DD93601003238D7 /* MainVC.swift in Sources */,
 				7198C2DC1DD93601003238D7 /* AppDelegate.swift in Sources */,
 			);
@@ -610,6 +627,7 @@
 				7198C3021DD93601003238D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7198C3031DD93601003238D7 /* Build configuration list for PBXNativeTarget "DefenderAppTests" */ = {
 			isa = XCConfigurationList;
@@ -618,6 +636,7 @@
 				7198C3051DD93601003238D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7198C3061DD93601003238D7 /* Build configuration list for PBXNativeTarget "DefenderAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -626,6 +645,7 @@
 				7198C3081DD93601003238D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="Mustang V2 III/IV/V" ProductId="13">
+  <Amplifier>
+    <Module ID="109" POS="0" BypassState="1">
+      <Param ControlIndex="0">50944</Param>
+      <Param ControlIndex="1">22016</Param>
+      <Param ControlIndex="2">32768</Param>
+      <Param ControlIndex="3">21760</Param>
+      <Param ControlIndex="4">36608</Param>
+      <Param ControlIndex="5">36608</Param>
+      <Param ControlIndex="6">51200</Param>
+      <Param ControlIndex="7">32768</Param>
+      <Param ControlIndex="8">32768</Param>
+      <Param ControlIndex="9">65535</Param>
+      <Param ControlIndex="10">42752</Param>
+      <Param ControlIndex="11">32768</Param>
+      <Param ControlIndex="12">8</Param>
+      <Param ControlIndex="13">8</Param>
+      <Param ControlIndex="14">8</Param>
+      <Param ControlIndex="15">4</Param>
+      <Param ControlIndex="16">5</Param>
+      <Param ControlIndex="17">8</Param>
+      <Param ControlIndex="18">8</Param>
+      <Param ControlIndex="19">1</Param>
+      <Param ControlIndex="20">0</Param>
+      <Param ControlIndex="21">1</Param>
+      <Param ControlIndex="22">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="60" POS="0" BypassState="1">
+        <Param ControlIndex="0">65280</Param>
+        <Param ControlIndex="1">29696</Param>
+        <Param ControlIndex="2">36352</Param>
+        <Param ControlIndex="3">36608</Param>
+        <Param ControlIndex="4">29696</Param>
+      </Module>
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="0" POS="5" BypassState="1"></Module>
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="0" POS="6" BypassState="1"></Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="58" POS="7" BypassState="1">
+        <Param ControlIndex="0">0</Param>
+        <Param ControlIndex="1">15872</Param>
+        <Param ControlIndex="2">32768</Param>
+        <Param ControlIndex="3">1280</Param>
+        <Param ControlIndex="4">45056</Param>
+      </Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="0">
+    <SongFile Location="6">No Band</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="Preset1" author="DerekK19" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0"></Info>
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+  <FirstExpressionPedal VolumeModeBehavior="1" ExpressionModeBehavior="2" HeelSetting="0" ToeSetting="52992" PedalMode="0" BypassEffectWhenVolumeMode="1" VolumeSwitchRevert="0" DefaultPedalState="0" PedalOverrideState="0" ParameterIndex="1" />
+  <UsbGain>0</UsbGain>
+</Preset>

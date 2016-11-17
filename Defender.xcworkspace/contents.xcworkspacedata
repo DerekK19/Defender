@@ -5,6 +5,6 @@
       location = "group:DefenderApp/DefenderApp.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:Defender.xcodeproj">
+      location = "group:DefenderMac/Defender.xcodeproj">
    </FileRef>
 </Workspace>
