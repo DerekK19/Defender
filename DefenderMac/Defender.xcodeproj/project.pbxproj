@@ -46,6 +46,7 @@
 		65F69F131DDD70EE0017188D /* DXAmplifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F121DDD70EE0017188D /* DXAmplifier.swift */; };
 		65F69F161DDD71AB0017188D /* DXAmplifier+DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F151DDD71AB0017188D /* DXAmplifier+DTO.swift */; };
 		65F69F1A1DDD75090017188D /* Transferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F191DDD75090017188D /* Transferable.swift */; };
+		65F69F1E1DDD93340017188D /* DXRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F1D1DDD93340017188D /* DXRequest.swift */; };
 		7123C50C1DAC46B900ACFDB5 /* AmpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7123C50B1DAC46B900ACFDB5 /* AmpController.swift */; };
 		71602D7C1DD52284003E2D49 /* PresetDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71602D7B1DD52284003E2D49 /* PresetDocument.swift */; };
 		7167FEDA1D58032C0059A276 /* NSImage+Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FED91D58032C0059A276 /* NSImage+Colour.swift */; };
@@ -120,6 +121,7 @@
 		65F69F121DDD70EE0017188D /* DXAmplifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXAmplifier.swift; sourceTree = "<group>"; };
 		65F69F151DDD71AB0017188D /* DXAmplifier+DTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DXAmplifier+DTO.swift"; sourceTree = "<group>"; };
 		65F69F191DDD75090017188D /* Transferable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transferable.swift; sourceTree = "<group>"; };
+		65F69F1D1DDD93340017188D /* DXRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXRequest.swift; sourceTree = "<group>"; };
 		7123C50B1DAC46B900ACFDB5 /* AmpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmpController.swift; sourceTree = "<group>"; };
 		71602D7B1DD52284003E2D49 /* PresetDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetDocument.swift; sourceTree = "<group>"; };
 		7167FED91D58032C0059A276 /* NSImage+Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Colour.swift"; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				65F69F191DDD75090017188D /* Transferable.swift */,
+				65F69F1D1DDD93340017188D /* DXRequest.swift */,
 				65F69F121DDD70EE0017188D /* DXAmplifier.swift */,
 			);
 			name = "Common Models";
@@ -548,6 +551,7 @@
 				65426BA21DB0930300E54D35 /* KnobBaseControl.swift in Sources */,
 				658CEC0D1DA36AAA006890A4 /* PedalBodyControl.swift in Sources */,
 				657C3AC81D56DB8E002DEF17 /* AmpKnobControl.swift in Sources */,
+				65F69F1E1DDD93340017188D /* DXRequest.swift in Sources */,
 				658CEC0F1DA36D85006890A4 /* Enums.swift in Sources */,
 				658D10E21DB73BA3008C3A45 /* ShadeControl.swift in Sources */,
 				7123C50C1DAC46B900ACFDB5 /* AmpController.swift in Sources */,

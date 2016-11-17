@@ -49,8 +49,8 @@ class RemoteManager {
         central.start()
     }
     
-    func send(_ string: String) -> Bool {
-        if let data = string.data(using: .utf8) {
+    func send(_ object: Transferable) -> Bool {
+        if let data = object.data {
             central.send(data: data) { success in
                 self.delegate?.remoteManager(self, didSend: success)
             }

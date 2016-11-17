@@ -582,13 +582,21 @@ extension MainVC: RemoteManagerDelegate {
         DispatchQueue.main.async {
             self.bluetoothLabel.stringValue = "Received"
             DispatchQueue.main.async {
-                if let amp = self.ampController.currentAmplifier {
-                    let message = DXAmplifier(dto: amp)
-                    if self.remoteManager?.send(message) == true {
-                        self.bluetoothLabel.stringValue = "Sending"
-                    } else {
-                        self.bluetoothLabel.stringValue = "Unsent"
+                do {
+                    let request = try DXRequest(data: data)
+                    switch request.command {
+                    case .amplifier:
+                        if let amp = self.ampController.currentAmplifier {
+                            let message = DXAmplifier(dto: amp)
+                            if self.remoteManager?.send(message) == true {
+                                self.bluetoothLabel.stringValue = "Sending"
+                            } else {
+                                self.bluetoothLabel.stringValue = "Unsent"
+                            }
+                        }
                     }
+                } catch {
+                    self.bluetoothLabel.stringValue = "Failed"
                 }
             }
         }

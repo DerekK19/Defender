@@ -51,7 +51,8 @@ extension MainVC: RemoteManagerDelegate {
         DispatchQueue.main.async {
             self.bluetoothLabel.text = "Connected"
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+3) {
-                if self.remoteManager?.send("Hello peripheral") == true {
+                let request = DXRequest(command: .amplifier)
+                if self.remoteManager?.send(request) == true {
                     self.bluetoothLabel.text = "Sending"
                 } else {
                     self.bluetoothLabel.text = "Unsent"
