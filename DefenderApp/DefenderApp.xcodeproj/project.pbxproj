@@ -22,6 +22,7 @@
 		7198C3111DD94BAC003238D7 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7198C30F1DD94BAC003238D7 /* ObjectMapper.framework */; };
 		7198C3351DD9570D003238D7 /* RemoteDefender.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7198C3341DD9570D003238D7 /* RemoteDefender.framework */; };
 		7198C33E1DDA833B003238D7 /* RemoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C33D1DDA833B003238D7 /* RemoteManager.swift */; };
+		7198C5EF1DDE47CA003238D7 /* LEDControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C5EE1DDE47CA003238D7 /* LEDControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		7198C30F1DD94BAC003238D7 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		7198C3341DD9570D003238D7 /* RemoteDefender.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RemoteDefender.framework; path = Carthage/Build/iOS/RemoteDefender.framework; sourceTree = "<group>"; };
 		7198C33D1DDA833B003238D7 /* RemoteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteManager.swift; sourceTree = "<group>"; };
+		7198C5EE1DDE47CA003238D7 /* LEDControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEDControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			children = (
 				7198C3401DDA9C20003238D7 /* View Controllers */,
 				7198C33C1DDA8317003238D7 /* Managers */,
+				7198C5ED1DDE476C003238D7 /* Custom Controls */,
 				65F69F0B1DDD703F0017188D /* Common Models */,
 				7198C33F1DDA9C08003238D7 /* Resources */,
 				7198C2DB1DD93601003238D7 /* AppDelegate.swift */,
@@ -191,6 +194,15 @@
 				7198C2DD1DD93601003238D7 /* MainVC.swift */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		7198C5ED1DDE476C003238D7 /* Custom Controls */ = {
+			isa = PBXGroup;
+			children = (
+				7198C5EE1DDE47CA003238D7 /* LEDControl.swift */,
+			);
+			name = "Custom Controls";
+			path = ../CustomControls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65F69F181DDD745D0017188D /* Transferable.swift in Sources */,
+				7198C5EF1DDE47CA003238D7 /* LEDControl.swift in Sources */,
 				7198C33E1DDA833B003238D7 /* RemoteManager.swift in Sources */,
 				65F69F0D1DDD70AB0017188D /* DXAmplifier.swift in Sources */,
 				7198C2DE1DD93601003238D7 /* MainVC.swift in Sources */,

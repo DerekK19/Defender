@@ -98,6 +98,7 @@ class MainVC: NSViewController {
 
         txLED.backgroundColour = NSColor.clear
         rxLED.backgroundColour = NSColor.clear
+        
         if let appDelegate = NSApplication.shared().delegate as? AppDelegate {
             remoteManager = appDelegate.remoteManager
             remoteManager?.delegate = self
