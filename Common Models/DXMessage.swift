@@ -13,10 +13,10 @@ internal enum RequestType : String {
     case amplifier = "AMPLIFIER"
 }
 
-internal class DXMessage: Mappable, Transferable {
+internal class DXMessage: Transferable {
     
     var command: RequestType!
-    var content: Transferable?
+    var content: Data?
     
     required init?(map: Map) {
         mapping(map: map)
@@ -24,15 +24,17 @@ internal class DXMessage: Mappable, Transferable {
     
     init(command: RequestType, data: Transferable?) {
         self.command = command
-        self.content = data
+        self.content = data?.data
     }
     
-    required init(data: Data) throws {
-        if let string = String(data: data, encoding: .utf8),
-            let temp = Mapper<DXMessage>().map(JSONString: string) {
-            self.command = temp.command
-            self.content = temp.content
-            return
+    required init(data: Data?) throws {
+        if let data = data {
+            if let string = String(data: data, encoding: .utf8),
+                let temp = Mapper<DXMessage>().map(JSONString: string) {
+                self.command = temp.command
+                self.content = temp.content
+                return
+            }
         }
         throw TransferError.serialising
     }
@@ -46,8 +48,19 @@ internal class DXMessage: Mappable, Transferable {
         }
     }
     
+    let transform = TransformOf<Data, String>(fromJSON: { (value: String?) -> Data? in
+        // transform value from String? to Data?
+        return value?.data(using: .utf8)
+    }, toJSON: { (value: Data?) -> String? in
+        // transform value from Data? to String?
+        if let value = value {
+            return String(data: value, encoding: .utf8)
+        }
+        return nil
+    })
+
     func mapping(map: Map) {
         command         <- map["command"]
-        content         <- map["content"]
+        content         <- (map["content"], transform)
     }
 }

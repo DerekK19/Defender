@@ -400,6 +400,21 @@ class MainVC: NSViewController {
         }
     }
     
+    func sendCurrentAmplifier() {
+        var message: DXMessage!
+        if let amp = self.ampController.currentAmplifier {
+            message = DXMessage(command: .amplifier, data: DXAmplifier(dto: amp))
+        } else {
+            message = DXMessage(command: .amplifier, data: DXAmplifier(name: "No amplifier", manufacturer: ""))
+        }
+        if self.remoteManager?.send(message) == true {
+            self.txLED.backgroundColour = NSColor.red
+            self.bluetoothLabel.stringValue = "Sending"
+        } else {
+            self.bluetoothLabel.stringValue = "Unsent"
+        }
+    }
+    
     // MARK: Debug logging
     internal func DebugPrint(_ text: String) {
         if (verbose) {
@@ -526,6 +541,7 @@ extension MainVC: AmpControllerDelegate {
     
     func deviceConnected(ampController: AmpController) {
         DebugPrint(" Connected")
+        sendCurrentAmplifier()
         DispatchQueue.main.async {
             self.statusLED.backgroundColour = ampController.hasAnAmplifier ? .green : .red
             self.statusLabel.stringValue = "\(ampController.currentAmplifierName) connected"
@@ -535,14 +551,17 @@ extension MainVC: AmpControllerDelegate {
     func deviceOpened(ampController: AmpController) {
         DebugPrint(" Opened")
         configureAmplifiers()
+        sendCurrentAmplifier()
     }
     
     func deviceClosed(ampController: AmpController) {
         DebugPrint(" Closed")
+        sendCurrentAmplifier()
     }
     
     func deviceDisconnected(ampController: AmpController) {
         DebugPrint(" Disconnected")
+        sendCurrentAmplifier()
         DispatchQueue.main.async {
             self.reset()
             self.statusLED.backgroundColour = ampController.hasAnAmplifier ? .green : .red
@@ -593,15 +612,7 @@ extension MainVC: RemoteManagerDelegate {
                     let request = try DXMessage(data: data)
                     switch request.command as RequestType {
                     case .amplifier:
-                        if let amp = self.ampController.currentAmplifier {
-                            let message = DXMessage(command: request.command, data: DXAmplifier(dto: amp))
-                            if self.remoteManager?.send(message) == true {
-                                self.txLED.backgroundColour = NSColor.red
-                                self.bluetoothLabel.stringValue = "Sending"
-                            } else {
-                                self.bluetoothLabel.stringValue = "Unsent"
-                            }
-                        }
+                        self.sendCurrentAmplifier()
                     }
                 } catch {
                     self.bluetoothLabel.stringValue = "Failed"
@@ -622,4 +633,5 @@ extension MainVC: RemoteManagerDelegate {
             self.bluetoothLabel.stringValue = ""
         }
     }
+
 }

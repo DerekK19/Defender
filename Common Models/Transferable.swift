@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import ObjectMapper
 
 internal enum TransferError: Error {
     case serialising
 }
 
-internal protocol Transferable {
-    init(data: Data) throws
+internal protocol Transferable : Mappable {
+    init(data: Data?) throws
     var data: Data? { get }
 }

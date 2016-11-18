@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-internal class DXAmplifier : Mappable, Transferable {
+internal class DXAmplifier : Transferable {
     
     var name: String!
     var manufacturer: String!
@@ -18,12 +18,14 @@ internal class DXAmplifier : Mappable, Transferable {
         mapping(map: map)
     }
     
-    required init(data: Data) throws {
-        if let string = String(data: data, encoding: .utf8),
-           let temp = Mapper<DXAmplifier>().map(JSONString: string) {
-            name = temp.name
-            manufacturer = temp.manufacturer
-            return
+    required init(data: Data?) throws {
+        if let data = data {
+            if let string = String(data: data, encoding: .utf8),
+                let temp = Mapper<DXAmplifier>().map(JSONString: string) {
+                name = temp.name
+                manufacturer = temp.manufacturer
+                return
+            }
         }
         throw TransferError.serialising
     }

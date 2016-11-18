@@ -15,6 +15,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var txLED: LEDControl!
     @IBOutlet weak var rxLED: LEDControl!
     @IBOutlet weak var bluetoothLabel: UILabel!
+    @IBOutlet weak var amplifierLabel: UILabel!
 
     fileprivate var remoteManager: RemoteManager?
     
@@ -24,6 +25,8 @@ class MainVC: UIViewController {
         txLED.backgroundColour = UIColor.clear
         rxLED.backgroundColour = UIColor.clear
 
+        amplifierLabel.text = ""
+        
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             remoteManager = appDelegate.remoteManager
             remoteManager?.delegate = self
@@ -79,11 +82,11 @@ extension MainVC: RemoteManagerDelegate {
             self.rxLED.backgroundColour = UIColor.green
             do {
                 let message = try DXMessage(data: data)
-                if let data = message.content?.data {
-                    let amp = try DXAmplifier(data: data)
-                    self.bluetoothLabel.text = "Received \(amp.name ?? "")"
-                } else {
-                    self.bluetoothLabel.text = "Received something"
+                switch message.command as RequestType {
+                case .amplifier:
+                    let amp = try DXAmplifier(data: message.content)
+                    self.bluetoothLabel.text = "Received"
+                    self.amplifierLabel.text = amp.name
                 }
             } catch {
                 self.bluetoothLabel.text = "Received Badness"
