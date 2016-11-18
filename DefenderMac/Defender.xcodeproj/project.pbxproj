@@ -46,6 +46,8 @@
 		65F69F131DDD70EE0017188D /* DXAmplifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F121DDD70EE0017188D /* DXAmplifier.swift */; };
 		65F69F161DDD71AB0017188D /* DXAmplifier+DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F151DDD71AB0017188D /* DXAmplifier+DTO.swift */; };
 		65F69F1A1DDD75090017188D /* Transferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F191DDD75090017188D /* Transferable.swift */; };
+		65F69F221DDED2290017188D /* DXPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F211DDED2290017188D /* DXPreset.swift */; };
+		65F69F241DDED4B10017188D /* DXPreset+DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F231DDED4B10017188D /* DXPreset+DTO.swift */; };
 		7123C50C1DAC46B900ACFDB5 /* AmpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7123C50B1DAC46B900ACFDB5 /* AmpController.swift */; };
 		71602D7C1DD52284003E2D49 /* PresetDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71602D7B1DD52284003E2D49 /* PresetDocument.swift */; };
 		7167FEDA1D58032C0059A276 /* NSImage+Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FED91D58032C0059A276 /* NSImage+Colour.swift */; };
@@ -121,6 +123,8 @@
 		65F69F121DDD70EE0017188D /* DXAmplifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXAmplifier.swift; sourceTree = "<group>"; };
 		65F69F151DDD71AB0017188D /* DXAmplifier+DTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DXAmplifier+DTO.swift"; sourceTree = "<group>"; };
 		65F69F191DDD75090017188D /* Transferable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transferable.swift; sourceTree = "<group>"; };
+		65F69F211DDED2290017188D /* DXPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXPreset.swift; sourceTree = "<group>"; };
+		65F69F231DDED4B10017188D /* DXPreset+DTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DXPreset+DTO.swift"; sourceTree = "<group>"; };
 		7123C50B1DAC46B900ACFDB5 /* AmpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmpController.swift; sourceTree = "<group>"; };
 		71602D7B1DD52284003E2D49 /* PresetDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetDocument.swift; sourceTree = "<group>"; };
 		7167FED91D58032C0059A276 /* NSImage+Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Colour.swift"; sourceTree = "<group>"; };
@@ -307,6 +311,7 @@
 		65F69F111DDD70EE0017188D /* Common Models */ = {
 			isa = PBXGroup;
 			children = (
+				65F69F211DDED2290017188D /* DXPreset.swift */,
 				65F69F191DDD75090017188D /* Transferable.swift */,
 				7198C5F01DDE9D3C003238D7 /* DXMessage.swift */,
 				65F69F121DDD70EE0017188D /* DXAmplifier.swift */,
@@ -344,6 +349,7 @@
 				7167FED91D58032C0059A276 /* NSImage+Colour.swift */,
 				656A5ABC1DA883BB00B7BE3E /* NSColor+Brightness.swift */,
 				65F69F151DDD71AB0017188D /* DXAmplifier+DTO.swift */,
+				65F69F231DDED4B10017188D /* DXPreset+DTO.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -567,8 +573,10 @@
 				656A5ABB1DA880B700B7BE3E /* LEDControl.swift in Sources */,
 				655A5A411D4C555400E15E1F /* AppDelegate.swift in Sources */,
 				7167FF3E1D592E070059A276 /* WheelControl.swift in Sources */,
+				65F69F221DDED2290017188D /* DXPreset.swift in Sources */,
 				65F69F161DDD71AB0017188D /* DXAmplifier+DTO.swift in Sources */,
 				65A65BA21DA4740400EDCA32 /* PedalPadControl.swift in Sources */,
+				65F69F241DDED4B10017188D /* DXPreset+DTO.swift in Sources */,
 				71602D7C1DD52284003E2D49 /* PresetDocument.swift in Sources */,
 				652564491DA8972A00ACCD4B /* PedalKnobControl.swift in Sources */,
 				65F69F1A1DDD75090017188D /* Transferable.swift in Sources */,

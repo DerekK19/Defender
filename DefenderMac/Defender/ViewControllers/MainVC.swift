@@ -415,6 +415,21 @@ class MainVC: NSViewController {
         }
     }
     
+    func sendCurrentPreset() {
+        var message: DXMessage!
+        if let preset = self.currentPreset {
+            message = DXMessage(command: .preset, data: DXPreset(dto: preset))
+        } else {
+            message = DXMessage(command: .preset, data: DXPreset(name: ""))
+        }
+        if self.remoteManager?.send(message) == true {
+            self.txLED.backgroundColour = NSColor.red
+            self.bluetoothLabel.stringValue = "Sending"
+        } else {
+            self.bluetoothLabel.stringValue = "Unsent"
+        }
+    }
+    
     // MARK: Debug logging
     internal func DebugPrint(_ text: String) {
         if (verbose) {
@@ -529,6 +544,7 @@ extension MainVC: WheelDelegate {
                 DispatchQueue.main.async {
                     self.currentPreset = preset
                     self.displayPreset(preset)
+                    self.sendCurrentPreset()
                 }
             }
         default:
@@ -551,12 +567,13 @@ extension MainVC: AmpControllerDelegate {
     func deviceOpened(ampController: AmpController) {
         DebugPrint(" Opened")
         configureAmplifiers()
-        sendCurrentAmplifier()
+        sendCurrentPreset()
     }
     
     func deviceClosed(ampController: AmpController) {
         DebugPrint(" Closed")
-        sendCurrentAmplifier()
+        currentPreset = nil
+        sendCurrentPreset()
     }
     
     func deviceDisconnected(ampController: AmpController) {
@@ -613,6 +630,8 @@ extension MainVC: RemoteManagerDelegate {
                     switch request.command as RequestType {
                     case .amplifier:
                         self.sendCurrentAmplifier()
+                    case .preset:
+                        self.sendCurrentPreset()
                     }
                 } catch {
                     self.bluetoothLabel.stringValue = "Failed"

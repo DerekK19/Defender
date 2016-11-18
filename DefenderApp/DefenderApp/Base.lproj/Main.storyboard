@@ -53,7 +53,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amplifier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oN-J3-d5l">
-                                <rect key="frame" x="153" y="38" width="68.5" height="20.5"/>
+                                <rect key="frame" x="153" y="40" width="68.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iA8-DL-jp5">
+                                <rect key="frame" x="16" y="66.5" width="49.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -61,17 +67,19 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="iA8-DL-jp5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="2Ov-Hf-wwm"/>
                             <constraint firstItem="GoT-f9-hXl" firstAttribute="leading" secondItem="859-jC-vVc" secondAttribute="trailing" constant="9" id="DTn-fv-rME"/>
                             <constraint firstItem="Wgr-lO-Hh5" firstAttribute="centerY" secondItem="GoT-f9-hXl" secondAttribute="centerY" id="FRC-t8-ORn"/>
                             <constraint firstItem="Wgr-lO-Hh5" firstAttribute="centerY" secondItem="IP7-wW-toh" secondAttribute="centerY" id="Gve-be-ays"/>
                             <constraint firstItem="1oN-J3-d5l" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LbL-1o-5ph"/>
                             <constraint firstItem="Wgr-lO-Hh5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="XLq-5K-CZK"/>
+                            <constraint firstItem="iA8-DL-jp5" firstAttribute="top" secondItem="1oN-J3-d5l" secondAttribute="bottom" constant="6" id="cWj-w2-Kkr"/>
                             <constraint firstItem="Wgr-lO-Hh5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ga0-9s-qbe"/>
                             <constraint firstItem="859-jC-vVc" firstAttribute="leading" secondItem="IP7-wW-toh" secondAttribute="trailing" constant="5" id="idh-6N-X0d"/>
                             <constraint firstItem="859-jC-vVc" firstAttribute="width" secondItem="859-jC-vVc" secondAttribute="height" multiplier="1:1" id="jR3-6L-ehy"/>
                             <constraint firstItem="IP7-wW-toh" firstAttribute="leading" secondItem="Wgr-lO-Hh5" secondAttribute="trailing" constant="8" id="uKa-UB-S4u"/>
                             <constraint firstItem="IP7-wW-toh" firstAttribute="centerY" secondItem="859-jC-vVc" secondAttribute="centerY" id="uqw-Hc-ZYh"/>
-                            <constraint firstItem="1oN-J3-d5l" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="38" id="wmL-qZ-KFr"/>
+                            <constraint firstItem="1oN-J3-d5l" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="wmL-qZ-KFr"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -82,6 +90,7 @@
                         <outlet property="amplifierLabel" destination="1oN-J3-d5l" id="nzd-eA-aaM"/>
                         <outlet property="bluetoothLabel" destination="GoT-f9-hXl" id="VCR-pX-zkC"/>
                         <outlet property="bluetoothLogo" destination="Wgr-lO-Hh5" id="EMw-vl-NuL"/>
+                        <outlet property="presetLabel" destination="iA8-DL-jp5" id="59I-gx-hNl"/>
                         <outlet property="rxLED" destination="IP7-wW-toh" id="5w5-se-fdG"/>
                         <outlet property="txLED" destination="859-jC-vVc" id="oMv-Ez-xiT"/>
                     </connections>
