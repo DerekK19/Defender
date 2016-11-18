@@ -590,11 +590,11 @@ extension MainVC: RemoteManagerDelegate {
             self.bluetoothLabel.stringValue = "Received"
             DispatchQueue.main.async {
                 do {
-                    let request = try DXRequest(data: data)
-                    switch request.command {
+                    let request = try DXMessage(data: data)
+                    switch request.command as RequestType {
                     case .amplifier:
                         if let amp = self.ampController.currentAmplifier {
-                            let message = DXAmplifier(dto: amp)
+                            let message = DXMessage(command: request.command, data: DXAmplifier(dto: amp))
                             if self.remoteManager?.send(message) == true {
                                 self.txLED.backgroundColour = NSColor.red
                                 self.bluetoothLabel.stringValue = "Sending"

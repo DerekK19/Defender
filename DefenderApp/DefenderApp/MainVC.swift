@@ -56,7 +56,7 @@ extension MainVC: RemoteManagerDelegate {
         DispatchQueue.main.async {
             self.bluetoothLabel.text = "Connected"
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+3) {
-                let request = DXRequest(command: .amplifier)
+                let request = DXMessage(command: .amplifier, data: nil)
                 if self.remoteManager?.send(request) == true {
                     self.txLED.backgroundColour = UIColor.red
                     self.bluetoothLabel.text = "Sending"
@@ -78,8 +78,13 @@ extension MainVC: RemoteManagerDelegate {
         DispatchQueue.main.async {
             self.rxLED.backgroundColour = UIColor.green
             do {
-                let amp = try DXAmplifier(data: data)
-                self.bluetoothLabel.text = "Received \(amp.name ?? "")"
+                let message = try DXMessage(data: data)
+                if let data = message.content?.data {
+                    let amp = try DXAmplifier(data: data)
+                    self.bluetoothLabel.text = "Received \(amp.name ?? "")"
+                } else {
+                    self.bluetoothLabel.text = "Received something"
+                }
             } catch {
                 self.bluetoothLabel.text = "Received Badness"
             }
