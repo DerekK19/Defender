@@ -31,13 +31,15 @@ public class Central {
 
     var manager: CentralManager
     
-    public init(mockMode: Bool = false) {
+    public init(mockMode: Bool = false, verbose: Bool = false) {
         if mockMode {
             manager = CentralManager.mockInstance
             manager.delegate = self
+            manager.verbose = verbose
         } else {
             manager = CentralManager.realInstance
             manager.delegate = self
+            manager.verbose = verbose
         }
     }
     

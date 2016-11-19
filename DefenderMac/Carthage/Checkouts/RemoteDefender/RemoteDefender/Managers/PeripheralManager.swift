@@ -32,8 +32,9 @@ internal class PeripheralManager {
 
     var peripheral: BKPeripheral!
     var delegate: PeripheralManagerDelegate?
+    var verbose = false
 
-    internal init(mockMode: Bool) {
+    internal init(mockMode: Bool = false) {
         if mockMode {
             self.peripheral = BKPeripheral()
             self.peripheral.delegate = self
@@ -44,7 +45,7 @@ internal class PeripheralManager {
     }
     
     internal func startPeripheral() {
-        NSLog("startPeripheral")
+        DebugPrint("startPeripheral")
         do {
             let localName = "Defender"
             let configuration = BKPeripheralConfiguration(dataServiceUUID: Constants.serviceUUID,
@@ -70,7 +71,7 @@ internal class PeripheralManager {
     }
     
     internal func stopPeripheral() {
-        NSLog("stopPeripheral")
+        DebugPrint("stopPeripheral")
         do {
             try peripheral.stop()
             delegate?.peripheralManagerDidStop(self)
@@ -78,18 +79,25 @@ internal class PeripheralManager {
             
         }
     }
+    
+    // MARK: Debug logging
+    internal func DebugPrint(_ text: String) {
+        if (verbose) {
+            print(text)
+        }
+    }
 }
 
 extension PeripheralManager: BKPeripheralDelegate {
     
     func peripheral(_ peripheral: BKPeripheral, remoteCentralDidConnect remoteCentral: BKRemoteCentral) {
-        NSLog("Connected")
+        DebugPrint("Connected")
         remoteCentral.delegate = self
         delegate?.peripheralManagerDidConnect(self, remote: nil) // TODO
     }
     
     func peripheral(_ peripheral: BKPeripheral, remoteCentralDidDisconnect remoteCentral: BKRemoteCentral) {
-        NSLog("Disconnected")
+        DebugPrint("Disconnected")
         remoteCentral.delegate = nil
         delegate?.peripheralManagerDidDisconnect(self, remote: nil) // TODO
     }

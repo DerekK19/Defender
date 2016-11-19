@@ -22,7 +22,7 @@ class RemoteManager {
     
     var delegate: RemoteManagerDelegate?
     
-    let central = Central()
+    let central = Central(mockMode: false, verbose: true)
     
     init(delegate: RemoteManagerDelegate? = nil) {
         self.delegate = delegate

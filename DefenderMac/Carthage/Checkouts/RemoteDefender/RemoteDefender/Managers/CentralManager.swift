@@ -32,8 +32,9 @@ internal class CentralManager {
     
     var central: BKCentral!
     var delegate: CentralManagerDelegate?
+    var verbose = false
     
-    internal init(mockMode: Bool) {
+    internal init(mockMode: Bool = false) {
         if mockMode {
             self.central = BKCentral()
             self.central.delegate = self
@@ -46,7 +47,7 @@ internal class CentralManager {
     }
     
     internal func startCentral() {
-        NSLog("startCentral")
+        DebugPrint("startCentral")
         do {
             let configuration = BKConfiguration(dataServiceUUID: Constants.serviceUUID,
                                                 dataServiceCharacteristicUUID:  Constants.characteristicUUID)
@@ -58,22 +59,22 @@ internal class CentralManager {
     
     internal func scan() {
         central.scanWithDuration(3, progressHandler: { newDiscoveries in
-            NSLog("Discovering")
+            self.DebugPrint("Discovering")
             // Handle newDiscoveries, [BKDiscovery].
         }, completionHandler: { result, error in
             // Handle error.
             // If no error, handle result, [BKDiscovery].'
             if let error = error {
-                NSLog("Scan error: \(error)")
+                self.DebugPrint("Scan error: \(error)")
             } else {
-                NSLog("Scan -> \(result)")
+                self.DebugPrint("Scan -> \(result)")
                 if let remotePeripheral = result?.first?.remotePeripheral {
-                    NSLog("Connecting: \(remotePeripheral)")
+                    self.DebugPrint("Connecting: \(remotePeripheral)")
                     self.central.connect(remotePeripheral: remotePeripheral) { remotePeripheral, error in
                         if let error = error {
-                            NSLog("Connect error: \(error)")
+                            self.DebugPrint("Connect error: \(error)")
                         } else {
-                            NSLog("Connected -> \(remotePeripheral)")
+                            self.DebugPrint("Connected -> \(remotePeripheral)")
                             remotePeripheral.delegate = self
                             self.delegate?.centralManagerDidConnect(self, remote: nil) // TODO
                         }
@@ -98,24 +99,31 @@ internal class CentralManager {
     internal func disconnect() {
         for peripheral in central.connectedRemotePeripherals {
             do {
-                NSLog("Disconnecting: \(peripheral)")
+                DebugPrint("Disconnecting: \(peripheral)")
                 try central.disconnectRemotePeripheral(peripheral)
                 peripheral.delegate = nil
-                NSLog("Disconnected")
+                DebugPrint("Disconnected")
             } catch {
-                NSLog("Error disconnecting")
+                DebugPrint("Error disconnecting")
             }
         }
     }
     
     internal func stopCentral() {
-        NSLog("stopCentral")
+        DebugPrint("stopCentral")
         do {
-            NSLog("Stopping")
+            DebugPrint("Stopping")
             try central.stop()
-            NSLog("Stopped")
+            DebugPrint("Stopped")
         } catch {
-            NSLog("Error stopping")
+            DebugPrint("Error stopping")
+        }
+    }
+    
+    // MARK: Debug logging
+    internal func DebugPrint(_ text: String) {
+        if (verbose) {
+            print(text)
         }
     }
 }
@@ -123,14 +131,14 @@ internal class CentralManager {
 extension CentralManager : BKCentralDelegate {
     
     func central(_ central: BKCentral, remotePeripheralDidDisconnect remotePeripheral: BKRemotePeripheral) {
-        NSLog("remotePeripheralDidDisconnect \(remotePeripheral)")
+        DebugPrint("remotePeripheralDidDisconnect \(remotePeripheral)")
         self.delegate?.centralManagerDidDisconnect(self, remote: nil) // TODO
         do {
-            NSLog("disconnecting \(remotePeripheral)")
+            DebugPrint("disconnecting \(remotePeripheral)")
             try central.disconnectRemotePeripheral(remotePeripheral)
-            NSLog("disconnected")
+            DebugPrint("disconnected")
         } catch {
-            NSLog("error disconnecting")
+            DebugPrint("error disconnecting")
         }
     }
 }
@@ -138,7 +146,7 @@ extension CentralManager : BKCentralDelegate {
 extension CentralManager : BKAvailabilityObserver {
     
     func availabilityObserver(_ availabilityObservable: BKAvailabilityObservable, availabilityDidChange availability: BKAvailability) {
-        NSLog("availabilityDidChange - \(availability)")
+        DebugPrint("availabilityDidChange - \(availability)")
         switch availability {
         case .available:
             self.delegate?.centralManagerDidBecomeAvailable(self)
@@ -148,7 +156,7 @@ extension CentralManager : BKAvailabilityObserver {
     }
     
     func availabilityObserver(_ availabilityObservable: BKAvailabilityObservable, unavailabilityCauseDidChange unavailabilityCause: BKUnavailabilityCause) {
-        NSLog("unavailabilityCauseDidChange - \(unavailabilityCause)")
+        DebugPrint("unavailabilityCauseDidChange - \(unavailabilityCause)")
     }
 }
 

@@ -195,8 +195,7 @@ class MainVC: NSViewController {
             if let _ = newPreset {
                 newPreset!.number = self.currentPreset?.number
             }
-            self.currentPreset = newPreset
-            self.displayPreset(newPreset)
+            self.setPreset(newPreset)
             self.saveButton.setState(.warning)
         }
     }
@@ -208,6 +207,7 @@ class MainVC: NSViewController {
         if sender.state == NSOffState {
             DebugPrint(" Powering off")
             self.powerState = .off
+            self.setPreset(nil)
         } else {
             DebugPrint(" Powering on")
             sender.state = NSOffState
@@ -283,6 +283,12 @@ class MainVC: NSViewController {
         bluetoothLabel.textColor = .white
         powerButton.state = NSOffState
         powerState = .off
+    }
+    
+    fileprivate func setPreset(_ preset: DTOPreset?) {
+        currentPreset = preset
+        displayPreset(preset)
+        sendCurrentPreset()
     }
     
     fileprivate func configureAmplifiers() {
@@ -542,9 +548,7 @@ extension MainVC: WheelDelegate {
             exitButton.setState(.active)
             ampController.getPreset(value) { (preset) in
                 DispatchQueue.main.async {
-                    self.currentPreset = preset
-                    self.displayPreset(preset)
-                    self.sendCurrentPreset()
+                    self.setPreset(preset)
                 }
             }
         default:
@@ -572,15 +576,15 @@ extension MainVC: AmpControllerDelegate {
     
     func deviceClosed(ampController: AmpController) {
         DebugPrint(" Closed")
-        currentPreset = nil
-        sendCurrentPreset()
+        setPreset(nil)
     }
     
     func deviceDisconnected(ampController: AmpController) {
         DebugPrint(" Disconnected")
-        sendCurrentAmplifier()
         DispatchQueue.main.async {
             self.reset()
+            self.setPreset(nil)
+            self.sendCurrentAmplifier()
             self.statusLED.backgroundColour = ampController.hasAnAmplifier ? .green : .red
             self.statusLabel.stringValue = "\(ampController.currentAmplifierName) connected"
         }
@@ -594,8 +598,7 @@ extension MainVC: WebVCDelegate {
         if let _ = newPreset {
             newPreset!.number = currentPreset?.number
         }
-        self.currentPreset = newPreset
-        displayPreset(newPreset)
+        self.setPreset(newPreset)
         saveButton.setState(.warning)
     }
 }

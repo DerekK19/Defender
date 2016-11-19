@@ -31,13 +31,15 @@ public class Peripheral {
     
     var manager : PeripheralManager
 
-    public init(mockMode: Bool = false) {
+    public init(mockMode: Bool = false, verbose: Bool = false) {
         if mockMode {
             manager = PeripheralManager.mockInstance
             manager.delegate = self
+            manager.verbose = verbose
         } else {
             manager = PeripheralManager.realInstance
             manager.delegate = self
+            manager.verbose = verbose
         }
     }
 
