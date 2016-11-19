@@ -11,6 +11,7 @@
 		65F69F181DDD745D0017188D /* Transferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F171DDD745D0017188D /* Transferable.swift */; };
 		65F69F1C1DDD93000017188D /* DXMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F1B1DDD93000017188D /* DXMessage.swift */; };
 		65F69F201DDED1DF0017188D /* DXPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F1F1DDED1DF0017188D /* DXPreset.swift */; };
+		65F69F2A1DE011550017188D /* DXEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F291DE011550017188D /* DXEffect.swift */; };
 		7198C2DC1DD93601003238D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C2DB1DD93601003238D7 /* AppDelegate.swift */; };
 		7198C2DE1DD93601003238D7 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C2DD1DD93601003238D7 /* MainVC.swift */; };
 		7198C2E11DD93601003238D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7198C2DF1DD93601003238D7 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		65F69F171DDD745D0017188D /* Transferable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transferable.swift; sourceTree = "<group>"; };
 		65F69F1B1DDD93000017188D /* DXMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXMessage.swift; sourceTree = "<group>"; };
 		65F69F1F1DDED1DF0017188D /* DXPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXPreset.swift; sourceTree = "<group>"; };
+		65F69F291DE011550017188D /* DXEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXEffect.swift; sourceTree = "<group>"; };
 		7198C2D81DD93601003238D7 /* DefenderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DefenderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7198C2DB1DD93601003238D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7198C2DD1DD93601003238D7 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				65F69F1B1DDD93000017188D /* DXMessage.swift */,
 				65F69F0C1DDD70AB0017188D /* DXAmplifier.swift */,
 				65F69F1F1DDED1DF0017188D /* DXPreset.swift */,
+				65F69F291DE011550017188D /* DXEffect.swift */,
 			);
 			name = "Common Models";
 			path = "../Common Models";
@@ -389,6 +392,7 @@
 				7198C5EF1DDE47CA003238D7 /* LEDControl.swift in Sources */,
 				7198C33E1DDA833B003238D7 /* RemoteManager.swift in Sources */,
 				65F69F0D1DDD70AB0017188D /* DXAmplifier.swift in Sources */,
+				65F69F2A1DE011550017188D /* DXEffect.swift in Sources */,
 				7198C2DE1DD93601003238D7 /* MainVC.swift in Sources */,
 				7198C2DC1DD93601003238D7 /* AppDelegate.swift in Sources */,
 				65F69F1C1DDD93000017188D /* DXMessage.swift in Sources */,

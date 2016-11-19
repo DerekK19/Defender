@@ -48,6 +48,8 @@
 		65F69F1A1DDD75090017188D /* Transferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F191DDD75090017188D /* Transferable.swift */; };
 		65F69F221DDED2290017188D /* DXPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F211DDED2290017188D /* DXPreset.swift */; };
 		65F69F241DDED4B10017188D /* DXPreset+DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F231DDED4B10017188D /* DXPreset+DTO.swift */; };
+		65F69F261DE009F70017188D /* DXEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F251DE009F70017188D /* DXEffect.swift */; };
+		65F69F281DE00BBD0017188D /* DXEffect+DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F271DE00BBD0017188D /* DXEffect+DTO.swift */; };
 		7123C50C1DAC46B900ACFDB5 /* AmpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7123C50B1DAC46B900ACFDB5 /* AmpController.swift */; };
 		71602D7C1DD52284003E2D49 /* PresetDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71602D7B1DD52284003E2D49 /* PresetDocument.swift */; };
 		7167FEDA1D58032C0059A276 /* NSImage+Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FED91D58032C0059A276 /* NSImage+Colour.swift */; };
@@ -125,6 +127,8 @@
 		65F69F191DDD75090017188D /* Transferable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transferable.swift; sourceTree = "<group>"; };
 		65F69F211DDED2290017188D /* DXPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXPreset.swift; sourceTree = "<group>"; };
 		65F69F231DDED4B10017188D /* DXPreset+DTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DXPreset+DTO.swift"; sourceTree = "<group>"; };
+		65F69F251DE009F70017188D /* DXEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXEffect.swift; sourceTree = "<group>"; };
+		65F69F271DE00BBD0017188D /* DXEffect+DTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DXEffect+DTO.swift"; sourceTree = "<group>"; };
 		7123C50B1DAC46B900ACFDB5 /* AmpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmpController.swift; sourceTree = "<group>"; };
 		71602D7B1DD52284003E2D49 /* PresetDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetDocument.swift; sourceTree = "<group>"; };
 		7167FED91D58032C0059A276 /* NSImage+Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Colour.swift"; sourceTree = "<group>"; };
@@ -315,6 +319,7 @@
 				7198C5F01DDE9D3C003238D7 /* DXMessage.swift */,
 				65F69F121DDD70EE0017188D /* DXAmplifier.swift */,
 				65F69F211DDED2290017188D /* DXPreset.swift */,
+				65F69F251DE009F70017188D /* DXEffect.swift */,
 			);
 			name = "Common Models";
 			path = "../../Common Models";
@@ -350,6 +355,7 @@
 				656A5ABC1DA883BB00B7BE3E /* NSColor+Brightness.swift */,
 				65F69F151DDD71AB0017188D /* DXAmplifier+DTO.swift */,
 				65F69F231DDED4B10017188D /* DXPreset+DTO.swift */,
+				65F69F271DE00BBD0017188D /* DXEffect+DTO.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -557,6 +563,7 @@
 				65426BA21DB0930300E54D35 /* KnobBaseControl.swift in Sources */,
 				658CEC0D1DA36AAA006890A4 /* PedalBodyControl.swift in Sources */,
 				657C3AC81D56DB8E002DEF17 /* AmpKnobControl.swift in Sources */,
+				65F69F261DE009F70017188D /* DXEffect.swift in Sources */,
 				658CEC0F1DA36D85006890A4 /* Enums.swift in Sources */,
 				658D10E21DB73BA3008C3A45 /* ShadeControl.swift in Sources */,
 				7123C50C1DAC46B900ACFDB5 /* AmpController.swift in Sources */,
@@ -585,6 +592,7 @@
 				7194EA3A1DCFC5E7004E2D9C /* WebVC.swift in Sources */,
 				658CEC051DA35E81006890A4 /* EffectVC.swift in Sources */,
 				657C3AD01D5C46E6002DEF17 /* DisplayVC.swift in Sources */,
+				65F69F281DE00BBD0017188D /* DXEffect+DTO.swift in Sources */,
 				7198C5F11DDE9D3C003238D7 /* DXMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

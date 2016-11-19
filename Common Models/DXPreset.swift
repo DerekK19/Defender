@@ -31,6 +31,7 @@ internal class DXPreset : Transferable {
     var brightness: Int?
     var cabinet: Int?
     var cabinetName: String?
+    var effects: [DXEffect]!
     
     required init?(map: Map) {
         mapping(map: map)
@@ -60,6 +61,7 @@ internal class DXPreset : Transferable {
                 brightness = temp.brightness
                 cabinet = temp.cabinet
                 cabinetName = temp.cabinetName
+                effects = temp.effects
                 return
             }
         }
@@ -100,5 +102,6 @@ internal class DXPreset : Transferable {
         brightness       <- map["brightness"]
         cabinet          <- map["cabinet"]
         cabinetName      <- map["cabinetName"]
+        effects          <- map["effects"]
     }
 }

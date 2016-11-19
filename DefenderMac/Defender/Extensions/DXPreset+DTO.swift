@@ -32,6 +32,7 @@ extension DXPreset {
         brightness = dto.brightness
         cabinet = dto.cabinet
         cabinetName = dto.cabinetName
+        effects = dto.effects.map { DXEffect(dto: $0) }
     }
     
 }
