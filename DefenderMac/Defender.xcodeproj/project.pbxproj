@@ -311,10 +311,10 @@
 		65F69F111DDD70EE0017188D /* Common Models */ = {
 			isa = PBXGroup;
 			children = (
-				65F69F211DDED2290017188D /* DXPreset.swift */,
 				65F69F191DDD75090017188D /* Transferable.swift */,
 				7198C5F01DDE9D3C003238D7 /* DXMessage.swift */,
 				65F69F121DDD70EE0017188D /* DXAmplifier.swift */,
+				65F69F211DDED2290017188D /* DXPreset.swift */,
 			);
 			name = "Common Models";
 			path = "../../Common Models";

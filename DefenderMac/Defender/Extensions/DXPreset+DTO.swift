@@ -13,6 +13,25 @@ extension DXPreset {
     
     convenience init(dto: DTOPreset) {
         self.init(name: dto.name)
+        number = dto.number
+        module = dto.module
+        moduleName = dto.moduleName
+        volume = dto.volume
+        gain1 = dto.gain1
+        gain2 = dto.gain2
+        masterVolume = dto.masterVolume
+        treble = dto.treble
+        middle = dto.middle
+        bass = dto.bass
+        presence = dto.presence
+        depth = dto.depth
+        bias = dto.bias
+        noiseGate = dto.noiseGate
+        threshold = dto.threshold
+        sag = dto.sag
+        brightness = dto.brightness
+        cabinet = dto.cabinet
+        cabinetName = dto.cabinetName
     }
     
 }
