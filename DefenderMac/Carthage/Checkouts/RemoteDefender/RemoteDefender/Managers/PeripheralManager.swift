@@ -59,12 +59,18 @@ internal class PeripheralManager {
     }
     
     internal func sendData(_ data: Data, onCompletion: @escaping (_ success: Bool) -> ()) {
-        for peer in peripheral.connectedRemoteCentrals {
-            peripheral.sendData(data, toRemotePeer: peer) { (data, peer, error) in
-                if let _ = error {
-                    onCompletion(false)
-                } else {
-                    onCompletion(true)
+        if peripheral.connectedRemoteCentrals.count == 0 {
+            DebugPrint("No-one to send to")
+            onCompletion(false)
+        } else {
+            DebugPrint("Send")
+            for peer in peripheral.connectedRemoteCentrals {
+                peripheral.sendData(data, toRemotePeer: peer) { (data, peer, error) in
+                    if let _ = error {
+                        onCompletion(false)
+                    } else {
+                        onCompletion(true)
+                    }
                 }
             }
         }
