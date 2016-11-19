@@ -24,12 +24,17 @@ class MainVC: UIViewController {
     
     var presetNumber: UInt8?
     
+    let verbose = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        bluetoothLogo.isHidden = true
+        bluetoothLabel.isHidden = true
         txLED.backgroundColour = UIColor.clear
         rxLED.backgroundColour = UIColor.clear
 
+        bluetoothLabel.text = ""
         amplifierLabel.text = ""
         presetLabel.text = ""
         
@@ -78,16 +83,18 @@ class MainVC: UIViewController {
         }
     }
     
+    // MARK: Debug logging
+    internal func DebugPrint(_ text: String) {
+        if (verbose) {
+            print(text)
+        }
+    }
+
     // MARK: Private functions
     
     func sendGetAmplifier() {
         let message = DXMessage(command: .amplifier, data: nil)
-        if remoteManager?.send(message) == true {
-            txLED.backgroundColour = UIColor.red
-            bluetoothLabel.text = "Sending"
-        } else {
-            bluetoothLabel.text = "Unsent"
-        }
+        sendMessage(message)
     }
 
     func sendGetPreset(_ number: UInt8) {
@@ -95,26 +102,32 @@ class MainVC: UIViewController {
         let preset = DXPreset(name: "")
         preset.number = number
         message = DXMessage(command: .preset, data: preset)
-        if remoteManager?.send(message) == true {
-            txLED.backgroundColour = UIColor.red
-            bluetoothLabel.text = "Sending"
-        } else {
-            bluetoothLabel.text = "Unsent"
-        }
+        sendMessage(message)
     }
 
+    func sendMessage(_ message: DXMessage) {
+        if remoteManager?.send(message) == true {
+            txLED.backgroundColour = UIColor.red
+//            bluetoothLabel.text = "Sending"
+        } else {
+            NSLog("Failed to send message. Command = \(message.command)")
+        }
+
+    }
 }
 
 extension MainVC: RemoteManagerDelegate {
     func remoteManagerAvailable(_ manager: RemoteManager) {
         DispatchQueue.main.async {
-            self.bluetoothLabel.text = "Started"
+            self.bluetoothLogo.isHidden = false
+            self.bluetoothLogo.alpha = 0.5
         }
     }
     
     func remoteManagerConnected(_ manager: RemoteManager) {
         DispatchQueue.main.async {
-            self.bluetoothLabel.text = "Connected"
+            self.bluetoothLogo.alpha = 1.0
+            self.bluetoothLabel.isHidden = false
             self.amplifierLabel.isHidden = false
             self.amplifierLabel.text = ""
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+3) {
@@ -126,7 +139,7 @@ extension MainVC: RemoteManagerDelegate {
     func remoteManager(_ manager: RemoteManager, didSend success: Bool) {
         DispatchQueue.main.async {
             self.txLED.backgroundColour = UIColor.clear
-            self.bluetoothLabel.text = "Sent"
+//            self.bluetoothLabel.text = "Sent"
         }
     }
     
@@ -135,23 +148,24 @@ extension MainVC: RemoteManagerDelegate {
             self.rxLED.backgroundColour = UIColor.green
             do {
                 let message = try DXMessage(data: data)
+                self.DebugPrint("Message: \(message.command.rawValue)")
                 switch message.command as RequestType {
                 case .amplifier:
                     let amp = try DXAmplifier(data: message.content)
-                    self.bluetoothLabel.text = "Received"
+//                    self.bluetoothLabel.text = "Received"
                     self.amplifierLabel.text = amp.name
                     self.presetLabel.isHidden = false
                     self.presetLabel.text = ""
                 case .preset:
                     let preset = try DXPreset(data: message.content)
-                    self.bluetoothLabel.text = "Received"
+//                    self.bluetoothLabel.text = "Received"
                     self.presetLabel.text = preset.name
-                    self.prevPreset.isHidden = false
-                    self.nextPreset.isHidden = false
                     self.presetNumber = preset.number
+                    self.prevPreset.isHidden = preset.number == nil
+                    self.nextPreset.isHidden = preset.number == nil
                 }
             } catch {
-                self.bluetoothLabel.text = "Received Badness"
+                NSLog("Receive Failure: Couldn't decode DXMessage, DXAmplifier or DXPreset")
             }
             self.rxLED.backgroundColour = UIColor.clear
         }
@@ -159,21 +173,23 @@ extension MainVC: RemoteManagerDelegate {
     
     func remoteManagerDisconnected(_ manager: RemoteManager) {
         DispatchQueue.main.async {
+            self.bluetoothLogo.alpha = 0.5
+            self.bluetoothLabel.isHidden = true
             self.amplifierLabel.isHidden = true
             self.presetLabel.isHidden = true
             self.prevPreset.isHidden = true
             self.nextPreset.isHidden = true
-            self.bluetoothLabel.text = "Disconnected"
         }
     }
         
     func remoteManagerUnavailable(_ manager: RemoteManager) {
         DispatchQueue.main.async {
+            self.bluetoothLogo.isHidden = true
+            self.bluetoothLabel.isHidden = true
             self.amplifierLabel.isHidden = true
             self.presetLabel.isHidden = true
             self.prevPreset.isHidden = true
             self.nextPreset.isHidden = true
-            self.bluetoothLabel.text = "Unavailable"
         }
     }
 }
