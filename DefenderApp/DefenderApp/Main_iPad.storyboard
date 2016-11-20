@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="V2o-XO-bI7">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="OpQ-6y-UHu">
+            <objects>
+                <navigationController id="V2o-XO-bI7" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="8Y7-33-RqC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Qhg-OR-SCW" kind="relationship" relationship="rootViewController" id="vbn-ZM-tYb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z30-nc-pzZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-41" y="-163"/>
+        </scene>
+        <!--Defender-->
+        <scene sceneID="br4-rn-e6b">
+            <objects>
+                <viewController title="Defender" id="Qhg-OR-SCW" customClass="MainVC" customModule="DefenderApp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lu4-9h-hlq"/>
+                        <viewControllerLayoutGuide type="bottom" id="phU-id-jpd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="vNT-po-8dY">
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetooth-logo" translatesAutoresizingMaskIntoConstraints="NO" id="K9X-k2-428">
+                                <rect key="frame" x="20" y="27" width="14" height="20"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="4wu-fU-WUi"/>
+                                    <constraint firstAttribute="width" secondItem="K9X-k2-428" secondAttribute="height" multiplier="2:3" id="nnQ-aT-Bji"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="CCk-un-n40" appends="YES" id="sPX-cd-jaF"/>
+                                </connections>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="upI-4m-Bfx" customClass="LEDControl" customModule="DefenderApp" customModuleProvider="target">
+                                <rect key="frame" x="42" y="33" width="7" height="7"/>
+                                <color key="backgroundColor" red="1" green="0.69158153200000005" blue="0.1166794162" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="7" id="Y7I-1h-l4K"/>
+                                    <constraint firstAttribute="width" secondItem="upI-4m-Bfx" secondAttribute="height" multiplier="1:1" id="daw-mR-hMa"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ygr-Yb-kG4" customClass="LEDControl" customModule="DefenderApp" customModuleProvider="target">
+                                <rect key="frame" x="54" y="33" width="7" height="7"/>
+                                <color key="backgroundColor" red="1" green="0.69158153200000005" blue="0.1166794162" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Ygr-Yb-kG4" secondAttribute="height" multiplier="1:1" id="DIK-kp-4XU"/>
+                                    <constraint firstAttribute="width" constant="7" id="qge-vm-3wa"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6Q-Lq-Qhd">
+                                <rect key="frame" x="70" y="27" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amplifier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZs-F0-ttS">
+                                <rect key="frame" x="350" y="57" width="68.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hV4-XI-yHj">
+                                <rect key="frame" x="20" y="83" width="49.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Sn-hK-6S1">
+                                <rect key="frame" x="293" y="79" width="31" height="30"/>
+                                <state key="normal" title="Prev"/>
+                                <connections>
+                                    <action selector="willGetPrevPreset:" destination="Qhg-OR-SCW" eventType="touchUpInside" id="Cbs-UY-WdH"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6v-oU-9lI">
+                                <rect key="frame" x="331" y="79" width="32" height="30"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="willGetNextPreset:" destination="Qhg-OR-SCW" eventType="touchUpInside" id="wTK-XS-cgB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="K9X-k2-428" firstAttribute="centerY" secondItem="Q6Q-Lq-Qhd" secondAttribute="centerY" id="9RS-bs-VgO"/>
+                            <constraint firstItem="f6v-oU-9lI" firstAttribute="centerY" secondItem="hV4-XI-yHj" secondAttribute="centerY" id="H0Q-hv-HzP"/>
+                            <constraint firstItem="upI-4m-Bfx" firstAttribute="centerY" secondItem="Ygr-Yb-kG4" secondAttribute="centerY" id="IEQ-Ag-9b9"/>
+                            <constraint firstItem="Ygr-Yb-kG4" firstAttribute="width" secondItem="Ygr-Yb-kG4" secondAttribute="height" multiplier="1:1" id="Kpx-yt-NYx"/>
+                            <constraint firstItem="hV4-XI-yHj" firstAttribute="leading" secondItem="vNT-po-8dY" secondAttribute="leadingMargin" id="OBR-uO-F86"/>
+                            <constraint firstItem="K9X-k2-428" firstAttribute="centerY" secondItem="upI-4m-Bfx" secondAttribute="centerY" id="Pnb-kf-aJr"/>
+                            <constraint firstItem="uZs-F0-ttS" firstAttribute="centerX" secondItem="vNT-po-8dY" secondAttribute="centerX" id="Rdo-Kh-07s"/>
+                            <constraint firstItem="upI-4m-Bfx" firstAttribute="width" secondItem="upI-4m-Bfx" secondAttribute="height" multiplier="1:1" id="XSN-77-two"/>
+                            <constraint firstItem="Ygr-Yb-kG4" firstAttribute="leading" secondItem="upI-4m-Bfx" secondAttribute="trailing" constant="5" id="Zql-cd-tU4"/>
+                            <constraint firstItem="uZs-F0-ttS" firstAttribute="top" secondItem="Lu4-9h-hlq" secondAttribute="bottom" constant="57" id="cDw-hd-TZB"/>
+                            <constraint firstItem="upI-4m-Bfx" firstAttribute="leading" secondItem="K9X-k2-428" secondAttribute="trailing" constant="8" id="dNN-rR-TzI"/>
+                            <constraint firstItem="f6v-oU-9lI" firstAttribute="leading" secondItem="1Sn-hK-6S1" secondAttribute="trailing" constant="7" id="eub-Da-yAV"/>
+                            <constraint firstItem="K9X-k2-428" firstAttribute="width" secondItem="K9X-k2-428" secondAttribute="height" multiplier="2:3" id="gpb-oH-Y58"/>
+                            <constraint firstItem="Q6Q-Lq-Qhd" firstAttribute="leading" secondItem="Ygr-Yb-kG4" secondAttribute="trailing" constant="9" id="hNL-tT-H0F"/>
+                            <constraint firstItem="hV4-XI-yHj" firstAttribute="top" secondItem="uZs-F0-ttS" secondAttribute="bottom" constant="6" id="l9i-9y-tfp"/>
+                            <constraint firstItem="1Sn-hK-6S1" firstAttribute="centerY" secondItem="hV4-XI-yHj" secondAttribute="centerY" id="m5F-Xb-JuE"/>
+                            <constraint firstItem="K9X-k2-428" firstAttribute="leading" secondItem="vNT-po-8dY" secondAttribute="leadingMargin" id="mNu-Vh-iOL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="f6v-oU-9lI" secondAttribute="trailing" constant="385" id="pZU-23-zFG"/>
+                            <constraint firstItem="K9X-k2-428" firstAttribute="top" secondItem="Lu4-9h-hlq" secondAttribute="bottom" constant="27" id="xVW-Bw-hp0"/>
+                            <constraint firstItem="Ygr-Yb-kG4" firstAttribute="width" secondItem="Ygr-Yb-kG4" secondAttribute="height" multiplier="1:1" id="xzW-4b-GUt"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Defender" id="8uZ-tp-MmH"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <connections>
+                        <outlet property="amplifierLabel" destination="uZs-F0-ttS" id="C8t-9j-av2"/>
+                        <outlet property="bluetoothLabel" destination="Q6Q-Lq-Qhd" id="Kuc-Yn-zsX"/>
+                        <outlet property="bluetoothLogo" destination="K9X-k2-428" id="mFM-TI-eDG"/>
+                        <outlet property="nextPreset" destination="f6v-oU-9lI" id="Omv-q6-PUX"/>
+                        <outlet property="presetLabel" destination="hV4-XI-yHj" id="Mi2-ez-7yp"/>
+                        <outlet property="prevPreset" destination="1Sn-hK-6S1" id="16O-Ou-lRN"/>
+                        <outlet property="rxLED" destination="upI-4m-Bfx" id="n5u-3o-PdX"/>
+                        <outlet property="txLED" destination="Ygr-Yb-kG4" id="o58-9d-ptf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="omC-Wc-2sH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="CCk-un-n40">
+                    <connections>
+                        <action selector="didTapBluetoothLogo:" destination="Qhg-OR-SCW" id="Pfo-xn-RYF"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="788" y="-163"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bluetooth-logo" width="60" height="90"/>
+    </resources>
+</document>
