@@ -151,12 +151,11 @@ class MainVC: NSViewController {
     }
 
     override func awakeFromNib() {
-        if self.view.layer != nil {
+        if let appView = self.view as? AppViewControl {
             if let image = NSImage(named: "background-texture") {
-                let pattern = NSColor(patternImage: image).cgColor
-                self.view.layer?.backgroundColor = pattern
+                appView.backgroundColour = NSColor(patternImage: image)
             }
-        }        
+        }
     }
 
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
