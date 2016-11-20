@@ -12,9 +12,10 @@
 		65F69F1C1DDD93000017188D /* DXMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F1B1DDD93000017188D /* DXMessage.swift */; };
 		65F69F201DDED1DF0017188D /* DXPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F1F1DDED1DF0017188D /* DXPreset.swift */; };
 		65F69F2A1DE011550017188D /* DXEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F291DE011550017188D /* DXEffect.swift */; };
+		65F69F2E1DE124390017188D /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F69F2D1DE124390017188D /* Main_iPad.storyboard */; };
 		7198C2DC1DD93601003238D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C2DB1DD93601003238D7 /* AppDelegate.swift */; };
 		7198C2DE1DD93601003238D7 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C2DD1DD93601003238D7 /* MainVC.swift */; };
-		7198C2E11DD93601003238D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7198C2DF1DD93601003238D7 /* Main.storyboard */; };
+		7198C2E11DD93601003238D7 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7198C2DF1DD93601003238D7 /* Main_iPhone.storyboard */; };
 		7198C2E31DD93601003238D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7198C2E21DD93601003238D7 /* Assets.xcassets */; };
 		7198C2E61DD93601003238D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7198C2E41DD93601003238D7 /* LaunchScreen.storyboard */; };
 		7198C2F11DD93601003238D7 /* DefenderAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C2F01DD93601003238D7 /* DefenderAppTests.swift */; };
@@ -50,10 +51,11 @@
 		65F69F1B1DDD93000017188D /* DXMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXMessage.swift; sourceTree = "<group>"; };
 		65F69F1F1DDED1DF0017188D /* DXPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXPreset.swift; sourceTree = "<group>"; };
 		65F69F291DE011550017188D /* DXEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXEffect.swift; sourceTree = "<group>"; };
+		65F69F2D1DE124390017188D /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
 		7198C2D81DD93601003238D7 /* DefenderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DefenderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7198C2DB1DD93601003238D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7198C2DD1DD93601003238D7 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
-		7198C2E01DD93601003238D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7198C2E01DD93601003238D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		7198C2E21DD93601003238D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7198C2E51DD93601003238D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7198C2E71DD93601003238D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -187,7 +189,8 @@
 		7198C33F1DDA9C08003238D7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7198C2DF1DD93601003238D7 /* Main.storyboard */,
+				7198C2DF1DD93601003238D7 /* Main_iPhone.storyboard */,
+				65F69F2D1DE124390017188D /* Main_iPad.storyboard */,
 				7198C2E21DD93601003238D7 /* Assets.xcassets */,
 				7198C2E41DD93601003238D7 /* LaunchScreen.storyboard */,
 			);
@@ -323,10 +326,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65F69F2E1DE124390017188D /* Main_iPad.storyboard in Resources */,
 				7198C2E61DD93601003238D7 /* LaunchScreen.storyboard in Resources */,
 				7198C2E31DD93601003238D7 /* Assets.xcassets in Resources */,
 				7198C30A1DD949D1003238D7 /* Cartfile in Resources */,
-				7198C2E11DD93601003238D7 /* Main.storyboard in Resources */,
+				7198C2E11DD93601003238D7 /* Main_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,12 +435,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7198C2DF1DD93601003238D7 /* Main.storyboard */ = {
+		7198C2DF1DD93601003238D7 /* Main_iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				7198C2E01DD93601003238D7 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 		7198C2E41DD93601003238D7 /* LaunchScreen.storyboard */ = {
@@ -557,6 +561,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.DefenderApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -574,6 +579,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.DefenderApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
