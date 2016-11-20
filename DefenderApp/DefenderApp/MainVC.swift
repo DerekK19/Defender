@@ -38,6 +38,7 @@ class MainVC: UIViewController {
         amplifierLabel.text = ""
         presetLabel.text = ""
         
+        
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             remoteManager = appDelegate.remoteManager
             remoteManager?.delegate = self
@@ -58,6 +59,12 @@ class MainVC: UIViewController {
     }
 
     // MARK: Action functions
+    
+    @IBAction func didTapBluetoothLogo(_ sender: AnyObject) {
+        if bluetoothLogo.alpha != 1.0 {
+            remoteManager?.rescan()
+        }
+    }
     
     @IBAction func willGetPrevPreset(_ sender: UIButton) {
         if let number = presetNumber {

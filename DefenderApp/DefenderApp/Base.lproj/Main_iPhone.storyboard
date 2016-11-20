@@ -23,12 +23,16 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetooth-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Wgr-lO-Hh5">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetooth-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Wgr-lO-Hh5">
                                 <rect key="frame" x="16" y="10" width="14" height="20"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="BW0-n5-fQO"/>
                                     <constraint firstAttribute="width" secondItem="Wgr-lO-Hh5" secondAttribute="height" multiplier="2:3" id="Eaz-uF-6Sd"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="v31-N2-F7L" appends="YES" id="fkS-tS-Klv"/>
+                                </connections>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IP7-wW-toh" customClass="LEDControl" customModule="DefenderApp" customModuleProvider="target">
                                 <rect key="frame" x="38" y="16.5" width="7" height="7"/>
@@ -116,6 +120,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="v31-N2-F7L">
+                    <connections>
+                        <action selector="didTapBluetoothLogo:" destination="BYZ-38-t0r" id="MTH-MB-Obl"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1076" y="121.88905547226388"/>
         </scene>

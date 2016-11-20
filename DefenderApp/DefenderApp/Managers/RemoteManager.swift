@@ -49,6 +49,10 @@ class RemoteManager {
         central.start()
     }
     
+    func rescan() {
+        central.rescan()
+    }
+    
     func send(_ object: Transferable) -> Bool {
         if let data = object.data {
             central.send(data: data) { success in
