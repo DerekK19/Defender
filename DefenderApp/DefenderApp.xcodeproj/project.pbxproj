@@ -191,8 +191,8 @@
 			children = (
 				7198C2DF1DD93601003238D7 /* Main_iPhone.storyboard */,
 				65F69F2D1DE124390017188D /* Main_iPad.storyboard */,
-				7198C2E21DD93601003238D7 /* Assets.xcassets */,
 				7198C2E41DD93601003238D7 /* LaunchScreen.storyboard */,
+				7198C2E21DD93601003238D7 /* Assets.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";

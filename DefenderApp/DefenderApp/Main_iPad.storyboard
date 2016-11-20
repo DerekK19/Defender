@@ -37,12 +37,12 @@
                         <viewControllerLayoutGuide type="top" id="Lu4-9h-hlq"/>
                         <viewControllerLayoutGuide type="bottom" id="phU-id-jpd"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vNT-po-8dY">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="vNT-po-8dY">
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetooth-logo" translatesAutoresizingMaskIntoConstraints="NO" id="K9X-k2-428">
-                                <rect key="frame" x="20" y="91" width="14" height="20"/>
+                                <rect key="frame" x="20" y="27" width="14" height="20"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="4wu-fU-WUi"/>
@@ -53,7 +53,7 @@
                                 </connections>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="upI-4m-Bfx" customClass="LEDControl" customModule="DefenderApp" customModuleProvider="target">
-                                <rect key="frame" x="42" y="97" width="7" height="7"/>
+                                <rect key="frame" x="42" y="33" width="7" height="7"/>
                                 <color key="backgroundColor" red="1" green="0.69158153200000005" blue="0.1166794162" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="7" id="Y7I-1h-l4K"/>
@@ -61,7 +61,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ygr-Yb-kG4" customClass="LEDControl" customModule="DefenderApp" customModuleProvider="target">
-                                <rect key="frame" x="54" y="97" width="7" height="7"/>
+                                <rect key="frame" x="54" y="33" width="7" height="7"/>
                                 <color key="backgroundColor" red="1" green="0.69158153200000005" blue="0.1166794162" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ygr-Yb-kG4" secondAttribute="height" multiplier="1:1" id="DIK-kp-4XU"/>
@@ -69,32 +69,32 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6Q-Lq-Qhd">
-                                <rect key="frame" x="70" y="91" width="42" height="21"/>
+                                <rect key="frame" x="70" y="27" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amplifier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZs-F0-ttS">
-                                <rect key="frame" x="350" y="121" width="68.5" height="20.5"/>
+                                <rect key="frame" x="350" y="57" width="68.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hV4-XI-yHj">
-                                <rect key="frame" x="20" y="147" width="49.5" height="21"/>
+                                <rect key="frame" x="20" y="83" width="49.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Sn-hK-6S1">
-                                <rect key="frame" x="293" y="143" width="31" height="30"/>
+                                <rect key="frame" x="293" y="79" width="31" height="30"/>
                                 <state key="normal" title="Prev"/>
                                 <connections>
                                     <action selector="willGetPrevPreset:" destination="Qhg-OR-SCW" eventType="touchUpInside" id="Cbs-UY-WdH"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6v-oU-9lI">
-                                <rect key="frame" x="331" y="143" width="32" height="30"/>
+                                <rect key="frame" x="331" y="79" width="32" height="30"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
                                     <action selector="willGetNextPreset:" destination="Qhg-OR-SCW" eventType="touchUpInside" id="wTK-XS-cgB"/>
@@ -125,6 +125,7 @@
                             <constraint firstItem="Ygr-Yb-kG4" firstAttribute="width" secondItem="Ygr-Yb-kG4" secondAttribute="height" multiplier="1:1" id="xzW-4b-GUt"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Defender" id="8uZ-tp-MmH"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
