@@ -201,6 +201,13 @@ class MainVC: NSViewController {
         }
     }
     
+    func exportPresetAsXml() -> XMLDocument? {
+        if let currentPreset = currentPreset {
+            return ampController.exportPresetAsXml(currentPreset)
+        }
+        return nil
+    }
+    
     // MARK: Action functions
     
     @IBAction func willPowerAmplifier(_ sender: ActionButtonControl) {

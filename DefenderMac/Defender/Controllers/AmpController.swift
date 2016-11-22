@@ -247,6 +247,10 @@ class AmpController {
                 }
             }
         }
-)
+        )
+    }
+    
+    open func exportPresetAsXml(_ preset: DTOPreset) -> XMLDocument? {
+        return mustang.exportPresetAsXml(preset: preset)
     }
 }

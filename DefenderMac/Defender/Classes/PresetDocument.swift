@@ -16,6 +16,7 @@ class PresetDocument : NSDocument {
     override func makeWindowControllers() {
         
         if let windowController = NSApplication.shared().mainWindow?.windowController {
+            self.addWindowController(windowController)
             let vc = windowController.contentViewController as! MainVC
             vc.willImportPresetFromXml(document)
         }
@@ -31,10 +32,22 @@ class PresetDocument : NSDocument {
     }
     
     override func data(ofType typeName: String) throws -> Data {
-        NSLog("dataOfType \(typeName)")
-        let zString = "The Owl and the Pussycat went to sea"
-        let data = zString.data(using: .utf8, allowLossyConversion: false)
-        return data!
+        if let vc = self.windowControllers.first?.contentViewController as? MainVC {
+            if let xml = vc.exportPresetAsXml() {
+                document = xml
+            }
+        }
+        let data = document.xmlData(withOptions: Int(XMLNode.Options.nodePrettyPrint.rawValue))
+        return data
     }
     
+    override func save(_ sender: Any?) {
+        NSLog("Save \(sender)")
+        super.save(sender)
+    }
+    
+    override func saveAs(_ sender: Any?) {
+        NSLog("Save as \(sender)")
+        super.saveAs(sender)
+    }
 }
