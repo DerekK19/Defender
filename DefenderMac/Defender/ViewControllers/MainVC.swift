@@ -191,13 +191,13 @@ class MainVC: NSViewController {
     
     // MARK: Public functions
     func willImportPresetFromXml(_ xml: XMLDocument) {
-        ampController.importPreset(xml) { (preset) in
-            var newPreset = preset
-            if let _ = newPreset {
-                newPreset!.number = self.currentPreset?.number
+        if let preset = ampController.importPreset(xml) {
+            DispatchQueue.main.async {
+                var newPreset = preset
+                newPreset.number = self.currentPreset?.number
+                self.setPreset(newPreset)
+                self.saveButton.setState(.warning)
             }
-            self.setPreset(newPreset)
-            self.saveButton.setState(.warning)
         }
     }
     
