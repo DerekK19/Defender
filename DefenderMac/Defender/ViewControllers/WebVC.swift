@@ -106,7 +106,7 @@ class WebVC: NSViewController {
         }
     }
     
-    internal var ampController: AmpController?
+    internal var ampManager: AmpManager?
     fileprivate var presets = [DTOSearchItem]()
     
     required init?(coder: NSCoder) {
@@ -130,11 +130,11 @@ class WebVC: NSViewController {
     @IBAction func willLogin(_ sender: NSButton) {
         self.resignFirstResponder()
         if loggedIn {
-            ampController?.logout {(loggedOut: Bool) in
+            ampManager?.logout {(loggedOut: Bool) in
                 self.loggedIn = !loggedOut
             }
         } else {
-            ampController?.login(username: usernameTextField.stringValue,
+            ampManager?.login(username: usernameTextField.stringValue,
                                 password: passwordTextField.stringValue)
             { (loggedIn: Bool) in
                 self.loggedIn = loggedIn
@@ -218,7 +218,7 @@ class WebVC: NSViewController {
     }
     
     private func search(forPage page: UInt) {
-        ampController?.search(forTitle: searchTextField.stringValue,
+        ampManager?.search(forTitle: searchTextField.stringValue,
                               pageNumber: page,
                               maxReturn: 10)
         { (response: DTOSearchResponse?) in

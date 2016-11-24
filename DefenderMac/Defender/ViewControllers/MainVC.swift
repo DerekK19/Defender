@@ -60,7 +60,7 @@ class MainVC: NSViewController {
     @IBOutlet weak var pedal3VC: PedalVC?
     @IBOutlet weak var pedal4VC: PedalVC?
     
-    fileprivate var ampController = AmpController()
+    fileprivate var ampManager = AmpManager()
     fileprivate var remoteManager: RemoteManager?
 
     fileprivate var documentController = NSDocumentController.shared()
@@ -73,7 +73,7 @@ class MainVC: NSViewController {
     fileprivate var powerState: PowerState = .off {
         didSet {
             self.powerButton.powerState = powerState
-            self.powerButton.isEnabled = ampController.hasAnAmplifier
+            self.powerButton.isEnabled = ampManager.hasAnAmplifier
             self.utilButton.powerState = powerState
             self.saveButton.powerState = powerState
             self.exitButton.powerState = powerState
@@ -110,7 +110,7 @@ class MainVC: NSViewController {
         
         configureAmplifiers()
 
-        debugButton.isHidden = !ampController.mocking
+        debugButton.isHidden = !ampManager.mocking
         
         let contrastColour = NSColor.white
         gainArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
@@ -165,7 +165,7 @@ class MainVC: NSViewController {
                 self.displayVC = segue.destinationController as? DisplayVC
             case "embedWeb":
                 self.webVC = segue.destinationController as? WebVC
-                self.webVC?.ampController = self.ampController
+                self.webVC?.ampManager = self.ampManager
                 self.webVC?.delegate = self
 
             case "embedEffect1":
@@ -191,7 +191,7 @@ class MainVC: NSViewController {
     
     // MARK: Public functions
     func willImportPresetFromXml(_ xml: XMLDocument) {
-        if let preset = ampController.importPreset(xml) {
+        if let preset = ampManager.importPreset(xml) {
             DispatchQueue.main.async {
                 var newPreset = preset
                 newPreset.number = self.currentPreset?.number
@@ -203,7 +203,7 @@ class MainVC: NSViewController {
     
     func exportPresetAsXml() -> XMLDocument? {
         if let currentPreset = currentPreset {
-            return ampController.exportPresetAsXml(currentPreset)
+            return ampManager.exportPresetAsXml(currentPreset)
         }
         return nil
     }
@@ -211,7 +211,7 @@ class MainVC: NSViewController {
     // MARK: Action functions
     
     @IBAction func willPowerAmplifier(_ sender: ActionButtonControl) {
-        if !ampController.hasAnAmplifier { return }
+        if !ampManager.hasAnAmplifier { return }
         if sender.state == NSOffState {
             DebugPrint(" Powering off")
             self.powerState = .off
@@ -219,7 +219,7 @@ class MainVC: NSViewController {
         } else {
             DebugPrint(" Powering on")
             sender.state = NSOffState
-            ampController.getPresets() {
+            ampManager.getPresets() {
                 DispatchQueue.main.async {
                     self.powerState = .on
                     self.valueDidChangeForWheel(self.wheel, value: 0)
@@ -235,14 +235,14 @@ class MainVC: NSViewController {
                 if sender.currentState == .warning {
                     DebugPrint("Saving effect")
                     exitButton.setState(.active)
-                    ampController.setPreset(currentPreset, onCompletion: { (preset) in
+                    ampManager.setPreset(currentPreset, onCompletion: { (preset) in
                         self.saveButton.setState(.ok)
                     })
                 }
                 else if sender.currentState == .ok {
                     DebugPrint("Confirming effect")
-                    ampController.savePreset(currentPreset) { (saved) in
-                        self.ampController.resetPreset(self.wheel.intValue) { (preset) in
+                    ampManager.savePreset(currentPreset) { (saved) in
+                        self.ampManager.resetPreset(self.wheel.intValue) { (preset) in
                             DispatchQueue.main.async {
                                 self.displayPreset(preset)
                                 self.saveButton.setState(.active)
@@ -259,7 +259,7 @@ class MainVC: NSViewController {
             DebugPrint("Cancelling save")
             saveButton.setState(.active)
             exitButton.setState(.ok)
-            ampController.resetPreset(self.wheel.intValue) { (preset) in
+            ampManager.resetPreset(self.wheel.intValue) { (preset) in
                 DispatchQueue.main.async {
                     self.displayPreset(preset)
                     self.exitButton.setState(.active)
@@ -284,8 +284,8 @@ class MainVC: NSViewController {
     
     // MARK: Private Functions
     fileprivate func reset() {
-        statusLED.backgroundColour = ampController.hasAnAmplifier ? .green : .red
-        statusLabel.stringValue = "\(ampController.currentAmplifierName) connected"
+        statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
+        statusLabel.stringValue = "\(ampManager.currentAmplifierName) connected"
         bluetoothLabel.stringValue = ""
         statusLabel.textColor = .white
         bluetoothLabel.textColor = .white
@@ -300,8 +300,8 @@ class MainVC: NSViewController {
     }
     
     fileprivate func configureAmplifiers() {
-        ampController = AmpController()
-        ampController.delegate = self
+        ampManager = AmpManager()
+        ampManager.delegate = self
         DispatchQueue.main.async {
             self.configureAmplifier()
         }
@@ -312,7 +312,7 @@ class MainVC: NSViewController {
     }
     
     fileprivate func displayPreset(_ value: Int) {
-        ampController.getCachedPreset(value) { (preset) in
+        ampManager.getCachedPreset(value) { (preset) in
             self.displayPreset(preset)
         }
     }
@@ -416,7 +416,7 @@ class MainVC: NSViewController {
     
     func sendCurrentAmplifier() {
         var message: DXMessage!
-        if let amp = self.ampController.currentAmplifier {
+        if let amp = self.ampManager.currentAmplifier {
             message = DXMessage(command: .amplifier, data: DXAmplifier(dto: amp))
         } else {
             message = DXMessage(command: .amplifier, data: DXAmplifier(name: "No amplifier", manufacturer: ""))
@@ -564,7 +564,7 @@ extension MainVC: WheelDelegate {
                 //DebugPrint("Wheel value changed to \(value)")
                 saveButton.setState(.active)
                 exitButton.setState(.active)
-                ampController.getPreset(value) { (preset) in
+                ampManager.getPreset(value) { (preset) in
                     DispatchQueue.main.async {
                         self.setPreset(preset)
                     }
@@ -580,36 +580,36 @@ extension MainVC: WheelDelegate {
     }
 }
 
-extension MainVC: AmpControllerDelegate {
+extension MainVC: AmpManagerDelegate {
     
-    func deviceConnected(ampController: AmpController) {
+    func deviceConnected(ampManager: AmpManager) {
         DebugPrint(" Connected")
         sendCurrentAmplifier()
         DispatchQueue.main.async {
-            self.statusLED.backgroundColour = ampController.hasAnAmplifier ? .green : .red
-            self.statusLabel.stringValue = "\(ampController.currentAmplifierName) connected"
+            self.statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
+            self.statusLabel.stringValue = "\(ampManager.currentAmplifierName) connected"
         }
     }
     
-    func deviceOpened(ampController: AmpController) {
+    func deviceOpened(ampManager: AmpManager) {
         DebugPrint(" Opened")
         configureAmplifiers()
         sendCurrentPreset()
     }
     
-    func deviceClosed(ampController: AmpController) {
+    func deviceClosed(ampManager: AmpManager) {
         DebugPrint(" Closed")
         setPreset(nil)
     }
     
-    func deviceDisconnected(ampController: AmpController) {
+    func deviceDisconnected(ampManager: AmpManager) {
         DebugPrint(" Disconnected")
         DispatchQueue.main.async {
             self.reset()
             self.setPreset(nil)
             self.sendCurrentAmplifier()
-            self.statusLED.backgroundColour = ampController.hasAnAmplifier ? .green : .red
-            self.statusLabel.stringValue = "\(ampController.currentAmplifierName) connected"
+            self.statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
+            self.statusLabel.stringValue = "\(ampManager.currentAmplifierName) connected"
         }
     }
 }
@@ -666,7 +666,7 @@ extension MainVC: RemoteManagerDelegate {
                         } else {
                             let preset = try DXPreset(data: message.content)
                             if let number = preset.number {
-                                self.ampController.getPreset(Int(number)) { (preset) in
+                                self.ampManager.getPreset(Int(number)) { (preset) in
                                     DispatchQueue.main.async {
                                         self.setPreset(preset)
                                     }

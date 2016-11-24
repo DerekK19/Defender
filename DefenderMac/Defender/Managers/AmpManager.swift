@@ -1,5 +1,5 @@
 //
-//  AmpController.swift
+//  AmpManager.swift
 //  Defender
 //
 //  Created by Derek Knight on 11/10/16.
@@ -9,16 +9,16 @@
 import Cocoa
 import Mustang
 
-protocol AmpControllerDelegate {
-    func deviceConnected(ampController: AmpController)
-    func deviceDisconnected(ampController: AmpController)
-    func deviceOpened(ampController: AmpController)
-    func deviceClosed(ampController: AmpController)
+protocol AmpManagerDelegate {
+    func deviceConnected(ampManager: AmpManager)
+    func deviceDisconnected(ampManager: AmpManager)
+    func deviceOpened(ampManager: AmpManager)
+    func deviceClosed(ampManager: AmpManager)
 }
 
-class AmpController {
+class AmpManager {
     
-    var delegate: AmpControllerDelegate?
+    var delegate: AmpManagerDelegate?
     
     private let mustang: Mustang
     
@@ -66,15 +66,15 @@ class AmpController {
         currentAmplifier = nil
         amplifiers = mustang.getConnectedAmplifiers()
         currentAmplifier = amplifiers.first
-        delegate?.deviceConnected(ampController: self)
+        delegate?.deviceConnected(ampManager: self)
     }
     
     @objc fileprivate func deviceOpened() {
-        delegate?.deviceOpened(ampController: self)
+        delegate?.deviceOpened(ampManager: self)
     }
     
     @objc fileprivate func deviceClosed() {
-        delegate?.deviceClosed(ampController: self)
+        delegate?.deviceClosed(ampManager: self)
     }
     
     @objc fileprivate func deviceDisconnected() {
@@ -82,7 +82,7 @@ class AmpController {
         currentAmplifier = nil
         amplifiers = [DTOAmplifier]()
         currentAmplifier = nil
-        delegate?.deviceDisconnected(ampController: self)
+        delegate?.deviceDisconnected(ampManager: self)
     }
     
     func getPresets(_ onCompletion: @escaping () -> ()) {

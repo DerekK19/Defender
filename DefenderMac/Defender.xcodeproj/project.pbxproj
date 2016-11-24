@@ -51,12 +51,12 @@
 		65F69F261DE009F70017188D /* DXEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F251DE009F70017188D /* DXEffect.swift */; };
 		65F69F281DE00BBD0017188D /* DXEffect+DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F271DE00BBD0017188D /* DXEffect+DTO.swift */; };
 		65F69F321DE14CC80017188D /* AppViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F311DE14CC80017188D /* AppViewControl.swift */; };
-		7123C50C1DAC46B900ACFDB5 /* AmpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7123C50B1DAC46B900ACFDB5 /* AmpController.swift */; };
 		71602D7C1DD52284003E2D49 /* PresetDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71602D7B1DD52284003E2D49 /* PresetDocument.swift */; };
 		7167FEDA1D58032C0059A276 /* NSImage+Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FED91D58032C0059A276 /* NSImage+Colour.swift */; };
 		7167FEDC1D5815270059A276 /* DisplayControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FEDB1D5815270059A276 /* DisplayControl.swift */; };
 		7167FF3E1D592E070059A276 /* WheelControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FF3D1D592E070059A276 /* WheelControl.swift */; };
 		7167FFD01D595DC70059A276 /* ActionButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FFCF1D595DC70059A276 /* ActionButtonCell.swift */; };
+		717C2DD71DE7AC7300DA68FD /* AmpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717C2DD61DE7AC7300DA68FD /* AmpManager.swift */; };
 		718C89651DCFCBBA00BC12E8 /* WebSlotControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718C89641DCFCBBA00BC12E8 /* WebSlotControl.swift */; };
 		718C89C51DD122D300BC12E8 /* WebHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718C89C41DD122D300BC12E8 /* WebHeaderCell.swift */; };
 		7194EA3A1DCFC5E7004E2D9C /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194EA391DCFC5E7004E2D9C /* WebVC.swift */; };
@@ -131,12 +131,12 @@
 		65F69F251DE009F70017188D /* DXEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXEffect.swift; sourceTree = "<group>"; };
 		65F69F271DE00BBD0017188D /* DXEffect+DTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DXEffect+DTO.swift"; sourceTree = "<group>"; };
 		65F69F311DE14CC80017188D /* AppViewControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewControl.swift; sourceTree = "<group>"; };
-		7123C50B1DAC46B900ACFDB5 /* AmpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmpController.swift; sourceTree = "<group>"; };
 		71602D7B1DD52284003E2D49 /* PresetDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetDocument.swift; sourceTree = "<group>"; };
 		7167FED91D58032C0059A276 /* NSImage+Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Colour.swift"; sourceTree = "<group>"; };
 		7167FEDB1D5815270059A276 /* DisplayControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayControl.swift; sourceTree = "<group>"; };
 		7167FF3D1D592E070059A276 /* WheelControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WheelControl.swift; sourceTree = "<group>"; };
 		7167FFCF1D595DC70059A276 /* ActionButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButtonCell.swift; sourceTree = "<group>"; };
+		717C2DD61DE7AC7300DA68FD /* AmpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmpManager.swift; sourceTree = "<group>"; };
 		718C89641DCFCBBA00BC12E8 /* WebSlotControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSlotControl.swift; sourceTree = "<group>"; };
 		718C89C41DD122D300BC12E8 /* WebHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebHeaderCell.swift; sourceTree = "<group>"; };
 		7194EA391DCFC5E7004E2D9C /* WebVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
@@ -208,7 +208,6 @@
 			isa = PBXGroup;
 			children = (
 				657C3AC51D56DB5C002DEF17 /* View Controllers */,
-				7123C50A1DAC462000ACFDB5 /* Controllers */,
 				65B37CB81DD7CC6100433B89 /* Managers */,
 				65F69F141DDD71330017188D /* Adapters */,
 				657C3AC61D56DB78002DEF17 /* Custom Controls */,
@@ -310,6 +309,7 @@
 		65B37CB81DD7CC6100433B89 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				717C2DD61DE7AC7300DA68FD /* AmpManager.swift */,
 				65B37CB91DD7CCA800433B89 /* RemoteManager.swift */,
 			);
 			path = Managers;
@@ -333,14 +333,6 @@
 			children = (
 			);
 			path = Adapters;
-			sourceTree = "<group>";
-		};
-		7123C50A1DAC462000ACFDB5 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				7123C50B1DAC46B900ACFDB5 /* AmpController.swift */,
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		71602D7A1DD5224C003E2D49 /* Classes */ = {
@@ -569,11 +561,11 @@
 				65F69F261DE009F70017188D /* DXEffect.swift in Sources */,
 				658CEC0F1DA36D85006890A4 /* Enums.swift in Sources */,
 				658D10E21DB73BA3008C3A45 /* ShadeControl.swift in Sources */,
-				7123C50C1DAC46B900ACFDB5 /* AmpController.swift in Sources */,
 				656A5ABD1DA883BB00B7BE3E /* NSColor+Brightness.swift in Sources */,
 				6525644B1DA89FCD00ACCD4B /* EffectKnobControl.swift in Sources */,
 				718C89651DCFCBBA00BC12E8 /* WebSlotControl.swift in Sources */,
 				65F69F131DDD70EE0017188D /* DXAmplifier.swift in Sources */,
+				717C2DD71DE7AC7300DA68FD /* AmpManager.swift in Sources */,
 				658CEC111DA44B97006890A4 /* EffectSlotControl.swift in Sources */,
 				655A5A431D4C555500E15E1F /* MainVC.swift in Sources */,
 				65B37CBA1DD7CCA800433B89 /* RemoteManager.swift in Sources */,
