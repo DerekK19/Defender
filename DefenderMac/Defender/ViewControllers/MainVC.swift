@@ -538,28 +538,44 @@ extension MainVC: EffectVCDelegate {
 extension MainVC: WheelDelegate {
     
     func valueIsChangingForWheel(_ sender: WheelControl, value: Int) {
-        switch sender {
-        case wheel:
-            //DebugPrint("Wheel value is changing to \(value)")
-            displayPreset(value)
-        default:
-            NSLog("Don't know what wheel sent this event")
+        switch saveButton.currentState {
+        case .active:
+            switch sender {
+            case wheel:
+                //DebugPrint("Wheel value is changing to \(value)")
+                displayPreset(value)
+            default:
+                NSLog("Don't know what wheel sent this event")
+            }
+        case .warning:
+            currentPreset?.number = UInt8(value)
+            displayPreset(currentPreset)
+            break
+        case .ok:
+            break
         }
     }
     
     func valueDidChangeForWheel(_ sender: WheelControl, value: Int) {
-        switch sender {
-        case wheel:
-            //DebugPrint("Wheel value changed to \(value)")
-            saveButton.setState(.active)
-            exitButton.setState(.active)
-            ampController.getPreset(value) { (preset) in
-                DispatchQueue.main.async {
-                    self.setPreset(preset)
+        switch saveButton.currentState {
+        case .active:
+            switch sender {
+            case wheel:
+                //DebugPrint("Wheel value changed to \(value)")
+                saveButton.setState(.active)
+                exitButton.setState(.active)
+                ampController.getPreset(value) { (preset) in
+                    DispatchQueue.main.async {
+                        self.setPreset(preset)
+                    }
                 }
+            default:
+                NSLog("Don't know what wheel sent this event")
             }
-        default:
-            NSLog("Don't know what wheel sent this event")
+        case .warning:
+            break
+        case .ok:
+            break
         }
     }
 }
