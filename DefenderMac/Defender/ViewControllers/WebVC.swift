@@ -18,13 +18,13 @@ class WebVC: NSViewController {
     @IBOutlet weak var slot: WebSlotControl!
     @IBOutlet weak var shade: ShadeControl!
 
-    @IBOutlet weak var usernameTextField: NSTextField!
-    @IBOutlet weak var passwordTextField: NSSecureTextField!
+    @IBOutlet weak var usernameTextField: ColouredTextField!
+    @IBOutlet weak var passwordTextField: SecureColouredTextField!
     @IBOutlet weak var countLabel: NSTextField!
     
     @IBOutlet weak var loginButton: ActionButtonControl!
     
-    @IBOutlet weak var searchTextField: NSTextField!
+    @IBOutlet weak var searchTextField: ColouredTextField!
     
     @IBOutlet weak var searchButton: ActionButtonControl!
     

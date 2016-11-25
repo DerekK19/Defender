@@ -51,6 +51,8 @@
 		65F69F261DE009F70017188D /* DXEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F251DE009F70017188D /* DXEffect.swift */; };
 		65F69F281DE00BBD0017188D /* DXEffect+DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F271DE00BBD0017188D /* DXEffect+DTO.swift */; };
 		65F69F321DE14CC80017188D /* AppViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F311DE14CC80017188D /* AppViewControl.swift */; };
+		65F69F341DE7F5C90017188D /* ColouredTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F331DE7F5C90017188D /* ColouredTextField.swift */; };
+		65F69F361DE7F7DD0017188D /* SecureColouredTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F351DE7F7DD0017188D /* SecureColouredTextField.swift */; };
 		71602D7C1DD52284003E2D49 /* PresetDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71602D7B1DD52284003E2D49 /* PresetDocument.swift */; };
 		7167FEDA1D58032C0059A276 /* NSImage+Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FED91D58032C0059A276 /* NSImage+Colour.swift */; };
 		7167FEDC1D5815270059A276 /* DisplayControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FEDB1D5815270059A276 /* DisplayControl.swift */; };
@@ -131,6 +133,8 @@
 		65F69F251DE009F70017188D /* DXEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXEffect.swift; sourceTree = "<group>"; };
 		65F69F271DE00BBD0017188D /* DXEffect+DTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DXEffect+DTO.swift"; sourceTree = "<group>"; };
 		65F69F311DE14CC80017188D /* AppViewControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewControl.swift; sourceTree = "<group>"; };
+		65F69F331DE7F5C90017188D /* ColouredTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColouredTextField.swift; sourceTree = "<group>"; };
+		65F69F351DE7F7DD0017188D /* SecureColouredTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureColouredTextField.swift; sourceTree = "<group>"; };
 		71602D7B1DD52284003E2D49 /* PresetDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetDocument.swift; sourceTree = "<group>"; };
 		7167FED91D58032C0059A276 /* NSImage+Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Colour.swift"; sourceTree = "<group>"; };
 		7167FEDB1D5815270059A276 /* DisplayControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayControl.swift; sourceTree = "<group>"; };
@@ -274,6 +278,8 @@
 				652564481DA8972A00ACCD4B /* PedalKnobControl.swift */,
 				718C89641DCFCBBA00BC12E8 /* WebSlotControl.swift */,
 				718C89C41DD122D300BC12E8 /* WebHeaderCell.swift */,
+				65F69F331DE7F5C90017188D /* ColouredTextField.swift */,
+				65F69F351DE7F7DD0017188D /* SecureColouredTextField.swift */,
 				658CEC0E1DA36D85006890A4 /* Enums.swift */,
 			);
 			name = "Custom Controls";
@@ -551,6 +557,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65F69F361DE7F7DD0017188D /* SecureColouredTextField.swift in Sources */,
 				658CEC0B1DA36977006890A4 /* EffectControl.swift in Sources */,
 				65B37C961DD1A8ED00433B89 /* ArrowButtonCell.swift in Sources */,
 				718C89C51DD122D300BC12E8 /* WebHeaderCell.swift in Sources */,
@@ -559,6 +566,7 @@
 				658CEC0D1DA36AAA006890A4 /* PedalBodyControl.swift in Sources */,
 				657C3AC81D56DB8E002DEF17 /* AmpKnobControl.swift in Sources */,
 				65F69F261DE009F70017188D /* DXEffect.swift in Sources */,
+				65F69F341DE7F5C90017188D /* ColouredTextField.swift in Sources */,
 				658CEC0F1DA36D85006890A4 /* Enums.swift in Sources */,
 				658D10E21DB73BA3008C3A45 /* ShadeControl.swift in Sources */,
 				656A5ABD1DA883BB00B7BE3E /* NSColor+Brightness.swift in Sources */,
