@@ -104,18 +104,21 @@ class MainVC: UIViewController {
         sendMessage(message)
     }
 
-    func sendGetPreset(_ number: UInt8) {
+    func sendGetPreset(_ number: UInt8?) {
         var message: DXMessage!
         let preset = DXPreset(name: "")
-        preset.number = number
-        message = DXMessage(command: .preset, data: preset)
+        if let number = number {
+            preset.number = number
+            message = DXMessage(command: .preset, data: preset)
+        } else {
+            message = DXMessage(command: .preset, data: nil)
+        }
         sendMessage(message)
     }
 
     func sendMessage(_ message: DXMessage) {
         if remoteManager?.send(message) == true {
             txLED.backgroundColour = UIColor.red
-//            bluetoothLabel.text = "Sending"
         } else {
             NSLog("Failed to send message. Command = \(message.command)")
         }
@@ -137,6 +140,7 @@ extension MainVC: RemoteManagerDelegate {
             self.bluetoothLabel.isHidden = false
             self.amplifierLabel.isHidden = false
             self.amplifierLabel.text = ""
+            self.presetLabel.isHidden = false
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+3) {
                 self.sendGetAmplifier()
             }
@@ -146,7 +150,6 @@ extension MainVC: RemoteManagerDelegate {
     func remoteManager(_ manager: RemoteManager, didSend success: Bool) {
         DispatchQueue.main.async {
             self.txLED.backgroundColour = UIColor.clear
-//            self.bluetoothLabel.text = "Sent"
         }
     }
     
@@ -159,13 +162,10 @@ extension MainVC: RemoteManagerDelegate {
                 switch message.command as RequestType {
                 case .amplifier:
                     let amp = try DXAmplifier(data: message.content)
-//                    self.bluetoothLabel.text = "Received"
                     self.amplifierLabel.text = amp.name
-                    self.presetLabel.isHidden = false
-                    self.presetLabel.text = ""
+                    self.sendGetPreset(nil)
                 case .preset:
                     let preset = try DXPreset(data: message.content)
-//                    self.bluetoothLabel.text = "Received"
                     self.presetLabel.text = preset.name
                     self.presetNumber = preset.number
                     self.prevPreset.isHidden = preset.number == nil
@@ -183,7 +183,9 @@ extension MainVC: RemoteManagerDelegate {
             self.bluetoothLogo.alpha = 0.5
             self.bluetoothLabel.isHidden = true
             self.amplifierLabel.isHidden = true
+            self.amplifierLabel.text = ""
             self.presetLabel.isHidden = true
+            self.presetLabel.text = ""
             self.prevPreset.isHidden = true
             self.nextPreset.isHidden = true
         }
@@ -194,7 +196,9 @@ extension MainVC: RemoteManagerDelegate {
             self.bluetoothLogo.isHidden = true
             self.bluetoothLabel.isHidden = true
             self.amplifierLabel.isHidden = true
+            self.amplifierLabel.text = ""
             self.presetLabel.isHidden = true
+            self.presetLabel.text = ""
             self.prevPreset.isHidden = true
             self.nextPreset.isHidden = true
         }
