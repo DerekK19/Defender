@@ -237,6 +237,7 @@ class MainVC: NSViewController {
                     exitButton.setState(.active)
                     ampManager.setPreset(currentPreset, onCompletion: { (preset) in
                         self.saveButton.setState(.ok)
+                        self.displayVC?.setState(.edit)
                     })
                 }
                 else if sender.currentState == .ok {
@@ -246,6 +247,7 @@ class MainVC: NSViewController {
                             DispatchQueue.main.async {
                                 self.displayPreset(preset)
                                 self.saveButton.setState(.active)
+                                self.displayVC?.setState(.view)
                             }
                         }
                     }
@@ -263,6 +265,7 @@ class MainVC: NSViewController {
                 DispatchQueue.main.async {
                     self.displayPreset(preset)
                     self.exitButton.setState(.active)
+                    self.displayVC?.setState(.view)
                 }
             }
         }

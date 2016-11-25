@@ -9,6 +9,11 @@
 import Cocoa
 import Mustang
 
+enum DisplayState {
+    case view
+    case edit
+}
+
 class DisplayVC: NSViewController {
 
     @IBOutlet weak var display: DisplayControl!
@@ -24,17 +29,38 @@ class DisplayVC: NSViewController {
     var displayBackgroundColour = NSColor(red: 0.62, green: 0.78, blue: 0.88, alpha: 1.0)
     var displayForegroundColour = NSColor(red: 0.3, green: 0.38, blue: 0.6, alpha: 1.0)
     
+    var currentState: DisplayState = .view
+
     var powerState: PowerState = .off {
         didSet {
             self.shade.isOpen = powerState == .on
             self.display.backgroundColour = displayBackgroundColour
             self.presetNumber.backgroundColor = displayBackgroundColour
             self.presetNumber.textColor = displayForegroundColour
-            self.presetName.backgroundColor = displayForegroundColour
-            self.presetName.textColor = displayBackgroundColour
             self.amplifierName.backgroundColor = displayForegroundColour
             self.amplifierName.textColor = displayBackgroundColour
+            self.setState(self.currentState)
             self.configureWithPreset(nil)
+        }
+    }
+    
+    func setState(_ state: DisplayState) {
+        currentState = state
+        switch currentState {
+        case .view:
+            presetName.backgroundColor = displayForegroundColour
+            presetName.textColor = displayBackgroundColour
+            presetName.isEnabled = false
+            presetName.isEditable = false
+            presetName.resignFirstResponder()
+        case .edit:
+            presetName.backgroundColor = NSColor.white
+            presetName.textColor = NSColor.black
+            presetName.isEnabled = true
+            presetName.isEditable = true
+            if presetName.acceptsFirstResponder {
+                presetName.window?.makeFirstResponder(presetName)
+            }
         }
     }
     

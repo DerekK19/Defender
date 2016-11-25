@@ -19,6 +19,7 @@ class ShadeControl: NSView {
     var isOpen: Bool = false {
         didSet {
             backgroundColour = NSColor(red: 0.66, green: 0.66, blue: 0.66, alpha: isOpen ? 0.0 : 0.6)
+            self.isHidden = isOpen
             setNeedsDisplay(self.bounds)
         }
     }
