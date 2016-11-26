@@ -8,6 +8,7 @@
 
 import Cocoa
 import Mustang
+import Flogger
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        Flogger.setup()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

@@ -8,6 +8,7 @@
 
 import Cocoa
 import Mustang
+import Flogger
 
 class MainVC: NSViewController {
 
@@ -449,7 +450,7 @@ class MainVC: NSViewController {
     // MARK: Debug logging
     internal func DebugPrint(_ text: String) {
         if (verbose) {
-            print(text)
+            Flogger.log?.debug(text)
         }
     }
     internal func DebugKnobs(forEffect effect: DTOEffect?) {

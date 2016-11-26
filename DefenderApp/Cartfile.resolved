@@ -1,3 +1,5 @@
 github "derekk19/BluetoothKit" "4a5d88888532522ff56787750b36f4541db6ab50"
 github "Hearst-DD/ObjectMapper" "2.2.1"
+github "DaveWoodCom/XCGLogger" "Version_4.0.0"
+git "https://stash.gordonknight.co.uk:8443/scm/IF/Flogger.git" "10f9df60ff031fa720ba64bf92b584d86d51a31c"
 git "https://stash.gordonknight.co.uk:8443/scm/IF/RemoteDefender.git" "810fdf226204da33f4374af3372131525e8cf6c1"
