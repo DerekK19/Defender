@@ -214,11 +214,11 @@ class MainVC: NSViewController {
     @IBAction func willPowerAmplifier(_ sender: ActionButtonControl) {
         if !ampManager.hasAnAmplifier { return }
         if sender.state == NSOffState {
-            Flogger.log.debug(" Powering off")
+            Flogger.log.verbose(" Powering off")
             self.powerState = .off
             self.setPreset(nil)
         } else {
-            Flogger.log.debug(" Powering on")
+            Flogger.log.verbose(" Powering on")
             sender.state = NSOffState
             ampManager.getPresets() {
                 DispatchQueue.main.async {
@@ -234,7 +234,7 @@ class MainVC: NSViewController {
         if sender.powerState == .on {
             if let currentPreset = currentPreset {
                 if sender.currentState == .warning {
-                    Flogger.log.debug(" Saving effect")
+                    Flogger.log.verbose(" Saving effect")
                     exitButton.setState(.active)
                     ampManager.setPreset(currentPreset, onCompletion: { (preset) in
                         self.saveButton.setState(.ok)
@@ -242,7 +242,7 @@ class MainVC: NSViewController {
                     })
                 }
                 else if sender.currentState == .ok {
-                    Flogger.log.debug(" Confirming effect")
+                    Flogger.log.verbose(" Confirming effect")
                     ampManager.savePreset(currentPreset) { (saved) in
                         self.ampManager.resetPreset(self.wheel.intValue) { (preset) in
                             DispatchQueue.main.async {
@@ -259,7 +259,7 @@ class MainVC: NSViewController {
     
     @IBAction func willExit(_ sender: ActionButtonControl) {
         if sender.powerState == .on {
-            Flogger.log.debug(" Cancelling save")
+            Flogger.log.verbose(" Cancelling save")
             saveButton.setState(.active)
             exitButton.setState(.ok)
             ampManager.resetPreset(self.wheel.intValue) { (preset) in
@@ -585,7 +585,7 @@ extension MainVC: WheelDelegate {
 extension MainVC: AmpManagerDelegate {
     
     func deviceConnected(ampManager: AmpManager) {
-        Flogger.log.debug(" Connected")
+        Flogger.log.verbose(" Connected")
         sendCurrentAmplifier()
         DispatchQueue.main.async {
             self.statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
@@ -594,18 +594,18 @@ extension MainVC: AmpManagerDelegate {
     }
     
     func deviceOpened(ampManager: AmpManager) {
-        Flogger.log.debug(" Opened")
+        Flogger.log.verbose(" Opened")
         configureAmplifiers()
         sendCurrentPreset()
     }
     
     func deviceClosed(ampManager: AmpManager) {
-        Flogger.log.debug(" Closed")
+        Flogger.log.verbose(" Closed")
         setPreset(nil)
     }
     
     func deviceDisconnected(ampManager: AmpManager) {
-        Flogger.log.debug(" Disconnected")
+        Flogger.log.verbose(" Disconnected")
         DispatchQueue.main.async {
             self.reset()
             self.setPreset(nil)
