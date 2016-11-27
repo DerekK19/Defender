@@ -1,4 +1,4 @@
 github "Hearst-DD/ObjectMapper" ~> 2.0
 git "https://stash.gordonknight.co.uk:8443/scm/IF/Flogger.git" "develop"
 git "https://stash.gordonknight.co.uk:8443/scm/IF/Mustang.git" "develop"
-git "https://stash.gordonknight.co.uk:8443/scm/IF/RemoteDefender.git" "feature/peripheral"
+git "https://stash.gordonknight.co.uk:8443/scm/IF/RemoteDefender.git" "develop"

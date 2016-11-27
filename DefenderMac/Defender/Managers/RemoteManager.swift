@@ -22,7 +22,7 @@ class RemoteManager {
     
     var delegate: RemoteManagerDelegate?
     
-    let peripheral = Peripheral(mockMode: false, verbose: true)
+    let peripheral = Peripheral(mockMode: false)
     
     init(delegate: RemoteManagerDelegate? = nil) {
         self.delegate = delegate
