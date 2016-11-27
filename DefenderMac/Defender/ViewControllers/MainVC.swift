@@ -214,11 +214,11 @@ class MainVC: NSViewController {
     @IBAction func willPowerAmplifier(_ sender: ActionButtonControl) {
         if !ampManager.hasAnAmplifier { return }
         if sender.state == NSOffState {
-            DebugPrint(" Powering off")
+            Flogger.log.debug(" Powering off")
             self.powerState = .off
             self.setPreset(nil)
         } else {
-            DebugPrint(" Powering on")
+            Flogger.log.debug(" Powering on")
             sender.state = NSOffState
             ampManager.getPresets() {
                 DispatchQueue.main.async {
@@ -234,7 +234,7 @@ class MainVC: NSViewController {
         if sender.powerState == .on {
             if let currentPreset = currentPreset {
                 if sender.currentState == .warning {
-                    DebugPrint("Saving effect")
+                    Flogger.log.debug(" Saving effect")
                     exitButton.setState(.active)
                     ampManager.setPreset(currentPreset, onCompletion: { (preset) in
                         self.saveButton.setState(.ok)
@@ -242,7 +242,7 @@ class MainVC: NSViewController {
                     })
                 }
                 else if sender.currentState == .ok {
-                    DebugPrint("Confirming effect")
+                    Flogger.log.debug(" Confirming effect")
                     ampManager.savePreset(currentPreset) { (saved) in
                         self.ampManager.resetPreset(self.wheel.intValue) { (preset) in
                             DispatchQueue.main.async {
@@ -259,7 +259,7 @@ class MainVC: NSViewController {
     
     @IBAction func willExit(_ sender: ActionButtonControl) {
         if sender.powerState == .on {
-            DebugPrint("Cancelling save")
+            Flogger.log.debug(" Cancelling save")
             saveButton.setState(.active)
             exitButton.setState(.ok)
             ampManager.resetPreset(self.wheel.intValue) { (preset) in
@@ -332,55 +332,13 @@ class MainVC: NSViewController {
         effect3VC?.configureWithEffect(nil)
         effect4VC?.configureWithEffect(nil)
 
-        if preset != nil { DebugPrint("  Preset \(preset!.number) (\(preset!.name))") }
-        if let gain = preset?.gain1 {
-            DebugPrint("   Gain: \(gain)")
-            gainKnob.floatValue = gain
-        } else {
-            DebugPrint("   Gain: -unset-")
-            gainKnob.floatValue = 1.0
-        }
-        if let volume = preset?.volume {
-            DebugPrint("   Volume: \(volume)")
-            volumeKnob.floatValue = volume
-        } else {
-            DebugPrint("   Volume: -unset-")
-            volumeKnob.floatValue = 1.0
-        }
-        if let treble = preset?.treble {
-            DebugPrint("   Treble: \(treble)")
-            trebleKnob.floatValue = treble
-        } else {
-            DebugPrint("   Treble: -unset-")
-            trebleKnob.floatValue = 1.0
-        }
-        if let middle = preset?.middle {
-            DebugPrint("   Middle: \(middle)")
-            middleKnob.floatValue = middle
-        } else {
-            DebugPrint("   Middle: -unset-")
-            middleKnob.floatValue = 1.0
-        }
-        if let bass = preset?.bass {
-            DebugPrint("   Bass: \(bass)")
-            bassKnob.floatValue = bass
-        } else {
-            DebugPrint("   Bass: -unset-")
-            bassKnob.floatValue = 1.0
-        }
-        if let presence = preset?.presence {
-            DebugPrint("   Reverb/Presence: \(presence)")
-            presenceKnob.floatValue = presence
-        } else {
-            DebugPrint("   Reverb/Presence: -unset-")
-            presenceKnob.floatValue = 1.0
-        }
-        DebugPrint("   Model: \(preset?.moduleName ?? "-unknown-")")
-        DebugPrint("   Cabinet: \(preset?.cabinetName ?? "-unknown-")")
-        for effect in preset?.effects ?? [DTOEffect]() {
-            DebugPrint("    \(effect.type.rawValue): \(effect.name ?? "-empty-") - \(effect.enabled ? "ON" : "OFF")")
-            DebugKnobs(forEffect: effect)
-        }
+        gainKnob.floatValue = preset?.gain1 ?? 1.0
+        volumeKnob.floatValue = preset?.volume ?? 1.0
+        trebleKnob.floatValue = preset?.treble ?? 1.0
+        middleKnob.floatValue = preset?.middle ?? 1.0
+        bassKnob.floatValue = preset?.bass ?? 1.0
+        presenceKnob.floatValue = preset?.presence ?? 1.0
+
         displayVC?.configureWithPreset(preset)
         for effect in preset?.effects ?? [DTOEffect]() {
             displayEffect(effect)
@@ -443,24 +401,62 @@ class MainVC: NSViewController {
             txLED.backgroundColour = NSColor.red
 //            bluetoothLabel.stringValue = "Sending"
         } else {
-            NSLog("Failed to send message. Command = \(message.command)")
+            Flogger.log.error("Failed to send message. Command = \(message.command)")
         }
     }
     
     // MARK: Debug logging
-    internal func DebugPrint(_ text: String) {
-        if (verbose) {
-            Flogger.log?.debug(text)
+    internal func DebugPreset(_ preset: DTOPreset?) {
+        if verbose {
+            var text = ""
+            if let number = preset?.number {
+                text += "  Preset \(number)"
+            } else {
+                text += "  Preset -unknown-"
+            }
+            text += " - \(preset?.name ?? "-unknown-")\n"
+            if let gain = preset?.gain1 {
+                text += "   Gain: \(gain)\n"
+            } else {
+                text += "   Gain: -unset-\n"
+            }
+            if let volume = preset?.volume {
+                text += "   Volume: \(volume)\n"
+            } else {
+                text += "   Volume: -unset-\n"
+            }
+            if let treble = preset?.treble {
+                text += "   Treble: \(treble)\n"
+            } else {
+                text += "   Treble: -unset-\n"
+            }
+            if let middle = preset?.middle {
+                text += "   Middle: \(middle)\n"
+            } else {
+                text += "   Middle: -unset-\n"
+            }
+            if let bass = preset?.bass {
+                text += "   Bass: \(bass)\n"
+            } else {
+                text += "   Bass: -unset-\n"
+            }
+            if let presence = preset?.presence {
+                text += "   Reverb/Presence: \(presence)\n"
+            } else {
+                text += "   Reverb/Presence: -unset-\n"
+            }
+            text += "   Model: \(preset?.moduleName ?? "-unknown-")\n"
+            text += "   Cabinet: \(preset?.cabinetName ?? "-unknown-")\n"
+            for effect in preset?.effects ?? [DTOEffect]() {
+                text += "   \(effect.type.rawValue): \(effect.name ?? "-empty-") - \(effect.enabled ? "ON" : "OFF")\n"
+                text += "    Knobs: \(effect.knobCount) - "
+                effect.knobs.forEach { text += "\(String(format: "%0.2f", $0.value)) " }
+                text += "slot \(effect.slot) (\(effect.aValue1) \(effect.aValue2) \(effect.aValue3))\n"
+            }
+            Flogger.log.info(text)
         }
     }
-    internal func DebugKnobs(forEffect effect: DTOEffect?) {
-        if (verbose) {
-            print("    Knobs: \(effect?.knobCount ?? 0) - ", terminator: "")
-            effect?.knobs.forEach { print("\(String(format: "%0.2f", $0.value)) ", terminator:"") }
-            if let effect = effect { print("slot \(effect.slot) (\(effect.aValue1) \(effect.aValue2) \(effect.aValue3))") }
-            else { print("") }
-        }
-    }
+    
 }
 
 extension MainVC: AmpKnobDelegate {
@@ -468,25 +464,25 @@ extension MainVC: AmpKnobDelegate {
     func valueDidChangeForKnob(_ sender: AmpKnobControl, value: Float) {
         switch sender {
         case gainKnob:
-            DebugPrint("New gain is \(value)")
+            Flogger.log.debug("New gain is \(value)")
             currentPreset?.gain1 = value
         case volumeKnob:
-            DebugPrint("New volume is \(value)")
+            Flogger.log.debug("New volume is \(value)")
             currentPreset?.volume = value
         case trebleKnob:
-            DebugPrint("New treble is \(value)")
+            Flogger.log.debug("New treble is \(value)")
             currentPreset?.treble = value
         case middleKnob:
-            DebugPrint("New middle is \(value)")
+            Flogger.log.debug("New middle is \(value)")
             currentPreset?.middle = value
         case bassKnob:
-            DebugPrint("New bass is \(value)")
+            Flogger.log.debug("New bass is \(value)")
             currentPreset?.bass = value
         case presenceKnob:
-            DebugPrint("New presence is \(value)")
+            Flogger.log.debug("New presence is \(value)")
             currentPreset?.presence = value
         default:
-            NSLog("Don't know what knob sent this event")
+            Flogger.log.error("Don't know what knob sent this event")
         }
         saveButton.setState(.warning)
         exitButton.setState(.warning)
@@ -497,19 +493,19 @@ extension MainVC: PedalVCDelegate {
     
     func settingsDidChangeForPedal(_ sender: PedalVC) {
         if sender == pedal1VC {
-            DebugPrint("New settings for pedal 1")
+            Flogger.log.debug("New settings for pedal 1")
         }
         else if sender == pedal2VC {
-            DebugPrint("New settings for pedal 2")
+            Flogger.log.debug("New settings for pedal 2")
         }
         else if sender == pedal3VC {
-            DebugPrint("New settings for pedal 3")
+            Flogger.log.debug("New settings for pedal 3")
         }
         else if sender == pedal4VC {
-            DebugPrint("New settings for pedal 4")
+            Flogger.log.debug("New settings for pedal 4")
         }
         else {
-            NSLog("Don't know what pedal sent this event")
+            Flogger.log.error("Don't know what pedal sent this event")
         }
         saveButton.setState(.warning)
         exitButton.setState(.warning)
@@ -520,19 +516,19 @@ extension MainVC: EffectVCDelegate {
     
     func settingsDidChangeForEffect(_ sender: EffectVC) {
         if sender == effect1VC {
-            DebugPrint("New settings for effect 1")
+            Flogger.log.debug("New settings for effect 1")
         }
         else if sender == effect2VC {
-            DebugPrint("New settings for effect 2")
+            Flogger.log.debug("New settings for effect 2")
         }
         else if sender == effect3VC {
-            DebugPrint("New settings for effect 3")
+            Flogger.log.debug("New settings for effect 3")
         }
         else if sender == effect4VC {
-            DebugPrint("New settings for effect 4")
+            Flogger.log.debug("New settings for effect 4")
         }
         else {
-            NSLog("Don't know what effect sent this event")
+            Flogger.log.error("Don't know what effect sent this event")
         }
         saveButton.setState(.warning)
         exitButton.setState(.warning)
@@ -546,10 +542,10 @@ extension MainVC: WheelDelegate {
         case .active:
             switch sender {
             case wheel:
-                //DebugPrint("Wheel value is changing to \(value)")
+                //Flogger.log.debug("Wheel value is changing to \(value)")
                 displayPreset(value)
             default:
-                NSLog("Don't know what wheel sent this event")
+                Flogger.log.error("Don't know what wheel sent this event")
             }
         case .warning:
             currentPreset?.number = UInt8(value)
@@ -565,18 +561,20 @@ extension MainVC: WheelDelegate {
         case .active:
             switch sender {
             case wheel:
-                //DebugPrint("Wheel value changed to \(value)")
+                //Flogger.log.debug("Wheel value changed to \(value)")
                 saveButton.setState(.active)
                 exitButton.setState(.active)
                 ampManager.getPreset(value) { (preset) in
                     DispatchQueue.main.async {
                         self.setPreset(preset)
+                        self.DebugPreset(self.currentPreset)
                     }
                 }
             default:
-                NSLog("Don't know what wheel sent this event")
+                Flogger.log.error("Don't know what wheel sent this event")
             }
         case .warning:
+            DebugPreset(currentPreset)
             break
         case .ok:
             break
@@ -587,7 +585,7 @@ extension MainVC: WheelDelegate {
 extension MainVC: AmpManagerDelegate {
     
     func deviceConnected(ampManager: AmpManager) {
-        DebugPrint(" Connected")
+        Flogger.log.debug(" Connected")
         sendCurrentAmplifier()
         DispatchQueue.main.async {
             self.statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
@@ -596,18 +594,18 @@ extension MainVC: AmpManagerDelegate {
     }
     
     func deviceOpened(ampManager: AmpManager) {
-        DebugPrint(" Opened")
+        Flogger.log.debug(" Opened")
         configureAmplifiers()
         sendCurrentPreset()
     }
     
     func deviceClosed(ampManager: AmpManager) {
-        DebugPrint(" Closed")
+        Flogger.log.debug(" Closed")
         setPreset(nil)
     }
     
     func deviceDisconnected(ampManager: AmpManager) {
-        DebugPrint(" Disconnected")
+        Flogger.log.debug(" Disconnected")
         DispatchQueue.main.async {
             self.reset()
             self.setPreset(nil)
@@ -679,7 +677,7 @@ extension MainVC: RemoteManagerDelegate {
                         }
                     }
                 } catch {
-                    NSLog("Receive Failure: Couldn't decode DXMessage or DXPreset")
+                    Flogger.log.error("Receive Failure: Couldn't decode DXMessage or DXPreset")
                 }
                 self.rxLED.backgroundColour = NSColor.clear
             }

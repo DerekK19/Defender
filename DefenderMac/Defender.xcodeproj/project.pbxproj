@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6507759A1DE95DD200F5040C /* Flogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650775991DE95DD100F5040C /* Flogger.framework */; };
 		6507759C1DE9609100F5040C /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6507759B1DE9609100F5040C /* XCGLogger.framework */; };
+		650775A81DEA3DB000F5040C /* NSLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650775A71DEA3DB000F5040C /* NSLogger.framework */; };
 		652564491DA8972A00ACCD4B /* PedalKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652564481DA8972A00ACCD4B /* PedalKnobControl.swift */; };
 		6525644B1DA89FCD00ACCD4B /* EffectKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6525644A1DA89FCD00ACCD4B /* EffectKnobControl.swift */; };
 		65426BA21DB0930300E54D35 /* KnobBaseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65426BA11DB0930300E54D35 /* KnobBaseControl.swift */; };
@@ -91,6 +92,7 @@
 /* Begin PBXFileReference section */
 		650775991DE95DD100F5040C /* Flogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Flogger.framework; path = Carthage/Build/Mac/Flogger.framework; sourceTree = "<group>"; };
 		6507759B1DE9609100F5040C /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Carthage/Build/Mac/XCGLogger.framework; sourceTree = "<group>"; };
+		650775A71DEA3DB000F5040C /* NSLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NSLogger.framework; path = Carthage/Build/Mac/NSLogger.framework; sourceTree = "<group>"; };
 		652564481DA8972A00ACCD4B /* PedalKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalKnobControl.swift; sourceTree = "<group>"; };
 		6525644A1DA89FCD00ACCD4B /* EffectKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectKnobControl.swift; sourceTree = "<group>"; };
 		65426BA11DB0930300E54D35 /* KnobBaseControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobBaseControl.swift; sourceTree = "<group>"; };
@@ -163,8 +165,9 @@
 				6581F99C1D4C5D97005BB5C9 /* Mustang.framework in Frameworks */,
 				6581F99D1D4C5D97005BB5C9 /* ObjectMapper.framework in Frameworks */,
 				65EF3B3C1DCD8F7A00A01153 /* AFNetworking.framework in Frameworks */,
-				6507759A1DE95DD200F5040C /* Flogger.framework in Frameworks */,
+				650775A81DEA3DB000F5040C /* NSLogger.framework in Frameworks */,
 				6507759C1DE9609100F5040C /* XCGLogger.framework in Frameworks */,
+				6507759A1DE95DD200F5040C /* Flogger.framework in Frameworks */,
 				65B37CBC1DD7D0B400433B89 /* BluetoothKit.framework in Frameworks */,
 				65B37D541DD800B700433B89 /* RemoteDefender.framework in Frameworks */,
 			);
@@ -309,6 +312,7 @@
 		6581F9991D4C5D76005BB5C9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				650775A71DEA3DB000F5040C /* NSLogger.framework */,
 				6507759B1DE9609100F5040C /* XCGLogger.framework */,
 				650775991DE95DD100F5040C /* Flogger.framework */,
 				6581F99A1D4C5D97005BB5C9 /* Mustang.framework */,
@@ -536,6 +540,7 @@
 				"$(SRCROOT)/Carthage/Build/Mac/RemoteDefender.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/Flogger.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/XCGlogger.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/NSLogger.framework",
 			);
 			name = "Copy Carthage frameworks (for App Store submission bug)";
 			outputPaths = (

@@ -8,6 +8,7 @@
 
 import Cocoa
 import Mustang
+import Flogger
 
 protocol PedalVCDelegate {
     func settingsDidChangeForPedal(_ sender: PedalVC)
@@ -46,8 +47,6 @@ class PedalVC: NSViewController {
     
     var fullBackgroundColour = NSColor.black
     var pedalBackgroundColour = NSColor.black
-    
-    let verbose = true
     
     var state: EffectState = .disabled {
         didSet {
@@ -190,13 +189,6 @@ class PedalVC: NSViewController {
         }
     }
     
-    // MARK: Debug logging
-    internal func DebugPrint(_ text: String) {
-        if (verbose) {
-            print(text)
-        }
-    }
-    
 }
 
 
@@ -225,27 +217,27 @@ extension PedalVC: PedalKnobDelegate {
             if value != currentValue {
                 switch sender {
                 case knobUpperLeft:
-                    DebugPrint("New upper left knob is \(value)")
+                    Flogger.log.debug("New upper left knob is \(value)")
                     effect!.knobs[0].value = value
                     delegate?.settingsDidChangeForPedal(self)
                 case knobUpperMiddle:
-                    DebugPrint("New upper middle knob is \(value)")
+                    Flogger.log.debug("New upper middle knob is \(value)")
                     effect!.knobs[1].value = value
                     delegate?.settingsDidChangeForPedal(self)
                 case knobUpperRight:
-                    DebugPrint("New upper right knob is \(value)")
+                    Flogger.log.debug("New upper right knob is \(value)")
                     effect!.knobs[2].value = value
                     delegate?.settingsDidChangeForPedal(self)
                 case knobLowerLeft:
-                    DebugPrint("New lower left knob is \(value)")
+                    Flogger.log.debug("New lower left knob is \(value)")
                     effect!.knobs[3].value = value
                     delegate?.settingsDidChangeForPedal(self)
                 case knobLowerMiddle:
-                    DebugPrint("New lower middle knob is \(value)")
+                    Flogger.log.debug("New lower middle knob is \(value)")
                     effect!.knobs[4].value = value
                     delegate?.settingsDidChangeForPedal(self)
                 case knobLowerRight:
-                    DebugPrint("New lower right knob is \(value)")
+                    Flogger.log.debug("New lower right knob is \(value)")
                     effect!.knobs[5].value = value
                     delegate?.settingsDidChangeForPedal(self)
                 default:

@@ -8,6 +8,7 @@
 
 import Cocoa
 import Mustang
+import Flogger
 
 protocol EffectVCDelegate {
     func settingsDidChangeForEffect(_ sender: EffectVC)
@@ -41,8 +42,6 @@ class EffectVC: NSViewController {
     var fullBackgroundColour = NSColor.black
     var effectBackgroundColour = NSColor.black
 
-    let verbose = true
-    
     var state: EffectState = .disabled {
         didSet {
             var newBackgroundColour = NSColor()
@@ -138,13 +137,6 @@ class EffectVC: NSViewController {
         }
     }
     
-    // MARK: Debug logging
-    internal func DebugPrint(_ text: String) {
-        if (verbose) {
-            print(text)
-        }
-    }
-
 }
 
 extension EffectVC: EffectKnobDelegate {
@@ -152,27 +144,27 @@ extension EffectVC: EffectKnobDelegate {
     func valueDidChangeForKnob(_ sender: EffectKnobControl, value: Float) {
         switch sender {
         case knob1:
-            DebugPrint("New knob 1 is \(value)")
+            Flogger.log.debug("New knob 1 is \(value)")
             effect!.knobs[0].value = value
             delegate?.settingsDidChangeForEffect(self)
         case knob2:
-            DebugPrint("New knob 2 is \(value)")
+            Flogger.log.debug("New knob 2 is \(value)")
             effect!.knobs[1].value = value
             delegate?.settingsDidChangeForEffect(self)
         case knob3:
-            DebugPrint("New knob 3 is \(value)")
+            Flogger.log.debug("New knob 3 is \(value)")
             effect!.knobs[2].value = value
             delegate?.settingsDidChangeForEffect(self)
         case knob4:
-            DebugPrint("New knob 4 is \(value)")
+            Flogger.log.debug("New knob 4 is \(value)")
             effect!.knobs[3].value = value
             delegate?.settingsDidChangeForEffect(self)
         case knob5:
-            DebugPrint("New knob 5 is \(value)")
+            Flogger.log.debug("New knob 5 is \(value)")
             effect!.knobs[4].value = value
             delegate?.settingsDidChangeForEffect(self)
         case knob6:
-            DebugPrint("New knob 5 is \(value)")
+            Flogger.log.debug("New knob 6 is \(value)")
             effect!.knobs[5].value = value
             delegate?.settingsDidChangeForEffect(self)
         default:

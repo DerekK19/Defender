@@ -90,13 +90,6 @@ class MainVC: UIViewController {
         }
     }
     
-    // MARK: Debug logging
-    internal func DebugPrint(_ text: String) {
-        if (verbose) {
-            print(text)
-        }
-    }
-
     // MARK: Private functions
     
     func sendGetAmplifier() {
