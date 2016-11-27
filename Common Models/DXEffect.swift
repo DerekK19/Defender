@@ -20,6 +20,7 @@ enum DXEffectType : Int {
 internal class DXEffect : Transferable {
 
     var type: DXEffectType!
+    var name: String!
     var module: Int!
     var slot: Int!
     var enabled: Bool!
@@ -40,6 +41,7 @@ internal class DXEffect : Transferable {
                 let temp = Mapper<DXEffect>().map(JSONString: string) {
                 type = temp.type
                 module = temp.module
+                name = temp.name
                 slot = temp.slot
                 enabled = temp.enabled
                 colour = temp.colour
@@ -62,6 +64,7 @@ internal class DXEffect : Transferable {
     func mapping(map: Map) {
         type           <- map["type"]
         module         <- map["module"]
+        name           <- map["name"]
         slot           <- map["slot"]
         enabled        <- map["enabled"]
         colour         <- map["colour"]

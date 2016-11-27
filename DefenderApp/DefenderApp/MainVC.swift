@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Flogger
 import RemoteDefender
 
 class MainVC: UIViewController {
@@ -113,10 +114,63 @@ class MainVC: UIViewController {
         if remoteManager?.send(message) == true {
             txLED.backgroundColour = UIColor.red
         } else {
-            NSLog("Failed to send message. Command = \(message.command)")
+            Flogger.log.error("Failed to send message. Command = \(message.command)")
         }
 
     }
+    
+    // MARK: Debug logging
+    internal func logPreset(_ preset: DXPreset?) {
+        if verbose {
+            var text = ""
+            if let number = preset?.number {
+                text += "  Preset \(number)"
+            } else {
+                text += "  Preset -unknown-"
+            }
+            text += " - \(preset?.name ?? "-unknown-")\n"
+            if let gain = preset?.gain1 {
+                text += "   Gain: \(gain)\n"
+            } else {
+                text += "   Gain: -unset-\n"
+            }
+            if let volume = preset?.volume {
+                text += "   Volume: \(volume)\n"
+            } else {
+                text += "   Volume: -unset-\n"
+            }
+            if let treble = preset?.treble {
+                text += "   Treble: \(treble)\n"
+            } else {
+                text += "   Treble: -unset-\n"
+            }
+            if let middle = preset?.middle {
+                text += "   Middle: \(middle)\n"
+            } else {
+                text += "   Middle: -unset-\n"
+            }
+            if let bass = preset?.bass {
+                text += "   Bass: \(bass)\n"
+            } else {
+                text += "   Bass: -unset-\n"
+            }
+            if let presence = preset?.presence {
+                text += "   Reverb/Presence: \(presence)\n"
+            } else {
+                text += "   Reverb/Presence: -unset-\n"
+            }
+            text += "   Model: \(preset?.moduleName ?? "-unknown-")\n"
+            text += "   Cabinet: \(preset?.cabinetName ?? "-unknown-")\n"
+            for effect in preset?.effects ?? [DXEffect]() {
+                text += "   \(effect.type.rawValue): \(effect.name ?? "-empty-") - \(effect.enabled! ? "ON" : "OFF")\n"
+                text += "    Knobs: \(effect.knobs.count) - "
+                effect.knobs.forEach { text += "\(String(format: "%0.2f", $0)) " }
+                text += "slot \(effect.slot!)\n"
+            }
+            Flogger.log.info(text)
+        }
+    }
+
 }
 
 extension MainVC: RemoteManagerDelegate {
@@ -151,7 +205,7 @@ extension MainVC: RemoteManagerDelegate {
             self.rxLED.backgroundColour = UIColor.green
             do {
                 let message = try DXMessage(data: data)
-                self.DebugPrint("Message: \(message.command.rawValue)")
+                Flogger.log.verbose("Message: \(message.command.rawValue)")
                 switch message.command as RequestType {
                 case .amplifier:
                     let amp = try DXAmplifier(data: message.content)
@@ -159,13 +213,14 @@ extension MainVC: RemoteManagerDelegate {
                     self.sendGetPreset(nil)
                 case .preset:
                     let preset = try DXPreset(data: message.content)
+                    self.logPreset(preset)
                     self.presetLabel.text = preset.name
                     self.presetNumber = preset.number
                     self.prevPreset.isHidden = preset.number == nil
                     self.nextPreset.isHidden = preset.number == nil
                 }
             } catch {
-                NSLog("Receive Failure: Couldn't decode DXMessage, DXAmplifier or DXPreset")
+                Flogger.log.error("Receive Failure: Couldn't decode DXMessage, DXAmplifier or DXPreset")
             }
             self.rxLED.backgroundColour = UIColor.clear
         }

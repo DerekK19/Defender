@@ -27,6 +27,7 @@ extension DXEffect {
         }
         self.init(type: convertedType)
         module = dto.module
+        name = dto.name ?? ""
         slot = dto.slot
         enabled = dto.enabled
         colour = dto.colour

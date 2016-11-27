@@ -406,7 +406,7 @@ class MainVC: NSViewController {
     }
     
     // MARK: Debug logging
-    internal func DebugPreset(_ preset: DTOPreset?) {
+    internal func logPreset(_ preset: DTOPreset?) {
         if verbose {
             var text = ""
             if let number = preset?.number {
@@ -567,14 +567,14 @@ extension MainVC: WheelDelegate {
                 ampManager.getPreset(value) { (preset) in
                     DispatchQueue.main.async {
                         self.setPreset(preset)
-                        self.DebugPreset(self.currentPreset)
+                        self.logPreset(self.currentPreset)
                     }
                 }
             default:
                 Flogger.log.error("Don't know what wheel sent this event")
             }
         case .warning:
-            DebugPreset(currentPreset)
+            logPreset(currentPreset)
             break
         case .ok:
             break
@@ -659,6 +659,7 @@ extension MainVC: RemoteManagerDelegate {
             DispatchQueue.main.async {
                 do {
                     let message = try DXMessage(data: data)
+                    Flogger.log.verbose("Message: \(message.command.rawValue)")
                     switch message.command as RequestType {
                     case .amplifier:
                         self.sendCurrentAmplifier()
@@ -671,6 +672,7 @@ extension MainVC: RemoteManagerDelegate {
                                 self.ampManager.getPreset(Int(number)) { (preset) in
                                     DispatchQueue.main.async {
                                         self.setPreset(preset)
+                                        self.logPreset(preset)
                                     }
                                 }
                             }

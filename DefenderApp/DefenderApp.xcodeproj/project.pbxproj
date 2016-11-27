@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650775BC1DEA936B00F5040C /* Flogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650775BB1DEA936A00F5040C /* Flogger.framework */; };
+		650775BE1DEA937000F5040C /* NSLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650775BD1DEA937000F5040C /* NSLogger.framework */; };
+		650775C01DEA937200F5040C /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650775BF1DEA937200F5040C /* XCGLogger.framework */; };
 		65F69F0D1DDD70AB0017188D /* DXAmplifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F0C1DDD70AB0017188D /* DXAmplifier.swift */; };
 		65F69F181DDD745D0017188D /* Transferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F171DDD745D0017188D /* Transferable.swift */; };
 		65F69F1C1DDD93000017188D /* DXMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F1B1DDD93000017188D /* DXMessage.swift */; };
@@ -46,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		650775BB1DEA936A00F5040C /* Flogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Flogger.framework; path = Carthage/Build/iOS/Flogger.framework; sourceTree = "<group>"; };
+		650775BD1DEA937000F5040C /* NSLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NSLogger.framework; path = Carthage/Build/iOS/NSLogger.framework; sourceTree = "<group>"; };
+		650775BF1DEA937200F5040C /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Carthage/Build/iOS/XCGLogger.framework; sourceTree = "<group>"; };
 		65F69F0C1DDD70AB0017188D /* DXAmplifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXAmplifier.swift; sourceTree = "<group>"; };
 		65F69F171DDD745D0017188D /* Transferable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transferable.swift; sourceTree = "<group>"; };
 		65F69F1B1DDD93000017188D /* DXMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXMessage.swift; sourceTree = "<group>"; };
@@ -81,6 +87,9 @@
 				7198C3351DD9570D003238D7 /* RemoteDefender.framework in Frameworks */,
 				7198C3101DD94BAC003238D7 /* BluetoothKit.framework in Frameworks */,
 				7198C3111DD94BAC003238D7 /* ObjectMapper.framework in Frameworks */,
+				650775BC1DEA936B00F5040C /* Flogger.framework in Frameworks */,
+				650775BE1DEA937000F5040C /* NSLogger.framework in Frameworks */,
+				650775C01DEA937200F5040C /* XCGLogger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +180,9 @@
 		7198C30D1DD94A48003238D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				650775BF1DEA937200F5040C /* XCGLogger.framework */,
+				650775BD1DEA937000F5040C /* NSLogger.framework */,
+				650775BB1DEA936A00F5040C /* Flogger.framework */,
 				7198C3341DD9570D003238D7 /* RemoteDefender.framework */,
 				7198C30E1DD94BAC003238D7 /* BluetoothKit.framework */,
 				7198C30F1DD94BAC003238D7 /* ObjectMapper.framework */,
@@ -375,6 +387,9 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RemoteDefender.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/BluetoothKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Flogger.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/NSLogger.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/XCGLogger.framework",
 			);
 			name = "Copy Carthage frameworks (for App Store submission bug)";
 			outputPaths = (

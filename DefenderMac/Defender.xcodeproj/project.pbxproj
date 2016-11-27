@@ -222,7 +222,6 @@
 			children = (
 				657C3AC51D56DB5C002DEF17 /* View Controllers */,
 				65B37CB81DD7CC6100433B89 /* Managers */,
-				65F69F141DDD71330017188D /* Adapters */,
 				657C3AC61D56DB78002DEF17 /* Custom Controls */,
 				71602D7A1DD5224C003E2D49 /* Classes */,
 				65F69F111DDD70EE0017188D /* Common Models */,
@@ -344,13 +343,6 @@
 			);
 			name = "Common Models";
 			path = "../../Common Models";
-			sourceTree = "<group>";
-		};
-		65F69F141DDD71330017188D /* Adapters */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Adapters;
 			sourceTree = "<group>";
 		};
 		71602D7A1DD5224C003E2D49 /* Classes */ = {
