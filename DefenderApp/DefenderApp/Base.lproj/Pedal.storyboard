@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,7 +27,7 @@
                                 <rect key="frame" x="5" y="5" width="230" height="390"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VcC-tm-Bbe" customClass="PedalBodyControl" customModule="DefenderApp" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="5" width="210" height="142"/>
+                                        <rect key="frame" x="10" y="5" width="210" height="143"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7V-2E-lHc" customClass="LEDControl" customModule="DefenderApp" customModuleProvider="target">
                                                 <rect key="frame" x="2" y="2" width="7" height="7"/>
@@ -37,72 +38,61 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="bhD-jg-o9a">
-                                                <rect key="frame" x="5" y="8" width="200" height="126"/>
+                                                <rect key="frame" x="5" y="8" width="200" height="127"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="iGN-P4-1Az">
-                                                        <rect key="frame" x="18.5" y="0.0" width="163.5" height="62"/>
+                                                        <rect key="frame" x="15.5" y="0.0" width="169.5" height="62.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhC-Gr-1ER" customClass="PedalKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="6" width="50.5" height="50"/>
+                                                                <rect key="frame" x="0.0" y="5.5" width="52.5" height="52"/>
                                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="fhC-Gr-1ER" secondAttribute="height" multiplier="1:1" id="pjc-Ax-x3K"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOX-OW-FCz" customClass="PedalKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="56.5" y="6" width="50.5" height="50.5"/>
+                                                                <rect key="frame" x="58.5" y="5.5" width="52.5" height="52"/>
                                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="WOX-OW-FCz" secondAttribute="height" multiplier="1:1" id="Ue6-pO-prS"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6i-VU-i5j" customClass="PedalKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="113" y="6" width="50.5" height="50.5"/>
+                                                                <rect key="frame" x="117" y="5.5" width="52.5" height="52"/>
                                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="H6i-VU-i5j" secondAttribute="height" multiplier="1:1" id="ppj-pN-Tpk"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="WOX-OW-FCz" firstAttribute="width" secondItem="H6i-VU-i5j" secondAttribute="width" id="o5D-ww-cEb"/>
-                                                            <constraint firstItem="fhC-Gr-1ER" firstAttribute="width" secondItem="WOX-OW-FCz" secondAttribute="width" id="oYY-Kw-bxh"/>
-                                                        </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="lDe-Ur-nTR">
-                                                        <rect key="frame" x="18.5" y="64" width="163.5" height="62"/>
+                                                        <rect key="frame" x="15.5" y="64.5" width="169.5" height="62.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZC-Pq-8nk" customClass="PedalKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="6" width="50.5" height="50"/>
+                                                                <rect key="frame" x="0.0" y="5.5" width="52.5" height="52"/>
                                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="HZC-Pq-8nk" secondAttribute="height" multiplier="1:1" id="P3o-Fm-Val"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TEC-Jn-K2W" customClass="PedalKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="56.5" y="6" width="50.5" height="50.5"/>
+                                                                <rect key="frame" x="58.5" y="5.5" width="52.5" height="52"/>
                                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="TEC-Jn-K2W" secondAttribute="height" multiplier="1:1" id="mgm-vv-UUl"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceV-P0-Xm6" customClass="PedalKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="113" y="6" width="50.5" height="50.5"/>
+                                                                <rect key="frame" x="117" y="5.5" width="52.5" height="52"/>
                                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="ceV-P0-Xm6" secondAttribute="height" multiplier="1:1" id="zJq-j9-PJA"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="HZC-Pq-8nk" firstAttribute="width" secondItem="TEC-Jn-K2W" secondAttribute="width" id="Wzg-O9-jsZ"/>
-                                                            <constraint firstItem="TEC-Jn-K2W" firstAttribute="width" secondItem="ceV-P0-Xm6" secondAttribute="width" id="k5F-hX-Jie"/>
-                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="fhC-Gr-1ER" firstAttribute="width" secondItem="HZC-Pq-8nk" secondAttribute="width" id="rCO-R8-cM9"/>
-                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.76470588240000004" green="0.79607843140000001" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -116,7 +106,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drC-jB-VpO" customClass="PedalBodyControl" customModule="DefenderApp" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="142" width="220" height="243"/>
+                                        <rect key="frame" x="5" y="143" width="220" height="242"/>
                                         <color key="backgroundColor" red="0.76470588240000004" green="0.79607843140000001" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="drC-jB-VpO" secondAttribute="height" multiplier="1:1.1" id="Zqs-XF-7XP"/>
@@ -124,7 +114,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4BC-HO-Sh8" customClass="ShadeControl" customModule="DefenderApp" customModuleProvider="target">
                                         <rect key="frame" x="5" y="5" width="220" height="380"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -132,15 +122,21 @@
                                     <constraint firstItem="drC-jB-VpO" firstAttribute="leading" secondItem="TtB-MC-ZhC" secondAttribute="leading" priority="750" constant="5" id="1tE-le-iFs"/>
                                     <constraint firstAttribute="trailing" secondItem="drC-jB-VpO" secondAttribute="trailing" priority="750" constant="5" id="2VK-gt-fjq"/>
                                     <constraint firstAttribute="trailing" secondItem="4BC-HO-Sh8" secondAttribute="trailing" constant="5" id="3WE-g0-kND"/>
+                                    <constraint firstAttribute="height" secondItem="TEC-Jn-K2W" secondAttribute="height" multiplier="7.5" id="72W-V6-ewZ"/>
                                     <constraint firstItem="4BC-HO-Sh8" firstAttribute="top" secondItem="TtB-MC-ZhC" secondAttribute="top" constant="5" id="7ny-m1-5wu"/>
                                     <constraint firstAttribute="bottom" secondItem="drC-jB-VpO" secondAttribute="bottom" constant="5" id="8JW-d6-AKN"/>
+                                    <constraint firstAttribute="height" secondItem="fhC-Gr-1ER" secondAttribute="height" multiplier="7.5" id="9UC-dB-6m9"/>
                                     <constraint firstItem="VcC-tm-Bbe" firstAttribute="bottom" secondItem="drC-jB-VpO" secondAttribute="top" constant="5" id="Egv-X4-aIn"/>
                                     <constraint firstAttribute="bottom" secondItem="4BC-HO-Sh8" secondAttribute="bottom" constant="5" id="IDh-fp-yeo"/>
+                                    <constraint firstItem="drC-jB-VpO" firstAttribute="trailing" secondItem="VcC-tm-Bbe" secondAttribute="trailing" constant="5" id="PO9-TZ-9gh"/>
+                                    <constraint firstAttribute="height" secondItem="WOX-OW-FCz" secondAttribute="height" multiplier="7.5" id="bcJ-Iu-y0L"/>
                                     <constraint firstItem="drC-jB-VpO" firstAttribute="centerX" secondItem="TtB-MC-ZhC" secondAttribute="centerX" id="gEQ-GU-lzY"/>
                                     <constraint firstItem="VcC-tm-Bbe" firstAttribute="top" secondItem="TtB-MC-ZhC" secondAttribute="top" constant="5" id="lXG-e3-fgb"/>
-                                    <constraint firstItem="VcC-tm-Bbe" firstAttribute="leading" secondItem="TtB-MC-ZhC" secondAttribute="leading" constant="10" id="miK-K1-wTs"/>
+                                    <constraint firstAttribute="height" secondItem="HZC-Pq-8nk" secondAttribute="height" multiplier="7.5" id="oS2-oq-J95"/>
+                                    <constraint firstAttribute="height" secondItem="ceV-P0-Xm6" secondAttribute="height" multiplier="7.5" id="p0K-fQ-4I5"/>
+                                    <constraint firstItem="VcC-tm-Bbe" firstAttribute="leading" secondItem="drC-jB-VpO" secondAttribute="leading" constant="5" id="q3P-oe-Ekw"/>
                                     <constraint firstItem="4BC-HO-Sh8" firstAttribute="leading" secondItem="TtB-MC-ZhC" secondAttribute="leading" constant="5" id="qnV-Ik-LRf"/>
-                                    <constraint firstAttribute="trailing" secondItem="VcC-tm-Bbe" secondAttribute="trailing" constant="10" id="rBt-Hh-uZi"/>
+                                    <constraint firstAttribute="height" secondItem="H6i-VU-i5j" secondAttribute="height" multiplier="7.5" id="ust-yt-Jne"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -160,12 +156,12 @@
                     <connections>
                         <outlet property="bodyBottom" destination="drC-jB-VpO" id="lZC-N4-Gnt"/>
                         <outlet property="bodyTop" destination="VcC-tm-Bbe" id="6hz-4V-Qga"/>
-                        <outlet property="knobLowerLeft" destination="HZC-Pq-8nk" id="c23-he-tR6"/>
-                        <outlet property="knobLowerMiddle" destination="TEC-Jn-K2W" id="Lxm-0i-yzz"/>
-                        <outlet property="knobLowerRight" destination="ceV-P0-Xm6" id="28W-oC-13a"/>
-                        <outlet property="knobUpperLeft" destination="fhC-Gr-1ER" id="olh-6O-3f2"/>
-                        <outlet property="knobUpperMiddle" destination="WOX-OW-FCz" id="MGI-4k-Faa"/>
-                        <outlet property="knobUpperRight" destination="H6i-VU-i5j" id="fpr-6X-y03"/>
+                        <outlet property="knobLowerLeft" destination="HZC-Pq-8nk" id="9V1-dd-iwD"/>
+                        <outlet property="knobLowerMiddle" destination="TEC-Jn-K2W" id="RQ6-8W-ww7"/>
+                        <outlet property="knobLowerRight" destination="ceV-P0-Xm6" id="qCh-iu-VNq"/>
+                        <outlet property="knobUpperLeft" destination="fhC-Gr-1ER" id="1bP-Fg-ecp"/>
+                        <outlet property="knobUpperMiddle" destination="WOX-OW-FCz" id="2b9-H3-zY6"/>
+                        <outlet property="knobUpperRight" destination="H6i-VU-i5j" id="Tfv-TK-IIA"/>
                         <outlet property="lowerKnobs" destination="lDe-Ur-nTR" id="O9H-NK-P7K"/>
                         <outlet property="powerLED" destination="I7V-2E-lHc" id="jtf-Wb-F2b"/>
                         <outlet property="shade" destination="4BC-HO-Sh8" id="4wx-2V-YG1"/>

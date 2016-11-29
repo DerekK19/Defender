@@ -27,6 +27,7 @@ class PedalKnobControl: KnobBaseControl {
     }
     
     private func configure() {
+        self.backgroundColor = UIColor.clear
         super.configure(minValue: 0.0, maxValue: 1.0, minStop: -0.05, maxStop: 1.05, pixelsPerTick: 40)
     }
   
