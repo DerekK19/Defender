@@ -82,13 +82,21 @@
                                     <action selector="willGetNextPreset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wef-96-U6c"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFQ-0D-o8O">
+                                <rect key="frame" x="0.0" y="102" width="375" height="501"/>
+                                <connections>
+                                    <segue destination="tje-St-VXC" kind="embed" identifier="embedEffects" id="6G7-Ca-T1s"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="iA8-DL-jp5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="2Ov-Hf-wwm"/>
+                            <constraint firstAttribute="trailing" secondItem="GFQ-0D-o8O" secondAttribute="trailing" id="BEw-Pl-V0g"/>
                             <constraint firstItem="GoT-f9-hXl" firstAttribute="leading" secondItem="859-jC-vVc" secondAttribute="trailing" constant="9" id="DTn-fv-rME"/>
                             <constraint firstItem="Wgr-lO-Hh5" firstAttribute="centerY" secondItem="GoT-f9-hXl" secondAttribute="centerY" id="FRC-t8-ORn"/>
                             <constraint firstItem="Wgr-lO-Hh5" firstAttribute="centerY" secondItem="IP7-wW-toh" secondAttribute="centerY" id="Gve-be-ays"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="GFQ-0D-o8O" secondAttribute="bottom" id="HNS-GK-P4K"/>
                             <constraint firstItem="8gJ-ko-ZqR" firstAttribute="centerY" secondItem="iA8-DL-jp5" secondAttribute="centerY" id="HTf-rM-XHm"/>
                             <constraint firstItem="8gJ-ko-ZqR" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Iew-81-8at"/>
                             <constraint firstItem="1oN-J3-d5l" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LbL-1o-5ph"/>
@@ -98,6 +106,8 @@
                             <constraint firstItem="Wgr-lO-Hh5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ga0-9s-qbe"/>
                             <constraint firstItem="859-jC-vVc" firstAttribute="leading" secondItem="IP7-wW-toh" secondAttribute="trailing" constant="5" id="idh-6N-X0d"/>
                             <constraint firstItem="859-jC-vVc" firstAttribute="width" secondItem="859-jC-vVc" secondAttribute="height" multiplier="1:1" id="jR3-6L-ehy"/>
+                            <constraint firstItem="GFQ-0D-o8O" firstAttribute="top" secondItem="8gJ-ko-ZqR" secondAttribute="bottom" constant="10" id="jvK-D1-Fue"/>
+                            <constraint firstItem="GFQ-0D-o8O" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="p89-Sv-kHt"/>
                             <constraint firstItem="6rd-Uz-fem" firstAttribute="centerY" secondItem="iA8-DL-jp5" secondAttribute="centerY" id="pCH-3l-gEx"/>
                             <constraint firstItem="IP7-wW-toh" firstAttribute="leading" secondItem="Wgr-lO-Hh5" secondAttribute="trailing" constant="8" id="uKa-UB-S4u"/>
                             <constraint firstItem="IP7-wW-toh" firstAttribute="centerY" secondItem="859-jC-vVc" secondAttribute="centerY" id="uqw-Hc-ZYh"/>
@@ -128,6 +138,14 @@
             </objects>
             <point key="canvasLocation" x="1076" y="121.88905547226388"/>
         </scene>
+        <!--EffectsVC-->
+        <scene sceneID="80I-Kk-6Od">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="tje-St-VXC" customClass="EffectsVC" customModule="DefenderApp" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H99-TV-XhR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1830" y="197"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Me9-Bx-4zZ">
             <objects>
@@ -145,6 +163,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="opv-sz-RzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="121.88905547226388"/>
+        </scene>
+        <!--Pedal PageVC-->
+        <scene sceneID="xLw-zy-qIP">
+            <objects>
+                <viewController storyboardIdentifier="pedalPage" id="EQn-AB-Ffy" customClass="PedalPageVC" customModule="DefenderApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A8A-jR-ipe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="404-2J-a15">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="f31-DJ-jpf" kind="embed" id="zUG-zg-DUa"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ola-Wz-CUe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2524" y="196.55172413793105"/>
+        </scene>
+        <!--Pedal-->
+        <scene sceneID="0Rb-3R-bFi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Pedal" id="f31-DJ-jpf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UQo-Yl-HA3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2994" y="196"/>
+        </scene>
+        <!--Effect PageVC-->
+        <scene sceneID="Rer-xH-TxM">
+            <objects>
+                <viewController storyboardIdentifier="effectPage" id="1fC-Zq-L2m" customClass="EffectPageVC" customModule="DefenderApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RpU-To-2Z8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XNR-fl-nge">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="LmW-yK-ltL" kind="embed" id="LgK-3U-Bvu"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3g4-g5-s3H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3373.5999999999999" y="196.55172413793105"/>
+        </scene>
+        <!--Effect-->
+        <scene sceneID="bQ6-zs-029">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Effect" id="LmW-yK-ltL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="agQ-xI-JSg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3870" y="195"/>
         </scene>
     </scenes>
     <resources>

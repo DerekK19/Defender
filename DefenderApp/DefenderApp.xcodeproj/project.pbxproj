@@ -18,6 +18,18 @@
 		65F69F1C1DDD93000017188D /* DXMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F1B1DDD93000017188D /* DXMessage.swift */; };
 		65F69F201DDED1DF0017188D /* DXPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F1F1DDED1DF0017188D /* DXPreset.swift */; };
 		65F69F2A1DE011550017188D /* DXEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F291DE011550017188D /* DXEffect.swift */; };
+		712DC3E91DECCC0A004E5BE1 /* PedalPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DC3E81DECCC0A004E5BE1 /* PedalPageVC.swift */; };
+		712DC3EB1DECCD29004E5BE1 /* EffectsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DC3EA1DECCD29004E5BE1 /* EffectsVC.swift */; };
+		712DC3ED1DECCDFC004E5BE1 /* EffectPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DC3EC1DECCDFC004E5BE1 /* EffectPageVC.swift */; };
+		712DC3EF1DECCE6B004E5BE1 /* EffectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DC3EE1DECCE6B004E5BE1 /* EffectVC.swift */; };
+		712DC3F31DECD59C004E5BE1 /* PedalBodyControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DC3F21DECD59C004E5BE1 /* PedalBodyControl.swift */; };
+		719614131DED01DA00AE3E6E /* EffectSlotControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719614121DED01DA00AE3E6E /* EffectSlotControl.swift */; };
+		719614151DED028700AE3E6E /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719614141DED028700AE3E6E /* Enums.swift */; };
+		719614171DED030900AE3E6E /* ShadeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719614161DED030900AE3E6E /* ShadeControl.swift */; };
+		7196141A1DED042B00AE3E6E /* UIColor+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719614191DED042B00AE3E6E /* UIColor+Brightness.swift */; };
+		7196141C1DED0D3E00AE3E6E /* KnobBaseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7196141B1DED0D3E00AE3E6E /* KnobBaseControl.swift */; };
+		7196141E1DED0E3400AE3E6E /* PedalKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7196141D1DED0E3400AE3E6E /* PedalKnobControl.swift */; };
+		7196141F1DED161200AE3E6E /* Effect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 719614211DED161200AE3E6E /* Effect.storyboard */; };
 		7198C2DC1DD93601003238D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C2DB1DD93601003238D7 /* AppDelegate.swift */; };
 		7198C2DE1DD93601003238D7 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C2DD1DD93601003238D7 /* MainVC.swift */; };
 		7198C2E11DD93601003238D7 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7198C2DF1DD93601003238D7 /* Main_iPhone.storyboard */; };
@@ -62,6 +74,18 @@
 		65F69F1B1DDD93000017188D /* DXMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXMessage.swift; sourceTree = "<group>"; };
 		65F69F1F1DDED1DF0017188D /* DXPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXPreset.swift; sourceTree = "<group>"; };
 		65F69F291DE011550017188D /* DXEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXEffect.swift; sourceTree = "<group>"; };
+		712DC3E81DECCC0A004E5BE1 /* PedalPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalPageVC.swift; sourceTree = "<group>"; };
+		712DC3EA1DECCD29004E5BE1 /* EffectsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectsVC.swift; sourceTree = "<group>"; };
+		712DC3EC1DECCDFC004E5BE1 /* EffectPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectPageVC.swift; sourceTree = "<group>"; };
+		712DC3EE1DECCE6B004E5BE1 /* EffectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectVC.swift; sourceTree = "<group>"; };
+		712DC3F21DECD59C004E5BE1 /* PedalBodyControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalBodyControl.swift; sourceTree = "<group>"; };
+		719614121DED01DA00AE3E6E /* EffectSlotControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectSlotControl.swift; sourceTree = "<group>"; };
+		719614141DED028700AE3E6E /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		719614161DED030900AE3E6E /* ShadeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadeControl.swift; sourceTree = "<group>"; };
+		719614191DED042B00AE3E6E /* UIColor+Brightness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Brightness.swift"; sourceTree = "<group>"; };
+		7196141B1DED0D3E00AE3E6E /* KnobBaseControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobBaseControl.swift; sourceTree = "<group>"; };
+		7196141D1DED0E3400AE3E6E /* PedalKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalKnobControl.swift; sourceTree = "<group>"; };
+		719614201DED161200AE3E6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Effect.storyboard; sourceTree = "<group>"; };
 		7198C2D81DD93601003238D7 /* DefenderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DefenderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7198C2DB1DD93601003238D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7198C2DD1DD93601003238D7 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -127,6 +151,14 @@
 			path = "../Common Models";
 			sourceTree = SOURCE_ROOT;
 		};
+		719614181DED040E00AE3E6E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				719614191DED042B00AE3E6E /* UIColor+Brightness.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		7198C2CF1DD93601003238D7 = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +188,7 @@
 				7198C33C1DDA8317003238D7 /* Managers */,
 				7198C5ED1DDE476C003238D7 /* Custom Controls */,
 				65F69F0B1DDD703F0017188D /* Common Models */,
+				719614181DED040E00AE3E6E /* Extensions */,
 				7198C33F1DDA9C08003238D7 /* Resources */,
 				7198C2DB1DD93601003238D7 /* AppDelegate.swift */,
 				7198C2E71DD93601003238D7 /* Info.plist */,
@@ -210,6 +243,7 @@
 				7198C2DF1DD93601003238D7 /* Main_iPhone.storyboard */,
 				650775C71DEBFD4900F5040C /* Main_iPad.storyboard */,
 				650775CA1DEBFD4F00F5040C /* Pedal.storyboard */,
+				719614211DED161200AE3E6E /* Effect.storyboard */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -218,7 +252,11 @@
 			isa = PBXGroup;
 			children = (
 				7198C2DD1DD93601003238D7 /* MainVC.swift */,
+				712DC3EA1DECCD29004E5BE1 /* EffectsVC.swift */,
+				712DC3E81DECCC0A004E5BE1 /* PedalPageVC.swift */,
+				712DC3EC1DECCDFC004E5BE1 /* EffectPageVC.swift */,
 				650775C31DEBFCA600F5040C /* PedalVC.swift */,
+				712DC3EE1DECCE6B004E5BE1 /* EffectVC.swift */,
 			);
 			name = "View Controllers";
 			path = ViewControllers;
@@ -228,9 +266,15 @@
 			isa = PBXGroup;
 			children = (
 				7198C5EE1DDE47CA003238D7 /* LEDControl.swift */,
+				712DC3F21DECD59C004E5BE1 /* PedalBodyControl.swift */,
+				719614121DED01DA00AE3E6E /* EffectSlotControl.swift */,
+				719614161DED030900AE3E6E /* ShadeControl.swift */,
+				7196141B1DED0D3E00AE3E6E /* KnobBaseControl.swift */,
+				7196141D1DED0E3400AE3E6E /* PedalKnobControl.swift */,
+				719614141DED028700AE3E6E /* Enums.swift */,
 			);
 			name = "Custom Controls";
-			path = ../CustomControls;
+			path = CustomControls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +392,7 @@
 				650775C51DEBFD4900F5040C /* Main_iPad.storyboard in Resources */,
 				7198C2E61DD93601003238D7 /* LaunchScreen.storyboard in Resources */,
 				7198C2E31DD93601003238D7 /* Assets.xcassets in Resources */,
+				7196141F1DED161200AE3E6E /* Effect.storyboard in Resources */,
 				650775C81DEBFD4F00F5040C /* Pedal.storyboard in Resources */,
 				7198C30A1DD949D1003238D7 /* Cartfile in Resources */,
 				7198C2E11DD93601003238D7 /* Main_iPhone.storyboard in Resources */,
@@ -415,15 +460,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				65F69F201DDED1DF0017188D /* DXPreset.swift in Sources */,
+				7196141E1DED0E3400AE3E6E /* PedalKnobControl.swift in Sources */,
+				719614171DED030900AE3E6E /* ShadeControl.swift in Sources */,
 				65F69F181DDD745D0017188D /* Transferable.swift in Sources */,
+				719614131DED01DA00AE3E6E /* EffectSlotControl.swift in Sources */,
+				712DC3ED1DECCDFC004E5BE1 /* EffectPageVC.swift in Sources */,
+				712DC3EF1DECCE6B004E5BE1 /* EffectVC.swift in Sources */,
+				719614151DED028700AE3E6E /* Enums.swift in Sources */,
 				7198C5EF1DDE47CA003238D7 /* LEDControl.swift in Sources */,
 				650775C41DEBFCA600F5040C /* PedalVC.swift in Sources */,
+				7196141A1DED042B00AE3E6E /* UIColor+Brightness.swift in Sources */,
 				7198C33E1DDA833B003238D7 /* RemoteManager.swift in Sources */,
 				65F69F0D1DDD70AB0017188D /* DXAmplifier.swift in Sources */,
 				65F69F2A1DE011550017188D /* DXEffect.swift in Sources */,
+				712DC3F31DECD59C004E5BE1 /* PedalBodyControl.swift in Sources */,
+				7196141C1DED0D3E00AE3E6E /* KnobBaseControl.swift in Sources */,
 				7198C2DE1DD93601003238D7 /* MainVC.swift in Sources */,
 				7198C2DC1DD93601003238D7 /* AppDelegate.swift in Sources */,
 				65F69F1C1DDD93000017188D /* DXMessage.swift in Sources */,
+				712DC3E91DECCC0A004E5BE1 /* PedalPageVC.swift in Sources */,
+				712DC3EB1DECCD29004E5BE1 /* EffectsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +529,14 @@
 				650775C91DEBFD4F00F5040C /* Base */,
 			);
 			name = Pedal.storyboard;
+			sourceTree = "<group>";
+		};
+		719614211DED161200AE3E6E /* Effect.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				719614201DED161200AE3E6E /* Base */,
+			);
+			name = Effect.storyboard;
 			sourceTree = "<group>";
 		};
 		7198C2DF1DD93601003238D7 /* Main_iPhone.storyboard */ = {

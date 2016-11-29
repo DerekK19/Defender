@@ -20,6 +20,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var presetLabel: UILabel!
     @IBOutlet weak var prevPreset: UIButton!
     @IBOutlet weak var nextPreset: UIButton!
+    @IBOutlet weak var effectsVC: EffectsVC?
 
     fileprivate var remoteManager: RemoteManager?
     
@@ -59,6 +60,16 @@ class MainVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "embedEffects":
+                self.effectsVC = segue.destination as? EffectsVC
+            default: break
+            }
+        }
+    }
+    
     // MARK: Action functions
     
     @IBAction func didTapBluetoothLogo(_ sender: AnyObject) {
@@ -216,6 +227,7 @@ extension MainVC: RemoteManagerDelegate {
                     self.logPreset(preset)
                     self.presetLabel.text = preset.name
                     self.presetNumber = preset.number
+                    self.effectsVC?.effects = preset.effects ?? nil
                     self.prevPreset.isHidden = preset.number == nil
                     self.nextPreset.isHidden = preset.number == nil
                 }
