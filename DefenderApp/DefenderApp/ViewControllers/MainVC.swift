@@ -227,7 +227,7 @@ extension MainVC: RemoteManagerDelegate {
                     self.logPreset(preset)
                     self.presetLabel.text = preset.name
                     self.presetNumber = preset.number
-                    self.effectsVC?.effects = preset.effects ?? nil
+                    self.effectsVC?.preset = preset
                     self.prevPreset.isHidden = preset.number == nil
                     self.nextPreset.isHidden = preset.number == nil
                 }

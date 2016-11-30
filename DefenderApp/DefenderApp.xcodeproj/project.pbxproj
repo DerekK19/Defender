@@ -24,6 +24,11 @@
 		712DC3EF1DECCE6B004E5BE1 /* EffectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DC3EE1DECCE6B004E5BE1 /* EffectVC.swift */; };
 		712DC3F31DECD59C004E5BE1 /* PedalBodyControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DC3F21DECD59C004E5BE1 /* PedalBodyControl.swift */; };
 		71935F271DEE35DE0096A919 /* PedalPadControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71935F261DEE35DE0096A919 /* PedalPadControl.swift */; };
+		71935F291DEF685B0096A919 /* ControlsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71935F281DEF685B0096A919 /* ControlsVC.swift */; };
+		71935F2C1DEF68EA0096A919 /* Controls.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71935F2E1DEF68EA0096A919 /* Controls.storyboard */; };
+		71935F301DEF6A1D0096A919 /* AmpKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71935F2F1DEF6A1D0096A919 /* AmpKnobControl.swift */; };
+		71935F321DEF700C0096A919 /* ControlsPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71935F311DEF700B0096A919 /* ControlsPageVC.swift */; };
+		71935F341DEF724E0096A919 /* UIImage+Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71935F331DEF724E0096A919 /* UIImage+Colour.swift */; };
 		719614131DED01DA00AE3E6E /* EffectSlotControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719614121DED01DA00AE3E6E /* EffectSlotControl.swift */; };
 		719614151DED028700AE3E6E /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719614141DED028700AE3E6E /* Enums.swift */; };
 		719614171DED030900AE3E6E /* ShadeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719614161DED030900AE3E6E /* ShadeControl.swift */; };
@@ -81,6 +86,11 @@
 		712DC3EE1DECCE6B004E5BE1 /* EffectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectVC.swift; sourceTree = "<group>"; };
 		712DC3F21DECD59C004E5BE1 /* PedalBodyControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalBodyControl.swift; sourceTree = "<group>"; };
 		71935F261DEE35DE0096A919 /* PedalPadControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalPadControl.swift; sourceTree = "<group>"; };
+		71935F281DEF685B0096A919 /* ControlsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlsVC.swift; sourceTree = "<group>"; };
+		71935F2D1DEF68EA0096A919 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Controls.storyboard; sourceTree = "<group>"; };
+		71935F2F1DEF6A1D0096A919 /* AmpKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmpKnobControl.swift; sourceTree = "<group>"; };
+		71935F311DEF700B0096A919 /* ControlsPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlsPageVC.swift; sourceTree = "<group>"; };
+		71935F331DEF724E0096A919 /* UIImage+Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Colour.swift"; sourceTree = "<group>"; };
 		719614121DED01DA00AE3E6E /* EffectSlotControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectSlotControl.swift; sourceTree = "<group>"; };
 		719614141DED028700AE3E6E /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		719614161DED030900AE3E6E /* ShadeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadeControl.swift; sourceTree = "<group>"; };
@@ -157,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				719614191DED042B00AE3E6E /* UIColor+Brightness.swift */,
+				71935F331DEF724E0096A919 /* UIImage+Colour.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -246,6 +257,7 @@
 				650775C71DEBFD4900F5040C /* Main_iPad.storyboard */,
 				650775CA1DEBFD4F00F5040C /* Pedal.storyboard */,
 				719614211DED161200AE3E6E /* Effect.storyboard */,
+				71935F2E1DEF68EA0096A919 /* Controls.storyboard */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -255,10 +267,12 @@
 			children = (
 				7198C2DD1DD93601003238D7 /* MainVC.swift */,
 				712DC3EA1DECCD29004E5BE1 /* EffectsVC.swift */,
+				71935F311DEF700B0096A919 /* ControlsPageVC.swift */,
 				712DC3E81DECCC0A004E5BE1 /* PedalPageVC.swift */,
 				712DC3EC1DECCDFC004E5BE1 /* EffectPageVC.swift */,
 				650775C31DEBFCA600F5040C /* PedalVC.swift */,
 				712DC3EE1DECCE6B004E5BE1 /* EffectVC.swift */,
+				71935F281DEF685B0096A919 /* ControlsVC.swift */,
 			);
 			name = "View Controllers";
 			path = ViewControllers;
@@ -273,6 +287,7 @@
 				719614121DED01DA00AE3E6E /* EffectSlotControl.swift */,
 				719614161DED030900AE3E6E /* ShadeControl.swift */,
 				7196141B1DED0D3E00AE3E6E /* KnobBaseControl.swift */,
+				71935F2F1DEF6A1D0096A919 /* AmpKnobControl.swift */,
 				7196141D1DED0E3400AE3E6E /* PedalKnobControl.swift */,
 				719614141DED028700AE3E6E /* Enums.swift */,
 			);
@@ -398,6 +413,7 @@
 				7196141F1DED161200AE3E6E /* Effect.storyboard in Resources */,
 				650775C81DEBFD4F00F5040C /* Pedal.storyboard in Resources */,
 				7198C30A1DD949D1003238D7 /* Cartfile in Resources */,
+				71935F2C1DEF68EA0096A919 /* Controls.storyboard in Resources */,
 				7198C2E11DD93601003238D7 /* Main_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,15 +478,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71935F301DEF6A1D0096A919 /* AmpKnobControl.swift in Sources */,
 				65F69F201DDED1DF0017188D /* DXPreset.swift in Sources */,
 				7196141E1DED0E3400AE3E6E /* PedalKnobControl.swift in Sources */,
 				719614171DED030900AE3E6E /* ShadeControl.swift in Sources */,
+				71935F291DEF685B0096A919 /* ControlsVC.swift in Sources */,
 				65F69F181DDD745D0017188D /* Transferable.swift in Sources */,
 				719614131DED01DA00AE3E6E /* EffectSlotControl.swift in Sources */,
 				712DC3ED1DECCDFC004E5BE1 /* EffectPageVC.swift in Sources */,
 				712DC3EF1DECCE6B004E5BE1 /* EffectVC.swift in Sources */,
+				71935F341DEF724E0096A919 /* UIImage+Colour.swift in Sources */,
 				719614151DED028700AE3E6E /* Enums.swift in Sources */,
 				71935F271DEE35DE0096A919 /* PedalPadControl.swift in Sources */,
+				71935F321DEF700C0096A919 /* ControlsPageVC.swift in Sources */,
 				7198C5EF1DDE47CA003238D7 /* LEDControl.swift in Sources */,
 				650775C41DEBFCA600F5040C /* PedalVC.swift in Sources */,
 				7196141A1DED042B00AE3E6E /* UIColor+Brightness.swift in Sources */,
@@ -533,6 +553,14 @@
 				650775C91DEBFD4F00F5040C /* Base */,
 			);
 			name = Pedal.storyboard;
+			sourceTree = "<group>";
+		};
+		71935F2E1DEF68EA0096A919 /* Controls.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71935F2D1DEF68EA0096A919 /* Base */,
+			);
+			name = Controls.storyboard;
 			sourceTree = "<group>";
 		};
 		719614211DED161200AE3E6E /* Effect.storyboard */ = {

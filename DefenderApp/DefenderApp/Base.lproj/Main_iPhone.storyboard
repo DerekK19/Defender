@@ -168,6 +168,10 @@
         <scene sceneID="xLw-zy-qIP">
             <objects>
                 <viewController storyboardIdentifier="pedalPage" id="EQn-AB-Ffy" customClass="PedalPageVC" customModule="DefenderApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SMX-LJ-awd"/>
+                        <viewControllerLayoutGuide type="bottom" id="oxA-BK-Q6S"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="A8A-jR-ipe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -199,6 +203,10 @@
         <scene sceneID="Rer-xH-TxM">
             <objects>
                 <viewController storyboardIdentifier="effectPage" id="1fC-Zq-L2m" customClass="EffectPageVC" customModule="DefenderApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="v2u-pT-Hgf"/>
+                        <viewControllerLayoutGuide type="bottom" id="ij2-Nh-OZl"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="RpU-To-2Z8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -225,6 +233,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agQ-xI-JSg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3870" y="195"/>
+        </scene>
+        <!--Controls PageVC-->
+        <scene sceneID="oZj-Pf-IUp">
+            <objects>
+                <viewController id="jNO-Ug-GmM" customClass="ControlsPageVC" customModule="DefenderApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AOD-zl-nEz"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZWb-i4-JaW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RIN-bt-3tW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nRf-gZ-6kg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="2zB-T7-A76" kind="embed" id="wdp-3L-fnI"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nQF-ip-LTy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4303.1999999999998" y="198.35082458770617"/>
+        </scene>
+        <!--Controls-->
+        <scene sceneID="jYY-bM-AA0">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IZ8-qT-dXN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Controls" id="2zB-T7-A76" sceneMemberID="viewController"/>
+            </objects>
+            <point key="canvasLocation" x="4784" y="198"/>
         </scene>
     </scenes>
     <resources>

@@ -1,20 +1,20 @@
 //
-//  PedalKnobControl.swift
+//  AmpKnobControl.swift
 //  DefenderApp
 //
-//  Created by Derek Knight on 29/11/16.
+//  Created by Derek Knight on 1/12/16.
 //  Copyright © 2016 Derek Knight. All rights reserved.
 //
 
 import UIKit
 
-protocol PedalKnobDelegate {
-    func valueDidChangeForKnob(_ sender: PedalKnobControl, value: Float)
+protocol AmpKnobDelegate {
+    func valueDidChangeForKnob(_ sender: AmpKnobControl, value: Float)
 }
 
-class PedalKnobControl: KnobBaseControl {
+class AmpKnobControl: KnobBaseControl {
     
-    var delegate: PedalKnobDelegate?
+    var delegate: AmpKnobDelegate?
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -28,9 +28,9 @@ class PedalKnobControl: KnobBaseControl {
     
     private func configure() {
         self.backgroundColor = UIColor.clear
-        super.configure(minValue: 0.0, maxValue: 1.0, minStop: -0.05, maxStop: 1.05, pixelsPerTick: 40)
+        super.configure(minValue: 1.0, maxValue: 10.0, minStop: 1.0, maxStop: 12.0, pixelsPerTick: 15)
     }
-  
+
     /*
     override func mouseUp(with theEvent: NSEvent) {
         super.mouseUp(with: theEvent)
@@ -38,10 +38,10 @@ class PedalKnobControl: KnobBaseControl {
     }
     */
     
-    // Drawing
+    // MARK: Draw function
     override func draw(_ dirtyRect: CGRect) {
         if !isHidden {
-            if let knobImage = UIImage(named: "pedal-knob") {
+            if let knobImage = UIImage(named: "knob") {
                 let angle = degreesFromFloatValue(_floatValue)
                 let rotatedKnob = self.imageRotatedByDegrees(knobImage, degrees: angle)
                 rotatedKnob.draw(in: dirtyRect)

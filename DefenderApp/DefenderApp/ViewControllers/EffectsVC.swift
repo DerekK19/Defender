@@ -24,7 +24,18 @@ class EffectsVC: UIPageViewController {
         }
     }
     
-    internal var effects: [DXEffect]? {
+    internal var preset: DXPreset? {
+        didSet {
+            for pageVC in orderedViewControllers {
+                if let controlsVC = pageVC as? ControlsVC {
+                    controlsVC.configureWith(preset: preset)
+                }
+            }
+            self.effects = preset?.effects
+        }
+    }
+    
+    private var effects: [DXEffect]? {
         didSet {
             for pageVC in orderedViewControllers {
                 if let pedalVC = pageVC as? PedalVC {
@@ -50,7 +61,8 @@ class EffectsVC: UIPageViewController {
     }
 
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newPedalVC(slotNumber: 0),
+        return [self.newControlsVC(),
+                self.newPedalVC(slotNumber: 0),
                 self.newPedalVC(slotNumber: 1),
                 self.newPedalVC(slotNumber: 2),
                 self.newPedalVC(slotNumber: 3),
@@ -59,6 +71,14 @@ class EffectsVC: UIPageViewController {
                 self.newEffectVC(slotNumber: 6),
                 self.newEffectVC(slotNumber: 7)]
     }()
+    
+    private func newControlsVC() -> UIViewController {
+        guard let controlsVC = UIStoryboard(name: "Controls", bundle: nil).instantiateInitialViewController() as? ControlsVC else {
+            Flogger.log.error("Unable to create controls view controller")
+            fatalError()
+        }
+        return controlsVC
+    }
     
     private func newPedalVC(slotNumber: Int) -> UIViewController {
         guard let pedalVC = UIStoryboard(name: "Pedal", bundle: nil).instantiateInitialViewController() as? PedalVC else {
