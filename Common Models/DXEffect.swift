@@ -9,12 +9,12 @@
 import Foundation
 import ObjectMapper
 
-enum DXEffectType : Int {
-    case Unknown = 0
-    case Stomp = 1
-    case Modulation = 2
-    case Delay = 3
-    case Reverb = 4
+public enum DXEffectType : String {
+    case Unknown = ""
+    case Stomp = "Stomp Box"
+    case Modulation = "Modulation"
+    case Delay = "Delay"
+    case Reverb = "Reverb"
 }
 
 internal class DXEffect : Transferable {

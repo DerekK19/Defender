@@ -13,6 +13,11 @@ class PedalVC: UIViewController {
     @IBOutlet weak var slot: EffectSlotControl!
     @IBOutlet weak var bodyTop: PedalBodyControl!
     @IBOutlet weak var bodyBottom: PedalBodyControl!
+    @IBOutlet weak var pad: PedalPadControl!
+    @IBOutlet weak var pedalLogo: UIImageView!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var textBar: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var powerLED: LEDControl!
     @IBOutlet weak var upperKnobs: UIStackView!
     @IBOutlet weak var lowerKnobs: UIStackView!
@@ -100,6 +105,8 @@ class PedalVC: UIViewController {
         fullBackgroundColour = bgColours[effect?.colour ?? 0] ?? slotBackgroundColour
         NSLog("Configuring slot for \(self) top \(self.bodyTop) \(effect?.slot) \(effect?.colour) \(fullBackgroundColour)")
         if appeared {
+            typeLabel.text = pedal?.type.rawValue.uppercased() ?? ""
+            nameLabel.text = pedal?.name?.uppercased() ?? ""
             if pedal == nil {
                 state = .disabled
             } else {

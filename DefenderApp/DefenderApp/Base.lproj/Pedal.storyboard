@@ -107,9 +107,78 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drC-jB-VpO" customClass="PedalBodyControl" customModule="DefenderApp" customModuleProvider="target">
                                         <rect key="frame" x="5" y="143" width="220" height="242"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" ◀︎INPUT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tX-Az-GFn">
+                                                <rect key="frame" x="0.0" y="1" width="30" height="8"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="7"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OUTPUT▶︎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxd-7g-spb">
+                                                <rect key="frame" x="184" y="1" width="36" height="8"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="7"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Jf-pK-LdS">
+                                                <rect key="frame" x="108" y="63.5" width="4" height="13"/>
+                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="11"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIV-Zu-rqP">
+                                                <rect key="frame" x="4" y="77.5" width="212" height="1"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="CtS-mv-exP"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oF6-fO-Bv7">
+                                                <rect key="frame" x="109" y="79.5" width="3.5" height="18"/>
+                                                <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdS-Dy-ZI4" customClass="PedalPadControl" customModule="DefenderApp" customModuleProvider="target">
+                                                <rect key="frame" x="7" y="99.5" width="206" height="137.5"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pedal-logo" translatesAutoresizingMaskIntoConstraints="NO" id="rJL-L3-OKo">
+                                                        <rect key="frame" x="19.5" y="6" width="167" height="125.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="rJL-L3-OKo" secondAttribute="height" multiplier="4:3" id="xLo-Tp-PrB"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="rJL-L3-OKo" firstAttribute="top" secondItem="bdS-Dy-ZI4" secondAttribute="top" constant="6" id="FGD-yD-lAA"/>
+                                                    <constraint firstItem="rJL-L3-OKo" firstAttribute="centerX" secondItem="bdS-Dy-ZI4" secondAttribute="centerX" id="SNp-W6-U2X"/>
+                                                    <constraint firstAttribute="width" secondItem="bdS-Dy-ZI4" secondAttribute="height" multiplier="3:2" id="bXj-8S-EfO"/>
+                                                    <constraint firstItem="rJL-L3-OKo" firstAttribute="centerY" secondItem="bdS-Dy-ZI4" secondAttribute="centerY" id="nFH-I5-KCC"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.76470588240000004" green="0.79607843140000001" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3Jf-pK-LdS" secondAttribute="trailing" constant="5" id="1eU-vS-lT9"/>
+                                            <constraint firstAttribute="trailing" secondItem="mIV-Zu-rqP" secondAttribute="trailing" constant="4" id="514-aT-ngL"/>
+                                            <constraint firstItem="oF6-fO-Bv7" firstAttribute="top" secondItem="mIV-Zu-rqP" secondAttribute="bottom" constant="1" id="EYH-De-6Q7"/>
+                                            <constraint firstItem="oF6-fO-Bv7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="drC-jB-VpO" secondAttribute="leading" constant="5" id="FrI-mu-bSA"/>
+                                            <constraint firstAttribute="trailing" secondItem="Lxd-7g-spb" secondAttribute="trailing" id="J5C-3r-1HO"/>
+                                            <constraint firstItem="bdS-Dy-ZI4" firstAttribute="leading" secondItem="drC-jB-VpO" secondAttribute="leading" constant="7" id="LBb-4a-vqk"/>
+                                            <constraint firstItem="mIV-Zu-rqP" firstAttribute="leading" secondItem="drC-jB-VpO" secondAttribute="leading" constant="4" id="Poq-8x-T0V"/>
+                                            <constraint firstItem="oF6-fO-Bv7" firstAttribute="centerX" secondItem="drC-jB-VpO" secondAttribute="centerX" id="QQu-Li-gDV"/>
+                                            <constraint firstAttribute="trailing" secondItem="bdS-Dy-ZI4" secondAttribute="trailing" constant="7" id="QWI-Qn-hYQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="bdS-Dy-ZI4" secondAttribute="bottom" constant="5" id="VGB-M6-Oht"/>
                                             <constraint firstAttribute="width" secondItem="drC-jB-VpO" secondAttribute="height" multiplier="1:1.1" id="Zqs-XF-7XP"/>
+                                            <constraint firstItem="3Jf-pK-LdS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="drC-jB-VpO" secondAttribute="leading" constant="5" id="a9c-BY-YMO"/>
+                                            <constraint firstItem="mIV-Zu-rqP" firstAttribute="top" secondItem="3Jf-pK-LdS" secondAttribute="bottom" constant="1" id="cfa-cg-sVA"/>
+                                            <constraint firstItem="bdS-Dy-ZI4" firstAttribute="top" secondItem="oF6-fO-Bv7" secondAttribute="bottom" constant="2" id="g6x-xN-HfV"/>
+                                            <constraint firstItem="3Jf-pK-LdS" firstAttribute="centerX" secondItem="drC-jB-VpO" secondAttribute="centerX" id="h3P-Us-Mew"/>
+                                            <constraint firstItem="Lxd-7g-spb" firstAttribute="top" secondItem="drC-jB-VpO" secondAttribute="top" constant="1" id="iM8-rD-wR5"/>
+                                            <constraint firstItem="4tX-Az-GFn" firstAttribute="top" secondItem="drC-jB-VpO" secondAttribute="top" constant="1" id="mg2-FC-sHL"/>
+                                            <constraint firstItem="4tX-Az-GFn" firstAttribute="leading" secondItem="drC-jB-VpO" secondAttribute="leading" id="r7e-S7-cnm"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oF6-fO-Bv7" secondAttribute="trailing" constant="5" id="skz-rq-Lwn"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4BC-HO-Sh8" customClass="ShadeControl" customModule="DefenderApp" customModuleProvider="target">
@@ -163,9 +232,14 @@
                         <outlet property="knobUpperMiddle" destination="WOX-OW-FCz" id="2b9-H3-zY6"/>
                         <outlet property="knobUpperRight" destination="H6i-VU-i5j" id="Tfv-TK-IIA"/>
                         <outlet property="lowerKnobs" destination="lDe-Ur-nTR" id="O9H-NK-P7K"/>
+                        <outlet property="nameLabel" destination="oF6-fO-Bv7" id="1iv-jm-ms7"/>
+                        <outlet property="pad" destination="bdS-Dy-ZI4" id="nFU-Of-JyN"/>
+                        <outlet property="pedalLogo" destination="rJL-L3-OKo" id="zrW-N9-gb8"/>
                         <outlet property="powerLED" destination="I7V-2E-lHc" id="jtf-Wb-F2b"/>
                         <outlet property="shade" destination="4BC-HO-Sh8" id="4wx-2V-YG1"/>
                         <outlet property="slot" destination="TtB-MC-ZhC" id="jvs-dW-Ufq"/>
+                        <outlet property="textBar" destination="mIV-Zu-rqP" id="b2w-wd-gVu"/>
+                        <outlet property="typeLabel" destination="3Jf-pK-LdS" id="r8e-lB-a1n"/>
                         <outlet property="upperKnobs" destination="iGN-P4-1Az" id="Vc1-UJ-Dae"/>
                     </connections>
                 </viewController>
@@ -174,4 +248,7 @@
             <point key="canvasLocation" x="-8" y="-69.265367316341838"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pedal-logo" width="36" height="27"/>
+    </resources>
 </document>

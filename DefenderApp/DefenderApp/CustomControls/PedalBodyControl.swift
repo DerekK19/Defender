@@ -10,6 +10,20 @@ import UIKit
 
 class PedalBodyControl: UIView {
     
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.configure()
+    }
+    
+    override init(frame frameRect: CGRect) {
+        super.init(frame: frameRect)
+        self.configure()
+    }
+    
+    private func configure() {
+        self.backgroundColor = UIColor.clear
+    }
+    
     var backgroundColour: UIColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0) {
         didSet {
             setNeedsDisplay(self.bounds)
