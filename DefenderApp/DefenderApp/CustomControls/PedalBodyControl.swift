@@ -10,6 +10,9 @@ import UIKit
 
 class PedalBodyControl: UIView {
     
+    let shadowWidth: CGFloat = 3
+    let cornerRadius: CGFloat = 4
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.configure()
@@ -30,50 +33,52 @@ class PedalBodyControl: UIView {
         }
     }
     
+    private func insetPath (by offset: CGFloat) -> UIBezierPath {
+        let insetRect = CGRect(x: bounds.origin.x+offset, y: bounds.origin.y, width: bounds.width-(offset*2), height: bounds.height-offset)
+        let path = UIBezierPath(roundedRect: insetRect, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: cornerRadius, height: cornerRadius))
+        return path
+    }
+    
     override func draw(_ dirtyRect: CGRect) {
         if !isHidden {
             let colour = backgroundColour
             colour.setFill()
-            let rect = UIBezierPath(roundedRect: dirtyRect, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 4, height: 4))
-            rect.fill()
+            insetPath(by: 0).fill()
         }
     }
 
-    /*
     override func layoutSubviews() {
         
         super.layoutSubviews()
         
-        backgroundColor = backgroundColour
-        let insetRect = CGRect(x: bounds.origin.x+3, y: bounds.origin.y, width: bounds.width-6, height: bounds.height-3)
-        let rect = UIBezierPath(roundedRect: bounds, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 4, height: 4)) // Round corner path for full rectangle
-        let rect2 = UIBezierPath(roundedRect: insetRect, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 4, height: 4)) // Round corner path for inset rectangle
+        let shadowLayer = CAShapeLayer()
+        shadowLayer.frame = self.bounds
+        shadowLayer.shadowColor = UIColor.black.cgColor
+        shadowLayer.shadowOpacity = 1.0
+        shadowLayer.shadowOffset = CGSize(width: 0, height: -3)
+        shadowLayer.shadowRadius = 3
+        shadowLayer.fillRule = kCAFillRuleEvenOdd
+        shadowLayer.name = "My Shadow"
         
-        // Set the fill colour
-        //colour.setFill()
+        // Create the larger rectangle path.
+        let path = CGMutablePath()
         
-        // Draw the full rectangle with rounded corners
-        //rect.fill()
+        path.addRect(self.bounds.insetBy(dx: -3, dy: -3))
         
-        // Set up a drop shadow (light appears to come from above and to the bottom)
-        let dropShadow = NSShadow()
-        dropShadow.shadowColor = UIColor.black
-        dropShadow.shadowBlurRadius = 10
-        dropShadow.shadowOffset = CGSize(width: 0, height: -3)
+        // Add the inner path so it's subtracted from the outer path.
+        // someInnerPath could be a simple bounds rect, or maybe
+        // a rounded one for some extra fanciness.
+        let someInnerPath = insetPath(by: 0).cgPath
+        path.addPath(someInnerPath)
+        path.closeSubpath()
         
-            // save graphics state
-//            CGGraphicsContext.saveGraphicsState()
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.5
-        layer.shadowOffset = CGSize(width: 0, height: -3)
-        layer.shadowPath = rect2.cgPath
-            
-        // Draw the inset rectangle, which will apply the drop shadow
-        //rect2.fill()
+        shadowLayer.path = path
         
-            // restore state
-//        CGGraphicsContext.restoreGraphicsState()
-            
+        self.layer.sublayers?.forEach { if $0.name == "My Shadow" { $0.removeFromSuperlayer() } }
+        self.layer.addSublayer(shadowLayer)
+        
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = someInnerPath
+        shadowLayer.mask = maskLayer
     }
- */
 }

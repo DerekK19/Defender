@@ -88,9 +88,6 @@ class PedalVC: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NSLog("Appearing slot for \(self) top \(self.bodyTop) \(effect?.slot) \(fullBackgroundColour)")
-//        bodyTop.backgroundColour = fullBackgroundColour
-//        bodyBottom.backgroundColour = fullBackgroundColour
         appeared = true
         self.configureWith(pedal: self.effect)
     }
@@ -103,7 +100,6 @@ class PedalVC: UIViewController {
     internal func configureWith(pedal: DXEffect?) {
         self.effect = pedal
         fullBackgroundColour = bgColours[effect?.colour ?? 0] ?? slotBackgroundColour
-        NSLog("Configuring slot for \(self) top \(self.bodyTop) \(effect?.slot) \(effect?.colour) \(fullBackgroundColour)")
         if appeared {
             typeLabel.text = pedal?.type.rawValue.uppercased() ?? ""
             nameLabel.text = pedal?.name?.uppercased() ?? ""
