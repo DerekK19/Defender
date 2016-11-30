@@ -90,29 +90,28 @@ class KnobBaseControl: UIView {
     internal func degreesFromFloatValue(_ floatValue: Float) -> CGFloat {
         let fraction = (floatValue - self.minStop) / (self.maxStop - self.minStop)
         let angle = -CGFloat(fraction * 360.0)
-        //        NSLog("Float \(floatValue) -> Degrees \(angle)")
         return angle
     }
     internal func radiansFromFloatValue(_ floatValue: Float) -> CGFloat {
         let fraction = self.minValue + (floatValue * (self.maxValue - self.minValue))
         let angle =  -(CGFloat(fraction * Float(M_PI) * 2.0) + CGFloat(M_PI / 2.0))
-        //        NSLog("Float \(floatValue) -> Radians \(angle)")
         return angle
     }
     
     internal func imageRotatedByDegrees(_ image: UIImage, degrees: CGFloat) -> UIImage {
+        let radians = -degrees * CGFloat(M_PI / 180)
         //Calculate the size of the rotated view's containing box for our drawing space
         let rotatedViewBox: UIView = UIView(frame: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
-        let t: CGAffineTransform = CGAffineTransform(rotationAngle: degrees * CGFloat(M_PI / 180))
+        let t: CGAffineTransform = CGAffineTransform(rotationAngle: radians)
         rotatedViewBox.transform = t
-        let rotatedSize: CGSize = rotatedViewBox.frame.size
+        let rotatedSize: CGSize = rotatedViewBox.bounds.size
         //Create the bitmap context
         UIGraphicsBeginImageContext(rotatedSize)
         let bitmap: CGContext = UIGraphicsGetCurrentContext()!
         //Move the origin to the middle of the image so we will rotate and scale around the center.
         bitmap.translateBy(x: rotatedSize.width / 2, y: rotatedSize.height / 2)
         //Rotate the image context
-        bitmap.rotate(by: -(degrees * CGFloat(M_PI / 180)))
+        bitmap.rotate(by: radians)
         //Now, draw the rotated/scaled image into the context
         bitmap.scaleBy(x: 1.0, y: -1.0)
         bitmap.draw(image.cgImage!, in: CGRect(x: -image.size.width / 2, y: -image.size.height / 2, width: image.size.width, height: image.size.height))
