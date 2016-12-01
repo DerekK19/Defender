@@ -217,9 +217,12 @@ class MainVC: NSViewController {
             Flogger.log.verbose(" Powering off")
             self.powerState = .off
             self.setPreset(nil)
+            self.sendNoAmplifier()
         } else {
             Flogger.log.verbose(" Powering on")
             sender.state = NSOffState
+            self.powerState = .on
+            self.sendCurrentAmplifier()
             ampManager.getPresets() {
                 DispatchQueue.main.async {
                     self.powerState = .on
@@ -379,10 +382,19 @@ class MainVC: NSViewController {
     func sendCurrentAmplifier() {
         var message: DXMessage!
         if let amp = self.ampManager.currentAmplifier {
-            message = DXMessage(command: .amplifier, data: DXAmplifier(dto: amp))
-        } else {
-            message = DXMessage(command: .amplifier, data: DXAmplifier(name: "No amplifier", manufacturer: ""))
+            if self.powerState == .on {
+                message = DXMessage(command: .amplifier, data: DXAmplifier(dto: amp))
+                sendMessage(message)
+                return
+            }
         }
+        message = DXMessage(command: .amplifier, data: DXAmplifier(name: nil, manufacturer: nil))
+        sendMessage(message)
+    }
+    
+    func sendNoAmplifier() {
+        var message: DXMessage!
+        message = DXMessage(command: .amplifier, data: DXAmplifier(name: nil, manufacturer: nil))
         sendMessage(message)
     }
     

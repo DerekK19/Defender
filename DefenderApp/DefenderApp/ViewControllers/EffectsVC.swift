@@ -24,6 +24,20 @@ class EffectsVC: UIPageViewController {
         }
     }
     
+    internal var powerState: PowerState = .off {
+        didSet {
+            for pageVC in orderedViewControllers {
+                if let controlsVC = pageVC as? ControlsVC {
+                    controlsVC.powerState = powerState
+                } else if let pedalVC = pageVC as? PedalVC {
+                    pedalVC.powerState = powerState
+                } else if let effectVC = pageVC as? EffectVC {
+                    effectVC.powerState = powerState
+                }
+            }
+        }
+    }
+    
     internal var preset: DXPreset? {
         didSet {
             for pageVC in orderedViewControllers {

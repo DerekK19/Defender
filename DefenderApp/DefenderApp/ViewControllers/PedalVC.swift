@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Flogger
 
 class PedalVC: UIViewController {
 
     @IBOutlet weak var slot: EffectSlotControl!
+    @IBOutlet weak var shade: ShadeControl!
     @IBOutlet weak var slotLabel: UILabel!
     @IBOutlet weak var bodyTop: PedalBodyControl!
     @IBOutlet weak var bodyBottom: PedalBodyControl!
@@ -30,7 +32,6 @@ class PedalVC: UIViewController {
     @IBOutlet weak var knobLowerLeft: PedalKnobControl!
     @IBOutlet weak var knobLowerMiddle: PedalKnobControl!
     @IBOutlet weak var knobLowerRight: PedalKnobControl!
-    @IBOutlet weak var shade: ShadeControl!
 
     var slotNumber: Int?
     var effect: DXEffect?
@@ -81,7 +82,6 @@ class PedalVC: UIViewController {
                 self.outputLabel.textColor = UIColor.black
                 self.textBar.backgroundColor = UIColor.black
             }
-            self.slot.backgroundColour = UIColor.slotBackground
             self.pedalBackgroundColour = newBackgroundColour
             self.bodyTop.backgroundColour = newBackgroundColour
             self.bodyBottom.backgroundColour = newBackgroundColour
@@ -90,16 +90,18 @@ class PedalVC: UIViewController {
         }
     }
     
-    var powerState: PowerState = .off {
+    internal var powerState: PowerState = .off {
         didSet {
-            self.shade.isOpen = powerState == .on || state == .disabled
+            if appeared {
+                self.shade.state = state == .disabled ? .closed : powerState == .on ? .open : .ajar
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.powerState = .on
+        self.powerState = .off
         self.state = .disabled
     }
 

@@ -12,6 +12,7 @@ import Flogger
 class ControlsVC: UIViewController {
     
     @IBOutlet weak var slot: EffectSlotControl!
+    @IBOutlet weak var shade: ShadeControl!
     @IBOutlet weak var gainArrow: UIImageView!
     @IBOutlet weak var volumeArrow: UIImageView!
     @IBOutlet weak var trebleArrow: UIImageView!
@@ -30,11 +31,21 @@ class ControlsVC: UIViewController {
     @IBOutlet weak var middleKnob: AmpKnobControl!
     @IBOutlet weak var bassKnob: AmpKnobControl!
     @IBOutlet weak var presenceKnob: AmpKnobControl!
-
+    
+    var appeared = false
+    
+    internal var powerState: PowerState = .off {
+        didSet {
+            if appeared {
+                self.shade.state = powerState == .on ? .open : .closed
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.slot.backgroundColour = UIColor.slotBackground
+        self.powerState = .off
 
         let contrastColour = UIColor.white
         gainArrow.image = UIImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
@@ -56,6 +67,16 @@ class ControlsVC: UIViewController {
         middleKnob.delegate = self
         bassKnob.delegate = self
         presenceKnob.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        appeared = true
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     internal func configureWith(preset: DXPreset?) {

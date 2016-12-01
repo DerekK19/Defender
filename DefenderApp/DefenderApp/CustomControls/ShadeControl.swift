@@ -16,10 +16,10 @@ class ShadeControl: UIView {
         }
     }
     
-    var isOpen: Bool = false {
+    var state: ShadeState = .closed {
         didSet {
-            backgroundColour = isOpen ? UIColor.shadeOpen : UIColor.shadeClosed
-            self.isHidden = isOpen
+            backgroundColour = state == .open ? UIColor.shadeOpen : state == .ajar ? UIColor.shadeAjar : UIColor.shadeClosed
+            self.isHidden = state == .open
             setNeedsDisplay(self.bounds)
         }
     }

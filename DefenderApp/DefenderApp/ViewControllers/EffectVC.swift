@@ -11,10 +11,10 @@ import UIKit
 class EffectVC: UIViewController {
 
     @IBOutlet weak var slot: EffectSlotControl!
+    @IBOutlet weak var shade: ShadeControl!
     @IBOutlet weak var slotLabel: UILabel!
     @IBOutlet weak var chassis: EffectControl!
     @IBOutlet weak var powerLED: LEDControl!
-    @IBOutlet weak var shade: ShadeControl!
 
     let bgColours: [Int : UIColor] = [1 : UIColor(red: 0.30, green: 0.30, blue: 0.41, alpha: 1.0),
                                       2 : UIColor(red: 0.49, green: 0.49, blue: 0.49, alpha: 1.0),
@@ -46,7 +46,6 @@ class EffectVC: UIViewController {
                 slotLabel.isHidden = true
                 self.powerLED.backgroundColour = UIColor.red
             }
-            self.slot.backgroundColour = UIColor.slotBackground
             self.effectBackgroundColour = newBackgroundColour
             self.chassis.backgroundColour = newBackgroundColour
             let currentState = self.powerState
@@ -54,16 +53,18 @@ class EffectVC: UIViewController {
         }
     }
     
-    var powerState: PowerState = .off {
+    internal var powerState: PowerState = .off {
         didSet {
-            self.shade.isOpen = powerState == .on || state == .disabled
+            if appeared {
+                self.shade.state = state == .disabled ? .closed : powerState == .on ? .open : .ajar
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.powerState = .on
+        self.powerState = .off
         self.state = .disabled
     }
 

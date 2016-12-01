@@ -42,7 +42,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lA3-YR-Lw5" customClass="AmpKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="14" y="20" width="87.5" height="86.5"/>
+                                                                <rect key="frame" x="14.5" y="20" width="86.5" height="86.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="lA3-YR-Lw5" secondAttribute="height" multiplier="1:1" id="jqG-gg-riY"/>
@@ -110,7 +110,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RaL-P2-uGg" customClass="AmpKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="14" y="20" width="87.5" height="86.5"/>
+                                                                <rect key="frame" x="14.5" y="20" width="86.5" height="86.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="RaL-P2-uGg" secondAttribute="height" multiplier="1:1" id="E0S-Zl-UY9"/>
@@ -221,7 +221,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLz-xL-fVe" customClass="AmpKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="14" y="20" width="87.5" height="86.5"/>
+                                                                <rect key="frame" x="14.5" y="20" width="86.5" height="86.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="gLz-xL-fVe" secondAttribute="height" multiplier="1:1" id="W7s-kM-p9M"/>
@@ -256,13 +256,21 @@
                                             <constraint firstItem="ey2-xw-YZf" firstAttribute="height" secondItem="Iql-Fa-11D" secondAttribute="height" id="lOZ-Hr-4e1"/>
                                         </constraints>
                                     </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8a-at-hD3" customClass="ShadeControl" customModule="DefenderApp" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="5" width="220" height="380"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="s8a-at-hD3" secondAttribute="trailing" constant="5" id="46l-iZ-bxc"/>
                                     <constraint firstItem="7Ka-jO-Q0b" firstAttribute="top" secondItem="RKh-ML-dm5" secondAttribute="top" id="Eqq-k5-pvT"/>
+                                    <constraint firstItem="s8a-at-hD3" firstAttribute="leading" secondItem="RKh-ML-dm5" secondAttribute="leading" constant="5" id="IEG-8a-PLr"/>
                                     <constraint firstAttribute="bottom" secondItem="7Ka-jO-Q0b" secondAttribute="bottom" id="YwI-pK-snk"/>
                                     <constraint firstAttribute="trailing" secondItem="7Ka-jO-Q0b" secondAttribute="trailing" id="ZjR-6v-dlj"/>
                                     <constraint firstItem="7Ka-jO-Q0b" firstAttribute="leading" secondItem="RKh-ML-dm5" secondAttribute="leading" id="jC2-ko-8AP"/>
+                                    <constraint firstAttribute="bottom" secondItem="s8a-at-hD3" secondAttribute="bottom" constant="5" id="pB0-2a-cjC"/>
+                                    <constraint firstItem="s8a-at-hD3" firstAttribute="top" secondItem="RKh-ML-dm5" secondAttribute="top" constant="5" id="tBj-hq-cNX"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -289,6 +297,7 @@
                         <outlet property="presenceArrow" destination="ey2-xw-YZf" id="Tcr-w6-PSv"/>
                         <outlet property="presenceKnob" destination="RaL-P2-uGg" id="DDE-92-xzw"/>
                         <outlet property="presenceLabel" destination="JnV-XA-QJf" id="eOZ-2g-fq4"/>
+                        <outlet property="shade" destination="s8a-at-hD3" id="BcH-r9-VJm"/>
                         <outlet property="slot" destination="RKh-ML-dm5" id="Th2-jJ-QOg"/>
                         <outlet property="trebleArrow" destination="Iql-Fa-11D" id="OTj-kb-NDs"/>
                         <outlet property="trebleKnob" destination="mHO-Ij-XOe" id="Fge-dO-5nz"/>

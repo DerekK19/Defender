@@ -18,3 +18,9 @@ enum EffectState {
     case off
     case on
 }
+
+enum ShadeState {
+    case open
+    case ajar
+    case closed
+}

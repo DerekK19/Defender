@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class EffectControl: UIView {
     
     var backgroundColour: UIColor = UIColor.slotBackground {

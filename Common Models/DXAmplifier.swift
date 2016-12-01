@@ -11,8 +11,8 @@ import ObjectMapper
 
 internal class DXAmplifier : Transferable {
     
-    var name: String!
-    var manufacturer: String!
+    var name: String?
+    var manufacturer: String?
 
     required init?(map: Map) {
         mapping(map: map)
@@ -30,7 +30,7 @@ internal class DXAmplifier : Transferable {
         throw TransferError.serialising
     }
     
-    init(name: String, manufacturer: String) {
+    init(name: String?, manufacturer: String?) {
         self.name = name
         self.manufacturer = manufacturer
     }

@@ -220,7 +220,8 @@ extension MainVC: RemoteManagerDelegate {
                 switch message.command as RequestType {
                 case .amplifier:
                     let amp = try DXAmplifier(data: message.content)
-                    self.amplifierLabel.text = amp.name
+                    self.amplifierLabel.text = amp.name ?? "No Amplifier"
+                    self.effectsVC?.powerState = amp.name == nil ? .off : .on
                     self.sendGetPreset(nil)
                 case .preset:
                     let preset = try DXPreset(data: message.content)
@@ -240,6 +241,7 @@ extension MainVC: RemoteManagerDelegate {
     
     func remoteManagerDisconnected(_ manager: RemoteManager) {
         DispatchQueue.main.async {
+            self.effectsVC?.powerState = .off
             self.bluetoothLogo.alpha = 0.5
             self.bluetoothLabel.isHidden = true
             self.amplifierLabel.isHidden = true
@@ -253,6 +255,7 @@ extension MainVC: RemoteManagerDelegate {
         
     func remoteManagerUnavailable(_ manager: RemoteManager) {
         DispatchQueue.main.async {
+            self.effectsVC?.powerState = .off
             self.bluetoothLogo.isHidden = true
             self.bluetoothLabel.isHidden = true
             self.amplifierLabel.isHidden = true
