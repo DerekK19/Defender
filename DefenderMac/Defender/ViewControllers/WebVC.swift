@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Flogger
 import Mustang
 
 protocol WebVCDelegate {
@@ -227,9 +228,9 @@ class WebVC: NSViewController {
                 self.pagination = response.pagination
                 self.newPage = self.pagination!.page
                 self.countLabel.stringValue = "Found \(self.pagination!.total) items"
-                NSLog("For page \(self.newPage), found \(self.pagination!.total) items. Page \(self.pagination!.page) of \(self.pagination!.pages). Limit \(self.pagination!.limit) per page")
+                Flogger.log.debug("For page \(self.newPage), found \(self.pagination!.total) items. Page \(self.pagination!.page) of \(self.pagination!.pages). Limit \(self.pagination!.limit) per page")
                 for item in items {
-                    NSLog("\(item.title) - \(item.data?.preset?.effects.count ?? 0) effects")
+                    Flogger.log.debug("\(item.title) - \(item.data?.preset?.effects.count ?? 0) effects")
                 }
                 self.presets = items
                 self.searched = true
@@ -253,7 +254,6 @@ extension WebVC: NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func tableViewSelectionDidChange(_ notification: Notification) {
-        NSLog("Selection changed")
         let row = searchResultsTableView.selectedRow
         if row >= 0 && row < presets.count {
             let item = presets[row]

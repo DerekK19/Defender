@@ -11,7 +11,7 @@ import UIKit
 
 class EffectControl: UIView {
     
-    var backgroundColour: UIColor = UIColor(red: 0.13, green: 0.28, blue: 0.43, alpha: 1.0) {
+    var backgroundColour: UIColor = UIColor.slotBackground {
         didSet {
             setNeedsDisplay(self.bounds)
         }

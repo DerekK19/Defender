@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Flogger
 import Mustang
 
 protocol AmpManagerDelegate {
@@ -92,7 +93,7 @@ class AmpManager {
                     if let number = preset.number {
                         self.presets[number] = preset
                     } else {
-                        NSLog("Got a preset with no number, cannot use it")
+                        Flogger.log.error("Got a preset with no number, cannot use it")
                     }
                 }
                 onCompletion()
@@ -191,12 +192,12 @@ class AmpManager {
                       password: password,
                       onSuccess: {
                         DispatchQueue.main.async {
-                            NSLog("Logged in")
+                            Flogger.log.verbose("Logged in")
                             onCompletion(true)
                         }},
                       onFail: {
                         DispatchQueue.main.async {
-                            NSLog("Login failure")
+                            Flogger.log.error("Login failure")
                             onCompletion(false)
                         }}
         )
@@ -211,12 +212,12 @@ class AmpManager {
                        maxReturn: maxReturn,
                        onSuccess: { (response) in
                         DispatchQueue.main.async {
-                            NSLog("Searched")
+                            Flogger.log.verbose("Searched")
                             onCompletion(response)
                         }},
                        onFail: {
                         DispatchQueue.main.async {
-                            NSLog("Search failure")
+                            Flogger.log.error("Search failure")
                             onCompletion(nil)
                         }}
         )
@@ -225,12 +226,12 @@ class AmpManager {
     open func logout(onCompletion: @escaping (_ loggedOut: Bool) ->()) {
         mustang.logout(onSuccess: {
                         DispatchQueue.main.async {
-                            NSLog("Logged out")
+                            Flogger.log.verbose("Logged out")
                             onCompletion(true)
                         }},
                       onFail: {
                         DispatchQueue.main.async {
-                            NSLog("Logout failure")
+                            Flogger.log.error("Logout failure")
                             onCompletion(false)
                         }}
         )

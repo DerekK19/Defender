@@ -11,11 +11,14 @@ import UIKit
 class PedalVC: UIViewController {
 
     @IBOutlet weak var slot: EffectSlotControl!
+    @IBOutlet weak var slotLabel: UILabel!
     @IBOutlet weak var bodyTop: PedalBodyControl!
     @IBOutlet weak var bodyBottom: PedalBodyControl!
     @IBOutlet weak var pad: PedalPadControl!
     @IBOutlet weak var pedalLogo: UIImageView!
     @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var inputLabel: UILabel!
+    @IBOutlet weak var outputLabel: UILabel!
     @IBOutlet weak var textBar: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var powerLED: LEDControl!
@@ -32,7 +35,6 @@ class PedalVC: UIViewController {
     var slotNumber: Int?
     var effect: DXEffect?
     
-    let slotBackgroundColour = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
     let bgColours: [Int : UIColor] = [1 : UIColor(red: 0.17, green: 0.56, blue: 0.98, alpha: 1.0),
                                       2 : UIColor(red: 0.05, green: 0.87, blue: 0.48, alpha: 1.0),
                                       10 : UIColor(red: 0.95, green: 0.63, blue: 0.18, alpha: 1.0),
@@ -52,19 +54,34 @@ class PedalVC: UIViewController {
             self.knobLowerLeft.alpha = state == .disabled ? 0.0 : 1.0
             self.knobLowerMiddle.alpha = state == .disabled ? 0.0 : 1.0
             self.knobLowerRight.alpha = state == .disabled ? 0.0 : 1.0
-//            self.pedalLogo.alpha = state == .disabled ? 0.0 : 1.0
+            self.pedalLogo.alpha = state == .disabled ? 0.6 : 1.0
             switch state {
             case .disabled:
-                newBackgroundColour = slotBackgroundColour
-                self.powerLED.backgroundColour = UIColor.black
+                newBackgroundColour = UIColor.slotBackground
+                self.powerLED.backgroundColour = UIColor.slotBackground
+                slotLabel.isHidden = false
+                self.pad.backgroundColour = UIColor.slotBackground
+                self.inputLabel.textColor = UIColor.slotBackground
+                self.outputLabel.textColor = UIColor.slotBackground
+                self.textBar.backgroundColor = UIColor.slotBackground
             case .off:
                 newBackgroundColour = fullBackgroundColour
+                self.slotLabel.isHidden = true
                 self.powerLED.backgroundColour = UIColor.red.withBrightness(0.5)
+                self.pad.backgroundColour = UIColor.black
+                self.inputLabel.textColor = UIColor.black
+                self.outputLabel.textColor = UIColor.black
+                self.textBar.backgroundColor = UIColor.black
             case .on:
                 newBackgroundColour = fullBackgroundColour
+                self.slotLabel.isHidden = true
                 self.powerLED.backgroundColour = UIColor.red
+                self.pad.backgroundColour = UIColor.black
+                self.inputLabel.textColor = UIColor.black
+                self.outputLabel.textColor = UIColor.black
+                self.textBar.backgroundColor = UIColor.black
             }
-            self.slot.backgroundColour = slotBackgroundColour
+            self.slot.backgroundColour = UIColor.slotBackground
             self.pedalBackgroundColour = newBackgroundColour
             self.bodyTop.backgroundColour = newBackgroundColour
             self.bodyBottom.backgroundColour = newBackgroundColour
@@ -99,8 +116,9 @@ class PedalVC: UIViewController {
 
     internal func configureWith(pedal: DXEffect?) {
         self.effect = pedal
-        fullBackgroundColour = bgColours[effect?.colour ?? 0] ?? slotBackgroundColour
+        fullBackgroundColour = bgColours[effect?.colour ?? 0] ?? UIColor.slotBackground
         if appeared {
+            if slotNumber != nil { slotLabel.text = "\(self.slotNumber! + 1)" } else { slotLabel.text = "" }
             typeLabel.text = pedal?.type.rawValue.uppercased() ?? ""
             nameLabel.text = pedal?.name?.uppercased() ?? ""
             if pedal == nil {

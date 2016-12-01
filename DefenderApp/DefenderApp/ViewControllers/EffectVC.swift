@@ -11,10 +11,11 @@ import UIKit
 class EffectVC: UIViewController {
 
     @IBOutlet weak var slot: EffectSlotControl!
+    @IBOutlet weak var slotLabel: UILabel!
     @IBOutlet weak var chassis: EffectControl!
+    @IBOutlet weak var powerLED: LEDControl!
     @IBOutlet weak var shade: ShadeControl!
 
-    let slotBackgroundColour = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
     let bgColours: [Int : UIColor] = [1 : UIColor(red: 0.30, green: 0.30, blue: 0.41, alpha: 1.0),
                                       2 : UIColor(red: 0.49, green: 0.49, blue: 0.49, alpha: 1.0),
                                       10 : UIColor(red: 0.11, green: 0.28, blue: 0.43, alpha: 1.0),
@@ -31,19 +32,21 @@ class EffectVC: UIViewController {
     var state: EffectState = .disabled {
         didSet {
             var newBackgroundColour = UIColor()
-            //            self.pedalLogo.alpha = state == .disabled ? 0.0 : 1.0
             switch state {
             case .disabled:
-                newBackgroundColour = slotBackgroundColour
-//                self.powerLED.backgroundColour = UIColor.black
+                newBackgroundColour = UIColor.slotBackground
+                slotLabel.isHidden = false
+                self.powerLED.backgroundColour = UIColor.slotBackground
             case .off:
                 newBackgroundColour = fullBackgroundColour
-//                self.powerLED.backgroundColour = UIColor.red.withBrightness(0.5)
+                slotLabel.isHidden = true
+                self.powerLED.backgroundColour = UIColor.red.withBrightness(0.5)
             case .on:
                 newBackgroundColour = fullBackgroundColour
-//                self.powerLED.backgroundColour = UIColor.red
+                slotLabel.isHidden = true
+                self.powerLED.backgroundColour = UIColor.red
             }
-            self.slot.backgroundColour = slotBackgroundColour
+            self.slot.backgroundColour = UIColor.slotBackground
             self.effectBackgroundColour = newBackgroundColour
             self.chassis.backgroundColour = newBackgroundColour
             let currentState = self.powerState
@@ -66,8 +69,8 @@ class EffectVC: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NSLog("Appearing slot \(effect?.slot) \(fullBackgroundColour)")
         appeared = true
+        self.configureWith(effect: self.effect)
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,8 +80,9 @@ class EffectVC: UIViewController {
 
     internal func configureWith(effect: DXEffect?) {
         self.effect = effect
-        fullBackgroundColour = bgColours[effect?.colour ?? 0] ?? slotBackgroundColour
+        fullBackgroundColour = bgColours[effect?.colour ?? 0] ?? UIColor.slotBackground
         if appeared {
+            if slotNumber != nil { slotLabel.text = "\(self.slotNumber! + 1)" } else { slotLabel.text = "" }
             if effect == nil {
                 state = .disabled
             } else {

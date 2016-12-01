@@ -10,7 +10,7 @@ import UIKit
 
 class EffectSlotControl: UIView {
     
-    var backgroundColour: UIColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0) {
+    var backgroundColour: UIColor = UIColor.slotBackground {
         didSet {
             setNeedsDisplay(self.bounds)
         }

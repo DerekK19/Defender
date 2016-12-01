@@ -31,12 +31,10 @@ class ControlsVC: UIViewController {
     @IBOutlet weak var bassKnob: AmpKnobControl!
     @IBOutlet weak var presenceKnob: AmpKnobControl!
 
-    let slotBackgroundColour = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.slot.backgroundColour = slotBackgroundColour
+        self.slot.backgroundColour = UIColor.slotBackground
 
         let contrastColour = UIColor.white
         gainArrow.image = UIImage(named: "down-arrow")?.imageWithTintColor(contrastColour)

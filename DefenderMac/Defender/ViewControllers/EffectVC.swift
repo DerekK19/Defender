@@ -168,7 +168,7 @@ extension EffectVC: EffectKnobDelegate {
             effect!.knobs[5].value = value
             delegate?.settingsDidChangeForEffect(self)
         default:
-            NSLog("Don't know what knob sent this event")
+            Flogger.log.error("Don't know what knob sent this event")
         }
     }
 }

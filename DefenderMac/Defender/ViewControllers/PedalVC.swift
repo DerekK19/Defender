@@ -211,7 +211,7 @@ extension PedalVC: PedalKnobDelegate {
             case knobLowerRight:
                 currentValue = effect!.knobs[5].value
             default:
-                NSLog("Don't know what knob sent this event")
+                Flogger.log.error("Don't know what knob sent this event")
             }
 
             if value != currentValue {
@@ -241,11 +241,11 @@ extension PedalVC: PedalKnobDelegate {
                     effect!.knobs[5].value = value
                     delegate?.settingsDidChangeForPedal(self)
                 default:
-                    NSLog("Don't know what knob sent this event")
+                    Flogger.log.error("Don't know what knob sent this event")
                 }
             }
         } else {
-            NSLog("Can't get a knob change if there is no pedal")
+            Flogger.log.error("Can't get a knob change if there is no pedal")
         }
     }
 }

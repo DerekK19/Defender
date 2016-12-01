@@ -181,6 +181,12 @@
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oF6-fO-Bv7" secondAttribute="trailing" constant="5" id="skz-rq-Lwn"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWE-dj-uZ4">
+                                        <rect key="frame" x="115" y="100" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="80"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4BC-HO-Sh8" customClass="ShadeControl" customModule="DefenderApp" customModuleProvider="target">
                                         <rect key="frame" x="5" y="5" width="220" height="380"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -195,9 +201,11 @@
                                     <constraint firstItem="4BC-HO-Sh8" firstAttribute="top" secondItem="TtB-MC-ZhC" secondAttribute="top" constant="5" id="7ny-m1-5wu"/>
                                     <constraint firstAttribute="bottom" secondItem="drC-jB-VpO" secondAttribute="bottom" constant="5" id="8JW-d6-AKN"/>
                                     <constraint firstAttribute="height" secondItem="fhC-Gr-1ER" secondAttribute="height" multiplier="7.5" id="9UC-dB-6m9"/>
+                                    <constraint firstItem="TWE-dj-uZ4" firstAttribute="top" secondItem="TtB-MC-ZhC" secondAttribute="top" constant="100" id="CkG-dT-tDZ"/>
                                     <constraint firstItem="VcC-tm-Bbe" firstAttribute="bottom" secondItem="drC-jB-VpO" secondAttribute="top" constant="5" id="Egv-X4-aIn"/>
                                     <constraint firstAttribute="bottom" secondItem="4BC-HO-Sh8" secondAttribute="bottom" constant="5" id="IDh-fp-yeo"/>
                                     <constraint firstItem="drC-jB-VpO" firstAttribute="trailing" secondItem="VcC-tm-Bbe" secondAttribute="trailing" constant="5" id="PO9-TZ-9gh"/>
+                                    <constraint firstItem="TWE-dj-uZ4" firstAttribute="centerX" secondItem="TtB-MC-ZhC" secondAttribute="centerX" id="Sp9-lk-lT2"/>
                                     <constraint firstAttribute="height" secondItem="WOX-OW-FCz" secondAttribute="height" multiplier="7.5" id="bcJ-Iu-y0L"/>
                                     <constraint firstItem="drC-jB-VpO" firstAttribute="centerX" secondItem="TtB-MC-ZhC" secondAttribute="centerX" id="gEQ-GU-lzY"/>
                                     <constraint firstItem="VcC-tm-Bbe" firstAttribute="top" secondItem="TtB-MC-ZhC" secondAttribute="top" constant="5" id="lXG-e3-fgb"/>
@@ -225,6 +233,7 @@
                     <connections>
                         <outlet property="bodyBottom" destination="drC-jB-VpO" id="lZC-N4-Gnt"/>
                         <outlet property="bodyTop" destination="VcC-tm-Bbe" id="6hz-4V-Qga"/>
+                        <outlet property="inputLabel" destination="4tX-Az-GFn" id="LmU-gM-aYA"/>
                         <outlet property="knobLowerLeft" destination="HZC-Pq-8nk" id="9V1-dd-iwD"/>
                         <outlet property="knobLowerMiddle" destination="TEC-Jn-K2W" id="RQ6-8W-ww7"/>
                         <outlet property="knobLowerRight" destination="ceV-P0-Xm6" id="qCh-iu-VNq"/>
@@ -233,11 +242,13 @@
                         <outlet property="knobUpperRight" destination="H6i-VU-i5j" id="Tfv-TK-IIA"/>
                         <outlet property="lowerKnobs" destination="lDe-Ur-nTR" id="O9H-NK-P7K"/>
                         <outlet property="nameLabel" destination="oF6-fO-Bv7" id="1iv-jm-ms7"/>
+                        <outlet property="outputLabel" destination="Lxd-7g-spb" id="AQM-sa-k3X"/>
                         <outlet property="pad" destination="bdS-Dy-ZI4" id="nFU-Of-JyN"/>
                         <outlet property="pedalLogo" destination="rJL-L3-OKo" id="zrW-N9-gb8"/>
                         <outlet property="powerLED" destination="I7V-2E-lHc" id="jtf-Wb-F2b"/>
                         <outlet property="shade" destination="4BC-HO-Sh8" id="4wx-2V-YG1"/>
                         <outlet property="slot" destination="TtB-MC-ZhC" id="jvs-dW-Ufq"/>
+                        <outlet property="slotLabel" destination="TWE-dj-uZ4" id="PfV-9L-Ccr"/>
                         <outlet property="textBar" destination="mIV-Zu-rqP" id="b2w-wd-gVu"/>
                         <outlet property="typeLabel" destination="3Jf-pK-LdS" id="r8e-lB-a1n"/>
                         <outlet property="upperKnobs" destination="iGN-P4-1Az" id="Vc1-UJ-Dae"/>

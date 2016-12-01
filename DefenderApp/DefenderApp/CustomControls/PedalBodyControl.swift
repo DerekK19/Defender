@@ -27,7 +27,7 @@ class PedalBodyControl: UIView {
         self.backgroundColor = UIColor.clear
     }
     
-    var backgroundColour: UIColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0) {
+    var backgroundColour: UIColor = UIColor.slotBackground {
         didSet {
             setNeedsDisplay(self.bounds)
         }
@@ -53,7 +53,7 @@ class PedalBodyControl: UIView {
         
         let shadowLayer = CAShapeLayer()
         shadowLayer.frame = self.bounds
-        shadowLayer.shadowColor = UIColor.black.cgColor
+        shadowLayer.shadowColor = UIColor.slotBackground.cgColor
         shadowLayer.shadowOpacity = 1.0
         shadowLayer.shadowOffset = CGSize(width: 0, height: -3)
         shadowLayer.shadowRadius = 3

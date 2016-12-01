@@ -10,7 +10,7 @@ import UIKit
 
 class ShadeControl: UIView {
     
-    var backgroundColour: UIColor = UIColor(red: 0.66, green: 0.66, blue: 0.66, alpha: 0.6) {
+    var backgroundColour: UIColor = UIColor.shadeClosed {
         didSet {
             setNeedsDisplay(self.bounds)
         }
@@ -18,7 +18,7 @@ class ShadeControl: UIView {
     
     var isOpen: Bool = false {
         didSet {
-            backgroundColour = UIColor(red: 0.66, green: 0.66, blue: 0.66, alpha: isOpen ? 0.0 : 0.6)
+            backgroundColour = isOpen ? UIColor.shadeOpen : UIColor.shadeClosed
             self.isHidden = isOpen
             setNeedsDisplay(self.bounds)
         }
