@@ -23,33 +23,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RKh-ML-dm5" customClass="EffectSlotControl" customModule="DefenderApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="400"/>
+                                <rect key="frame" x="5" y="5" width="230" height="390"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7Ka-jO-Q0b">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="400"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="230" height="390"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AHn-Io-hhd">
-                                                <rect key="frame" x="0.0" y="0.0" width="120" height="400"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="115" height="390"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7fx-mx-NVv">
-                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="130"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="115" height="126.5"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="UWe-Mp-6dX">
-                                                                <rect key="frame" x="50" y="0.0" width="20" height="20"/>
+                                                                <rect key="frame" x="48" y="0.0" width="20" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="20" id="LT1-54-FTn"/>
                                                                     <constraint firstAttribute="width" secondItem="UWe-Mp-6dX" secondAttribute="height" multiplier="1:1" id="P9Q-qm-suV"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lA3-YR-Lw5" customClass="AmpKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="15.5" y="20" width="90" height="90"/>
+                                                                <rect key="frame" x="14" y="20" width="87.5" height="86.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="lA3-YR-Lw5" secondAttribute="height" multiplier="1:1" id="jqG-gg-riY"/>
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSX-c0-jgx">
-                                                                <rect key="frame" x="42.5" y="110" width="35" height="20.5"/>
+                                                                <rect key="frame" x="40.5" y="106.5" width="35" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -67,23 +67,23 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0K2-DS-oM9">
-                                                        <rect key="frame" x="0.0" y="135" width="120" height="130"/>
+                                                        <rect key="frame" x="0.0" y="131.5" width="115" height="127"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="jZE-au-D5X">
-                                                                <rect key="frame" x="50" y="0.0" width="20" height="20"/>
+                                                                <rect key="frame" x="48" y="0.0" width="20" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="jZE-au-D5X" secondAttribute="height" multiplier="1:1" id="NYY-ie-hm6"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xe7-0U-xtF" customClass="AmpKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="15" y="20" width="90" height="90"/>
+                                                                <rect key="frame" x="14" y="20" width="87" height="87"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="Xe7-0U-xtF" secondAttribute="height" multiplier="1:1" id="m0t-uD-3Jc"/>
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hj7-n8-ayL">
-                                                                <rect key="frame" x="31.5" y="110" width="57.5" height="20.5"/>
+                                                                <rect key="frame" x="29.5" y="107" width="57.5" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -101,23 +101,23 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SHm-VA-SvE">
-                                                        <rect key="frame" x="0.0" y="270" width="120" height="130"/>
+                                                        <rect key="frame" x="0.0" y="263.5" width="115" height="126.5"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="ey2-xw-YZf">
-                                                                <rect key="frame" x="50" y="0.0" width="20" height="20"/>
+                                                                <rect key="frame" x="48" y="0.0" width="20" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="ey2-xw-YZf" secondAttribute="height" multiplier="1:1" id="Zir-FB-y0p"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RaL-P2-uGg" customClass="AmpKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="15.5" y="20" width="90" height="90"/>
+                                                                <rect key="frame" x="14" y="20" width="87.5" height="86.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="RaL-P2-uGg" secondAttribute="height" multiplier="1:1" id="E0S-Zl-UY9"/>
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reverb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JnV-XA-QJf">
-                                                                <rect key="frame" x="33" y="110" width="54" height="20.5"/>
+                                                                <rect key="frame" x="31" y="106.5" width="54" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -141,26 +141,26 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="GU8-HG-SXa">
-                                                <rect key="frame" x="120" y="0.0" width="120" height="400"/>
+                                                <rect key="frame" x="115" y="0.0" width="115" height="390"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1m6-7Z-l8v">
-                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="130"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="115" height="126.5"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Iql-Fa-11D">
-                                                                <rect key="frame" x="50" y="0.0" width="20" height="20"/>
+                                                                <rect key="frame" x="48" y="0.0" width="20" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="Iql-Fa-11D" secondAttribute="height" multiplier="1:1" id="oRY-s7-qtz"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mHO-Ij-XOe" customClass="AmpKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="16" y="20" width="89.5" height="90"/>
+                                                                <rect key="frame" x="14.5" y="20" width="87" height="86.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="mHO-Ij-XOe" secondAttribute="height" multiplier="1:1" id="Q9b-y5-eDK"/>
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Treble" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JM1-Xn-iGD">
-                                                                <rect key="frame" x="36" y="110" width="48" height="20.5"/>
+                                                                <rect key="frame" x="34" y="106.5" width="48" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -178,23 +178,23 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5yo-nT-7Y8">
-                                                        <rect key="frame" x="0.0" y="135" width="120" height="130"/>
+                                                        <rect key="frame" x="0.0" y="131.5" width="115" height="127"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="xlR-Tv-85M">
-                                                                <rect key="frame" x="50" y="0.0" width="20" height="20"/>
+                                                                <rect key="frame" x="48" y="0.0" width="20" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="xlR-Tv-85M" secondAttribute="height" multiplier="1:1" id="lR0-5k-bTK"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zRf-r2-mRe" customClass="AmpKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="15" y="20" width="90" height="90"/>
+                                                                <rect key="frame" x="14" y="20" width="87" height="87"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="zRf-r2-mRe" secondAttribute="height" multiplier="1:1" id="nHm-J1-V1w"/>
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Middle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WW0-eB-wa4">
-                                                                <rect key="frame" x="34" y="110" width="52" height="20.5"/>
+                                                                <rect key="frame" x="32" y="107" width="52" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -212,23 +212,23 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lp1-6R-R1b">
-                                                        <rect key="frame" x="0.0" y="270" width="120" height="130"/>
+                                                        <rect key="frame" x="0.0" y="263.5" width="115" height="126.5"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="xci-Z3-Wqq">
-                                                                <rect key="frame" x="50" y="0.0" width="20" height="20"/>
+                                                                <rect key="frame" x="48" y="0.0" width="20" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="xci-Z3-Wqq" secondAttribute="height" multiplier="1:1" id="H3w-Nb-HqI"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLz-xL-fVe" customClass="AmpKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="15.5" y="20" width="90" height="90"/>
+                                                                <rect key="frame" x="14" y="20" width="87.5" height="86.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="gLz-xL-fVe" secondAttribute="height" multiplier="1:1" id="W7s-kM-p9M"/>
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bass" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JC-ZG-s9Y">
-                                                                <rect key="frame" x="41.5" y="110" width="37" height="20.5"/>
+                                                                <rect key="frame" x="39.5" y="106.5" width="37" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -268,10 +268,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RKh-ML-dm5" firstAttribute="top" secondItem="iUG-6r-CnA" secondAttribute="top" id="KZm-IX-FWN"/>
-                            <constraint firstItem="chz-0j-Uof" firstAttribute="top" secondItem="RKh-ML-dm5" secondAttribute="bottom" id="dcV-Hg-kIY"/>
-                            <constraint firstItem="RKh-ML-dm5" firstAttribute="leading" secondItem="iUG-6r-CnA" secondAttribute="leading" id="ldl-Dh-szD"/>
-                            <constraint firstAttribute="trailing" secondItem="RKh-ML-dm5" secondAttribute="trailing" id="zeK-n3-MS0"/>
+                            <constraint firstItem="RKh-ML-dm5" firstAttribute="top" secondItem="iUG-6r-CnA" secondAttribute="top" constant="5" id="KZm-IX-FWN"/>
+                            <constraint firstItem="chz-0j-Uof" firstAttribute="top" secondItem="RKh-ML-dm5" secondAttribute="bottom" constant="5" id="dcV-Hg-kIY"/>
+                            <constraint firstItem="RKh-ML-dm5" firstAttribute="leading" secondItem="iUG-6r-CnA" secondAttribute="leading" constant="5" id="ldl-Dh-szD"/>
+                            <constraint firstAttribute="trailing" secondItem="RKh-ML-dm5" secondAttribute="trailing" constant="5" id="zeK-n3-MS0"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

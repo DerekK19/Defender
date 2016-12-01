@@ -29,6 +29,7 @@
 		71935F301DEF6A1D0096A919 /* AmpKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71935F2F1DEF6A1D0096A919 /* AmpKnobControl.swift */; };
 		71935F321DEF700C0096A919 /* ControlsPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71935F311DEF700B0096A919 /* ControlsPageVC.swift */; };
 		71935F341DEF724E0096A919 /* UIImage+Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71935F331DEF724E0096A919 /* UIImage+Colour.swift */; };
+		719360341DEFB84A0096A919 /* EffectControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719360331DEFB84A0096A919 /* EffectControl.swift */; };
 		719614131DED01DA00AE3E6E /* EffectSlotControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719614121DED01DA00AE3E6E /* EffectSlotControl.swift */; };
 		719614151DED028700AE3E6E /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719614141DED028700AE3E6E /* Enums.swift */; };
 		719614171DED030900AE3E6E /* ShadeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719614161DED030900AE3E6E /* ShadeControl.swift */; };
@@ -91,6 +92,7 @@
 		71935F2F1DEF6A1D0096A919 /* AmpKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmpKnobControl.swift; sourceTree = "<group>"; };
 		71935F311DEF700B0096A919 /* ControlsPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlsPageVC.swift; sourceTree = "<group>"; };
 		71935F331DEF724E0096A919 /* UIImage+Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Colour.swift"; sourceTree = "<group>"; };
+		719360331DEFB84A0096A919 /* EffectControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectControl.swift; sourceTree = "<group>"; };
 		719614121DED01DA00AE3E6E /* EffectSlotControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectSlotControl.swift; sourceTree = "<group>"; };
 		719614141DED028700AE3E6E /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		719614161DED030900AE3E6E /* ShadeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadeControl.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				712DC3F21DECD59C004E5BE1 /* PedalBodyControl.swift */,
 				71935F261DEE35DE0096A919 /* PedalPadControl.swift */,
 				719614121DED01DA00AE3E6E /* EffectSlotControl.swift */,
+				719360331DEFB84A0096A919 /* EffectControl.swift */,
 				719614161DED030900AE3E6E /* ShadeControl.swift */,
 				7196141B1DED0D3E00AE3E6E /* KnobBaseControl.swift */,
 				71935F2F1DEF6A1D0096A919 /* AmpKnobControl.swift */,
@@ -478,6 +481,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				719360341DEFB84A0096A919 /* EffectControl.swift in Sources */,
 				71935F301DEF6A1D0096A919 /* AmpKnobControl.swift in Sources */,
 				65F69F201DDED1DF0017188D /* DXPreset.swift in Sources */,
 				7196141E1DED0E3400AE3E6E /* PedalKnobControl.swift in Sources */,
