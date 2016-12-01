@@ -36,11 +36,27 @@
                                                     <constraint firstAttribute="width" secondItem="sRg-jU-SGS" secondAttribute="height" multiplier="1:1" id="cBy-z4-ERp"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAU-13-II5">
+                                                <rect key="frame" x="218" y="2" width="0.0" height="0.0"/>
+                                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="12"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgk-0Q-yWl">
+                                                <rect key="frame" x="218" y="4" width="0.0" height="0.0"/>
+                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="11"/>
+                                                <color key="textColor" red="0.43921568630000002" green="0.70196078429999997" blue="0.87450980389999999" alpha="1" colorSpace="deviceRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="sRg-jU-SGS" firstAttribute="top" secondItem="Txe-Me-N49" secondAttribute="top" constant="2" id="BLN-tp-Wp9"/>
+                                            <constraint firstAttribute="trailing" secondItem="VAU-13-II5" secondAttribute="trailing" constant="2" id="Bfa-fp-RtU"/>
+                                            <constraint firstItem="sgk-0Q-yWl" firstAttribute="top" secondItem="VAU-13-II5" secondAttribute="bottom" constant="2" id="LPg-lP-dn7"/>
                                             <constraint firstItem="sRg-jU-SGS" firstAttribute="leading" secondItem="Txe-Me-N49" secondAttribute="leading" constant="2" id="T0H-Nu-ySC"/>
+                                            <constraint firstItem="VAU-13-II5" firstAttribute="trailing" secondItem="sgk-0Q-yWl" secondAttribute="trailing" id="ZfT-Ae-S86"/>
+                                            <constraint firstItem="VAU-13-II5" firstAttribute="top" secondItem="Txe-Me-N49" secondAttribute="top" constant="2" id="vx3-HP-R9m"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgB-3h-9l4">
@@ -84,10 +100,12 @@
                     <size key="freeformSize" width="240" height="400"/>
                     <connections>
                         <outlet property="chassis" destination="Txe-Me-N49" id="iac-yE-eKC"/>
+                        <outlet property="nameLabel" destination="sgk-0Q-yWl" id="tjm-73-gNX"/>
                         <outlet property="powerLED" destination="sRg-jU-SGS" id="wR7-qN-Evk"/>
                         <outlet property="shade" destination="uIv-7v-qHf" id="rBg-en-EoQ"/>
                         <outlet property="slot" destination="TIU-tW-Gvt" id="hGC-fM-ZvA"/>
                         <outlet property="slotLabel" destination="xgB-3h-9l4" id="pJY-l9-eYq"/>
+                        <outlet property="typeLabel" destination="VAU-13-II5" id="lOf-74-nsq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dj3-5t-Gmv" userLabel="First Responder" sceneMemberID="firstResponder"/>
