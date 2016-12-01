@@ -249,7 +249,7 @@
         <!--Controls PageVC-->
         <scene sceneID="oZj-Pf-IUp">
             <objects>
-                <viewController id="jNO-Ug-GmM" customClass="ControlsPageVC" customModule="DefenderApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="controlsPage" id="jNO-Ug-GmM" customClass="ControlsPageVC" customModule="DefenderApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AOD-zl-nEz"/>
                         <viewControllerLayoutGuide type="bottom" id="ZWb-i4-JaW"/>
@@ -276,8 +276,8 @@
         <!--Controls-->
         <scene sceneID="jYY-bM-AA0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IZ8-qT-dXN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="Controls" id="2zB-T7-A76" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IZ8-qT-dXN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4784" y="198"/>
         </scene>

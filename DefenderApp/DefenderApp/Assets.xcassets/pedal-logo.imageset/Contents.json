@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "pedal-logo@1x.png",
+      "filename" : "pedalLogo@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "pedal-logo@2x.png",
+      "filename" : "pedalLogo@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "pedal-logo@3x.png",
+      "filename" : "pedalLogo@3x.png",
       "scale" : "3x"
     }
   ],
