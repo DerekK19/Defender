@@ -31,6 +31,7 @@
 		71935F341DEF724E0096A919 /* UIImage+Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71935F331DEF724E0096A919 /* UIImage+Colour.swift */; };
 		719360341DEFB84A0096A919 /* EffectControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719360331DEFB84A0096A919 /* EffectControl.swift */; };
 		719360361DEFBF480096A919 /* UIColor+Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719360351DEFBF480096A919 /* UIColor+Colours.swift */; };
+		719360381DF0EDBE0096A919 /* EffectKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719360371DF0EDBE0096A919 /* EffectKnobControl.swift */; };
 		719614131DED01DA00AE3E6E /* EffectSlotControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719614121DED01DA00AE3E6E /* EffectSlotControl.swift */; };
 		719614151DED028700AE3E6E /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719614141DED028700AE3E6E /* Enums.swift */; };
 		719614171DED030900AE3E6E /* ShadeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719614161DED030900AE3E6E /* ShadeControl.swift */; };
@@ -95,6 +96,7 @@
 		71935F331DEF724E0096A919 /* UIImage+Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Colour.swift"; sourceTree = "<group>"; };
 		719360331DEFB84A0096A919 /* EffectControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectControl.swift; sourceTree = "<group>"; };
 		719360351DEFBF480096A919 /* UIColor+Colours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Colours.swift"; sourceTree = "<group>"; };
+		719360371DF0EDBE0096A919 /* EffectKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectKnobControl.swift; sourceTree = "<group>"; };
 		719614121DED01DA00AE3E6E /* EffectSlotControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectSlotControl.swift; sourceTree = "<group>"; };
 		719614141DED028700AE3E6E /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		719614161DED030900AE3E6E /* ShadeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadeControl.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				71935F261DEE35DE0096A919 /* PedalPadControl.swift */,
 				719614121DED01DA00AE3E6E /* EffectSlotControl.swift */,
 				719360331DEFB84A0096A919 /* EffectControl.swift */,
+				719360371DF0EDBE0096A919 /* EffectKnobControl.swift */,
 				719614161DED030900AE3E6E /* ShadeControl.swift */,
 				7196141B1DED0D3E00AE3E6E /* KnobBaseControl.swift */,
 				71935F2F1DEF6A1D0096A919 /* AmpKnobControl.swift */,
@@ -502,6 +505,7 @@
 				650775C41DEBFCA600F5040C /* PedalVC.swift in Sources */,
 				7196141A1DED042B00AE3E6E /* UIColor+Brightness.swift in Sources */,
 				7198C33E1DDA833B003238D7 /* RemoteManager.swift in Sources */,
+				719360381DF0EDBE0096A919 /* EffectKnobControl.swift in Sources */,
 				65F69F0D1DDD70AB0017188D /* DXAmplifier.swift in Sources */,
 				719360361DEFBF480096A919 /* UIColor+Colours.swift in Sources */,
 				65F69F2A1DE011550017188D /* DXEffect.swift in Sources */,

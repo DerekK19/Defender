@@ -17,6 +17,13 @@ class EffectVC: UIViewController {
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var powerLED: LEDControl!
+    @IBOutlet weak var knobLeftTop: EffectKnobControl!
+    @IBOutlet weak var knobLeftMiddle: EffectKnobControl!
+    @IBOutlet weak var knobLeftBottom: EffectKnobControl!
+    @IBOutlet weak var knobRightTop: EffectKnobControl!
+    @IBOutlet weak var knobRightMiddle: EffectKnobControl!
+    @IBOutlet weak var knobRightBottom: EffectKnobControl!
+
 
     let bgColours: [Int : UIColor] = [1 : UIColor(red: 0.30, green: 0.30, blue: 0.41, alpha: 1.0),
                                       2 : UIColor(red: 0.49, green: 0.49, blue: 0.49, alpha: 1.0),
