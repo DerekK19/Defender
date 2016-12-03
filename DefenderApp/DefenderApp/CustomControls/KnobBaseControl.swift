@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Flogger
 
 class KnobBaseControl: UIView {
     
@@ -20,7 +21,7 @@ class KnobBaseControl: UIView {
     var minStop: Float = 0.0
     var maxStop: Float = 10.0
     
-    var startMouse: CGPoint?
+    var startAt: CGPoint?
     var startValue: Float = 1.0
     var direction: Float = 1.0
     
@@ -47,40 +48,29 @@ class KnobBaseControl: UIView {
         self.maxStop = maxStop
     }
     
-    /*
- 
     // Event handling
-    override var acceptsFirstResponder: Bool {
-        return true
+    func startedPan(at: CGPoint) {
+        startAt = at
+        startValue = _floatValue
+        let midX = self.frame.width / 2.0
+        direction = at.x < midX ? -1.0 : 1.0
+
     }
     
-    override func mouseDown(with theEvent: NSEvent) {
-        startMouse = theEvent.locationInWindow
-        if let startMouse = startMouse {
-            startValue = _floatValue
-            let viewMouse = self.convert(startMouse, from: nil)
-            let midX = self.frame.width / 2.0
-            direction = viewMouse.x < midX ? 1.0 : -1.0
-        }
-    }
-    
-    override func mouseDragged(with theEvent: NSEvent) {
-        let nowMouse = theEvent.locationInWindow
-        if let startMouse = startMouse {
-            _floatValue = yDelta(startPosition: startMouse, endPosition: nowMouse)
+    func panning(at: CGPoint) {
+        if let startAt = startAt {
+            _floatValue = yDelta(startPosition: startAt, endPosition: at)
             setNeedsDisplay(self.bounds)
         }
     }
     
-    override func mouseUp(with theEvent: NSEvent) {
-        let nowMouse = theEvent.locationInWindow
-        if let startMouse = startMouse {
-            floatValue = yDelta(startPosition: startMouse, endPosition: nowMouse)
+    func endedPan(at: CGPoint) {
+        if let startAt = startAt {
+            floatValue = yDelta(startPosition: startAt, endPosition: at)
         }
-        startMouse = nil
+        startAt = nil
+
     }
-    
-    */
     
     internal func yDelta(startPosition: CGPoint, endPosition: CGPoint) -> Float {
         let yChange = Float(endPosition.y - startPosition.y) * direction

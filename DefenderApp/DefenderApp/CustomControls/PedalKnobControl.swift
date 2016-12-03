@@ -29,14 +29,20 @@ class PedalKnobControl: KnobBaseControl {
     private func configure() {
         self.backgroundColor = UIColor.clear
         super.configure(minValue: 0.0, maxValue: 1.0, minStop: -0.05, maxStop: 1.05, pixelsPerTick: 40)
+        self.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan)))
     }
-  
-    /*
-    override func mouseUp(with theEvent: NSEvent) {
-        super.mouseUp(with: theEvent)
-        delegate?.valueDidChangeForKnob(self, value: floatValue)
+    
+    @objc fileprivate func handlePan(recognizer: UIPanGestureRecognizer) {
+        let location = recognizer.location(in: self)
+        if recognizer.state == .began {
+            super.startedPan(at: location)
+        } else if recognizer.state == .changed {
+            super.panning(at: location)
+        } else if recognizer.state == .ended {
+            super.endedPan(at: location)
+            delegate?.valueDidChangeForKnob(self, value: floatValue)
+        }
     }
-    */
     
     // Drawing
     override func draw(_ dirtyRect: CGRect) {

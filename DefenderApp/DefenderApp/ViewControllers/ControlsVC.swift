@@ -9,6 +9,10 @@
 import UIKit
 import Flogger
 
+protocol ControlsVCDelegate {
+    func settingsDidChangeForControls(_ sender: ControlsVC, preset: DXPreset?)
+}
+
 class ControlsVC: UIViewController {
     
     @IBOutlet weak var slot: EffectSlotControl!
@@ -32,6 +36,10 @@ class ControlsVC: UIViewController {
     @IBOutlet weak var bassKnob: AmpKnobControl!
     @IBOutlet weak var presenceKnob: AmpKnobControl!
     
+    var delegate: ControlsVCDelegate?
+    
+    var preset: DXPreset?
+
     var appeared = false
     
     internal var powerState: PowerState = .off {
@@ -80,6 +88,7 @@ class ControlsVC: UIViewController {
     }
     
     internal func configureWith(preset: DXPreset?) {
+        self.preset = preset
         gainKnob.floatValue = preset?.gain1 ?? 1.0
         volumeKnob.floatValue = preset?.volume ?? 1.0
         trebleKnob.floatValue = preset?.treble ?? 1.0
@@ -95,28 +104,32 @@ extension ControlsVC: AmpKnobDelegate {
     func valueDidChangeForKnob(_ sender: AmpKnobControl, value: Float) {
         switch sender {
         case gainKnob:
-            Flogger.log.debug("New gain is \(value)")
-//            currentPreset?.gain1 = value
+            Flogger.log.verbose("New gain is \(value)")
+            preset?.gain1 = value
+            delegate?.settingsDidChangeForControls(self, preset: preset)
         case volumeKnob:
-            Flogger.log.debug("New volume is \(value)")
-//            currentPreset?.volume = value
+            Flogger.log.verbose("New volume is \(value)")
+            preset?.volume = value
+            delegate?.settingsDidChangeForControls(self, preset: preset)
         case trebleKnob:
-            Flogger.log.debug("New treble is \(value)")
-//            currentPreset?.treble = value
+            Flogger.log.verbose("New treble is \(value)")
+            preset?.treble = value
+            delegate?.settingsDidChangeForControls(self, preset: preset)
         case middleKnob:
-            Flogger.log.debug("New middle is \(value)")
-//            currentPreset?.middle = value
+            Flogger.log.verbose("New middle is \(value)")
+            preset?.middle = value
+            delegate?.settingsDidChangeForControls(self, preset: preset)
         case bassKnob:
-            Flogger.log.debug("New bass is \(value)")
-//            currentPreset?.bass = value
+            Flogger.log.verbose("New bass is \(value)")
+            preset?.bass = value
+            delegate?.settingsDidChangeForControls(self, preset: preset)
         case presenceKnob:
-            Flogger.log.debug("New presence is \(value)")
-//            currentPreset?.presence = value
+            Flogger.log.verbose("New presence is \(value)")
+            preset?.presence = value
+            delegate?.settingsDidChangeForControls(self, preset: preset)
         default:
             Flogger.log.error("Don't know what knob sent this event")
         }
-//        saveButton.setState(.warning)
-//        exitButton.setState(.warning)
     }
 }
 

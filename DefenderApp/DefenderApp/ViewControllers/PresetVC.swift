@@ -1,5 +1,5 @@
 //
-//  EffectsVC.swift
+//  PresetVC.swift
 //  DefenderApp
 //
 //  Created by Derek Knight on 29/11/16.
@@ -9,20 +9,13 @@
 import UIKit
 import Flogger
 
-class EffectsVC: UIPageViewController {
+protocol PresetVCDelegate {
+    func settingsDidChangeForPreset(_ sender: PresetVC, preset: DXPreset?)
+}
+
+class PresetVC: UIPageViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        dataSource = self
-        
-        if let firstViewController = orderedViewControllers.first {
-            setViewControllers([firstViewController],
-                               direction: .forward,
-                               animated: true,
-                               completion: nil)
-        }
-    }
+    var presetDelegate: PresetVCDelegate?
     
     internal var powerState: PowerState = .off {
         didSet {
@@ -49,7 +42,7 @@ class EffectsVC: UIPageViewController {
         }
     }
     
-    private var effects: [DXEffect]? {
+    fileprivate var effects: [DXEffect]? {
         didSet {
             for pageVC in orderedViewControllers {
                 if let pedalVC = pageVC as? PedalVC {
@@ -86,11 +79,25 @@ class EffectsVC: UIPageViewController {
                 self.newEffectVC(slotNumber: 7)]
     }()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        dataSource = self
+        
+        if let firstViewController = orderedViewControllers.first {
+            setViewControllers([firstViewController],
+                               direction: .forward,
+                               animated: true,
+                               completion: nil)
+        }
+    }
+    
     private func newControlsVC() -> UIViewController {
         guard let controlsVC = UIStoryboard(name: "Controls", bundle: nil).instantiateInitialViewController() as? ControlsVC else {
             Flogger.log.error("Unable to create controls view controller")
             fatalError()
         }
+        controlsVC.delegate = self
         return controlsVC
     }
     
@@ -100,6 +107,7 @@ class EffectsVC: UIPageViewController {
             fatalError()
         }
         pedalVC.slotNumber = slotNumber
+        pedalVC.delegate = self
         return pedalVC
     }
     
@@ -109,14 +117,25 @@ class EffectsVC: UIPageViewController {
                 fatalError()
         }
         effectVC.slotNumber = slotNumber
+        effectVC.delegate = self
         return effectVC
     }
     
+    fileprivate func replaceEffect(_ effect: DXEffect, inSlot: Int) {
+        if effects != nil {
+            for index in 0...effects!.count-1 {
+                if effects![index].slot == effect.slot {
+                    effects![index] = effect
+                }
+            }
+        }
+        preset?.effects = effects
+    }
 }
 
 // MARK: UIPageViewControllerDataSource
 
-extension EffectsVC: UIPageViewControllerDataSource {
+extension PresetVC: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -155,5 +174,32 @@ extension EffectsVC: UIPageViewControllerDataSource {
         }
         
         return orderedViewControllers[nextIndex]
+    }
+}
+
+extension PresetVC: ControlsVCDelegate {
+    
+    func settingsDidChangeForControls(_ sender: ControlsVC, preset: DXPreset?) {
+        Flogger.log.verbose("Changed controls for preset")
+        self.preset = preset
+        presetDelegate?.settingsDidChangeForPreset(self, preset: preset)
+    }
+}
+
+extension PresetVC: PedalVCDelegate {
+    
+    func settingsDidChangeForPedal(_ sender: PedalVC, slotNumber: Int, effect: DXEffect) {
+        Flogger.log.verbose("Changed Pedal in slot \(slotNumber)")
+        replaceEffect(effect, inSlot: slotNumber)
+        presetDelegate?.settingsDidChangeForPreset(self, preset: preset)
+    }
+}
+
+extension PresetVC: EffectVCDelegate {
+    
+    func settingsDidChangeForEffect(_ sender: EffectVC, slotNumber: Int, effect: DXEffect) {
+        Flogger.log.verbose("Changed Effect in slot \(slotNumber)")
+        replaceEffect(effect, inSlot: slotNumber)
+        presetDelegate?.settingsDidChangeForPreset(self, preset: preset)
     }
 }

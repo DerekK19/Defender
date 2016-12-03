@@ -20,7 +20,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var presetLabel: UILabel!
     @IBOutlet weak var prevPreset: UIButton!
     @IBOutlet weak var nextPreset: UIButton!
-    @IBOutlet weak var effectsVC: EffectsVC?
+    @IBOutlet weak var presetVC: PresetVC?
 
     fileprivate var remoteManager: RemoteManager?
     
@@ -63,8 +63,9 @@ class MainVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             switch identifier {
-            case "embedEffects":
-                self.effectsVC = segue.destination as? EffectsVC
+            case "embedPreset":
+                self.presetVC = segue.destination as? PresetVC
+                self.presetVC?.presetDelegate = self
             default: break
             }
         }
@@ -181,76 +182,11 @@ class MainVC: UIViewController {
             Flogger.log.info(text)
         }
     }
-
 }
 
-extension MainVC: AmpKnobDelegate {
-    
-    func valueDidChangeForKnob(_ sender: AmpKnobControl, value: Float) {
-        switch sender {
-//        case gainKnob:
-//            Flogger.log.debug("New gain is \(value)")
-//            currentPreset?.gain1 = value
-//        case volumeKnob:
-//            Flogger.log.debug("New volume is \(value)")
-//            currentPreset?.volume = value
-//        case trebleKnob:
-//            Flogger.log.debug("New treble is \(value)")
-//            currentPreset?.treble = value
-//        case middleKnob:
-//            Flogger.log.debug("New middle is \(value)")
-//            currentPreset?.middle = value
-//        case bassKnob:
-//            Flogger.log.debug("New bass is \(value)")
-//            currentPreset?.bass = value
-//        case presenceKnob:
-//            Flogger.log.debug("New presence is \(value)")
-//            currentPreset?.presence = value
-        default:
-            Flogger.log.error("Don't know what knob sent this event")
-        }
-    }
-}
-
-extension MainVC: PedalVCDelegate {
-    
-    func settingsDidChangeForPedal(_ sender: PedalVC) {
-//        if sender == pedal1VC {
-//            Flogger.log.debug("New settings for pedal 1")
-//        }
-//        else if sender == pedal2VC {
-//            Flogger.log.debug("New settings for pedal 2")
-//        }
-//        else if sender == pedal3VC {
-//            Flogger.log.debug("New settings for pedal 3")
-//        }
-//        else if sender == pedal4VC {
-//            Flogger.log.debug("New settings for pedal 4")
-//        }
-//        else {
-            Flogger.log.error("Don't know what pedal sent this event")
-//        }
-    }
-}
-
-extension MainVC: EffectVCDelegate {
-    
-    func settingsDidChangeForEffect(_ sender: EffectVC) {
-//        if sender == effect1VC {
-//            Flogger.log.debug("New settings for effect 1")
-//        }
-//        else if sender == effect2VC {
-//            Flogger.log.debug("New settings for effect 2")
-//        }
-//        else if sender == effect3VC {
-//            Flogger.log.debug("New settings for effect 3")
-//        }
-//        else if sender == effect4VC {
-//            Flogger.log.debug("New settings for effect 4")
-//        }
-//        else {
-            Flogger.log.error("Don't know what effect sent this event")
-//        }
+extension MainVC: PresetVCDelegate {
+    func settingsDidChangeForPreset(_ sender: PresetVC, preset: DXPreset?) {
+        Flogger.log.info("Preset changed")
     }
 }
 
@@ -291,14 +227,14 @@ extension MainVC: RemoteManagerDelegate {
                 case .amplifier:
                     let amp = try DXAmplifier(data: message.content)
                     self.amplifierLabel.text = amp.name ?? "No Amplifier"
-                    self.effectsVC?.powerState = amp.name == nil ? .off : .on
+                    self.presetVC?.powerState = amp.name == nil ? .off : .on
                     self.sendGetPreset(nil)
                 case .preset:
                     let preset = try DXPreset(data: message.content)
                     self.logPreset(preset)
                     self.presetLabel.text = preset.name
                     self.presetNumber = preset.number
-                    self.effectsVC?.preset = preset
+                    self.presetVC?.preset = preset
                     self.prevPreset.isHidden = preset.number == nil
                     self.nextPreset.isHidden = preset.number == nil
                 }
@@ -311,7 +247,7 @@ extension MainVC: RemoteManagerDelegate {
     
     func remoteManagerDisconnected(_ manager: RemoteManager) {
         DispatchQueue.main.async {
-            self.effectsVC?.powerState = .off
+            self.presetVC?.powerState = .off
             self.bluetoothLogo.alpha = 0.5
             self.bluetoothLabel.isHidden = true
             self.amplifierLabel.isHidden = true
@@ -325,7 +261,7 @@ extension MainVC: RemoteManagerDelegate {
         
     func remoteManagerUnavailable(_ manager: RemoteManager) {
         DispatchQueue.main.async {
-            self.effectsVC?.powerState = .off
+            self.presetVC?.powerState = .off
             self.bluetoothLogo.isHidden = true
             self.bluetoothLabel.isHidden = true
             self.amplifierLabel.isHidden = true

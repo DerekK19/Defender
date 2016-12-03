@@ -10,7 +10,7 @@ import UIKit
 import Flogger
 
 protocol PedalVCDelegate {
-    func settingsDidChangeForPedal(_ sender: PedalVC)
+    func settingsDidChangeForPedal(_ sender: PedalVC, slotNumber: Int, effect: DXEffect)
 }
 
 class PedalVC: UIViewController {
@@ -51,6 +51,13 @@ class PedalVC: UIViewController {
     var pedalBackgroundColour = UIColor.black
 
     var appeared = false
+    
+    var upperLeftIndex: Int? = 0
+    var upperMiddleIndex: Int? = 0
+    var upperRightIndex: Int? = 0
+    var lowerLeftIndex: Int? = 0
+    var lowerMiddleIndex: Int? = 0
+    var lowerRightIndex: Int? = 0
     
     var state: EffectState = .disabled {
         didSet {
@@ -109,6 +116,13 @@ class PedalVC: UIViewController {
 
         self.powerState = .off
         self.state = .disabled
+        
+        knobUpperLeft.delegate = self
+        knobUpperMiddle.delegate = self
+        knobUpperRight.delegate = self
+        knobLowerLeft.delegate = self
+        knobLowerMiddle.delegate = self
+        knobLowerRight.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -136,73 +150,58 @@ class PedalVC: UIViewController {
             }
             upperKnobs.isHidden = false
             lowerKnobs.isHidden = false
+            upperLeftIndex = nil
+            upperMiddleIndex = nil
+            upperRightIndex = nil
+            lowerLeftIndex = nil
+            lowerMiddleIndex = nil
+            lowerRightIndex = nil
+
             if pedal?.knobs.count == 1 {
                 lowerKnobs.isHidden = true
-                knobUpperLeft.isHidden = true
-                knobUpperMiddle.isHidden = false
-                knobUpperRight.isHidden = true
-                knobLowerLeft.isHidden = true
-                knobLowerMiddle.isHidden = true
-                knobLowerRight.isHidden = true
-                knobUpperMiddle.floatValue = pedal?.knobs[0] ?? 0
+                upperMiddleIndex = 0
             } else if pedal?.knobs.count == 2 {
                 lowerKnobs.isHidden = true
-                knobUpperLeft.isHidden = false
-                knobUpperMiddle.isHidden = true
-                knobUpperRight.isHidden = false
-                knobLowerLeft.isHidden = true
-                knobLowerMiddle.isHidden = true
-                knobLowerRight.isHidden = true
-                knobUpperLeft.floatValue = pedal?.knobs[0] ?? 0
-                knobUpperRight.floatValue = pedal?.knobs[1] ?? 0
+                upperLeftIndex = 0
+                upperRightIndex = 1
             } else if pedal?.knobs.count == 3 {
                 lowerKnobs.isHidden = true
-                knobUpperLeft.isHidden = false
-                knobUpperMiddle.isHidden = false
-                knobUpperRight.isHidden = false
-                knobLowerLeft.isHidden = true
-                knobLowerMiddle.isHidden = true
-                knobLowerRight.isHidden = true
-                knobUpperLeft.floatValue = pedal?.knobs[0] ?? 0
-                knobUpperMiddle.floatValue = pedal?.knobs[1] ?? 0
-                knobUpperRight.floatValue = pedal?.knobs[2] ?? 0
+                upperLeftIndex = 0
+                upperMiddleIndex = 1
+                upperRightIndex = 2
             } else if pedal?.knobs.count == 4 {
-                knobUpperLeft.isHidden = false
-                knobUpperMiddle.isHidden = true
-                knobUpperRight.isHidden = false
-                knobLowerLeft.isHidden = false
-                knobLowerMiddle.isHidden = true
-                knobLowerRight.isHidden = false
-                knobUpperLeft.floatValue = pedal?.knobs[0] ?? 0
-                knobUpperRight.floatValue = pedal?.knobs[1] ?? 0
-                knobLowerLeft.floatValue = pedal?.knobs[2] ?? 0
-                knobLowerRight.floatValue = pedal?.knobs[3] ?? 0
+                upperLeftIndex = 0
+                upperMiddleIndex = 1
+                lowerLeftIndex = 2
+                lowerRightIndex = 3
             } else if pedal?.knobs.count == 5 {
-                knobUpperLeft.isHidden = false
-                knobUpperMiddle.isHidden = false
-                knobUpperRight.isHidden = false
-                knobLowerLeft.isHidden = false
-                knobLowerMiddle.isHidden = true
-                knobLowerRight.isHidden = false
-                knobUpperLeft.floatValue = pedal?.knobs[0] ?? 0
-                knobUpperMiddle.floatValue = pedal?.knobs[1] ?? 0
-                knobUpperRight.floatValue = pedal?.knobs[2] ?? 0
-                knobLowerLeft.floatValue = pedal?.knobs[3] ?? 0
-                knobLowerRight.floatValue = pedal?.knobs[4] ?? 0
+                upperLeftIndex = 0
+                upperMiddleIndex = 1
+                upperRightIndex = 2
+                lowerLeftIndex = 3
+                lowerRightIndex = 4
             } else if pedal?.knobs.count == 6 {
-                knobUpperLeft.isHidden = false
-                knobUpperMiddle.isHidden = false
-                knobUpperRight.isHidden = false
-                knobLowerLeft.isHidden = false
-                knobLowerMiddle.isHidden = false
-                knobLowerRight.isHidden = false
-                knobUpperLeft.floatValue = pedal?.knobs[0] ?? 0
-                knobUpperMiddle.floatValue = pedal?.knobs[1] ?? 0
-                knobUpperRight.floatValue = pedal?.knobs[2] ?? 0
-                knobLowerLeft.floatValue = pedal?.knobs[3] ?? 0
-                knobLowerMiddle.floatValue = pedal?.knobs[4] ?? 0
-                knobLowerRight.floatValue = pedal?.knobs[5] ?? 0
+                upperLeftIndex = 0
+                upperMiddleIndex = 1
+                upperRightIndex = 2
+                lowerLeftIndex = 3
+                lowerMiddleIndex = 4
+                lowerRightIndex = 5
             }
+            knobUpperLeft.isHidden = upperLeftIndex == nil
+            knobUpperMiddle.isHidden = upperMiddleIndex == nil
+            knobUpperRight.isHidden = upperRightIndex == nil
+            knobLowerLeft.isHidden = lowerLeftIndex == nil
+            knobLowerMiddle.isHidden = lowerMiddleIndex == nil
+            knobLowerRight.isHidden = lowerRightIndex == nil
+
+            if let index = upperLeftIndex { knobUpperLeft.floatValue = pedal?.knobs[index] ?? 0 }
+            if let index = upperMiddleIndex { knobUpperMiddle.floatValue = pedal?.knobs[index] ?? 0 }
+            if let index = upperRightIndex { knobUpperRight.floatValue = pedal?.knobs[index] ?? 0 }
+            if let index = lowerLeftIndex { knobLowerLeft.floatValue = pedal?.knobs[index] ?? 0 }
+            if let index = lowerMiddleIndex { knobLowerMiddle.floatValue = pedal?.knobs[index] ?? 0 }
+            if let index = lowerRightIndex { knobLowerRight.floatValue = pedal?.knobs[index] ?? 0 }
+
             bodyTop.backgroundColour = fullBackgroundColour
             bodyBottom.backgroundColour = fullBackgroundColour
         }
@@ -212,57 +211,59 @@ class PedalVC: UIViewController {
 extension PedalVC: PedalKnobDelegate {
     
     func valueDidChangeForKnob(_ sender: PedalKnobControl, value: Float) {
-        if effect != nil {
-            var currentValue: Float?
-            switch sender {
-            case knobUpperLeft:
-                currentValue = effect!.knobs[0]
-            case knobUpperMiddle:
-                currentValue = effect!.knobs[1]
-            case knobUpperRight:
-                currentValue = effect!.knobs[2]
-            case knobLowerLeft:
-                currentValue = effect!.knobs[3]
-            case knobLowerMiddle:
-                currentValue = effect!.knobs[4]
-            case knobLowerRight:
-                currentValue = effect!.knobs[5]
-            default:
-                Flogger.log.error("Don't know what knob sent this event")
-            }
-            
-            if value != currentValue {
+        if let slotNumber = slotNumber {
+            if effect != nil {
+                var currentValue: Float?
                 switch sender {
                 case knobUpperLeft:
-                    Flogger.log.debug("New upper left knob is \(value)")
-                    effect!.knobs[0] = value
-                    delegate?.settingsDidChangeForPedal(self)
+                    currentValue = effect!.knobs[upperLeftIndex!]
                 case knobUpperMiddle:
-                    Flogger.log.debug("New upper middle knob is \(value)")
-                    effect!.knobs[1] = value
-                    delegate?.settingsDidChangeForPedal(self)
+                    currentValue = effect!.knobs[upperMiddleIndex!]
                 case knobUpperRight:
-                    Flogger.log.debug("New upper right knob is \(value)")
-                    effect!.knobs[2] = value
-                    delegate?.settingsDidChangeForPedal(self)
+                    currentValue = effect!.knobs[upperRightIndex!]
                 case knobLowerLeft:
-                    Flogger.log.debug("New lower left knob is \(value)")
-                    effect!.knobs[3] = value
-                    delegate?.settingsDidChangeForPedal(self)
+                    currentValue = effect!.knobs[lowerLeftIndex!]
                 case knobLowerMiddle:
-                    Flogger.log.debug("New lower middle knob is \(value)")
-                    effect!.knobs[4] = value
-                    delegate?.settingsDidChangeForPedal(self)
+                    currentValue = effect!.knobs[lowerMiddleIndex!]
                 case knobLowerRight:
-                    Flogger.log.debug("New lower right knob is \(value)")
-                    effect!.knobs[5] = value
-                    delegate?.settingsDidChangeForPedal(self)
+                    currentValue = effect!.knobs[lowerRightIndex!]
                 default:
                     Flogger.log.error("Don't know what knob sent this event")
                 }
+                
+                if value != currentValue {
+                    switch sender {
+                    case knobUpperLeft:
+                        Flogger.log.debug("New upper left knob is \(value)")
+                        effect!.knobs[upperLeftIndex!] = value
+                        delegate?.settingsDidChangeForPedal(self, slotNumber: slotNumber, effect: effect!)
+                    case knobUpperMiddle:
+                        Flogger.log.verbose("New upper middle knob is \(value)")
+                        effect!.knobs[upperMiddleIndex!] = value
+                        delegate?.settingsDidChangeForPedal(self, slotNumber: slotNumber, effect: effect!)
+                    case knobUpperRight:
+                        Flogger.log.verbose("New upper right knob is \(value)")
+                        effect!.knobs[upperRightIndex!] = value
+                        delegate?.settingsDidChangeForPedal(self, slotNumber: slotNumber, effect: effect!)
+                    case knobLowerLeft:
+                        Flogger.log.verbose("New lower left knob is \(value)")
+                        effect!.knobs[lowerLeftIndex!] = value
+                        delegate?.settingsDidChangeForPedal(self, slotNumber: slotNumber, effect: effect!)
+                    case knobLowerMiddle:
+                        Flogger.log.verbose("New lower middle knob is \(value)")
+                        effect!.knobs[lowerMiddleIndex!] = value
+                        delegate?.settingsDidChangeForPedal(self, slotNumber: slotNumber, effect: effect!)
+                    case knobLowerRight:
+                        Flogger.log.verbose("New lower right knob is \(value)")
+                        effect!.knobs[lowerRightIndex!] = value
+                        delegate?.settingsDidChangeForPedal(self, slotNumber: slotNumber, effect: effect!)
+                    default:
+                        Flogger.log.error("Don't know what knob sent this event")
+                    }
+                }
+            } else {
+                Flogger.log.error("Can't get a knob change if there is no pedal")
             }
-        } else {
-            Flogger.log.error("Can't get a knob change if there is no pedal")
         }
     }
 }

@@ -111,7 +111,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFQ-0D-o8O">
                                 <rect key="frame" x="0.0" y="80" width="375" height="523"/>
                                 <connections>
-                                    <segue destination="tje-St-VXC" kind="embed" identifier="embedEffects" id="6G7-Ca-T1s"/>
+                                    <segue destination="tje-St-VXC" kind="embed" identifier="embedPreset" id="6G7-Ca-T1s"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -150,10 +150,10 @@
             </objects>
             <point key="canvasLocation" x="1076" y="121.88905547226388"/>
         </scene>
-        <!--EffectsVC-->
+        <!--PresetVC-->
         <scene sceneID="80I-Kk-6Od">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="tje-St-VXC" customClass="EffectsVC" customModule="DefenderApp" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="tje-St-VXC" customClass="PresetVC" customModule="DefenderApp" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H99-TV-XhR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1830" y="197"/>

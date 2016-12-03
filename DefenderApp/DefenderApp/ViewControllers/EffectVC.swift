@@ -10,7 +10,7 @@ import UIKit
 import Flogger
 
 protocol EffectVCDelegate {
-    func settingsDidChangeForEffect(_ sender: EffectVC)
+    func settingsDidChangeForEffect(_ sender: EffectVC, slotNumber: Int, effect: DXEffect)
 }
 
 class EffectVC: UIViewController {
@@ -175,33 +175,37 @@ class EffectVC: UIViewController {
 extension EffectVC: EffectKnobDelegate {
     
     func valueDidChangeForKnob(_ sender: EffectKnobControl, value: Float) {
-        switch sender {
-        case knob1:
-            Flogger.log.debug("New knob 1 is \(value)")
-            effect!.knobs[0] = value
-            delegate?.settingsDidChangeForEffect(self)
-        case knob2:
-            Flogger.log.debug("New knob 2 is \(value)")
-            effect!.knobs[1] = value
-            delegate?.settingsDidChangeForEffect(self)
-        case knob3:
-            Flogger.log.debug("New knob 3 is \(value)")
-            effect!.knobs[2] = value
-            delegate?.settingsDidChangeForEffect(self)
-        case knob4:
-            Flogger.log.debug("New knob 4 is \(value)")
-            effect!.knobs[3] = value
-            delegate?.settingsDidChangeForEffect(self)
-        case knob5:
-            Flogger.log.debug("New knob 5 is \(value)")
-            effect!.knobs[4] = value
-            delegate?.settingsDidChangeForEffect(self)
-        case knob6:
-            Flogger.log.debug("New knob 6 is \(value)")
-            effect!.knobs[5] = value
-            delegate?.settingsDidChangeForEffect(self)
-        default:
-            Flogger.log.error("Don't know what knob sent this event")
+        if let slotNumber = slotNumber {
+            if effect != nil  {
+                switch sender {
+                case knob1:
+                    Flogger.log.verbose("New knob 1 is \(value)")
+                    effect!.knobs[0] = value
+                    delegate?.settingsDidChangeForEffect(self, slotNumber: slotNumber, effect: effect!)
+                case knob2:
+                    Flogger.log.verbose("New knob 2 is \(value)")
+                    effect!.knobs[1] = value
+                    delegate?.settingsDidChangeForEffect(self, slotNumber: slotNumber, effect: effect!)
+                case knob3:
+                    Flogger.log.verbose("New knob 3 is \(value)")
+                    effect!.knobs[2] = value
+                    delegate?.settingsDidChangeForEffect(self, slotNumber: slotNumber, effect: effect!)
+                case knob4:
+                    Flogger.log.verbose("New knob 4 is \(value)")
+                    effect!.knobs[3] = value
+                    delegate?.settingsDidChangeForEffect(self, slotNumber: slotNumber, effect: effect!)
+                case knob5:
+                    Flogger.log.verbose("New knob 5 is \(value)")
+                    effect!.knobs[4] = value
+                    delegate?.settingsDidChangeForEffect(self, slotNumber: slotNumber, effect: effect!)
+                case knob6:
+                    Flogger.log.verbose("New knob 6 is \(value)")
+                    effect!.knobs[5] = value
+                    delegate?.settingsDidChangeForEffect(self, slotNumber: slotNumber, effect: effect!)
+                default:
+                    Flogger.log.error("Don't know what knob sent this event")
+                }
+            }
         }
     }
 }
