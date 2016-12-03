@@ -184,6 +184,76 @@ class MainVC: UIViewController {
 
 }
 
+extension MainVC: AmpKnobDelegate {
+    
+    func valueDidChangeForKnob(_ sender: AmpKnobControl, value: Float) {
+        switch sender {
+//        case gainKnob:
+//            Flogger.log.debug("New gain is \(value)")
+//            currentPreset?.gain1 = value
+//        case volumeKnob:
+//            Flogger.log.debug("New volume is \(value)")
+//            currentPreset?.volume = value
+//        case trebleKnob:
+//            Flogger.log.debug("New treble is \(value)")
+//            currentPreset?.treble = value
+//        case middleKnob:
+//            Flogger.log.debug("New middle is \(value)")
+//            currentPreset?.middle = value
+//        case bassKnob:
+//            Flogger.log.debug("New bass is \(value)")
+//            currentPreset?.bass = value
+//        case presenceKnob:
+//            Flogger.log.debug("New presence is \(value)")
+//            currentPreset?.presence = value
+        default:
+            Flogger.log.error("Don't know what knob sent this event")
+        }
+    }
+}
+
+extension MainVC: PedalVCDelegate {
+    
+    func settingsDidChangeForPedal(_ sender: PedalVC) {
+//        if sender == pedal1VC {
+//            Flogger.log.debug("New settings for pedal 1")
+//        }
+//        else if sender == pedal2VC {
+//            Flogger.log.debug("New settings for pedal 2")
+//        }
+//        else if sender == pedal3VC {
+//            Flogger.log.debug("New settings for pedal 3")
+//        }
+//        else if sender == pedal4VC {
+//            Flogger.log.debug("New settings for pedal 4")
+//        }
+//        else {
+            Flogger.log.error("Don't know what pedal sent this event")
+//        }
+    }
+}
+
+extension MainVC: EffectVCDelegate {
+    
+    func settingsDidChangeForEffect(_ sender: EffectVC) {
+//        if sender == effect1VC {
+//            Flogger.log.debug("New settings for effect 1")
+//        }
+//        else if sender == effect2VC {
+//            Flogger.log.debug("New settings for effect 2")
+//        }
+//        else if sender == effect3VC {
+//            Flogger.log.debug("New settings for effect 3")
+//        }
+//        else if sender == effect4VC {
+//            Flogger.log.debug("New settings for effect 4")
+//        }
+//        else {
+            Flogger.log.error("Don't know what effect sent this event")
+//        }
+    }
+}
+
 extension MainVC: RemoteManagerDelegate {
     func remoteManagerAvailable(_ manager: RemoteManager) {
         DispatchQueue.main.async {

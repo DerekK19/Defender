@@ -27,6 +27,7 @@ class EffectKnobControl: KnobBaseControl {
     }
     
     private func configure() {
+        self.backgroundColor = UIColor.clear
         super.configure(minValue: 0.0, maxValue: 1.0, minStop: 0.1, maxStop: 0.9, pixelsPerTick: 30)
     }
 
@@ -45,7 +46,7 @@ class EffectKnobControl: KnobBaseControl {
             var rect = UIBezierPath(roundedRect: dirtyRect, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: bounds.height / 2, height: bounds.height / 2))
             rect.fill()
             colour = foregroundColour
-            let angle = radiansFromFloatValue(self._floatValue)
+            let angle = -radiansFromFloatValue(self._floatValue)
             let dirX = cos(angle)
             let dirY = sin(angle)
             let centreX = bounds.width / 2

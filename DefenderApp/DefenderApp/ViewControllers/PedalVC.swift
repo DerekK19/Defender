@@ -9,6 +9,10 @@
 import UIKit
 import Flogger
 
+protocol PedalVCDelegate {
+    func settingsDidChangeForPedal(_ sender: PedalVC)
+}
+
 class PedalVC: UIViewController {
 
     @IBOutlet weak var slot: EffectSlotControl!
@@ -35,6 +39,8 @@ class PedalVC: UIViewController {
 
     var slotNumber: Int?
     var effect: DXEffect?
+    
+    var delegate: PedalVCDelegate?
     
     let bgColours: [Int : UIColor] = [1 : UIColor(red: 0.17, green: 0.56, blue: 0.98, alpha: 1.0),
                                       2 : UIColor(red: 0.05, green: 0.87, blue: 0.48, alpha: 1.0),
@@ -199,6 +205,64 @@ class PedalVC: UIViewController {
             }
             bodyTop.backgroundColour = fullBackgroundColour
             bodyBottom.backgroundColour = fullBackgroundColour
+        }
+    }
+}
+
+extension PedalVC: PedalKnobDelegate {
+    
+    func valueDidChangeForKnob(_ sender: PedalKnobControl, value: Float) {
+        if effect != nil {
+            var currentValue: Float?
+            switch sender {
+            case knobUpperLeft:
+                currentValue = effect!.knobs[0]
+            case knobUpperMiddle:
+                currentValue = effect!.knobs[1]
+            case knobUpperRight:
+                currentValue = effect!.knobs[2]
+            case knobLowerLeft:
+                currentValue = effect!.knobs[3]
+            case knobLowerMiddle:
+                currentValue = effect!.knobs[4]
+            case knobLowerRight:
+                currentValue = effect!.knobs[5]
+            default:
+                Flogger.log.error("Don't know what knob sent this event")
+            }
+            
+            if value != currentValue {
+                switch sender {
+                case knobUpperLeft:
+                    Flogger.log.debug("New upper left knob is \(value)")
+                    effect!.knobs[0] = value
+                    delegate?.settingsDidChangeForPedal(self)
+                case knobUpperMiddle:
+                    Flogger.log.debug("New upper middle knob is \(value)")
+                    effect!.knobs[1] = value
+                    delegate?.settingsDidChangeForPedal(self)
+                case knobUpperRight:
+                    Flogger.log.debug("New upper right knob is \(value)")
+                    effect!.knobs[2] = value
+                    delegate?.settingsDidChangeForPedal(self)
+                case knobLowerLeft:
+                    Flogger.log.debug("New lower left knob is \(value)")
+                    effect!.knobs[3] = value
+                    delegate?.settingsDidChangeForPedal(self)
+                case knobLowerMiddle:
+                    Flogger.log.debug("New lower middle knob is \(value)")
+                    effect!.knobs[4] = value
+                    delegate?.settingsDidChangeForPedal(self)
+                case knobLowerRight:
+                    Flogger.log.debug("New lower right knob is \(value)")
+                    effect!.knobs[5] = value
+                    delegate?.settingsDidChangeForPedal(self)
+                default:
+                    Flogger.log.error("Don't know what knob sent this event")
+                }
+            }
+        } else {
+            Flogger.log.error("Can't get a knob change if there is no pedal")
         }
     }
 }

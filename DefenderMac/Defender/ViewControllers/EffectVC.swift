@@ -113,7 +113,7 @@ class EffectVC: NSViewController {
         knob6.isHidden = effect?.knobCount ?? 0 < 6
         knob5.isHidden = effect?.knobCount ?? 0 < 5
         knob4.isHidden = effect?.knobCount ?? 0 < 4
-        knob3.isHidden = effect?.knobCount ?? 0 < 4
+        knob3.isHidden = effect?.knobCount ?? 0 < 3
         knob2.isHidden = effect?.knobCount ?? 0 < 2
         knob1.isHidden = effect?.knobCount ?? 0 < 1
         

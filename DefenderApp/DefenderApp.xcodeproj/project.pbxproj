@@ -289,15 +289,15 @@
 			isa = PBXGroup;
 			children = (
 				7198C5EE1DDE47CA003238D7 /* LEDControl.swift */,
+				719614161DED030900AE3E6E /* ShadeControl.swift */,
+				719614121DED01DA00AE3E6E /* EffectSlotControl.swift */,
 				712DC3F21DECD59C004E5BE1 /* PedalBodyControl.swift */,
 				71935F261DEE35DE0096A919 /* PedalPadControl.swift */,
-				719614121DED01DA00AE3E6E /* EffectSlotControl.swift */,
 				719360331DEFB84A0096A919 /* EffectControl.swift */,
-				719360371DF0EDBE0096A919 /* EffectKnobControl.swift */,
-				719614161DED030900AE3E6E /* ShadeControl.swift */,
 				7196141B1DED0D3E00AE3E6E /* KnobBaseControl.swift */,
 				71935F2F1DEF6A1D0096A919 /* AmpKnobControl.swift */,
 				7196141D1DED0E3400AE3E6E /* PedalKnobControl.swift */,
+				719360371DF0EDBE0096A919 /* EffectKnobControl.swift */,
 				719614141DED028700AE3E6E /* Enums.swift */,
 			);
 			name = "Custom Controls";

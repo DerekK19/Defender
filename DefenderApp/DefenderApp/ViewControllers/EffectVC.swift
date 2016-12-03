@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import Flogger
+
+protocol EffectVCDelegate {
+    func settingsDidChangeForEffect(_ sender: EffectVC)
+}
 
 class EffectVC: UIViewController {
 
@@ -17,14 +22,21 @@ class EffectVC: UIViewController {
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var powerLED: LEDControl!
-    @IBOutlet weak var knobLeftTop: EffectKnobControl!
-    @IBOutlet weak var knobLeftMiddle: EffectKnobControl!
-    @IBOutlet weak var knobLeftBottom: EffectKnobControl!
-    @IBOutlet weak var knobRightTop: EffectKnobControl!
-    @IBOutlet weak var knobRightMiddle: EffectKnobControl!
-    @IBOutlet weak var knobRightBottom: EffectKnobControl!
+    @IBOutlet weak var knob1: EffectKnobControl!
+    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var knob2: EffectKnobControl!
+    @IBOutlet weak var label2: UILabel!
+    @IBOutlet weak var knob3: EffectKnobControl!
+    @IBOutlet weak var label3: UILabel!
+    @IBOutlet weak var knob4: EffectKnobControl!
+    @IBOutlet weak var label4: UILabel!
+    @IBOutlet weak var knob5: EffectKnobControl!
+    @IBOutlet weak var label5: UILabel!
+    @IBOutlet weak var knob6: EffectKnobControl!
+    @IBOutlet weak var label6: UILabel!
 
-
+    var delegate: EffectVCDelegate?
+    
     let bgColours: [Int : UIColor] = [1 : UIColor(red: 0.30, green: 0.30, blue: 0.41, alpha: 1.0),
                                       2 : UIColor(red: 0.49, green: 0.49, blue: 0.49, alpha: 1.0),
                                       10 : UIColor(red: 0.11, green: 0.28, blue: 0.43, alpha: 1.0),
@@ -46,6 +58,18 @@ class EffectVC: UIViewController {
                 newBackgroundColour = UIColor.slotBackground
                 slotLabel.isHidden = false
                 self.powerLED.backgroundColour = UIColor.slotBackground
+                self.knob1.isHidden = true
+                self.label1.isHidden = true
+                self.knob2.isHidden = true
+                self.label2.isHidden = true
+                self.knob3.isHidden = true
+                self.label3.isHidden = true
+                self.knob4.isHidden = true
+                self.label4.isHidden = true
+                self.knob5.isHidden = true
+                self.label5.isHidden = true
+                self.knob6.isHidden = true
+                self.label6.isHidden = true
             case .off:
                 newBackgroundColour = fullBackgroundColour
                 slotLabel.isHidden = true
@@ -75,6 +99,13 @@ class EffectVC: UIViewController {
 
         self.powerState = .off
         self.state = .disabled
+        
+        knob1.delegate = self
+        knob2.delegate = self
+        knob3.delegate = self
+        knob4.delegate = self
+        knob5.delegate = self
+        knob6.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -100,6 +131,77 @@ class EffectVC: UIViewController {
             } else {
                 state = (effect?.enabled ?? false) ? .on : .off
             }
+            knob6.isHidden = effect?.knobs.count ?? 0 < 6
+            label6.isHidden = effect?.knobs.count ?? 0 < 6
+            knob5.isHidden = effect?.knobs.count ?? 0 < 5
+            label5.isHidden = effect?.knobs.count ?? 0 < 5
+            knob4.isHidden = effect?.knobs.count ?? 0 < 4
+            label4.isHidden = effect?.knobs.count ?? 0 < 4
+            knob3.isHidden = effect?.knobs.count ?? 0 < 3
+            label3.isHidden = effect?.knobs.count ?? 0 < 3
+            knob2.isHidden = effect?.knobs.count ?? 0 < 2
+            label2.isHidden = effect?.knobs.count ?? 0 < 2
+            knob1.isHidden = effect?.knobs.count ?? 0 < 1
+            label1.isHidden = effect?.knobs.count ?? 0 < 1
+            
+            if effect?.knobs.count ?? 0 > 0 {
+                knob1.floatValue = effect?.knobs[0] ?? 0
+                label1.text = ""
+            }
+            if effect?.knobs.count ?? 0 > 1 {
+                knob2.floatValue = effect?.knobs[1] ?? 0
+                label2.text = ""
+            }
+            if effect?.knobs.count ?? 0 > 2 {
+                knob3.floatValue = effect?.knobs[2] ?? 0
+                label3.text = ""
+            }
+            if effect?.knobs.count ?? 0 > 3 {
+                knob4.floatValue = effect?.knobs[3] ?? 0
+                label4.text = ""
+            }
+            if effect?.knobs.count ?? 0 > 4 {
+                knob5.floatValue = effect?.knobs[4] ?? 0
+                label5.text = ""
+            }
+            if effect?.knobs.count ?? 0 > 5 {
+                knob6.floatValue = effect?.knobs[5] ?? 0
+                label6.text = ""
+            }
+        }
+    }
+}
+
+extension EffectVC: EffectKnobDelegate {
+    
+    func valueDidChangeForKnob(_ sender: EffectKnobControl, value: Float) {
+        switch sender {
+        case knob1:
+            Flogger.log.debug("New knob 1 is \(value)")
+            effect!.knobs[0] = value
+            delegate?.settingsDidChangeForEffect(self)
+        case knob2:
+            Flogger.log.debug("New knob 2 is \(value)")
+            effect!.knobs[1] = value
+            delegate?.settingsDidChangeForEffect(self)
+        case knob3:
+            Flogger.log.debug("New knob 3 is \(value)")
+            effect!.knobs[2] = value
+            delegate?.settingsDidChangeForEffect(self)
+        case knob4:
+            Flogger.log.debug("New knob 4 is \(value)")
+            effect!.knobs[3] = value
+            delegate?.settingsDidChangeForEffect(self)
+        case knob5:
+            Flogger.log.debug("New knob 5 is \(value)")
+            effect!.knobs[4] = value
+            delegate?.settingsDidChangeForEffect(self)
+        case knob6:
+            Flogger.log.debug("New knob 6 is \(value)")
+            effect!.knobs[5] = value
+            delegate?.settingsDidChangeForEffect(self)
+        default:
+            Flogger.log.error("Don't know what knob sent this event")
         }
     }
 }
