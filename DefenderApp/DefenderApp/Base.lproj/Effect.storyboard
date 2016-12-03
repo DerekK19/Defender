@@ -136,6 +136,7 @@
                                                             <constraint firstItem="GTw-2z-NR0" firstAttribute="width" secondItem="dlN-3q-rvO" secondAttribute="width" id="lGd-wK-44V"/>
                                                             <constraint firstItem="GTw-2z-NR0" firstAttribute="width" secondItem="pzr-eb-yEI" secondAttribute="width" id="yM5-b7-nbC"/>
                                                         </constraints>
+                                                        <variation key="heightClass=compact-widthClass=compact" axis="horizontal"/>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rT5-FL-GaD">
                                                         <rect key="frame" x="105" y="0.0" width="105" height="367"/>
@@ -216,6 +217,7 @@
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
+                                                        <variation key="heightClass=compact-widthClass=compact" axis="horizontal"/>
                                                     </stackView>
                                                 </subviews>
                                                 <constraints>
@@ -223,6 +225,7 @@
                                                     <constraint firstItem="GTw-2z-NR0" firstAttribute="width" secondItem="0SE-RU-uCf" secondAttribute="width" id="YAd-lL-f8B"/>
                                                     <constraint firstItem="GTw-2z-NR0" firstAttribute="width" secondItem="fin-yu-9l8" secondAttribute="width" id="asL-8i-buf"/>
                                                 </constraints>
+                                                <variation key="heightClass=compact-widthClass=compact" axis="vertical"/>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

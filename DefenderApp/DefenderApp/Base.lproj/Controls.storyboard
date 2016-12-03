@@ -104,7 +104,7 @@
                                                         <rect key="frame" x="0.0" y="263.5" width="115" height="126.5"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="ey2-xw-YZf">
-                                                                <rect key="frame" x="48" y="0.0" width="20" height="20"/>
+                                                                <rect key="frame" x="48.5" y="0.0" width="20" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="ey2-xw-YZf" secondAttribute="height" multiplier="1:1" id="Zir-FB-y0p"/>
                                                                 </constraints>
@@ -117,7 +117,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reverb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JnV-XA-QJf">
-                                                                <rect key="frame" x="31" y="106.5" width="54" height="20.5"/>
+                                                                <rect key="frame" x="31.5" y="106.5" width="54" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -139,6 +139,7 @@
                                                     <constraint firstItem="jZE-au-D5X" firstAttribute="height" secondItem="ey2-xw-YZf" secondAttribute="height" id="Yso-2h-Ijv"/>
                                                     <constraint firstItem="UWe-Mp-6dX" firstAttribute="height" secondItem="jZE-au-D5X" secondAttribute="height" id="yDQ-9D-qZH"/>
                                                 </constraints>
+                                                <variation key="heightClass=compact-widthClass=compact" axis="horizontal"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="GU8-HG-SXa">
                                                 <rect key="frame" x="115" y="0.0" width="115" height="390"/>
@@ -215,7 +216,7 @@
                                                         <rect key="frame" x="0.0" y="263.5" width="115" height="126.5"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="xci-Z3-Wqq">
-                                                                <rect key="frame" x="48" y="0.0" width="20" height="20"/>
+                                                                <rect key="frame" x="48.5" y="0.0" width="20" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="xci-Z3-Wqq" secondAttribute="height" multiplier="1:1" id="H3w-Nb-HqI"/>
                                                                 </constraints>
@@ -228,7 +229,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bass" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JC-ZG-s9Y">
-                                                                <rect key="frame" x="39.5" y="106.5" width="37" height="20.5"/>
+                                                                <rect key="frame" x="40" y="106.5" width="37" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -250,11 +251,13 @@
                                                     <constraint firstItem="xlR-Tv-85M" firstAttribute="height" secondItem="xci-Z3-Wqq" secondAttribute="height" id="YY3-mq-VrK"/>
                                                     <constraint firstItem="Iql-Fa-11D" firstAttribute="height" secondItem="xlR-Tv-85M" secondAttribute="height" id="ygi-YC-PC7"/>
                                                 </constraints>
+                                                <variation key="heightClass=compact-widthClass=compact" axis="horizontal"/>
                                             </stackView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="ey2-xw-YZf" firstAttribute="height" secondItem="Iql-Fa-11D" secondAttribute="height" id="lOZ-Hr-4e1"/>
                                         </constraints>
+                                        <variation key="heightClass=compact-widthClass=compact" axis="vertical"/>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8a-at-hD3" customClass="ShadeControl" customModule="DefenderApp" customModuleProvider="target">
                                         <rect key="frame" x="5" y="5" width="220" height="380"/>
