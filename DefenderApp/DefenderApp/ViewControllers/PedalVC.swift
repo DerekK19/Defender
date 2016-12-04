@@ -195,12 +195,12 @@ class PedalVC: UIViewController {
             knobLowerMiddle.isHidden = lowerMiddleIndex == nil
             knobLowerRight.isHidden = lowerRightIndex == nil
 
-            if let index = upperLeftIndex { knobUpperLeft.floatValue = pedal?.knobs[index] ?? 0 }
-            if let index = upperMiddleIndex { knobUpperMiddle.floatValue = pedal?.knobs[index] ?? 0 }
-            if let index = upperRightIndex { knobUpperRight.floatValue = pedal?.knobs[index] ?? 0 }
-            if let index = lowerLeftIndex { knobLowerLeft.floatValue = pedal?.knobs[index] ?? 0 }
-            if let index = lowerMiddleIndex { knobLowerMiddle.floatValue = pedal?.knobs[index] ?? 0 }
-            if let index = lowerRightIndex { knobLowerRight.floatValue = pedal?.knobs[index] ?? 0 }
+            if let index = upperLeftIndex { knobUpperLeft.floatValue = pedal?.knobs[index].value ?? 0 }
+            if let index = upperMiddleIndex { knobUpperMiddle.floatValue = pedal?.knobs[index].value ?? 0 }
+            if let index = upperRightIndex { knobUpperRight.floatValue = pedal?.knobs[index].value ?? 0 }
+            if let index = lowerLeftIndex { knobLowerLeft.floatValue = pedal?.knobs[index].value ?? 0 }
+            if let index = lowerMiddleIndex { knobLowerMiddle.floatValue = pedal?.knobs[index].value ?? 0 }
+            if let index = lowerRightIndex { knobLowerRight.floatValue = pedal?.knobs[index].value ?? 0 }
 
             bodyTop.backgroundColour = fullBackgroundColour
             bodyBottom.backgroundColour = fullBackgroundColour
@@ -216,17 +216,17 @@ extension PedalVC: PedalKnobDelegate {
                 var currentValue: Float?
                 switch sender {
                 case knobUpperLeft:
-                    currentValue = effect!.knobs[upperLeftIndex!]
+                    currentValue = effect!.knobs[upperLeftIndex!].value
                 case knobUpperMiddle:
-                    currentValue = effect!.knobs[upperMiddleIndex!]
+                    currentValue = effect!.knobs[upperMiddleIndex!].value
                 case knobUpperRight:
-                    currentValue = effect!.knobs[upperRightIndex!]
+                    currentValue = effect!.knobs[upperRightIndex!].value
                 case knobLowerLeft:
-                    currentValue = effect!.knobs[lowerLeftIndex!]
+                    currentValue = effect!.knobs[lowerLeftIndex!].value
                 case knobLowerMiddle:
-                    currentValue = effect!.knobs[lowerMiddleIndex!]
+                    currentValue = effect!.knobs[lowerMiddleIndex!].value
                 case knobLowerRight:
-                    currentValue = effect!.knobs[lowerRightIndex!]
+                    currentValue = effect!.knobs[lowerRightIndex!].value
                 default:
                     Flogger.log.error("Don't know what knob sent this event")
                 }
@@ -235,27 +235,27 @@ extension PedalVC: PedalKnobDelegate {
                     switch sender {
                     case knobUpperLeft:
                         Flogger.log.debug("New upper left knob is \(value)")
-                        effect!.knobs[upperLeftIndex!] = value
+                        effect!.knobs[upperLeftIndex!].value = value
                         delegate?.settingsDidChangeForPedal(self, slotNumber: slotNumber, effect: effect!)
                     case knobUpperMiddle:
                         Flogger.log.verbose("New upper middle knob is \(value)")
-                        effect!.knobs[upperMiddleIndex!] = value
+                        effect!.knobs[upperMiddleIndex!].value = value
                         delegate?.settingsDidChangeForPedal(self, slotNumber: slotNumber, effect: effect!)
                     case knobUpperRight:
                         Flogger.log.verbose("New upper right knob is \(value)")
-                        effect!.knobs[upperRightIndex!] = value
+                        effect!.knobs[upperRightIndex!].value = value
                         delegate?.settingsDidChangeForPedal(self, slotNumber: slotNumber, effect: effect!)
                     case knobLowerLeft:
                         Flogger.log.verbose("New lower left knob is \(value)")
-                        effect!.knobs[lowerLeftIndex!] = value
+                        effect!.knobs[lowerLeftIndex!].value = value
                         delegate?.settingsDidChangeForPedal(self, slotNumber: slotNumber, effect: effect!)
                     case knobLowerMiddle:
                         Flogger.log.verbose("New lower middle knob is \(value)")
-                        effect!.knobs[lowerMiddleIndex!] = value
+                        effect!.knobs[lowerMiddleIndex!].value = value
                         delegate?.settingsDidChangeForPedal(self, slotNumber: slotNumber, effect: effect!)
                     case knobLowerRight:
                         Flogger.log.verbose("New lower right knob is \(value)")
-                        effect!.knobs[lowerRightIndex!] = value
+                        effect!.knobs[lowerRightIndex!].value = value
                         delegate?.settingsDidChangeForPedal(self, slotNumber: slotNumber, effect: effect!)
                     default:
                         Flogger.log.error("Don't know what knob sent this event")

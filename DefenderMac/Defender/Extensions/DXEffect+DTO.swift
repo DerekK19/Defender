@@ -31,7 +31,7 @@ extension DXEffect {
         slot = dto.slot
         enabled = dto.enabled
         colour = dto.colour
-        knobs = Array(dto.knobs.map({ $0.value }).dropLast(dto.knobs.count - dto.knobCount))
+        knobs = Array(dto.knobs.map({ DXKnob(dto: $0) }).dropLast(dto.knobs.count - dto.knobCount))
     }
     
 }

@@ -176,7 +176,7 @@ class MainVC: UIViewController {
             for effect in preset?.effects ?? [DXEffect]() {
                 text += "   \(effect.type.rawValue): \(effect.name ?? "-empty-") - \(effect.enabled! ? "ON" : "OFF")\n"
                 text += "    Knobs: \(effect.knobs.count) - "
-                effect.knobs.forEach { text += "\(String(format: "%0.2f", $0)) " }
+                effect.knobs.forEach { text += "\(String(format: "%0.2f", $0.value)) " }
                 text += "slot \(effect.slot!)\n"
             }
             Flogger.log.info(text)

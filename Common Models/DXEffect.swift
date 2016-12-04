@@ -25,7 +25,7 @@ internal class DXEffect : Transferable {
     var slot: Int!
     var enabled: Bool!
     var colour: Int!
-    var knobs: [Float]!
+    var knobs: [DXKnob]!
 
     required init?(map: Map) {
         mapping(map: map)

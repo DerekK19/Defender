@@ -56,6 +56,8 @@
 		65F69F321DE14CC80017188D /* AppViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F311DE14CC80017188D /* AppViewControl.swift */; };
 		65F69F341DE7F5C90017188D /* ColouredTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F331DE7F5C90017188D /* ColouredTextField.swift */; };
 		65F69F361DE7F7DD0017188D /* SecureColouredTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F351DE7F7DD0017188D /* SecureColouredTextField.swift */; };
+		65FA11911DF3DFFE00FBD280 /* DXKnob+DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FA11901DF3DFFC00FBD280 /* DXKnob+DTO.swift */; };
+		65FA11931DF3E16D00FBD280 /* DXKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FA11921DF3E16D00FBD280 /* DXKnob.swift */; };
 		71602D7C1DD52284003E2D49 /* PresetDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71602D7B1DD52284003E2D49 /* PresetDocument.swift */; };
 		7167FEDA1D58032C0059A276 /* NSImage+Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FED91D58032C0059A276 /* NSImage+Colour.swift */; };
 		7167FEDC1D5815270059A276 /* DisplayControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167FEDB1D5815270059A276 /* DisplayControl.swift */; };
@@ -141,6 +143,8 @@
 		65F69F311DE14CC80017188D /* AppViewControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewControl.swift; sourceTree = "<group>"; };
 		65F69F331DE7F5C90017188D /* ColouredTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColouredTextField.swift; sourceTree = "<group>"; };
 		65F69F351DE7F7DD0017188D /* SecureColouredTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureColouredTextField.swift; sourceTree = "<group>"; };
+		65FA11901DF3DFFC00FBD280 /* DXKnob+DTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DXKnob+DTO.swift"; sourceTree = "<group>"; };
+		65FA11921DF3E16D00FBD280 /* DXKnob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXKnob.swift; sourceTree = "<group>"; };
 		71602D7B1DD52284003E2D49 /* PresetDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetDocument.swift; sourceTree = "<group>"; };
 		7167FED91D58032C0059A276 /* NSImage+Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Colour.swift"; sourceTree = "<group>"; };
 		7167FEDB1D5815270059A276 /* DisplayControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayControl.swift; sourceTree = "<group>"; };
@@ -340,6 +344,7 @@
 				65F69F121DDD70EE0017188D /* DXAmplifier.swift */,
 				65F69F211DDED2290017188D /* DXPreset.swift */,
 				65F69F251DE009F70017188D /* DXEffect.swift */,
+				65FA11921DF3E16D00FBD280 /* DXKnob.swift */,
 			);
 			name = "Common Models";
 			path = "../../Common Models";
@@ -361,6 +366,7 @@
 				65F69F151DDD71AB0017188D /* DXAmplifier+DTO.swift */,
 				65F69F231DDED4B10017188D /* DXPreset+DTO.swift */,
 				65F69F271DE00BBD0017188D /* DXEffect+DTO.swift */,
+				65FA11901DF3DFFC00FBD280 /* DXKnob+DTO.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -591,10 +597,12 @@
 				655A5A411D4C555400E15E1F /* AppDelegate.swift in Sources */,
 				7167FF3E1D592E070059A276 /* WheelControl.swift in Sources */,
 				65F69F221DDED2290017188D /* DXPreset.swift in Sources */,
+				65FA11911DF3DFFE00FBD280 /* DXKnob+DTO.swift in Sources */,
 				65F69F161DDD71AB0017188D /* DXAmplifier+DTO.swift in Sources */,
 				65A65BA21DA4740400EDCA32 /* PedalPadControl.swift in Sources */,
 				65F69F321DE14CC80017188D /* AppViewControl.swift in Sources */,
 				65F69F241DDED4B10017188D /* DXPreset+DTO.swift in Sources */,
+				65FA11931DF3E16D00FBD280 /* DXKnob.swift in Sources */,
 				71602D7C1DD52284003E2D49 /* PresetDocument.swift in Sources */,
 				652564491DA8972A00ACCD4B /* PedalKnobControl.swift in Sources */,
 				65F69F1A1DDD75090017188D /* Transferable.swift in Sources */,

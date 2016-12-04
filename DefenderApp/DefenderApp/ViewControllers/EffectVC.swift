@@ -145,28 +145,28 @@ class EffectVC: UIViewController {
             label1.isHidden = effect?.knobs.count ?? 0 < 1
             
             if effect?.knobs.count ?? 0 > 0 {
-                knob1.floatValue = effect?.knobs[0] ?? 0
-                label1.text = ""
+                knob1.floatValue = effect?.knobs[0].value ?? 0
+                label1.text = effect?.knobs[0].name ?? ""
             }
             if effect?.knobs.count ?? 0 > 1 {
-                knob2.floatValue = effect?.knobs[1] ?? 0
-                label2.text = ""
+                knob2.floatValue = effect?.knobs[1].value ?? 0
+                label2.text = effect?.knobs[1].name ?? ""
             }
             if effect?.knobs.count ?? 0 > 2 {
-                knob3.floatValue = effect?.knobs[2] ?? 0
-                label3.text = ""
+                knob3.floatValue = effect?.knobs[2].value ?? 0
+                label3.text = effect?.knobs[2].name ?? ""
             }
             if effect?.knobs.count ?? 0 > 3 {
-                knob4.floatValue = effect?.knobs[3] ?? 0
-                label4.text = ""
+                knob4.floatValue = effect?.knobs[3].value ?? 0
+                label4.text = effect?.knobs[3].name ?? ""
             }
             if effect?.knobs.count ?? 0 > 4 {
-                knob5.floatValue = effect?.knobs[4] ?? 0
-                label5.text = ""
+                knob5.floatValue = effect?.knobs[4].value ?? 0
+                label5.text = effect?.knobs[4].name ?? ""
             }
             if effect?.knobs.count ?? 0 > 5 {
-                knob6.floatValue = effect?.knobs[5] ?? 0
-                label6.text = ""
+                knob6.floatValue = effect?.knobs[5].value ?? 0
+                label6.text = effect?.knobs[5].name ?? ""
             }
         }
     }
@@ -180,27 +180,27 @@ extension EffectVC: EffectKnobDelegate {
                 switch sender {
                 case knob1:
                     Flogger.log.verbose("New knob 1 is \(value)")
-                    effect!.knobs[0] = value
+                    effect!.knobs[0].value = value
                     delegate?.settingsDidChangeForEffect(self, slotNumber: slotNumber, effect: effect!)
                 case knob2:
                     Flogger.log.verbose("New knob 2 is \(value)")
-                    effect!.knobs[1] = value
+                    effect!.knobs[1].value = value
                     delegate?.settingsDidChangeForEffect(self, slotNumber: slotNumber, effect: effect!)
                 case knob3:
                     Flogger.log.verbose("New knob 3 is \(value)")
-                    effect!.knobs[2] = value
+                    effect!.knobs[2].value = value
                     delegate?.settingsDidChangeForEffect(self, slotNumber: slotNumber, effect: effect!)
                 case knob4:
                     Flogger.log.verbose("New knob 4 is \(value)")
-                    effect!.knobs[3] = value
+                    effect!.knobs[3].value = value
                     delegate?.settingsDidChangeForEffect(self, slotNumber: slotNumber, effect: effect!)
                 case knob5:
                     Flogger.log.verbose("New knob 5 is \(value)")
-                    effect!.knobs[4] = value
+                    effect!.knobs[4].value = value
                     delegate?.settingsDidChangeForEffect(self, slotNumber: slotNumber, effect: effect!)
                 case knob6:
                     Flogger.log.verbose("New knob 6 is \(value)")
-                    effect!.knobs[5] = value
+                    effect!.knobs[5].value = value
                     delegate?.settingsDidChangeForEffect(self, slotNumber: slotNumber, effect: effect!)
                 default:
                     Flogger.log.error("Don't know what knob sent this event")
