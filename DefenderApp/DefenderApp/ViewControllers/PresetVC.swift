@@ -123,7 +123,7 @@ class PresetVC: UIPageViewController {
     
     fileprivate func replaceEffect(_ effect: DXEffect, inSlot: Int) {
         if effects != nil {
-            for index in 0...effects!.count-1 {
+            for index in 0..<effects!.count {
                 if effects![index].slot == effect.slot {
                     effects![index] = effect
                 }
