@@ -267,9 +267,9 @@
 				7198C2E41DD93601003238D7 /* LaunchScreen.storyboard */,
 				7198C2DF1DD93601003238D7 /* Main_iPhone.storyboard */,
 				650775C71DEBFD4900F5040C /* Main_iPad.storyboard */,
+				71935F2E1DEF68EA0096A919 /* Controls.storyboard */,
 				650775CA1DEBFD4F00F5040C /* Pedal.storyboard */,
 				719614211DED161200AE3E6E /* Effect.storyboard */,
-				71935F2E1DEF68EA0096A919 /* Controls.storyboard */,
 			);
 			name = Resources;
 			sourceTree = "<group>";

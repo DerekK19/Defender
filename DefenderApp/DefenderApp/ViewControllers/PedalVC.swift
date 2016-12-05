@@ -28,16 +28,22 @@ class PedalVC: BaseEffectVC {
     @IBOutlet weak var powerLED: LEDControl!
     @IBOutlet weak var upperKnobs: UIStackView!
     @IBOutlet weak var lowerKnobs: UIStackView!
+    @IBOutlet weak var viewUpperLeft: UIView!
     @IBOutlet weak var knobUpperLeft: PedalKnobControl!
     @IBOutlet weak var labelUpperLeft: UILabel!
+    @IBOutlet weak var viewUpperMiddle: UIView!
     @IBOutlet weak var knobUpperMiddle: PedalKnobControl!
     @IBOutlet weak var labelUpperMiddle: UILabel!
+    @IBOutlet weak var viewUpperRight: UIView!
     @IBOutlet weak var knobUpperRight: PedalKnobControl!
     @IBOutlet weak var labelUpperRight: UILabel!
+    @IBOutlet weak var viewLowerLeft: UIView!
     @IBOutlet weak var knobLowerLeft: PedalKnobControl!
     @IBOutlet weak var labelLowerLeft: UILabel!
+    @IBOutlet weak var viewLowerMiddle: UIView!
     @IBOutlet weak var knobLowerMiddle: PedalKnobControl!
     @IBOutlet weak var labelLowerMiddle: UILabel!
+    @IBOutlet weak var viewLowerRight: UIView!
     @IBOutlet weak var knobLowerRight: PedalKnobControl!
     @IBOutlet weak var labelLowerRight: UILabel!
 
@@ -165,7 +171,7 @@ class PedalVC: BaseEffectVC {
                 upperRightIndex = 2
             } else if pedal?.knobs.count == 4 {
                 upperLeftIndex = 0
-                upperMiddleIndex = 1
+                upperRightIndex = 1
                 lowerLeftIndex = 2
                 lowerRightIndex = 3
             } else if pedal?.knobs.count == 5 {
@@ -182,16 +188,22 @@ class PedalVC: BaseEffectVC {
                 lowerMiddleIndex = 4
                 lowerRightIndex = 5
             }
+            viewUpperLeft.isHidden = upperLeftIndex == nil
             knobUpperLeft.isHidden = upperLeftIndex == nil
             labelUpperLeft.isHidden = upperLeftIndex == nil
+            viewUpperMiddle.isHidden = upperMiddleIndex == nil
             knobUpperMiddle.isHidden = upperMiddleIndex == nil
             labelUpperMiddle.isHidden = upperMiddleIndex == nil
+            viewUpperRight.isHidden = upperRightIndex == nil
             knobUpperRight.isHidden = upperRightIndex == nil
             labelUpperRight.isHidden = upperRightIndex == nil
+            viewLowerLeft.isHidden = lowerLeftIndex == nil
             knobLowerLeft.isHidden = lowerLeftIndex == nil
             labelLowerLeft.isHidden = lowerLeftIndex == nil
+            viewLowerMiddle.isHidden = lowerMiddleIndex == nil
             knobLowerMiddle.isHidden = lowerMiddleIndex == nil
             labelLowerMiddle.isHidden = lowerMiddleIndex == nil
+            viewLowerRight.isHidden = lowerRightIndex == nil
             knobLowerRight.isHidden = lowerRightIndex == nil
             labelLowerRight.isHidden = lowerRightIndex == nil
 
