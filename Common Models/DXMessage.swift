@@ -12,6 +12,7 @@ import ObjectMapper
 internal enum RequestType : String {
     case amplifier = "AMPLIFIER"
     case preset = "PRESET"
+    case changePreset = "CHANGEPRESET"
 }
 
 internal class DXMessage: Transferable {

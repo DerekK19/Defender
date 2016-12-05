@@ -9,17 +9,20 @@
 import Foundation
 
 enum PowerState {
+    case initial
     case off
     case on
 }
 
 enum EffectState {
+    case initial
     case disabled
     case off
     case on
 }
 
 enum ShadeState {
+    case initial
     case open
     case ajar
     case closed

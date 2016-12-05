@@ -122,6 +122,11 @@ class MainVC: UIViewController {
         sendMessage(message)
     }
 
+    func sendChangePreset(preset: DXPreset) {
+        let message = DXMessage(command: .changePreset, data: preset)
+        sendMessage(message)
+    }
+    
     func sendMessage(_ message: DXMessage) {
         if remoteManager?.send(message) == true {
             txLED.backgroundColour = UIColor.red
@@ -187,6 +192,9 @@ class MainVC: UIViewController {
 extension MainVC: PresetVCDelegate {
     func settingsDidChangeForPreset(_ sender: PresetVC, preset: DXPreset?) {
         Flogger.log.info("Preset changed")
+        if let preset = preset {
+            sendChangePreset(preset: preset)
+        }
     }
 }
 
@@ -229,7 +237,7 @@ extension MainVC: RemoteManagerDelegate {
                     self.amplifierLabel.text = amp.name ?? "No Amplifier"
                     self.presetVC?.powerState = amp.name == nil ? .off : .on
                     self.sendGetPreset(nil)
-                case .preset:
+                case .preset, .changePreset:
                     let preset = try DXPreset(data: message.content)
                     self.logPreset(preset)
                     self.presetLabel.text = preset.name

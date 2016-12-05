@@ -13,10 +13,8 @@ protocol PedalVCDelegate {
     func settingsDidChangeForPedal(_ sender: PedalVC, slotNumber: Int, effect: DXEffect)
 }
 
-class PedalVC: UIViewController {
+class PedalVC: BaseEffectVC {
 
-    @IBOutlet weak var slot: EffectSlotControl!
-    @IBOutlet weak var shade: ShadeControl!
     @IBOutlet weak var slotLabel: UILabel!
     @IBOutlet weak var bodyTop: PedalBodyControl!
     @IBOutlet weak var bodyBottom: PedalBodyControl!
@@ -50,8 +48,6 @@ class PedalVC: UIViewController {
     var fullBackgroundColour = UIColor.black
     var pedalBackgroundColour = UIColor.black
 
-    var appeared = false
-    
     var upperLeftIndex: Int? = 0
     var upperMiddleIndex: Int? = 0
     var upperRightIndex: Int? = 0
@@ -70,6 +66,8 @@ class PedalVC: UIViewController {
             self.knobLowerRight.alpha = state == .disabled ? 0.0 : 1.0
             self.pedalLogo.alpha = state == .disabled ? 0.6 : 1.0
             switch state {
+            case .initial:
+                break
             case .disabled:
                 newBackgroundColour = UIColor.slotBackground
                 self.powerLED.backgroundColour = UIColor.slotBackground
@@ -103,18 +101,9 @@ class PedalVC: UIViewController {
         }
     }
     
-    internal var powerState: PowerState = .off {
-        didSet {
-            if appeared {
-                self.shade.state = state == .disabled ? .closed : powerState == .on ? .open : .ajar
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.powerState = .off
         self.state = .disabled
         
         knobUpperLeft.delegate = self
@@ -127,7 +116,6 @@ class PedalVC: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        appeared = true
         self.configureWith(pedal: self.effect)
     }
     

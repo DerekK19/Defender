@@ -20,13 +20,7 @@ class PresetVC: UIPageViewController {
     internal var powerState: PowerState = .off {
         didSet {
             for pageVC in orderedViewControllers {
-                if let controlsVC = pageVC as? ControlsVC {
-                    controlsVC.powerState = powerState
-                } else if let pedalVC = pageVC as? PedalVC {
-                    pedalVC.powerState = powerState
-                } else if let effectVC = pageVC as? EffectVC {
-                    effectVC.powerState = powerState
-                }
+                pageVC.powerState = powerState
             }
         }
     }
@@ -67,7 +61,7 @@ class PresetVC: UIPageViewController {
         }
     }
 
-    private(set) lazy var orderedViewControllers: [UIViewController] = {
+    private(set) lazy var orderedViewControllers: [BaseEffectVC] = {
         return [self.newControlsVC(),
                 self.newPedalVC(slotNumber: 0),
                 self.newPedalVC(slotNumber: 1),
@@ -92,7 +86,7 @@ class PresetVC: UIPageViewController {
         }
     }
     
-    private func newControlsVC() -> UIViewController {
+    private func newControlsVC() -> BaseEffectVC {
         guard let controlsVC = UIStoryboard(name: "Controls", bundle: nil).instantiateInitialViewController() as? ControlsVC else {
             Flogger.log.error("Unable to create controls view controller")
             fatalError()
@@ -101,7 +95,7 @@ class PresetVC: UIPageViewController {
         return controlsVC
     }
     
-    private func newPedalVC(slotNumber: Int) -> UIViewController {
+    private func newPedalVC(slotNumber: Int) -> BaseEffectVC {
         guard let pedalVC = UIStoryboard(name: "Pedal", bundle: nil).instantiateInitialViewController() as? PedalVC else {
             Flogger.log.error("Unable to create a pedal view controller")
             fatalError()
@@ -111,7 +105,7 @@ class PresetVC: UIPageViewController {
         return pedalVC
     }
     
-    private func newEffectVC(slotNumber: Int) -> UIViewController {
+    private func newEffectVC(slotNumber: Int) -> BaseEffectVC {
         guard let effectVC = UIStoryboard(name: "Effect", bundle: nil).instantiateInitialViewController() as? EffectVC else {
                 Flogger.log.error("Unable to create a effect view controller")
                 fatalError()
@@ -139,39 +133,27 @@ extension PresetVC: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
-            return nil
-        }
+        guard let effectVC: BaseEffectVC = viewController as? BaseEffectVC else { return nil }
+        guard let viewControllerIndex = orderedViewControllers.index(of: effectVC) else { return nil }
         
         let previousIndex = viewControllerIndex - 1
         
-        guard previousIndex >= 0 else {
-            return nil
-        }
-        
-        guard orderedViewControllers.count > previousIndex else {
-            return nil
-        }
+        guard previousIndex >= 0 else { return nil }
+        guard orderedViewControllers.count > previousIndex else { return nil }
         
         return orderedViewControllers[previousIndex]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
-            return nil
-        }
+        guard let effectVC: BaseEffectVC = viewController as? BaseEffectVC else { return nil }
+        guard let viewControllerIndex = orderedViewControllers.index(of: effectVC) else { return nil }
         
         let nextIndex = viewControllerIndex + 1
         let orderedViewControllersCount = orderedViewControllers.count
         
-        guard orderedViewControllersCount != nextIndex else {
-            return nil
-        }
-        
-        guard orderedViewControllersCount > nextIndex else {
-            return nil
-        }
+        guard orderedViewControllersCount != nextIndex else { return nil }
+        guard orderedViewControllersCount > nextIndex else { return nil }
         
         return orderedViewControllers[nextIndex]
     }

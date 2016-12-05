@@ -35,4 +35,35 @@ extension DXPreset {
         effects = dto.effects.map { DXEffect(dto: $0) }
     }
     
+    func copyInto(preset: inout DTOPreset?) {
+        if preset != nil {
+            preset!.volume = volume
+            preset!.number = number
+            preset!.module = module
+            preset!.volume = volume
+            preset!.gain1 = gain1
+            preset!.gain2 = gain2
+            preset!.masterVolume = masterVolume
+            preset!.treble = treble
+            preset!.middle = middle
+            preset!.bass = bass
+            preset!.presence = presence
+            preset!.depth = depth
+            preset!.bias = bias
+            preset!.noiseGate = noiseGate
+            preset!.threshold = threshold
+            preset!.sag = sag
+            preset!.brightness = brightness
+            preset!.cabinet = cabinet
+            preset!.cabinetName = cabinetName
+            effects.forEach {
+                let newEffect = $0
+                for i in 0..<(preset?.effects.count ?? 0) {
+                    if preset!.effects[i].slot == newEffect.slot {
+                        newEffect.copyInto(effect: &preset!.effects[i])
+                    }
+                }
+            }
+        }
+    }
 }

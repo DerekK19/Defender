@@ -13,10 +13,8 @@ protocol ControlsVCDelegate {
     func settingsDidChangeForControls(_ sender: ControlsVC, preset: DXPreset?)
 }
 
-class ControlsVC: UIViewController {
+class ControlsVC: BaseEffectVC {
     
-    @IBOutlet weak var slot: EffectSlotControl!
-    @IBOutlet weak var shade: ShadeControl!
     @IBOutlet weak var gainArrow: UIImageView!
     @IBOutlet weak var volumeArrow: UIImageView!
     @IBOutlet weak var trebleArrow: UIImageView!
@@ -40,21 +38,9 @@ class ControlsVC: UIViewController {
     
     var preset: DXPreset?
 
-    var appeared = false
-    
-    internal var powerState: PowerState = .off {
-        didSet {
-            if appeared {
-                self.shade.state = powerState == .on ? .open : .closed
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.powerState = .off
-
         let contrastColour = UIColor.white
         gainArrow.image = UIImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
         volumeArrow.image = UIImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
@@ -79,7 +65,6 @@ class ControlsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        appeared = true
     }
     
     override func didReceiveMemoryWarning() {

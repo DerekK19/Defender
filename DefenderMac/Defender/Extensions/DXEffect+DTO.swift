@@ -33,5 +33,15 @@ extension DXEffect {
         colour = dto.colour
         knobs = Array(dto.knobs.map({ DXKnob(dto: $0) }).dropLast(dto.knobs.count - dto.knobCount))
     }
-    
+ 
+    func copyInto(effect: inout DTOEffect) {
+//       effect.type = type
+//        effect.module = module
+        effect.slot = slot
+        effect.enabled = enabled
+        effect.colour = colour
+        for i in 0..<effect.knobCount {
+            knobs[i].copyInto(knob: &effect.knobs[i])
+        }
+    }
 }

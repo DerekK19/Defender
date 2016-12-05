@@ -15,4 +15,8 @@ extension DXKnob {
         self.init(name: dto.name)
         value = dto.value
     }
+    
+    func copyInto(knob: inout DTOKnob) {
+       knob.value = value
+    }
 }

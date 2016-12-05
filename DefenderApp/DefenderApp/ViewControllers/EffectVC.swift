@@ -13,10 +13,8 @@ protocol EffectVCDelegate {
     func settingsDidChangeForEffect(_ sender: EffectVC, slotNumber: Int, effect: DXEffect)
 }
 
-class EffectVC: UIViewController {
+class EffectVC: BaseEffectVC {
 
-    @IBOutlet weak var slot: EffectSlotControl!
-    @IBOutlet weak var shade: ShadeControl!
     @IBOutlet weak var slotLabel: UILabel!
     @IBOutlet weak var chassis: EffectControl!
     @IBOutlet weak var typeLabel: UILabel!
@@ -48,12 +46,12 @@ class EffectVC: UIViewController {
     var slotNumber: Int?
     var effect: DXEffect?
     
-    var appeared = false
-    
     var state: EffectState = .disabled {
         didSet {
             var newBackgroundColour = UIColor()
             switch state {
+            case .initial:
+                break
             case .disabled:
                 newBackgroundColour = UIColor.slotBackground
                 slotLabel.isHidden = false
@@ -86,18 +84,9 @@ class EffectVC: UIViewController {
         }
     }
     
-    internal var powerState: PowerState = .off {
-        didSet {
-            if appeared {
-                self.shade.state = state == .disabled ? .closed : powerState == .on ? .open : .ajar
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.powerState = .off
         self.state = .disabled
         
         knob1.delegate = self
@@ -110,7 +99,6 @@ class EffectVC: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        appeared = true
         self.configureWith(effect: self.effect)
     }
 

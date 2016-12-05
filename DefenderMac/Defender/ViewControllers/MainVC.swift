@@ -379,6 +379,11 @@ class MainVC: NSViewController {
         }
     }
     
+    fileprivate func presetDidChange() {
+        saveButton.setState(.warning)
+        exitButton.setState(.warning)
+    }
+    
     func sendCurrentAmplifier() {
         var message: DXMessage!
         if let amp = self.ampManager.currentAmplifier {
@@ -496,54 +501,38 @@ extension MainVC: AmpKnobDelegate {
         default:
             Flogger.log.error("Don't know what knob sent this event")
         }
-        saveButton.setState(.warning)
-        exitButton.setState(.warning)
+        presetDidChange()
+        sendCurrentPreset()
     }
 }
 
 extension MainVC: PedalVCDelegate {
     
     func settingsDidChangeForPedal(_ sender: PedalVC) {
-        if sender == pedal1VC {
-            Flogger.log.debug("New settings for pedal 1")
+        if let effect = sender.effect {
+            for i in 0..<(currentPreset?.effects.count ?? 0) {
+                if currentPreset!.effects[i].slot == effect.slot {
+                    currentPreset!.effects[i] = effect
+                }
+            }
         }
-        else if sender == pedal2VC {
-            Flogger.log.debug("New settings for pedal 2")
-        }
-        else if sender == pedal3VC {
-            Flogger.log.debug("New settings for pedal 3")
-        }
-        else if sender == pedal4VC {
-            Flogger.log.debug("New settings for pedal 4")
-        }
-        else {
-            Flogger.log.error("Don't know what pedal sent this event")
-        }
-        saveButton.setState(.warning)
-        exitButton.setState(.warning)
+        presetDidChange()
+        sendCurrentPreset()
     }
 }
 
 extension MainVC: EffectVCDelegate {
     
     func settingsDidChangeForEffect(_ sender: EffectVC) {
-        if sender == effect1VC {
-            Flogger.log.debug("New settings for effect 1")
+        if let effect = sender.effect {
+            for i in 0..<(currentPreset?.effects.count ?? 0) {
+                if currentPreset!.effects[i].slot == effect.slot {
+                    currentPreset!.effects[i] = effect
+                }
+            }
         }
-        else if sender == effect2VC {
-            Flogger.log.debug("New settings for effect 2")
-        }
-        else if sender == effect3VC {
-            Flogger.log.debug("New settings for effect 3")
-        }
-        else if sender == effect4VC {
-            Flogger.log.debug("New settings for effect 4")
-        }
-        else {
-            Flogger.log.error("Don't know what effect sent this event")
-        }
-        saveButton.setState(.warning)
-        exitButton.setState(.warning)
+        presetDidChange()
+        sendCurrentPreset()
     }
 }
 
@@ -689,6 +678,11 @@ extension MainVC: RemoteManagerDelegate {
                                 }
                             }
                         }
+                    case .changePreset:
+                        let preset = try DXPreset(data: message.content)
+                        preset.copyInto(preset: &self.currentPreset)
+                        self.displayPreset(self.currentPreset)
+                        self.presetDidChange()
                     }
                 } catch {
                     Flogger.log.error("Receive Failure: Couldn't decode DXMessage or DXPreset")
