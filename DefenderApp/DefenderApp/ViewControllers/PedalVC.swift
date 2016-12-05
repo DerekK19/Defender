@@ -29,11 +29,17 @@ class PedalVC: BaseEffectVC {
     @IBOutlet weak var upperKnobs: UIStackView!
     @IBOutlet weak var lowerKnobs: UIStackView!
     @IBOutlet weak var knobUpperLeft: PedalKnobControl!
+    @IBOutlet weak var labelUpperLeft: UILabel!
     @IBOutlet weak var knobUpperMiddle: PedalKnobControl!
+    @IBOutlet weak var labelUpperMiddle: UILabel!
     @IBOutlet weak var knobUpperRight: PedalKnobControl!
+    @IBOutlet weak var labelUpperRight: UILabel!
     @IBOutlet weak var knobLowerLeft: PedalKnobControl!
+    @IBOutlet weak var labelLowerLeft: UILabel!
     @IBOutlet weak var knobLowerMiddle: PedalKnobControl!
+    @IBOutlet weak var labelLowerMiddle: UILabel!
     @IBOutlet weak var knobLowerRight: PedalKnobControl!
+    @IBOutlet weak var labelLowerRight: UILabel!
 
     var slotNumber: Int?
     var effect: DXEffect?
@@ -177,18 +183,42 @@ class PedalVC: BaseEffectVC {
                 lowerRightIndex = 5
             }
             knobUpperLeft.isHidden = upperLeftIndex == nil
+            labelUpperLeft.isHidden = upperLeftIndex == nil
             knobUpperMiddle.isHidden = upperMiddleIndex == nil
+            labelUpperMiddle.isHidden = upperMiddleIndex == nil
             knobUpperRight.isHidden = upperRightIndex == nil
+            labelUpperRight.isHidden = upperRightIndex == nil
             knobLowerLeft.isHidden = lowerLeftIndex == nil
+            labelLowerLeft.isHidden = lowerLeftIndex == nil
             knobLowerMiddle.isHidden = lowerMiddleIndex == nil
+            labelLowerMiddle.isHidden = lowerMiddleIndex == nil
             knobLowerRight.isHidden = lowerRightIndex == nil
+            labelLowerRight.isHidden = lowerRightIndex == nil
 
-            if let index = upperLeftIndex { knobUpperLeft.floatValue = pedal?.knobs[index].value ?? 0 }
-            if let index = upperMiddleIndex { knobUpperMiddle.floatValue = pedal?.knobs[index].value ?? 0 }
-            if let index = upperRightIndex { knobUpperRight.floatValue = pedal?.knobs[index].value ?? 0 }
-            if let index = lowerLeftIndex { knobLowerLeft.floatValue = pedal?.knobs[index].value ?? 0 }
-            if let index = lowerMiddleIndex { knobLowerMiddle.floatValue = pedal?.knobs[index].value ?? 0 }
-            if let index = lowerRightIndex { knobLowerRight.floatValue = pedal?.knobs[index].value ?? 0 }
+            if let index = upperLeftIndex {
+                knobUpperLeft.floatValue = pedal?.knobs[index].value ?? 0
+                labelUpperLeft.text = pedal?.knobs[index].name
+            }
+            if let index = upperMiddleIndex {
+                knobUpperMiddle.floatValue = pedal?.knobs[index].value ?? 0
+                labelUpperMiddle.text = pedal?.knobs[index].name
+            }
+            if let index = upperRightIndex {
+                knobUpperRight.floatValue = pedal?.knobs[index].value ?? 0
+                labelUpperRight.text = pedal?.knobs[index].name
+            }
+            if let index = lowerLeftIndex {
+                knobLowerLeft.floatValue = pedal?.knobs[index].value ?? 0
+                labelLowerLeft.text = pedal?.knobs[index].name
+            }
+            if let index = lowerMiddleIndex {
+                knobLowerMiddle.floatValue = pedal?.knobs[index].value ?? 0
+                labelLowerMiddle.text = pedal?.knobs[index].name
+            }
+            if let index = lowerRightIndex {
+                knobLowerRight.floatValue = pedal?.knobs[index].value ?? 0
+                labelLowerRight.text = pedal?.knobs[index].name
+            }
 
             bodyTop.backgroundColour = fullBackgroundColour
             bodyBottom.backgroundColour = fullBackgroundColour

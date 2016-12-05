@@ -27,7 +27,7 @@
                                 <rect key="frame" x="5" y="5" width="230" height="390"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VcC-tm-Bbe" customClass="PedalBodyControl" customModule="DefenderApp" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="5" width="210" height="143"/>
+                                        <rect key="frame" x="11" y="5" width="209.5" height="187"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7V-2E-lHc" customClass="LEDControl" customModule="DefenderApp" customModuleProvider="target">
                                                 <rect key="frame" x="2" y="2" width="7" height="7"/>
@@ -38,61 +38,192 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="bhD-jg-o9a">
-                                                <rect key="frame" x="5" y="8" width="200" height="127"/>
+                                                <rect key="frame" x="5" y="8" width="199.5" height="171"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="iGN-P4-1Az">
-                                                        <rect key="frame" x="15.5" y="0.0" width="169.5" height="62.5"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="iGN-P4-1Az">
+                                                        <rect key="frame" x="9.5" y="0.0" width="180.5" height="84.5"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhC-Gr-1ER" customClass="PedalKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="5.5" width="52.5" height="52"/>
-                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hsO-eq-RnH">
+                                                                <rect key="frame" x="0.0" y="6" width="56.5" height="72.5"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhC-Gr-1ER" customClass="PedalKnobControl" customModule="DefenderApp" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="56.5" height="55.5"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="fhC-Gr-1ER" secondAttribute="height" multiplier="1:1" id="pjc-Ax-x3K"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rh-uT-rlq">
+                                                                        <rect key="frame" x="29" y="53.5" width="0.0" height="19"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="fhC-Gr-1ER" secondAttribute="height" multiplier="1:1" id="pjc-Ax-x3K"/>
+                                                                    <constraint firstAttribute="width" secondItem="fhC-Gr-1ER" secondAttribute="width" id="2xc-AC-IaE"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="0rh-uT-rlq" secondAttribute="bottom" id="GuT-2x-LCB"/>
+                                                                    <constraint firstItem="fhC-Gr-1ER" firstAttribute="centerX" secondItem="hsO-eq-RnH" secondAttribute="centerX" id="LN9-UR-G1m"/>
+                                                                    <constraint firstItem="fhC-Gr-1ER" firstAttribute="bottom" secondItem="0rh-uT-rlq" secondAttribute="top" constant="2" id="N9x-2I-K83"/>
+                                                                    <constraint firstItem="0rh-uT-rlq" firstAttribute="centerX" secondItem="hsO-eq-RnH" secondAttribute="centerX" id="ciU-aN-pjk"/>
+                                                                    <constraint firstItem="fhC-Gr-1ER" firstAttribute="top" secondItem="hsO-eq-RnH" secondAttribute="top" id="s4C-mQ-2Zc"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOX-OW-FCz" customClass="PedalKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="58.5" y="5.5" width="52.5" height="52"/>
-                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5sb-HS-D1Z">
+                                                                <rect key="frame" x="62.5" y="6.5" width="55.5" height="72"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d13-qT-cqR" customClass="PedalKnobControl" customModule="DefenderApp" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="56" height="55.5"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="d13-qT-cqR" secondAttribute="height" multiplier="1:1" id="Sqe-bo-ekB"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKa-wl-vzL">
+                                                                        <rect key="frame" x="27.5" y="53.5" width="0.0" height="18.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="WOX-OW-FCz" secondAttribute="height" multiplier="1:1" id="Ue6-pO-prS"/>
+                                                                    <constraint firstItem="d13-qT-cqR" firstAttribute="centerX" secondItem="5sb-HS-D1Z" secondAttribute="centerX" id="0kn-vx-OvD"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="zKa-wl-vzL" secondAttribute="bottom" id="7C9-gH-6Ss"/>
+                                                                    <constraint firstItem="zKa-wl-vzL" firstAttribute="centerX" secondItem="5sb-HS-D1Z" secondAttribute="centerX" id="9mu-l6-E0P"/>
+                                                                    <constraint firstAttribute="width" secondItem="d13-qT-cqR" secondAttribute="width" id="kyl-lX-zfO"/>
+                                                                    <constraint firstItem="d13-qT-cqR" firstAttribute="bottom" secondItem="zKa-wl-vzL" secondAttribute="top" constant="2" id="oVn-Cx-eck"/>
+                                                                    <constraint firstItem="d13-qT-cqR" firstAttribute="top" secondItem="5sb-HS-D1Z" secondAttribute="top" id="tBz-Ft-tDz"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6i-VU-i5j" customClass="PedalKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="117" y="5.5" width="52.5" height="52"/>
-                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohW-7F-rre">
+                                                                <rect key="frame" x="124" y="6.5" width="56.5" height="72"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qOX-Zi-DBX" customClass="PedalKnobControl" customModule="DefenderApp" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.5" y="0.0" width="56" height="55.5"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="qOX-Zi-DBX" secondAttribute="height" multiplier="1:1" id="9li-90-Lx9"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x70-RV-rVi">
+                                                                        <rect key="frame" x="27.5" y="53.5" width="0.0" height="18.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="H6i-VU-i5j" secondAttribute="height" multiplier="1:1" id="ppj-pN-Tpk"/>
+                                                                    <constraint firstAttribute="width" secondItem="qOX-Zi-DBX" secondAttribute="width" id="ChS-TB-DuH"/>
+                                                                    <constraint firstItem="x70-RV-rVi" firstAttribute="centerX" secondItem="ohW-7F-rre" secondAttribute="centerX" id="CoE-qq-4p1"/>
+                                                                    <constraint firstItem="qOX-Zi-DBX" firstAttribute="centerX" secondItem="ohW-7F-rre" secondAttribute="centerX" id="FV1-dC-w25"/>
+                                                                    <constraint firstItem="qOX-Zi-DBX" firstAttribute="bottom" secondItem="x70-RV-rVi" secondAttribute="top" constant="2" id="G8P-pf-2pt"/>
+                                                                    <constraint firstItem="qOX-Zi-DBX" firstAttribute="top" secondItem="ohW-7F-rre" secondAttribute="top" id="jLy-mp-C64"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="x70-RV-rVi" secondAttribute="bottom" id="njh-el-sOD"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="fhC-Gr-1ER" firstAttribute="height" secondItem="qOX-Zi-DBX" secondAttribute="height" id="6kM-ZU-nuC"/>
+                                                            <constraint firstItem="fhC-Gr-1ER" firstAttribute="height" secondItem="d13-qT-cqR" secondAttribute="height" id="duu-6Z-7rD"/>
+                                                        </constraints>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="lDe-Ur-nTR">
-                                                        <rect key="frame" x="15.5" y="64.5" width="169.5" height="62.5"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="lDe-Ur-nTR">
+                                                        <rect key="frame" x="10.5" y="86.5" width="178.5" height="84.5"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZC-Pq-8nk" customClass="PedalKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="5.5" width="52.5" height="52"/>
-                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Il1-CY-0Y6">
+                                                                <rect key="frame" x="0.0" y="6" width="55.5" height="73"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ejh-c3-do5" customClass="PedalKnobControl" customModule="DefenderApp" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="56" height="55.5"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="Ejh-c3-do5" secondAttribute="height" multiplier="1:1" id="29G-Pz-KwE"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajb-2P-gpJ">
+                                                                        <rect key="frame" x="28.5" y="53.5" width="0.0" height="19.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="HZC-Pq-8nk" secondAttribute="height" multiplier="1:1" id="P3o-Fm-Val"/>
+                                                                    <constraint firstItem="Ejh-c3-do5" firstAttribute="top" secondItem="Il1-CY-0Y6" secondAttribute="top" id="D69-hK-3ud"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="ajb-2P-gpJ" secondAttribute="bottom" id="YIh-t7-KP5"/>
+                                                                    <constraint firstAttribute="width" secondItem="Ejh-c3-do5" secondAttribute="width" id="bth-Tn-fyN"/>
+                                                                    <constraint firstItem="Ejh-c3-do5" firstAttribute="bottom" secondItem="ajb-2P-gpJ" secondAttribute="top" constant="2" id="fhD-Yp-HY6"/>
+                                                                    <constraint firstItem="Ejh-c3-do5" firstAttribute="centerX" secondItem="Il1-CY-0Y6" secondAttribute="centerX" id="fuM-kR-KSs"/>
+                                                                    <constraint firstItem="ajb-2P-gpJ" firstAttribute="centerX" secondItem="Il1-CY-0Y6" secondAttribute="centerX" id="t6U-rI-GUz"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TEC-Jn-K2W" customClass="PedalKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="58.5" y="5.5" width="52.5" height="52"/>
-                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="33b-tn-oCc">
+                                                                <rect key="frame" x="61.5" y="6.5" width="55.5" height="72"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WEh-K9-5cU" customClass="PedalKnobControl" customModule="DefenderApp" customModuleProvider="target">
+                                                                        <rect key="frame" x="-0.5" y="0.0" width="56" height="55.5"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="WEh-K9-5cU" secondAttribute="height" multiplier="1:1" id="yp7-h2-aqK"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFs-lV-NeP">
+                                                                        <rect key="frame" x="28" y="53.5" width="0.0" height="18.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="TEC-Jn-K2W" secondAttribute="height" multiplier="1:1" id="mgm-vv-UUl"/>
+                                                                    <constraint firstItem="WEh-K9-5cU" firstAttribute="bottom" secondItem="jFs-lV-NeP" secondAttribute="top" constant="2" id="Ccx-on-Xdu"/>
+                                                                    <constraint firstItem="WEh-K9-5cU" firstAttribute="top" secondItem="33b-tn-oCc" secondAttribute="top" id="FaQ-Gl-F8j"/>
+                                                                    <constraint firstItem="jFs-lV-NeP" firstAttribute="centerX" secondItem="33b-tn-oCc" secondAttribute="centerX" id="WBy-K0-gV2"/>
+                                                                    <constraint firstAttribute="width" secondItem="WEh-K9-5cU" secondAttribute="width" id="YRX-Tr-R73"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="jFs-lV-NeP" secondAttribute="bottom" id="agO-AR-Dyr"/>
+                                                                    <constraint firstItem="WEh-K9-5cU" firstAttribute="centerX" secondItem="33b-tn-oCc" secondAttribute="centerX" id="v7c-RT-1j3"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceV-P0-Xm6" customClass="PedalKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                <rect key="frame" x="117" y="5.5" width="52.5" height="52"/>
-                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vOD-3w-KCG">
+                                                                <rect key="frame" x="123" y="6.5" width="55.5" height="72"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eC4-ps-U8J" customClass="PedalKnobControl" customModule="DefenderApp" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="56" height="55"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="eC4-ps-U8J" secondAttribute="height" multiplier="1:1" id="ldv-bg-7j2"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAc-NK-pmd">
+                                                                        <rect key="frame" x="27" y="53" width="0.0" height="19"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="ceV-P0-Xm6" secondAttribute="height" multiplier="1:1" id="zJq-j9-PJA"/>
+                                                                    <constraint firstItem="bAc-NK-pmd" firstAttribute="centerX" secondItem="vOD-3w-KCG" secondAttribute="centerX" id="V95-ZI-oCe"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="bAc-NK-pmd" secondAttribute="bottom" id="aKI-4p-ZBb"/>
+                                                                    <constraint firstItem="eC4-ps-U8J" firstAttribute="centerX" secondItem="vOD-3w-KCG" secondAttribute="centerX" id="gTg-Ti-GuP"/>
+                                                                    <constraint firstItem="eC4-ps-U8J" firstAttribute="bottom" secondItem="bAc-NK-pmd" secondAttribute="top" constant="2" id="gYL-d3-HKQ"/>
+                                                                    <constraint firstAttribute="width" secondItem="eC4-ps-U8J" secondAttribute="width" id="hRG-39-Iu1"/>
+                                                                    <constraint firstItem="eC4-ps-U8J" firstAttribute="top" secondItem="vOD-3w-KCG" secondAttribute="top" id="nzc-Rz-Tce"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="Ejh-c3-do5" firstAttribute="height" secondItem="eC4-ps-U8J" secondAttribute="height" id="RJo-ka-CfX"/>
+                                                            <constraint firstItem="Ejh-c3-do5" firstAttribute="height" secondItem="WEh-K9-5cU" secondAttribute="height" id="s8z-Qn-fU5"/>
+                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="fhC-Gr-1ER" firstAttribute="height" secondItem="Ejh-c3-do5" secondAttribute="height" id="uRs-al-B3N"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.76470588240000004" green="0.79607843140000001" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -106,7 +237,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drC-jB-VpO" customClass="PedalBodyControl" customModule="DefenderApp" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="143" width="220" height="242"/>
+                                        <rect key="frame" x="5.5" y="187" width="220" height="198"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" ◀︎INPUT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tX-Az-GFn">
                                                 <rect key="frame" x="0.0" y="1" width="43" height="11.5"/>
@@ -121,29 +252,29 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Jf-pK-LdS">
-                                                <rect key="frame" x="107" y="45" width="6" height="21"/>
+                                                <rect key="frame" x="106.5" y="1" width="6" height="21"/>
                                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIV-Zu-rqP">
-                                                <rect key="frame" x="4" y="67" width="212" height="1"/>
+                                                <rect key="frame" x="4.5" y="23" width="211.5" height="1"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="CtS-mv-exP"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oF6-fO-Bv7">
-                                                <rect key="frame" x="108" y="69" width="5.5" height="28.5"/>
+                                                <rect key="frame" x="107.5" y="25" width="5.5" height="28.5"/>
                                                 <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdS-Dy-ZI4" customClass="PedalPadControl" customModule="DefenderApp" customModuleProvider="target">
-                                                <rect key="frame" x="7" y="99.5" width="206" height="137.5"/>
+                                                <rect key="frame" x="7.5" y="55.5" width="205.5" height="137.5"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pedal-logo" translatesAutoresizingMaskIntoConstraints="NO" id="rJL-L3-OKo">
-                                                        <rect key="frame" x="19.5" y="6" width="167" height="125.5"/>
+                                                        <rect key="frame" x="18.5" y="6" width="167" height="125.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="rJL-L3-OKo" secondAttribute="height" multiplier="4:3" id="xLo-Tp-PrB"/>
                                                         </constraints>
@@ -170,7 +301,7 @@
                                             <constraint firstItem="oF6-fO-Bv7" firstAttribute="centerX" secondItem="drC-jB-VpO" secondAttribute="centerX" id="QQu-Li-gDV"/>
                                             <constraint firstAttribute="trailing" secondItem="bdS-Dy-ZI4" secondAttribute="trailing" constant="7" id="QWI-Qn-hYQ"/>
                                             <constraint firstAttribute="bottom" secondItem="bdS-Dy-ZI4" secondAttribute="bottom" constant="5" id="VGB-M6-Oht"/>
-                                            <constraint firstAttribute="width" secondItem="drC-jB-VpO" secondAttribute="height" multiplier="1:1.1" id="Zqs-XF-7XP"/>
+                                            <constraint firstAttribute="width" secondItem="drC-jB-VpO" secondAttribute="height" multiplier="1:0.9" id="Zqs-XF-7XP"/>
                                             <constraint firstItem="3Jf-pK-LdS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="drC-jB-VpO" secondAttribute="leading" constant="5" id="a9c-BY-YMO"/>
                                             <constraint firstItem="mIV-Zu-rqP" firstAttribute="top" secondItem="3Jf-pK-LdS" secondAttribute="bottom" constant="1" id="cfa-cg-sVA"/>
                                             <constraint firstItem="bdS-Dy-ZI4" firstAttribute="top" secondItem="oF6-fO-Bv7" secondAttribute="bottom" constant="2" id="g6x-xN-HfV"/>
@@ -197,23 +328,18 @@
                                     <constraint firstItem="drC-jB-VpO" firstAttribute="leading" secondItem="TtB-MC-ZhC" secondAttribute="leading" priority="750" constant="5" id="1tE-le-iFs"/>
                                     <constraint firstAttribute="trailing" secondItem="drC-jB-VpO" secondAttribute="trailing" priority="750" constant="5" id="2VK-gt-fjq"/>
                                     <constraint firstAttribute="trailing" secondItem="4BC-HO-Sh8" secondAttribute="trailing" constant="5" id="3WE-g0-kND"/>
-                                    <constraint firstAttribute="height" secondItem="TEC-Jn-K2W" secondAttribute="height" multiplier="7.5" id="72W-V6-ewZ"/>
                                     <constraint firstItem="4BC-HO-Sh8" firstAttribute="top" secondItem="TtB-MC-ZhC" secondAttribute="top" constant="5" id="7ny-m1-5wu"/>
                                     <constraint firstAttribute="bottom" secondItem="drC-jB-VpO" secondAttribute="bottom" constant="5" id="8JW-d6-AKN"/>
-                                    <constraint firstAttribute="height" secondItem="fhC-Gr-1ER" secondAttribute="height" multiplier="7.5" id="9UC-dB-6m9"/>
                                     <constraint firstItem="TWE-dj-uZ4" firstAttribute="top" secondItem="TtB-MC-ZhC" secondAttribute="top" constant="100" id="CkG-dT-tDZ"/>
                                     <constraint firstItem="VcC-tm-Bbe" firstAttribute="bottom" secondItem="drC-jB-VpO" secondAttribute="top" constant="5" id="Egv-X4-aIn"/>
                                     <constraint firstAttribute="bottom" secondItem="4BC-HO-Sh8" secondAttribute="bottom" constant="5" id="IDh-fp-yeo"/>
                                     <constraint firstItem="drC-jB-VpO" firstAttribute="trailing" secondItem="VcC-tm-Bbe" secondAttribute="trailing" constant="5" id="PO9-TZ-9gh"/>
                                     <constraint firstItem="TWE-dj-uZ4" firstAttribute="centerX" secondItem="TtB-MC-ZhC" secondAttribute="centerX" id="Sp9-lk-lT2"/>
-                                    <constraint firstAttribute="height" secondItem="WOX-OW-FCz" secondAttribute="height" multiplier="7.5" id="bcJ-Iu-y0L"/>
                                     <constraint firstItem="drC-jB-VpO" firstAttribute="centerX" secondItem="TtB-MC-ZhC" secondAttribute="centerX" id="gEQ-GU-lzY"/>
+                                    <constraint firstAttribute="height" secondItem="fhC-Gr-1ER" secondAttribute="height" multiplier="7" id="klW-hW-4XC"/>
                                     <constraint firstItem="VcC-tm-Bbe" firstAttribute="top" secondItem="TtB-MC-ZhC" secondAttribute="top" constant="5" id="lXG-e3-fgb"/>
-                                    <constraint firstAttribute="height" secondItem="HZC-Pq-8nk" secondAttribute="height" multiplier="7.5" id="oS2-oq-J95"/>
-                                    <constraint firstAttribute="height" secondItem="ceV-P0-Xm6" secondAttribute="height" multiplier="7.5" id="p0K-fQ-4I5"/>
                                     <constraint firstItem="VcC-tm-Bbe" firstAttribute="leading" secondItem="drC-jB-VpO" secondAttribute="leading" constant="5" id="q3P-oe-Ekw"/>
                                     <constraint firstItem="4BC-HO-Sh8" firstAttribute="leading" secondItem="TtB-MC-ZhC" secondAttribute="leading" constant="5" id="qnV-Ik-LRf"/>
-                                    <constraint firstAttribute="height" secondItem="H6i-VU-i5j" secondAttribute="height" multiplier="7.5" id="ust-yt-Jne"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -234,12 +360,18 @@
                         <outlet property="bodyBottom" destination="drC-jB-VpO" id="lZC-N4-Gnt"/>
                         <outlet property="bodyTop" destination="VcC-tm-Bbe" id="6hz-4V-Qga"/>
                         <outlet property="inputLabel" destination="4tX-Az-GFn" id="LmU-gM-aYA"/>
-                        <outlet property="knobLowerLeft" destination="HZC-Pq-8nk" id="9V1-dd-iwD"/>
-                        <outlet property="knobLowerMiddle" destination="TEC-Jn-K2W" id="RQ6-8W-ww7"/>
-                        <outlet property="knobLowerRight" destination="ceV-P0-Xm6" id="qCh-iu-VNq"/>
+                        <outlet property="knobLowerLeft" destination="Ejh-c3-do5" id="Apl-Pj-REA"/>
+                        <outlet property="knobLowerMiddle" destination="WEh-K9-5cU" id="B1K-O3-BSH"/>
+                        <outlet property="knobLowerRight" destination="eC4-ps-U8J" id="WD5-gd-0rn"/>
                         <outlet property="knobUpperLeft" destination="fhC-Gr-1ER" id="1bP-Fg-ecp"/>
-                        <outlet property="knobUpperMiddle" destination="WOX-OW-FCz" id="2b9-H3-zY6"/>
-                        <outlet property="knobUpperRight" destination="H6i-VU-i5j" id="Tfv-TK-IIA"/>
+                        <outlet property="knobUpperMiddle" destination="d13-qT-cqR" id="Xbd-bI-lk2"/>
+                        <outlet property="knobUpperRight" destination="qOX-Zi-DBX" id="afo-tn-ESE"/>
+                        <outlet property="labelLowerLeft" destination="ajb-2P-gpJ" id="Mqn-Gv-Uzq"/>
+                        <outlet property="labelLowerMiddle" destination="jFs-lV-NeP" id="ikv-gb-8p0"/>
+                        <outlet property="labelLowerRight" destination="bAc-NK-pmd" id="cWa-Lv-Jnu"/>
+                        <outlet property="labelUpperLeft" destination="0rh-uT-rlq" id="eZN-Xk-4TV"/>
+                        <outlet property="labelUpperMiddle" destination="zKa-wl-vzL" id="lu2-AY-TPs"/>
+                        <outlet property="labelUpperRight" destination="x70-RV-rVi" id="sG5-7d-arK"/>
                         <outlet property="lowerKnobs" destination="lDe-Ur-nTR" id="O9H-NK-P7K"/>
                         <outlet property="nameLabel" destination="oF6-fO-Bv7" id="1iv-jm-ms7"/>
                         <outlet property="outputLabel" destination="Lxd-7g-spb" id="AQM-sa-k3X"/>
