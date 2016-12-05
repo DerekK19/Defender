@@ -46,6 +46,7 @@ class MainVC: NSViewController {
     
     @IBOutlet weak var debugButton: NSButton!
     @IBOutlet weak var preloadButton: NSButton!
+    @IBOutlet weak var presetsLabel: NSTextField!
     
     @IBOutlet weak var effectsSettings: NSStackView!
     @IBOutlet weak var pedalsArea: NSStackView!
@@ -113,6 +114,7 @@ class MainVC: NSViewController {
         configureAmplifiers()
 
         debugButton.isHidden = !ampManager.mocking
+        preloadButton.isHidden = true
         
         let contrastColour = NSColor.white
         gainArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
@@ -219,6 +221,7 @@ class MainVC: NSViewController {
             self.powerState = .off
             self.setPreset(nil)
             self.sendNoAmplifier()
+            self.preloadButton.isHidden = true
         } else {
             Flogger.log.verbose(" Powering on")
             sender.state = NSOffState
@@ -228,6 +231,7 @@ class MainVC: NSViewController {
                 DispatchQueue.main.async {
                     self.powerState = .on
                     self.valueDidChangeForWheel(self.wheel, value: 0)
+                    self.preloadButton.isHidden = false
                     sender.state = NSOnState
                 }
             }
@@ -291,7 +295,11 @@ class MainVC: NSViewController {
     }
     
     @IBAction func willPreloadAllPresets(_ sender: NSButton) {
-        ampManager.loadAllPresets()
+        preloadButton.isEnabled = false
+        ampManager.loadAllPresets() { (allLoaded) in
+            self.preloadButton.isHidden = allLoaded
+            self.preloadButton.isEnabled = !allLoaded
+        }
     }
 
     // MARK: Private Functions
@@ -299,8 +307,10 @@ class MainVC: NSViewController {
         statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
         statusLabel.stringValue = "\(ampManager.currentAmplifierName) connected"
         bluetoothLabel.stringValue = ""
+        presetsLabel.stringValue = ""
         statusLabel.textColor = .white
         bluetoothLabel.textColor = .white
+        presetsLabel.textColor = .white
         powerButton.state = NSOffState
         powerState = .off
     }
@@ -603,6 +613,13 @@ extension MainVC: AmpManagerDelegate {
         Flogger.log.verbose(" Opened")
         configureAmplifiers()
         sendCurrentPreset()
+    }
+    
+    func presetCountChanged(ampManager: AmpManager, to: UInt) {
+        DispatchQueue.main.async {
+            self.presetsLabel.stringValue = "Loaded \(to) preset\(to == 1 ? "" : "s")"
+            self.preloadButton.isHidden = to == 100
+        }
     }
     
     func deviceClosed(ampManager: AmpManager) {
