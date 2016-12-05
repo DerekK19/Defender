@@ -45,6 +45,7 @@ class MainVC: NSViewController {
     @IBOutlet weak var tapButton: ActionButtonControl!
     
     @IBOutlet weak var debugButton: NSButton!
+    @IBOutlet weak var preloadButton: NSButton!
     
     @IBOutlet weak var effectsSettings: NSStackView!
     @IBOutlet weak var pedalsArea: NSStackView!
@@ -289,6 +290,10 @@ class MainVC: NSViewController {
         }
     }
     
+    @IBAction func willPreloadAllPresets(_ sender: NSButton) {
+        ampManager.loadAllPresets()
+    }
+
     // MARK: Private Functions
     fileprivate func reset() {
         statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red

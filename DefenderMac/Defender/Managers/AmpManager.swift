@@ -101,6 +101,27 @@ class AmpManager {
         }
     }
     
+    open func loadAllPresets() {
+        if let amplifier = currentAmplifier {
+            let semaphore = DispatchSemaphore(value: 0)
+            semaphore.signal()
+            for i in 0..<presets.count {
+                if presets[UInt8(i)]?.gain1 != nil { continue }
+                semaphore.wait()
+                mustang.getPreset(
+                    amplifier,
+                    preset: UInt8(i)) { (preset) in
+                        if let preset = preset {
+                            if let number = preset.number {
+                                self.presets[number] = preset
+                            }
+                        }
+                        semaphore.signal()
+                }
+            }
+        }
+    }
+
     open func getCachedPreset(_ preset: Int, onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
         if let _ = currentAmplifier {
             if preset >= 0 && preset < presets.count {
