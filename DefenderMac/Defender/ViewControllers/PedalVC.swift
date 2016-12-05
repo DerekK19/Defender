@@ -48,6 +48,13 @@ class PedalVC: NSViewController {
     var fullBackgroundColour = NSColor.black
     var pedalBackgroundColour = NSColor.black
     
+    var upperLeftIndex: Int? = 0
+    var upperMiddleIndex: Int? = 0
+    var upperRightIndex: Int? = 0
+    var lowerLeftIndex: Int? = 0
+    var lowerMiddleIndex: Int? = 0
+    var lowerRightIndex: Int? = 0
+    
     var state: EffectState = .disabled {
         didSet {
             var newBackgroundColour = NSColor()
@@ -120,72 +127,87 @@ class PedalVC: NSViewController {
         }
         upperKnobs.isHidden = false
         lowerKnobs.isHidden = false
+
+        upperLeftIndex = nil
+        upperMiddleIndex = nil
+        upperRightIndex = nil
+        lowerLeftIndex = nil
+        lowerMiddleIndex = nil
+        lowerRightIndex = nil
+        
         if pedal?.knobCount == 1 {
             lowerKnobs.isHidden = true
-            knobUpperLeft.isHidden = true
-            knobUpperMiddle.isHidden = false
-            knobUpperRight.isHidden = true
-            knobLowerLeft.isHidden = true
-            knobLowerMiddle.isHidden = true
-            knobLowerRight.isHidden = true
-            knobUpperMiddle.floatValue = pedal?.knobs[0].value ?? 0
+            upperMiddleIndex = 0
         } else if pedal?.knobCount == 2 {
             lowerKnobs.isHidden = true
-            knobUpperLeft.isHidden = false
-            knobUpperMiddle.isHidden = true
-            knobUpperRight.isHidden = false
-            knobLowerLeft.isHidden = true
-            knobLowerMiddle.isHidden = true
-            knobLowerRight.isHidden = true
-            knobUpperLeft.floatValue = pedal?.knobs[0].value ?? 0
-            knobUpperRight.floatValue = pedal?.knobs[1].value ?? 0
+            upperLeftIndex = 0
+            upperRightIndex = 1
         } else if pedal?.knobCount == 3 {
             lowerKnobs.isHidden = true
-            knobUpperLeft.isHidden = false
-            knobUpperMiddle.isHidden = false
-            knobUpperRight.isHidden = false
-            knobLowerLeft.isHidden = true
-            knobLowerMiddle.isHidden = true
-            knobLowerRight.isHidden = true
-            knobUpperLeft.floatValue = pedal?.knobs[0].value ?? 0
-            knobUpperMiddle.floatValue = pedal?.knobs[1].value ?? 0
-            knobUpperRight.floatValue = pedal?.knobs[2].value ?? 0
+            upperLeftIndex = 0
+            upperMiddleIndex = 1
+            upperRightIndex = 2
         } else if pedal?.knobCount == 4 {
-            knobUpperLeft.isHidden = false
-            knobUpperMiddle.isHidden = true
-            knobUpperRight.isHidden = false
-            knobLowerLeft.isHidden = false
-            knobLowerMiddle.isHidden = true
-            knobLowerRight.isHidden = false
-            knobUpperLeft.floatValue = pedal?.knobs[0].value ?? 0
-            knobUpperRight.floatValue = pedal?.knobs[1].value ?? 0
-            knobLowerLeft.floatValue = pedal?.knobs[2].value ?? 0
-            knobLowerRight.floatValue = pedal?.knobs[3].value ?? 0
+            upperLeftIndex = 0
+            upperRightIndex = 1
+            lowerLeftIndex = 2
+            lowerRightIndex = 3
         } else if pedal?.knobCount == 5 {
-            knobUpperLeft.isHidden = false
-            knobUpperMiddle.isHidden = false
-            knobUpperRight.isHidden = false
-            knobLowerLeft.isHidden = false
-            knobLowerMiddle.isHidden = true
-            knobLowerRight.isHidden = false
-            knobUpperLeft.floatValue = pedal?.knobs[0].value ?? 0
-            knobUpperMiddle.floatValue = pedal?.knobs[1].value ?? 0
-            knobUpperRight.floatValue = pedal?.knobs[2].value ?? 0
-            knobLowerLeft.floatValue = pedal?.knobs[3].value ?? 0
-            knobLowerRight.floatValue = pedal?.knobs[4].value ?? 0
+            upperLeftIndex = 0
+            upperMiddleIndex = 1
+            upperRightIndex = 2
+            lowerLeftIndex = 3
+            lowerRightIndex = 4
         } else if pedal?.knobCount == 6 {
-            knobUpperLeft.isHidden = false
-            knobUpperMiddle.isHidden = false
-            knobUpperRight.isHidden = false
-            knobLowerLeft.isHidden = false
-            knobLowerMiddle.isHidden = false
-            knobLowerRight.isHidden = false
-            knobUpperLeft.floatValue = pedal?.knobs[0].value ?? 0
-            knobUpperMiddle.floatValue = pedal?.knobs[1].value ?? 0
-            knobUpperRight.floatValue = pedal?.knobs[2].value ?? 0
-            knobLowerLeft.floatValue = pedal?.knobs[3].value ?? 0
-            knobLowerMiddle.floatValue = pedal?.knobs[4].value ?? 0
-            knobLowerRight.floatValue = pedal?.knobs[5].value ?? 0
+            upperLeftIndex = 0
+            upperMiddleIndex = 1
+            upperRightIndex = 2
+            lowerLeftIndex = 3
+            lowerMiddleIndex = 4
+            lowerRightIndex = 5
+        }
+//        viewUpperLeft.isHidden = upperLeftIndex == nil
+        knobUpperLeft.isHidden = upperLeftIndex == nil
+//        labelUpperLeft.isHidden = upperLeftIndex == nil
+//        viewUpperMiddle.isHidden = upperMiddleIndex == nil
+        knobUpperMiddle.isHidden = upperMiddleIndex == nil
+//        labelUpperMiddle.isHidden = upperMiddleIndex == nil
+//        viewUpperRight.isHidden = upperRightIndex == nil
+        knobUpperRight.isHidden = upperRightIndex == nil
+//        labelUpperRight.isHidden = upperRightIndex == nil
+//        viewLowerLeft.isHidden = lowerLeftIndex == nil
+        knobLowerLeft.isHidden = lowerLeftIndex == nil
+//        labelLowerLeft.isHidden = lowerLeftIndex == nil
+//        viewLowerMiddle.isHidden = lowerMiddleIndex == nil
+        knobLowerMiddle.isHidden = lowerMiddleIndex == nil
+//        labelLowerMiddle.isHidden = lowerMiddleIndex == nil
+//        viewLowerRight.isHidden = lowerRightIndex == nil
+        knobLowerRight.isHidden = lowerRightIndex == nil
+//        labelLowerRight.isHidden = lowerRightIndex == nil
+        
+        if let index = upperLeftIndex {
+            knobUpperLeft.floatValue = pedal?.knobs[index].value ?? 0
+//            labelUpperLeft.text = pedal?.knobs[index].name
+        }
+        if let index = upperMiddleIndex {
+            knobUpperMiddle.floatValue = pedal?.knobs[index].value ?? 0
+//            labelUpperMiddle.text = pedal?.knobs[index].name
+        }
+        if let index = upperRightIndex {
+            knobUpperRight.floatValue = pedal?.knobs[index].value ?? 0
+//            labelUpperRight.text = pedal?.knobs[index].name
+        }
+        if let index = lowerLeftIndex {
+            knobLowerLeft.floatValue = pedal?.knobs[index].value ?? 0
+//            labelLowerLeft.text = pedal?.knobs[index].name
+        }
+        if let index = lowerMiddleIndex {
+            knobLowerMiddle.floatValue = pedal?.knobs[index].value ?? 0
+//            labelLowerMiddle.text = pedal?.knobs[index].name
+        }
+        if let index = lowerRightIndex {
+            knobLowerRight.floatValue = pedal?.knobs[index].value ?? 0
+//            labelLowerRight.text = pedal?.knobs[index].name
         }
     }
     
