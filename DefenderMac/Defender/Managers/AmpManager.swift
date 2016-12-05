@@ -103,30 +103,34 @@ class AmpManager {
     }
     
     open func loadAllPresets(_ onCompletion: @escaping (_ allLoaded: Bool) ->()) {
-        DispatchQueue.global().async {
-            let serialQueue = DispatchQueue(label: "presetqueue")
-            if let amplifier = self.currentAmplifier {
-                let semaphore = DispatchSemaphore(value: 0)
-                semaphore.signal()
-                for i in 0..<self.presets.count {
-                    if self.presets[UInt8(i)]?.gain1 != nil { continue }
-                    semaphore.wait()
-                    serialQueue.async {
-                        self.mustang.getPreset(
-                            amplifier,
-                            preset: UInt8(i)) { (preset) in
-                                if let preset = preset {
-                                    if let number = preset.number {
-                                        self.presets[number] = preset
+        if !mocking {
+            DispatchQueue.global().async {
+                let serialQueue = DispatchQueue(label: "presetqueue")
+                if let amplifier = self.currentAmplifier {
+                    let semaphore = DispatchSemaphore(value: 0)
+                    semaphore.signal()
+                    for i in 0..<self.presets.count {
+                        if self.presets[UInt8(i)]?.gain1 != nil { continue }
+                        semaphore.wait()
+                        serialQueue.async {
+                            self.mustang.getPreset(
+                                amplifier,
+                                preset: UInt8(i)) { (preset) in
+                                    if let preset = preset {
+                                        if let number = preset.number {
+                                            self.presets[number] = preset
+                                        }
                                     }
-                                }
-                                self.delegate?.presetCountChanged(ampManager: self, to: UInt(self.presets.filter({$0.value.gain1 != nil}).count))
-                                semaphore.signal()
+                                    self.delegate?.presetCountChanged(ampManager: self, to: UInt(self.presets.filter({$0.value.gain1 != nil}).count))
+                                    semaphore.signal()
+                            }
                         }
                     }
+                    onCompletion(self.presets.filter({$0.value.gain1 != nil}).count == 100)
                 }
-                onCompletion(self.presets.filter({$0.value.gain1 != nil}).count == 100)
             }
+        } else {
+            
         }
     }
 

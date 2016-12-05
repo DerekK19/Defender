@@ -20,6 +20,7 @@ class MainVC: NSViewController {
     @IBOutlet weak var txLED: LEDControl!
     @IBOutlet weak var rxLED: LEDControl!
     @IBOutlet weak var bluetoothLabel: NSTextField!
+    @IBOutlet weak var presetsLabel: NSTextField!
     @IBOutlet weak var gainArrow: NSImageView!
     @IBOutlet weak var volumeArrow: NSImageView!
     @IBOutlet weak var trebleArrow: NSImageView!
@@ -46,7 +47,6 @@ class MainVC: NSViewController {
     
     @IBOutlet weak var debugButton: NSButton!
     @IBOutlet weak var preloadButton: NSButton!
-    @IBOutlet weak var presetsLabel: NSTextField!
     
     @IBOutlet weak var effectsSettings: NSStackView!
     @IBOutlet weak var pedalsArea: NSStackView!
@@ -100,7 +100,6 @@ class MainVC: NSViewController {
         self.view.wantsLayer = true
 
         bluetoothLogo.isHidden = true
-        bluetoothLabel.isHidden = true
         txLED.backgroundColour = NSColor.clear
         rxLED.backgroundColour = NSColor.clear
         
@@ -431,7 +430,6 @@ class MainVC: NSViewController {
     func sendMessage(_ message: DXMessage) {
         if remoteManager?.send(message) == true {
             txLED.backgroundColour = NSColor.red
-//            bluetoothLabel.stringValue = "Sending"
         } else {
             Flogger.log.error("Failed to send message. Command = \(message.command)")
         }
@@ -656,29 +654,24 @@ extension MainVC: RemoteManagerDelegate {
         DispatchQueue.main.async {
             self.bluetoothLogo.isHidden = false
             self.bluetoothLogo.alphaValue = 0.5
-            self.bluetoothLabel.isHidden = false
-//            self.bluetoothLabel.stringValue = "Started"
         }
     }
     
     func remoteManagerDidConnect(_ manager: RemoteManager) {
         DispatchQueue.main.async {
             self.bluetoothLogo.alphaValue = 1.0
-//            self.bluetoothLabel.stringValue = "Connected"
         }
     }
 
     func remoteManager(_ manager: RemoteManager, didSend success: Bool) {
         DispatchQueue.main.async {
             self.txLED.backgroundColour = NSColor.clear
-//            self.bluetoothLabel.stringValue = "Sent"
         }
     }
     
     func remoteManager(_ manager: RemoteManager, didReceive data: Data) {
         DispatchQueue.main.async {
             self.rxLED.backgroundColour = NSColor.green
-//            self.bluetoothLabel.stringValue = "Received"
             DispatchQueue.main.async {
                 do {
                     let message = try DXMessage(data: data)
@@ -717,14 +710,12 @@ extension MainVC: RemoteManagerDelegate {
     func remoteManagerDidDisconnect(_ manager: RemoteManager) {
         DispatchQueue.main.async {
             self.bluetoothLogo.alphaValue = 0.5
-//            self.bluetoothLabel.stringValue = "Disconnected"
         }
     }
 
     func remoteManagerDidStop(_ manager: RemoteManager) {
         DispatchQueue.main.async {
             self.bluetoothLogo.isHidden = true
-            self.bluetoothLabel.isHidden = true
         }
     }
 
