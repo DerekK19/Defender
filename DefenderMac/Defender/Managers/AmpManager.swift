@@ -23,7 +23,7 @@ class AmpManager {
     
     private let mustang: Mustang
     
-    let mocking = true
+    let mocking = false
     
     private var amplifiers = [DTOAmplifier]()
     internal private(set) var currentAmplifier: DTOAmplifier?
