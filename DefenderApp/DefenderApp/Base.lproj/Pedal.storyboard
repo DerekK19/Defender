@@ -54,7 +54,7 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rh-uT-rlq">
-                                                                        <rect key="frame" x="29" y="53.5" width="0.0" height="19"/>
+                                                                        <rect key="frame" x="28.5" y="53.5" width="0.0" height="19"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -108,7 +108,7 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x70-RV-rVi">
-                                                                        <rect key="frame" x="27.5" y="53.5" width="0.0" height="18.5"/>
+                                                                        <rect key="frame" x="28" y="53.5" width="0.0" height="18.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -144,7 +144,7 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajb-2P-gpJ">
-                                                                        <rect key="frame" x="28.5" y="53.5" width="0.0" height="19.5"/>
+                                                                        <rect key="frame" x="28" y="53.5" width="0.0" height="19.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -198,7 +198,7 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAc-NK-pmd">
-                                                                        <rect key="frame" x="27" y="53" width="0.0" height="19"/>
+                                                                        <rect key="frame" x="27.5" y="53" width="0.0" height="19"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -251,7 +251,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Jf-pK-LdS">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="249" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="3Jf-pK-LdS">
                                                 <rect key="frame" x="106.5" y="1" width="6" height="21"/>
                                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                                 <nil key="textColor"/>
@@ -264,7 +264,7 @@
                                                     <constraint firstAttribute="height" constant="1" id="CtS-mv-exP"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oF6-fO-Bv7">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="248" verticalCompressionResistancePriority="248" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="oF6-fO-Bv7">
                                                 <rect key="frame" x="107.5" y="25" width="5.5" height="28.5"/>
                                                 <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="22"/>
                                                 <nil key="textColor"/>
@@ -310,6 +310,7 @@
                                             <constraint firstItem="4tX-Az-GFn" firstAttribute="top" secondItem="drC-jB-VpO" secondAttribute="top" constant="1" id="mg2-FC-sHL"/>
                                             <constraint firstItem="4tX-Az-GFn" firstAttribute="leading" secondItem="drC-jB-VpO" secondAttribute="leading" id="r7e-S7-cnm"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oF6-fO-Bv7" secondAttribute="trailing" constant="5" id="skz-rq-Lwn"/>
+                                            <constraint firstItem="3Jf-pK-LdS" firstAttribute="top" relation="greaterThanOrEqual" secondItem="drC-jB-VpO" secondAttribute="top" constant="1" id="uaw-OT-i1Q"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWE-dj-uZ4">
