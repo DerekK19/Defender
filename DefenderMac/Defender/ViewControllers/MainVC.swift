@@ -113,7 +113,7 @@ class MainVC: NSViewController {
         configureAmplifiers()
 
         debugButton.isHidden = !ampManager.mocking
-        preloadButton.isHidden = true
+        preloadButton.isHidden = ampManager.mocking
         
         let contrastColour = NSColor.white
         gainArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
@@ -220,7 +220,7 @@ class MainVC: NSViewController {
             self.powerState = .off
             self.setPreset(nil)
             self.sendNoAmplifier()
-            self.preloadButton.isHidden = true
+            self.preloadButton.isHidden = ampManager.mocking
         } else {
             Flogger.log.verbose(" Powering on")
             sender.state = NSOffState
@@ -262,6 +262,16 @@ class MainVC: NSViewController {
                 }
             }
         }
+    }
+
+    @IBAction func willBackup(_ sender: NSMenuItem) {
+        Flogger.log.verbose(" Backing up presets")
+        ampManager.saveBackup()
+    }
+    
+    @IBAction func willRestore(_ sender: NSMenuItem) {
+        Flogger.log.verbose(" Restoring from backup")
+        ampManager.restoreFromBackup(name: "2016_12_05_17_46_17")
     }
     
     @IBAction func willExit(_ sender: ActionButtonControl) {
@@ -616,7 +626,7 @@ extension MainVC: AmpManagerDelegate {
     func presetCountChanged(ampManager: AmpManager, to: UInt) {
         DispatchQueue.main.async {
             self.presetsLabel.stringValue = "Loaded \(to) preset\(to == 1 ? "" : "s")"
-            self.preloadButton.isHidden = to == 100
+            self.preloadButton.isHidden = (to == 100) || self.ampManager.mocking
         }
     }
     

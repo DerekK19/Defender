@@ -130,7 +130,7 @@ class AmpManager {
                 }
             }
         } else {
-            
+            onCompletion(self.presets.filter({$0.value.gain1 != nil}).count == 100)
         }
     }
 
@@ -170,12 +170,7 @@ class AmpManager {
                 amplifier,
                 preset: UInt8(preset)) { (preset) in
                     DispatchQueue.main.async {
-                        if let preset = preset {
-                            if let number = preset.number {
-                                self.presets[number] = preset
-                                onCompletion(preset)
-                            }
-                        }
+                        self.addPreset(preset, onCompletion: onCompletion)
                     }
             }
         }
@@ -190,12 +185,7 @@ class AmpManager {
                     amplifier,
                     preset: preset) { (preset) in
                         DispatchQueue.main.async {
-                            if let preset = preset {
-                                if let number = preset.number {
-                                    self.presets[number] = preset
-                                    onCompletion(preset)
-                                }
-                            }
+                            self.addPreset(preset, onCompletion: onCompletion)
                         }
                 }
             }
@@ -277,5 +267,72 @@ class AmpManager {
     
     open func exportPresetAsXml(_ preset: DTOPreset) -> XMLDocument? {
         return mustang.exportPresetAsXml(preset: preset)
+    }
+    
+    open func saveBackup() {
+        
+    }
+    
+    open func restoreFromBackup(name: String) {
+        
+        let backupRoot = "\(NSHomeDirectory())/Documents/Fender/FUSE/Backups"
+        let fileManager = FileManager()
+        fileManager.changeCurrentDirectoryPath(backupRoot)
+        if fileManager.currentDirectoryPath != backupRoot {
+            Flogger.log.error("There is no backup root folder - \(backupRoot)")
+            return
+        }
+        do {
+            let backupFolder = "\(backupRoot)/\(name)"
+            fileManager.changeCurrentDirectoryPath(backupFolder)
+            if fileManager.currentDirectoryPath != backupFolder {
+                Flogger.log.error("There is no backup folder - \(backupFolder)")
+                return
+            }
+            let fuseFilesNames = try fileManager.contentsOfDirectory(atPath: "FUSE")
+            let presetFilesNames = try fileManager.contentsOfDirectory(atPath: "Presets")
+            if fuseFilesNames.count != presetFilesNames.count {
+                Flogger.log.error("The number of preset files should be the same as the number of fuse files")
+                return
+            }
+            for file in fuseFilesNames {
+                let fusePath = "FUSE/\(file)"
+                let presetNumber = file.replacingOccurrences(of: ".fuse", with: "")
+                do {
+                    let document = try XMLDocument(contentsOf: URL(fileURLWithPath: fusePath), options: 0)
+                    if let info = document.rootElement()?.elements(forName: "Info").first {
+                        if let name = info.attribute(forName: "name")?.stringValue {
+                            let presetPath = "Presets/\(presetNumber)_\(name).fuse"
+                            do {
+                                let document = try XMLDocument(contentsOf: URL(fileURLWithPath:  presetPath), options: 0)
+                                var preset = Mustang().importPreset(document)
+                                if preset != nil {
+                                    preset?.number = UInt8(presetNumber)
+                                    self.addPreset(preset, onCompletion: { preset in })
+                                }
+                            }
+                            catch {
+                                Flogger.log.error("Couldn't read Preset XML file \(presetPath)")
+                            }
+                        }
+                    }
+                    self.delegate?.presetCountChanged(ampManager: self, to: UInt(self.presets.filter({$0.value.gain1 != nil}).count))
+                }
+                catch {
+                    Flogger.log.error("Couldn't read FUSE XML file \(fusePath)")
+                }
+            }
+        } catch {
+            Flogger.log.error("Failed to find backups")
+        }
+    }
+
+    fileprivate func addPreset(_ preset: DTOPreset?,  onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
+        if let preset = preset {
+            if let number = preset.number {
+                self.presets[number] = preset
+                onCompletion(preset)
+            }
+        }
     }
 }
