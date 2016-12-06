@@ -113,7 +113,7 @@ class MainVC: NSViewController {
         configureAmplifiers()
 
         debugButton.isHidden = !ampManager.mocking
-        preloadButton.isHidden = ampManager.mocking
+        preloadButton.isHidden = true
         
         let contrastColour = NSColor.white
         gainArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
@@ -220,7 +220,7 @@ class MainVC: NSViewController {
             self.powerState = .off
             self.setPreset(nil)
             self.sendNoAmplifier()
-            self.preloadButton.isHidden = ampManager.mocking
+            self.preloadButton.isHidden = true
         } else {
             Flogger.log.verbose(" Powering on")
             sender.state = NSOffState
@@ -230,7 +230,7 @@ class MainVC: NSViewController {
                 DispatchQueue.main.async {
                     self.powerState = .on
                     self.valueDidChangeForWheel(self.wheel, value: 0)
-                    self.preloadButton.isHidden = false
+                    self.preloadButton.isHidden = self.ampManager.mocking
                     sender.state = NSOnState
                 }
             }
