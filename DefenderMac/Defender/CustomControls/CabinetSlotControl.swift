@@ -1,14 +1,14 @@
 //
-//  EffectSlotControl.swift
+//  CabinetSlotControl.swift
 //  Defender
 //
-//  Created by Derek Knight on 5/10/16.
+//  Created by Derek Knight on 14/12/16.
 //  Copyright © 2016 Derek Knight. All rights reserved.
 //
 
 import Cocoa
 
-class EffectSlotControl: NSView {
+class CabinetSlotControl: NSView {
     
     var backgroundColour: NSColor = NSColor.slotBackground {
         didSet {

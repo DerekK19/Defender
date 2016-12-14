@@ -44,7 +44,7 @@ class WebVC: NSViewController {
 
     var delegate: WebVCDelegate?
     
-    let slotBackgroundColour = NSColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+    let slotBackgroundColour = NSColor.slotBackground
 
     var fullBackgroundColour = NSColor.black
     var webBackgroundColour = NSColor.black

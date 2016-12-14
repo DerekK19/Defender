@@ -17,6 +17,7 @@ protocol EffectVCDelegate {
 class EffectVC: NSViewController {
 
     @IBOutlet weak var slot: EffectSlotControl!
+    @IBOutlet weak var effectLead: NSBox!
     @IBOutlet weak var chassis: EffectControl!
     @IBOutlet weak var typeLabel: NSTextField!
     @IBOutlet weak var nameLabel: NSTextField!
@@ -33,7 +34,7 @@ class EffectVC: NSViewController {
     
     var delegate: EffectVCDelegate?
 
-    let slotBackgroundColour = NSColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+    let slotBackgroundColour = NSColor.slotBackground
     let bgColours: [Int : NSColor] = [1 : NSColor(red: 0.30, green: 0.30, blue: 0.41, alpha: 1.0),
                                       2 : NSColor(red: 0.49, green: 0.49, blue: 0.49, alpha: 1.0),
                                       10 : NSColor(red: 0.11, green: 0.28, blue: 0.43, alpha: 1.0),
@@ -47,7 +48,7 @@ class EffectVC: NSViewController {
             var newBackgroundColour = NSColor()
             switch state {
             case .disabled:
-                newBackgroundColour = slotBackgroundColour
+                newBackgroundColour = NSColor.clear
                 self.powerLED.backgroundColour = NSColor.black
                 self.knob1.isHidden = true
                 self.knob2.isHidden = true
@@ -64,6 +65,7 @@ class EffectVC: NSViewController {
             }
             self.slot.backgroundColour = slotBackgroundColour
             self.effectBackgroundColour = newBackgroundColour
+            self.effectLead.borderColor = NSColor.lead
             self.chassis.backgroundColour = newBackgroundColour
             let currentState = self.powerState
             self.powerState = currentState

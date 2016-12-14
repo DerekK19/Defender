@@ -13,6 +13,11 @@
 		652564491DA8972A00ACCD4B /* PedalKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652564481DA8972A00ACCD4B /* PedalKnobControl.swift */; };
 		6525644B1DA89FCD00ACCD4B /* EffectKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6525644A1DA89FCD00ACCD4B /* EffectKnobControl.swift */; };
 		65426BA21DB0930300E54D35 /* KnobBaseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65426BA11DB0930300E54D35 /* KnobBaseControl.swift */; };
+		655602AA1E009FE5004A4CD4 /* CabinetSlotControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655602A91E009FE4004A4CD4 /* CabinetSlotControl.swift */; };
+		655602AC1E00A041004A4CD4 /* CabinetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655602AB1E00A041004A4CD4 /* CabinetVC.swift */; };
+		655602B01E00A3E1004A4CD4 /* Cabinet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 655602AF1E00A3E1004A4CD4 /* Cabinet.storyboard */; };
+		655602B21E0117A8004A4CD4 /* NSColor+Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655602B11E0117A8004A4CD4 /* NSColor+Colours.swift */; };
+		655602B41E013A85004A4CD4 /* CabinetControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655602B31E013A85004A4CD4 /* CabinetControl.swift */; };
 		655A5A411D4C555400E15E1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A5A401D4C555400E15E1F /* AppDelegate.swift */; };
 		655A5A431D4C555500E15E1F /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A5A421D4C555500E15E1F /* MainVC.swift */; };
 		655A5A451D4C555500E15E1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 655A5A441D4C555500E15E1F /* Assets.xcassets */; };
@@ -98,6 +103,11 @@
 		652564481DA8972A00ACCD4B /* PedalKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalKnobControl.swift; sourceTree = "<group>"; };
 		6525644A1DA89FCD00ACCD4B /* EffectKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectKnobControl.swift; sourceTree = "<group>"; };
 		65426BA11DB0930300E54D35 /* KnobBaseControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobBaseControl.swift; sourceTree = "<group>"; };
+		655602A91E009FE4004A4CD4 /* CabinetSlotControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabinetSlotControl.swift; sourceTree = "<group>"; };
+		655602AB1E00A041004A4CD4 /* CabinetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabinetVC.swift; sourceTree = "<group>"; };
+		655602AF1E00A3E1004A4CD4 /* Cabinet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cabinet.storyboard; sourceTree = "<group>"; };
+		655602B11E0117A8004A4CD4 /* NSColor+Colours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Colours.swift"; sourceTree = "<group>"; };
+		655602B31E013A85004A4CD4 /* CabinetControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabinetControl.swift; sourceTree = "<group>"; };
 		655A5A3D1D4C555400E15E1F /* Defender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Defender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		655A5A401D4C555400E15E1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		655A5A421D4C555500E15E1F /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -260,6 +270,7 @@
 			children = (
 				655A5A421D4C555500E15E1F /* MainVC.swift */,
 				657C3ACF1D5C46E6002DEF17 /* DisplayVC.swift */,
+				655602AB1E00A041004A4CD4 /* CabinetVC.swift */,
 				658CEC021DA35E63006890A4 /* PedalVC.swift */,
 				658CEC041DA35E81006890A4 /* EffectVC.swift */,
 				7194EA391DCFC5E7004E2D9C /* WebVC.swift */,
@@ -282,6 +293,8 @@
 				65B37C951DD1A8EC00433B89 /* ArrowButtonCell.swift */,
 				71CD6D871D59714A006BD6DF /* ActionButtonControl.swift */,
 				7167FFCF1D595DC70059A276 /* ActionButtonCell.swift */,
+				655602A91E009FE4004A4CD4 /* CabinetSlotControl.swift */,
+				655602B31E013A85004A4CD4 /* CabinetControl.swift */,
 				658CEC101DA44B97006890A4 /* EffectSlotControl.swift */,
 				658CEC0A1DA36977006890A4 /* EffectControl.swift */,
 				6525644A1DA89FCD00ACCD4B /* EffectKnobControl.swift */,
@@ -308,6 +321,7 @@
 				7194EA401DCFC62C004E2D9C /* Pedal.storyboard */,
 				7194EA431DCFC631004E2D9C /* Effect.storyboard */,
 				7194EA3B1DCFC61E004E2D9C /* Web.storyboard */,
+				655602AF1E00A3E1004A4CD4 /* Cabinet.storyboard */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -363,6 +377,7 @@
 			children = (
 				7167FED91D58032C0059A276 /* NSImage+Colour.swift */,
 				656A5ABC1DA883BB00B7BE3E /* NSColor+Brightness.swift */,
+				655602B11E0117A8004A4CD4 /* NSColor+Colours.swift */,
 				65F69F151DDD71AB0017188D /* DXAmplifier+DTO.swift */,
 				65F69F231DDED4B10017188D /* DXPreset+DTO.swift */,
 				65F69F271DE00BBD0017188D /* DXEffect+DTO.swift */,
@@ -490,6 +505,7 @@
 				7194EA411DCFC631004E2D9C /* Effect.storyboard in Resources */,
 				7194EA3D1DCFC61E004E2D9C /* Web.storyboard in Resources */,
 				65B37CB71DD6D05400433B89 /* FuseDocumentIcon.icns in Resources */,
+				655602B01E00A3E1004A4CD4 /* Cabinet.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,6 +588,7 @@
 			files = (
 				65F69F361DE7F7DD0017188D /* SecureColouredTextField.swift in Sources */,
 				658CEC0B1DA36977006890A4 /* EffectControl.swift in Sources */,
+				655602B21E0117A8004A4CD4 /* NSColor+Colours.swift in Sources */,
 				65B37C961DD1A8ED00433B89 /* ArrowButtonCell.swift in Sources */,
 				718C89C51DD122D300BC12E8 /* WebHeaderCell.swift in Sources */,
 				7167FEDC1D5815270059A276 /* DisplayControl.swift in Sources */,
@@ -580,6 +597,7 @@
 				657C3AC81D56DB8E002DEF17 /* AmpKnobControl.swift in Sources */,
 				65F69F261DE009F70017188D /* DXEffect.swift in Sources */,
 				65F69F341DE7F5C90017188D /* ColouredTextField.swift in Sources */,
+				655602B41E013A85004A4CD4 /* CabinetControl.swift in Sources */,
 				658CEC0F1DA36D85006890A4 /* Enums.swift in Sources */,
 				658D10E21DB73BA3008C3A45 /* ShadeControl.swift in Sources */,
 				656A5ABD1DA883BB00B7BE3E /* NSColor+Brightness.swift in Sources */,
@@ -591,6 +609,7 @@
 				655A5A431D4C555500E15E1F /* MainVC.swift in Sources */,
 				65B37CBA1DD7CCA800433B89 /* RemoteManager.swift in Sources */,
 				658CEC031DA35E63006890A4 /* PedalVC.swift in Sources */,
+				655602AC1E00A041004A4CD4 /* CabinetVC.swift in Sources */,
 				7167FEDA1D58032C0059A276 /* NSImage+Colour.swift in Sources */,
 				7167FFD01D595DC70059A276 /* ActionButtonCell.swift in Sources */,
 				656A5ABB1DA880B700B7BE3E /* LEDControl.swift in Sources */,
@@ -603,6 +622,7 @@
 				65F69F321DE14CC80017188D /* AppViewControl.swift in Sources */,
 				65F69F241DDED4B10017188D /* DXPreset+DTO.swift in Sources */,
 				65FA11931DF3E16D00FBD280 /* DXKnob.swift in Sources */,
+				655602AA1E009FE5004A4CD4 /* CabinetSlotControl.swift in Sources */,
 				71602D7C1DD52284003E2D49 /* PresetDocument.swift in Sources */,
 				652564491DA8972A00ACCD4B /* PedalKnobControl.swift in Sources */,
 				65F69F1A1DDD75090017188D /* Transferable.swift in Sources */,

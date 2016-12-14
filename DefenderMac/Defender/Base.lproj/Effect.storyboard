@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="h8b-nj-UXe">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="h8b-nj-UXe">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
@@ -12,14 +14,25 @@
             <objects>
                 <viewController id="h8b-nj-UXe" customClass="EffectVC" customModule="Defender" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="YYF-xQ-V5G" customClass="EffectSlotControl" customModule="Defender" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="512" height="64"/>
+                        <rect key="frame" x="0.0" y="0.0" width="513" height="64"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <box boxType="custom" borderType="line" borderWidth="2" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="OLE-Ee-Bnn">
+                                <rect key="frame" x="253" y="0.0" width="4" height="68"/>
+                                <view key="contentView" id="FdN-ul-Hwz">
+                                    <rect key="frame" x="2" y="2" width="0.0" height="64"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="4" id="lMB-oh-GwF"/>
+                                </constraints>
+                                <color key="borderColor" red="0.0" green="0.062745098040000002" blue="0.8862745098" alpha="1" colorSpace="deviceRGB"/>
+                            </box>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="9t8-4r-wlp" customClass="EffectControl" customModule="Defender" customModuleProvider="target">
-                                <rect key="frame" x="5" y="5" width="502" height="58"/>
+                                <rect key="frame" x="5" y="5" width="503" height="58"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Nt-z5-Mtx">
-                                        <rect key="frame" x="495" y="41" width="9" height="17"/>
+                                        <rect key="frame" x="496" y="41" width="9" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="-" id="sOt-2H-xLv">
                                             <font key="font" size="13" name="Helvetica-Bold"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -27,7 +40,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0qp-LF-Z1R">
-                                        <rect key="frame" x="496" y="27" width="8" height="14"/>
+                                        <rect key="frame" x="497" y="27" width="8" height="14"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="-" id="qPc-hU-fHK">
                                             <font key="font" size="11" name="Helvetica"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.70196078429999997" blue="0.87450980389999999" alpha="1" colorSpace="deviceRGB"/>
@@ -35,14 +48,14 @@
                                         </textFieldCell>
                                     </textField>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="daW-Z6-9Lt" customClass="LEDControl" customModule="Defender" customModuleProvider="target">
-                                        <rect key="frame" x="493" y="2" width="7" height="7"/>
+                                        <rect key="frame" x="494" y="2" width="7" height="7"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="daW-Z6-9Lt" secondAttribute="height" multiplier="1:1" id="EHQ-tC-u4j"/>
                                             <constraint firstAttribute="height" constant="7" id="f7q-0l-Rz2"/>
                                         </constraints>
                                     </customView>
                                     <stackView distribution="equalCentering" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Avo-oO-QMG">
-                                        <rect key="frame" x="20" y="4" width="372" height="50"/>
+                                        <rect key="frame" x="20" y="4" width="373" height="50"/>
                                         <subviews>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="7ja-hc-XqG" customClass="EffectKnobControl" customModule="Defender" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -51,7 +64,7 @@
                                                 </constraints>
                                             </customView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="y36-ab-NG3" customClass="EffectKnobControl" customModule="Defender" customModuleProvider="target">
-                                                <rect key="frame" x="64" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="65" y="0.0" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="y36-ab-NG3" secondAttribute="height" multiplier="1:1" id="4M8-mJ-P4y"/>
                                                 </constraints>
@@ -63,7 +76,7 @@
                                                 </constraints>
                                             </customView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="krj-GA-Kej" customClass="EffectKnobControl" customModule="Defender" customModuleProvider="target">
-                                                <rect key="frame" x="193" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="194" y="0.0" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="krj-GA-Kej" secondAttribute="height" multiplier="1:1" id="5bb-oU-yGW"/>
                                                 </constraints>
@@ -75,7 +88,7 @@
                                                 </constraints>
                                             </customView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="a1d-Qs-we6" customClass="EffectKnobControl" customModule="Defender" customModuleProvider="target">
-                                                <rect key="frame" x="322" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="323" y="0.0" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="a1d-Qs-we6" secondAttribute="height" multiplier="1:1" id="663-Zc-3rE"/>
                                                 </constraints>
@@ -121,22 +134,26 @@
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="ZUl-Vc-3gF" customClass="ShadeControl" customModule="Defender" customModuleProvider="target">
-                                <rect key="frame" x="5" y="5" width="502" height="54"/>
+                                <rect key="frame" x="5" y="5" width="503" height="58"/>
                             </customView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="OLE-Ee-Bnn" firstAttribute="top" secondItem="YYF-xQ-V5G" secondAttribute="top" id="EwA-46-UID"/>
                             <constraint firstItem="9t8-4r-wlp" firstAttribute="bottom" secondItem="ZUl-Vc-3gF" secondAttribute="bottom" id="Gz3-qA-DOV"/>
                             <constraint firstItem="9t8-4r-wlp" firstAttribute="trailing" secondItem="ZUl-Vc-3gF" secondAttribute="trailing" id="KUL-jl-lWb"/>
                             <constraint firstAttribute="bottom" secondItem="9t8-4r-wlp" secondAttribute="bottom" constant="5" id="MPI-gh-jtO"/>
+                            <constraint firstItem="OLE-Ee-Bnn" firstAttribute="centerX" secondItem="YYF-xQ-V5G" secondAttribute="centerX" constant="-2" id="MYZ-WP-f1k"/>
                             <constraint firstItem="9t8-4r-wlp" firstAttribute="top" secondItem="YYF-xQ-V5G" secondAttribute="top" constant="5" id="QZz-3T-rGD"/>
                             <constraint firstAttribute="trailing" secondItem="9t8-4r-wlp" secondAttribute="trailing" constant="5" id="RIM-G0-3RW"/>
                             <constraint firstItem="9t8-4r-wlp" firstAttribute="top" secondItem="ZUl-Vc-3gF" secondAttribute="top" id="VWy-fF-ScY"/>
+                            <constraint firstAttribute="bottom" secondItem="OLE-Ee-Bnn" secondAttribute="bottom" id="aRL-0g-Cdy"/>
                             <constraint firstItem="9t8-4r-wlp" firstAttribute="leading" secondItem="YYF-xQ-V5G" secondAttribute="leading" constant="5" id="e0Q-2h-U7S"/>
                             <constraint firstItem="9t8-4r-wlp" firstAttribute="leading" secondItem="ZUl-Vc-3gF" secondAttribute="leading" id="juF-52-U5L"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="chassis" destination="9t8-4r-wlp" id="hbf-MI-q6p"/>
+                        <outlet property="effectLead" destination="OLE-Ee-Bnn" id="iiE-I7-2Id"/>
                         <outlet property="knob1" destination="7ja-hc-XqG" id="KVg-UU-CVJ"/>
                         <outlet property="knob2" destination="y36-ab-NG3" id="jAE-X8-jcF"/>
                         <outlet property="knob3" destination="Wpd-Cd-eX9" id="Ls3-Jr-KId"/>

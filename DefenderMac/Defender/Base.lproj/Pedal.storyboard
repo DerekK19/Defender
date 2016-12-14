@@ -18,6 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="240" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <box boxType="custom" borderType="line" borderWidth="2" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="MHd-Hw-ff5">
+                                <rect key="frame" x="0.0" y="201" width="240" height="4"/>
+                                <view key="contentView" id="kzr-gs-6oB">
+                                    <rect key="frame" x="2" y="2" width="236" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="4" id="NDh-Ik-rm1"/>
+                                </constraints>
+                                <color key="borderColor" red="0.0" green="0.062745098040000002" blue="0.8862745098" alpha="1" colorSpace="deviceRGB"/>
+                            </box>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="RKf-rE-Usf" customClass="PedalBodyControl" customModule="Defender" customModuleProvider="target">
                                 <rect key="frame" x="10" y="253" width="220" height="147"/>
                                 <subviews>
@@ -32,22 +43,22 @@
                                         <rect key="frame" x="5" y="8" width="210" height="131"/>
                                         <subviews>
                                             <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="6" horizontalStackHuggingPriority="245.99998474121094" verticalStackHuggingPriority="245.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kTv-ub-vKS">
-                                                <rect key="frame" x="18" y="66.5" width="174" height="64.5"/>
+                                                <rect key="frame" x="18" y="66" width="174" height="65"/>
                                                 <subviews>
                                                     <customView horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="RVf-gM-3VJ" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="4" width="54" height="54"/>
+                                                        <rect key="frame" x="0.0" y="6" width="54" height="54"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="RVf-gM-3VJ" secondAttribute="height" multiplier="1:1" id="7Yf-Ba-bXR"/>
                                                         </constraints>
                                                     </customView>
                                                     <customView horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="fCc-mq-tFX" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
-                                                        <rect key="frame" x="60" y="4" width="54" height="54"/>
+                                                        <rect key="frame" x="60" y="6" width="54" height="54"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="fCc-mq-tFX" secondAttribute="height" multiplier="1:1" id="Wki-Wu-7vy"/>
                                                         </constraints>
                                                     </customView>
                                                     <customView horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="BD9-bc-qgn" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
-                                                        <rect key="frame" x="120" y="5" width="54" height="54"/>
+                                                        <rect key="frame" x="120" y="6" width="54" height="54"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="BD9-bc-qgn" secondAttribute="height" multiplier="1:1" id="8NB-uH-Czf"/>
                                                         </constraints>
@@ -69,7 +80,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="6" horizontalStackHuggingPriority="245.99998474121094" verticalStackHuggingPriority="245.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vFU-Px-V5O">
-                                                <rect key="frame" x="18" y="0.0" width="174" height="64.5"/>
+                                                <rect key="frame" x="18" y="0.0" width="174" height="64"/>
                                                 <subviews>
                                                     <customView horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="U4H-Ca-7vP" customClass="PedalKnobControl" customModule="Defender" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="5" width="54" height="54"/>
@@ -222,15 +233,18 @@
                             </customView>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="MHd-Hw-ff5" secondAttribute="trailing" id="7V4-b5-Kno"/>
                             <constraint firstItem="RKf-rE-Usf" firstAttribute="top" secondItem="Xvg-yP-vPO" secondAttribute="top" id="Dpt-o4-f2r"/>
                             <constraint firstItem="RKf-rE-Usf" firstAttribute="leading" secondItem="v30-5F-Dgg" secondAttribute="leading" constant="10" id="J9v-th-dvB"/>
                             <constraint firstAttribute="trailing" secondItem="YJe-ax-MA8" secondAttribute="trailing" constant="5" id="NbS-6g-EPi"/>
                             <constraint firstItem="YJe-ax-MA8" firstAttribute="top" secondItem="RKf-rE-Usf" secondAttribute="bottom" constant="-5" id="Odb-zO-U1e"/>
                             <constraint firstItem="YJe-ax-MA8" firstAttribute="leading" secondItem="Xvg-yP-vPO" secondAttribute="leading" id="SkZ-JD-B5i"/>
+                            <constraint firstItem="MHd-Hw-ff5" firstAttribute="leading" secondItem="v30-5F-Dgg" secondAttribute="leading" id="Wts-Vc-2Lc"/>
                             <constraint firstItem="YJe-ax-MA8" firstAttribute="bottom" secondItem="Xvg-yP-vPO" secondAttribute="bottom" id="iMa-iA-1ty"/>
                             <constraint firstAttribute="height" secondItem="RVf-gM-3VJ" secondAttribute="height" multiplier="15:2" id="p8Z-ha-lbe"/>
                             <constraint firstItem="RKf-rE-Usf" firstAttribute="top" secondItem="v30-5F-Dgg" secondAttribute="top" constant="5" id="pAo-aw-Cul"/>
                             <constraint firstItem="YJe-ax-MA8" firstAttribute="leading" secondItem="v30-5F-Dgg" secondAttribute="leading" constant="5" id="tH3-Ob-wqF"/>
+                            <constraint firstItem="MHd-Hw-ff5" firstAttribute="centerY" secondItem="v30-5F-Dgg" secondAttribute="centerY" id="tRJ-5D-tQA"/>
                             <constraint firstItem="Xvg-yP-vPO" firstAttribute="trailing" secondItem="YJe-ax-MA8" secondAttribute="trailing" id="vX3-gu-hmT"/>
                             <constraint firstAttribute="bottom" secondItem="YJe-ax-MA8" secondAttribute="bottom" constant="5" id="wFd-Ds-Dh2"/>
                             <constraint firstAttribute="trailing" secondItem="RKf-rE-Usf" secondAttribute="trailing" constant="10" id="yZM-eD-J2O"/>
@@ -248,6 +262,7 @@
                         <outlet property="lowerKnobs" destination="vFU-Px-V5O" id="APV-cS-cSJ"/>
                         <outlet property="nameLabel" destination="ggS-Se-wjN" id="J2p-Id-Z3m"/>
                         <outlet property="pad" destination="nPh-z4-XNt" id="dVu-YD-Pni"/>
+                        <outlet property="pedalLead" destination="MHd-Hw-ff5" id="9gs-4E-TBj"/>
                         <outlet property="pedalLogo" destination="KOq-bo-tpV" id="WDx-ts-4eZ"/>
                         <outlet property="powerLED" destination="wjd-0r-iph" id="GZo-QU-08J"/>
                         <outlet property="shade" destination="Xvg-yP-vPO" id="5UE-ws-OJU"/>

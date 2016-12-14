@@ -49,11 +49,14 @@ class MainVC: NSViewController {
     @IBOutlet weak var preloadButton: NSButton!
     
     @IBOutlet weak var effectsSettings: NSStackView!
+    @IBOutlet weak var pedalLeads: NSBox!
+    @IBOutlet weak var effectLeads: NSBox!
     @IBOutlet weak var pedalsArea: NSStackView!
     @IBOutlet weak var effectsArea: NSStackView!
     
     @IBOutlet weak var displayVC: DisplayVC?
     @IBOutlet weak var webVC: WebVC?
+    @IBOutlet weak var cabinetVC: CabinetVC?
     @IBOutlet weak var effect1VC: EffectVC?
     @IBOutlet weak var effect2VC: EffectVC?
     @IBOutlet weak var effect3VC: EffectVC?
@@ -83,6 +86,7 @@ class MainVC: NSViewController {
             self.tapButton.powerState = powerState
             self.wheel.powerState = powerState
             self.displayVC?.powerState = powerState
+            self.cabinetVC?.powerState = powerState
             self.effect1VC?.powerState = powerState
             self.effect2VC?.powerState = powerState
             self.effect3VC?.powerState = powerState
@@ -128,7 +132,8 @@ class MainVC: NSViewController {
         middleLabel.textColor = contrastColour
         bassLabel.textColor = contrastColour
         presenceLabel.textColor = contrastColour
-        
+        pedalLeads.borderColor = NSColor.lead
+        effectLeads.borderColor = NSColor.lead
         gainKnob.delegate = self
         volumeKnob.delegate = self
         trebleKnob.delegate = self
@@ -170,7 +175,8 @@ class MainVC: NSViewController {
                 self.webVC = segue.destinationController as? WebVC
                 self.webVC?.ampManager = self.ampManager
                 self.webVC?.delegate = self
-
+            case "embedCabinet":
+                self.cabinetVC = segue.destinationController as? CabinetVC
             case "embedEffect1":
                 self.effect1VC = segue.destinationController as? EffectVC
             case "embedEffect2":
@@ -350,6 +356,7 @@ class MainVC: NSViewController {
     
     fileprivate func displayPreset(_ preset: DTOPreset?) {
         
+        cabinetVC?.configureWithEffect(nil)
         pedal1VC?.configureWithPedal(nil)
         pedal2VC?.configureWithPedal(nil)
         pedal3VC?.configureWithPedal(nil)

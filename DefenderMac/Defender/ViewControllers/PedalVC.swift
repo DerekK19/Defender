@@ -17,6 +17,7 @@ protocol PedalVCDelegate {
 class PedalVC: NSViewController {
 
     @IBOutlet weak var slot: EffectSlotControl!
+    @IBOutlet weak var pedalLead: NSBox!
     @IBOutlet weak var bodyTop: PedalBodyControl!
     @IBOutlet weak var bodyBottom: PedalBodyControl!
     @IBOutlet weak var pad: PedalPadControl!
@@ -39,7 +40,7 @@ class PedalVC: NSViewController {
     
     var delegate: PedalVCDelegate?
     
-    let slotBackgroundColour = NSColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+    let slotBackgroundColour = NSColor.slotBackground
     let bgColours: [Int : NSColor] = [1 : NSColor(red: 0.17, green: 0.56, blue: 0.98, alpha: 1.0),
                                       2 : NSColor(red: 0.05, green: 0.87, blue: 0.48, alpha: 1.0),
                                       10 : NSColor(red: 0.95, green: 0.63, blue: 0.18, alpha: 1.0),
@@ -67,7 +68,7 @@ class PedalVC: NSViewController {
             self.pedalLogo.alphaValue = state == .disabled ? 0.0 : 1.0
             switch state {
             case .disabled:
-                newBackgroundColour = slotBackgroundColour
+                newBackgroundColour = NSColor.clear
                 self.powerLED.backgroundColour = NSColor.black
             case .off:
                 newBackgroundColour = fullBackgroundColour
@@ -78,6 +79,7 @@ class PedalVC: NSViewController {
             }
             self.slot.backgroundColour = slotBackgroundColour
             self.pedalBackgroundColour = newBackgroundColour
+            self.pedalLead.borderColor = NSColor.lead
             self.bodyTop.backgroundColour = newBackgroundColour
             self.bodyBottom.backgroundColour = newBackgroundColour
             let currentState = self.powerState

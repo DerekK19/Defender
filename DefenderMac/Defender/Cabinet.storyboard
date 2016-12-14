@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="N5f-O9-EX5">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--CabinetVC-->
+        <scene sceneID="FoF-6t-o5x">
+            <objects>
+                <viewController id="N5f-O9-EX5" customClass="CabinetVC" customModule="Defender" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="s5i-IG-zhc" customClass="CabinetSlotControl" customModule="Defender" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="eNz-AH-DsR" customClass="LEDControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="4" y="289" width="7" height="7"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="7" id="kNP-Ae-33d"/>
+                                    <constraint firstAttribute="width" secondItem="eNz-AH-DsR" secondAttribute="height" multiplier="1:1" id="t8p-0M-RfB"/>
+                                </constraints>
+                            </customView>
+                            <box boxType="custom" borderType="line" borderWidth="2" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="tKV-lp-5Ic">
+                                <rect key="frame" x="0.0" y="148" width="225" height="4"/>
+                                <view key="contentView" id="Hoe-V7-b8d">
+                                    <rect key="frame" x="2" y="2" width="221" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="4" id="fuw-Ph-55U"/>
+                                </constraints>
+                                <color key="borderColor" red="0.0" green="0.062745098040000002" blue="0.8862745098" alpha="1" colorSpace="deviceRGB"/>
+                            </box>
+                            <box boxType="custom" borderType="line" borderWidth="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="HVv-Iw-YUO">
+                                <rect key="frame" x="225" y="0.0" width="4" height="300"/>
+                                <view key="contentView" id="fgi-Mf-3YJ">
+                                    <rect key="frame" x="4" y="4" width="0.0" height="292"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="4" id="qhy-QI-ptf"/>
+                                </constraints>
+                                <color key="borderColor" red="0.0" green="0.062745098040000002" blue="0.8862745098" alpha="1" colorSpace="deviceRGB"/>
+                            </box>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="GgW-5B-cZ6" customClass="CabinetControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="410" height="260"/>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="igY-xo-Ldb" customClass="ShadeControl" customModule="Defender" customModuleProvider="target">
+                                <rect key="frame" x="4" y="4" width="442" height="292"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="HVv-Iw-YUO" firstAttribute="centerX" secondItem="s5i-IG-zhc" secondAttribute="centerX" constant="2" id="6zV-mr-TDZ"/>
+                            <constraint firstItem="GgW-5B-cZ6" firstAttribute="top" secondItem="s5i-IG-zhc" secondAttribute="top" constant="20" id="8Uq-iI-kUw"/>
+                            <constraint firstItem="tKV-lp-5Ic" firstAttribute="leading" secondItem="s5i-IG-zhc" secondAttribute="leading" id="9J8-xk-PrP"/>
+                            <constraint firstItem="tKV-lp-5Ic" firstAttribute="centerY" secondItem="s5i-IG-zhc" secondAttribute="centerY" id="Bk7-P9-K3B"/>
+                            <constraint firstItem="HVv-Iw-YUO" firstAttribute="top" secondItem="s5i-IG-zhc" secondAttribute="top" id="D0x-EK-iSs"/>
+                            <constraint firstAttribute="bottom" secondItem="HVv-Iw-YUO" secondAttribute="bottom" id="Dbf-yy-eaY"/>
+                            <constraint firstItem="eNz-AH-DsR" firstAttribute="leading" secondItem="s5i-IG-zhc" secondAttribute="leading" constant="4" id="DfC-if-Cwj"/>
+                            <constraint firstAttribute="bottom" secondItem="GgW-5B-cZ6" secondAttribute="bottom" constant="20" id="Fvb-aX-UHb"/>
+                            <constraint firstAttribute="bottom" secondItem="igY-xo-Ldb" secondAttribute="bottom" constant="4" id="Pm8-Zp-WZL"/>
+                            <constraint firstAttribute="trailing" secondItem="igY-xo-Ldb" secondAttribute="trailing" constant="4" id="Q2z-9U-ifa"/>
+                            <constraint firstItem="GgW-5B-cZ6" firstAttribute="leading" secondItem="s5i-IG-zhc" secondAttribute="leading" constant="20" id="VMq-jH-PCP"/>
+                            <constraint firstItem="eNz-AH-DsR" firstAttribute="width" secondItem="eNz-AH-DsR" secondAttribute="height" multiplier="1:1" id="bDZ-4Y-bar"/>
+                            <constraint firstItem="eNz-AH-DsR" firstAttribute="top" secondItem="s5i-IG-zhc" secondAttribute="top" constant="4" id="lwi-J5-oIA"/>
+                            <constraint firstAttribute="trailing" secondItem="GgW-5B-cZ6" secondAttribute="trailing" constant="20" id="n7H-GT-nK6"/>
+                            <constraint firstItem="igY-xo-Ldb" firstAttribute="top" secondItem="s5i-IG-zhc" secondAttribute="top" constant="4" id="pxy-Ch-Qow"/>
+                            <constraint firstAttribute="centerX" secondItem="tKV-lp-5Ic" secondAttribute="trailing" id="q0k-Ml-5rG"/>
+                            <constraint firstItem="igY-xo-Ldb" firstAttribute="leading" secondItem="s5i-IG-zhc" secondAttribute="leading" constant="4" id="yQG-aX-wsD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cabinet" destination="GgW-5B-cZ6" id="Plr-gv-VAw"/>
+                        <outlet property="effectLead" destination="HVv-Iw-YUO" id="p9u-Vm-fFD"/>
+                        <outlet property="pedalLead" destination="tKV-lp-5Ic" id="ubI-9o-9dK"/>
+                        <outlet property="powerLED" destination="eNz-AH-DsR" id="TIb-BP-HoR"/>
+                        <outlet property="shade" destination="igY-xo-Ldb" id="pbf-y3-UbM"/>
+                        <outlet property="slot" destination="s5i-IG-zhc" id="w69-YU-bVX"/>
+                    </connections>
+                </viewController>
+                <customObject id="gcK-o6-Kqf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="19" y="84"/>
+        </scene>
+    </scenes>
+</document>

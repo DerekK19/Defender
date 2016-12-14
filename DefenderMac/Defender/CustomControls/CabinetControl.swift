@@ -1,25 +1,17 @@
 //
-//  ShadeControl.swift
+//  CabinetControl.swift
 //  Defender
 //
-//  Created by Derek Knight on 19/10/16.
+//  Created by Derek Knight on 14/12/16.
 //  Copyright © 2016 Derek Knight. All rights reserved.
 //
 
 import Cocoa
 
-class ShadeControl: NSView {
+class CabinetControl: NSView {
     
-    var backgroundColour: NSColor = NSColor.shadeClosed {
+    var backgroundColour: NSColor = NSColor.slotBackground {
         didSet {
-            setNeedsDisplay(self.bounds)
-        }
-    }
-    
-    var isOpen: Bool = false {
-        didSet {
-            backgroundColour = isOpen ? NSColor.shadeOpen : NSColor.shadeClosed
-            self.isHidden = isOpen
             setNeedsDisplay(self.bounds)
         }
     }
