@@ -26,10 +26,10 @@ class CabinetVC: NSViewController {
     var delegate: CabinetVCDelegate?
     
     let slotBackgroundColour = NSColor.slotBackground
-    let bgColours: [Int : NSColor] = [1 : NSColor(red: 0.30, green: 0.30, blue: 0.41, alpha: 1.0),
-                                      2 : NSColor(red: 0.49, green: 0.49, blue: 0.49, alpha: 1.0),
-                                      10 : NSColor(red: 0.11, green: 0.28, blue: 0.43, alpha: 1.0),
-                                      14 : NSColor(red: 0.22, green: 0.30, blue: 0.25, alpha: 1.0)]
+    let bgColours: [Int : NSColor] = [1 : NSColor.purpleEffect,
+                                      2 : NSColor.greyEffect,
+                                      10 : NSColor.blueEffect,
+                                      14 : NSColor.greenEffect]
     
     var fullBackgroundColour = NSColor.black
     var cabinetBackgroundColour = NSColor.black

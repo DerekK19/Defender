@@ -10,7 +10,7 @@ import Cocoa
 
 class EffectControl: NSView {
     
-    var backgroundColour: NSColor = NSColor(red: 0.13, green: 0.28, blue: 0.43, alpha: 1.0) {
+    var backgroundColour: NSColor = NSColor.black {
         didSet {
             setNeedsDisplay(self.bounds)
         }

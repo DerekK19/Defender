@@ -26,8 +26,8 @@ class DisplayVC: NSViewController {
     @IBOutlet weak var reverbValue: NSTextField!
     @IBOutlet weak var shade: ShadeControl!
 
-    var displayBackgroundColour = NSColor(red: 0.62, green: 0.78, blue: 0.88, alpha: 1.0)
-    var displayForegroundColour = NSColor(red: 0.3, green: 0.38, blue: 0.6, alpha: 1.0)
+    var displayBackgroundColour = NSColor.LCDLightBlue
+    var displayForegroundColour = NSColor.LCDDarkBlue
     
     var currentState: DisplayState = .view
 

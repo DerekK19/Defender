@@ -41,10 +41,10 @@ class PedalVC: NSViewController {
     var delegate: PedalVCDelegate?
     
     let slotBackgroundColour = NSColor.slotBackground
-    let bgColours: [Int : NSColor] = [1 : NSColor(red: 0.17, green: 0.56, blue: 0.98, alpha: 1.0),
-                                      2 : NSColor(red: 0.05, green: 0.87, blue: 0.48, alpha: 1.0),
-                                      10 : NSColor(red: 0.95, green: 0.63, blue: 0.18, alpha: 1.0),
-                                      14 : NSColor(red: 1.0, green: 0.97, blue: 0.31, alpha: 1.0)]
+    let bgColours: [Int : NSColor] = [1 : NSColor.bluePedal,
+                                      2 : NSColor.greenPedal,
+                                      10 : NSColor.orangePedal,
+                                      14 : NSColor.yellowPedal]
     
     var fullBackgroundColour = NSColor.black
     var pedalBackgroundColour = NSColor.black

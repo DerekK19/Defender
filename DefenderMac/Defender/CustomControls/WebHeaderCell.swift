@@ -10,7 +10,7 @@ import Cocoa
 
 class WebHeaderCell : NSTableHeaderCell {
     
-    var backgroundColour: NSColor = NSColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0) {
+    var backgroundColour: NSColor = NSColor.black {
         didSet {
             self.backgroundColor = backgroundColour
         }

@@ -10,7 +10,7 @@ import Cocoa
 
 class DisplayControl: NSView {
 
-    var backgroundColour: NSColor = NSColor(red: 0.62, green: 0.78, blue: 0.88, alpha: 1.0) {
+    var backgroundColour: NSColor = NSColor.LCDLightBlue {
         didSet {
             setNeedsDisplay(self.bounds)
         }

@@ -10,7 +10,7 @@ import Cocoa
 
 class CabinetControl: NSView {
     
-    var backgroundColour: NSColor = NSColor.slotBackground {
+    var backgroundColour: NSColor = NSColor.black {
         didSet {
             setNeedsDisplay(self.bounds)
         }

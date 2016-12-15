@@ -495,7 +495,7 @@ class MainVC: NSViewController {
             text += "   Model: \(preset?.moduleName ?? "-unknown-")\n"
             text += "   Cabinet: \(preset?.cabinetName ?? "-unknown-")\n"
             for effect in preset?.effects ?? [DTOEffect]() {
-                text += "   \(effect.type.rawValue): \(effect.name ?? "-empty-") - \(effect.enabled ? "ON" : "OFF")\n"
+                text += "   \(effect.type.rawValue): \(effect.name ?? "-empty-") - \(effect.enabled ? "ON" : "OFF") (colour \(effect.colour))\n"
                 text += "    Knobs: \(effect.knobCount) - "
                 effect.knobs.forEach { text += "\(String(format: "%0.2f", $0.value)) " }
                 text += "slot \(effect.slot) (\(effect.aValue1) \(effect.aValue2) \(effect.aValue3))\n"

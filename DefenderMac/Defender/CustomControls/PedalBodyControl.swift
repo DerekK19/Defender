@@ -10,7 +10,7 @@ import Cocoa
 
 class PedalBodyControl: NSView {
     
-    var backgroundColour: NSColor = NSColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 1.0) {
+    var backgroundColour: NSColor = NSColor.black {
         didSet {
             setNeedsDisplay(self.bounds)
         }
