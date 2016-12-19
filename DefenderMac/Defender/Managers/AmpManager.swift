@@ -16,6 +16,12 @@ protocol AmpManagerDelegate {
     func deviceOpened(ampManager: AmpManager)
     func presetCountChanged(ampManager: AmpManager, to: UInt)
     func deviceClosed(ampManager: AmpManager)
+    func gainChanged(ampManager: AmpManager, by: Float)
+    func volumeChanged(ampManager: AmpManager, by: Float)
+    func trebleChanged(ampManager: AmpManager, by: Float)
+    func middleChanged(ampManager: AmpManager, by: Float)
+    func bassChanged(ampManager: AmpManager, by: Float)
+    func presenceChanged(ampManager: AmpManager, by: Float)
 }
 
 class AmpManager {
@@ -30,6 +36,12 @@ class AmpManager {
     internal private(set) var currentAmplifier: DTOAmplifier?
     
     private var presets = [UInt8 : DTOPreset] ()
+    private var latestGain: Float?
+    private var latestVolume: Float?
+    private var latestTreble: Float?
+    private var latestMiddle: Float?
+    private var latestBass: Float?
+    private var latestPresence: Float?
 
     var hasAnAmplifier : Bool {
         get {
@@ -60,7 +72,12 @@ class AmpManager {
         NotificationCenter.default.addObserver(self, selector: #selector(deviceConnected), name: NSNotification.Name(rawValue: Mustang.deviceConnectedNotificationName), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deviceOpened), name: NSNotification.Name(rawValue: Mustang.deviceOpenedNotificationName), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deviceClosed), name: NSNotification.Name(rawValue: Mustang.deviceClosedNotificationName), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceDisconnected), name: NSNotification.Name(rawValue: Mustang.deviceDisconnectedNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(gainChanged), name: NSNotification.Name(rawValue: Mustang.gainChangedNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(volumeChanged), name: NSNotification.Name(rawValue: Mustang.volumeChangedNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(trebleChanged), name: NSNotification.Name(rawValue: Mustang.trebleChangedNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(middleChanged), name: NSNotification.Name(rawValue: Mustang.middleChangedNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(bassChanged), name: NSNotification.Name(rawValue: Mustang.bassChangedNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(presenceChanged), name: NSNotification.Name(rawValue: Mustang.presenceChangedNotificationName), object: nil)
     }
 
     @objc fileprivate func deviceConnected() {
@@ -85,6 +102,73 @@ class AmpManager {
         amplifiers = [DTOAmplifier]()
         currentAmplifier = nil
         delegate?.deviceDisconnected(ampManager: self)
+    }
+    
+    @objc fileprivate func gainChanged(notification: Notification) {
+        if let userInfo = notification.userInfo as? [String: Any] {
+            if let value = userInfo["value"] as? Float {
+                if let latestGain = latestGain {
+                    
+                    delegate?.gainChanged(ampManager: self, by: (value - latestGain) * 10.0)
+                }
+                latestGain = value
+            }
+        }
+    }
+    
+    @objc fileprivate func volumeChanged(notification: Notification) {
+        if let userInfo = notification.userInfo as? [String: Any] {
+            if let value = userInfo["value"] as? Float {
+                if let latestVolume = latestVolume {
+                    delegate?.volumeChanged(ampManager: self, by: (value - latestVolume) * 10.0)
+                }
+                latestVolume = value
+            }
+        }
+    }
+    
+    @objc fileprivate func trebleChanged(notification: Notification) {
+        if let userInfo = notification.userInfo as? [String: Any] {
+            if let value = userInfo["value"] as? Float {
+                if let latestTreble = latestTreble {
+                    delegate?.trebleChanged(ampManager: self, by: (value - latestTreble) * 10.0)
+                }
+                latestTreble = value
+            }
+        }
+    }
+    
+    @objc fileprivate func middleChanged(notification: Notification) {
+        if let userInfo = notification.userInfo as? [String: Any] {
+            if let value = userInfo["value"] as? Float {
+                if let latestMiddle = latestMiddle {
+                    delegate?.middleChanged(ampManager: self, by: (value - latestMiddle) * 10.0)
+                }
+                latestMiddle = value
+            }
+        }
+    }
+    
+    @objc fileprivate func bassChanged(notification: Notification) {
+        if let userInfo = notification.userInfo as? [String: Any] {
+            if let value = userInfo["value"] as? Float {
+                if let latestBass = latestBass {
+                    delegate?.bassChanged(ampManager: self, by: (value - latestBass) * 10.0)
+                }
+                latestBass = value
+            }
+        }
+    }
+    
+    @objc fileprivate func presenceChanged(notification: Notification) {
+        if let userInfo = notification.userInfo as? [String: Any] {
+            if let value = userInfo["value"] as? Float {
+                if let latestPresence = latestPresence {
+                    delegate?.presenceChanged(ampManager: self, by: (value - latestPresence) * 10.0)
+                }
+                latestPresence = value
+            }
+        }
     }
     
     func getPresets(_ onCompletion: @escaping () -> ()) {

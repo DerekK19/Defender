@@ -652,6 +652,30 @@ extension MainVC: AmpManagerDelegate {
             self.statusLabel.stringValue = "\(ampManager.currentAmplifierName) connected"
         }
     }
+    
+    func gainChanged(ampManager: AmpManager, by: Float) {
+        self.gainKnob.floatValue = max(min(self.gainKnob.floatValue + by, 10.0), 0.0)
+    }
+    
+    func volumeChanged(ampManager: AmpManager, by: Float) {
+        self.volumeKnob.floatValue =  max(min(self.volumeKnob.floatValue + by, 10.0), 0.0)
+    }
+    
+    func trebleChanged(ampManager: AmpManager, by: Float) {
+        self.trebleKnob.floatValue = max(min(self.trebleKnob.floatValue + by, 10.0), 0.0)
+    }
+    
+    func middleChanged(ampManager: AmpManager, by: Float) {
+        self.middleKnob.floatValue = max(min(self.middleKnob.floatValue + by, 10.0), 0.0)
+    }
+    
+    func bassChanged(ampManager: AmpManager, by: Float) {
+        self.bassKnob.floatValue = max(min(self.bassKnob.floatValue + by, 10.0), 0.0)
+    }
+    
+    func presenceChanged(ampManager: AmpManager, by: Float) {
+        self.presenceKnob.floatValue = max(min(self.presenceKnob.floatValue + by, 10.0), 0.0)
+    }
 }
 
 extension MainVC: WebVCDelegate {

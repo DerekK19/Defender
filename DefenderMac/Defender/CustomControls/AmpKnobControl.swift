@@ -16,6 +16,13 @@ class AmpKnobControl: KnobBaseControl {
 
     var delegate: AmpKnobDelegate?
     
+    override var floatValue: Float {
+        didSet {
+            super.floatValue = floatValue
+            delegate?.valueDidChangeForKnob(self, value: floatValue)
+        }
+    }
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.configure()
