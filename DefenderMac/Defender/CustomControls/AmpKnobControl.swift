@@ -16,13 +16,6 @@ class AmpKnobControl: KnobBaseControl {
 
     var delegate: AmpKnobDelegate?
     
-    override var floatValue: Float {
-        didSet {
-            super.floatValue = floatValue
-            delegate?.valueDidChangeForKnob(self, value: floatValue)
-        }
-    }
-
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.configure()
@@ -42,6 +35,12 @@ class AmpKnobControl: KnobBaseControl {
         delegate?.valueDidChangeForKnob(self, value: floatValue)
     }
     
+    func setFloatValueTo(_ floatValue: Float) {
+        super.floatValue = floatValue
+        delegate?.valueDidChangeForKnob(self, value: floatValue)
+    }
+    
+
     // MARK: Draw function
     override func draw(_ dirtyRect: NSRect) {
         if !isHidden {

@@ -26,10 +26,13 @@ class KnobBaseControl: NSView {
     var direction: Float = 1.0
     
     internal var _floatValue: Float = 1.0
-    var floatValue: Float = 1.0 {
-        didSet {
-            _floatValue = floatValue
+    var floatValue: Float {
+        set {
+            _floatValue = newValue
             setNeedsDisplay(self.bounds)
+        }
+        get {
+            return _floatValue
         }
     }
     
