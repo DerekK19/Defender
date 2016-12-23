@@ -255,9 +255,9 @@ class AmpManager {
         }
     }
     
-    open func getPreset(_ preset: Int, onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
+    open func getPreset(_ preset: Int, fromAmplifier: Bool, onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
         if let amplifier = currentAmplifier {
-            if preset >= 0 && preset < presets.count && presets[UInt8(preset)]?.gain1 != nil {
+            if !fromAmplifier && preset >= 0 && preset < presets.count && presets[UInt8(preset)]?.gain1 != nil {
                 DispatchQueue.main.async {
                     onCompletion(self.presets[UInt8(preset)])
                 }

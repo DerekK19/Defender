@@ -245,10 +245,10 @@ class MainVC: NSViewController {
                 if sender.currentState == .warning {
                     Flogger.log.verbose(" Saving effect")
                     exitButton.setState(.active)
-                    ampManager.setPreset(currentPreset, onCompletion: { (preset) in
+                    ampManager.setPreset(currentPreset) { (preset) in
                         self.saveButton.setState(.ok)
                         self.displayVC?.setState(.edit)
-                    })
+                    }
                 }
                 else if sender.currentState == .ok {
                     Flogger.log.verbose(" Confirming effect")
@@ -557,6 +557,7 @@ extension MainVC: EffectVCDelegate {
 }
 
 extension MainVC: WheelDelegate {
+    // MARK: Wheel delegate
     
     func valueIsChangingForWheel(_ sender: WheelControl, value: Int) {
         switch saveButton.currentState {
@@ -585,7 +586,8 @@ extension MainVC: WheelDelegate {
                 //Flogger.log.debug("Wheel value changed to \(value)")
                 saveButton.setState(.active)
                 exitButton.setState(.active)
-                ampManager.getPreset(value) { (preset) in
+                ampManager.getPreset(value,
+                                     fromAmplifier: true) { (preset) in
                     self.setPreset(preset)
                     self.logPreset(self.currentPreset)
                 }
@@ -700,7 +702,8 @@ extension MainVC: RemoteManagerDelegate {
                 } else {
                     let preset = try DXPreset(data: message.content)
                     if let number = preset.number {
-                        self.ampManager.getPreset(Int(number)) { (preset) in
+                        self.ampManager.getPreset(Int(number),
+                                                  fromAmplifier: true) { (preset) in
                             self.setPreset(preset)
                             self.logPreset(preset)
                         }
