@@ -64,8 +64,8 @@ class MainVC: UIViewController {
         if let identifier = segue.identifier {
             switch identifier {
             case "embedPreset":
-                self.presetVC = segue.destination as? PresetVC
-                self.presetVC?.presetDelegate = self
+                presetVC = segue.destination as? PresetVC
+                presetVC?.presetDelegate = self
             default: break
             }
         }
@@ -200,85 +200,73 @@ extension MainVC: PresetVCDelegate {
 
 extension MainVC: RemoteManagerDelegate {
     func remoteManagerAvailable(_ manager: RemoteManager) {
-        DispatchQueue.main.async {
-            self.bluetoothLogo.isHidden = false
-            self.bluetoothLogo.alpha = 0.5
-        }
+        bluetoothLogo.isHidden = false
+        bluetoothLogo.alpha = 0.5
     }
     
     func remoteManagerConnected(_ manager: RemoteManager) {
-        DispatchQueue.main.async {
-            self.bluetoothLogo.alpha = 1.0
-            self.bluetoothLabel.isHidden = false
-            self.amplifierLabel.isHidden = false
-            self.amplifierLabel.text = ""
-            self.presetLabel.isHidden = false
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+3) {
-                self.sendGetAmplifier()
-            }
+        bluetoothLogo.alpha = 1.0
+        bluetoothLabel.isHidden = false
+        amplifierLabel.isHidden = false
+        amplifierLabel.text = ""
+        presetLabel.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+3) {
+            self.sendGetAmplifier()
         }
     }
     
     func remoteManager(_ manager: RemoteManager, didSend success: Bool) {
-        DispatchQueue.main.async {
-            self.txLED.backgroundColour = UIColor.clear
-        }
+        txLED.backgroundColour = UIColor.clear
     }
     
     func remoteManager(_ manager: RemoteManager, didReceive data: Data) {
-        DispatchQueue.main.async {
-            self.rxLED.backgroundColour = UIColor.green
-            do {
-                let message = try DXMessage(data: data)
-                Flogger.log.verbose("Message: \(message.command.rawValue)")
-                switch message.command as RequestType {
-                case .amplifier:
-                    let amp = try DXAmplifier(data: message.content)
-                    self.amplifierLabel.text = amp.name ?? "No Amplifier"
-                    self.presetVC?.powerState = amp.name == nil ? .off : .on
-                    self.sendGetPreset(nil)
-                case .preset, .changePreset:
-                    let preset = try DXPreset(data: message.content)
-                    self.logPreset(preset)
-                    self.presetLabel.text = preset.name
-                    self.presetNumber = preset.number
-                    self.presetVC?.preset = preset
-                    self.prevPreset.isHidden = preset.number == nil
-                    self.nextPreset.isHidden = preset.number == nil
-                }
-            } catch {
-                Flogger.log.error("Receive Failure: Couldn't decode DXMessage, DXAmplifier or DXPreset")
+        rxLED.backgroundColour = UIColor.green
+        do {
+            let message = try DXMessage(data: data)
+            Flogger.log.verbose("Message: \(message.command.rawValue)")
+            switch message.command as RequestType {
+            case .amplifier:
+                let amp = try DXAmplifier(data: message.content)
+                amplifierLabel.text = amp.name ?? "No Amplifier"
+                presetVC?.powerState = amp.name == nil ? .off : .on
+                sendGetPreset(nil)
+            case .preset, .changePreset:
+                let preset = try DXPreset(data: message.content)
+                logPreset(preset)
+                presetLabel.text = preset.name
+                presetNumber = preset.number
+                presetVC?.preset = preset
+                prevPreset.isHidden = preset.number == nil
+                nextPreset.isHidden = preset.number == nil
             }
-            self.rxLED.backgroundColour = UIColor.clear
+        } catch {
+            Flogger.log.error("Receive Failure: Couldn't decode DXMessage, DXAmplifier or DXPreset")
         }
+        rxLED.backgroundColour = UIColor.clear
+    }
+
+    func remoteManagerDisconnected(_ manager: RemoteManager) {
+        presetVC?.powerState = .off
+        bluetoothLogo.alpha = 0.5
+        bluetoothLabel.isHidden = true
+        amplifierLabel.isHidden = true
+        amplifierLabel.text = ""
+        presetLabel.isHidden = true
+        presetLabel.text = ""
+        prevPreset.isHidden = true
+        nextPreset.isHidden = true
     }
     
-    func remoteManagerDisconnected(_ manager: RemoteManager) {
-        DispatchQueue.main.async {
-            self.presetVC?.powerState = .off
-            self.bluetoothLogo.alpha = 0.5
-            self.bluetoothLabel.isHidden = true
-            self.amplifierLabel.isHidden = true
-            self.amplifierLabel.text = ""
-            self.presetLabel.isHidden = true
-            self.presetLabel.text = ""
-            self.prevPreset.isHidden = true
-            self.nextPreset.isHidden = true
-        }
-    }
-        
     func remoteManagerUnavailable(_ manager: RemoteManager) {
-        DispatchQueue.main.async {
-            self.presetVC?.powerState = .off
-            self.bluetoothLogo.isHidden = true
-            self.bluetoothLabel.isHidden = true
-            self.amplifierLabel.isHidden = true
-            self.amplifierLabel.text = ""
-            self.presetLabel.isHidden = true
-            self.presetLabel.text = ""
-            self.prevPreset.isHidden = true
-            self.nextPreset.isHidden = true
-        }
+        presetVC?.powerState = .off
+        bluetoothLogo.isHidden = true
+        bluetoothLabel.isHidden = true
+        amplifierLabel.isHidden = true
+        amplifierLabel.text = ""
+        presetLabel.isHidden = true
+        presetLabel.text = ""
+        prevPreset.isHidden = true
+        nextPreset.isHidden = true
     }
 }
 

@@ -27,20 +27,30 @@ class RemoteManager {
     init(delegate: RemoteManagerDelegate? = nil) {
         self.delegate = delegate
         PeripheralNotification.peripheralStarted.observe() { notification in
-            self.delegate?.remoteManagerDidStart(self)
+            DispatchQueue.main.async {
+                self.delegate?.remoteManagerDidStart(self)
+            }
         }
         PeripheralNotification.peripheralStopped.observe() { notification in
-            self.delegate?.remoteManagerDidStop(self)
+            DispatchQueue.main.async {
+                self.delegate?.remoteManagerDidStop(self)
+            }
         }
         PeripheralNotification.peripheralConnected.observe() { notification in
-            self.delegate?.remoteManagerDidConnect(self)
+            DispatchQueue.main.async {
+                self.delegate?.remoteManagerDidConnect(self)
+            }
         }
         PeripheralNotification.peripheralDisconnected.observe() { notification in
-            self.delegate?.remoteManagerDidDisconnect(self)
+            DispatchQueue.main.async {
+                self.delegate?.remoteManagerDidDisconnect(self)
+            }
         }
         PeripheralNotification.peripheralDidReceive.observe() { notification in
             if let object = notification.object as? RemoteData {
-                self.delegate?.remoteManager(self, didReceive: object.data)
+                DispatchQueue.main.async {
+                    self.delegate?.remoteManager(self, didReceive: object.data)
+                }
             }
         }
     }
@@ -52,7 +62,9 @@ class RemoteManager {
     func send(_ object: Transferable) -> Bool {
         if let data = object.data {
             peripheral.send(data: data) { success in
-                self.delegate?.remoteManager(self, didSend: success)
+                DispatchQueue.main.async {
+                    self.delegate?.remoteManager(self, didSend: success)
+                }
             }
             return true
         }

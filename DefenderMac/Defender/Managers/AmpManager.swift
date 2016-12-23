@@ -85,15 +85,21 @@ class AmpManager {
         currentAmplifier = nil
         amplifiers = mustang.getConnectedAmplifiers()
         currentAmplifier = amplifiers.first
-        delegate?.deviceConnected(ampManager: self)
+        DispatchQueue.main.async {
+            self.delegate?.deviceConnected(ampManager: self)
+        }
     }
     
     @objc fileprivate func deviceOpened() {
-        delegate?.deviceOpened(ampManager: self)
+        DispatchQueue.main.async {
+            self.delegate?.deviceOpened(ampManager: self)
+        }
     }
     
     @objc fileprivate func deviceClosed() {
-        delegate?.deviceClosed(ampManager: self)
+        DispatchQueue.main.async {
+            self.delegate?.deviceClosed(ampManager: self)
+        }
     }
     
     @objc fileprivate func deviceDisconnected() {
@@ -101,15 +107,18 @@ class AmpManager {
         currentAmplifier = nil
         amplifiers = [DTOAmplifier]()
         currentAmplifier = nil
-        delegate?.deviceDisconnected(ampManager: self)
+        DispatchQueue.main.async {
+            self.delegate?.deviceDisconnected(ampManager: self)
+        }
     }
     
     @objc fileprivate func gainChanged(notification: Notification) {
         if let userInfo = notification.userInfo as? [String: Any] {
             if let value = userInfo["value"] as? Float {
                 if let latestGain = latestGain {
-                    
-                    delegate?.gainChanged(ampManager: self, by: (value - latestGain) * 10.0)
+                    DispatchQueue.main.async {
+                        self.delegate?.gainChanged(ampManager: self, by: (value - latestGain) * 10.0)
+                    }
                 }
                 latestGain = value
             }
@@ -120,7 +129,9 @@ class AmpManager {
         if let userInfo = notification.userInfo as? [String: Any] {
             if let value = userInfo["value"] as? Float {
                 if let latestVolume = latestVolume {
-                    delegate?.volumeChanged(ampManager: self, by: (value - latestVolume) * 10.0)
+                    DispatchQueue.main.async {
+                        self.delegate?.volumeChanged(ampManager: self, by: (value - latestVolume) * 10.0)
+                    }
                 }
                 latestVolume = value
             }
@@ -131,7 +142,9 @@ class AmpManager {
         if let userInfo = notification.userInfo as? [String: Any] {
             if let value = userInfo["value"] as? Float {
                 if let latestTreble = latestTreble {
-                    delegate?.trebleChanged(ampManager: self, by: (value - latestTreble) * 10.0)
+                    DispatchQueue.main.async {
+                        self.delegate?.trebleChanged(ampManager: self, by: (value - latestTreble) * 10.0)
+                    }
                 }
                 latestTreble = value
             }
@@ -142,7 +155,9 @@ class AmpManager {
         if let userInfo = notification.userInfo as? [String: Any] {
             if let value = userInfo["value"] as? Float {
                 if let latestMiddle = latestMiddle {
-                    delegate?.middleChanged(ampManager: self, by: (value - latestMiddle) * 10.0)
+                    DispatchQueue.main.async {
+                        self.delegate?.middleChanged(ampManager: self, by: (value - latestMiddle) * 10.0)
+                    }
                 }
                 latestMiddle = value
             }
@@ -153,7 +168,9 @@ class AmpManager {
         if let userInfo = notification.userInfo as? [String: Any] {
             if let value = userInfo["value"] as? Float {
                 if let latestBass = latestBass {
-                    delegate?.bassChanged(ampManager: self, by: (value - latestBass) * 10.0)
+                    DispatchQueue.main.async {
+                        self.delegate?.bassChanged(ampManager: self, by: (value - latestBass) * 10.0)
+                    }
                 }
                 latestBass = value
             }
@@ -164,7 +181,9 @@ class AmpManager {
         if let userInfo = notification.userInfo as? [String: Any] {
             if let value = userInfo["value"] as? Float {
                 if let latestPresence = latestPresence {
-                    delegate?.presenceChanged(ampManager: self, by: (value - latestPresence) * 10.0)
+                    DispatchQueue.main.async {
+                        self.delegate?.presenceChanged(ampManager: self, by: (value - latestPresence) * 10.0)
+                    }
                 }
                 latestPresence = value
             }
@@ -181,7 +200,9 @@ class AmpManager {
                         Flogger.log.error("Got a preset with no number, cannot use it")
                     }
                 }
-                onCompletion()
+                DispatchQueue.main.async {
+                    onCompletion()
+                }
             }
         }
     }
@@ -205,23 +226,31 @@ class AmpManager {
                                             self.presets[number] = preset
                                         }
                                     }
-                                    self.delegate?.presetCountChanged(ampManager: self, to: UInt(self.presets.filter({$0.value.gain1 != nil}).count))
+                                    DispatchQueue.main.async {
+                                        self.delegate?.presetCountChanged(ampManager: self, to: UInt(self.presets.filter({$0.value.gain1 != nil}).count))
+                                    }
                                     semaphore.signal()
                             }
                         }
                     }
-                    onCompletion(self.presets.filter({$0.value.gain1 != nil}).count == 100)
+                    DispatchQueue.main.async {
+                        onCompletion(self.presets.filter({$0.value.gain1 != nil}).count == 100)
+                    }
                 }
             }
         } else {
-            onCompletion(self.presets.filter({$0.value.gain1 != nil}).count == 100)
+            DispatchQueue.main.async {
+                onCompletion(self.presets.filter({$0.value.gain1 != nil}).count == 100)
+            }
         }
     }
 
     open func getCachedPreset(_ preset: Int, onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
         if let _ = currentAmplifier {
             if preset >= 0 && preset < presets.count {
-                onCompletion(presets[UInt8(preset)])
+                DispatchQueue.main.async {
+                    onCompletion(self.presets[UInt8(preset)])
+                }
             }
         }
     }
@@ -229,18 +258,22 @@ class AmpManager {
     open func getPreset(_ preset: Int, onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
         if let amplifier = currentAmplifier {
             if preset >= 0 && preset < presets.count && presets[UInt8(preset)]?.gain1 != nil {
-                onCompletion(presets[UInt8(preset)])
+                DispatchQueue.main.async {
+                    onCompletion(self.presets[UInt8(preset)])
+                }
             } else {
                 mustang.getPreset(
                     amplifier,
                     preset: UInt8(preset)) { (preset) in
-                        DispatchQueue.main.async {
-                            if let preset = preset {
-                                if let number = preset.number {
-                                    self.presets[number] = preset
+                        if let preset = preset {
+                            if let number = preset.number {
+                                self.presets[number] = preset
+                                DispatchQueue.main.async {
                                     onCompletion(preset)
                                 }
                             }
+                        }
+                        DispatchQueue.main.async {
                             self.delegate?.presetCountChanged(ampManager: self, to: UInt(self.presets.filter({$0.value.gain1 != nil}).count))
                         }
                 }
@@ -253,9 +286,7 @@ class AmpManager {
             mustang.getPreset(
                 amplifier,
                 preset: UInt8(preset)) { (preset) in
-                    DispatchQueue.main.async {
-                        self.addPreset(preset, onCompletion: onCompletion)
-                    }
+                    self.addPreset(preset, onCompletion: onCompletion)
             }
         }
     }
@@ -268,9 +299,7 @@ class AmpManager {
                 mustang.setPreset(
                     amplifier,
                     preset: preset) { (preset) in
-                        DispatchQueue.main.async {
-                            self.addPreset(preset, onCompletion: onCompletion)
-                        }
+                        self.addPreset(preset, onCompletion: onCompletion)
                 }
             }
         }
@@ -299,13 +328,13 @@ class AmpManager {
         mustang.login(username: username,
                       password: password,
                       onSuccess: {
+                        Flogger.log.verbose("Logged in")
                         DispatchQueue.main.async {
-                            Flogger.log.verbose("Logged in")
                             onCompletion(true)
                         }},
                       onFail: {
+                        Flogger.log.error("Login failure")
                         DispatchQueue.main.async {
-                            Flogger.log.error("Login failure")
                             onCompletion(false)
                         }}
         )
@@ -319,13 +348,13 @@ class AmpManager {
                        pageNumber: pageNumber,
                        maxReturn: maxReturn,
                        onSuccess: { (response) in
+                        Flogger.log.verbose("Searched")
                         DispatchQueue.main.async {
-                            Flogger.log.verbose("Searched")
                             onCompletion(response)
                         }},
                        onFail: {
+                        Flogger.log.error("Search failure")
                         DispatchQueue.main.async {
-                            Flogger.log.error("Search failure")
                             onCompletion(nil)
                         }}
         )
@@ -333,13 +362,13 @@ class AmpManager {
     
     open func logout(onCompletion: @escaping (_ loggedOut: Bool) ->()) {
         mustang.logout(onSuccess: {
+                        Flogger.log.verbose("Logged out")
                         DispatchQueue.main.async {
-                            Flogger.log.verbose("Logged out")
                             onCompletion(true)
                         }},
                       onFail: {
+                        Flogger.log.error("Logout failure")
                         DispatchQueue.main.async {
-                            Flogger.log.error("Logout failure")
                             onCompletion(false)
                         }}
         )
@@ -400,7 +429,9 @@ class AmpManager {
                             }
                         }
                     }
-                    self.delegate?.presetCountChanged(ampManager: self, to: UInt(self.presets.filter({$0.value.gain1 != nil}).count))
+                    DispatchQueue.main.async {
+                        self.delegate?.presetCountChanged(ampManager: self, to: UInt(self.presets.filter({$0.value.gain1 != nil}).count))
+                    }
                 }
                 catch {
                     Flogger.log.error("Couldn't read FUSE XML file \(fusePath)")
@@ -415,7 +446,9 @@ class AmpManager {
         if let preset = preset {
             if let number = preset.number {
                 self.presets[number] = preset
-                onCompletion(preset)
+                DispatchQueue.main.async {
+                    onCompletion(preset)
+                }
             }
         }
     }

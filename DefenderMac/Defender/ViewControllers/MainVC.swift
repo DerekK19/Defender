@@ -201,12 +201,10 @@ class MainVC: NSViewController {
     // MARK: Public functions
     func willImportPresetFromXml(_ xml: XMLDocument) {
         if let preset = ampManager.importPreset(xml) {
-            DispatchQueue.main.async {
-                var newPreset = preset
-                newPreset.number = self.currentPreset?.number
-                self.setPreset(newPreset)
-                self.saveButton.setState(.warning)
-            }
+            var newPreset = preset
+            newPreset.number = self.currentPreset?.number
+            self.setPreset(newPreset)
+            self.saveButton.setState(.warning)
         }
     }
     
@@ -233,12 +231,10 @@ class MainVC: NSViewController {
             self.powerState = .on
             self.sendCurrentAmplifier()
             ampManager.getPresets() {
-                DispatchQueue.main.async {
-                    self.powerState = .on
-                    self.valueDidChangeForWheel(self.wheel, value: 0)
-                    self.preloadButton.isHidden = self.ampManager.mocking
-                    sender.state = NSOnState
-                }
+                self.powerState = .on
+                self.valueDidChangeForWheel(self.wheel, value: 0)
+                self.preloadButton.isHidden = self.ampManager.mocking
+                sender.state = NSOnState
             }
         }
     }
@@ -258,11 +254,9 @@ class MainVC: NSViewController {
                     Flogger.log.verbose(" Confirming effect")
                     ampManager.savePreset(currentPreset) { (saved) in
                         self.ampManager.resetPreset(self.wheel.intValue) { (preset) in
-                            DispatchQueue.main.async {
-                                self.displayPreset(preset)
-                                self.saveButton.setState(.active)
-                                self.displayVC?.setState(.view)
-                            }
+                            self.displayPreset(preset)
+                            self.saveButton.setState(.active)
+                            self.displayVC?.setState(.view)
                         }
                     }
                 }
@@ -286,11 +280,9 @@ class MainVC: NSViewController {
             saveButton.setState(.active)
             exitButton.setState(.ok)
             ampManager.resetPreset(self.wheel.intValue) { (preset) in
-                DispatchQueue.main.async {
-                    self.displayPreset(preset)
-                    self.exitButton.setState(.active)
-                    self.displayVC?.setState(.view)
-                }
+                self.displayPreset(preset)
+                self.exitButton.setState(.active)
+                self.displayVC?.setState(.view)
             }
         }
     }
@@ -339,9 +331,7 @@ class MainVC: NSViewController {
     fileprivate func configureAmplifiers() {
         ampManager = AmpManager()
         ampManager.delegate = self
-        DispatchQueue.main.async {
-            self.configureAmplifier()
-        }
+        configureAmplifier()
     }
     
     fileprivate func configureAmplifier() {
@@ -596,10 +586,8 @@ extension MainVC: WheelDelegate {
                 saveButton.setState(.active)
                 exitButton.setState(.active)
                 ampManager.getPreset(value) { (preset) in
-                    DispatchQueue.main.async {
-                        self.setPreset(preset)
-                        self.logPreset(self.currentPreset)
-                    }
+                    self.setPreset(preset)
+                    self.logPreset(self.currentPreset)
                 }
             default:
                 Flogger.log.error("Don't know what wheel sent this event")
@@ -618,10 +606,8 @@ extension MainVC: AmpManagerDelegate {
     func deviceConnected(ampManager: AmpManager) {
         Flogger.log.verbose(" Connected")
         sendCurrentAmplifier()
-        DispatchQueue.main.async {
-            self.statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
-            self.statusLabel.stringValue = "\(ampManager.currentAmplifierName) connected"
-        }
+        self.statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
+        self.statusLabel.stringValue = "\(ampManager.currentAmplifierName) connected"
     }
     
     func deviceOpened(ampManager: AmpManager) {
@@ -631,10 +617,8 @@ extension MainVC: AmpManagerDelegate {
     }
     
     func presetCountChanged(ampManager: AmpManager, to: UInt) {
-        DispatchQueue.main.async {
-            self.presetsLabel.stringValue = "Loaded \(to) preset\(to == 1 ? "" : "s")"
-            self.preloadButton.isHidden = (to == 100) || self.ampManager.mocking
-        }
+        self.presetsLabel.stringValue = "Loaded \(to) preset\(to == 1 ? "" : "s")"
+        self.preloadButton.isHidden = (to == 100) || self.ampManager.mocking
     }
     
     func deviceClosed(ampManager: AmpManager) {
@@ -644,13 +628,11 @@ extension MainVC: AmpManagerDelegate {
     
     func deviceDisconnected(ampManager: AmpManager) {
         Flogger.log.verbose(" Disconnected")
-        DispatchQueue.main.async {
-            self.reset()
-            self.setPreset(nil)
-            self.sendCurrentAmplifier()
-            self.statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
-            self.statusLabel.stringValue = "\(ampManager.currentAmplifierName) connected"
-        }
+        self.reset()
+        self.setPreset(nil)
+        self.sendCurrentAmplifier()
+        self.statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
+        self.statusLabel.stringValue = "\(ampManager.currentAmplifierName) connected"
     }
     
     func gainChanged(ampManager: AmpManager, by: Float) {
@@ -692,72 +674,56 @@ extension MainVC: WebVCDelegate {
 
 extension MainVC: RemoteManagerDelegate {
     func remoteManagerDidStart(_ manager: RemoteManager) {
-        DispatchQueue.main.async {
             self.bluetoothLogo.isHidden = false
             self.bluetoothLogo.alphaValue = 0.5
-        }
     }
     
     func remoteManagerDidConnect(_ manager: RemoteManager) {
-        DispatchQueue.main.async {
             self.bluetoothLogo.alphaValue = 1.0
-        }
     }
 
     func remoteManager(_ manager: RemoteManager, didSend success: Bool) {
-        DispatchQueue.main.async {
             self.txLED.backgroundColour = NSColor.clear
-        }
     }
     
     func remoteManager(_ manager: RemoteManager, didReceive data: Data) {
-        DispatchQueue.main.async {
-            self.rxLED.backgroundColour = NSColor.green
-            DispatchQueue.main.async {
-                do {
-                    let message = try DXMessage(data: data)
-                    Flogger.log.verbose("Message: \(message.command.rawValue)")
-                    switch message.command as RequestType {
-                    case .amplifier:
-                        self.sendCurrentAmplifier()
-                    case .preset:
-                        if message.content == nil {
-                            self.sendCurrentPreset()
-                        } else {
-                            let preset = try DXPreset(data: message.content)
-                            if let number = preset.number {
-                                self.ampManager.getPreset(Int(number)) { (preset) in
-                                    DispatchQueue.main.async {
-                                        self.setPreset(preset)
-                                        self.logPreset(preset)
-                                    }
-                                }
-                            }
+        self.rxLED.backgroundColour = NSColor.green
+        do {
+            let message = try DXMessage(data: data)
+            Flogger.log.verbose("Message: \(message.command.rawValue)")
+            switch message.command as RequestType {
+            case .amplifier:
+                self.sendCurrentAmplifier()
+            case .preset:
+                if message.content == nil {
+                    self.sendCurrentPreset()
+                } else {
+                    let preset = try DXPreset(data: message.content)
+                    if let number = preset.number {
+                        self.ampManager.getPreset(Int(number)) { (preset) in
+                            self.setPreset(preset)
+                            self.logPreset(preset)
                         }
-                    case .changePreset:
-                        let preset = try DXPreset(data: message.content)
-                        preset.copyInto(preset: &self.currentPreset)
-                        self.displayPreset(self.currentPreset)
-                        self.presetDidChange()
                     }
-                } catch {
-                    Flogger.log.error("Receive Failure: Couldn't decode DXMessage or DXPreset")
                 }
-                self.rxLED.backgroundColour = NSColor.clear
+            case .changePreset:
+                let preset = try DXPreset(data: message.content)
+                preset.copyInto(preset: &self.currentPreset)
+                self.displayPreset(self.currentPreset)
+                self.presetDidChange()
             }
+        } catch {
+            Flogger.log.error("Receive Failure: Couldn't decode DXMessage or DXPreset")
         }
+        self.rxLED.backgroundColour = NSColor.clear
     }
     
     func remoteManagerDidDisconnect(_ manager: RemoteManager) {
-        DispatchQueue.main.async {
             self.bluetoothLogo.alphaValue = 0.5
-        }
     }
 
     func remoteManagerDidStop(_ manager: RemoteManager) {
-        DispatchQueue.main.async {
             self.bluetoothLogo.isHidden = true
-        }
     }
 
 }

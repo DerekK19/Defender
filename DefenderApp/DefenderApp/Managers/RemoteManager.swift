@@ -27,20 +27,30 @@ class RemoteManager {
     init(delegate: RemoteManagerDelegate? = nil) {
         self.delegate = delegate
         CentralNotification.centralBecameAvailable.observe() { notification in
-            self.delegate?.remoteManagerAvailable(self)
+            DispatchQueue.main.async {
+                self.delegate?.remoteManagerAvailable(self)
+            }
         }
         CentralNotification.centralDidConnect.observe() { notification in
-            self.delegate?.remoteManagerConnected(self)
+            DispatchQueue.main.async {
+                self.delegate?.remoteManagerConnected(self)
+            }
         }
         CentralNotification.centralDidDisconnect.observe() { notification in
-            self.delegate?.remoteManagerDisconnected(self)
+            DispatchQueue.main.async {
+                self.delegate?.remoteManagerDisconnected(self)
+            }
         }
         CentralNotification.centralBecameUnavailable.observe() { notification in
-            self.delegate?.remoteManagerUnavailable(self)
+            DispatchQueue.main.async {
+                self.delegate?.remoteManagerUnavailable(self)
+            }
         }
         CentralNotification.centralDidReceive.observe() { notification in
             if let object = notification.object as? RemoteData {
-                self.delegate?.remoteManager(self, didReceive: object.data)
+                DispatchQueue.main.async {
+                    self.delegate?.remoteManager(self, didReceive: object.data)
+                }
             }
         }
     }
@@ -56,7 +66,9 @@ class RemoteManager {
     func send(_ object: Transferable) -> Bool {
         if let data = object.data {
             central.send(data: data) { success in
-                self.delegate?.remoteManager(self, didSend: success)
+                DispatchQueue.main.async {
+                    self.delegate?.remoteManager(self, didSend: success)
+                }
             }
             return true
         }
