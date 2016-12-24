@@ -29,13 +29,13 @@ class KnobBaseControl: UIView {
     var floatValue: Float = 1.0 {
         didSet {
             _floatValue = floatValue
-            setNeedsDisplay(self.bounds)
+            setNeedsDisplay(bounds)
         }
     }
     
     var backgroundColour: UIColor = UIColor.black {
         didSet {
-            setNeedsDisplay(self.bounds)
+            setNeedsDisplay(bounds)
         }
     }
     var foregroundColour: UIColor = UIColor.white
@@ -60,7 +60,7 @@ class KnobBaseControl: UIView {
     func panning(at: CGPoint) {
         if let startAt = startAt {
             _floatValue = yDelta(startPosition: startAt, endPosition: at)
-            setNeedsDisplay(self.bounds)
+            setNeedsDisplay(bounds)
         }
     }
     

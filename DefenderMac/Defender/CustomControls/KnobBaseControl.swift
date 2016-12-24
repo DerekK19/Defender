@@ -29,7 +29,7 @@ class KnobBaseControl: NSView {
     var floatValue: Float {
         set {
             _floatValue = newValue
-            setNeedsDisplay(self.bounds)
+            setNeedsDisplay(bounds)
         }
         get {
             return _floatValue
@@ -38,7 +38,7 @@ class KnobBaseControl: NSView {
     
     var backgroundColour: NSColor = NSColor.black {
         didSet {
-            setNeedsDisplay(self.bounds)
+            setNeedsDisplay(bounds)
         }
     }
     var foregroundColour: NSColor = NSColor.white
@@ -60,8 +60,8 @@ class KnobBaseControl: NSView {
         startMouse = theEvent.locationInWindow
         if let startMouse = startMouse {
             startValue = _floatValue
-            let viewMouse = self.convert(startMouse, from: nil)
-            let midX = self.frame.width / 2.0
+            let viewMouse = convert(startMouse, from: nil)
+            let midX = frame.width / 2.0
             direction = viewMouse.x < midX ? 1.0 : -1.0
         }
     }
@@ -70,7 +70,7 @@ class KnobBaseControl: NSView {
         let nowMouse = theEvent.locationInWindow
         if let startMouse = startMouse {
             _floatValue = yDelta(startPosition: startMouse, endPosition: nowMouse)
-            setNeedsDisplay(self.bounds)
+            setNeedsDisplay(bounds)
         }
     }
     
@@ -88,20 +88,20 @@ class KnobBaseControl: NSView {
     }
     
     internal func degreesFromFloatValue(_ floatValue: Float) -> CGFloat {
-        let fraction = (floatValue - self.minStop) / (self.maxStop - self.minStop)
+        let fraction = (floatValue - minStop) / (maxStop - minStop)
         let angle = -CGFloat(fraction * 360.0)
 //        Flogger.log.verbose("Float \(floatValue) -> Degrees \(angle)")
         return angle
     }
     internal func radiansFromFloatValue(_ floatValue: Float) -> CGFloat {
-        let fraction = self.minValue + (floatValue * (self.maxValue - self.minValue))
+        let fraction = minValue + (floatValue * (maxValue - minValue))
         let angle =  -(CGFloat(fraction * Float(M_PI) * 2.0) + CGFloat(M_PI / 2.0))
 //        Flogger.log.verbose("Float \(floatValue) -> Radians \(angle)")
         return angle
     }
     
     internal func imageRotatedByDegrees(_ image: NSImage, degrees: CGFloat) -> NSImage {
-        var imageBounds = NSRect(origin: NSZeroPoint, size: self.bounds.size)
+        var imageBounds = NSRect(origin: NSZeroPoint, size: bounds.size)
         
         let boundsPath = NSBezierPath(rect: imageBounds)
         var transform = AffineTransform.identity

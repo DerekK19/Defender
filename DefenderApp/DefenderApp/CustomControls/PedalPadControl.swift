@@ -21,12 +21,12 @@ class PedalPadControl: UIView {
     }
     
     private func configure() {
-        self.backgroundColor = UIColor.clear
+        backgroundColor = UIColor.clear
     }
     
     var backgroundColour: UIColor = UIColor.slotBackground {
         didSet {
-            setNeedsDisplay(self.bounds)
+            setNeedsDisplay(bounds)
         }
     }
     

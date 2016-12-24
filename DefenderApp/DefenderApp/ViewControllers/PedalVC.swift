@@ -70,53 +70,53 @@ class PedalVC: BaseEffectVC {
     var state: EffectState = .disabled {
         didSet {
             var newBackgroundColour = UIColor()
-            self.knobUpperLeft.alpha = state == .disabled ? 0.0 : 1.0
-            self.knobUpperMiddle.alpha = state == .disabled ? 0.0 : 1.0
-            self.knobUpperRight.alpha = state == .disabled ? 0.0 : 1.0
-            self.knobLowerLeft.alpha = state == .disabled ? 0.0 : 1.0
-            self.knobLowerMiddle.alpha = state == .disabled ? 0.0 : 1.0
-            self.knobLowerRight.alpha = state == .disabled ? 0.0 : 1.0
-            self.pedalLogo.alpha = state == .disabled ? 0.6 : 1.0
+            knobUpperLeft.alpha = state == .disabled ? 0.0 : 1.0
+            knobUpperMiddle.alpha = state == .disabled ? 0.0 : 1.0
+            knobUpperRight.alpha = state == .disabled ? 0.0 : 1.0
+            knobLowerLeft.alpha = state == .disabled ? 0.0 : 1.0
+            knobLowerMiddle.alpha = state == .disabled ? 0.0 : 1.0
+            knobLowerRight.alpha = state == .disabled ? 0.0 : 1.0
+            pedalLogo.alpha = state == .disabled ? 0.6 : 1.0
             switch state {
             case .initial:
                 break
             case .disabled:
                 newBackgroundColour = UIColor.slotBackground
-                self.powerLED.backgroundColour = UIColor.slotBackground
+                powerLED.backgroundColour = UIColor.slotBackground
                 slotLabel.isHidden = false
-                self.pad.backgroundColour = UIColor.slotBackground
-                self.inputLabel.textColor = UIColor.slotBackground
-                self.outputLabel.textColor = UIColor.slotBackground
-                self.textBar.backgroundColor = UIColor.slotBackground
+                pad.backgroundColour = UIColor.slotBackground
+                inputLabel.textColor = UIColor.slotBackground
+                outputLabel.textColor = UIColor.slotBackground
+                textBar.backgroundColor = UIColor.slotBackground
             case .off:
                 newBackgroundColour = fullBackgroundColour
-                self.slotLabel.isHidden = true
-                self.powerLED.backgroundColour = UIColor.red.withBrightness(0.5)
-                self.pad.backgroundColour = UIColor.black
-                self.inputLabel.textColor = UIColor.black
-                self.outputLabel.textColor = UIColor.black
-                self.textBar.backgroundColor = UIColor.black
+                slotLabel.isHidden = true
+                powerLED.backgroundColour = UIColor.red.withBrightness(0.5)
+                pad.backgroundColour = UIColor.black
+                inputLabel.textColor = UIColor.black
+                outputLabel.textColor = UIColor.black
+                textBar.backgroundColor = UIColor.black
             case .on:
                 newBackgroundColour = fullBackgroundColour
-                self.slotLabel.isHidden = true
-                self.powerLED.backgroundColour = UIColor.red
-                self.pad.backgroundColour = UIColor.black
-                self.inputLabel.textColor = UIColor.black
-                self.outputLabel.textColor = UIColor.black
-                self.textBar.backgroundColor = UIColor.black
+                slotLabel.isHidden = true
+                powerLED.backgroundColour = UIColor.red
+                pad.backgroundColour = UIColor.black
+                inputLabel.textColor = UIColor.black
+                outputLabel.textColor = UIColor.black
+                textBar.backgroundColor = UIColor.black
             }
-            self.pedalBackgroundColour = newBackgroundColour
-            self.bodyTop.backgroundColour = newBackgroundColour
-            self.bodyBottom.backgroundColour = newBackgroundColour
-            let currentState = self.powerState
-            self.powerState = currentState
+            pedalBackgroundColour = newBackgroundColour
+            bodyTop.backgroundColour = newBackgroundColour
+            bodyBottom.backgroundColour = newBackgroundColour
+            let currentState = powerState
+            powerState = currentState
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.state = .disabled
+        state = .disabled
         
         knobUpperLeft.delegate = self
         knobUpperMiddle.delegate = self
@@ -128,7 +128,7 @@ class PedalVC: BaseEffectVC {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.configureWith(pedal: self.effect)
+        configureWith(pedal: effect)
     }
     
     override func didReceiveMemoryWarning() {
@@ -140,7 +140,7 @@ class PedalVC: BaseEffectVC {
         self.effect = pedal
         fullBackgroundColour = bgColours[effect?.colour ?? 0] ?? UIColor.slotBackground
         if appeared {
-            if slotNumber != nil { slotLabel.text = "\(self.slotNumber! + 1)" } else { slotLabel.text = "" }
+            if slotNumber != nil { slotLabel.text = "\(slotNumber! + 1)" } else { slotLabel.text = "" }
             typeLabel.text = pedal?.type.rawValue.uppercased() ?? ""
             nameLabel.text = pedal?.name?.uppercased() ?? ""
             if pedal == nil {

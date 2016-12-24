@@ -49,32 +49,32 @@ class EffectVC: NSViewController {
             switch state {
             case .disabled:
                 newBackgroundColour = NSColor.clear
-                self.powerLED.backgroundColour = NSColor.black
-                self.knob1.isHidden = true
-                self.knob2.isHidden = true
-                self.knob3.isHidden = true
-                self.knob4.isHidden = true
-                self.knob5.isHidden = true
-                self.knob6.isHidden = true
+                powerLED.backgroundColour = NSColor.black
+                knob1.isHidden = true
+                knob2.isHidden = true
+                knob3.isHidden = true
+                knob4.isHidden = true
+                knob5.isHidden = true
+                knob6.isHidden = true
             case .off:
                 newBackgroundColour = fullBackgroundColour
-                self.powerLED.backgroundColour = NSColor.red.withBrightness(0.5)
+                powerLED.backgroundColour = NSColor.red.withBrightness(0.5)
             case .on:
                 newBackgroundColour = fullBackgroundColour
-                self.powerLED.backgroundColour = NSColor.red
+                powerLED.backgroundColour = NSColor.red
             }
-            self.slot.backgroundColour = slotBackgroundColour
-            self.effectBackgroundColour = newBackgroundColour
-            self.effectLead.borderColor = NSColor.lead
-            self.chassis.backgroundColour = newBackgroundColour
-            let currentState = self.powerState
-            self.powerState = currentState
+            slot.backgroundColour = slotBackgroundColour
+            effectBackgroundColour = newBackgroundColour
+            effectLead.borderColor = NSColor.lead
+            chassis.backgroundColour = newBackgroundColour
+            let currentState = powerState
+            powerState = currentState
         }
     }
     
     var powerState: PowerState = .off {
         didSet {
-            self.shade.isOpen = powerState == .on || state == .disabled
+            shade.isOpen = powerState == .on || state == .disabled
         }
     }
     
@@ -89,9 +89,9 @@ class EffectVC: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.state = .disabled
-        self.typeLabel.stringValue = ""
-        self.nameLabel.stringValue = ""
+        state = .disabled
+        typeLabel.stringValue = ""
+        nameLabel.stringValue = ""
         
         knob1.delegate = self
         knob2.delegate = self

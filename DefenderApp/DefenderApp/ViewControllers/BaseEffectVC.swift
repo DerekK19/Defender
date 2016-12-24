@@ -18,7 +18,7 @@ class BaseEffectVC: UIViewController {
     internal var powerState: PowerState = .off {
         didSet {
             if appeared {
-                self.shade.state = powerState == .on ? .open : .closed
+                shade.state = powerState == .on ? .open : .closed
             }
         }
     }

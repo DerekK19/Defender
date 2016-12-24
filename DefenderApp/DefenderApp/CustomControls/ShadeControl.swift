@@ -12,7 +12,7 @@ class ShadeControl: UIView {
     
     var backgroundColour: UIColor = UIColor.shadeClosed {
         didSet {
-            setNeedsDisplay(self.bounds)
+            setNeedsDisplay(bounds)
         }
     }
     
@@ -20,8 +20,8 @@ class ShadeControl: UIView {
         didSet {
             if state != oldValue {
                 backgroundColour = state == .open ? UIColor.shadeOpen : state == .ajar ? UIColor.shadeAjar : UIColor.shadeClosed
-                self.isHidden = state == .open
-                setNeedsDisplay(self.bounds)
+                isHidden = state == .open
+                setNeedsDisplay(bounds)
             }
         }
     }

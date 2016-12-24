@@ -12,7 +12,7 @@ class DisplayControl: NSView {
 
     var backgroundColour: NSColor = NSColor.LCDLightBlue {
         didSet {
-            setNeedsDisplay(self.bounds)
+            setNeedsDisplay(bounds)
         }
     }
     

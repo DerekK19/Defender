@@ -63,47 +63,47 @@ class WebVC: NSViewController {
             case .on:
                 newBackgroundColour = fullBackgroundColour
             }
-            self.slot.backgroundColour = newBackgroundColour
-            self.webBackgroundColour = newBackgroundColour
-            self.webColumn1?.backgroundColour = newBackgroundColour
-            let currentState = self.powerState
-            self.powerState = currentState
-            self.loginButton.powerState = .on // powerState
-            self.searchButton.powerState = .on // powerState
+            slot.backgroundColour = newBackgroundColour
+            webBackgroundColour = newBackgroundColour
+            webColumn1?.backgroundColour = newBackgroundColour
+            let currentState = powerState
+            powerState = currentState
+            loginButton.powerState = .on // powerState
+            searchButton.powerState = .on // powerState
         }
     }
     
     var powerState: PowerState = .off {
         didSet {
-            self.shade.isOpen = powerState == .on || state == .disabled
+            shade.isOpen = powerState == .on || state == .disabled
         }
     }
     
     var loggedIn: Bool = false {
         didSet {
-            self.loginButton.title = self.loggedIn ? "Log out" : "Log in"
-            self.usernameTextField.isHidden = loggedIn
-            self.passwordTextField.isHidden = loggedIn
-            self.searchButton.isHidden = !loggedIn
-            self.searchTextField.isHidden = !loggedIn
-            self.searchResultsScrollView.isHidden = !loggedIn
-            self.searched = false
-            self.pagination = nil
-            self.presets = [DTOSearchItem]()
-            self.searchResultsTableView.reloadData()
+            loginButton.title = loggedIn ? "Log out" : "Log in"
+            usernameTextField.isHidden = loggedIn
+            passwordTextField.isHidden = loggedIn
+            searchButton.isHidden = !loggedIn
+            searchTextField.isHidden = !loggedIn
+            searchResultsScrollView.isHidden = !loggedIn
+            searched = false
+            pagination = nil
+            presets = [DTOSearchItem]()
+            searchResultsTableView.reloadData()
         }
     }
     
     var searched: Bool = false {
         didSet {
-            self.leftArrow.isHidden = !searched
-            self.page1Arrow.isHidden = !searched
-            self.page2Arrow.isHidden = !searched
-            self.page3Arrow.isHidden = !searched
-            self.page4Arrow.isHidden = !searched
-            self.page5Arrow.isHidden = !searched
-            self.rightArrow.isHidden = !searched
-            self.countLabel.isHidden = !searched
+            leftArrow.isHidden = !searched
+            page1Arrow.isHidden = !searched
+            page2Arrow.isHidden = !searched
+            page3Arrow.isHidden = !searched
+            page4Arrow.isHidden = !searched
+            page5Arrow.isHidden = !searched
+            rightArrow.isHidden = !searched
+            countLabel.isHidden = !searched
         }
     }
     
@@ -121,15 +121,15 @@ class WebVC: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.customiseTableView()
-        self.state = .disabled
-        self.loggedIn = false
+        customiseTableView()
+        state = .disabled
+        loggedIn = false
     }
 
     // MARK: Action functions
     
     @IBAction func willLogin(_ sender: NSButton) {
-        self.resignFirstResponder()
+        resignFirstResponder()
         if loggedIn {
             ampManager?.logout {(loggedOut: Bool) in
                 self.loggedIn = !loggedOut
@@ -144,12 +144,12 @@ class WebVC: NSViewController {
     }
     
     @IBAction func willSearch(_ sender: NSButton) {
-        self.resignFirstResponder()
+        resignFirstResponder()
         search(forPage: 1)
     }
     
     @IBAction func didPressArrow(sender: NSButton) {
-        if let pagination = self.pagination {
+        if let pagination = pagination {
             let firstPage = (UInt(pagination.page / 5) * 5) + 1
             var nextPage = newPage
             switch sender {
@@ -192,7 +192,7 @@ class WebVC: NSViewController {
     }
     
     private func configureArrows() {
-        if let pagination = self.pagination {
+        if let pagination = pagination {
             let firstPage = (UInt(pagination.page / 5) * 5) + 1            
             configureArrow(arrow: leftArrow, showIf: firstPage > 1, title: "<")
             configureArrow(arrow: page1Arrow, pageNumber: firstPage)
@@ -205,14 +205,14 @@ class WebVC: NSViewController {
     }
     
     private func configureArrow(arrow: ArrowButtonControl, pageNumber: UInt) {
-        if let pagination = self.pagination {
+        if let pagination = pagination {
             arrow.title = pageNumber <= pagination.pages ? "\(pageNumber)" : ""
             arrow.setState(arrow.title == "" ? .inactive : pageNumber == pagination.page ? .current : .active)
         }
     }
     
     private func configureArrow(arrow: ArrowButtonControl, showIf show: Bool, title: String) {
-        if let _ = self.pagination {
+        if let _ = pagination {
             arrow.title = show ? title : ""
             arrow.setState(arrow.title == "" ? .inactive : .active)
         }
@@ -224,21 +224,24 @@ class WebVC: NSViewController {
                               maxReturn: 10)
         { (response: DTOSearchResponse?) in
             if let response = response {
-                let items = response.items
-                self.pagination = response.pagination
-                self.newPage = self.pagination!.page
-                self.countLabel.stringValue = "Found \(self.pagination!.total) items"
-                Flogger.log.debug("For page \(self.newPage), found \(self.pagination!.total) items. Page \(self.pagination!.page) of \(self.pagination!.pages). Limit \(self.pagination!.limit) per page")
-                for item in items {
-                    Flogger.log.debug("\(item.title) - \(item.data?.preset?.effects.count ?? 0) effects")
-                }
-                self.presets = items
-                self.searched = true
-                self.configureArrows()
-                self.searchResultsTableView.reloadData()
+                self.loadPageWith(response)
             }
         }
-
+    }
+    
+    private func loadPageWith(_ response: DTOSearchResponse) {
+        let items = response.items
+        pagination = response.pagination
+        newPage = pagination!.page
+        countLabel.stringValue = "Found \(pagination!.total) items"
+        Flogger.log.debug("For page \(self.newPage), found \(self.pagination!.total) items. Page \(self.pagination!.page) of \(self.pagination!.pages). Limit \(self.pagination!.limit) per page")
+        for item in items {
+            Flogger.log.debug("\(item.title) - \(item.data?.preset?.effects.count ?? 0) effects")
+        }
+        presets = items
+        searched = true
+        configureArrows()
+        searchResultsTableView.reloadData()
     }
 }
 

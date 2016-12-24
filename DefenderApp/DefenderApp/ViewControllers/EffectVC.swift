@@ -55,39 +55,39 @@ class EffectVC: BaseEffectVC {
             case .disabled:
                 newBackgroundColour = UIColor.slotBackground
                 slotLabel.isHidden = false
-                self.powerLED.backgroundColour = UIColor.slotBackground
-                self.knob1.isHidden = true
-                self.label1.isHidden = true
-                self.knob2.isHidden = true
-                self.label2.isHidden = true
-                self.knob3.isHidden = true
-                self.label3.isHidden = true
-                self.knob4.isHidden = true
-                self.label4.isHidden = true
-                self.knob5.isHidden = true
-                self.label5.isHidden = true
-                self.knob6.isHidden = true
-                self.label6.isHidden = true
+                powerLED.backgroundColour = UIColor.slotBackground
+                knob1.isHidden = true
+                label1.isHidden = true
+                knob2.isHidden = true
+                label2.isHidden = true
+                knob3.isHidden = true
+                label3.isHidden = true
+                knob4.isHidden = true
+                label4.isHidden = true
+                knob5.isHidden = true
+                label5.isHidden = true
+                knob6.isHidden = true
+                label6.isHidden = true
             case .off:
                 newBackgroundColour = fullBackgroundColour
                 slotLabel.isHidden = true
-                self.powerLED.backgroundColour = UIColor.red.withBrightness(0.5)
+                powerLED.backgroundColour = UIColor.red.withBrightness(0.5)
             case .on:
                 newBackgroundColour = fullBackgroundColour
                 slotLabel.isHidden = true
-                self.powerLED.backgroundColour = UIColor.red
+                powerLED.backgroundColour = UIColor.red
             }
-            self.effectBackgroundColour = newBackgroundColour
-            self.chassis.backgroundColour = newBackgroundColour
-            let currentState = self.powerState
-            self.powerState = currentState
+            effectBackgroundColour = newBackgroundColour
+            chassis.backgroundColour = newBackgroundColour
+            let currentState = powerState
+            powerState = currentState
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.state = .disabled
+        state = .disabled
         
         knob1.delegate = self
         knob2.delegate = self
@@ -99,7 +99,7 @@ class EffectVC: BaseEffectVC {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.configureWith(effect: self.effect)
+        configureWith(effect: effect)
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,7 +111,7 @@ class EffectVC: BaseEffectVC {
         self.effect = effect
         fullBackgroundColour = bgColours[effect?.colour ?? 0] ?? UIColor.slotBackground
         if appeared {
-            if slotNumber != nil { slotLabel.text = "\(self.slotNumber! + 1)" } else { slotLabel.text = "" }
+            if slotNumber != nil { slotLabel.text = "\(slotNumber! + 1)" } else { slotLabel.text = "" }
             typeLabel.text = effect?.type.rawValue.uppercased() ?? ""
             nameLabel.text = effect?.name?.uppercased() ?? ""
             if effect == nil {

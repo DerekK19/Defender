@@ -46,7 +46,7 @@ class AmpKnobControl: KnobBaseControl {
         if !isHidden {
             if let knobImage = NSImage(named: "knob") {
                 let angle = degreesFromFloatValue(_floatValue)
-                let rotatedKnob = self.imageRotatedByDegrees(knobImage, degrees: angle)
+                let rotatedKnob = imageRotatedByDegrees(knobImage, degrees: angle)
                 let copyRect = NSMakeRect((rotatedKnob.size.width-dirtyRect.size.width)/2.0, (rotatedKnob.size.height-dirtyRect.size.height)/2.0, dirtyRect.width, dirtyRect.height)
                 rotatedKnob.draw(in: dirtyRect, from: copyRect, operation: .sourceOver, fraction: 1.0)
             }

@@ -18,7 +18,7 @@ class AppViewControl: NSView {
             context?.saveGraphicsState()
             context?.patternPhase = NSMakePoint(0, frame.size.height)
             backgroundColour.set()
-            NSRectFill(self.bounds)
+            NSRectFill(bounds)
             context?.restoreGraphicsState()
         }
     }

@@ -12,7 +12,7 @@ class LEDControl: NSView {
     
     var backgroundColour: NSColor = NSColor.red {
         didSet {
-            setNeedsDisplay(self.bounds)
+            setNeedsDisplay(bounds)
         }
     }
     

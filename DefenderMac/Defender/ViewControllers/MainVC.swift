@@ -78,30 +78,30 @@ class MainVC: NSViewController {
     
     fileprivate var powerState: PowerState = .off {
         didSet {
-            self.powerButton.powerState = powerState
-            self.powerButton.isEnabled = ampManager.hasAnAmplifier
-            self.utilButton.powerState = powerState
-            self.saveButton.powerState = powerState
-            self.exitButton.powerState = powerState
-            self.tapButton.powerState = powerState
-            self.wheel.powerState = powerState
-            self.displayVC?.powerState = powerState
-            self.cabinetVC?.powerState = powerState
-            self.effect1VC?.powerState = powerState
-            self.effect2VC?.powerState = powerState
-            self.effect3VC?.powerState = powerState
-            self.effect4VC?.powerState = powerState
-            self.pedal1VC?.powerState = powerState
-            self.pedal2VC?.powerState = powerState
-            self.pedal3VC?.powerState = powerState
-            self.pedal4VC?.powerState = powerState
+            powerButton.powerState = powerState
+            powerButton.isEnabled = ampManager.hasAnAmplifier
+            utilButton.powerState = powerState
+            saveButton.powerState = powerState
+            exitButton.powerState = powerState
+            tapButton.powerState = powerState
+            wheel.powerState = powerState
+            displayVC?.powerState = powerState
+            cabinetVC?.powerState = powerState
+            effect1VC?.powerState = powerState
+            effect2VC?.powerState = powerState
+            effect3VC?.powerState = powerState
+            effect4VC?.powerState = powerState
+            pedal1VC?.powerState = powerState
+            pedal2VC?.powerState = powerState
+            pedal3VC?.powerState = powerState
+            pedal4VC?.powerState = powerState
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.wantsLayer = true
+        view.wantsLayer = true
 
         bluetoothLogo.isHidden = true
         txLED.backgroundColour = NSColor.clear
@@ -159,7 +159,7 @@ class MainVC: NSViewController {
     }
 
     override func awakeFromNib() {
-        if let appView = self.view as? AppViewControl {
+        if let appView = view as? AppViewControl {
             if let image = NSImage(named: "background-texture") {
                 appView.backgroundColour = NSColor(patternImage: image)
             }
@@ -170,29 +170,29 @@ class MainVC: NSViewController {
         if let identifier = segue.identifier {
             switch identifier {
             case "embedDisplay":
-                self.displayVC = segue.destinationController as? DisplayVC
+                displayVC = segue.destinationController as? DisplayVC
             case "embedWeb":
-                self.webVC = segue.destinationController as? WebVC
-                self.webVC?.ampManager = self.ampManager
-                self.webVC?.delegate = self
+                webVC = segue.destinationController as? WebVC
+                webVC?.ampManager = ampManager
+                webVC?.delegate = self
             case "embedCabinet":
-                self.cabinetVC = segue.destinationController as? CabinetVC
+                cabinetVC = segue.destinationController as? CabinetVC
             case "embedEffect1":
-                self.effect1VC = segue.destinationController as? EffectVC
+                effect1VC = segue.destinationController as? EffectVC
             case "embedEffect2":
-                self.effect2VC = segue.destinationController as? EffectVC
+                effect2VC = segue.destinationController as? EffectVC
             case "embedEffect3":
-                self.effect3VC = segue.destinationController as? EffectVC
+                effect3VC = segue.destinationController as? EffectVC
             case "embedEffect4":
-                self.effect4VC = segue.destinationController as? EffectVC
+                effect4VC = segue.destinationController as? EffectVC
             case "embedPedal1":
-                self.pedal1VC = segue.destinationController as? PedalVC
+                pedal1VC = segue.destinationController as? PedalVC
             case "embedPedal2":
-                self.pedal2VC = segue.destinationController as? PedalVC
+                pedal2VC = segue.destinationController as? PedalVC
             case "embedPedal3":
-                self.pedal3VC = segue.destinationController as? PedalVC
+                pedal3VC = segue.destinationController as? PedalVC
             case "embedPedal4":
-                self.pedal4VC = segue.destinationController as? PedalVC
+                pedal4VC = segue.destinationController as? PedalVC
             default: break
             }
         }
@@ -202,9 +202,9 @@ class MainVC: NSViewController {
     func willImportPresetFromXml(_ xml: XMLDocument) {
         if let preset = ampManager.importPreset(xml) {
             var newPreset = preset
-            newPreset.number = self.currentPreset?.number
-            self.setPreset(newPreset)
-            self.saveButton.setState(.warning)
+            newPreset.number = currentPreset?.number
+            setPreset(newPreset)
+            saveButton.setState(.warning)
         }
     }
     
@@ -221,15 +221,15 @@ class MainVC: NSViewController {
         if !ampManager.hasAnAmplifier { return }
         if sender.state == NSOffState {
             Flogger.log.verbose(" Powering off")
-            self.powerState = .off
-            self.setPreset(nil)
-            self.sendNoAmplifier()
-            self.preloadButton.isHidden = true
+            powerState = .off
+            setPreset(nil)
+            sendNoAmplifier()
+            preloadButton.isHidden = true
         } else {
             Flogger.log.verbose(" Powering on")
             sender.state = NSOffState
-            self.powerState = .on
-            self.sendCurrentAmplifier()
+            powerState = .on
+            sendCurrentAmplifier()
             ampManager.getPresets() {
                 self.powerState = .on
                 self.valueDidChangeForWheel(self.wheel, value: 0)
@@ -279,7 +279,7 @@ class MainVC: NSViewController {
             Flogger.log.verbose(" Cancelling save")
             saveButton.setState(.active)
             exitButton.setState(.ok)
-            ampManager.resetPreset(self.wheel.intValue) { (preset) in
+            ampManager.resetPreset(wheel.intValue) { (preset) in
                 self.displayPreset(preset)
                 self.exitButton.setState(.active)
                 self.displayVC?.setState(.view)
@@ -291,13 +291,13 @@ class MainVC: NSViewController {
         debuggingConstraints = !debuggingConstraints
         if debuggingConstraints {
             var debugConstraints = [NSLayoutConstraint]()
-            debugConstraints.append(contentsOf: self.view.constraints)
-            debugConstraints.append(contentsOf: self.effectsSettings.constraints)
-            debugConstraints.append(contentsOf: self.effectsArea.constraints)
-            debugConstraints.append(contentsOf: self.pedalsArea.constraints)
-            self.view.window?.visualizeConstraints(debugConstraints)
+            debugConstraints.append(contentsOf: view.constraints)
+            debugConstraints.append(contentsOf: effectsSettings.constraints)
+            debugConstraints.append(contentsOf: effectsArea.constraints)
+            debugConstraints.append(contentsOf: pedalsArea.constraints)
+            view.window?.visualizeConstraints(debugConstraints)
         } else {
-            self.view.window?.visualizeConstraints([NSLayoutConstraint]())
+            view.window?.visualizeConstraints([NSLayoutConstraint]())
         }
     }
     
@@ -407,8 +407,8 @@ class MainVC: NSViewController {
     
     func sendCurrentAmplifier() {
         var message: DXMessage!
-        if let amp = self.ampManager.currentAmplifier {
-            if self.powerState == .on {
+        if let amp = ampManager.currentAmplifier {
+            if powerState == .on {
                 message = DXMessage(command: .amplifier, data: DXAmplifier(dto: amp))
                 sendMessage(message)
                 return
@@ -426,7 +426,7 @@ class MainVC: NSViewController {
     
     func sendCurrentPreset() {
         var message: DXMessage!
-        if let preset = self.currentPreset {
+        if let preset = currentPreset {
             message = DXMessage(command: .preset, data: DXPreset(dto: preset))
         } else {
             message = DXMessage(command: .preset, data: DXPreset(name: ""))
@@ -608,8 +608,8 @@ extension MainVC: AmpManagerDelegate {
     func deviceConnected(ampManager: AmpManager) {
         Flogger.log.verbose(" Connected")
         sendCurrentAmplifier()
-        self.statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
-        self.statusLabel.stringValue = "\(ampManager.currentAmplifierName) connected"
+        statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
+        statusLabel.stringValue = "\(ampManager.currentAmplifierName) connected"
     }
     
     func deviceOpened(ampManager: AmpManager) {
@@ -619,8 +619,8 @@ extension MainVC: AmpManagerDelegate {
     }
     
     func presetCountChanged(ampManager: AmpManager, to: UInt) {
-        self.presetsLabel.stringValue = "Loaded \(to) preset\(to == 1 ? "" : "s")"
-        self.preloadButton.isHidden = (to == 100) || self.ampManager.mocking
+        presetsLabel.stringValue = "Loaded \(to) preset\(to == 1 ? "" : "s")"
+        preloadButton.isHidden = (to == 100) || ampManager.mocking
     }
     
     func deviceClosed(ampManager: AmpManager) {
@@ -630,35 +630,35 @@ extension MainVC: AmpManagerDelegate {
     
     func deviceDisconnected(ampManager: AmpManager) {
         Flogger.log.verbose(" Disconnected")
-        self.reset()
-        self.setPreset(nil)
-        self.sendCurrentAmplifier()
-        self.statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
-        self.statusLabel.stringValue = "\(ampManager.currentAmplifierName) connected"
+        reset()
+        setPreset(nil)
+        sendCurrentAmplifier()
+        statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
+        statusLabel.stringValue = "\(ampManager.currentAmplifierName) connected"
     }
     
     func gainChanged(ampManager: AmpManager, by: Float) {
-        self.gainKnob.setFloatValueTo(max(min(self.gainKnob.floatValue + by, 10.0), 0.0))
+        gainKnob.setFloatValueTo(max(min(gainKnob.floatValue + by, 10.0), 0.0))
     }
     
     func volumeChanged(ampManager: AmpManager, by: Float) {
-        self.volumeKnob.setFloatValueTo(max(min(self.volumeKnob.floatValue + by, 10.0), 0.0))
+        volumeKnob.setFloatValueTo(max(min(volumeKnob.floatValue + by, 10.0), 0.0))
     }
     
     func trebleChanged(ampManager: AmpManager, by: Float) {
-        self.trebleKnob.setFloatValueTo(max(min(self.trebleKnob.floatValue + by, 10.0), 0.0))
+        trebleKnob.setFloatValueTo(max(min(trebleKnob.floatValue + by, 10.0), 0.0))
     }
     
     func middleChanged(ampManager: AmpManager, by: Float) {
-        self.middleKnob.setFloatValueTo(max(min(self.middleKnob.floatValue + by, 10.0), 0.0))
+        middleKnob.setFloatValueTo(max(min(middleKnob.floatValue + by, 10.0), 0.0))
     }
     
     func bassChanged(ampManager: AmpManager, by: Float) {
-        self.bassKnob.setFloatValueTo(max(min(self.bassKnob.floatValue + by, 10.0), 0.0))
+        bassKnob.setFloatValueTo(max(min(bassKnob.floatValue + by, 10.0), 0.0))
     }
     
     func presenceChanged(ampManager: AmpManager, by: Float) {
-        self.presenceKnob.setFloatValueTo(max(min(self.presenceKnob.floatValue + by, 10.0), 0.0))
+        presenceKnob.setFloatValueTo(max(min(presenceKnob.floatValue + by, 10.0), 0.0))
     }
 }
 
@@ -669,40 +669,40 @@ extension MainVC: WebVCDelegate {
         if let _ = newPreset {
             newPreset!.number = currentPreset?.number
         }
-        self.setPreset(newPreset)
+        setPreset(newPreset)
         saveButton.setState(.warning)
     }
 }
 
 extension MainVC: RemoteManagerDelegate {
     func remoteManagerDidStart(_ manager: RemoteManager) {
-            self.bluetoothLogo.isHidden = false
-            self.bluetoothLogo.alphaValue = 0.5
+        bluetoothLogo.isHidden = false
+        bluetoothLogo.alphaValue = 0.5
     }
     
     func remoteManagerDidConnect(_ manager: RemoteManager) {
-            self.bluetoothLogo.alphaValue = 1.0
+        bluetoothLogo.alphaValue = 1.0
     }
-
+    
     func remoteManager(_ manager: RemoteManager, didSend success: Bool) {
-            self.txLED.backgroundColour = NSColor.clear
+        txLED.backgroundColour = NSColor.clear
     }
     
     func remoteManager(_ manager: RemoteManager, didReceive data: Data) {
-        self.rxLED.backgroundColour = NSColor.green
+        rxLED.backgroundColour = NSColor.green
         do {
             let message = try DXMessage(data: data)
             Flogger.log.verbose("Message: \(message.command.rawValue)")
             switch message.command as RequestType {
             case .amplifier:
-                self.sendCurrentAmplifier()
+                sendCurrentAmplifier()
             case .preset:
                 if message.content == nil {
-                    self.sendCurrentPreset()
+                    sendCurrentPreset()
                 } else {
                     let preset = try DXPreset(data: message.content)
                     if let number = preset.number {
-                        self.ampManager.getPreset(Int(number),
+                        ampManager.getPreset(Int(number),
                                                   fromAmplifier: true) { (preset) in
                             self.setPreset(preset)
                             self.logPreset(preset)
@@ -711,22 +711,22 @@ extension MainVC: RemoteManagerDelegate {
                 }
             case .changePreset:
                 let preset = try DXPreset(data: message.content)
-                preset.copyInto(preset: &self.currentPreset)
-                self.displayPreset(self.currentPreset)
-                self.presetDidChange()
+                preset.copyInto(preset: &currentPreset)
+                displayPreset(currentPreset)
+                presetDidChange()
             }
         } catch {
             Flogger.log.error("Receive Failure: Couldn't decode DXMessage or DXPreset")
         }
-        self.rxLED.backgroundColour = NSColor.clear
+        rxLED.backgroundColour = NSColor.clear
     }
     
     func remoteManagerDidDisconnect(_ manager: RemoteManager) {
-            self.bluetoothLogo.alphaValue = 0.5
+        bluetoothLogo.alphaValue = 0.5
     }
 
     func remoteManagerDidStop(_ manager: RemoteManager) {
-            self.bluetoothLogo.isHidden = true
+        bluetoothLogo.isHidden = true
     }
 
 }

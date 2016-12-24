@@ -40,26 +40,26 @@ class CabinetVC: NSViewController {
             switch state {
             case .disabled:
                 newBackgroundColour = slotBackgroundColour
-                self.powerLED.backgroundColour = NSColor.black
+                powerLED.backgroundColour = NSColor.black
             case .off:
                 newBackgroundColour = fullBackgroundColour
-                self.powerLED.backgroundColour = NSColor.red.withBrightness(0.5)
+                powerLED.backgroundColour = NSColor.red.withBrightness(0.5)
             case .on:
                 newBackgroundColour = fullBackgroundColour
-                self.powerLED.backgroundColour = NSColor.red
+                powerLED.backgroundColour = NSColor.red
             }
-            self.slot.backgroundColour = slotBackgroundColour
-            self.cabinetBackgroundColour = newBackgroundColour
-            self.effectLead.borderColor = NSColor.lead
-            self.pedalLead.borderColor = NSColor.lead
-            let currentState = self.powerState
-            self.powerState = currentState
+            slot.backgroundColour = slotBackgroundColour
+            cabinetBackgroundColour = newBackgroundColour
+            effectLead.borderColor = NSColor.lead
+            pedalLead.borderColor = NSColor.lead
+            let currentState = powerState
+            powerState = currentState
         }
     }
     
     var powerState: PowerState = .off {
         didSet {
-            self.shade.isOpen = powerState == .on || state == .disabled
+            shade.isOpen = powerState == .on || state == .disabled
         }
     }
     
@@ -74,7 +74,7 @@ class CabinetVC: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.state = .disabled
+        state = .disabled
     }
     
     func configureWithEffect(_ effect: DTOEffect?) {

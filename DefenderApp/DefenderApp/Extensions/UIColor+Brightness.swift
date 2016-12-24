@@ -15,7 +15,7 @@ extension UIColor {
         var green: CGFloat = 0.0
         var blue: CGFloat = 0.0
         var alpha: CGFloat = 0.0
-        self.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         return UIColor(red: red*brightness, green: green*brightness, blue: blue*brightness, alpha: alpha)
     }
 }

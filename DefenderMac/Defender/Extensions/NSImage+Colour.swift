@@ -11,7 +11,7 @@ import Cocoa
 extension NSImage {
     
     public func imageWithTintColor(_ color: NSColor) -> NSImage {
-        let image: NSImage = self.copy() as! NSImage
+        let image: NSImage = copy() as! NSImage
         image.lockFocus()
         color.set()
         NSRectFillUsingOperation(NSRect(origin: NSZeroPoint, size: image.size), .sourceAtop)

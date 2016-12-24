@@ -12,7 +12,7 @@ class EffectControl: NSView {
     
     var backgroundColour: NSColor = NSColor.black {
         didSet {
-            setNeedsDisplay(self.bounds)
+            setNeedsDisplay(bounds)
         }
     }
     

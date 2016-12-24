@@ -12,15 +12,15 @@ class ShadeControl: NSView {
     
     var backgroundColour: NSColor = NSColor.shadeClosed {
         didSet {
-            setNeedsDisplay(self.bounds)
+            setNeedsDisplay(bounds)
         }
     }
     
     var isOpen: Bool = false {
         didSet {
             backgroundColour = isOpen ? NSColor.shadeOpen : NSColor.shadeClosed
-            self.isHidden = isOpen
-            setNeedsDisplay(self.bounds)
+            isHidden = isOpen
+            setNeedsDisplay(bounds)
         }
     }
     

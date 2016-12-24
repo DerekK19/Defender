@@ -44,7 +44,7 @@ class EffectKnobControl: KnobBaseControl {
             var rect = NSBezierPath(roundedRect: dirtyRect, xRadius: bounds.width / 2, yRadius: bounds.height / 2)
             rect.fill()
             colour = foregroundColour
-            let angle = radiansFromFloatValue(self._floatValue)
+            let angle = radiansFromFloatValue(_floatValue)
             let dirX = cos(angle)
             let dirY = sin(angle)
             let centreX = bounds.width / 2

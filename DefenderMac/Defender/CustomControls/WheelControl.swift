@@ -30,7 +30,7 @@ class WheelControl: NSView {
     var floatValue: Float = 1.0 {
         didSet {
             _floatValue = floatValue
-            setNeedsDisplay(self.bounds)
+            setNeedsDisplay(bounds)
         }
     }
     var intValue: Int = 1
@@ -63,7 +63,7 @@ class WheelControl: NSView {
         var _intValue = Int(_floatValue) % 100
         if _intValue < 0 { _intValue = 100 + _intValue }
         delegate?.valueIsChangingForWheel(self, value: _intValue)
-        setNeedsDisplay(self.bounds)
+        setNeedsDisplay(bounds)
     }
     
     override func mouseUp(with theEvent: NSEvent) {
@@ -90,7 +90,7 @@ class WheelControl: NSView {
     
     // MARK: Private methods
     fileprivate func imageRotatedByDegrees(_ image: NSImage, degrees: CGFloat) -> NSImage {
-        var imageBounds = NSRect(origin: NSZeroPoint, size: self.bounds.size)
+        var imageBounds = NSRect(origin: NSZeroPoint, size: bounds.size)
         
         let boundsPath = NSBezierPath(rect: imageBounds)
         var transform = AffineTransform.identity

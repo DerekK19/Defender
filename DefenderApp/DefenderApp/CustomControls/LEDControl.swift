@@ -13,7 +13,7 @@ class LEDControl: UIView {
     var backgroundColour: UIColor = UIColor.clear {
         didSet {
             self.backgroundColor = backgroundColour
-            setNeedsDisplay(self.bounds)
+            setNeedsDisplay(bounds)
         }
     }
     

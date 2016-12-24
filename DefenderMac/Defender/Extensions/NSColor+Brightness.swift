@@ -11,6 +11,6 @@ import Cocoa
 extension NSColor {
  
     func withBrightness(_ brightness: CGFloat) -> NSColor {
-        return NSColor(red: self.redComponent*brightness, green: self.greenComponent*brightness, blue: self.blueComponent*brightness, alpha: self.alphaComponent)
+        return NSColor(red: redComponent*brightness, green: greenComponent*brightness, blue: blueComponent*brightness, alpha: alphaComponent)
     }
 }

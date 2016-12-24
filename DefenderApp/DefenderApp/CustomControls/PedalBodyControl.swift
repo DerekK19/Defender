@@ -29,7 +29,7 @@ class PedalBodyControl: UIView {
     
     var backgroundColour: UIColor = UIColor.slotBackground {
         didSet {
-            setNeedsDisplay(self.bounds)
+            setNeedsDisplay(bounds)
         }
     }
     
@@ -52,7 +52,7 @@ class PedalBodyControl: UIView {
         super.layoutSubviews()
         
         let shadowLayer = CAShapeLayer()
-        shadowLayer.frame = self.bounds
+        shadowLayer.frame = bounds
         shadowLayer.shadowColor = UIColor.slotBackground.cgColor
         shadowLayer.shadowOpacity = 1.0
         shadowLayer.shadowOffset = CGSize(width: 0, height: -3)
@@ -63,7 +63,7 @@ class PedalBodyControl: UIView {
         // Create the larger rectangle path.
         let path = CGMutablePath()
         
-        path.addRect(self.bounds.insetBy(dx: -3, dy: -3))
+        path.addRect(bounds.insetBy(dx: -3, dy: -3))
         
         // Add the inner path so it's subtracted from the outer path.
         // someInnerPath could be a simple bounds rect, or maybe
@@ -74,8 +74,8 @@ class PedalBodyControl: UIView {
         
         shadowLayer.path = path
         
-        self.layer.sublayers?.forEach { if $0.name == "My Shadow" { $0.removeFromSuperlayer() } }
-        self.layer.addSublayer(shadowLayer)
+        layer.sublayers?.forEach { if $0.name == "My Shadow" { $0.removeFromSuperlayer() } }
+        layer.addSublayer(shadowLayer)
         
         let maskLayer = CAShapeLayer()
         maskLayer.path = someInnerPath

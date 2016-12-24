@@ -32,7 +32,7 @@ class ActionButtonControl: NSButton {
         currentState = state
         if let cell = cell as? ActionButtonCell {
             cell.setState(state, powerState: powerState)
-            self.isEnabled = powerState != .off
+            isEnabled = powerState != .off
         }
     }
     

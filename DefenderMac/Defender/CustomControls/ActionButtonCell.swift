@@ -17,7 +17,7 @@ class ActionButtonCell: NSButtonCell {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.backgroundColor = whiteColour
+        backgroundColor = whiteColour
     }
  
     override func drawBezel(withFrame frame: NSRect, in controlView: NSView) {
@@ -26,7 +26,7 @@ class ActionButtonCell: NSButtonCell {
             
             let innerRect = frame.insetBy(dx: 6.0, dy: 6.0)
             let path = NSBezierPath(roundedRect: innerRect, xRadius: innerRect.height/2, yRadius: innerRect.height/2)
-            self.backgroundColor?.setFill()
+            backgroundColor?.setFill()
             path.fill()
             
             ctx.restoreGraphicsState()
@@ -34,8 +34,8 @@ class ActionButtonCell: NSButtonCell {
     }
     
     func setState(_ state: ActionButtonState, powerState: PowerState) {
-        self.backgroundColor = colourForState(state, powerState: powerState)
-        self.controlView?.needsDisplay = true
+        backgroundColor = colourForState(state, powerState: powerState)
+        controlView?.needsDisplay = true
     }
     
     fileprivate func colourForState(_ state: ActionButtonState, powerState: PowerState) -> NSColor {

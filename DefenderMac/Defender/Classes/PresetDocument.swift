@@ -17,7 +17,7 @@ class PresetDocument : NSDocument {
     override func makeWindowControllers() {
         
         if let windowController = NSApplication.shared().mainWindow?.windowController {
-            self.addWindowController(windowController)
+            addWindowController(windowController)
             let vc = windowController.contentViewController as! MainVC
             vc.willImportPresetFromXml(document)
         }
@@ -33,7 +33,7 @@ class PresetDocument : NSDocument {
     }
     
     override func data(ofType typeName: String) throws -> Data {
-        if let vc = self.windowControllers.first?.contentViewController as? MainVC {
+        if let vc = windowControllers.first?.contentViewController as? MainVC {
             if let xml = vc.exportPresetAsXml() {
                 document = xml
             }

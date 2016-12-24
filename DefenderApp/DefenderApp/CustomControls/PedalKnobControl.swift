@@ -27,9 +27,9 @@ class PedalKnobControl: KnobBaseControl {
     }
     
     private func configure() {
-        self.backgroundColor = UIColor.clear
+        backgroundColor = UIColor.clear
         super.configure(minValue: 0.0, maxValue: 1.0, minStop: -0.05, maxStop: 1.05, pixelsPerTick: 40)
-        self.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan)))
+        addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan)))
     }
     
     @objc fileprivate func handlePan(recognizer: UIPanGestureRecognizer) {

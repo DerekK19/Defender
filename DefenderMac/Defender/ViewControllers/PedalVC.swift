@@ -59,37 +59,37 @@ class PedalVC: NSViewController {
     var state: EffectState = .disabled {
         didSet {
             var newBackgroundColour = NSColor()
-            self.knobUpperLeft.alphaValue = state == .disabled ? 0.0 : 1.0
-            self.knobUpperMiddle.alphaValue = state == .disabled ? 0.0 : 1.0
-            self.knobUpperRight.alphaValue = state == .disabled ? 0.0 : 1.0
-            self.knobLowerLeft.alphaValue = state == .disabled ? 0.0 : 1.0
-            self.knobLowerMiddle.alphaValue = state == .disabled ? 0.0 : 1.0
-            self.knobLowerRight.alphaValue = state == .disabled ? 0.0 : 1.0
-            self.pedalLogo.alphaValue = state == .disabled ? 0.0 : 1.0
+            knobUpperLeft.alphaValue = state == .disabled ? 0.0 : 1.0
+            knobUpperMiddle.alphaValue = state == .disabled ? 0.0 : 1.0
+            knobUpperRight.alphaValue = state == .disabled ? 0.0 : 1.0
+            knobLowerLeft.alphaValue = state == .disabled ? 0.0 : 1.0
+            knobLowerMiddle.alphaValue = state == .disabled ? 0.0 : 1.0
+            knobLowerRight.alphaValue = state == .disabled ? 0.0 : 1.0
+            pedalLogo.alphaValue = state == .disabled ? 0.0 : 1.0
             switch state {
             case .disabled:
                 newBackgroundColour = NSColor.clear
-                self.powerLED.backgroundColour = NSColor.black
+                powerLED.backgroundColour = NSColor.black
             case .off:
                 newBackgroundColour = fullBackgroundColour
-                self.powerLED.backgroundColour = NSColor.red.withBrightness(0.5)
+                powerLED.backgroundColour = NSColor.red.withBrightness(0.5)
             case .on:
                 newBackgroundColour = fullBackgroundColour
-                self.powerLED.backgroundColour = NSColor.red
+                powerLED.backgroundColour = NSColor.red
             }
-            self.slot.backgroundColour = slotBackgroundColour
-            self.pedalBackgroundColour = newBackgroundColour
-            self.pedalLead.borderColor = NSColor.lead
-            self.bodyTop.backgroundColour = newBackgroundColour
-            self.bodyBottom.backgroundColour = newBackgroundColour
-            let currentState = self.powerState
-            self.powerState = currentState
+            slot.backgroundColour = slotBackgroundColour
+            pedalBackgroundColour = newBackgroundColour
+            pedalLead.borderColor = NSColor.lead
+            bodyTop.backgroundColour = newBackgroundColour
+            bodyBottom.backgroundColour = newBackgroundColour
+            let currentState = powerState
+            powerState = currentState
         }
     }
     
     var powerState: PowerState = .off {
         didSet {
-            self.shade.isOpen = powerState == .on || state == .disabled
+            shade.isOpen = powerState == .on || state == .disabled
         }
     }
         
@@ -104,9 +104,9 @@ class PedalVC: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.state = .disabled
-        self.typeLabel.stringValue = ""
-        self.nameLabel.stringValue = ""
+        state = .disabled
+        typeLabel.stringValue = ""
+        nameLabel.stringValue = ""
         
         knobUpperLeft.delegate = self
         knobUpperMiddle.delegate = self

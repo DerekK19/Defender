@@ -12,7 +12,7 @@ class EffectSlotControl: NSView {
     
     var backgroundColour: NSColor = NSColor.slotBackground {
         didSet {
-            setNeedsDisplay(self.bounds)
+            setNeedsDisplay(bounds)
         }
     }
     

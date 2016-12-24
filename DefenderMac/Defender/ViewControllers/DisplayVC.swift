@@ -33,14 +33,14 @@ class DisplayVC: NSViewController {
 
     var powerState: PowerState = .off {
         didSet {
-            self.shade.isOpen = powerState == .on
-            self.display.backgroundColour = displayBackgroundColour
-            self.presetNumber.backgroundColor = displayBackgroundColour
-            self.presetNumber.textColor = displayForegroundColour
-            self.amplifierName.backgroundColor = displayForegroundColour
-            self.amplifierName.textColor = displayBackgroundColour
-            self.setState(self.currentState)
-            self.configureWithPreset(nil)
+            shade.isOpen = powerState == .on
+            display.backgroundColour = displayBackgroundColour
+            presetNumber.backgroundColor = displayBackgroundColour
+            presetNumber.textColor = displayForegroundColour
+            amplifierName.backgroundColor = displayForegroundColour
+            amplifierName.textColor = displayBackgroundColour
+            setState(currentState)
+            configureWithPreset(nil)
         }
     }
     
@@ -74,7 +74,7 @@ class DisplayVC: NSViewController {
     }
     
     override func viewDidLoad() {
-        self.powerState = .off
+        powerState = .off
         stompValue.isEnabled = false
         modulationValue.isEnabled = false
         delayValue.isEnabled = false

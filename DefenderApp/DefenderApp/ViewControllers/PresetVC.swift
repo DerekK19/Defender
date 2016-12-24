@@ -32,7 +32,7 @@ class PresetVC: UIPageViewController {
                     controlsVC.configureWith(preset: preset)
                 }
             }
-            self.effects = preset?.effects
+            effects = preset?.effects
         }
     }
     
