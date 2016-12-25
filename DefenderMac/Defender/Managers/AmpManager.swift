@@ -43,6 +43,9 @@ class AmpManager {
     private var latestBass: Float?
     private var latestPresence: Float?
 
+    private let backupNameDateFormat = "yyyy_MM_dd_HH_mm_ss"
+    private let backupNameRegex = "\\d{4}_\\d{2}_\\d{2}_\\d{2}_\\d{2}_\\d{2}"
+    
     var hasAnAmplifier : Bool {
         get {
             return currentAmplifier != nil
@@ -386,8 +389,49 @@ class AmpManager {
         
     }
     
-    open func restoreFromBackup(name: String) {
-        
+    open func backups() -> [Date : String]? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = backupNameDateFormat
+        let backupRoot = "\(NSHomeDirectory())/Documents/Fender/FUSE/Backups"
+        let fileManager = FileManager()
+        fileManager.changeCurrentDirectoryPath(backupRoot)
+        if fileManager.currentDirectoryPath != backupRoot {
+            Flogger.log.error("There is no backup root folder - \(backupRoot)")
+            return nil
+        }
+        var backups = [Date : String]()
+        do {
+            let folderNames = try fileManager.contentsOfDirectory(atPath: ".")
+            for folder in folderNames {
+                if folder.range(of: backupNameRegex, options: .regularExpression) != nil {
+                    if let date = dateFormatter.date(from: folder) {
+                        let namePath = "\(folder)/M2_BackupName.fuse"
+                        if let data = fileManager.contents(atPath: namePath) {
+                            let backupName = String(bytes: data, encoding: .utf8)
+                            backups[date] = backupName
+                        } else {
+                            Flogger.log.error("Failed to get backup name for \(folder)")
+                        }
+                    } else {
+                        Flogger.log.error("Couldn't convert \(folder) to a date. Ignoring")
+                    }
+                } else {
+                    Flogger.log.info("Folder \(folder) doesn't look like a backup. Ignoring")
+                }
+            }
+            return backups
+        } catch {
+            Flogger.log.error("Failed to find backups")
+            return nil
+        }
+    }
+
+    open func restoreFromBackup(date: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = backupNameDateFormat
+        let name = dateFormatter.string(from: date)
         let backupRoot = "\(NSHomeDirectory())/Documents/Fender/FUSE/Backups"
         let fileManager = FileManager()
         fileManager.changeCurrentDirectoryPath(backupRoot)

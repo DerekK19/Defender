@@ -270,8 +270,12 @@ class MainVC: NSViewController {
     }
     
     @IBAction func willRestore(_ sender: NSMenuItem) {
-        Flogger.log.verbose(" Restoring from backup")
-        ampManager.restoreFromBackup(name: "2016_12_05_17_46_17")
+        if let backups = ampManager.backups() {
+            if let latest = backups.keys.sorted().last {
+                Flogger.log.verbose("Restoring from backup \"\(backups[latest]!)\" (\(latest))")
+                ampManager.restoreFromBackup(date: latest)
+            }
+        }
     }
     
     @IBAction func willExit(_ sender: ActionButtonControl) {
