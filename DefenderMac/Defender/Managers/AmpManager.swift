@@ -386,7 +386,59 @@ class AmpManager {
     }
     
     open func saveBackup() {
-        
+        let fileManager = FileManager()
+        let backupRoot = "\(NSHomeDirectory())/Documents/Fender/FUSE/Backups"
+        fileManager.changeCurrentDirectoryPath(backupRoot)
+        if fileManager.currentDirectoryPath != backupRoot {
+            Flogger.log.error("There is no Backups folder - \(backupRoot). Creating")
+            do {
+                try fileManager.createDirectory(atPath: backupRoot, withIntermediateDirectories: true)
+            } catch {
+                Flogger.log.error("Unable to create Backups folder. Cannot create backup")
+                return
+            }
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = backupNameDateFormat
+        let backupFolder = "\(NSHomeDirectory())/Documents/Fender/FUSE/Backups/\(dateFormatter.string(from: Date()))"
+        do {
+            try fileManager.createDirectory(atPath: backupFolder, withIntermediateDirectories: true)
+            fileManager.changeCurrentDirectoryPath(backupFolder)
+            if fileManager.currentDirectoryPath != backupFolder {
+                Flogger.log.error("Unable to setup backup folder. Giving up")
+                return
+            }
+            try fileManager.createDirectory(atPath: "FUSE", withIntermediateDirectories: true)
+            try fileManager.createDirectory(atPath: "Presets", withIntermediateDirectories: true)
+            let backupName = "Defender Backup".data(using: .utf8)
+            let xmlOptions: XMLNode.Options = [.nodePrettyPrint, .nodeCompactEmptyElement]
+            fileManager.createFile(atPath: "M2_BackupName.fuse", contents: backupName)
+            for (_, preset) in presets.enumerated() {
+                let index = String(format: "%02d", preset.key)
+                let presetDoc = mustang.exportPresetAsXml(preset: preset.value)
+                presetDoc?.characterEncoding = "utf-8"
+                presetDoc?.version = "1.0"
+                let presetXml = presetDoc?.xmlData(withOptions: Int(xmlOptions.rawValue))
+                fileManager.createFile(atPath: "Presets/\(index)_\(preset.value.name).fuse", contents: presetXml)
+                let fuseDoc = XMLDocument()
+                let fuseElement = presetDoc?.rootElement()?.elements(forName: "FUSE").first
+                let bandElement = presetDoc?.rootElement()?.elements(forName: "Band").first
+                if let fuseNode = fuseElement!.copy() as? XMLElement {
+                    if let bandNode = bandElement!.copy() as? XMLElement {
+                        fuseNode.addChild(bandNode)
+                    }
+                    fuseDoc.addChild(fuseNode)
+                }
+                fuseDoc.characterEncoding = "utf-8"
+                fuseDoc.version = "1.0"
+                let fuseXml = fuseDoc.xmlData(withOptions: Int(xmlOptions.rawValue))
+                fileManager.createFile(atPath: "FUSE/\(index).fuse", contents: fuseXml)
+            }
+        } catch {
+            Flogger.log.error("Unable to create backup folder. Giving up")
+            return
+        }
     }
     
     open func backups() -> [Date : String]? {
