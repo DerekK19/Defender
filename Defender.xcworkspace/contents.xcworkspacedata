@@ -7,4 +7,32 @@
    <FileRef
       location = "group:DefenderMac/Defender.xcodeproj">
    </FileRef>
+   <Group
+      location = "group:fastlane"
+      name = "fastlane">
+      <FileRef
+         location = "group:Appfile">
+      </FileRef>
+      <FileRef
+         location = "group:Deliverfile">
+      </FileRef>
+      <FileRef
+         location = "group:Fastfile">
+      </FileRef>
+      <FileRef
+         location = "group:Gymfile">
+      </FileRef>
+      <FileRef
+         location = "group:README.md">
+      </FileRef>
+      <FileRef
+         location = "group:report.xml">
+      </FileRef>
+      <FileRef
+         location = "group:Snapfile">
+      </FileRef>
+      <FileRef
+         location = "group:SnapshotHelper.swift">
+      </FileRef>
+   </Group>
 </Workspace>

@@ -1,0 +1,299 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/docs
+# All available actions: https://github.com/fastlane/fastlane/blob/master/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# By default, fastlane will send which actions are used
+# No personal data is shared, more information on https://github.com/fastlane/enhancer
+# Uncomment the following line to opt out
+# opt_out_usage
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.5.0"
+
+default_platform :ios
+
+platform :ios do
+    before_all do
+        
+        # The Application's Info Plist file - where the bundle ID and build numbers are stored
+        ENV["AppPlist"] = './DefenderApp/DefenderApp/Info.plist'
+        ENV["WatchAppPlist"] = './DefenderApp/Watchkit/Info.plist'
+        ENV["WatchExtPlist"] = './DefenderApp/Watchkit Extension/Info.plist'
+
+        # The App build scheme name
+        ENV["BuildScheme"] = "DefenderApp"
+        
+        # The App display name
+        ENV["AppName"] = "Defender"
+        
+        # The App's IPA path name
+        ENV["IpaPath"] = "../FastlaneArtifacts/DefenderApp.ipa"
+        
+        sh "rm -rf "+ENV['PWD']+"/../FastlaneArtifacts/Defender.*"
+        
+        # --- BELOW HERE: Everything should be similar for all Fastlane projects
+        
+        # Backup the plist files, which will be changed during the build
+        backup_file(path: ENV["AppPlist"])
+        backup_file(path: ENV["WatchAppPlist"])
+        backup_file(path: ENV["WatchExtPlist"])
+
+        ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "20"
+        ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+        
+        ENV["CFBundleIdentifier"] = get_info_plist_value(path: ENV["AppPlist"], key: 'CFBundleIdentifier')
+        ENV["CFBundleVersion"] = get_info_plist_value(path: ENV["AppPlist"], key: 'CFBundleVersion')
+        ENV["CFBundleShortVersionString"] = get_info_plist_value(path: ENV["AppPlist"], key: 'CFBundleShortVersionString')
+        
+        date_version = Time.new
+        date_version = date_version.strftime("%y%m%d%H%M")
+        
+        # Copy environment (Bundle Id and version number) from Jenkins or take defaults from plist
+        # Note: Prefix Jenkins variable names with "JENKINS_"
+        
+        ENV["CFBundleVersion"] = date_version
+        
+        if ENV["JENKINS_CFBundleIdentifier"] != nil
+            ENV["CFBundleIdentifier"] = ENV["JENKINS_CFBundleIdentifier"]
+        end
+        if ENV["JENKINS_CFBundleShortVersionString"] != nil
+            ENV["CFBundleShortVersionString"] = ENV["JENKINS_CFBundleShortVersionString"]
+        end
+        if ENV["JENKINS_CFBundleVersion"] != nil
+            ENV["CFBundleVersion"] = ENV["JENKINS_CFBundleVersion"]
+        end
+        
+        # Modify the app's Plist files to use the bundle Id and build numbers from Jenkins
+        set_info_plist_value(path: ENV["AppPlist"], key: 'CFBundleIdentifier', value: ENV["CFBundleIdentifier"])
+        set_info_plist_value(path: ENV["AppPlist"], key: 'CFBundleShortVersionString', value: ENV["CFBundleShortVersionString"])
+        set_info_plist_value(path: ENV["AppPlist"], key: 'CFBundleVersion', value: ENV["CFBundleVersion"])
+        set_info_plist_value(path: ENV["WatchAppPlist"], key: 'CFBundleShortVersionString', value: ENV["CFBundleShortVersionString"])
+        set_info_plist_value(path: ENV["WatchAppPlist"], key: 'CFBundleVersion', value: ENV["CFBundleVersion"])
+        set_info_plist_value(path: ENV["WatchExtPlist"], key: 'CFBundleShortVersionString', value: ENV["CFBundleShortVersionString"])
+        set_info_plist_value(path: ENV["WatchExtPlist"], key: 'CFBundleVersion', value: ENV["CFBundleVersion"])
+
+        # Display the environment settings used in the build
+        puts "App: "+ENV["AppName"]+". Version: "+ENV["CFBundleShortVersionString"]+"("+ENV["CFBundleVersion"]+")."
+        puts "Bundle id. "+ENV["CFBundleIdentifier"]
+        
+    end
+    
+    desc "Diagnostics only"
+    lane :diagnostics do
+        # Just used to diagnose the Fastlane environment, doesn't actually do a build
+    end
+    
+    desc "Runs all the tests"
+    lane :test do
+        scan
+    end
+    
+    desc "Copy a new Build to home App Store"
+    lane :home do
+        # match(type: "appstore") # more information: https://codesigning.guide
+        gym(
+            clean: true,
+            scheme: ENV["BuildScheme"]
+            ) # Build your app - more options available
+        #    pilot
+    end
+    
+    desc "Submit a new Beta Build to Apple TestFlight"
+    lane :beta do
+        # match(type: "appstore") # more information: https://codesigning.guide
+        
+        commit = last_git_commit
+        whatsnew = "Commit " + last_git_commit[:abbreviated_commit_hash] + " - " + last_git_commit[:message]
+        
+        gym(
+            clean: true,
+            scheme: ENV["BuildScheme"]
+            ) # Build your app - more options available
+        pilot(
+              ipa: ENV["IpaPath"],
+              skip_waiting_for_build_processing: true,
+              skip_submission: true
+              )
+    end
+    
+    desc "Deploy a new version to the App Store"
+    lane :apple do
+        # match(type: "appstore")
+        # snapshot
+        gym(
+            clean: true,
+            scheme: ENV["BuildScheme"]
+            ) # Build your app - more options available
+        deliver(force: true)
+        # frameit
+    end
+    
+    # You can define as many lanes as you want
+    
+    after_all do |lane|
+        # This block is called only if the executed lane was successful
+        
+        # Restore the originals of the modified files. This will stop git from seeing file changes
+        restore_file(path: ENV["AppPlist"])
+        restore_file(path: ENV["WatchAppPlist"])
+        restore_file(path: ENV["WatchExtPlist"])
+
+        # And notify with slack
+        if lane != :diagnostics
+            slack(
+                  message: "Successfully deployed new "+ENV["AppName"]+" app update "+ENV["CFBundleShortVersionString"]+"("+ENV["CFBundleVersion"]+")."
+                  )
+        end
+    end
+    
+    error do |lane, exception|
+        # This block is called only if the executed lane was unsuccessful
+        
+        # Restore the originals of the modified files. This will stop git from seeing file changes
+        restore_file(path: ENV["AppPlist"])
+        restore_file(path: ENV["WatchAppPlist"])
+        restore_file(path: ENV["WatchExtPlist"])
+
+        slack(
+              message: ENV["AppName"]+": "+exception.message,
+              success: false
+              )
+    end
+end
+
+platform :mac do
+  before_all do
+    # The Application's Info Plist file - where the bundle ID and build numbers are stored
+    ENV["AppPlist"] = './DefenderMac/Defender/Info.plist'
+
+    # The App build scheme name
+    ENV["BuildScheme"] = "Defender"
+
+    # The App display name
+    ENV["AppName"] = "Defender (Mac)"
+
+    # The App's path name
+    ENV["IpaPath"] = "../FastlaneArtifacts/Defender.app"
+
+    sh "rm -rf "+ENV['PWD']+"/../FastlaneArtifacts/Defender.*"
+
+    # --- BELOW HERE: Everything should be similar for all Fastlane projects
+
+    # Backup the plist files, which will be changed during the build
+    backup_file(path: ENV["AppPlist"])
+
+    ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "20"
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+
+    ENV["CFBundleIdentifier"] = get_info_plist_value(path: ENV["AppPlist"], key: 'CFBundleIdentifier')
+    ENV["CFBundleVersion"] = get_info_plist_value(path: ENV["AppPlist"], key: 'CFBundleVersion')
+    ENV["CFBundleShortVersionString"] = get_info_plist_value(path: ENV["AppPlist"], key: 'CFBundleShortVersionString')
+
+    date_version = Time.new
+    date_version = date_version.strftime("%y%m%d")
+
+    # Copy environment (Bundle Id and version number) from Jenkins or take defaults from plist
+    # Note: Prefix Jenkins variable names with "JENKINS_"
+
+    ENV["CFBundleVersion"] = date_version
+
+    if ENV["JENKINS_CFBundleIdentifier"] != nil
+      ENV["CFBundleIdentifier"] = ENV["JENKINS_CFBundleIdentifier"]
+    end
+    if ENV["JENKINS_CFBundleShortVersionString"] != nil
+      ENV["CFBundleShortVersionString"] = ENV["JENKINS_CFBundleShortVersionString"]
+    end
+    if ENV["JENKINS_CFBundleVersion"] != nil
+      ENV["CFBundleVersion"] = ENV["JENKINS_CFBundleVersion"]
+    end
+
+    # Modify the app's Plist file to use the bundle Id and build numbers from Bamboo
+    set_info_plist_value(path: ENV["AppPlist"], key: 'CFBundleIdentifier', value: ENV["CFBundleIdentifier"])
+    set_info_plist_value(path: ENV["AppPlist"], key: 'CFBundleShortVersionString', value: ENV["CFBundleShortVersionString"])
+    set_info_plist_value(path: ENV["AppPlist"], key: 'CFBundleVersion', value: ENV["CFBundleVersion"])
+
+    # Display the environment settings used in the build
+    puts "App: "+ENV["AppName"]+". Version: "+ENV["CFBundleShortVersionString"]+"("+ENV["CFBundleVersion"]+")."
+    puts "Bundle id. "+ENV["CFBundleIdentifier"]
+
+  end
+
+  desc "Diagnostics only"
+  lane :diagnostics do
+    # Just used to diagnose the Fastlane environment, doesn't actually do a build
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    scan
+  end
+
+  desc "Copy a new Build to home App Store"
+  lane :home do
+    # match(type: "appstore") # more information: https://codesigning.guide
+    gym(
+    scheme: ENV["BuildScheme"]
+    ) # Build your app - more options available
+    # pilot
+  end
+
+  desc "Submit a new Beta Build to Apple TestFlight"
+  lane :beta do
+    # match(type: "appstore") # more information: https://codesigning.guide
+    gym(
+    scheme: ENV["BuildScheme"]
+    ) # Build your app - more options available
+    # pilot # No TestFlight for Mac apps yet
+  end
+
+  desc "Deploy a new version to the App Store"
+    lane :apple do
+    # match(type: "appstore")
+    # snapshot
+    gym(
+    scheme: ENV["BuildScheme"]
+    ) # Build your app - more options available
+    deliver(force: true)
+    # frameit
+  end
+
+    # You can define as many lanes as you want
+
+  after_all do |lane|
+    # This block is called only if the executed lane was successful
+
+    # Restore the originals of the modified files. This will stop git from seeing file changes
+    restore_file(path: ENV["AppPlist"])
+
+    # And notify with slack
+    if lane != :diagnostics
+      slack(
+      message: "Successfully deployed new "+ENV["AppName"]+" app update "+ENV["CFBundleShortVersionString"]+"("+ENV["CFBundleVersion"]+")."
+      )
+    end
+  end
+
+  error do |lane, exception|
+    # This block is called only if the executed lane was unsuccessful
+
+    # Restore the originals of the modified files. This will stop git from seeing file changes
+    restore_file(path: ENV["AppPlist"])
+
+    slack(
+    message: ENV["AppName"]+": "+exception.message,
+    success: false
+    )
+  end
+end
+
+
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/docs/Platforms.md
+# All available actions: https://github.com/fastlane/fastlane/blob/master/docs/Actions.md

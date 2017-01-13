@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="00: Verifying required fastlane version" time="0.000748">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="01: default_platform" time="0.000585">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="02: rm -rf /Users/derek/Development/Private/Defender/../FastlaneArtifacts/Defender.*" time="0.323196">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="03: backup_file" time="0.13125">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="04: backup_file" time="0.066367">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="05: backup_file" time="0.108819">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="06: get_info_plist_value" time="0.00511">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="07: get_info_plist_value" time="0.003935">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="08: get_info_plist_value" time="0.003288">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="09: set_info_plist_value" time="0.018158">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="10: set_info_plist_value" time="0.116124">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="11: set_info_plist_value" time="0.086957">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="12: set_info_plist_value" time="0.07578">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="13: set_info_plist_value" time="0.005217">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="14: set_info_plist_value" time="0.0423">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="15: set_info_plist_value" time="0.02598">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="16: last_git_commit" time="0.331687">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="17: last_git_commit" time="0.067651">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="18: last_git_commit" time="0.070693">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="19: gym" time="973.12252">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="20: pilot" time="1257.501263">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="21: restore_file" time="0.14222">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="22: restore_file" time="0.059779">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="23: restore_file" time="0.082163">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="24: slack" time="3.904795">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>
