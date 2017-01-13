@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch42" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Watchkit" customModuleProvider="target">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" id="9f0-Mg-Pgf">
+                            <items>
+                                <label alignment="center" text="60 bpm" textAlignment="center" id="1tX-gC-052"/>
+                                <slider width="1" alignment="left" continuous="YES" value="60" minimum="45" maximum="120" steps="75" id="iVH-qt-6FL">
+                                    <connections>
+                                        <action selector="bpmSliderChangedWithValue:" destination="AgC-eL-Hgc" id="muD-uB-B2g"/>
+                                    </connections>
+                                </slider>
+                                <button width="1" alignment="left" title="Start" id="gtk-Ig-wsJ">
+                                    <connections>
+                                        <action selector="didPressBPM" destination="AgC-eL-Hgc" id="Fgd-ii-1ws"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="bpmButton" destination="gtk-Ig-wsJ" id="jWl-z7-All"/>
+                        <outlet property="bpmLabel" destination="1tX-gC-052" id="grz-P2-QL3"/>
+                        <outlet property="bpmSlider" destination="iVH-qt-6FL" id="zUv-5l-YVx"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Watchkit" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+    </scenes>
+</document>

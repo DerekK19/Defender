@@ -459,7 +459,7 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = DX8B97QV93;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					655A5A4D1D4C555500E15E1F = {
 						CreatedOnToolsVersion = 7.3;
@@ -802,7 +802,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = DX8B97QV93;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -814,6 +814,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.Defender;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "69ca4349-6668-4e7c-894e-d9eeb5fe5523";
+				PROVISIONING_PROFILE_SPECIFIER = "Defender MacOS Development";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 3.0;
 			};
@@ -823,7 +825,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = DX8B97QV93;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -835,6 +837,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.Defender;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "999998b4-e7b1-4fbf-90d5-4ccf72abe763";
+				PROVISIONING_PROFILE_SPECIFIER = "Defender MacOS Distribution";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
