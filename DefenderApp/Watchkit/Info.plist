@@ -25,8 +25,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Uses Bluetooth to communicate with the companion Mac app</string>
 	<key>WKCompanionAppBundleIdentifier</key>
 	<string>uk.co.gordonknight.DefenderApp</string>
 	<key>WKWatchKitApp</key>
