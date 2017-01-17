@@ -198,7 +198,7 @@ platform :mac do
     ENV["CFBundleShortVersionString"] = get_info_plist_value(path: ENV["AppPlist"], key: 'CFBundleShortVersionString')
 
     date_version = Time.new
-    date_version = date_version.strftime("%y%m%d")
+    date_version = date_version.strftime("%y%m%d%H%M")
 
     # Copy environment (Bundle Id and version number) from Jenkins or take defaults from plist
     # Note: Prefix Jenkins variable names with "JENKINS_"
