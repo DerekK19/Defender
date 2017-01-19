@@ -20,6 +20,8 @@ class InterfaceController: WKInterfaceController {
     private var metronomeNowRunning: Bool = false
     private var metronomeTimer: Timer?
     
+    private var phoneController: PhoneCommunicationController?
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
@@ -29,6 +31,7 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        phoneController = PhoneCommunicationController()
     }
     
     override func didDeactivate() {

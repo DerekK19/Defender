@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     var remoteManager: RemoteManager?
+    var watchManager: WatchManager?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -22,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Flogger.setup()
 #endif
         remoteManager = RemoteManager()
+        watchManager = WatchManager()
         return true
     }
 
