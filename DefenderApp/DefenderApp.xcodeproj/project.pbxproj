@@ -21,8 +21,8 @@
 		656862791E25D04100115981 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656862781E25D04100115981 /* NotificationController.swift */; };
 		6568627B1E25D04100115981 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6568627A1E25D04100115981 /* Assets.xcassets */; };
 		6568627F1E25D04100115981 /* Watchkit.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 656862611E25D03E00115981 /* Watchkit.app */; };
-		656EE82F1E30763400410BB4 /* WatchCommunicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EE82E1E30763400410BB4 /* WatchCommunicationController.swift */; };
-		656EE8321E30765000410BB4 /* PhoneCommunicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EE8301E30765000410BB4 /* PhoneCommunicationController.swift */; };
+		656EE82F1E30763400410BB4 /* WatchSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EE82E1E30763400410BB4 /* WatchSessionController.swift */; };
+		656EE8321E30765000410BB4 /* PhoneSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EE8301E30765000410BB4 /* PhoneSessionController.swift */; };
 		656EE8341E30767400410BB4 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656EE8331E30767400410BB4 /* WatchConnectivity.framework */; };
 		656EE8361E307AD300410BB4 /* WatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EE8351E307AD300410BB4 /* WatchManager.swift */; };
 		65F69F0D1DDD70AB0017188D /* DXAmplifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F0C1DDD70AB0017188D /* DXAmplifier.swift */; };
@@ -142,8 +142,8 @@
 		656862781E25D04100115981 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		6568627A1E25D04100115981 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6568627C1E25D04100115981 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		656EE82E1E30763400410BB4 /* WatchCommunicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchCommunicationController.swift; sourceTree = "<group>"; };
-		656EE8301E30765000410BB4 /* PhoneCommunicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneCommunicationController.swift; sourceTree = "<group>"; };
+		656EE82E1E30763400410BB4 /* WatchSessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchSessionController.swift; sourceTree = "<group>"; };
+		656EE8301E30765000410BB4 /* PhoneSessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneSessionController.swift; sourceTree = "<group>"; };
 		656EE8331E30767400410BB4 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
 		656EE8351E307AD300410BB4 /* WatchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchManager.swift; sourceTree = "<group>"; };
 		65F69F0C1DDD70AB0017188D /* DXAmplifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXAmplifier.swift; sourceTree = "<group>"; };
@@ -268,8 +268,8 @@
 		656EE82D1E30758700410BB4 /* WatchControllers */ = {
 			isa = PBXGroup;
 			children = (
-				656EE82E1E30763400410BB4 /* WatchCommunicationController.swift */,
-				656EE8301E30765000410BB4 /* PhoneCommunicationController.swift */,
+				656EE82E1E30763400410BB4 /* WatchSessionController.swift */,
+				656EE8301E30765000410BB4 /* PhoneSessionController.swift */,
 			);
 			path = WatchControllers;
 			sourceTree = "<group>";
@@ -680,7 +680,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				656862791E25D04100115981 /* NotificationController.swift in Sources */,
-				656EE8321E30765000410BB4 /* PhoneCommunicationController.swift in Sources */,
+				656EE8321E30765000410BB4 /* PhoneSessionController.swift in Sources */,
 				656862771E25D04100115981 /* ExtensionDelegate.swift in Sources */,
 				656862751E25D04100115981 /* InterfaceController.swift in Sources */,
 			);
@@ -696,7 +696,7 @@
 				7196141E1DED0E3400AE3E6E /* PedalKnobControl.swift in Sources */,
 				719614171DED030900AE3E6E /* ShadeControl.swift in Sources */,
 				71935F291DEF685B0096A919 /* ControlsVC.swift in Sources */,
-				656EE82F1E30763400410BB4 /* WatchCommunicationController.swift in Sources */,
+				656EE82F1E30763400410BB4 /* WatchSessionController.swift in Sources */,
 				65F69F181DDD745D0017188D /* Transferable.swift in Sources */,
 				719614131DED01DA00AE3E6E /* EffectSlotControl.swift in Sources */,
 				712DC3ED1DECCDFC004E5BE1 /* EffectPageVC.swift in Sources */,

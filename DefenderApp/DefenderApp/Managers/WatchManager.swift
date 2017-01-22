@@ -10,10 +10,26 @@ import Foundation
 
 class WatchManager {
  
-    var watchController: WatchCommunicationController
+    var watchController: WatchSessionController
 
     init() {
-        watchController = WatchCommunicationController()
+        watchController = WatchSessionController()
+        watchController.sendMessage("Hello world")
     }
     
+    func start() {
+        watchController.sendMessage("I'm active")
+    }
+    
+    func stop() {
+        watchController.sendMessage("I'm inactive")
+    }
+    
+    func connect() {
+        watchController.sendMessage("CONNECT", content: "")
+    }
+
+    func disconnect() {
+        watchController.sendMessage("DISCONNECT", content: "")
+    }
 }

@@ -12,6 +12,7 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
 
+    @IBOutlet weak var bluetoothImage: WKInterfaceImage!
     @IBOutlet weak var bpmLabel: WKInterfaceLabel!
     @IBOutlet weak var bpmSlider: WKInterfaceSlider!
     @IBOutlet weak var bpmButton: WKInterfaceButton!
@@ -20,7 +21,7 @@ class InterfaceController: WKInterfaceController {
     private var metronomeNowRunning: Bool = false
     private var metronomeTimer: Timer?
     
-    private var phoneController: PhoneCommunicationController?
+    private var phoneController: PhoneSessionController?
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -31,7 +32,8 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        phoneController = PhoneCommunicationController()
+        phoneController = PhoneSessionController()
+        phoneController?.delegate = self
     }
     
     override func didDeactivate() {
@@ -60,4 +62,15 @@ class InterfaceController: WKInterfaceController {
         }
     }
     
+}
+
+extension InterfaceController: PhoneSessionControllerDelegate {
+    
+    func controllerDidConnect(_ controller: PhoneSessionController) {
+        bluetoothImage.setHidden(false)
+    }
+
+    func controllerDidDisconnect(_ controller: PhoneSessionController) {
+        bluetoothImage.setHidden(true)
+    }
 }

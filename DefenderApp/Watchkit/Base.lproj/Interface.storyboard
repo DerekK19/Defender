@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch42" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -16,7 +16,12 @@
                     <items>
                         <group width="1" alignment="left" layout="vertical" id="9f0-Mg-Pgf">
                             <items>
-                                <label alignment="center" text="60 bpm" textAlignment="center" id="1tX-gC-052"/>
+                                <group width="1" alignment="left" id="ETd-J7-KWu">
+                                    <items>
+                                        <imageView alignment="left" hidden="YES" image="bluetooth_small" contentMode="left" id="ahX-ZV-p6X"/>
+                                        <label alignment="center" text="60 bpm" textAlignment="center" id="1tX-gC-052"/>
+                                    </items>
+                                </group>
                                 <slider width="1" alignment="left" continuous="YES" value="60" minimum="45" maximum="120" steps="75" id="iVH-qt-6FL">
                                     <connections>
                                         <action selector="bpmSliderChangedWithValue:" destination="AgC-eL-Hgc" id="muD-uB-B2g"/>
@@ -31,6 +36,7 @@
                         </group>
                     </items>
                     <connections>
+                        <outlet property="bluetoothImage" destination="ahX-ZV-p6X" id="9ZL-2n-Ird"/>
                         <outlet property="bpmButton" destination="gtk-Ig-wsJ" id="jWl-z7-All"/>
                         <outlet property="bpmLabel" destination="1tX-gC-052" id="grz-P2-QL3"/>
                         <outlet property="bpmSlider" destination="iVH-qt-6FL" id="zUv-5l-YVx"/>

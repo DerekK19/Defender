@@ -23,6 +23,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var presetVC: PresetVC?
 
     fileprivate var remoteManager: RemoteManager?
+    fileprivate var watchManager: WatchManager?
     
     var presetNumber: UInt8?
     
@@ -44,6 +45,7 @@ class MainVC: UIViewController {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             remoteManager = appDelegate.remoteManager
             remoteManager?.delegate = self
+            watchManager = appDelegate.watchManager
         }
     }
 
@@ -213,6 +215,7 @@ extension MainVC: RemoteManagerDelegate {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+3) {
             self.sendGetAmplifier()
         }
+        watchManager?.connect()
     }
     
     func remoteManager(_ manager: RemoteManager, didSend success: Bool) {
@@ -255,6 +258,7 @@ extension MainVC: RemoteManagerDelegate {
         presetLabel.text = ""
         prevPreset.isHidden = true
         nextPreset.isHidden = true
+        watchManager?.disconnect()
     }
     
     func remoteManagerUnavailable(_ manager: RemoteManager) {

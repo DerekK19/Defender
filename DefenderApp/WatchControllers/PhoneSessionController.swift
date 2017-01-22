@@ -1,5 +1,5 @@
 //
-//  PhoneCommunicationController.swift
+//  PhoneSessionController
 //  DefenderApp
 //
 //  Created by Derek Knight on 19/01/17.
@@ -9,9 +9,15 @@
 import Foundation
 import WatchConnectivity
 
-class PhoneCommunicationController : NSObject {
+protocol PhoneSessionControllerDelegate {
+    func controllerDidConnect(_ controller: PhoneSessionController)
+    func controllerDidDisconnect(_ controller: PhoneSessionController)
+}
+
+class PhoneSessionController : NSObject {
     
     var session : WCSession?
+    var delegate: PhoneSessionControllerDelegate?
     
     override init() {
         
@@ -22,7 +28,7 @@ class PhoneCommunicationController : NSObject {
             session!.delegate = self
             session!.activate()
         } else {
-            print("Watch does not support WCSession")
+            log("Watch does not support WCSession")
         }
     }
     
@@ -33,7 +39,7 @@ class PhoneCommunicationController : NSObject {
             
             session.sendMessage(requestValues,
                                 replyHandler: { (replyDic: [String : Any]) -> Void in
-                                    NSLog("\(replyDic)")
+                                    self.log("\(replyDic)")
                                     
             }, errorHandler: { (error: Error) -> Void in
                 NSLog(error.localizedDescription)
@@ -41,42 +47,72 @@ class PhoneCommunicationController : NSObject {
         }
         else
         {
-            print("WCSession isn't reachable from Watch to iPhone")
+            log("WCSession isn't reachable from Watch to iPhone")
         }
+    }
+    
+    fileprivate func log(_ message: String) {
+        NSLog(message)
+        let requestValues = ["LOG" : message]
+        let session = WCSession.default()
+        
+        session.sendMessage(requestValues,
+                            replyHandler: { (replyDic: [String : Any]) -> Void in
+        }, errorHandler: { (error: Error) -> Void in
+            NSLog(error.localizedDescription)
+        })
     }
 }
 
-extension PhoneCommunicationController : WCSessionDelegate {
+extension PhoneSessionController : WCSessionDelegate {
     
     /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
     @available(watchOS 2.2, *)
     public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         switch activationState {
         case .activated:
-            NSLog("iPhone session activated")
+            log("iPhone session activated")
         case .inactive:
-            NSLog("iPhone session inactive")
+            log("iPhone session inactive")
         case .notActivated:
-            NSLog("iPhone session not activated")
+            log("iPhone session not activated")
         }
     }
 
     func sessionReachabilityDidChange(_ session: WCSession) {
-        NSLog("iPhone reachability changed")
+        log("iPhone reachability changed")
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        NSLog("Watch did receive message (reply)")
+        var diagMessage = "Watch did receive message"
+        for (key, value) in message {
+            diagMessage.append("\n \(key) - \(value)")
+        }
+        log(diagMessage)
     }
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        NSLog("Watch did receive message (reply)")
+        var diagMessage = "Watch did receive message (reply)"
+        for (key, value) in message {
+            diagMessage.append("\n \(key) - \(value)")
+        }
+        log(diagMessage)
+        for (key, _) in message {
+            switch key.uppercased() {
+            case "CONNECT":
+                delegate?.controllerDidConnect(self)
+            case "DISCONNECT":
+                delegate?.controllerDidDisconnect(self)
+            default:
+                continue
+            }
+        }
         replyHandler(["Ack" : "Ack"])
     }
     func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
-        NSLog("Watch did receive data")
+        log("Watch did receive data")
     }
     func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
-        NSLog("Watch did receive data")
+        log("Watch did receive data")
         replyHandler(Data())
     }
     
