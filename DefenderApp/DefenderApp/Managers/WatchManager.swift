@@ -8,28 +8,55 @@
 
 import Foundation
 
+protocol WatchManagerDelegate {
+    func watchManager(_ manager: WatchManager, didChoosePreset index: UInt8)
+}
+
 class WatchManager {
  
+    var delegate: WatchManagerDelegate?
+
     var watchController: WatchSessionController
 
-    init() {
+    init(delegate: WatchManagerDelegate? = nil) {
+        self.delegate = delegate
         watchController = WatchSessionController()
-        watchController.sendMessage("Hello world")
+        watchController.delegate = self
+        watchController.sendMessage(.hello)
     }
     
     func start() {
-        watchController.sendMessage("I'm active")
+        watchController.sendMessage(.active)
     }
     
     func stop() {
-        watchController.sendMessage("I'm inactive")
+        watchController.sendMessage(.inactive)
     }
     
     func connect() {
-        watchController.sendMessage("CONNECT", content: "")
+        watchController.sendMessage(.connect, content: "")
     }
 
     func disconnect() {
-        watchController.sendMessage("DISCONNECT", content: "")
+        watchController.sendMessage(.disconnect, content: "")
+    }
+    
+    func amplifier(_ name: String) {
+        watchController.sendMessage(.amplifier, content: name)
+    }
+    
+    func preset(_ name: String) {
+        watchController.sendMessage(.preset, content: name)
+    }
+
+    func presets(_ names: [String]) {
+        watchController.sendMessage(.presets, content: names)
+    }
+}
+
+extension WatchManager: WatchSessionControllerDelegate {
+    
+    func controller(_ controller: WatchSessionController, currentPreset: UInt8) {
+        delegate?.watchManager(self, didChoosePreset: currentPreset)
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6501BEB61E46C856009469E6 /* DXPresetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6501BEB51E46C855009469E6 /* DXPresetList.swift */; };
 		6507759A1DE95DD200F5040C /* Flogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650775991DE95DD100F5040C /* Flogger.framework */; };
 		6507759C1DE9609100F5040C /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6507759B1DE9609100F5040C /* XCGLogger.framework */; };
 		650775A81DEA3DB000F5040C /* NSLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650775A71DEA3DB000F5040C /* NSLogger.framework */; };
@@ -97,6 +98,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6501BEB51E46C855009469E6 /* DXPresetList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXPresetList.swift; sourceTree = "<group>"; };
 		650775991DE95DD100F5040C /* Flogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Flogger.framework; path = Carthage/Build/Mac/Flogger.framework; sourceTree = "<group>"; };
 		6507759B1DE9609100F5040C /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Carthage/Build/Mac/XCGLogger.framework; sourceTree = "<group>"; };
 		650775A71DEA3DB000F5040C /* NSLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NSLogger.framework; path = Carthage/Build/Mac/NSLogger.framework; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				65F69F191DDD75090017188D /* Transferable.swift */,
 				7198C5F01DDE9D3C003238D7 /* DXMessage.swift */,
 				65F69F121DDD70EE0017188D /* DXAmplifier.swift */,
+				6501BEB51E46C855009469E6 /* DXPresetList.swift */,
 				65F69F211DDED2290017188D /* DXPreset.swift */,
 				65F69F251DE009F70017188D /* DXEffect.swift */,
 				65FA11921DF3E16D00FBD280 /* DXKnob.swift */,
@@ -594,6 +597,7 @@
 				7167FEDC1D5815270059A276 /* DisplayControl.swift in Sources */,
 				65426BA21DB0930300E54D35 /* KnobBaseControl.swift in Sources */,
 				658CEC0D1DA36AAA006890A4 /* PedalBodyControl.swift in Sources */,
+				6501BEB61E46C856009469E6 /* DXPresetList.swift in Sources */,
 				657C3AC81D56DB8E002DEF17 /* AmpKnobControl.swift in Sources */,
 				65F69F261DE009F70017188D /* DXEffect.swift in Sources */,
 				65F69F341DE7F5C90017188D /* ColouredTextField.swift in Sources */,

@@ -10,9 +10,14 @@ import Foundation
 import Flogger
 import WatchConnectivity
 
+protocol WatchSessionControllerDelegate {
+    func controller(_ controller: WatchSessionController, currentPreset: UInt8)
+}
+
 class WatchSessionController: NSObject {
     
     var session : WCSession?
+    var delegate: WatchSessionControllerDelegate?
     
     override init() {
         
@@ -23,44 +28,48 @@ class WatchSessionController: NSObject {
             session!.delegate = self
             session!.activate()
         } else {
-            Flogger.log.warning("iPhone does not support WCSession")
+            log("iPhone does not support WCSession")
         }
     }
     
-    func sendMessage(_ message: String) {
+    func sendMessage(_ message: WatchMessage) {
         if WCSession.default().isReachable == true {
-            let requestValues = ["Message" : message]
+            let requestValues = [message.rawValue : ""]
             let session = WCSession.default()
             
             session.sendMessage(requestValues,
                                 replyHandler: { (replyDic: [String : Any]) -> Void in
-                                    Flogger.log.verbose(replyDic)
+                                    self.log(replyDic)
                                     
             }, errorHandler: { (error: Error) -> Void in
-                Flogger.log.verbose(error.localizedDescription)
+                self.log(error.localizedDescription)
             })
         }
         else
         {
-            Flogger.log.verbose("WCSession isn't reachable from iPhone to Watch")
+            log("WCSession isn't reachable from iPhone to Watch")
         }
     }
-    func sendMessage(_ message: String, content: Any) {
+    func sendMessage(_ message: WatchMessage, content: Any) {
         if WCSession.default().isReachable == true {
-            let requestValues = [message : content]
+            let requestValues = [message.rawValue : content]
             let session = WCSession.default()
             session.sendMessage(requestValues,
                                 replyHandler: { (replyDic: [String : Any]) -> Void in
-                                    Flogger.log.verbose("Acknowleged")
+                                    self.log("Acknowleged")
 //                                    print("\(replyDic)")
             }, errorHandler: { (error: Error) -> Void in
-                Flogger.log.verbose(error.localizedDescription)
+                self.log(error.localizedDescription)
             })
         }
         else
         {
-            Flogger.log.verbose("WCSession isn't reachable from iPhone to Watch")
+            log("WCSession isn't reachable from iPhone to Watch")
         }
+    }
+    
+    fileprivate func log(_ message: Any) {
+         Flogger.log.verbose(message)
     }
 }
 
@@ -69,28 +78,28 @@ extension WatchSessionController : WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         switch activationState {
         case .activated:
-            Flogger.log.verbose("Watch session activated")
-            sendMessage("Hello world")
+            log("Watch session activated")
+            sendMessage(.hello)
         case .inactive:
-            Flogger.log.verbose("Watch session inactive")
+            log("Watch session inactive")
         case .notActivated:
-            Flogger.log.verbose("Watch session not activated")
+            log("Watch session not activated")
         }
     }
     
     func sessionDidDeactivate(_ session: WCSession) {
-        Flogger.log.verbose("Watch session deactivated")
+        log("Watch session deactivated")
     }
 
     func sessionDidBecomeInactive(_ session: WCSession) {
-        Flogger.log.verbose("Watch session inactivate")
+        log("Watch session inactivate")
     }
 
     func sessionWatchStateDidChange(_ session: WCSession) {
-        Flogger.log.verbose("Watch state changed")
+        log("Watch state changed: \(session.activationState)")
     }
     func sessionReachabilityDidChange(_ session: WCSession) {
-        Flogger.log.verbose("Watch reachability changed")
+        log("Watch reachability changed: \(session.isReachable)")
     }
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
@@ -98,21 +107,31 @@ extension WatchSessionController : WCSessionDelegate {
         for (key, value) in message {
             diagMessage.append("\n \(key) - \(value)")
         }
-        Flogger.log.verbose(diagMessage)
+        log(diagMessage)
     }
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         var diagMessage = "iPhone did receive message (reply)"
         for (key, value) in message {
             diagMessage.append("\n \(key) - \(value)")
         }
-        Flogger.log.verbose(diagMessage)
+        log(diagMessage)
+        for (key, value) in message {
+            switch WatchMessage(rawValue: key.uppercased()) ?? .unknown {
+            case .preset:
+                if let value = value as? UInt8 {
+                    delegate?.controller(self, currentPreset: value)
+                }
+            default:
+                continue
+            }
+        }
         replyHandler(["Ack" : "Ack"])
     }
     func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
-        Flogger.log.verbose("iPhone did receive data")
+        log("iPhone did receive data")
     }
     func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
-        Flogger.log.verbose("iPhone did receive data (reply)")
+        log("iPhone did receive data (reply)")
         replyHandler(Data())
     }
 }

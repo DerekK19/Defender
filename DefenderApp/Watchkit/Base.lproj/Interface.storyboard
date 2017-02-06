@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="m9w-Cj-86V">
     <device id="watch42" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,19 +9,77 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Defender-->
+        <scene sceneID="IDv-se-7LF">
+            <objects>
+                <controller title="Defender" id="m9w-Cj-86V" customClass="InterfaceController" customModule="Watchkit_Extension">
+                    <items>
+                        <group width="1" alignment="left" verticalAlignment="center" layout="vertical" id="veI-ZI-NXx">
+                            <items>
+                                <group width="1" alignment="left" id="HuE-bf-Cd8">
+                                    <items>
+                                        <label alignment="left" text="No amplifier" id="b72-0n-GEH"/>
+                                        <imageView alignment="right" hidden="YES" image="bluetooth_small" contentMode="left" id="ahX-ZV-p6X"/>
+                                    </items>
+                                </group>
+                                <button width="1" alignment="left" title="Presets" id="USC-eC-kXT">
+                                    <connections>
+                                        <segue destination="Qna-eT-vDf" kind="push" id="lMh-vH-FD2"/>
+                                    </connections>
+                                </button>
+                                <button width="1" alignment="left" title="Metronome" id="MAD-Uu-om2">
+                                    <connections>
+                                        <segue destination="AgC-eL-Hgc" kind="push" id="tJf-Hw-R5j"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="amplifierLabel" destination="b72-0n-GEH" id="3ne-Bd-BHY"/>
+                        <outlet property="bluetoothImage" destination="ahX-ZV-p6X" id="PeE-pm-bCi"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-167" y="184"/>
+        </scene>
+        <!--Presets-->
+        <scene sceneID="UqH-Pn-p6U">
+            <objects>
+                <controller title="Presets" id="Qna-eT-vDf" customClass="PresetsController" customModule="Watchkit_Extension">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" id="BIU-IR-Jkr">
+                            <items>
+                                <label alignment="center" text="Label" id="kYg-b1-IfB"/>
+                                <picker height="100" alignment="left" id="aFP-fS-eDy">
+                                    <connections>
+                                        <action selector="didSelectPresetWithValue:" destination="Qna-eT-vDf" id="fr9-MR-TKB"/>
+                                    </connections>
+                                </picker>
+                                <button width="1" alignment="left" title="Choose" id="0S9-PB-WbY">
+                                    <connections>
+                                        <action selector="didChoosePreset" destination="Qna-eT-vDf" id="rXh-HM-UBa"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="presetLabel" destination="kYg-b1-IfB" id="6Io-hA-kNW"/>
+                        <outlet property="presetList" destination="aFP-fS-eDy" id="2KR-xi-yYf"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="214" y="46"/>
+        </scene>
+        <!--Metronome-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Watchkit" customModuleProvider="target">
+                <controller title="Metronome" id="AgC-eL-Hgc" customClass="MetronomeController" customModule="Watchkit_Extension">
                     <items>
                         <group width="1" alignment="left" layout="vertical" id="9f0-Mg-Pgf">
                             <items>
-                                <group width="1" alignment="left" id="ETd-J7-KWu">
-                                    <items>
-                                        <imageView alignment="left" hidden="YES" image="bluetooth_small" contentMode="left" id="ahX-ZV-p6X"/>
-                                        <label alignment="center" text="60 bpm" textAlignment="center" id="1tX-gC-052"/>
-                                    </items>
-                                </group>
+                                <label alignment="center" text="60 bpm" textAlignment="center" id="1tX-gC-052"/>
                                 <slider width="1" alignment="left" continuous="YES" value="60" minimum="45" maximum="120" steps="75" id="iVH-qt-6FL">
                                     <connections>
                                         <action selector="bpmSliderChangedWithValue:" destination="AgC-eL-Hgc" id="muD-uB-B2g"/>
@@ -36,7 +94,6 @@
                         </group>
                     </items>
                     <connections>
-                        <outlet property="bluetoothImage" destination="ahX-ZV-p6X" id="9ZL-2n-Ird"/>
                         <outlet property="bpmButton" destination="gtk-Ig-wsJ" id="jWl-z7-All"/>
                         <outlet property="bpmLabel" destination="1tX-gC-052" id="grz-P2-QL3"/>
                         <outlet property="bpmSlider" destination="iVH-qt-6FL" id="zUv-5l-YVx"/>

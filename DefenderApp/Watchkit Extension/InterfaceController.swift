@@ -12,14 +12,8 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
 
+    @IBOutlet weak var amplifierLabel: WKInterfaceLabel!
     @IBOutlet weak var bluetoothImage: WKInterfaceImage!
-    @IBOutlet weak var bpmLabel: WKInterfaceLabel!
-    @IBOutlet weak var bpmSlider: WKInterfaceSlider!
-    @IBOutlet weak var bpmButton: WKInterfaceButton!
-    
-    private var currentBPM: Int = 60
-    private var metronomeNowRunning: Bool = false
-    private var metronomeTimer: Timer?
     
     private var phoneController: PhoneSessionController?
     
@@ -32,34 +26,20 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        phoneController = PhoneSessionController()
-        phoneController?.delegate = self
+        if phoneController == nil {
+            phoneController = PhoneSessionController()
+            phoneController?.delegate = self
+        } else {
+            if let chosenPreset = DataManager.instance.chosenPreset {
+                phoneController?.sendMessage(.preset, content: chosenPreset)
+                DataManager.instance.chosenPreset = nil
+            }
+        }
     }
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
-    }
-
-    @IBAction func bpmSliderChanged(value: Float) {
-        currentBPM = Int(round(value))
-        bpmLabel.setText("\(currentBPM) bpm")
-    }
-    
-    @IBAction func didPressBPM() {
-        metronomeNowRunning = !metronomeNowRunning
-        
-        if metronomeNowRunning {
-            bpmButton.setTitle("Stop")
-            let beatInterval = TimeInterval(currentBPM / 60)
-            metronomeTimer = Timer.scheduledTimer(withTimeInterval: beatInterval, repeats: true) { _ in
-                WKInterfaceDevice().play(.start)
-            }
-        } else {
-            metronomeTimer?.invalidate()
-            metronomeTimer = nil
-            bpmButton.setTitle("Start")
-        }
     }
     
 }
@@ -72,5 +52,17 @@ extension InterfaceController: PhoneSessionControllerDelegate {
 
     func controllerDidDisconnect(_ controller: PhoneSessionController) {
         bluetoothImage.setHidden(true)
+    }
+    
+    func controller(_ controller: PhoneSessionController, currentAmplifier: String) {
+        amplifierLabel.setText(currentAmplifier)
+    }
+    
+    func controller(_ controller: PhoneSessionController, presets: [String]) {
+        DataManager.instance.presets = presets
+    }
+    
+    func controller(_ controller: PhoneSessionController, currentPreset: String) {
+        DataManager.instance.currentPreset = currentPreset
     }
 }

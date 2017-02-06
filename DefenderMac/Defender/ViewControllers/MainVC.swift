@@ -438,6 +438,12 @@ class MainVC: NSViewController {
         sendMessage(message)
     }
     
+    func sendPresets() {
+        var message: DXMessage!
+        message = DXMessage(command: .presets, data: DXPresetList(names: ampManager.presetNames))
+        sendMessage(message)
+    }
+    
     func sendMessage(_ message: DXMessage) {
         if remoteManager?.send(message) == true {
             txLED.backgroundColour = NSColor.red
@@ -700,6 +706,8 @@ extension MainVC: RemoteManagerDelegate {
             switch message.command as RequestType {
             case .amplifier:
                 sendCurrentAmplifier()
+            case .presets:
+                sendPresets()
             case .preset:
                 if message.content == nil {
                     sendCurrentPreset()

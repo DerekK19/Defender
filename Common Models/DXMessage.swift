@@ -11,6 +11,7 @@ import ObjectMapper
 
 internal enum RequestType : String {
     case amplifier = "AMPLIFIER"
+    case presets = "PRESETS"
     case preset = "PRESET"
     case changePreset = "CHANGEPRESET"
 }

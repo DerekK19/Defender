@@ -12,6 +12,9 @@ import WatchConnectivity
 protocol PhoneSessionControllerDelegate {
     func controllerDidConnect(_ controller: PhoneSessionController)
     func controllerDidDisconnect(_ controller: PhoneSessionController)
+    func controller(_ controller: PhoneSessionController, currentAmplifier: String)
+    func controller(_ controller: PhoneSessionController, presets: [String])
+    func controller(_ controller: PhoneSessionController, currentPreset: String)
 }
 
 class PhoneSessionController : NSObject {
@@ -32,9 +35,9 @@ class PhoneSessionController : NSObject {
         }
     }
     
-    fileprivate func sendMessage(_ message: String) {
+    fileprivate func sendMessage(_ message: WatchMessage) {
         if WCSession.default().isReachable == true {
-            let requestValues = ["Message" : message]
+            let requestValues = [message.rawValue : message]
             let session = WCSession.default()
             
             session.sendMessage(requestValues,
@@ -50,17 +53,32 @@ class PhoneSessionController : NSObject {
             log("WCSession isn't reachable from Watch to iPhone")
         }
     }
+    func sendMessage(_ message: WatchMessage, content: Any) {
+        if WCSession.default().isReachable == true {
+            let requestValues = [message.rawValue : content]
+            let session = WCSession.default()
+            session.sendMessage(requestValues,
+                                replyHandler: { (replyDic: [String : Any]) -> Void in
+                                    self.log("Acknowleged")
+//                                    print("\(replyDic)")
+            }, errorHandler: { (error: Error) -> Void in
+                self.log(error.localizedDescription)
+            })
+        }
+        else
+        {
+            log("WCSession isn't reachable from iPhone to Watch")
+        }
+    }
     
     fileprivate func log(_ message: String) {
         NSLog(message)
-        let requestValues = ["LOG" : message]
+        let requestValues = [WatchMessage.log.rawValue : message]
         let session = WCSession.default()
         
         session.sendMessage(requestValues,
                             replyHandler: { (replyDic: [String : Any]) -> Void in
-        }, errorHandler: { (error: Error) -> Void in
-            NSLog(error.localizedDescription)
-        })
+        }, errorHandler: nil)
     }
 }
 
@@ -96,12 +114,24 @@ extension PhoneSessionController : WCSessionDelegate {
             diagMessage.append("\n \(key) - \(value)")
         }
         log(diagMessage)
-        for (key, _) in message {
-            switch key.uppercased() {
-            case "CONNECT":
+        for (key, value) in message {
+            switch WatchMessage(rawValue: key.uppercased()) ?? .unknown {
+            case .connect:
                 delegate?.controllerDidConnect(self)
-            case "DISCONNECT":
+            case .disconnect:
                 delegate?.controllerDidDisconnect(self)
+            case .amplifier:
+                if let value = value as? String {
+                    delegate?.controller(self, currentAmplifier: value)
+                }
+            case .presets:
+                if let value = value as? [String] {
+                    delegate?.controller(self, presets: value)
+                }
+            case .preset:
+                if let value = value as? String {
+                    delegate?.controller(self, currentPreset: value)
+                }
             default:
                 continue
             }

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6501BEAE1E450306009469E6 /* MetronomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6501BEAC1E450306009469E6 /* MetronomeController.swift */; };
+		6501BEAF1E450306009469E6 /* PresetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6501BEAD1E450306009469E6 /* PresetsController.swift */; };
+		6501BEB11E457CC2009469E6 /* WatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6501BEB01E457CC2009469E6 /* WatchMessage.swift */; };
+		6501BEB21E457CC2009469E6 /* WatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6501BEB01E457CC2009469E6 /* WatchMessage.swift */; };
+		6501BEB41E46C6F9009469E6 /* DXPresetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6501BEB31E46C6F9009469E6 /* DXPresetList.swift */; };
+		6501BEB81E46D338009469E6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6501BEB71E46D338009469E6 /* DataManager.swift */; };
 		650775BC1DEA936B00F5040C /* Flogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650775BB1DEA936A00F5040C /* Flogger.framework */; };
 		650775BE1DEA937000F5040C /* NSLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650775BD1DEA937000F5040C /* NSLogger.framework */; };
 		650775C01DEA937200F5040C /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650775BF1DEA937200F5040C /* XCGLogger.framework */; };
@@ -125,6 +131,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6501BEAC1E450306009469E6 /* MetronomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeController.swift; sourceTree = "<group>"; };
+		6501BEAD1E450306009469E6 /* PresetsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetsController.swift; sourceTree = "<group>"; };
+		6501BEB01E457CC2009469E6 /* WatchMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchMessage.swift; sourceTree = "<group>"; };
+		6501BEB31E46C6F9009469E6 /* DXPresetList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXPresetList.swift; sourceTree = "<group>"; };
+		6501BEB71E46D338009469E6 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		650775BB1DEA936A00F5040C /* Flogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Flogger.framework; path = Carthage/Build/iOS/Flogger.framework; sourceTree = "<group>"; };
 		650775BD1DEA937000F5040C /* NSLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NSLogger.framework; path = Carthage/Build/iOS/NSLogger.framework; sourceTree = "<group>"; };
 		650775BF1DEA937200F5040C /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Carthage/Build/iOS/XCGLogger.framework; sourceTree = "<group>"; };
@@ -248,8 +259,11 @@
 			isa = PBXGroup;
 			children = (
 				656862741E25D04100115981 /* InterfaceController.swift */,
-				656862761E25D04100115981 /* ExtensionDelegate.swift */,
+				6501BEAD1E450306009469E6 /* PresetsController.swift */,
+				6501BEAC1E450306009469E6 /* MetronomeController.swift */,
 				656862781E25D04100115981 /* NotificationController.swift */,
+				656862761E25D04100115981 /* ExtensionDelegate.swift */,
+				6501BEB71E46D338009469E6 /* DataManager.swift */,
 				6568627A1E25D04100115981 /* Assets.xcassets */,
 				6568627C1E25D04100115981 /* Info.plist */,
 				656862721E25D04100115981 /* Supporting Files */,
@@ -268,6 +282,7 @@
 		656EE82D1E30758700410BB4 /* WatchControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6501BEB01E457CC2009469E6 /* WatchMessage.swift */,
 				656EE82E1E30763400410BB4 /* WatchSessionController.swift */,
 				656EE8301E30765000410BB4 /* PhoneSessionController.swift */,
 			);
@@ -280,6 +295,7 @@
 				65F69F171DDD745D0017188D /* Transferable.swift */,
 				65F69F1B1DDD93000017188D /* DXMessage.swift */,
 				65F69F0C1DDD70AB0017188D /* DXAmplifier.swift */,
+				6501BEB31E46C6F9009469E6 /* DXPresetList.swift */,
 				65F69F1F1DDED1DF0017188D /* DXPreset.swift */,
 				65F69F291DE011550017188D /* DXEffect.swift */,
 				65FA118E1DF3DE7400FBD280 /* DXKnob.swift */,
@@ -679,9 +695,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6501BEAF1E450306009469E6 /* PresetsController.swift in Sources */,
+				6501BEB81E46D338009469E6 /* DataManager.swift in Sources */,
 				656862791E25D04100115981 /* NotificationController.swift in Sources */,
+				6501BEAE1E450306009469E6 /* MetronomeController.swift in Sources */,
 				656EE8321E30765000410BB4 /* PhoneSessionController.swift in Sources */,
 				656862771E25D04100115981 /* ExtensionDelegate.swift in Sources */,
+				6501BEB21E457CC2009469E6 /* WatchMessage.swift in Sources */,
 				656862751E25D04100115981 /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -694,11 +714,13 @@
 				71935F301DEF6A1D0096A919 /* AmpKnobControl.swift in Sources */,
 				65F69F201DDED1DF0017188D /* DXPreset.swift in Sources */,
 				7196141E1DED0E3400AE3E6E /* PedalKnobControl.swift in Sources */,
+				6501BEB41E46C6F9009469E6 /* DXPresetList.swift in Sources */,
 				719614171DED030900AE3E6E /* ShadeControl.swift in Sources */,
 				71935F291DEF685B0096A919 /* ControlsVC.swift in Sources */,
 				656EE82F1E30763400410BB4 /* WatchSessionController.swift in Sources */,
 				65F69F181DDD745D0017188D /* Transferable.swift in Sources */,
 				719614131DED01DA00AE3E6E /* EffectSlotControl.swift in Sources */,
+				6501BEB11E457CC2009469E6 /* WatchMessage.swift in Sources */,
 				712DC3ED1DECCDFC004E5BE1 /* EffectPageVC.swift in Sources */,
 				712DC3EF1DECCE6B004E5BE1 /* EffectVC.swift in Sources */,
 				71935F341DEF724E0096A919 /* UIImage+Colour.swift in Sources */,

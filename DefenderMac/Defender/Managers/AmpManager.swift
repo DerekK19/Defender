@@ -30,7 +30,7 @@ class AmpManager {
     
     private let mustang: Mustang
     
-    let mocking = true
+    let mocking = false
     
     private var amplifiers = [DTOAmplifier]()
     internal private(set) var currentAmplifier: DTOAmplifier?
@@ -58,6 +58,12 @@ class AmpManager {
         }
     }
 
+    var presetNames : [String] {
+        get {
+            return presets.sorted(by: { $0.key < $1.key }).map { $0.value.name }
+        }
+    }
+    
     init() {
         mustang = Mustang(mockMode: mocking)
         presets = [UInt8 : DTOPreset] ()

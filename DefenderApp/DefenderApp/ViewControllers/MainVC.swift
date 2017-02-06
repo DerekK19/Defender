@@ -46,6 +46,7 @@ class MainVC: UIViewController {
             remoteManager = appDelegate.remoteManager
             remoteManager?.delegate = self
             watchManager = appDelegate.watchManager
+            watchManager?.delegate = self
         }
     }
 
@@ -111,7 +112,12 @@ class MainVC: UIViewController {
         let message = DXMessage(command: .amplifier, data: nil)
         sendMessage(message)
     }
-
+    
+    func sendGetPresets() {
+        let message = DXMessage(command: .presets, data: nil)
+        sendMessage(message)
+    }
+    
     func sendGetPreset(_ number: UInt8?) {
         var message: DXMessage!
         let preset = DXPreset(name: "")
@@ -230,12 +236,19 @@ extension MainVC: RemoteManagerDelegate {
             switch message.command as RequestType {
             case .amplifier:
                 let amp = try DXAmplifier(data: message.content)
+                watchManager?.amplifier(amp.name ?? "No amplifier")
                 amplifierLabel.text = amp.name ?? "No Amplifier"
                 presetVC?.powerState = amp.name == nil ? .off : .on
+                sendGetPresets()
+            case .presets:
+                let presets = try DXPresetList(data: message.content)
+                Flogger.log.verbose("Presets: \(presets.names.count)")
+                watchManager?.presets(presets.names)
                 sendGetPreset(nil)
             case .preset, .changePreset:
                 let preset = try DXPreset(data: message.content)
                 logPreset(preset)
+                watchManager?.preset(preset.name)
                 presetLabel.text = preset.name
                 presetNumber = preset.number
                 presetVC?.preset = preset
@@ -274,3 +287,9 @@ extension MainVC: RemoteManagerDelegate {
     }
 }
 
+extension MainVC: WatchManagerDelegate {
+    func watchManager(_ manager: WatchManager, didChoosePreset index: UInt8) {
+        Flogger.log.verbose("Choose preset: \(index)")
+        sendGetPreset(index)
+    }
+}
