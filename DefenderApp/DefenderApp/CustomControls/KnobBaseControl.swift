@@ -84,12 +84,12 @@ class KnobBaseControl: UIView {
     }
     internal func radiansFromFloatValue(_ floatValue: Float) -> CGFloat {
         let fraction = self.minValue + (floatValue * (self.maxValue - self.minValue))
-        let angle =  -(CGFloat(fraction * Float(M_PI) * 2.0) + CGFloat(M_PI / 2.0))
+        let angle =  -(CGFloat(fraction * Float(Double.pi) * 2.0) + CGFloat(Double.pi / 2.0))
         return angle
     }
     
     internal func imageRotatedByDegrees(_ image: UIImage, degrees: CGFloat) -> UIImage {
-        let radians = -degrees * CGFloat(M_PI / 180)
+        let radians = -degrees * CGFloat(Double.pi / 180)
         //Calculate the size of the rotated view's containing box for our drawing space
         let rotatedViewBox: UIView = UIView(frame: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
         let t: CGAffineTransform = CGAffineTransform(rotationAngle: radians)

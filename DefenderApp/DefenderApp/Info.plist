@@ -22,6 +22,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Uses Bluetooth to communicate with the companion Mac app</string>
 	<key>UILaunchImageFile</key>
 	<string>appLogo</string>
 	<key>UILaunchStoryboardName</key>
@@ -34,8 +36,6 @@
 	<array>
 		<string>armv7</string>
 	</array>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Uses Bluetooth to communicate with the companion Mac app</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 	<key>UISupportedInterfaceOrientations</key>
@@ -45,5 +45,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>

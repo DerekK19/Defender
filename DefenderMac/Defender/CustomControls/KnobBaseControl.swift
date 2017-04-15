@@ -95,7 +95,7 @@ class KnobBaseControl: NSView {
     }
     internal func radiansFromFloatValue(_ floatValue: Float) -> CGFloat {
         let fraction = minValue + (floatValue * (maxValue - minValue))
-        let angle =  -(CGFloat(fraction * Float(M_PI) * 2.0) + CGFloat(M_PI / 2.0))
+        let angle =  -(CGFloat(fraction * Float(Double.pi) * 2.0) + CGFloat(Double.pi / 2.0))
 //        Flogger.log.verbose("Float \(floatValue) -> Radians \(angle)")
         return angle
     }
