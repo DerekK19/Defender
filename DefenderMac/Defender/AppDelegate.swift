@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import Mustang
 import Flogger
 
 @NSApplicationMain

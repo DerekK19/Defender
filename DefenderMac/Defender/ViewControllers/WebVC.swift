@@ -8,7 +8,6 @@
 
 import Cocoa
 import Flogger
-import Mustang
 
 protocol WebVCDelegate {
     func didSelectPreset(preset: DTOPreset?)

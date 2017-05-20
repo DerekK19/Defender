@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import Mustang
 
 enum DisplayState {
     case view

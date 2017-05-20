@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import Mustang
 import Flogger
 
 protocol CabinetVCDelegate {
@@ -20,6 +19,7 @@ class CabinetVC: NSViewController {
     @IBOutlet weak var effectLead: NSBox!
     @IBOutlet weak var pedalLead: NSBox!
     @IBOutlet weak var cabinet: CabinetControl!
+    @IBOutlet weak var cabinetImage: NSImageView!
     @IBOutlet weak var powerLED: LEDControl!
     @IBOutlet weak var shade: ShadeControl!
     
@@ -77,14 +77,19 @@ class CabinetVC: NSViewController {
         state = .disabled
     }
     
-    func configureWithEffect(_ effect: DTOEffect?) {
-//        self.effect = effect
+    func configureWithPreset(_ preset: DTOPreset?) {
         delegate = nil
         fullBackgroundColour = slotBackgroundColour
-        if effect == nil {
-            state = .disabled
+        if let preset = preset {
+            state = (preset.cabinet != nil) ? .on : .off
+            switch preset.cabinet ?? 0 {
+            case 10:
+                cabinetImage.image = NSImage(named: "cabinet-10")
+            default:
+                cabinetImage.image = nil
+            }
         } else {
-            state = (effect?.enabled ?? false) ? .on : .off
+            state = .disabled
         }
     }
 }

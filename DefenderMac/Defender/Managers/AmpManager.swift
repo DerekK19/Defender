@@ -8,7 +8,6 @@
 
 import Cocoa
 import Flogger
-import Mustang
 
 protocol AmpManagerDelegate {
     func deviceConnected(ampManager: AmpManager)

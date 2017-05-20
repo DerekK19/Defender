@@ -8,7 +8,6 @@
 
 import Cocoa
 import Flogger
-import Mustang
 
 class PresetDocument : NSDocument {
     
@@ -43,12 +42,12 @@ class PresetDocument : NSDocument {
     }
     
     override func save(_ sender: Any?) {
-        Flogger.log.debug("Save \(sender)")
+        Flogger.log.debug("Save \(sender ?? "Unknown")")
         super.save(sender)
     }
     
     override func saveAs(_ sender: Any?) {
-        Flogger.log.debug("Save as \(sender)")
+        Flogger.log.debug("Save as \(sender ?? "Unknown")")
         super.saveAs(sender)
     }
 }

@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import Mustang
 import Flogger
 
 class MainVC: NSViewController {
@@ -44,6 +43,9 @@ class MainVC: NSViewController {
     @IBOutlet weak var saveButton: ActionButtonControl!
     @IBOutlet weak var exitButton: ActionButtonControl!
     @IBOutlet weak var tapButton: ActionButtonControl!
+    @IBOutlet weak var effectsLoopLabel: NSTextField!
+    @IBOutlet weak var effectsLoopArrow1: NSImageView!
+    @IBOutlet weak var effectsLoopArrow2: NSImageView!
     
     @IBOutlet weak var debugButton: NSButton!
     @IBOutlet weak var preloadButton: NSButton!
@@ -95,6 +97,7 @@ class MainVC: NSViewController {
             pedal2VC?.powerState = powerState
             pedal3VC?.powerState = powerState
             pedal4VC?.powerState = powerState
+            cabinetVC?.powerState = powerState
         }
     }
     
@@ -126,12 +129,15 @@ class MainVC: NSViewController {
         middleArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
         bassArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
         presenceArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
+        effectsLoopArrow1.image = NSImage(named: "right-arrow")?.imageWithTintColor(NSColor.lead)
+        effectsLoopArrow2.image = NSImage(named: "up-arrow")?.imageWithTintColor(NSColor.lead)
         gainLabel.textColor = contrastColour
         volumeLabel.textColor = contrastColour
         trebleLabel.textColor = contrastColour
         middleLabel.textColor = contrastColour
         bassLabel.textColor = contrastColour
         presenceLabel.textColor = contrastColour
+        effectsLoopLabel.textColor = contrastColour
         pedalLeads.borderColor = NSColor.lead
         effectLeads.borderColor = NSColor.lead
         gainKnob.delegate = self
@@ -221,6 +227,7 @@ class MainVC: NSViewController {
         if !ampManager.hasAnAmplifier { return }
         if sender.state == NSOffState {
             Flogger.log.verbose(" Powering off")
+            cabinetVC?.state = .off
             powerState = .off
             setPreset(nil)
             sendNoAmplifier()
@@ -229,6 +236,7 @@ class MainVC: NSViewController {
             Flogger.log.verbose(" Powering on")
             sender.state = NSOffState
             powerState = .on
+            cabinetVC?.state = .on
             sendCurrentAmplifier()
             ampManager.getPresets() {
                 self.powerState = .on
@@ -323,6 +331,7 @@ class MainVC: NSViewController {
         bluetoothLabel.textColor = .white
         presetsLabel.textColor = .white
         powerButton.state = NSOffState
+        cabinetVC?.state = ampManager.hasAnAmplifier ? .off : .disabled
         powerState = .off
     }
     
@@ -350,7 +359,7 @@ class MainVC: NSViewController {
     
     fileprivate func displayPreset(_ preset: DTOPreset?) {
         
-        cabinetVC?.configureWithEffect(nil)
+        cabinetVC?.configureWithPreset(nil)
         pedal1VC?.configureWithPedal(nil)
         pedal2VC?.configureWithPedal(nil)
         pedal3VC?.configureWithPedal(nil)
@@ -367,6 +376,7 @@ class MainVC: NSViewController {
         bassKnob.floatValue = preset?.bass ?? 1.0
         presenceKnob.floatValue = preset?.presence ?? 1.0
 
+        cabinetVC?.configureWithPreset(preset)
         displayVC?.configureWithPreset(preset)
         for effect in preset?.effects ?? [DTOEffect]() {
             displayEffect(effect)
@@ -492,8 +502,8 @@ class MainVC: NSViewController {
             } else {
                 text += "   Reverb/Presence: -unset-\n"
             }
-            text += "   Model: \(preset?.moduleName ?? "-unknown-")\n"
-            text += "   Cabinet: \(preset?.cabinetName ?? "-unknown-")\n"
+            text += "   Model: \(preset?.moduleName ?? "-unknown-") (\(preset?.module ?? -1))\n"
+            text += "   Cabinet: \(preset?.cabinetName ?? "-unknown-") (\(preset?.cabinet ?? -1))\n"
             for effect in preset?.effects ?? [DTOEffect]() {
                 text += "   \(effect.type.rawValue): \(effect.name ?? "-empty-") - \(effect.enabled ? "ON" : "OFF") (colour \(effect.colour))\n"
                 text += "    Knobs: \(effect.knobCount) - "
@@ -574,7 +584,7 @@ extension MainVC: WheelDelegate {
         case .active:
             switch sender {
             case wheel:
-                //Flogger.log.debug("Wheel value is changing to \(value)")
+                Flogger.log.debug("Wheel value is changing to \(value)")
                 displayPreset(value)
             default:
                 Flogger.log.error("Don't know what wheel sent this event")
@@ -593,7 +603,7 @@ extension MainVC: WheelDelegate {
         case .active:
             switch sender {
             case wheel:
-                //Flogger.log.debug("Wheel value changed to \(value)")
+                Flogger.log.debug("Wheel value changed to \(value)")
                 saveButton.setState(.active)
                 exitButton.setState(.active)
                 ampManager.getPreset(value,
