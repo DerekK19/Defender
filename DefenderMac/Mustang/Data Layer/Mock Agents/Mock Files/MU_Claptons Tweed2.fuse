@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="Mustang I/II" ProductId="1">
+  <Amplifier>
+    <Module ID="103" POS="0" BypassState="1">
+      <Param ControlIndex="0">51400</Param>
+      <Param ControlIndex="1">49601</Param>
+      <Param ControlIndex="2">32896</Param>
+      <Param ControlIndex="3">32896</Param>
+      <Param ControlIndex="4">56283</Param>
+      <Param ControlIndex="5">16191</Param>
+      <Param ControlIndex="6">48059</Param>
+      <Param ControlIndex="7">32896</Param>
+      <Param ControlIndex="8">32896</Param>
+      <Param ControlIndex="9">65535</Param>
+      <Param ControlIndex="10">49601</Param>
+      <Param ControlIndex="11">32896</Param>
+      <Param ControlIndex="12">1</Param>
+      <Param ControlIndex="13">1</Param>
+      <Param ControlIndex="14">1</Param>
+      <Param ControlIndex="15">0</Param>
+      <Param ControlIndex="16">0</Param>
+      <Param ControlIndex="17">1</Param>
+      <Param ControlIndex="18">1</Param>
+      <Param ControlIndex="19">1</Param>
+      <Param ControlIndex="20">0</Param>
+      <Param ControlIndex="21">1</Param>
+      <Param ControlIndex="22">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="60" POS="3" BypassState="0">
+        <Param ControlIndex="0">19275</Param>
+        <Param ControlIndex="1">46260</Param>
+        <Param ControlIndex="2">47031</Param>
+        <Param ControlIndex="3">4626</Param>
+        <Param ControlIndex="4">43690</Param>
+      </Module>
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="0" POS="5" BypassState="1"></Module>
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="43" POS="6" BypassState="1">
+        <Param ControlIndex="0">4626</Param>
+        <Param ControlIndex="1">35980</Param>
+        <Param ControlIndex="2">16448</Param>
+        <Param ControlIndex="3">4883</Param>
+        <Param ControlIndex="4">8481</Param>
+        <Param ControlIndex="5">0</Param>
+      </Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="11" POS="7" BypassState="1">
+        <Param ControlIndex="0">7967</Param>
+        <Param ControlIndex="1">21074</Param>
+        <Param ControlIndex="2">21845</Param>
+        <Param ControlIndex="3">61680</Param>
+        <Param ControlIndex="4">26985</Param>
+      </Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="0">
+    <SongFile Location="6">No Band</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="Claptons Tweed2" author="nbw2" rating="0" genre1="6" genre2="40" genre3="-1" tags="" fenderid="4737">Set using an American Stratocaster.  Use the volume on the guitar to control gain, not the amp.</Info>
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+  <FirstExpressionPedal VolumeModeBehavior="1" ExpressionModeBehavior="6" HeelSetting="0" ToeSetting="65535" PedalMode="0" BypassEffectWhenVolumeMode="1" VolumeSwitchRevert="0" DefaultPedalState="0" PedalOverrideState="0" ParameterIndex="0" />
+  <UsbGain>0</UsbGain>
+</Preset>
