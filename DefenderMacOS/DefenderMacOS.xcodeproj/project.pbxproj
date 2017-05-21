@@ -24,7 +24,6 @@
 		655A5A451D4C555500E15E1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 655A5A441D4C555500E15E1F /* Assets.xcassets */; };
 		655A5A481D4C555500E15E1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 655A5A461D4C555500E15E1F /* Main.storyboard */; };
 		655A5A531D4C555500E15E1F /* DefenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A5A521D4C555500E15E1F /* DefenderTests.swift */; };
-		655A5A5E1D4C555500E15E1F /* DefenderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A5A5D1D4C555500E15E1F /* DefenderUITests.swift */; };
 		656A5ABB1DA880B700B7BE3E /* LEDControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656A5ABA1DA880B700B7BE3E /* LEDControl.swift */; };
 		656A5ABD1DA883BB00B7BE3E /* NSColor+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656A5ABC1DA883BB00B7BE3E /* NSColor+Brightness.swift */; };
 		657C3AC81D56DB8E002DEF17 /* AmpKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C3AC71D56DB8E002DEF17 /* AmpKnobControl.swift */; };
@@ -150,13 +149,6 @@
 			remoteGlobalIDString = 655A5A3C1D4C555400E15E1F;
 			remoteInfo = Defender;
 		};
-		655A5A5A1D4C555500E15E1F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 655A5A351D4C555400E15E1F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 655A5A3C1D4C555400E15E1F;
-			remoteInfo = Defender;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -181,9 +173,6 @@
 		655A5A4E1D4C555500E15E1F /* DefenderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DefenderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		655A5A521D4C555500E15E1F /* DefenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefenderTests.swift; sourceTree = "<group>"; };
 		655A5A541D4C555500E15E1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		655A5A591D4C555500E15E1F /* DefenderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DefenderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		655A5A5D1D4C555500E15E1F /* DefenderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefenderUITests.swift; sourceTree = "<group>"; };
-		655A5A5F1D4C555500E15E1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		655A5F4F1D4C57E100E15E1F /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		656A5ABA1DA880B700B7BE3E /* LEDControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEDControl.swift; sourceTree = "<group>"; };
 		656A5ABC1DA883BB00B7BE3E /* NSColor+Brightness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Brightness.swift"; sourceTree = "<group>"; };
@@ -325,13 +314,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		655A5A561D4C555500E15E1F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -339,10 +321,9 @@
 			isa = PBXGroup;
 			children = (
 				655A5F4F1D4C57E100E15E1F /* Cartfile */,
-				655A5A3F1D4C555400E15E1F /* Defender */,
+				655A5A3F1D4C555400E15E1F /* DefenderMacOS */,
 				65C954A61ECE571B005FA7A3 /* Mustang */,
-				655A5A511D4C555500E15E1F /* DefenderTests */,
-				655A5A5C1D4C555500E15E1F /* DefenderUITests */,
+				655A5A511D4C555500E15E1F /* DefenderMacOSTests */,
 				6581F9991D4C5D76005BB5C9 /* Frameworks */,
 				655A5A3E1D4C555400E15E1F /* Products */,
 			);
@@ -353,12 +334,11 @@
 			children = (
 				655A5A3D1D4C555400E15E1F /* Defender.app */,
 				655A5A4E1D4C555500E15E1F /* DefenderTests.xctest */,
-				655A5A591D4C555500E15E1F /* DefenderUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		655A5A3F1D4C555400E15E1F /* Defender */ = {
+		655A5A3F1D4C555400E15E1F /* DefenderMacOS */ = {
 			isa = PBXGroup;
 			children = (
 				655A5A401D4C555400E15E1F /* AppDelegate.swift */,
@@ -371,25 +351,16 @@
 				657C3AC91D56DB95002DEF17 /* Resources */,
 				65C9554B1ECE57F3005FA7A3 /* Supporting Files */,
 			);
-			path = Defender;
+			path = DefenderMacOS;
 			sourceTree = "<group>";
 		};
-		655A5A511D4C555500E15E1F /* DefenderTests */ = {
+		655A5A511D4C555500E15E1F /* DefenderMacOSTests */ = {
 			isa = PBXGroup;
 			children = (
 				655A5A521D4C555500E15E1F /* DefenderTests.swift */,
 				655A5A541D4C555500E15E1F /* Info.plist */,
 			);
-			path = DefenderTests;
-			sourceTree = "<group>";
-		};
-		655A5A5C1D4C555500E15E1F /* DefenderUITests */ = {
-			isa = PBXGroup;
-			children = (
-				655A5A5D1D4C555500E15E1F /* DefenderUITests.swift */,
-				655A5A5F1D4C555500E15E1F /* Info.plist */,
-			);
-			path = DefenderUITests;
+			path = DefenderMacOSTests;
 			sourceTree = "<group>";
 		};
 		657C3AC51D56DB5C002DEF17 /* View Controllers */ = {
@@ -697,24 +668,6 @@
 			productReference = 655A5A4E1D4C555500E15E1F /* DefenderTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		655A5A581D4C555500E15E1F /* DefenderUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 655A5A681D4C555500E15E1F /* Build configuration list for PBXNativeTarget "DefenderUITests" */;
-			buildPhases = (
-				655A5A551D4C555500E15E1F /* Sources */,
-				655A5A561D4C555500E15E1F /* Frameworks */,
-				655A5A571D4C555500E15E1F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				655A5A5B1D4C555500E15E1F /* PBXTargetDependency */,
-			);
-			name = DefenderUITests;
-			productName = DefenderUITests;
-			productReference = 655A5A591D4C555500E15E1F /* DefenderUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -736,14 +689,9 @@
 						LastSwiftMigration = 0800;
 						TestTargetID = 655A5A3C1D4C555400E15E1F;
 					};
-					655A5A581D4C555500E15E1F = {
-						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0800;
-						TestTargetID = 655A5A3C1D4C555400E15E1F;
-					};
 				};
 			};
-			buildConfigurationList = 655A5A381D4C555400E15E1F /* Build configuration list for PBXProject "Defender" */;
+			buildConfigurationList = 655A5A381D4C555400E15E1F /* Build configuration list for PBXProject "DefenderMacOS" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -758,7 +706,6 @@
 			targets = (
 				655A5A3C1D4C555400E15E1F /* Defender */,
 				655A5A4D1D4C555500E15E1F /* DefenderTests */,
-				655A5A581D4C555500E15E1F /* DefenderUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -787,13 +734,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		655A5A4C1D4C555500E15E1F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		655A5A571D4C555500E15E1F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -978,14 +918,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		655A5A551D4C555500E15E1F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				655A5A5E1D4C555500E15E1F /* DefenderUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -993,11 +925,6 @@
 			isa = PBXTargetDependency;
 			target = 655A5A3C1D4C555400E15E1F /* Defender */;
 			targetProxy = 655A5A4F1D4C555500E15E1F /* PBXContainerItemProxy */;
-		};
-		655A5A5B1D4C555500E15E1F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 655A5A3C1D4C555400E15E1F /* Defender */;
-			targetProxy = 655A5A5A1D4C555500E15E1F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1143,7 +1070,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = Defender/Info.plist;
+				INFOPLIST_FILE = DefenderMacOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.Defender;
@@ -1166,7 +1093,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = Defender/Info.plist;
+				INFOPLIST_FILE = DefenderMacOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.Defender;
@@ -1215,38 +1142,10 @@
 			};
 			name = Release;
 		};
-		655A5A691D4C555500E15E1F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = DefenderUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.DefenderUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = Defender;
-			};
-			name = Debug;
-		};
-		655A5A6A1D4C555500E15E1F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = DefenderUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.DefenderUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = Defender;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		655A5A381D4C555400E15E1F /* Build configuration list for PBXProject "Defender" */ = {
+		655A5A381D4C555400E15E1F /* Build configuration list for PBXProject "DefenderMacOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				655A5A601D4C555500E15E1F /* Debug */,
@@ -1269,15 +1168,6 @@
 			buildConfigurations = (
 				655A5A661D4C555500E15E1F /* Debug */,
 				655A5A671D4C555500E15E1F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		655A5A681D4C555500E15E1F /* Build configuration list for PBXNativeTarget "DefenderUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				655A5A691D4C555500E15E1F /* Debug */,
-				655A5A6A1D4C555500E15E1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

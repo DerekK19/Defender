@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:DefenderApp/DefenderApp.xcodeproj">
+      location = "group:DefenderiOS/DefenderiOS.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:DefenderMac/Defender.xcodeproj">
+      location = "group:DefenderMacOS/DefenderMacOS.xcodeproj">
    </FileRef>
    <Group
       location = "group:fastlane"

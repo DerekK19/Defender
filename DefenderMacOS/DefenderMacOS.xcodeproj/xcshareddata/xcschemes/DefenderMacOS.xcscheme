@@ -14,10 +14,24 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7198C2D71DD93601003238D7"
-               BuildableName = "DefenderApp.app"
-               BlueprintName = "DefenderApp"
-               ReferencedContainer = "container:DefenderApp.xcodeproj">
+               BlueprintIdentifier = "655A5A3C1D4C555400E15E1F"
+               BuildableName = "Defender.app"
+               BlueprintName = "Defender"
+               ReferencedContainer = "container:DefenderMacOS.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "655A5A4D1D4C555500E15E1F"
+               BuildableName = "DefenderTests.xctest"
+               BlueprintName = "DefenderTests"
+               ReferencedContainer = "container:DefenderMacOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,34 +42,14 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7198C2EB1DD93601003238D7"
-               BuildableName = "DefenderAppTests.xctest"
-               BlueprintName = "DefenderAppTests"
-               ReferencedContainer = "container:DefenderApp.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7198C2F61DD93601003238D7"
-               BuildableName = "DefenderAppUITests.xctest"
-               BlueprintName = "DefenderAppUITests"
-               ReferencedContainer = "container:DefenderApp.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7198C2D71DD93601003238D7"
-            BuildableName = "DefenderApp.app"
-            BlueprintName = "DefenderApp"
-            ReferencedContainer = "container:DefenderApp.xcodeproj">
+            BlueprintIdentifier = "655A5A3C1D4C555400E15E1F"
+            BuildableName = "Defender.app"
+            BlueprintName = "Defender"
+            ReferencedContainer = "container:DefenderMacOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -71,16 +65,28 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7198C2D71DD93601003238D7"
-            BuildableName = "DefenderApp.app"
-            BlueprintName = "DefenderApp"
-            ReferencedContainer = "container:DefenderApp.xcodeproj">
+            BlueprintIdentifier = "655A5A3C1D4C555400E15E1F"
+            BuildableName = "Defender.app"
+            BlueprintName = "Defender"
+            ReferencedContainer = "container:DefenderMacOS.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints YES"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "CA_DEBUG_TRANSACTIONS"
+            value = "1"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -90,16 +96,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7198C2D71DD93601003238D7"
-            BuildableName = "DefenderApp.app"
-            BlueprintName = "DefenderApp"
-            ReferencedContainer = "container:DefenderApp.xcodeproj">
+            BlueprintIdentifier = "655A5A3C1D4C555400E15E1F"
+            BuildableName = "Defender.app"
+            BlueprintName = "Defender"
+            ReferencedContainer = "container:DefenderMacOS.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

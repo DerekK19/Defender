@@ -66,56 +66,45 @@ open class Mustang {
     }
     
     func getPresets(_ amplifier: BOAmplifier, onCompletion: @escaping (_ presets: [BOPreset]) ->()) {
-        if let amplifier = amplifier as? BOAmplifier {
-            controller.getPresetsForAmplifier(
-                amplifier,
-                onSuccess: { (presets) in
-                    onCompletion(presets.map { $0 } )
-            }
-            )
+        controller.getPresetsForAmplifier(
+            amplifier,
+            onSuccess: { (presets) in
+                onCompletion(presets.map { $0 } )
         }
+        )
     }
     
     func getPreset(_ amplifier: BOAmplifier, preset: UInt8, onCompletion: @escaping (_ preset: BOPreset?) ->()) {
-        if let amplifier = amplifier as? BOAmplifier {
-            controller.getPresetForAmplifier(
-                amplifier,
-                preset: preset,
-                onSuccess: { (preset) in
-                    onCompletion(preset.map { $0 } )
-            }
-            )
+        controller.getPresetForAmplifier(
+            amplifier,
+            preset: preset,
+            onSuccess: { (preset) in
+                onCompletion(preset.map { $0 } )
         }
+        )
     }
-    
+
     func setPreset(_ amplifier: BOAmplifier, preset: BOPreset, onCompletion: @escaping (_ preset: BOPreset?) ->()) {
-        if let amplifier = amplifier as? BOAmplifier,
-            let preset = preset as? BOPreset {
-            controller.setPresetForAmplifier(
-                amplifier,
-                preset: preset,
-                onSuccess: { (preset) in
-                    onCompletion(preset.map { $0 } )
-                }
-            )
-        } else {
-            onCompletion(nil)
+        controller.setPresetForAmplifier(
+            amplifier,
+            preset: preset,
+            onSuccess: { (preset) in
+                onCompletion(preset.map { $0 } )
         }
+        )
     }
     
     func savePreset(_ amplifier: BOAmplifier, preset: UInt8, name: String, onCompletion: @escaping (_ saved: Bool) ->()) {
-        if let amplifier = amplifier as? BOAmplifier {
-            controller.savePresetForAmplifier(
-                amplifier,
-                preset: preset,
-                name: name,
-                onSuccess: { (saved) in
-                    onCompletion(saved ?? false)
-            }
+        controller.savePresetForAmplifier(
+            amplifier,
+            preset: preset,
+            name: name,
+            onSuccess: { (saved) in
+                onCompletion(saved ?? false)
+        }
         )
     }
-    }
-    
+
     func login(username: String, password: String, onSuccess: @escaping () -> (), onFail: @escaping () -> ()) {
         controller.login(username: username, password: password, onSuccess: onSuccess, onFail: onFail)
     }
@@ -133,9 +122,6 @@ open class Mustang {
     }
 
     func exportPresetAsXml(preset: BOPreset) -> XMLDocument? {
-        if let preset = preset as? BOPreset {
-            return controller.exportPresetAsXml(preset: preset)
-        }
-        return nil
+        return controller.exportPresetAsXml(preset: preset)
     }
 }

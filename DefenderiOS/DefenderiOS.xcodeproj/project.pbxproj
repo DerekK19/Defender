@@ -65,7 +65,6 @@
 		7198C2E31DD93601003238D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7198C2E21DD93601003238D7 /* Assets.xcassets */; };
 		7198C2E61DD93601003238D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7198C2E41DD93601003238D7 /* LaunchScreen.storyboard */; };
 		7198C2F11DD93601003238D7 /* DefenderAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C2F01DD93601003238D7 /* DefenderAppTests.swift */; };
-		7198C2FC1DD93601003238D7 /* DefenderAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C2FB1DD93601003238D7 /* DefenderAppUITests.swift */; };
 		7198C30A1DD949D1003238D7 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 7198C3091DD949D1003238D7 /* Cartfile */; };
 		7198C3101DD94BAC003238D7 /* BluetoothKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7198C30E1DD94BAC003238D7 /* BluetoothKit.framework */; };
 		7198C3111DD94BAC003238D7 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7198C30F1DD94BAC003238D7 /* ObjectMapper.framework */; };
@@ -90,13 +89,6 @@
 			remoteInfo = Watchkit;
 		};
 		7198C2ED1DD93601003238D7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7198C2D01DD93601003238D7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7198C2D71DD93601003238D7;
-			remoteInfo = DefenderApp;
-		};
-		7198C2F81DD93601003238D7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7198C2D01DD93601003238D7 /* Project object */;
 			proxyType = 1;
@@ -185,19 +177,16 @@
 		7196141B1DED0D3E00AE3E6E /* KnobBaseControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = KnobBaseControl.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7196141D1DED0E3400AE3E6E /* PedalKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalKnobControl.swift; sourceTree = "<group>"; };
 		719614201DED161200AE3E6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Effect.storyboard; sourceTree = "<group>"; };
-		7198C2D81DD93601003238D7 /* DefenderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DefenderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7198C2D81DD93601003238D7 /* DefenderiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DefenderiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7198C2DB1DD93601003238D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7198C2DD1DD93601003238D7 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		7198C2E01DD93601003238D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		7198C2E21DD93601003238D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7198C2E51DD93601003238D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7198C2E71DD93601003238D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7198C2EC1DD93601003238D7 /* DefenderAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DefenderAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7198C2EC1DD93601003238D7 /* DefenderiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DefenderiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7198C2F01DD93601003238D7 /* DefenderAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefenderAppTests.swift; sourceTree = "<group>"; };
 		7198C2F21DD93601003238D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7198C2F71DD93601003238D7 /* DefenderAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DefenderAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7198C2FB1DD93601003238D7 /* DefenderAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefenderAppUITests.swift; sourceTree = "<group>"; };
-		7198C2FD1DD93601003238D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7198C3091DD949D1003238D7 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		7198C30E1DD94BAC003238D7 /* BluetoothKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BluetoothKit.framework; path = Carthage/Build/iOS/BluetoothKit.framework; sourceTree = "<group>"; };
 		7198C30F1DD94BAC003238D7 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
@@ -229,13 +218,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7198C2E91DD93601003238D7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7198C2F41DD93601003238D7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -289,6 +271,14 @@
 			path = WatchControllers;
 			sourceTree = "<group>";
 		};
+		65894A601ED24F3E0093C980 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7198C2E71DD93601003238D7 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		65F69F0B1DDD703F0017188D /* Common Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,13 +307,12 @@
 		7198C2CF1DD93601003238D7 = {
 			isa = PBXGroup;
 			children = (
-				7198C2DA1DD93601003238D7 /* DefenderApp */,
 				7198C3091DD949D1003238D7 /* Cartfile */,
-				7198C2EF1DD93601003238D7 /* DefenderAppTests */,
-				7198C2FA1DD93601003238D7 /* DefenderAppUITests */,
+				7198C2DA1DD93601003238D7 /* DefenderiOS */,
 				656EE82D1E30758700410BB4 /* WatchControllers */,
 				656862621E25D03E00115981 /* Watchkit */,
 				656862711E25D04100115981 /* Watchkit Extension */,
+				7198C2EF1DD93601003238D7 /* DefenderiOSTests */,
 				7198C30D1DD94A48003238D7 /* Frameworks */,
 				7198C2D91DD93601003238D7 /* Products */,
 			);
@@ -332,46 +321,36 @@
 		7198C2D91DD93601003238D7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7198C2D81DD93601003238D7 /* DefenderApp.app */,
-				7198C2EC1DD93601003238D7 /* DefenderAppTests.xctest */,
-				7198C2F71DD93601003238D7 /* DefenderAppUITests.xctest */,
+				7198C2D81DD93601003238D7 /* DefenderiOS.app */,
+				7198C2EC1DD93601003238D7 /* DefenderiOSTests.xctest */,
 				656862611E25D03E00115981 /* Watchkit.app */,
 				6568626D1E25D04100115981 /* Watchkit Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7198C2DA1DD93601003238D7 /* DefenderApp */ = {
+		7198C2DA1DD93601003238D7 /* DefenderiOS */ = {
 			isa = PBXGroup;
 			children = (
+				7198C2DB1DD93601003238D7 /* AppDelegate.swift */,
 				7198C3401DDA9C20003238D7 /* View Controllers */,
 				7198C33C1DDA8317003238D7 /* Managers */,
 				7198C5ED1DDE476C003238D7 /* Custom Controls */,
 				65F69F0B1DDD703F0017188D /* Common Models */,
 				719614181DED040E00AE3E6E /* Extensions */,
 				7198C33F1DDA9C08003238D7 /* Resources */,
-				7198C2DB1DD93601003238D7 /* AppDelegate.swift */,
-				7198C2E71DD93601003238D7 /* Info.plist */,
+				65894A601ED24F3E0093C980 /* Supporting Files */,
 			);
-			path = DefenderApp;
+			path = DefenderiOS;
 			sourceTree = "<group>";
 		};
-		7198C2EF1DD93601003238D7 /* DefenderAppTests */ = {
+		7198C2EF1DD93601003238D7 /* DefenderiOSTests */ = {
 			isa = PBXGroup;
 			children = (
 				7198C2F01DD93601003238D7 /* DefenderAppTests.swift */,
 				7198C2F21DD93601003238D7 /* Info.plist */,
 			);
-			path = DefenderAppTests;
-			sourceTree = "<group>";
-		};
-		7198C2FA1DD93601003238D7 /* DefenderAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				7198C2FB1DD93601003238D7 /* DefenderAppUITests.swift */,
-				7198C2FD1DD93601003238D7 /* Info.plist */,
-			);
-			path = DefenderAppUITests;
+			path = DefenderiOSTests;
 			sourceTree = "<group>";
 		};
 		7198C30D1DD94A48003238D7 /* Frameworks */ = {
@@ -484,9 +463,9 @@
 			productReference = 6568626D1E25D04100115981 /* Watchkit Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
-		7198C2D71DD93601003238D7 /* DefenderApp */ = {
+		7198C2D71DD93601003238D7 /* DefenderiOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7198C3001DD93601003238D7 /* Build configuration list for PBXNativeTarget "DefenderApp" */;
+			buildConfigurationList = 7198C3001DD93601003238D7 /* Build configuration list for PBXNativeTarget "DefenderiOS" */;
 			buildPhases = (
 				7198C30B1DD949F6003238D7 /* Update/Build Carthage Dependencies */,
 				7198C2D41DD93601003238D7 /* Sources */,
@@ -500,14 +479,14 @@
 			dependencies = (
 				6568627E1E25D04100115981 /* PBXTargetDependency */,
 			);
-			name = DefenderApp;
+			name = DefenderiOS;
 			productName = DefenderApp;
-			productReference = 7198C2D81DD93601003238D7 /* DefenderApp.app */;
+			productReference = 7198C2D81DD93601003238D7 /* DefenderiOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7198C2EB1DD93601003238D7 /* DefenderAppTests */ = {
+		7198C2EB1DD93601003238D7 /* DefenderiOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7198C3031DD93601003238D7 /* Build configuration list for PBXNativeTarget "DefenderAppTests" */;
+			buildConfigurationList = 7198C3031DD93601003238D7 /* Build configuration list for PBXNativeTarget "DefenderiOSTests" */;
 			buildPhases = (
 				7198C2E81DD93601003238D7 /* Sources */,
 				7198C2E91DD93601003238D7 /* Frameworks */,
@@ -518,28 +497,10 @@
 			dependencies = (
 				7198C2EE1DD93601003238D7 /* PBXTargetDependency */,
 			);
-			name = DefenderAppTests;
+			name = DefenderiOSTests;
 			productName = DefenderAppTests;
-			productReference = 7198C2EC1DD93601003238D7 /* DefenderAppTests.xctest */;
+			productReference = 7198C2EC1DD93601003238D7 /* DefenderiOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		7198C2F61DD93601003238D7 /* DefenderAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7198C3061DD93601003238D7 /* Build configuration list for PBXNativeTarget "DefenderAppUITests" */;
-			buildPhases = (
-				7198C2F31DD93601003238D7 /* Sources */,
-				7198C2F41DD93601003238D7 /* Frameworks */,
-				7198C2F51DD93601003238D7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7198C2F91DD93601003238D7 /* PBXTargetDependency */,
-			);
-			name = DefenderAppUITests;
-			productName = DefenderAppUITests;
-			productReference = 7198C2F71DD93601003238D7 /* DefenderAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -572,15 +533,9 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 7198C2D71DD93601003238D7;
 					};
-					7198C2F61DD93601003238D7 = {
-						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = DX8B97QV93;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 7198C2D71DD93601003238D7;
-					};
 				};
 			};
-			buildConfigurationList = 7198C2D31DD93601003238D7 /* Build configuration list for PBXProject "DefenderApp" */;
+			buildConfigurationList = 7198C2D31DD93601003238D7 /* Build configuration list for PBXProject "DefenderiOS" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -593,9 +548,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7198C2D71DD93601003238D7 /* DefenderApp */,
-				7198C2EB1DD93601003238D7 /* DefenderAppTests */,
-				7198C2F61DD93601003238D7 /* DefenderAppUITests */,
+				7198C2D71DD93601003238D7 /* DefenderiOS */,
+				7198C2EB1DD93601003238D7 /* DefenderiOSTests */,
 				656862601E25D03E00115981 /* Watchkit */,
 				6568626C1E25D04100115981 /* Watchkit Extension */,
 			);
@@ -636,13 +590,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7198C2EA1DD93601003238D7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7198C2F51DD93601003238D7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -756,14 +703,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7198C2F31DD93601003238D7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7198C2FC1DD93601003238D7 /* DefenderAppUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -779,13 +718,8 @@
 		};
 		7198C2EE1DD93601003238D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7198C2D71DD93601003238D7 /* DefenderApp */;
+			target = 7198C2D71DD93601003238D7 /* DefenderiOS */;
 			targetProxy = 7198C2ED1DD93601003238D7 /* PBXContainerItemProxy */;
-		};
-		7198C2F91DD93601003238D7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7198C2D71DD93601003238D7 /* DefenderApp */;
-			targetProxy = 7198C2F81DD93601003238D7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1031,7 +965,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DefenderApp/Info.plist;
+				INFOPLIST_FILE = DefenderiOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.DefenderApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1052,7 +986,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DefenderApp/Info.plist;
+				INFOPLIST_FILE = DefenderiOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.DefenderApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1093,34 +1027,6 @@
 			};
 			name = Release;
 		};
-		7198C3071DD93601003238D7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = DX8B97QV93;
-				INFOPLIST_FILE = DefenderAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.DefenderAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = DefenderApp;
-			};
-			name = Debug;
-		};
-		7198C3081DD93601003238D7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = DX8B97QV93;
-				INFOPLIST_FILE = DefenderAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.DefenderAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = DefenderApp;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1142,7 +1048,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7198C2D31DD93601003238D7 /* Build configuration list for PBXProject "DefenderApp" */ = {
+		7198C2D31DD93601003238D7 /* Build configuration list for PBXProject "DefenderiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7198C2FE1DD93601003238D7 /* Debug */,
@@ -1151,7 +1057,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7198C3001DD93601003238D7 /* Build configuration list for PBXNativeTarget "DefenderApp" */ = {
+		7198C3001DD93601003238D7 /* Build configuration list for PBXNativeTarget "DefenderiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7198C3011DD93601003238D7 /* Debug */,
@@ -1160,20 +1066,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7198C3031DD93601003238D7 /* Build configuration list for PBXNativeTarget "DefenderAppTests" */ = {
+		7198C3031DD93601003238D7 /* Build configuration list for PBXNativeTarget "DefenderiOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7198C3041DD93601003238D7 /* Debug */,
 				7198C3051DD93601003238D7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7198C3061DD93601003238D7 /* Build configuration list for PBXNativeTarget "DefenderAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7198C3071DD93601003238D7 /* Debug */,
-				7198C3081DD93601003238D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

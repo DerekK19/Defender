@@ -24,20 +24,20 @@ platform :ios do
     before_all do
         
         # The Application's Info Plist file - where the bundle ID and build numbers are stored
-        ENV["AppPlist"] = './DefenderApp/DefenderApp/Info.plist'
-        ENV["WatchAppPlist"] = './DefenderApp/Watchkit/Info.plist'
-        ENV["WatchExtPlist"] = './DefenderApp/Watchkit Extension/Info.plist'
+        ENV["AppPlist"] = './DefenderiOS/DefenderiOS/Info.plist'
+        ENV["WatchAppPlist"] = './DefenderiOS/Watchkit/Info.plist'
+        ENV["WatchExtPlist"] = './DefenderiOS/Watchkit Extension/Info.plist'
 
         # The App build scheme name
-        ENV["BuildScheme"] = "DefenderApp"
+        ENV["BuildScheme"] = "DefenderiOS"
         
         # The App display name
         ENV["AppName"] = "Defender"
         
         # The App's IPA path name
-        ENV["IpaPath"] = "../FastlaneArtifacts/DefenderApp.ipa"
+        ENV["IpaPath"] = "../FastlaneArtifacts/DefenderiOS.ipa"
         
-        sh "rm -rf "+ENV['PWD']+"/../FastlaneArtifacts/Defender.*"
+        sh "rm -rf "+ENV['PWD']+"/../FastlaneArtifacts/DefenderiOS.*"
         
         # --- BELOW HERE: Everything should be similar for all Fastlane projects
         
@@ -172,10 +172,10 @@ end
 platform :mac do
   before_all do
     # The Application's Info Plist file - where the bundle ID and build numbers are stored
-    ENV["AppPlist"] = './DefenderMac/Defender/Info.plist'
+    ENV["AppPlist"] = './DefenderMacOS/DefenderMacOS/Info.plist'
 
     # The App build scheme name
-    ENV["BuildScheme"] = "Defender"
+    ENV["BuildScheme"] = "DefenderMacOS"
 
     # The App display name
     ENV["AppName"] = "Defender (Mac)"

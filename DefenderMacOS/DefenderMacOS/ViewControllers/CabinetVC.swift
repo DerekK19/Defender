@@ -19,6 +19,7 @@ class CabinetVC: NSViewController {
     @IBOutlet weak var effectLead: NSBox!
     @IBOutlet weak var pedalLead: NSBox!
     @IBOutlet weak var cabinet: CabinetControl!
+    @IBOutlet weak var headImage: NSImageView!
     @IBOutlet weak var cabinetImage: NSImageView!
     @IBOutlet weak var powerLED: LEDControl!
     @IBOutlet weak var shade: ShadeControl!
@@ -87,6 +88,14 @@ class CabinetVC: NSViewController {
                 cabinetImage.image = NSImage(named: "cabinet-10")
             default:
                 cabinetImage.image = nil
+            }
+            switch preset.module ?? 0 {
+            case 93:
+                headImage.image = NSImage(named: "head-93")
+            case 121:
+                headImage.image = NSImage(named: "head-121")
+            default:
+                headImage.image = nil
             }
         } else {
             state = .disabled
