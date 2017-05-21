@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct BOSearchItemData: DTOSearchItemData {
+struct BOSearchItemData {
     
     var filename: String
-    var preset: DTOPreset?
+    var preset: BOPreset?
     
     private let _preset: BOPreset?
     

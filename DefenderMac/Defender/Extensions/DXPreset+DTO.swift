@@ -1,5 +1,5 @@
 //
-//  DXPreset+DTO.swift
+//  DXPreset+BO.swift
 //  Defender
 //
 //  Created by Derek Knight on 18/11/16.
@@ -10,7 +10,7 @@ import Foundation
 
 extension DXPreset {
     
-    convenience init(dto: DTOPreset) {
+    convenience init(dto: BOPreset) {
         self.init(name: dto.name)
         number = dto.number
         module = dto.module
@@ -34,7 +34,7 @@ extension DXPreset {
         effects = dto.effects.map { DXEffect(dto: $0) }
     }
     
-    func copyInto(preset: inout DTOPreset?) {
+    func copyInto(preset: inout BOPreset?) {
         if preset != nil {
             preset!.volume = volume
             preset!.number = number

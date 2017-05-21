@@ -35,7 +35,7 @@ class PedalVC: NSViewController {
     @IBOutlet weak var knobLowerRight: PedalKnobControl!
     @IBOutlet weak var shade: ShadeControl!
     
-    var effect: DTOEffect?
+    var effect: BOEffect?
     
     var delegate: PedalVCDelegate?
     
@@ -115,7 +115,7 @@ class PedalVC: NSViewController {
         knobLowerRight.delegate = self
     }
     
-    func configureWithPedal(_ pedal: DTOEffect?) {
+    func configureWithPedal(_ pedal: BOEffect?) {
         effect = pedal
         delegate = nil
         typeLabel.stringValue = pedal?.type.rawValue.uppercased() ?? ""

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BOInfo: DTOInfo {
+struct BOInfo {
     
     var name: String
     var author: String

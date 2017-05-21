@@ -77,7 +77,7 @@ class CabinetVC: NSViewController {
         state = .disabled
     }
     
-    func configureWithPreset(_ preset: DTOPreset?) {
+    func configureWithPreset(_ preset: BOPreset?) {
         delegate = nil
         fullBackgroundColour = slotBackgroundColour
         if let preset = preset {

@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct BOPreset: DTOPreset {
-    var amplifier: DTOAmplifier?
+struct BOPreset {
+    var amplifier: BOAmplifier?
     var _amplifier: BOAmplifier?
     var number: UInt8?
     var name: String
@@ -40,9 +40,9 @@ struct BOPreset: DTOPreset {
     var unknown6: UInt8?
     var unknown7: UInt8?
     var unknown8: UInt8?
-    var effects: [DTOEffect]
-    var band: DTOBand?
-    var fuse: DTOFuse?
+    var effects: [BOEffect]
+    var band: BOBand?
+    var fuse: BOFuse?
 
     private var _effects: [BOEffect]
     private var _band: BOBand?

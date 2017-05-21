@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct BOFuse: DTOFuse {
+struct BOFuse {
     
-    var info: DTOInfo?
+    var info: BOInfo?
     
     private var _info: BOInfo?
     

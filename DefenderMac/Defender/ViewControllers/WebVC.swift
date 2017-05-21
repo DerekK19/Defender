@@ -10,7 +10,7 @@ import Cocoa
 import Flogger
 
 protocol WebVCDelegate {
-    func didSelectPreset(preset: DTOPreset?)
+    func didSelectPreset(preset: BOPreset?)
 }
 
 class WebVC: NSViewController {
@@ -49,7 +49,7 @@ class WebVC: NSViewController {
     var webBackgroundColour = NSColor.black
 
     var newPage: UInt = 1
-    var pagination: DTOSearchPagination?
+    var pagination: BOSearchPagination?
     
     var state: EffectState = .disabled {
         didSet {
@@ -88,7 +88,7 @@ class WebVC: NSViewController {
             searchResultsScrollView.isHidden = !loggedIn
             searched = false
             pagination = nil
-            presets = [DTOSearchItem]()
+            presets = [BOSearchItem]()
             searchResultsTableView.reloadData()
         }
     }
@@ -107,7 +107,7 @@ class WebVC: NSViewController {
     }
     
     internal var ampManager: AmpManager?
-    fileprivate var presets = [DTOSearchItem]()
+    fileprivate var presets = [BOSearchItem]()
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -221,14 +221,14 @@ class WebVC: NSViewController {
         ampManager?.search(forTitle: searchTextField.stringValue,
                               pageNumber: page,
                               maxReturn: 10)
-        { (response: DTOSearchResponse?) in
+        { (response: BOSearchResponse?) in
             if let response = response {
                 self.loadPageWith(response)
             }
         }
     }
     
-    private func loadPageWith(_ response: DTOSearchResponse) {
+    private func loadPageWith(_ response: BOSearchResponse) {
         let items = response.items
         pagination = response.pagination
         newPage = pagination!.page

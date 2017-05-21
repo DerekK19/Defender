@@ -31,10 +31,10 @@ class AmpManager {
     
     let mocking = false
     
-    private var amplifiers = [DTOAmplifier]()
-    internal private(set) var currentAmplifier: DTOAmplifier?
+    private var amplifiers = [BOAmplifier]()
+    internal private(set) var currentAmplifier: BOAmplifier?
     
-    private var presets = [UInt8 : DTOPreset] ()
+    private var presets = [UInt8 : BOPreset] ()
     private var latestGain: Float?
     private var latestVolume: Float?
     private var latestTreble: Float?
@@ -65,7 +65,7 @@ class AmpManager {
     
     init() {
         mustang = Mustang(mockMode: mocking)
-        presets = [UInt8 : DTOPreset] ()
+        presets = [UInt8 : BOPreset] ()
         currentAmplifier = nil
         configureNotifications()
         amplifiers = mustang.getConnectedAmplifiers()
@@ -89,7 +89,7 @@ class AmpManager {
     }
 
     @objc fileprivate func deviceConnected() {
-        presets = [UInt8 : DTOPreset] ()
+        presets = [UInt8 : BOPreset] ()
         currentAmplifier = nil
         amplifiers = mustang.getConnectedAmplifiers()
         currentAmplifier = amplifiers.first
@@ -111,9 +111,9 @@ class AmpManager {
     }
     
     @objc fileprivate func deviceDisconnected() {
-        presets = [UInt8 : DTOPreset] ()
+        presets = [UInt8 : BOPreset] ()
         currentAmplifier = nil
-        amplifiers = [DTOAmplifier]()
+        amplifiers = [BOAmplifier]()
         currentAmplifier = nil
         DispatchQueue.main.async {
             self.delegate?.deviceDisconnected(ampManager: self)
@@ -253,7 +253,7 @@ class AmpManager {
         }
     }
 
-    open func getCachedPreset(_ preset: Int, onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
+    open func getCachedPreset(_ preset: Int, onCompletion: @escaping (_ preset: BOPreset?) ->()) {
         if let _ = currentAmplifier {
             if preset >= 0 && preset < presets.count {
                 DispatchQueue.main.async {
@@ -263,7 +263,7 @@ class AmpManager {
         }
     }
     
-    open func getPreset(_ preset: Int, fromAmplifier: Bool, onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
+    open func getPreset(_ preset: Int, fromAmplifier: Bool, onCompletion: @escaping (_ preset: BOPreset?) ->()) {
         if let amplifier = currentAmplifier {
             if !fromAmplifier && preset >= 0 && preset < presets.count && presets[UInt8(preset)]?.gain1 != nil {
                 DispatchQueue.main.async {
@@ -289,7 +289,7 @@ class AmpManager {
         }
     }
     
-    open func resetPreset(_ preset: Int, onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
+    open func resetPreset(_ preset: Int, onCompletion: @escaping (_ preset: BOPreset?) ->()) {
         if let amplifier = currentAmplifier {
             mustang.getPreset(
                 amplifier,
@@ -299,7 +299,7 @@ class AmpManager {
         }
     }
 
-    open func setPreset(_ preset: DTOPreset, onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
+    open func setPreset(_ preset: BOPreset, onCompletion: @escaping (_ preset: BOPreset?) ->()) {
         if let amplifier = currentAmplifier {
             if preset.gain1 == nil {
                 onCompletion(nil)
@@ -313,7 +313,7 @@ class AmpManager {
         }
     }
     
-    open func savePreset(_ preset: DTOPreset, onCompletion: @escaping (_ saved: Bool?) ->()) {
+    open func savePreset(_ preset: BOPreset, onCompletion: @escaping (_ saved: Bool?) ->()) {
         if let amplifier = currentAmplifier {
             if let number = preset.number {
                 mustang.savePreset(
@@ -351,7 +351,7 @@ class AmpManager {
     open func search(forTitle title: String,
                      pageNumber: UInt,
                      maxReturn: UInt,
-                     onCompletion: @escaping (_ response: DTOSearchResponse?) ->()) {
+                     onCompletion: @escaping (_ response: BOSearchResponse?) ->()) {
         mustang.search(forTitle: title,
                        pageNumber: pageNumber,
                        maxReturn: maxReturn,
@@ -382,11 +382,11 @@ class AmpManager {
         )
     }
     
-    open func importPreset(_ xml: XMLDocument) -> DTOPreset? {
+    open func importPreset(_ xml: XMLDocument) -> BOPreset? {
         return mustang.importPreset(xml)
     }
     
-    open func exportPresetAsXml(_ preset: DTOPreset) -> XMLDocument? {
+    open func exportPresetAsXml(_ preset: BOPreset) -> XMLDocument? {
         return mustang.exportPresetAsXml(preset: preset)
     }
     
@@ -543,7 +543,7 @@ class AmpManager {
         }
     }
 
-    fileprivate func addPreset(_ preset: DTOPreset?,  onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
+    fileprivate func addPreset(_ preset: BOPreset?,  onCompletion: @escaping (_ preset: BOPreset?) ->()) {
         if let preset = preset {
             if let number = preset.number {
                 self.presets[number] = preset

@@ -29,7 +29,7 @@ class EffectVC: NSViewController {
     @IBOutlet weak var knob6: EffectKnobControl!
     @IBOutlet weak var shade: ShadeControl!
 
-    var effect: DTOEffect?
+    var effect: BOEffect?
     
     var delegate: EffectVCDelegate?
 
@@ -100,7 +100,7 @@ class EffectVC: NSViewController {
         knob6.delegate = self
     }
     
-    func configureWithEffect(_ effect: DTOEffect?) {
+    func configureWithEffect(_ effect: BOEffect?) {
         self.effect = effect
         delegate = nil
         typeLabel.stringValue = effect?.type.rawValue.uppercased() ?? ""

@@ -80,7 +80,7 @@ class DisplayVC: NSViewController {
         reverbValue.isEnabled = false
     }
     
-    func configureWithPreset(_ preset: DTOPreset?) {
+    func configureWithPreset(_ preset: BOPreset?) {
         let presetKnown = preset != nil
         if let number = preset?.number {
             presetNumber.stringValue = presetKnown ? String(format: "%02d", number) : ""
@@ -95,7 +95,7 @@ class DisplayVC: NSViewController {
         setValueForFxField(reverbValue, effect: preset?.effects.filter( { $0.type == .Reverb } ).first, presetKnown: presetKnown)
     }
     
-    fileprivate func setValueForFxField(_ textField: NSTextField, effect: DTOEffect?, presetKnown: Bool) {
+    fileprivate func setValueForFxField(_ textField: NSTextField, effect: BOEffect?, presetKnown: Bool) {
         switch powerState {
         case .off:
             textField.isHidden = true

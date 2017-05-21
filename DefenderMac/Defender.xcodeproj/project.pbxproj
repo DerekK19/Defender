@@ -111,20 +111,6 @@
 		65C955391ECE571B005FA7A3 /* XMLElement+child.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954EA1ECE571B005FA7A3 /* XMLElement+child.swift */; };
 		65C9553A1ECE571B005FA7A3 /* XMLNode+value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954EB1ECE571B005FA7A3 /* XMLNode+value.swift */; };
 		65C9553B1ECE571B005FA7A3 /* fender_mustang_protocol.txt in Resources */ = {isa = PBXBuildFile; fileRef = 65C954EC1ECE571B005FA7A3 /* fender_mustang_protocol.txt */; };
-		65C9553C1ECE571B005FA7A3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65C954ED1ECE571B005FA7A3 /* Info.plist */; };
-		65C9553D1ECE571B005FA7A3 /* DTOAmplifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954EF1ECE571B005FA7A3 /* DTOAmplifier.swift */; };
-		65C9553E1ECE571B005FA7A3 /* DTOBand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954F01ECE571B005FA7A3 /* DTOBand.swift */; };
-		65C9553F1ECE571B005FA7A3 /* DTOEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954F11ECE571B005FA7A3 /* DTOEffect.swift */; };
-		65C955401ECE571B005FA7A3 /* DTOEffectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954F21ECE571B005FA7A3 /* DTOEffectType.swift */; };
-		65C955411ECE571B005FA7A3 /* DTOFuse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954F31ECE571B005FA7A3 /* DTOFuse.swift */; };
-		65C955421ECE571B005FA7A3 /* DTOInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954F41ECE571B005FA7A3 /* DTOInfo.swift */; };
-		65C955431ECE571B005FA7A3 /* DTOKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954F51ECE571B005FA7A3 /* DTOKnob.swift */; };
-		65C955441ECE571B005FA7A3 /* DTOPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954F61ECE571B005FA7A3 /* DTOPreset.swift */; };
-		65C955451ECE571B005FA7A3 /* DTOSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954F71ECE571B005FA7A3 /* DTOSearchItem.swift */; };
-		65C955461ECE571B005FA7A3 /* DTOSearchItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954F81ECE571B005FA7A3 /* DTOSearchItemData.swift */; };
-		65C955471ECE571B005FA7A3 /* DTOSearchPagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954F91ECE571B005FA7A3 /* DTOSearchPagination.swift */; };
-		65C955481ECE571B005FA7A3 /* DTOSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954FA1ECE571B005FA7A3 /* DTOSearchResponse.swift */; };
-		65C955491ECE571B005FA7A3 /* DTOSongFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954FB1ECE571B005FA7A3 /* DTOSongFile.swift */; };
 		65C9554A1ECE571B005FA7A3 /* Mustang.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954FD1ECE571B005FA7A3 /* Mustang.swift */; };
 		65EF3B3C1DCD8F7A00A01153 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */; };
 		65EF3B3D1DCD8F8500A01153 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */; };
@@ -282,21 +268,6 @@
 		65C954EA1ECE571B005FA7A3 /* XMLElement+child.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XMLElement+child.swift"; sourceTree = "<group>"; };
 		65C954EB1ECE571B005FA7A3 /* XMLNode+value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XMLNode+value.swift"; sourceTree = "<group>"; };
 		65C954EC1ECE571B005FA7A3 /* fender_mustang_protocol.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fender_mustang_protocol.txt; sourceTree = "<group>"; };
-		65C954ED1ECE571B005FA7A3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		65C954EF1ECE571B005FA7A3 /* DTOAmplifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOAmplifier.swift; sourceTree = "<group>"; };
-		65C954F01ECE571B005FA7A3 /* DTOBand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOBand.swift; sourceTree = "<group>"; };
-		65C954F11ECE571B005FA7A3 /* DTOEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOEffect.swift; sourceTree = "<group>"; };
-		65C954F21ECE571B005FA7A3 /* DTOEffectType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOEffectType.swift; sourceTree = "<group>"; };
-		65C954F31ECE571B005FA7A3 /* DTOFuse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOFuse.swift; sourceTree = "<group>"; };
-		65C954F41ECE571B005FA7A3 /* DTOInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOInfo.swift; sourceTree = "<group>"; };
-		65C954F51ECE571B005FA7A3 /* DTOKnob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOKnob.swift; sourceTree = "<group>"; };
-		65C954F61ECE571B005FA7A3 /* DTOPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOPreset.swift; sourceTree = "<group>"; };
-		65C954F71ECE571B005FA7A3 /* DTOSearchItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOSearchItem.swift; sourceTree = "<group>"; };
-		65C954F81ECE571B005FA7A3 /* DTOSearchItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOSearchItemData.swift; sourceTree = "<group>"; };
-		65C954F91ECE571B005FA7A3 /* DTOSearchPagination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOSearchPagination.swift; sourceTree = "<group>"; };
-		65C954FA1ECE571B005FA7A3 /* DTOSearchResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOSearchResponse.swift; sourceTree = "<group>"; };
-		65C954FB1ECE571B005FA7A3 /* DTOSongFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOSongFile.swift; sourceTree = "<group>"; };
-		65C954FC1ECE571B005FA7A3 /* Mustang.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mustang.h; sourceTree = "<group>"; };
 		65C954FD1ECE571B005FA7A3 /* Mustang.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mustang.swift; sourceTree = "<group>"; };
 		65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/Mac/AFNetworking.framework; sourceTree = "<group>"; };
 		65F69F121DDD70EE0017188D /* DXAmplifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXAmplifier.swift; sourceTree = "<group>"; };
@@ -509,14 +480,11 @@
 		65C954A61ECE571B005FA7A3 /* Mustang */ = {
 			isa = PBXGroup;
 			children = (
+				65C954FD1ECE571B005FA7A3 /* Mustang.swift */,
+				65C954EC1ECE571B005FA7A3 /* fender_mustang_protocol.txt */,
 				65C954A71ECE571B005FA7A3 /* Business Layer */,
 				65C954B91ECE571B005FA7A3 /* Data Layer */,
 				65C954E71ECE571B005FA7A3 /* Extensions */,
-				65C954EC1ECE571B005FA7A3 /* fender_mustang_protocol.txt */,
-				65C954ED1ECE571B005FA7A3 /* Info.plist */,
-				65C954EE1ECE571B005FA7A3 /* Interfaces */,
-				65C954FC1ECE571B005FA7A3 /* Mustang.h */,
-				65C954FD1ECE571B005FA7A3 /* Mustang.swift */,
 			);
 			path = Mustang;
 			sourceTree = "<group>";
@@ -641,26 +609,6 @@
 				65C954EB1ECE571B005FA7A3 /* XMLNode+value.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		65C954EE1ECE571B005FA7A3 /* Interfaces */ = {
-			isa = PBXGroup;
-			children = (
-				65C954EF1ECE571B005FA7A3 /* DTOAmplifier.swift */,
-				65C954F01ECE571B005FA7A3 /* DTOBand.swift */,
-				65C954F11ECE571B005FA7A3 /* DTOEffect.swift */,
-				65C954F21ECE571B005FA7A3 /* DTOEffectType.swift */,
-				65C954F31ECE571B005FA7A3 /* DTOFuse.swift */,
-				65C954F41ECE571B005FA7A3 /* DTOInfo.swift */,
-				65C954F51ECE571B005FA7A3 /* DTOKnob.swift */,
-				65C954F61ECE571B005FA7A3 /* DTOPreset.swift */,
-				65C954F71ECE571B005FA7A3 /* DTOSearchItem.swift */,
-				65C954F81ECE571B005FA7A3 /* DTOSearchItemData.swift */,
-				65C954F91ECE571B005FA7A3 /* DTOSearchPagination.swift */,
-				65C954FA1ECE571B005FA7A3 /* DTOSearchResponse.swift */,
-				65C954FB1ECE571B005FA7A3 /* DTOSongFile.swift */,
-			);
-			path = Interfaces;
 			sourceTree = "<group>";
 		};
 		65C9554B1ECE57F3005FA7A3 /* Supporting Files */ = {
@@ -820,7 +768,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65C9553C1ECE571B005FA7A3 /* Info.plist in Resources */,
 				65C955151ECE571B005FA7A3 /* M2_Preset10.fuse in Resources */,
 				657C3AD61D5C50B8002DEF17 /* Display.storyboard in Resources */,
 				65C955161ECE571B005FA7A3 /* M2_Preset97.fuse in Resources */,
@@ -934,7 +881,6 @@
 				65C955201ECE571B005FA7A3 /* DLExpressionPedal.swift in Sources */,
 				6501BEB61E46C856009469E6 /* DXPresetList.swift in Sources */,
 				65C955121ECE571B005FA7A3 /* FileMockAgent.swift in Sources */,
-				65C955491ECE571B005FA7A3 /* DTOSongFile.swift in Sources */,
 				657C3AC81D56DB8E002DEF17 /* AmpKnobControl.swift in Sources */,
 				65C955321ECE571B005FA7A3 /* FileServiceAgent.swift in Sources */,
 				65F69F261DE009F70017188D /* DXEffect.swift in Sources */,
@@ -943,7 +889,6 @@
 				655602B41E013A85004A4CD4 /* CabinetControl.swift in Sources */,
 				65C955071ECE571B005FA7A3 /* BOSearchItem.swift in Sources */,
 				658CEC0F1DA36D85006890A4 /* Enums.swift in Sources */,
-				65C955421ECE571B005FA7A3 /* DTOInfo.swift in Sources */,
 				658D10E21DB73BA3008C3A45 /* ShadeControl.swift in Sources */,
 				65C9550C1ECE571B005FA7A3 /* BOUSBDevice.swift in Sources */,
 				65C9552C1ECE571B005FA7A3 /* DLSearchResults.swift in Sources */,
@@ -955,9 +900,6 @@
 				65C955251ECE571B005FA7A3 /* DLPreset.swift in Sources */,
 				6525644B1DA89FCD00ACCD4B /* EffectKnobControl.swift in Sources */,
 				718C89651DCFCBBA00BC12E8 /* WebSlotControl.swift in Sources */,
-				65C9553D1ECE571B005FA7A3 /* DTOAmplifier.swift in Sources */,
-				65C955431ECE571B005FA7A3 /* DTOKnob.swift in Sources */,
-				65C955481ECE571B005FA7A3 /* DTOSearchResponse.swift in Sources */,
 				65F69F131DDD70EE0017188D /* DXAmplifier.swift in Sources */,
 				65C9551E1ECE571B005FA7A3 /* DLBand.swift in Sources */,
 				65C955331ECE571B005FA7A3 /* HIDServiceAgent.swift in Sources */,
@@ -965,7 +907,6 @@
 				65C9551D1ECE571B005FA7A3 /* DLAudioDevice.swift in Sources */,
 				65C954FE1ECE571B005FA7A3 /* BOAmplifier.swift in Sources */,
 				717C2DD71DE7AC7300DA68FD /* AmpManager.swift in Sources */,
-				65C955471ECE571B005FA7A3 /* DTOSearchPagination.swift in Sources */,
 				658CEC111DA44B97006890A4 /* EffectSlotControl.swift in Sources */,
 				65C955011ECE571B005FA7A3 /* BOEffect.swift in Sources */,
 				655A5A431D4C555500E15E1F /* MainVC.swift in Sources */,
@@ -975,16 +916,13 @@
 				65B37CBA1DD7CCA800433B89 /* RemoteManager.swift in Sources */,
 				65C955341ECE571B005FA7A3 /* USBServiceAgent.swift in Sources */,
 				658CEC031DA35E63006890A4 /* PedalVC.swift in Sources */,
-				65C9553F1ECE571B005FA7A3 /* DTOEffect.swift in Sources */,
 				65C955311ECE571B005FA7A3 /* AudioServiceAgent.swift in Sources */,
-				65C955451ECE571B005FA7A3 /* DTOSearchItem.swift in Sources */,
 				65C955351ECE571B005FA7A3 /* WebServiceAgent.swift in Sources */,
 				65C9550F1ECE571B005FA7A3 /* BaseServiceAgent.swift in Sources */,
 				65C9552A1ECE571B005FA7A3 /* DLSearchResponse.swift in Sources */,
 				655602AC1E00A041004A4CD4 /* CabinetVC.swift in Sources */,
 				65C955021ECE571B005FA7A3 /* BOFuse.swift in Sources */,
 				7167FEDA1D58032C0059A276 /* NSImage+Colour.swift in Sources */,
-				65C9553E1ECE571B005FA7A3 /* DTOBand.swift in Sources */,
 				65C9550A1ECE571B005FA7A3 /* BOSearchResponse.swift in Sources */,
 				65C9552B1ECE571B005FA7A3 /* DLSearchResult.swift in Sources */,
 				65C955111ECE571B005FA7A3 /* AudioMockAgent.swift in Sources */,
@@ -997,12 +935,9 @@
 				65F69F221DDED2290017188D /* DXPreset.swift in Sources */,
 				65C955361ECE571B005FA7A3 /* StorageAgent.swift in Sources */,
 				65FA11911DF3DFFE00FBD280 /* DXKnob+DTO.swift in Sources */,
-				65C955461ECE571B005FA7A3 /* DTOSearchItemData.swift in Sources */,
 				65C9553A1ECE571B005FA7A3 /* XMLNode+value.swift in Sources */,
 				65F69F161DDD71AB0017188D /* DXAmplifier+DTO.swift in Sources */,
 				65A65BA21DA4740400EDCA32 /* PedalPadControl.swift in Sources */,
-				65C955411ECE571B005FA7A3 /* DTOFuse.swift in Sources */,
-				65C955401ECE571B005FA7A3 /* DTOEffectType.swift in Sources */,
 				65F69F321DE14CC80017188D /* AppViewControl.swift in Sources */,
 				65C955291ECE571B005FA7A3 /* DLSearchPagination.swift in Sources */,
 				65F69F241DDED4B10017188D /* DXPreset+DTO.swift in Sources */,
@@ -1029,7 +964,6 @@
 				658CEC051DA35E81006890A4 /* EffectVC.swift in Sources */,
 				65C955091ECE571B005FA7A3 /* BOSearchPagination.swift in Sources */,
 				657C3AD01D5C46E6002DEF17 /* DisplayVC.swift in Sources */,
-				65C955441ECE571B005FA7A3 /* DTOPreset.swift in Sources */,
 				65F69F281DE00BBD0017188D /* DXEffect+DTO.swift in Sources */,
 				7198C5F11DDE9D3C003238D7 /* DXMessage.swift in Sources */,
 				65C955301ECE571B005FA7A3 /* AmpServiceAgent.swift in Sources */,

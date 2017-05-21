@@ -8,14 +8,22 @@
 
 import Foundation
 
-struct BOEffect: DTOEffect {
+public enum EffectType : String {
+    case Unknown = ""
+    case Stomp = "Stomp Box"
+    case Modulation = "Modulation"
+    case Delay = "Delay"
+    case Reverb = "Reverb"
+}
 
-    let type : DTOEffectType
+struct BOEffect {
+
+    let type : EffectType
     let module: Int
     var slot: Int
     var enabled: Bool
     var colour: Int
-    var knobs: [DTOKnob]
+    var knobs: [BOKnob]
     let name: String?
     var knobCount: Int
     let aValue1: Int

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BOAmplifier: DTOAmplifier {
+struct BOAmplifier {
     let vendor: Int
     let product: Int
     let name: String

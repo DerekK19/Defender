@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BOSongFile: DTOSongFile {
+struct BOSongFile {
     
     var location: Int
     var name: String?

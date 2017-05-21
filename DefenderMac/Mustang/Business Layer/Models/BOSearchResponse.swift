@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct BOSearchResponse: DTOSearchResponse {
+struct BOSearchResponse {
     
-    var pagination: DTOSearchPagination
-    var items: [DTOSearchItem]
+    var pagination: BOSearchPagination
+    var items: [BOSearchItem]
     
     private let _items: [BOSearchItem]
     

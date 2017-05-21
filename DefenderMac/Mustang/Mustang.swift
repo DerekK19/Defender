@@ -37,35 +37,35 @@ open class Mustang {
     open static let delayChangedNotificationName = "delayChanged"
     open static let reverbChangedNotificationName = "reverbChanged"
     
-    open func getUSBDevices() -> [UInt32] {
+    func getUSBDevices() -> [UInt32] {
         let info = controller.getUSBDevices()
         return info.map { $0.location }
     }
     
-    open func getHIDDevices() -> [UInt32] {
+    func getHIDDevices() -> [UInt32] {
         let info = controller.getHIDDevices()
         return info.map { $0.location }
     }
     
-    open func getAudioDevices() -> [UInt32] {
+    func getAudioDevices() -> [UInt32] {
         let info = controller.getAudioDevices()
         return info.map { $0.deviceId }
         
     }
 
-    open func getConnectedAmplifiers() -> [DTOAmplifier] {
+    func getConnectedAmplifiers() -> [BOAmplifier] {
         let info = controller.getConnectedAmplifiers()
         return info.map { $0 }
     }
     
-    open func getAmplifierType(_ amplifier: DTOAmplifier) -> String {
+    func getAmplifierType(_ amplifier: BOAmplifier) -> String {
         if let info = controller.getInfoForDeviceWithId(amplifier.location) {
             return info.name
         }
         return "Unknown"
     }
     
-    open func getPresets(_ amplifier: DTOAmplifier, onCompletion: @escaping (_ presets: [DTOPreset]) ->()) {
+    func getPresets(_ amplifier: BOAmplifier, onCompletion: @escaping (_ presets: [BOPreset]) ->()) {
         if let amplifier = amplifier as? BOAmplifier {
             controller.getPresetsForAmplifier(
                 amplifier,
@@ -76,7 +76,7 @@ open class Mustang {
         }
     }
     
-    open func getPreset(_ amplifier: DTOAmplifier, preset: UInt8, onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
+    func getPreset(_ amplifier: BOAmplifier, preset: UInt8, onCompletion: @escaping (_ preset: BOPreset?) ->()) {
         if let amplifier = amplifier as? BOAmplifier {
             controller.getPresetForAmplifier(
                 amplifier,
@@ -88,7 +88,7 @@ open class Mustang {
         }
     }
     
-    open func setPreset(_ amplifier: DTOAmplifier, preset: DTOPreset, onCompletion: @escaping (_ preset: DTOPreset?) ->()) {
+    func setPreset(_ amplifier: BOAmplifier, preset: BOPreset, onCompletion: @escaping (_ preset: BOPreset?) ->()) {
         if let amplifier = amplifier as? BOAmplifier,
             let preset = preset as? BOPreset {
             controller.setPresetForAmplifier(
@@ -103,7 +103,7 @@ open class Mustang {
         }
     }
     
-    open func savePreset(_ amplifier: DTOAmplifier, preset: UInt8, name: String, onCompletion: @escaping (_ saved: Bool) ->()) {
+    func savePreset(_ amplifier: BOAmplifier, preset: UInt8, name: String, onCompletion: @escaping (_ saved: Bool) ->()) {
         if let amplifier = amplifier as? BOAmplifier {
             controller.savePresetForAmplifier(
                 amplifier,
@@ -116,23 +116,23 @@ open class Mustang {
     }
     }
     
-    open func login(username: String, password: String, onSuccess: @escaping () -> (), onFail: @escaping () -> ()) {
+    func login(username: String, password: String, onSuccess: @escaping () -> (), onFail: @escaping () -> ()) {
         controller.login(username: username, password: password, onSuccess: onSuccess, onFail: onFail)
     }
     
-    open func logout(onSuccess: @escaping () -> (), onFail: @escaping () -> ()) {
+    func logout(onSuccess: @escaping () -> (), onFail: @escaping () -> ()) {
         controller.logout(onSuccess: onSuccess, onFail: onFail)
     }
     
-    open func search(forTitle title: String, pageNumber: UInt, maxReturn: UInt, onSuccess: @escaping (_ response: DTOSearchResponse) -> (), onFail: @escaping () -> ()) {
+    func search(forTitle title: String, pageNumber: UInt, maxReturn: UInt, onSuccess: @escaping (_ response: BOSearchResponse) -> (), onFail: @escaping () -> ()) {
         controller.search(forTitle: title, pageNumber: pageNumber, maxReturn: maxReturn, onSuccess: onSuccess, onFail: onFail)
     }
     
-    open func importPreset(_ xml: XMLDocument) -> DTOPreset? {
+    func importPreset(_ xml: XMLDocument) -> BOPreset? {
         return controller.importPresetWithXml(xml)
     }
 
-    open func exportPresetAsXml(preset: DTOPreset) -> XMLDocument? {
+    func exportPresetAsXml(preset: BOPreset) -> XMLDocument? {
         if let preset = preset as? BOPreset {
             return controller.exportPresetAsXml(preset: preset)
         }

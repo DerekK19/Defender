@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BOKnob: DTOKnob {
+struct BOKnob {
 
     var name: String
     var value: Float

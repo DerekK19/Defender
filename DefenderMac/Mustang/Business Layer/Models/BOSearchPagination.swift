@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BOSearchPagination: DTOSearchPagination {
+struct BOSearchPagination {
     
     var total: UInt
     var limit: UInt

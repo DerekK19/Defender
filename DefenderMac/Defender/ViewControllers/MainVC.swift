@@ -73,7 +73,7 @@ class MainVC: NSViewController {
 
     fileprivate var documentController = NSDocumentController.shared()
     
-    var currentPreset: DTOPreset?
+    var currentPreset: BOPreset?
     
     let verbose = true
     var debuggingConstraints = false
@@ -335,7 +335,7 @@ class MainVC: NSViewController {
         powerState = .off
     }
     
-    fileprivate func setPreset(_ preset: DTOPreset?) {
+    fileprivate func setPreset(_ preset: BOPreset?) {
         currentPreset = preset
         displayPreset(preset)
         sendCurrentPreset()
@@ -357,7 +357,7 @@ class MainVC: NSViewController {
         }
     }
     
-    fileprivate func displayPreset(_ preset: DTOPreset?) {
+    fileprivate func displayPreset(_ preset: BOPreset?) {
         
         cabinetVC?.configureWithPreset(nil)
         pedal1VC?.configureWithPedal(nil)
@@ -378,12 +378,12 @@ class MainVC: NSViewController {
 
         cabinetVC?.configureWithPreset(preset)
         displayVC?.configureWithPreset(preset)
-        for effect in preset?.effects ?? [DTOEffect]() {
+        for effect in preset?.effects ?? [BOEffect]() {
             displayEffect(effect)
         }
     }
 
-    private func displayEffect(_ effect: DTOEffect?) {
+    private func displayEffect(_ effect: BOEffect?) {
         switch effect?.slot ?? -1 {
         case 0:
             pedal1VC?.configureWithPedal(effect)
@@ -463,7 +463,7 @@ class MainVC: NSViewController {
     }
     
     // MARK: Debug logging
-    internal func logPreset(_ preset: DTOPreset?) {
+    internal func logPreset(_ preset: BOPreset?) {
         if verbose {
             var text = ""
             if let number = preset?.number {
@@ -504,7 +504,7 @@ class MainVC: NSViewController {
             }
             text += "   Model: \(preset?.moduleName ?? "-unknown-") (\(preset?.module ?? -1))\n"
             text += "   Cabinet: \(preset?.cabinetName ?? "-unknown-") (\(preset?.cabinet ?? -1))\n"
-            for effect in preset?.effects ?? [DTOEffect]() {
+            for effect in preset?.effects ?? [BOEffect]() {
                 text += "   \(effect.type.rawValue): \(effect.name ?? "-empty-") - \(effect.enabled ? "ON" : "OFF") (colour \(effect.colour))\n"
                 text += "    Knobs: \(effect.knobCount) - "
                 effect.knobs.forEach { text += "\(String(format: "%0.2f", $0.value)) " }
@@ -684,7 +684,7 @@ extension MainVC: AmpManagerDelegate {
 
 extension MainVC: WebVCDelegate {
     
-    func didSelectPreset(preset: DTOPreset?) {
+    func didSelectPreset(preset: BOPreset?) {
         var newPreset = preset
         if let _ = newPreset {
             newPreset!.number = currentPreset?.number

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BOBand: DTOBand {
+struct BOBand {
     
     var type: Int
     var iRepeat: Int
@@ -16,7 +16,7 @@ struct BOBand: DTOBand {
     var balance: Int
     var speed: Int
     var pitch: Int
-    var songFile: DTOSongFile?
+    var songFile: BOSongFile?
     
     private var _songFile: BOSongFile?
 

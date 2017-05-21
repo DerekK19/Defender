@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct BOSearchItem : DTOSearchItem {
+struct BOSearchItem {
     
     var id: String
     var title: String
-    var data: DTOSearchItemData?
+    var data: BOSearchItemData?
     
     private let _data: BOSearchItemData?
     

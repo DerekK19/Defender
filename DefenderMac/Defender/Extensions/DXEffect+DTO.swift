@@ -1,5 +1,5 @@
 //
-//  DXEffect+DTO.swift
+//  DXEffect+BO.swift
 //  Defender
 //
 //  Created by Derek Knight on 19/11/16.
@@ -10,7 +10,7 @@ import Foundation
 
 extension DXEffect {
     
-    convenience init(dto: DTOEffect) {
+    convenience init(dto: BOEffect) {
         var convertedType: DXEffectType = .Unknown
         switch dto.type {
         case .Stomp:
@@ -33,7 +33,7 @@ extension DXEffect {
         knobs = Array(dto.knobs.map({ DXKnob(dto: $0) }).dropLast(dto.knobs.count - dto.knobCount))
     }
  
-    func copyInto(effect: inout DTOEffect) {
+    func copyInto(effect: inout BOEffect) {
 //       effect.type = type
 //        effect.module = module
         effect.slot = slot
