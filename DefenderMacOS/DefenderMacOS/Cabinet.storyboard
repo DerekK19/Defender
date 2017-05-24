@@ -14,18 +14,18 @@
             <objects>
                 <viewController id="N5f-O9-EX5" customClass="CabinetVC" customModule="Defender" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="s5i-IG-zhc" customClass="CabinetSlotControl" customModule="Defender" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="307"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="eNz-AH-DsR" customClass="LEDControl" customModule="Defender" customModuleProvider="target">
-                                <rect key="frame" x="4" y="289" width="7" height="7"/>
+                                <rect key="frame" x="4" y="296" width="7" height="7"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="7" id="kNP-Ae-33d"/>
                                     <constraint firstAttribute="width" secondItem="eNz-AH-DsR" secondAttribute="height" multiplier="1:1" id="t8p-0M-RfB"/>
                                 </constraints>
                             </customView>
                             <box boxType="custom" borderType="line" borderWidth="2" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="tKV-lp-5Ic">
-                                <rect key="frame" x="0.0" y="148" width="200" height="4"/>
+                                <rect key="frame" x="0.0" y="152" width="200" height="4"/>
                                 <view key="contentView" id="Hoe-V7-b8d">
                                     <rect key="frame" x="2" y="2" width="196" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,9 +36,9 @@
                                 <color key="borderColor" red="0.0" green="0.062745098040000002" blue="0.8862745098" alpha="1" colorSpace="deviceRGB"/>
                             </box>
                             <box boxType="custom" borderType="line" borderWidth="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="HVv-Iw-YUO">
-                                <rect key="frame" x="200" y="0.0" width="4" height="300"/>
+                                <rect key="frame" x="200" y="0.0" width="4" height="307"/>
                                 <view key="contentView" id="fgi-Mf-3YJ">
-                                    <rect key="frame" x="4" y="4" width="0.0" height="292"/>
+                                    <rect key="frame" x="4" y="4" width="0.0" height="299"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <constraints>
@@ -47,24 +47,17 @@
                                 <color key="borderColor" red="0.0" green="0.062745098040000002" blue="0.8862745098" alpha="1" colorSpace="deviceRGB"/>
                             </box>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="GgW-5B-cZ6" customClass="CabinetControl" customModule="Defender" customModuleProvider="target">
-                                <rect key="frame" x="44" y="16" width="312" height="268"/>
+                                <rect key="frame" x="44" y="16" width="312" height="275"/>
                             </customView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QPH-vG-aTq">
-                                <rect key="frame" x="44" y="214" width="312" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="QPH-vG-aTq" secondAttribute="height" multiplier="312:70" id="lm4-d1-cmZ"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="Vh6-S9-oop"/>
-                            </imageView>
                             <imageView horizontalHuggingPriority="240" verticalHuggingPriority="240" translatesAutoresizingMaskIntoConstraints="NO" id="MFE-NO-IOt">
-                                <rect key="frame" x="44" y="16" width="312" height="198"/>
+                                <rect key="frame" x="44" y="16" width="312" height="275"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="MFE-NO-IOt" secondAttribute="height" multiplier="52:33" id="KTk-EO-Ngg"/>
+                                    <constraint firstAttribute="width" secondItem="MFE-NO-IOt" secondAttribute="height" multiplier="170:150" id="KTk-EO-Ngg"/>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="VdG-fq-KEs"/>
                             </imageView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="igY-xo-Ldb" customClass="ShadeControl" customModule="Defender" customModuleProvider="target">
-                                <rect key="frame" x="4" y="4" width="392" height="292"/>
+                                <rect key="frame" x="4" y="4" width="392" height="299"/>
                             </customView>
                         </subviews>
                         <constraints>
@@ -77,20 +70,17 @@
                             <constraint firstAttribute="bottom" secondItem="HVv-Iw-YUO" secondAttribute="bottom" id="Dbf-yy-eaY"/>
                             <constraint firstItem="eNz-AH-DsR" firstAttribute="leading" secondItem="s5i-IG-zhc" secondAttribute="leading" constant="4" id="DfC-if-Cwj"/>
                             <constraint firstAttribute="bottom" secondItem="GgW-5B-cZ6" secondAttribute="bottom" constant="16" id="Fvb-aX-UHb"/>
+                            <constraint firstItem="GgW-5B-cZ6" firstAttribute="height" secondItem="MFE-NO-IOt" secondAttribute="height" id="ME5-pX-bkZ"/>
                             <constraint firstAttribute="bottom" secondItem="igY-xo-Ldb" secondAttribute="bottom" constant="4" id="Pm8-Zp-WZL"/>
                             <constraint firstAttribute="trailing" secondItem="igY-xo-Ldb" secondAttribute="trailing" constant="4" id="Q2z-9U-ifa"/>
                             <constraint firstItem="GgW-5B-cZ6" firstAttribute="leading" secondItem="s5i-IG-zhc" secondAttribute="leading" constant="44" id="VMq-jH-PCP"/>
                             <constraint firstItem="eNz-AH-DsR" firstAttribute="width" secondItem="eNz-AH-DsR" secondAttribute="height" multiplier="1:1" id="bDZ-4Y-bar"/>
-                            <constraint firstItem="QPH-vG-aTq" firstAttribute="top" secondItem="GgW-5B-cZ6" secondAttribute="top" id="dz2-60-Qrn"/>
                             <constraint firstItem="GgW-5B-cZ6" firstAttribute="centerX" secondItem="MFE-NO-IOt" secondAttribute="centerX" id="eTm-Zy-bPj"/>
-                            <constraint firstItem="QPH-vG-aTq" firstAttribute="width" secondItem="MFE-NO-IOt" secondAttribute="width" id="ktN-Ol-zV2"/>
+                            <constraint firstItem="MFE-NO-IOt" firstAttribute="centerY" secondItem="GgW-5B-cZ6" secondAttribute="centerY" id="eqe-1h-cey"/>
                             <constraint firstItem="eNz-AH-DsR" firstAttribute="top" secondItem="s5i-IG-zhc" secondAttribute="top" constant="4" id="lwi-J5-oIA"/>
-                            <constraint firstItem="QPH-vG-aTq" firstAttribute="centerX" secondItem="MFE-NO-IOt" secondAttribute="centerX" id="mHg-0M-NwH"/>
                             <constraint firstAttribute="trailing" secondItem="GgW-5B-cZ6" secondAttribute="trailing" constant="44" id="n7H-GT-nK6"/>
                             <constraint firstItem="igY-xo-Ldb" firstAttribute="top" secondItem="s5i-IG-zhc" secondAttribute="top" constant="4" id="pxy-Ch-Qow"/>
                             <constraint firstAttribute="centerX" secondItem="tKV-lp-5Ic" secondAttribute="trailing" id="q0k-Ml-5rG"/>
-                            <constraint firstItem="MFE-NO-IOt" firstAttribute="top" secondItem="QPH-vG-aTq" secondAttribute="bottom" id="qvR-zX-FdK"/>
-                            <constraint firstItem="GgW-5B-cZ6" firstAttribute="bottom" secondItem="MFE-NO-IOt" secondAttribute="bottom" id="umy-fW-Z6x"/>
                             <constraint firstItem="igY-xo-Ldb" firstAttribute="leading" secondItem="s5i-IG-zhc" secondAttribute="leading" constant="4" id="yQG-aX-wsD"/>
                         </constraints>
                     </view>
@@ -98,7 +88,6 @@
                         <outlet property="cabinet" destination="GgW-5B-cZ6" id="Plr-gv-VAw"/>
                         <outlet property="cabinetImage" destination="MFE-NO-IOt" id="uH4-hJ-MIC"/>
                         <outlet property="effectLead" destination="HVv-Iw-YUO" id="p9u-Vm-fFD"/>
-                        <outlet property="headImage" destination="QPH-vG-aTq" id="8Yd-Tf-b5a"/>
                         <outlet property="pedalLead" destination="tKV-lp-5Ic" id="ubI-9o-9dK"/>
                         <outlet property="powerLED" destination="eNz-AH-DsR" id="TIb-BP-HoR"/>
                         <outlet property="shade" destination="igY-xo-Ldb" id="pbf-y3-UbM"/>
