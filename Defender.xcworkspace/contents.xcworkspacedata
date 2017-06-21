@@ -35,4 +35,7 @@
          location = "group:SnapshotHelper.swift">
       </FileRef>
    </Group>
+   <FileRef
+      location = "group:Jenkinsfile">
+   </FileRef>
 </Workspace>
