@@ -2,7 +2,7 @@ node('Mac') {
   try {
 
     stage ('Build') {
-      VersionNumber projectStartDate: '', versionNumberString: '${BUILD_DATE_FORMATTED, "yyMMddHHmm"}', versionPrefix: ''
+      env.JENKINS_CFBundleVersion = VersionNumber(versionNumberString: '${BUILD_DATE_FORMATTED, "yyMMddHHmm"}')
       env.FASTLANE_DISABLE_COLORS = "1"
       env.LC_CTYPE = "en_US.UTF-8"
       checkout scm
