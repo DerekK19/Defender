@@ -1,4 +1,4 @@
-node('Mac') {
+node('Xcode8.3.3') {
   try {
 
     stage ('Build') {
