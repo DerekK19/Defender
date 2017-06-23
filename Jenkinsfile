@@ -7,8 +7,6 @@ node('Xcode8.3.3') {
       env.LC_CTYPE = "en_US.UTF-8"
       checkout scm
       sh '''#!/bin/bash -l
-       whoami
-       env
        fastlane ios beta
        fastlane mac home
       '''
