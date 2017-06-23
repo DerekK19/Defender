@@ -6,6 +6,8 @@ node('Xcode8.3.3') {
       env.FASTLANE_DISABLE_COLORS = "1"
       env.LC_CTYPE = "en_US.UTF-8"
       checkout scm
+      sh 'whoami'
+      sh 'env'
       sh 'fastlane ios beta'
       sh 'fastlane mac home'
     }
