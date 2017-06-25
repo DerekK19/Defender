@@ -4,7 +4,6 @@ node('Xcode8.3.3') {
   try {
 
     stage ('Build') {
-      env.App_Name = "Defender"
       env.JENKINS_CFBundleVersion = VersionNumber(versionNumberString: '${BUILD_DATE_FORMATTED, "yyMMddHHmm"}')
       env.FASTLANE_DISABLE_COLORS = "1"
       env.LC_CTYPE = "en_US.UTF-8"
@@ -16,6 +15,7 @@ node('Xcode8.3.3') {
     }
 
     stage ('Deploy') {
+      env.App_Name = "Defender"
       sh '''#!/bin/sh -l
         cp "Deployment/Defender-512.png" "../FastlaneArtifacts/${env.App_Name}@512.png"
         cp "Deployment/InstallerBackground.png" "../FastlaneArtifacts/InstallerBackground.png"
