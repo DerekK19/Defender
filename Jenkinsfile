@@ -1,18 +1,33 @@
+properties([buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))])
+
 node('Xcode8.3.3') {
   try {
 
     stage ('Build') {
+      env.App_Name = "Defender"
       env.JENKINS_CFBundleVersion = VersionNumber(versionNumberString: '${BUILD_DATE_FORMATTED, "yyMMddHHmm"}')
       env.FASTLANE_DISABLE_COLORS = "1"
       env.LC_CTYPE = "en_US.UTF-8"
       checkout scm
-      sh '''#!/bin/bash -l
+      sh '''#!/bin/sh -l
        fastlane ios beta
        fastlane mac home
       '''
     }
 
     stage ('Deploy') {
+      sh '''#!/bin/sh -l
+        cp "Deployment/Defender-512.png" "../FastlaneArtifacts/${env.App_Name}@512.png"
+        cp "Deployment/InstallerBackground.png" "../FastlaneArtifacts/InstallerBackground.png"
+        cp "Deployment/DefenderMac.json" "../FastlaneArtifacts/${env.App_Name}.json"
+
+        cd ../FastlaneArtifacts
+        rm -rf "${env.App_Name}.dmg"
+        /usr/local/bin/appdmg "${env.App_Name}.json" "${env.App_Name}.dmg"
+
+        cp "../FastlaneArtifacts/${env.App_Name}.dmg" "../FastlaneArtifacts/archives/${env.App_Name}-${env.JENKINS_CFBundleVersion}.dmg"
+        cp "../FastlaneArtifacts/${env.App_Name}.app.dSYM.zip" "../FastlaneArtifacts/archives/${env.App_Name}-${env.JENKINS_CFBundleVersion}.app.dSYM.zip"
+      '''
     }
 
   } catch (e) {
