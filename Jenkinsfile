@@ -4,6 +4,7 @@ node('Xcode8.3.3') {
   try {
 
     stage ('Build') {
+      env.App_Name = "Defender"
       env.JENKINS_CFBundleVersion = VersionNumber(versionNumberString: '${BUILD_DATE_FORMATTED, "yyMMddHHmm"}')
       env.FASTLANE_DISABLE_COLORS = "1"
       env.LC_CTYPE = "en_US.UTF-8"
@@ -15,19 +16,18 @@ node('Xcode8.3.3') {
     }
 
     stage ('Deploy') {
-      env.App_Name = "Defender"
-      sh '''#!/bin/sh -l
-        cp "Deployment/Defender-512.png" "../FastlaneArtifacts/${env.App_Name}@512.png"
+      sh """#!/bin/sh -l
+        cp "Deployment/Defender-512.png" "../FastlaneArtifacts/${App_Name}@512.png"
         cp "Deployment/InstallerBackground.png" "../FastlaneArtifacts/InstallerBackground.png"
-        cp "Deployment/DefenderMac.json" "../FastlaneArtifacts/${env.App_Name}.json"
+        cp "Deployment/DefenderMac.json" "../FastlaneArtifacts/${App_Name}.json"
 
         cd ../FastlaneArtifacts
-        rm -rf "${env.App_Name}.dmg"
-        /usr/local/bin/appdmg "${env.App_Name}.json" "${env.App_Name}.dmg"
+        rm -rf "${App_Name}.dmg"
+        /usr/local/bin/appdmg "${App_Name}.json" "${App_Name}.dmg"
 
-        cp "../FastlaneArtifacts/${env.App_Name}.dmg" "../FastlaneArtifacts/archives/${env.App_Name}-${env.JENKINS_CFBundleVersion}.dmg"
-        cp "../FastlaneArtifacts/${env.App_Name}.app.dSYM.zip" "../FastlaneArtifacts/archives/${env.App_Name}-${env.JENKINS_CFBundleVersion}.app.dSYM.zip"
-      '''
+        cp "../FastlaneArtifacts/${App_Name}.dmg" "../FastlaneArtifacts/archives/${App_Name}-${JENKINS_CFBundleVersion}.dmg"
+        cp "../FastlaneArtifacts/${App_Name}.app.dSYM.zip" "../FastlaneArtifacts/archives/${App_Name}-${JENKINS_CFBundleVersion}.app.dSYM.zip"
+      """
     }
 
   } catch (e) {
