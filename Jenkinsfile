@@ -15,7 +15,7 @@ node('Xcode8.3.3') {
       '''
     }
 
-    stage ('Deploy') {
+    stage ('Package') {
       sh """#!/bin/sh -l
         cp "Deployment/Defender-512.png" "../FastlaneArtifacts/${App_Name}@512.png"
         cp "Deployment/InstallerBackground.png" "../FastlaneArtifacts/InstallerBackground.png"
@@ -28,6 +28,14 @@ node('Xcode8.3.3') {
         cp "../FastlaneArtifacts/${App_Name}.dmg" "../FastlaneArtifacts/archives/${App_Name}-${JENKINS_CFBundleVersion}.dmg"
         cp "../FastlaneArtifacts/${App_Name}.app.dSYM.zip" "../FastlaneArtifacts/archives/${App_Name}-${JENKINS_CFBundleVersion}.app.dSYM.zip"
       """
+    }
+
+    stage ('Archive') {
+        dir("../FastlaneArtifacts")
+        {
+            println(pwd())
+            archiveArtifacts artifacts: "${env.App_Name}*.*", fingerprint: true, allowEmptyArchive: false, onlyIfSuccessful: true
+        }
     }
 
   } catch (e) {

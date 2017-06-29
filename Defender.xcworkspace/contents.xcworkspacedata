@@ -11,19 +11,24 @@
       location = "group:fastlane"
       name = "fastlane">
       <FileRef
-         location = "group:Matchfile">
+         location = "group:Matchfile"
+         assignedFileDataType = "public.ruby-script">
       </FileRef>
       <FileRef
-         location = "group:Appfile">
+         location = "group:Appfile"
+         assignedFileDataType = "public.ruby-script">
       </FileRef>
       <FileRef
-         location = "group:Deliverfile">
+         location = "group:Deliverfile"
+         assignedFileDataType = "public.ruby-script">
       </FileRef>
       <FileRef
-         location = "group:Fastfile">
+         location = "group:Fastfile"
+         assignedFileDataType = "public.ruby-script">
       </FileRef>
       <FileRef
-         location = "group:Gymfile">
+         location = "group:Gymfile"
+         assignedFileDataType = "public.ruby-script">
       </FileRef>
       <FileRef
          location = "group:README.md">
@@ -32,13 +37,15 @@
          location = "group:report.xml">
       </FileRef>
       <FileRef
-         location = "group:Snapfile">
+         location = "group:Snapfile"
+         assignedFileDataType = "public.ruby-script">
       </FileRef>
       <FileRef
          location = "group:SnapshotHelper.swift">
       </FileRef>
    </Group>
    <FileRef
-      location = "group:Jenkinsfile">
+      location = "group:Jenkinsfile"
+      assignedFileDataType = "public.ruby-script">
    </FileRef>
 </Workspace>

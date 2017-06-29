@@ -187,7 +187,7 @@
 		7198C2EC1DD93601003238D7 /* DefenderiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DefenderiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7198C2F01DD93601003238D7 /* DefenderAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefenderAppTests.swift; sourceTree = "<group>"; };
 		7198C2F21DD93601003238D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7198C3091DD949D1003238D7 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		7198C3091DD949D1003238D7 /* Cartfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = Cartfile; sourceTree = "<group>"; };
 		7198C30E1DD94BAC003238D7 /* BluetoothKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BluetoothKit.framework; path = Carthage/Build/iOS/BluetoothKit.framework; sourceTree = "<group>"; };
 		7198C30F1DD94BAC003238D7 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		7198C3341DD9570D003238D7 /* RemoteDefender.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RemoteDefender.framework; path = Carthage/Build/iOS/RemoteDefender.framework; sourceTree = "<group>"; };
