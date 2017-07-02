@@ -31,6 +31,7 @@
 		656EE8321E30765000410BB4 /* PhoneSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EE8301E30765000410BB4 /* PhoneSessionController.swift */; };
 		656EE8341E30767400410BB4 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656EE8331E30767400410BB4 /* WatchConnectivity.framework */; };
 		656EE8361E307AD300410BB4 /* WatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EE8351E307AD300410BB4 /* WatchManager.swift */; };
+		65BBEF461F08B13100C2C90E /* ObjcExceptionBridging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65BBEF451F08B13100C2C90E /* ObjcExceptionBridging.framework */; };
 		65F69F0D1DDD70AB0017188D /* DXAmplifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F0C1DDD70AB0017188D /* DXAmplifier.swift */; };
 		65F69F181DDD745D0017188D /* Transferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F171DDD745D0017188D /* Transferable.swift */; };
 		65F69F1C1DDD93000017188D /* DXMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F1B1DDD93000017188D /* DXMessage.swift */; };
@@ -149,6 +150,7 @@
 		656EE8301E30765000410BB4 /* PhoneSessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneSessionController.swift; sourceTree = "<group>"; };
 		656EE8331E30767400410BB4 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
 		656EE8351E307AD300410BB4 /* WatchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchManager.swift; sourceTree = "<group>"; };
+		65BBEF451F08B13100C2C90E /* ObjcExceptionBridging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjcExceptionBridging.framework; path = Carthage/Build/iOS/ObjcExceptionBridging.framework; sourceTree = "<group>"; };
 		65F69F0C1DDD70AB0017188D /* DXAmplifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXAmplifier.swift; sourceTree = "<group>"; };
 		65F69F171DDD745D0017188D /* Transferable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transferable.swift; sourceTree = "<group>"; };
 		65F69F1B1DDD93000017188D /* DXMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXMessage.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				7198C3111DD94BAC003238D7 /* ObjectMapper.framework in Frameworks */,
 				650775BC1DEA936B00F5040C /* Flogger.framework in Frameworks */,
 				650775BE1DEA937000F5040C /* NSLogger.framework in Frameworks */,
+				65BBEF461F08B13100C2C90E /* ObjcExceptionBridging.framework in Frameworks */,
 				650775C01DEA937200F5040C /* XCGLogger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +361,7 @@
 			children = (
 				656EE8331E30767400410BB4 /* WatchConnectivity.framework */,
 				650775BF1DEA937200F5040C /* XCGLogger.framework */,
+				65BBEF451F08B13100C2C90E /* ObjcExceptionBridging.framework */,
 				650775BD1DEA937000F5040C /* NSLogger.framework */,
 				650775BB1DEA936A00F5040C /* Flogger.framework */,
 				7198C3341DD9570D003238D7 /* RemoteDefender.framework */,
@@ -626,6 +630,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Flogger.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/NSLogger.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/XCGLogger.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ObjcExceptionBridging.framework",
 			);
 			name = "Copy Carthage frameworks (for App Store submission bug)";
 			outputPaths = (
