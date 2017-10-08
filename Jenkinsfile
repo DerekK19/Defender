@@ -1,6 +1,6 @@
 properties([buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))])
 
-node('Xcode8.3.3') {
+node('Xcode9') {
   try {
 
     stage ('Build') {
