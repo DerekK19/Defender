@@ -27,7 +27,7 @@ class PhoneSessionController : NSObject {
         super.init()
         
         if WCSession.isSupported() {
-            session = WCSession.default()
+            session = WCSession.default
             session!.delegate = self
             session!.activate()
         } else {
@@ -36,9 +36,9 @@ class PhoneSessionController : NSObject {
     }
     
     fileprivate func sendMessage(_ message: WatchMessage) {
-        if WCSession.default().isReachable == true {
+        if WCSession.default.isReachable == true {
             let requestValues = [message.rawValue : message]
-            let session = WCSession.default()
+            let session = WCSession.default
             
             session.sendMessage(requestValues,
                                 replyHandler: { (replyDic: [String : Any]) -> Void in
@@ -54,9 +54,9 @@ class PhoneSessionController : NSObject {
         }
     }
     func sendMessage(_ message: WatchMessage, content: Any) {
-        if WCSession.default().isReachable == true {
+        if WCSession.default.isReachable == true {
             let requestValues = [message.rawValue : content]
-            let session = WCSession.default()
+            let session = WCSession.default
             session.sendMessage(requestValues,
                                 replyHandler: { (replyDic: [String : Any]) -> Void in
                                     self.log("Acknowleged")
@@ -74,7 +74,7 @@ class PhoneSessionController : NSObject {
     fileprivate func log(_ message: String) {
         NSLog(message)
         let requestValues = [WatchMessage.log.rawValue : message]
-        let session = WCSession.default()
+        let session = WCSession.default
         
         session.sendMessage(requestValues,
                             replyHandler: { (replyDic: [String : Any]) -> Void in

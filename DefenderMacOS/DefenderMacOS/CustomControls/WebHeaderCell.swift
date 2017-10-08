@@ -20,7 +20,7 @@ class WebHeaderCell : NSTableHeaderCell {
         super.draw(withFrame: cellFrame, in: controlView)
         if !controlView.isHidden {
             backgroundColor?.setFill()
-            NSRectFill(cellFrame)
+            cellFrame.fill()
             drawInterior(withFrame: cellFrame, in: controlView)
         }
     }

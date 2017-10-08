@@ -14,7 +14,7 @@ extension NSImage {
         let image: NSImage = copy() as! NSImage
         image.lockFocus()
         color.set()
-        NSRectFillUsingOperation(NSRect(origin: NSZeroPoint, size: image.size), .sourceAtop)
+        NSRect(origin: NSZeroPoint, size: image.size).fill(using: .sourceAtop)
         image.unlockFocus()
         return image
     }

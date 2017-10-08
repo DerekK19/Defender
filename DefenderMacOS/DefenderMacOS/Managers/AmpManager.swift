@@ -424,7 +424,7 @@ class AmpManager {
                 let presetDoc = mustang.exportPresetAsXml(preset: preset.value)
                 presetDoc?.characterEncoding = "utf-8"
                 presetDoc?.version = "1.0"
-                let presetXml = presetDoc?.xmlData(withOptions: Int(xmlOptions.rawValue))
+                let presetXml = presetDoc?.xmlData(options: XMLNode.Options(rawValue: XMLNode.Options.RawValue(Int(xmlOptions.rawValue))))
                 fileManager.createFile(atPath: "Presets/\(index)_\(preset.value.name).fuse", contents: presetXml)
                 let fuseDoc = XMLDocument()
                 let fuseElement = presetDoc?.rootElement()?.elements(forName: "FUSE").first
@@ -437,7 +437,7 @@ class AmpManager {
                 }
                 fuseDoc.characterEncoding = "utf-8"
                 fuseDoc.version = "1.0"
-                let fuseXml = fuseDoc.xmlData(withOptions: Int(xmlOptions.rawValue))
+                let fuseXml = fuseDoc.xmlData(options: XMLNode.Options(rawValue: XMLNode.Options.RawValue(Int(xmlOptions.rawValue))))
                 fileManager.createFile(atPath: "FUSE/\(index).fuse", contents: fuseXml)
             }
         } catch {
@@ -513,12 +513,12 @@ class AmpManager {
                 let fusePath = "FUSE/\(file)"
                 let presetNumber = file.replacingOccurrences(of: ".fuse", with: "")
                 do {
-                    let document = try XMLDocument(contentsOf: URL(fileURLWithPath: fusePath), options: 0)
+                    let document = try XMLDocument(contentsOf: URL(fileURLWithPath: fusePath), options: XMLNode.Options(rawValue: 0))
                     if let info = document.rootElement()?.elements(forName: "Info").first {
                         if let name = info.attribute(forName: "name")?.stringValue {
                             let presetPath = "Presets/\(presetNumber)_\(name).fuse"
                             do {
-                                let document = try XMLDocument(contentsOf: URL(fileURLWithPath:  presetPath), options: 0)
+                                let document = try XMLDocument(contentsOf: URL(fileURLWithPath:  presetPath), options: XMLNode.Options(rawValue: 0))
                                 var preset = Mustang().importPreset(document)
                                 if preset != nil {
                                     preset?.number = UInt8(presetNumber)

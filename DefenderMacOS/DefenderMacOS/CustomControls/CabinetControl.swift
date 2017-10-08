@@ -21,7 +21,7 @@ class CabinetControl: NSView {
             lockFocus()
             let colour = backgroundColour
             colour.setFill()
-            NSRectFill(dirtyRect)
+            dirtyRect.fill()
             unlockFocus()
         }
     }

@@ -78,7 +78,7 @@ class WheelControl: NSView {
     // MARK: Draw function
     override func draw(_ dirtyRect: NSRect) {
         if !isHidden {
-            if let knobImage = NSImage(named: "wheel") {
+            if let knobImage = NSImage(named: NSImage.Name(rawValue: "wheel")) {
                 let fraction = (self._floatValue - self.minValue) / (self.maxValue - self.minValue)
                 let angle = -CGFloat(fraction * 360.0)
                 let rotatedKnob = self.imageRotatedByDegrees(knobImage, degrees: angle)

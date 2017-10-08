@@ -98,7 +98,7 @@ internal class WebMockAgent: WebServiceAgentProtocol  {
                             if let xml = String(data: data, encoding: String.Encoding.utf8) {
                                 let document: XMLDocument?
                                 do {
-                                    document = try XMLDocument(xmlString: xml, options: 0)
+                                    document = try XMLDocument(xmlString: xml, options: XMLNode.Options(rawValue: 0))
                                     if let document = document {
                                         onSuccess(document)
                                         return

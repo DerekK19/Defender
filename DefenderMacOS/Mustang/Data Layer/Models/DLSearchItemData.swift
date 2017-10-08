@@ -20,7 +20,7 @@ class DLSearchItemData: Mappable {
             if let content = content {
                 let document: XMLDocument?
                 do {
-                    document = try XMLDocument(xmlString: content, options: 0)
+                    document = try XMLDocument(xmlString: content, options: XMLNode.Options(rawValue: 0))
                     if let document = document {
                         rValue = try DLPreset(xml: document)
                     }

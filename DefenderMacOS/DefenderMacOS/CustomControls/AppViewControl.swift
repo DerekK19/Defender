@@ -14,11 +14,11 @@ class AppViewControl: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         if !isHidden {
-            let context = NSGraphicsContext.current()
+            let context = NSGraphicsContext.current
             context?.saveGraphicsState()
             context?.patternPhase = NSMakePoint(0, frame.size.height)
             backgroundColour.set()
-            NSRectFill(bounds)
+            bounds.fill()
             context?.restoreGraphicsState()
         }
     }

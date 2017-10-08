@@ -110,7 +110,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
         
         whenDeviceIsOpen(vendorId, productId: productId, locationId: locationId) { (device) in
             // This just saves the amp settings, not the effects, or the name
-            self.sendToDevice(device, data: data, terminator: [0x00, 0x00, 0x1c, 0x00]) { (response) in
+            self.sendToDevice(device, dataArray: data, terminator: [0x00, 0x00, 0x1c, 0x00]) { () in
                 self.logDebug(" Set preset\n")
                 onSuccess(data)
             }
@@ -441,7 +441,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
             if let rValue = value as? T {
                 return rValue
             }
-            NSLog("getPropertyForDevice(\(property)) would return \(value)")
+            NSLog("getPropertyForDevice(\(property)) would return \(String(describing: value))")
             return value as? T
         }
         return nil
@@ -472,10 +472,10 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
         }
     }
     
-    fileprivate func sendToDevice(_ device: IOHIDDevice?, data: [[UInt8]], terminator: [UInt8], onReplied: @escaping ()-> ()) {
+    fileprivate func sendToDevice(_ device: IOHIDDevice?, dataArray data: [[UInt8]], terminator: [UInt8], onReplied: @escaping ()-> ()) {
         if let first = data.first {
             sendToDevice(device, data: first, terminator: terminator) { (response) in
-                self.sendToDevice(device, data: Array(data.dropFirst()), terminator: terminator) {
+                self.sendToDevice(device, dataArray: Array(data.dropFirst()), terminator: terminator) {
                     onReplied()
                 }
             }

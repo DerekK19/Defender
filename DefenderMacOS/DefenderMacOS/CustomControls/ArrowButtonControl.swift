@@ -16,8 +16,8 @@ enum ArrowButtonState {
 
 class ArrowButtonControl: NSButton {
     
-    let dullColour: NSColor = NSColor(colorLiteralRed: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
-    let brightColour: NSColor = NSColor(colorLiteralRed: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    let dullColour: NSColor = NSColor(calibratedRed: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
+    let brightColour: NSColor = NSColor(calibratedRed: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
 
     var currentState: ArrowButtonState = .active
     
@@ -36,8 +36,8 @@ class ArrowButtonControl: NSButton {
         let pstyle = NSMutableParagraphStyle()
         pstyle.alignment = .center
         attributedTitle = NSAttributedString(string: title,
-                                             attributes: [NSForegroundColorAttributeName : colourForState(currentState),
-                                                          NSParagraphStyleAttributeName : pstyle])
+                                             attributes: [NSAttributedStringKey.foregroundColor : colourForState(currentState),
+                                                          NSAttributedStringKey.paragraphStyle : pstyle])
     }
     
     fileprivate func colourForState(_ state: ArrowButtonState) -> NSColor {

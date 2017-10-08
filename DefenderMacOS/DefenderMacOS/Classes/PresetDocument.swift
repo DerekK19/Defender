@@ -15,7 +15,7 @@ class PresetDocument : NSDocument {
     
     override func makeWindowControllers() {
         
-        if let windowController = NSApplication.shared().mainWindow?.windowController {
+        if let windowController = NSApplication.shared.mainWindow?.windowController {
             addWindowController(windowController)
             let vc = windowController.contentViewController as! MainVC
             vc.willImportPresetFromXml(document)
@@ -25,7 +25,7 @@ class PresetDocument : NSDocument {
     override func read(from data: Data, ofType typeName: String) throws {
         
         do {
-            document = try XMLDocument(data: data, options: 0)
+            document = try XMLDocument(data: data, options: XMLNode.Options(rawValue: 0))
         }
         catch {}
 
@@ -37,7 +37,7 @@ class PresetDocument : NSDocument {
                 document = xml
             }
         }
-        let data = document.xmlData(withOptions: Int(XMLNode.Options.nodePrettyPrint.rawValue))
+        let data = document.xmlData(options: XMLNode.Options(rawValue: XMLNode.Options.RawValue(Int(XMLNode.Options.nodePrettyPrint.rawValue))))
         return data
     }
     

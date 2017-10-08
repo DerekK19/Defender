@@ -71,7 +71,7 @@ class MainVC: NSViewController {
     fileprivate var ampManager = AmpManager()
     fileprivate var remoteManager: RemoteManager?
 
-    fileprivate var documentController = NSDocumentController.shared()
+    fileprivate var documentController = NSDocumentController.shared
     
     var currentPreset: BOPreset?
     
@@ -110,7 +110,7 @@ class MainVC: NSViewController {
         txLED.backgroundColour = NSColor.clear
         rxLED.backgroundColour = NSColor.clear
         
-        if let appDelegate = NSApplication.shared().delegate as? AppDelegate {
+        if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
             remoteManager = appDelegate.remoteManager
             remoteManager?.delegate = self
         }
@@ -123,14 +123,14 @@ class MainVC: NSViewController {
         preloadButton.isHidden = true
         
         let contrastColour = NSColor.white
-        gainArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
-        volumeArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
-        trebleArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
-        middleArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
-        bassArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
-        presenceArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
-        effectsLoopArrow1.image = NSImage(named: "right-arrow")?.imageWithTintColor(NSColor.lead)
-        effectsLoopArrow2.image = NSImage(named: "up-arrow")?.imageWithTintColor(NSColor.lead)
+        gainArrow.image = NSImage(named: NSImage.Name(rawValue: "down-arrow"))?.imageWithTintColor(contrastColour)
+        volumeArrow.image = NSImage(named: NSImage.Name(rawValue: "down-arrow"))?.imageWithTintColor(contrastColour)
+        trebleArrow.image = NSImage(named: NSImage.Name(rawValue: "down-arrow"))?.imageWithTintColor(contrastColour)
+        middleArrow.image = NSImage(named: NSImage.Name(rawValue: "down-arrow"))?.imageWithTintColor(contrastColour)
+        bassArrow.image = NSImage(named: NSImage.Name(rawValue: "down-arrow"))?.imageWithTintColor(contrastColour)
+        presenceArrow.image = NSImage(named: NSImage.Name(rawValue: "down-arrow"))?.imageWithTintColor(contrastColour)
+        effectsLoopArrow1.image = NSImage(named: NSImage.Name(rawValue: "right-arrow"))?.imageWithTintColor(NSColor.lead)
+        effectsLoopArrow2.image = NSImage(named: NSImage.Name(rawValue: "up-arrow"))?.imageWithTintColor(NSColor.lead)
         gainLabel.textColor = contrastColour
         volumeLabel.textColor = contrastColour
         trebleLabel.textColor = contrastColour
@@ -166,14 +166,14 @@ class MainVC: NSViewController {
 
     override func awakeFromNib() {
         if let appView = view as? AppViewControl {
-            if let image = NSImage(named: "background-texture") {
+            if let image = NSImage(named: NSImage.Name(rawValue: "background-texture")) {
                 appView.backgroundColour = NSColor(patternImage: image)
             }
         }
     }
 
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier {
+        if let identifier = segue.identifier?.rawValue {
             switch identifier {
             case "embedDisplay":
                 displayVC = segue.destinationController as? DisplayVC
@@ -225,7 +225,7 @@ class MainVC: NSViewController {
     
     @IBAction func willPowerAmplifier(_ sender: ActionButtonControl) {
         if !ampManager.hasAnAmplifier { return }
-        if sender.state == NSOffState {
+        if sender.state == NSControl.StateValue.off {
             Flogger.log.verbose(" Powering off")
             cabinetVC?.state = .off
             powerState = .off
@@ -234,7 +234,7 @@ class MainVC: NSViewController {
             preloadButton.isHidden = true
         } else {
             Flogger.log.verbose(" Powering on")
-            sender.state = NSOffState
+            sender.state = NSControl.StateValue.off
             powerState = .on
             cabinetVC?.state = .on
             sendCurrentAmplifier()
@@ -242,7 +242,7 @@ class MainVC: NSViewController {
                 self.powerState = .on
                 self.valueDidChangeForWheel(self.wheel, value: 0)
                 self.preloadButton.isHidden = self.ampManager.mocking
-                sender.state = NSOnState
+                sender.state = NSControl.StateValue.on
             }
         }
     }
@@ -330,7 +330,7 @@ class MainVC: NSViewController {
         statusLabel.textColor = .white
         bluetoothLabel.textColor = .white
         presetsLabel.textColor = .white
-        powerButton.state = NSOffState
+        powerButton.state = NSControl.StateValue.off
         cabinetVC?.state = ampManager.hasAnAmplifier ? .off : .disabled
         powerState = .off
     }

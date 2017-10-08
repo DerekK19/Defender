@@ -67,7 +67,7 @@ class CabinetVC: NSViewController {
         super.init(coder: coder)
     }
     
-    override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         // Initialization code here
     }
@@ -85,39 +85,39 @@ class CabinetVC: NSViewController {
             state = (preset.cabinet != nil) ? .on : .off
             switch preset.module ?? 0 {
             case 83:
-                cabinetImage.image = NSImage(named: "cabinet-383")
+                cabinetImage.image = NSImage(named: NSImage.Name(rawValue: "cabinet-383"))
             case 93:
-                cabinetImage.image = NSImage(named: "cabinet-1093")
+                cabinetImage.image = NSImage(named: NSImage.Name(rawValue: "cabinet-1093"))
             case 94:
-                cabinetImage.image = NSImage(named: "cabinet-694")
+                cabinetImage.image = NSImage(named: NSImage.Name(rawValue: "cabinet-694"))
             case 97:
-                cabinetImage.image = NSImage(named: "cabinet-797")
+                cabinetImage.image = NSImage(named: NSImage.Name(rawValue: "cabinet-797"))
             case 100:
-                cabinetImage.image = NSImage(named: "cabinet-2100")
+                cabinetImage.image = NSImage(named: NSImage.Name(rawValue: "cabinet-2100"))
             case 103:
-                cabinetImage.image = NSImage(named: "cabinet-1103")
+                cabinetImage.image = NSImage(named: NSImage.Name(rawValue: "cabinet-1103"))
             case 106:
-                cabinetImage.image = NSImage(named: "cabinet-4106")
+                cabinetImage.image = NSImage(named: NSImage.Name(rawValue: "cabinet-4106"))
             case 109:
-                cabinetImage.image = NSImage(named: "cabinet-8109")
+                cabinetImage.image = NSImage(named: NSImage.Name(rawValue: "cabinet-8109"))
             case 114:
-                cabinetImage.image = NSImage(named: "cabinet-12114")
+                cabinetImage.image = NSImage(named: NSImage.Name(rawValue: "cabinet-12114"))
             case 117:
-                cabinetImage.image = NSImage(named: "cabinet-9117")
+                cabinetImage.image = NSImage(named: NSImage.Name(rawValue: "cabinet-9117"))
             case 121:
-                cabinetImage.image = NSImage(named: "cabinet-8121")
+                cabinetImage.image = NSImage(named: NSImage.Name(rawValue: "cabinet-8121"))
             case 124:
-                cabinetImage.image = NSImage(named: "cabinet-5124")
+                cabinetImage.image = NSImage(named: NSImage.Name(rawValue: "cabinet-5124"))
             case 241:
-                cabinetImage.image = NSImage(named: "cabinet-241")
+                cabinetImage.image = NSImage(named: NSImage.Name(rawValue: "cabinet-241"))
             case 246:
-                cabinetImage.image = NSImage(named: "cabinet-9246")
+                cabinetImage.image = NSImage(named: NSImage.Name(rawValue: "cabinet-9246"))
             case 249:
-                cabinetImage.image = NSImage(named: "cabinet-1249")
+                cabinetImage.image = NSImage(named: NSImage.Name(rawValue: "cabinet-1249"))
             case 252:
-                cabinetImage.image = NSImage(named: "cabinet-8252")
+                cabinetImage.image = NSImage(named: NSImage.Name(rawValue: "cabinet-8252"))
             case 255:
-                cabinetImage.image = NSImage(named: "cabinet-10255")
+                cabinetImage.image = NSImage(named: NSImage.Name(rawValue: "cabinet-10255"))
             default:
                 cabinetImage.image = nil
             }
