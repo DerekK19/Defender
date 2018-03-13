@@ -156,6 +156,7 @@
 		650775991DE95DD100F5040C /* Flogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Flogger.framework; path = Carthage/Build/Mac/Flogger.framework; sourceTree = "<group>"; };
 		6507759B1DE9609100F5040C /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Carthage/Build/Mac/XCGLogger.framework; sourceTree = "<group>"; };
 		650775A71DEA3DB000F5040C /* NSLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NSLogger.framework; path = Carthage/Build/Mac/NSLogger.framework; sourceTree = "<group>"; };
+		6510D0631F9D8D6F00517328 /* Defender.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Defender.entitlements; sourceTree = "<group>"; };
 		652564481DA8972A00ACCD4B /* PedalKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalKnobControl.swift; sourceTree = "<group>"; };
 		6525644A1DA89FCD00ACCD4B /* EffectKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectKnobControl.swift; sourceTree = "<group>"; };
 		65426BA11DB0930300E54D35 /* KnobBaseControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobBaseControl.swift; sourceTree = "<group>"; };
@@ -320,6 +321,7 @@
 		655A5A341D4C555400E15E1F = {
 			isa = PBXGroup;
 			children = (
+				6510D0631F9D8D6F00517328 /* Defender.entitlements */,
 				655A5F4F1D4C57E100E15E1F /* Cartfile */,
 				655A5A3F1D4C555400E15E1F /* DefenderMacOS */,
 				65C954A61ECE571B005FA7A3 /* Mustang */,
@@ -683,6 +685,11 @@
 						DevelopmentTeam = DX8B97QV93;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					655A5A4D1D4C555500E15E1F = {
 						CreatedOnToolsVersion = 7.3;
@@ -1077,6 +1084,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Defender.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = DX8B97QV93;
@@ -1101,6 +1109,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Defender.entitlements;
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = DX8B97QV93;

@@ -39,7 +39,7 @@ class DLSearchItemData: Mappable {
         let doc = preset.xml()
         self.filename = filename
         self.content = doc.xmlString
-        self.size = self.content?.characters.count ?? 0
+        self.size = self.content?.count ?? 0
     }
     
     func mapping(map: Map) {
