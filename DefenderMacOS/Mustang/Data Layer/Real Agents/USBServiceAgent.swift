@@ -592,7 +592,7 @@ internal class USBServiceAgent: BaseServiceAgent, USBServiceAgentProtocol {
     fileprivate func getDeviceNameForService(_ usbService: io_service_t) -> String? {
         var kr: kern_return_t = 0
         let deviceNamePtr = UnsafeMutablePointer<io_name_t>.allocate(capacity: 1)
-        defer {deviceNamePtr.deallocate(capacity: 1)}
+        defer {deviceNamePtr.deallocate()}
         
         var deviceName: String?
         
@@ -868,7 +868,7 @@ internal class USBServiceAgent: BaseServiceAgent, USBServiceAgentProtocol {
         text += "  Config value is \(configValue)\n"
         text += "  Alternate is \(alternateSetting)\n"
         text += "  Async port is 0x\(String(format: "%08x", aPort))\n"
-        text += "  Async event source is \(eSource)\n"
+        text += "  Async event source is \(String(describing: eSource))\n"
         text += "  Endpoints is \(endpointCount)\n"
         
         if endpointCount > 0 {

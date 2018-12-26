@@ -10,8 +10,11 @@ import Cocoa
 
 class ShadeControl: NSView {
     
+    private var pBackgroundColour: NSColor = NSColor.shadeClosed
+    
     var backgroundColour: NSColor = NSColor.shadeClosed {
         didSet {
+            pBackgroundColour = backgroundColour
             setNeedsDisplay(bounds)
         }
     }
@@ -26,11 +29,10 @@ class ShadeControl: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         if !isHidden {
-            lockFocus()
-            let colour = backgroundColour
+            let colour = pBackgroundColour
             colour.setFill()
             dirtyRect.fill()
-            unlockFocus()
+
         }
     }
 }

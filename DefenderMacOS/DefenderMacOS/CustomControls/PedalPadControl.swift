@@ -18,12 +18,10 @@ class PedalPadControl: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         if !isHidden {
-            lockFocus()
             let colour = backgroundColour
             colour.setFill()
             let rect = NSBezierPath(roundedRect: dirtyRect, xRadius: 4, yRadius: 4)
             rect.fill()
-            unlockFocus()
         }
     }
 }

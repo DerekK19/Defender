@@ -176,7 +176,7 @@ internal class AudioServiceAgent: BaseServiceAgent, AudioServiceAgentProtocol {
         
         let count = Int(dataSize) / MemoryLayout<T>.size
         let dataPtr = UnsafeMutablePointer<T>.allocate(capacity: count)
-        defer {dataPtr.deallocate(capacity: count)}
+        defer {dataPtr.deallocate()}
         status = AudioObjectGetPropertyData(audioId,
                                             &propertyAddress,
                                             0,
@@ -218,7 +218,7 @@ internal class AudioServiceAgent: BaseServiceAgent, AudioServiceAgentProtocol {
         }
         
         let dataPtr = UnsafeMutablePointer<T>.allocate(capacity: count)
-        defer {dataPtr.deallocate(capacity: count)}
+        defer {dataPtr.deallocate()}
         status = AudioObjectGetPropertyData(audioId,
                                             &propertyAddress,
                                             0,
@@ -261,7 +261,7 @@ internal class AudioServiceAgent: BaseServiceAgent, AudioServiceAgentProtocol {
 //        dataSize = 512
         let count = Int(dataSize) + 1
         var dataPtr = UnsafeMutablePointer<CChar>.allocate(capacity: count)
-        defer {dataPtr.deallocate(capacity: count)}
+        defer {dataPtr.deallocate()}
         status = AudioObjectGetPropertyData(audioId,
                                             &propertyAddress,
                                             0,
@@ -298,7 +298,7 @@ internal class AudioServiceAgent: BaseServiceAgent, AudioServiceAgentProtocol {
         
         let count = Int(dataSize)
         let dataPtr = UnsafeMutablePointer<UInt8>.allocate(capacity: count)
-        defer {dataPtr.deallocate(capacity: count)}
+        defer {dataPtr.deallocate()}
         for i in 0..<count {
             dataPtr[i] = 0
         }

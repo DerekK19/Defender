@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="bTe-y7-QXP">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="bTe-y7-QXP">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--DisplayVC-->
@@ -12,11 +11,11 @@
             <objects>
                 <viewController id="bTe-y7-QXP" customClass="DisplayVC" customModule="Defender" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="rLH-3P-ssg" customClass="DisplayControl" customModule="Defender" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="237" height="103"/>
+                        <rect key="frame" x="0.0" y="0.0" width="237" height="105"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FEU-Tc-rDe">
-                                <rect key="frame" x="6" y="74" width="37" height="25"/>
+                                <rect key="frame" x="6" y="76" width="37" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="WQE-R4-dC1"/>
                                     <constraint firstAttribute="width" constant="37" id="uWC-sN-k7g"/>
@@ -28,7 +27,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="248" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cxT-Tn-g3h">
-                                <rect key="frame" x="49" y="76" width="184" height="21"/>
+                                <rect key="frame" x="49" y="76" width="184" height="25"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" title="--" drawsBackground="YES" usesSingleLineMode="YES" id="Gcz-PV-qiD">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -112,7 +111,7 @@
                                                 <rect key="frame" x="0.0" y="51" width="77" height="17"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="border" alignment="left" drawsBackground="YES" id="zig-sd-qRY">
                                                     <font key="font" metaFont="cellTitle"/>
-                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
@@ -120,7 +119,7 @@
                                                 <rect key="frame" x="0.0" y="34" width="77" height="17"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="border" alignment="left" drawsBackground="YES" id="lC7-28-MDY">
                                                     <font key="font" metaFont="cellTitle"/>
-                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
@@ -128,7 +127,7 @@
                                                 <rect key="frame" x="0.0" y="17" width="77" height="17"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="border" alignment="left" drawsBackground="YES" id="ASq-K5-cKa">
                                                     <font key="font" metaFont="cellTitle"/>
-                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
@@ -136,7 +135,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="77" height="17"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="border" drawsBackground="YES" id="75M-Ja-5FM">
                                                     <font key="font" metaFont="cellTitle"/>
-                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
@@ -179,7 +178,7 @@
                                 </customSpacing>
                             </stackView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Xcx-TV-c9y" customClass="ShadeControl" customModule="Defender" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="237" height="103"/>
+                                <rect key="frame" x="0.0" y="0.0" width="237" height="105"/>
                             </customView>
                         </subviews>
                         <constraints>
@@ -195,6 +194,7 @@
                             <constraint firstAttribute="bottom" secondItem="F3M-c4-hZL" secondAttribute="bottom" constant="4" id="iYn-UT-vTw"/>
                             <constraint firstItem="F3M-c4-hZL" firstAttribute="top" secondItem="cxT-Tn-g3h" secondAttribute="bottom" constant="4" id="jAh-PL-dAb"/>
                             <constraint firstItem="FEU-Tc-rDe" firstAttribute="centerY" secondItem="cxT-Tn-g3h" secondAttribute="centerY" id="kbK-vJ-JKA"/>
+                            <constraint firstItem="FEU-Tc-rDe" firstAttribute="height" secondItem="cxT-Tn-g3h" secondAttribute="height" id="lTD-AS-7vZ"/>
                             <constraint firstItem="FEU-Tc-rDe" firstAttribute="top" secondItem="rLH-3P-ssg" secondAttribute="top" constant="4" id="m3Y-el-e8V"/>
                             <constraint firstItem="F3M-c4-hZL" firstAttribute="leading" secondItem="2a3-6d-0o7" secondAttribute="trailing" constant="6" id="ota-Mo-drV"/>
                             <constraint firstItem="F3M-c4-hZL" firstAttribute="trailing" secondItem="cxT-Tn-g3h" secondAttribute="trailing" id="tVb-RO-2QE"/>

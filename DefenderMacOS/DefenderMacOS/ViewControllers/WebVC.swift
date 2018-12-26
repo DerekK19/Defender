@@ -67,20 +67,21 @@ class WebVC: NSViewController {
             webColumn1?.backgroundColour = newBackgroundColour
             let currentState = powerState
             powerState = currentState
-            loginButton.powerState = .on // powerState
-            searchButton.powerState = .on // powerState
         }
     }
     
     var powerState: PowerState = .off {
         didSet {
             shade.isOpen = powerState == .on || state == .disabled
+            loginButton.powerState = .on
+            searchButton.powerState = .on
         }
     }
     
     var loggedIn: Bool = false {
         didSet {
             loginButton.title = loggedIn ? "Log out" : "Log in"
+            loginButton.powerState = .on
             usernameTextField.isHidden = loggedIn
             passwordTextField.isHidden = loggedIn
             searchButton.isHidden = !loggedIn
@@ -124,7 +125,7 @@ class WebVC: NSViewController {
         state = .disabled
         loggedIn = false
     }
-
+       
     // MARK: Action functions
     
     @IBAction func willLogin(_ sender: NSButton) {

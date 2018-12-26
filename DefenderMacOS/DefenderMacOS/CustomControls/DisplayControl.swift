@@ -18,11 +18,9 @@ class DisplayControl: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         if !isHidden {
-            lockFocus()
             let colour = backgroundColour
             colour.setFill()
             dirtyRect.fill()
-            unlockFocus()
         }
     }
 }

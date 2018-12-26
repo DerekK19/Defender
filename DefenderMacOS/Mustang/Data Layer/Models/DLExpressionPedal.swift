@@ -41,16 +41,16 @@ class DLExpressionPedal: Mappable {
     
     func xml() -> XMLElement {
         let info = XMLElement(name: "FirstExpressionPedal")
-        info.addAttribute(XMLNode.attribute(withName: "VolumeModeBehavior", stringValue: "\(volumeModeBehavior)") as! XMLNode)
-        info.addAttribute(XMLNode.attribute(withName: "ExpressionModeBehavior", stringValue: "\(expressionModeBehavior)") as! XMLNode)
-        info.addAttribute(XMLNode.attribute(withName: "HeelSetting", stringValue: "\(heelSetting)") as! XMLNode)
-        info.addAttribute(XMLNode.attribute(withName: "ToeSetting", stringValue: "\(toeSetting)") as! XMLNode)
-        info.addAttribute(XMLNode.attribute(withName: "PedalMode", stringValue: "\(pedalMode)") as! XMLNode)
-        info.addAttribute(XMLNode.attribute(withName: "BypassEffectWhenVolumeMode", stringValue: "\(bypassEffectWhenVolumeMode)") as! XMLNode)
-        info.addAttribute(XMLNode.attribute(withName: "VolumeSwitchRevert", stringValue: "\(volumeSwitchRevert)") as! XMLNode)
-        info.addAttribute(XMLNode.attribute(withName: "DefaultPedalState", stringValue: "\(defaultPedalState)") as! XMLNode)
-        info.addAttribute(XMLNode.attribute(withName: "PedalOverrideState", stringValue: "\(pedalOverrideState)") as! XMLNode)
-        info.addAttribute(XMLNode.attribute(withName: "ParameterIndex", stringValue: "\(parameterIndex)") as! XMLNode)
+        info.addAttribute(XMLNode.attribute(withName: "VolumeModeBehavior", stringValue: "\(String(describing: volumeModeBehavior))") as! XMLNode)
+        info.addAttribute(XMLNode.attribute(withName: "ExpressionModeBehavior", stringValue: "\(String(describing: expressionModeBehavior))") as! XMLNode)
+        info.addAttribute(XMLNode.attribute(withName: "HeelSetting", stringValue: "\(String(describing: heelSetting))") as! XMLNode)
+        info.addAttribute(XMLNode.attribute(withName: "ToeSetting", stringValue: "\(String(describing: toeSetting))") as! XMLNode)
+        info.addAttribute(XMLNode.attribute(withName: "PedalMode", stringValue: "\(String(describing: pedalMode))") as! XMLNode)
+        info.addAttribute(XMLNode.attribute(withName: "BypassEffectWhenVolumeMode", stringValue: "\(String(describing: bypassEffectWhenVolumeMode))") as! XMLNode)
+        info.addAttribute(XMLNode.attribute(withName: "VolumeSwitchRevert", stringValue: "\(String(describing: volumeSwitchRevert))") as! XMLNode)
+        info.addAttribute(XMLNode.attribute(withName: "DefaultPedalState", stringValue: "\(String(describing: defaultPedalState))") as! XMLNode)
+        info.addAttribute(XMLNode.attribute(withName: "PedalOverrideState", stringValue: "\(String(describing: pedalOverrideState))") as! XMLNode)
+        info.addAttribute(XMLNode.attribute(withName: "ParameterIndex", stringValue: "\(String(describing: parameterIndex))") as! XMLNode)
         return info
     }
     

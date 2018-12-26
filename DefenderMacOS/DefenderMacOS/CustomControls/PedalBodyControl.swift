@@ -10,8 +10,11 @@ import Cocoa
 
 class PedalBodyControl: NSView {
     
+    private var pBackgroundColour: NSColor = NSColor.black
+    
     var backgroundColour: NSColor = NSColor.black {
         didSet {
+            pBackgroundColour = backgroundColour
             setNeedsDisplay(bounds)
         }
     }
@@ -20,12 +23,10 @@ class PedalBodyControl: NSView {
         
         if !isHidden {
 
-            let colour = backgroundColour
+            let colour = pBackgroundColour
             let insetRect = NSRect(x: dirtyRect.origin.x+3, y: dirtyRect.origin.y, width: dirtyRect.width-6, height: dirtyRect.height-3)
             let rect = NSBezierPath(roundedRect: dirtyRect, xRadius: 4, yRadius: 4) // Round corner path for full rectangle
             let rect2 = NSBezierPath(roundedRect: insetRect, xRadius: 4, yRadius: 4) // Round corner path for inset rectangle
-            
-            lockFocus()
             
             // Set the fill colour
             colour.setFill()
@@ -48,8 +49,6 @@ class PedalBodyControl: NSView {
             
             // restore state
             NSGraphicsContext.restoreGraphicsState()
-            
-            unlockFocus()
         }
     }
 }

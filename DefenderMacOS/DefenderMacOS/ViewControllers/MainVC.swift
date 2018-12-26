@@ -458,7 +458,7 @@ class MainVC: NSViewController {
         if remoteManager?.send(message) == true {
             txLED.backgroundColour = NSColor.red
         } else {
-            Flogger.log.error("Failed to send message. Command = \(message.command)")
+            Flogger.log.error("Failed to send message. Command = \(String(describing: message.command))")
         }
     }
     

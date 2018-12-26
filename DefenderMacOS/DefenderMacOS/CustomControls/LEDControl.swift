@@ -18,12 +18,10 @@ class LEDControl: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         if !isHidden {
-            lockFocus()
             let colour = backgroundColour
             colour.setFill()
             let rect = NSBezierPath(roundedRect: dirtyRect, xRadius: bounds.width / 2, yRadius: bounds.height / 2)
             rect.fill()
-            unlockFocus()
         }
     }
 }

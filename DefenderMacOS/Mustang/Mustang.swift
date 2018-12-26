@@ -20,22 +20,22 @@ open class Mustang {
         }
     }
     
-    open static let deviceOpenedNotificationName = "deviceOpened"
-    open static let deviceConnectedNotificationName = "deviceConnected"
-    open static let deviceDisconnectedNotificationName = "deviceDisconnected"
-    open static let deviceClosedNotificationName = "deviceClosed"
-    open static let gainChangedNotificationName = "gainChanged"
-    open static let volumeChangedNotificationName = "volumeChanged"
-    open static let trebleChangedNotificationName = "trebleChanged"
-    open static let middleChangedNotificationName = "middleChanged"
-    open static let bassChangedNotificationName = "bassChanged"
-    open static let presenceChangedNotificationName = "presenceChanged"
-    open static let presetChangedNotificationName = "presetChanged"
-    open static let amplifierChangedNotificationName = "amplifierChanged"
-    open static let stompboxChangedNotificationName = "stompboxChanged"
-    open static let modulationChangedNotificationName = "modulationChanged"
-    open static let delayChangedNotificationName = "delayChanged"
-    open static let reverbChangedNotificationName = "reverbChanged"
+    public static let deviceOpenedNotificationName = "deviceOpened"
+    public static let deviceConnectedNotificationName = "deviceConnected"
+    public static let deviceDisconnectedNotificationName = "deviceDisconnected"
+    public static let deviceClosedNotificationName = "deviceClosed"
+    public static let gainChangedNotificationName = "gainChanged"
+    public static let volumeChangedNotificationName = "volumeChanged"
+    public static let trebleChangedNotificationName = "trebleChanged"
+    public static let middleChangedNotificationName = "middleChanged"
+    public static let bassChangedNotificationName = "bassChanged"
+    public static let presenceChangedNotificationName = "presenceChanged"
+    public static let presetChangedNotificationName = "presetChanged"
+    public static let amplifierChangedNotificationName = "amplifierChanged"
+    public static let stompboxChangedNotificationName = "stompboxChanged"
+    public static let modulationChangedNotificationName = "modulationChanged"
+    public static let delayChangedNotificationName = "delayChanged"
+    public static let reverbChangedNotificationName = "reverbChanged"
     
     func getUSBDevices() -> [UInt32] {
         let info = controller.getUSBDevices()

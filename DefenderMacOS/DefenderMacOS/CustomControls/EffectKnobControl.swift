@@ -38,7 +38,6 @@ class EffectKnobControl: KnobBaseControl {
     // Drawing
     override func draw(_ dirtyRect: NSRect) {
         if !isHidden {
-            lockFocus()
             var colour = backgroundColour
             colour.setFill()
             var rect = NSBezierPath(roundedRect: dirtyRect, xRadius: bounds.width / 2, yRadius: bounds.height / 2)
@@ -57,7 +56,6 @@ class EffectKnobControl: KnobBaseControl {
             colour.set()
             rect.stroke()
             rect.fill()
-            unlockFocus()
         }
     }
 }

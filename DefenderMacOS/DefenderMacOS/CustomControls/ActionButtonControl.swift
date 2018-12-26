@@ -33,6 +33,9 @@ class ActionButtonControl: NSButton {
         if let cell = cell as? ActionButtonCell {
             cell.setState(state, powerState: powerState)
             isEnabled = powerState != .off
+            let textColour = powerState == .off ? NSColor.white : NSColor.black
+            self.attributedTitle = NSAttributedString(string: self.title, attributes: [NSAttributedStringKey.foregroundColor : textColour, NSAttributedStringKey.font: NSFont.systemFont(ofSize: 13)])
+            self.attributedAlternateTitle = NSAttributedString(string: self.alternateTitle, attributes: [NSAttributedStringKey.foregroundColor : textColour, NSAttributedStringKey.font: NSFont.systemFont(ofSize: 13)])
         }
     }
     

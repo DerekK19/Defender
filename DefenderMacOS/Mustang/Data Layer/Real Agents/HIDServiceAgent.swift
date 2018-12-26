@@ -199,9 +199,9 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
         let report = UnsafeMutablePointer<UInt8>.allocate(capacity: reportSize)
         let device = inIOHIDDeviceRef
 
-        let vendorId: Int? = getPropertyForDevice(device, property: kIOHIDVendorIDKey as CFString!)
-        let productId: Int? = getPropertyForDevice(device, property: kIOHIDProductIDKey as CFString!)
-        let location: Int? = getPropertyForDevice(device, property: kIOHIDLocationIDKey as CFString!)
+        let vendorId: Int? = getPropertyForDevice(device, property: kIOHIDVendorIDKey as CFString)
+        let productId: Int? = getPropertyForDevice(device, property: kIOHIDProductIDKey as CFString)
+        let location: Int? = getPropertyForDevice(device, property: kIOHIDLocationIDKey as CFString)
         let uint32Location: UInt32? = location != nil ? UInt32(location!) : nil
         let deviceKey = StorageAgent.sharedInstance.addDevice(device, vendor: vendorId, product: productId, location: uint32Location, initialised: false)
         StorageAgent.sharedInstance.updateDevice(deviceKey, device: device!)
@@ -315,14 +315,14 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
                 logVerbose("deviceName: \(deviceName ?? "Unknown")")
                 
                 if let devicePtr = getHIDDeviceForService(hidService) {
-                    let thisVendorId: Int? = getPropertyForDevice(devicePtr, property: kIOHIDVendorIDKey as CFString!)
-                    let productId: Int? = getPropertyForDevice(devicePtr, property: kIOHIDProductIDKey as CFString!)
-                    let locationId: Int? = getPropertyForDevice(devicePtr, property: kIOHIDLocationIDKey as CFString!)
+                    let thisVendorId: Int? = getPropertyForDevice(devicePtr, property: kIOHIDVendorIDKey as CFString)
+                    let productId: Int? = getPropertyForDevice(devicePtr, property: kIOHIDProductIDKey as CFString)
+                    let locationId: Int? = getPropertyForDevice(devicePtr, property: kIOHIDLocationIDKey as CFString)
                     if let thisVendorId = thisVendorId, let productId = productId, let locationId = locationId {
                         let location = UInt32(locationId)
                         if thisVendorId == vendorId {
                             debugPrint(devicePtr)
-                            let name: String? = getPropertyForDevice(devicePtr, property: kIOHIDProductKey as CFString!)
+                            let name: String? = getPropertyForDevice(devicePtr, property: kIOHIDProductKey as CFString)
                             if let name = name {
                                 let device = DLHIDDevice(withVendor: vendorId, product: productId, name: name, locationId: location)
                                 rValue.append(device)
@@ -400,7 +400,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
     fileprivate func getDeviceNameForService(_ usbService: io_service_t) -> String? {
         var kr: kern_return_t = 0
         let deviceNamePtr = UnsafeMutablePointer<io_name_t>.allocate(capacity: 1)
-        defer {deviceNamePtr.deallocate(capacity: 1)}
+        defer {deviceNamePtr.deallocate()}
         
         var deviceName: String?
         
@@ -418,7 +418,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
         var kr: kern_return_t = 0
         let device = devicePtr.pointee.pointee
         let valuePtr = UnsafeMutablePointer<Unmanaged<CFTypeRef>?>.allocate(capacity: 1)
-        defer {valuePtr.deallocate(capacity: 1)}
+        defer {valuePtr.deallocate()}
         let valuePtrTemp: UnsafeMutablePointer<Unmanaged<CFTypeRef>?>? = valuePtr
         kr = device.getProperty(devicePtr, property, valuePtrTemp)
         if kr != KERN_SUCCESS {
@@ -430,7 +430,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
         if let rValue = value as? T {
             return rValue
         }
-        NSLog("getPropertyForDevice(\(property)) would return \(String(describing: value))")
+        NSLog("getPropertyForDevice(\(String(describing: property))) would return \(String(describing: value))")
         return value as? T
     }
     
@@ -441,7 +441,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
             if let rValue = value as? T {
                 return rValue
             }
-            NSLog("getPropertyForDevice(\(property)) would return \(String(describing: value))")
+            NSLog("getPropertyForDevice(\(String(describing: property))) would return \(String(describing: value))")
             return value as? T
         }
         return nil
@@ -556,19 +556,19 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
     }
     
     fileprivate func debugPrint(_ devicePtr: HIDDeviceType) {
-        let vendorId: Int? = getPropertyForDevice(devicePtr, property: kIOHIDVendorIDKey as CFString!)
-        let productId: Int? = getPropertyForDevice(devicePtr, property: kIOHIDProductIDKey as CFString!)
-        let version: Int? = getPropertyForDevice(devicePtr, property: kIOHIDVersionNumberKey as CFString!)
-        let manufacturer: String? = getPropertyForDevice(devicePtr, property: kIOHIDManufacturerKey as CFString!)
-        let product: String? = getPropertyForDevice(devicePtr, property: kIOHIDProductKey as CFString!)
-        let serial: String? = getPropertyForDevice(devicePtr, property: kIOHIDSerialNumberKey as CFString!)
-        let location: Int? = getPropertyForDevice(devicePtr, property: kIOHIDLocationIDKey as CFString!)
-        let uniqueId: Int? = getPropertyForDevice(devicePtr, property: kIOHIDUniqueIDKey as CFString!)
-        let transport: String? = getPropertyForDevice(devicePtr, property: kIOHIDTransportKey as CFString!)
-        let maxInReport: Int? = getPropertyForDevice(devicePtr, property: kIOHIDMaxInputReportSizeKey as CFString!)
-        let maxOutReport: Int? = getPropertyForDevice(devicePtr, property: kIOHIDMaxOutputReportSizeKey as CFString!)
-        let maxFeatureReport: Int? = getPropertyForDevice(devicePtr, property: kIOHIDMaxFeatureReportSizeKey as CFString!)
-        let reportInterval: Int? = getPropertyForDevice(devicePtr, property: kIOHIDReportIntervalKey as CFString!)
+        let vendorId: Int? = getPropertyForDevice(devicePtr, property: kIOHIDVendorIDKey as CFString)
+        let productId: Int? = getPropertyForDevice(devicePtr, property: kIOHIDProductIDKey as CFString)
+        let version: Int? = getPropertyForDevice(devicePtr, property: kIOHIDVersionNumberKey as CFString)
+        let manufacturer: String? = getPropertyForDevice(devicePtr, property: kIOHIDManufacturerKey as CFString)
+        let product: String? = getPropertyForDevice(devicePtr, property: kIOHIDProductKey as CFString)
+        let serial: String? = getPropertyForDevice(devicePtr, property: kIOHIDSerialNumberKey as CFString)
+        let location: Int? = getPropertyForDevice(devicePtr, property: kIOHIDLocationIDKey as CFString)
+        let uniqueId: Int? = getPropertyForDevice(devicePtr, property: kIOHIDUniqueIDKey as CFString)
+        let transport: String? = getPropertyForDevice(devicePtr, property: kIOHIDTransportKey as CFString)
+        let maxInReport: Int? = getPropertyForDevice(devicePtr, property: kIOHIDMaxInputReportSizeKey as CFString)
+        let maxOutReport: Int? = getPropertyForDevice(devicePtr, property: kIOHIDMaxOutputReportSizeKey as CFString)
+        let maxFeatureReport: Int? = getPropertyForDevice(devicePtr, property: kIOHIDMaxFeatureReportSizeKey as CFString)
+        let reportInterval: Int? = getPropertyForDevice(devicePtr, property: kIOHIDReportIntervalKey as CFString)
         
         var text = "HID device\n"
         text += " vendor: 0x\(vendorId != nil ? String(format: "%04x", vendorId!) : "Unknown")\n"
