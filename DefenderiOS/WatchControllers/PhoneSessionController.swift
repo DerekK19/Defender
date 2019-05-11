@@ -94,6 +94,8 @@ extension PhoneSessionController : WCSessionDelegate {
             log("iPhone session inactive")
         case .notActivated:
             log("iPhone session not activated")
+        default:
+            log("iPhone session \(activationState)")
         }
     }
 

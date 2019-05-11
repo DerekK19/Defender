@@ -84,6 +84,8 @@ extension WatchSessionController : WCSessionDelegate {
             log("Watch session inactive")
         case .notActivated:
             log("Watch session not activated")
+        default:
+            log("Watch session \(activationState)")
         }
     }
     

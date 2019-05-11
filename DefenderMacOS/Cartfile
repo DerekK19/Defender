@@ -1,4 +1,5 @@
 github "Hearst-DD/ObjectMapper" ~> 3.0
 github "AFNetworking/AFNetworking" "HEAD"
-git "https://stash.gordonknight.co.uk:8443/scm/IF/Flogger.git" ~> 4.0
-git "https://stash.gordonknight.co.uk:8443/scm/IF/RemoteDefender.git" ~> 4.0
+git "ssh://git@stash.gordonknight.co.uk:9999/IF/Flogger.git" ~> 4.1
+git "ssh://git@stash.gordonknight.co.uk:9999/IF/RemoteDefender.git" ~> 4.1
+

@@ -36,8 +36,8 @@ class ArrowButtonControl: NSButton {
         let pstyle = NSMutableParagraphStyle()
         pstyle.alignment = .center
         attributedTitle = NSAttributedString(string: title,
-                                             attributes: [NSAttributedStringKey.foregroundColor : colourForState(currentState),
-                                                          NSAttributedStringKey.paragraphStyle : pstyle])
+                                             attributes: [NSAttributedString.Key.foregroundColor : colourForState(currentState),
+                                                          NSAttributedString.Key.paragraphStyle : pstyle])
     }
     
     fileprivate func colourForState(_ state: ArrowButtonState) -> NSColor {

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import DefenderApp
+@testable import DefenderiOS
 
 class DefenderAppTests: XCTestCase {
     

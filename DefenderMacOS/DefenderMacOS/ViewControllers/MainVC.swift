@@ -123,14 +123,14 @@ class MainVC: NSViewController {
         preloadButton.isHidden = true
         
         let contrastColour = NSColor.white
-        gainArrow.image = NSImage(named: NSImage.Name(rawValue: "down-arrow"))?.imageWithTintColor(contrastColour)
-        volumeArrow.image = NSImage(named: NSImage.Name(rawValue: "down-arrow"))?.imageWithTintColor(contrastColour)
-        trebleArrow.image = NSImage(named: NSImage.Name(rawValue: "down-arrow"))?.imageWithTintColor(contrastColour)
-        middleArrow.image = NSImage(named: NSImage.Name(rawValue: "down-arrow"))?.imageWithTintColor(contrastColour)
-        bassArrow.image = NSImage(named: NSImage.Name(rawValue: "down-arrow"))?.imageWithTintColor(contrastColour)
-        presenceArrow.image = NSImage(named: NSImage.Name(rawValue: "down-arrow"))?.imageWithTintColor(contrastColour)
-        effectsLoopArrow1.image = NSImage(named: NSImage.Name(rawValue: "right-arrow"))?.imageWithTintColor(NSColor.lead)
-        effectsLoopArrow2.image = NSImage(named: NSImage.Name(rawValue: "up-arrow"))?.imageWithTintColor(NSColor.lead)
+        gainArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
+        volumeArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
+        trebleArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
+        middleArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
+        bassArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
+        presenceArrow.image = NSImage(named: "down-arrow")?.imageWithTintColor(contrastColour)
+        effectsLoopArrow1.image = NSImage(named: "right-arrow")?.imageWithTintColor(NSColor.lead)
+        effectsLoopArrow2.image = NSImage(named: "up-arrow")?.imageWithTintColor(NSColor.lead)
         gainLabel.textColor = contrastColour
         volumeLabel.textColor = contrastColour
         trebleLabel.textColor = contrastColour
@@ -166,14 +166,14 @@ class MainVC: NSViewController {
 
     override func awakeFromNib() {
         if let appView = view as? AppViewControl {
-            if let image = NSImage(named: NSImage.Name(rawValue: "background-texture")) {
+            if let image = NSImage(named: "background-texture") {
                 appView.backgroundColour = NSColor(patternImage: image)
             }
         }
     }
 
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier?.rawValue {
+        if let identifier = segue.identifier {
             switch identifier {
             case "embedDisplay":
                 displayVC = segue.destinationController as? DisplayVC

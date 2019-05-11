@@ -134,7 +134,7 @@ extension PresetVC: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let effectVC: BaseEffectVC = viewController as? BaseEffectVC else { return nil }
-        guard let viewControllerIndex = orderedViewControllers.index(of: effectVC) else { return nil }
+        guard let viewControllerIndex = orderedViewControllers.firstIndex(of: effectVC) else { return nil }
         
         let previousIndex = viewControllerIndex - 1
         
@@ -147,7 +147,7 @@ extension PresetVC: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let effectVC: BaseEffectVC = viewController as? BaseEffectVC else { return nil }
-        guard let viewControllerIndex = orderedViewControllers.index(of: effectVC) else { return nil }
+        guard let viewControllerIndex = orderedViewControllers.firstIndex(of: effectVC) else { return nil }
         
         let nextIndex = viewControllerIndex + 1
         let orderedViewControllersCount = orderedViewControllers.count

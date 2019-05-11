@@ -210,12 +210,12 @@ class DLPreset: Mappable {
         module.addChild(name: "Param", value: Int(self.unknown3), attributes: ["ControlIndex" : "12"])
         module.addChild(name: "Param", value: Int(self.unknown4), attributes: ["ControlIndex" : "13"])
         module.addChild(name: "Param", value: Int(self.unknown5), attributes: ["ControlIndex" : "14"])
-        module.addChild(name: "Param", value: self.noiseGate, attributes: ["ControlIndex" : "15"])
-        module.addChild(name: "Param", value: self.threshold, attributes: ["ControlIndex" : "16"])
-        module.addChild(name: "Param", value: self.cabinet, attributes: ["ControlIndex" : "17"])
+        module.addChild(name: "Param", value: self.noiseGate as Any, attributes: ["ControlIndex" : "15"])
+        module.addChild(name: "Param", value: self.threshold as Any, attributes: ["ControlIndex" : "16"])
+        module.addChild(name: "Param", value: self.cabinet as Any, attributes: ["ControlIndex" : "17"])
         module.addChild(name: "Param", value: Int(self.unknown6), attributes: ["ControlIndex" : "18"])
-        module.addChild(name: "Param", value: self.sag, attributes: ["ControlIndex" : "19"])
-        module.addChild(name: "Param", value: self.brightness, attributes: ["ControlIndex" : "20"])
+        module.addChild(name: "Param", value: self.sag as Any, attributes: ["ControlIndex" : "19"])
+        module.addChild(name: "Param", value: self.brightness as Any, attributes: ["ControlIndex" : "20"])
         module.addChild(name: "Param", value: Int(self.unknown7), attributes: ["ControlIndex" : "21"])
         module.addChild(name: "Param", value: Int(self.unknown8), attributes: ["ControlIndex" : "22"])
         amp.addChild(module)
@@ -229,7 +229,7 @@ class DLPreset: Mappable {
         if let band = band { preset.addChild(band.xml()) }
         if let fuse = fuse { preset.addChild(fuse.xml()) }
         if let expressionPedal = expressionPedal { preset.addChild(expressionPedal.xml()) }
-        preset.addChild(name: "UsbGain", value: usbGain, attributes: [:])
+        preset.addChild(name: "UsbGain", value: usbGain as Any, attributes: [:])
         doc.addChild(preset)
         
         return doc

@@ -57,7 +57,7 @@ class PedalBodyControl: UIView {
         shadowLayer.shadowOpacity = 1.0
         shadowLayer.shadowOffset = CGSize(width: 0, height: -3)
         shadowLayer.shadowRadius = 3
-        shadowLayer.fillRule = kCAFillRuleEvenOdd
+        shadowLayer.fillRule = CAShapeLayerFillRule.evenOdd
         shadowLayer.name = "My Shadow"
         
         // Create the larger rectangle path.
