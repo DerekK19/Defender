@@ -762,7 +762,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage-xcode";
+			shellScript = "/usr/local/bin/carthage-xcode\n";
 			showEnvVarsInLog = 0;
 		};
 		6581F99E1D4C6772005BB5C9 /* Copy Carthage frameworks (for App Store submission bug) */ = {
