@@ -2,6 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Jenkinsfile"
+      assignedFileDataType = "public.ruby-script">
+   </FileRef>
+   <FileRef
       location = "group:DefenderiOS/DefenderiOS.xcodeproj">
    </FileRef>
    <FileRef
@@ -44,8 +48,4 @@
          location = "group:SnapshotHelper.swift">
       </FileRef>
    </Group>
-   <FileRef
-      location = "group:Jenkinsfile"
-      assignedFileDataType = "public.ruby-script">
-   </FileRef>
 </Workspace>
