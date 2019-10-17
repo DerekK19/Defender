@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import IOKit.usb.IOUSBUserClient
+import IOKit.usb
+//import IOKit.usb.IOUSBUserClient
 import IOKit.usb.IOUSBLib
 
 // from usb.h
