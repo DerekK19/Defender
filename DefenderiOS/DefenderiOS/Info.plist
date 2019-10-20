@@ -20,8 +20,12 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Bluetooth is used for communication between the desktop and phone applications. This means you can control your amplifier from your iPhone</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>Uses Bluetooth to communicate with the companion Mac app</string>
 	<key>UILaunchImageFile</key>
@@ -45,7 +49,5 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
 </dict>
 </plist>

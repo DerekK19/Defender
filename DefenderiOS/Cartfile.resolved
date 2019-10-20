@@ -1,7 +1,6 @@
-git "https://stash.gordonknight.co.uk:8443/scm/IF/Flogger.git" "v4.1"
 git "ssh://git@stash.gordonknight.co.uk:9999/IF/Flogger.git" "v4.1"
 git "ssh://git@stash.gordonknight.co.uk:9999/IF/RemoteDefender.git" "v4.1"
 github "DaveWoodCom/XCGLogger" "7.0.0"
-github "Hearst-DD/ObjectMapper" "3.4.2"
+github "Hearst-DD/ObjectMapper" "3.5.1"
 github "derekk19/BluetoothKit" "v0.5.0"
 github "fpillet/NSLogger" "v1.9.7"
