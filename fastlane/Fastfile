@@ -240,8 +240,15 @@ platform :mac do
   lane :home do
     # match(type: "appstore") # more information: https://codesigning.guide
     gym(
-    scheme: ENV["BuildScheme"]
-    ) # Build your app - more options available
+        scheme: ENV["BuildScheme"],
+        skip_package_pkg: true,
+        export_options: {
+          method: "app-store",
+          provisioningProfiles: {
+            "uk.co.gordonknight.Defender" => "Defender MacOS Distribution"
+          }
+        }
+       ) # Build your app - more options available
     # pilot
   end
 
