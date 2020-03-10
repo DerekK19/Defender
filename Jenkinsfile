@@ -10,8 +10,10 @@ node('Xcode') {
       env.LC_CTYPE = "en_US.UTF-8"
       checkout scm
       sh '''#!/bin/sh -l
-       fastlane ios beta
+      
        fastlane mac home
+       fastlane ios beta
+       
       '''
     }
 
