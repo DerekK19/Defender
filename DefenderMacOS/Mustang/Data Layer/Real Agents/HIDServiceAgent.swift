@@ -8,7 +8,6 @@
 
 import Foundation
 import IOKit.hid
-import Flogger
 
 // from IOHIDDevicePlugIn.h
 private let kIOHIDDeviceTypeID = CFUUIDGetConstantUUIDWithBytes(nil,
@@ -89,7 +88,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
         whenDeviceIsOpen(vendorId, productId: productId, locationId: locationId) { (device) in
             
             self.sendToDevice(device, data: [0xff, 0xc1], terminator: [0xff, 0x01]) { (response) in
-                self.logDebug(" Got settings\n")
+                self.logDebug(" Got settings")
                 onSuccess(response)
             }
         }
@@ -100,7 +99,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
         whenDeviceIsOpen(vendorId, productId: productId, locationId: locationId) { (device) in
             
             self.sendToDevice(device, data: data, terminator: [0x1c, 0x01, 0x00, 0x00]) { (response) in
-                self.logDebug(" Got preset\n")
+                self.logDebug(" Got preset")
                 onSuccess(response)
             }
         }
@@ -111,7 +110,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
         whenDeviceIsOpen(vendorId, productId: productId, locationId: locationId) { (device) in
             // This just saves the amp settings, not the effects, or the name
             self.sendToDevice(device, dataArray: data, terminator: [0x00, 0x00, 0x1c, 0x00]) { () in
-                self.logDebug(" Set preset\n")
+                self.logDebug(" Set preset")
                 onSuccess(data)
             }
         }
@@ -122,7 +121,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
         whenDeviceIsOpen(vendorId, productId: productId, locationId: locationId) { (device) in
             
             self.sendToDevice(device, data: data) { () in
-                self.logDebug(" Save preset\n")
+                self.logDebug(" Save preset")
                 onSuccess()
             }
         }
@@ -133,7 +132,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
         whenDeviceIsOpen(vendorId, productId: productId, locationId: locationId) { (device) in
             
             self.sendToDevice(device, data:[0x1c, 0x03], terminator: [0x00, 0x00, 0x1c, 0x00]) { (response) in
-                self.logDebug(" Confirmed change\n")
+                self.logDebug(" Confirmed change")
                 onSuccess(response)
             }
         }
@@ -226,7 +225,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
                 kr = IOHIDDeviceOpen(device!, 0)
                 self.logError("IOHIDDeviceOpen failed", kr: kr)
                 if kr == kIOReturnSuccess {
-                    self.logDebug(" Device OPENED\n")
+                    self.logDebug(" Device OPENED")
                     let semaphore = StorageAgent.sharedInstance.semaphoreForDevice(deviceKey)
                     StorageAgent.sharedInstance.updateDevice(deviceKey, initialised: true)
                     semaphore.signal()
@@ -450,7 +449,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
     fileprivate func sendToDevice(_ device: IOHIDDevice?, data: [UInt8], onSent: @escaping ()-> ()) {
         var kr: kern_return_t = 0
         if (data.count > reportSize) {
-            Flogger.log.error("output data too large for USB report")
+            ULog.error("output data too large for USB report")
             return
         }
         let reportId : CFIndex = 0
@@ -459,7 +458,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
             for i in 0..<data.count {
                 bytes[i] = data[i]
             }
-            let nsdata = Data(bytes: UnsafePointer<UInt8>(bytes), count: self.reportSize)
+            let nsdata = Data(bytes: bytes, count: self.reportSize)
             debugPrint("send", bytes: bytes)
             self.reportResponse = [[UInt8]]()
             self.reportExpect = nil
@@ -487,7 +486,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
     fileprivate func sendToDevice(_ device: IOHIDDevice?, data: [UInt8], expect: Int, onReplied: @escaping (_ response: [[UInt8]]?)-> ()) {
         var kr: kern_return_t = 0
         if (data.count > reportSize) {
-            Flogger.log.error("output data too large for USB report")
+            ULog.error("output data too large for USB report")
             return
         }
         let reportId : CFIndex = 0
@@ -496,7 +495,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
             for i in 0..<data.count {
                 bytes[i] = data[i]
             }
-            let nsdata = Data(bytes: UnsafePointer<UInt8>(bytes), count: self.reportSize)
+            let nsdata = Data(bytes: bytes, count: self.reportSize)
             debugPrint("send", bytes: bytes)
             self.reportResponse = [[UInt8]]()
             self.reportExpect = expect
@@ -517,7 +516,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
     fileprivate func sendToDevice(_ device: IOHIDDevice?, data: [UInt8], terminator: [UInt8], onReplied: @escaping (_ response: [[UInt8]]?)-> ()) {
         var kr: kern_return_t = 0
         if (data.count > reportSize) {
-            Flogger.log.error("output data too large for USB report")
+            ULog.error("output data too large for USB report")
             return
         }
         let reportId : CFIndex = 0
@@ -526,7 +525,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
             for i in 0..<data.count {
                 bytes[i] = data[i]
             }
-            let nsdata = Data(bytes: UnsafePointer<UInt8>(bytes), count: self.reportSize)
+            let nsdata = Data(bytes: bytes, count: self.reportSize)
             debugPrint("send", bytes: bytes)
             self.reportResponse = [[UInt8]]()
             self.reportTerminator = terminator
@@ -551,7 +550,7 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
             var i = 0
             bytes.forEach { if i > 0 && i % 4 == 0 { text += " " }; text += "\(String(format: "%02x", $0))"; i += 1 }
             text += ">"
-            Flogger.log.debug(text)
+            ULog.debug("%@", text)
         }
     }
     

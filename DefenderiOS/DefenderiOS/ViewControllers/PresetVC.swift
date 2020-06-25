@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Flogger
 
 protocol PresetVCDelegate {
     func settingsDidChangeForPreset(_ sender: PresetVC, preset: DXPreset?)
@@ -88,7 +87,7 @@ class PresetVC: UIPageViewController {
     
     private func newControlsVC() -> BaseEffectVC {
         guard let controlsVC = UIStoryboard(name: "Controls", bundle: nil).instantiateInitialViewController() as? ControlsVC else {
-            Flogger.log.error("Unable to create controls view controller")
+            ULog.error("Unable to create controls view controller")
             fatalError()
         }
         controlsVC.delegate = self
@@ -97,7 +96,7 @@ class PresetVC: UIPageViewController {
     
     private func newPedalVC(slotNumber: Int) -> BaseEffectVC {
         guard let pedalVC = UIStoryboard(name: "Pedal", bundle: nil).instantiateInitialViewController() as? PedalVC else {
-            Flogger.log.error("Unable to create a pedal view controller")
+            ULog.error("Unable to create a pedal view controller")
             fatalError()
         }
         pedalVC.slotNumber = slotNumber
@@ -107,7 +106,7 @@ class PresetVC: UIPageViewController {
     
     private func newEffectVC(slotNumber: Int) -> BaseEffectVC {
         guard let effectVC = UIStoryboard(name: "Effect", bundle: nil).instantiateInitialViewController() as? EffectVC else {
-                Flogger.log.error("Unable to create a effect view controller")
+                ULog.error("Unable to create a effect view controller")
                 fatalError()
         }
         effectVC.slotNumber = slotNumber
@@ -162,7 +161,7 @@ extension PresetVC: UIPageViewControllerDataSource {
 extension PresetVC: ControlsVCDelegate {
     
     func settingsDidChangeForControls(_ sender: ControlsVC, preset: DXPreset?) {
-        Flogger.log.verbose("Changed controls for preset")
+        ULog.verbose("Changed controls for preset")
         self.preset = preset
         presetDelegate?.settingsDidChangeForPreset(self, preset: preset)
     }
@@ -171,7 +170,7 @@ extension PresetVC: ControlsVCDelegate {
 extension PresetVC: PedalVCDelegate {
     
     func settingsDidChangeForPedal(_ sender: PedalVC, slotNumber: Int, effect: DXEffect) {
-        Flogger.log.verbose("Changed Pedal in slot \(slotNumber)")
+        ULog.verbose("Changed Pedal in slot %d", slotNumber)
         replaceEffect(effect, inSlot: slotNumber)
         presetDelegate?.settingsDidChangeForPreset(self, preset: preset)
     }
@@ -180,7 +179,7 @@ extension PresetVC: PedalVCDelegate {
 extension PresetVC: EffectVCDelegate {
     
     func settingsDidChangeForEffect(_ sender: EffectVC, slotNumber: Int, effect: DXEffect) {
-        Flogger.log.verbose("Changed Effect in slot \(slotNumber)")
+        ULog.verbose("Changed Effect in slot %d", slotNumber)
         replaceEffect(effect, inSlot: slotNumber)
         presetDelegate?.settingsDidChangeForPreset(self, preset: preset)
     }

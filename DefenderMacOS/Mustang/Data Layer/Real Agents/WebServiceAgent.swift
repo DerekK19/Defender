@@ -91,7 +91,9 @@ internal class WebServiceAgent: WebServiceAgentProtocol  {
         allParameters.merge(with: parameters)
         manager.post("https://fuse.fender.com/webService.php",
                      parameters: allParameters,
+                     headers: nil,
                      constructingBodyWith: nil,
+                     progress: { progress in },
                      success: { (task: URLSessionDataTask, data: Any?) in
                         if let data = data as? Data {
                             if let xml = String(data: data, encoding: String.Encoding.utf8) {
@@ -135,6 +137,8 @@ internal class WebServiceAgent: WebServiceAgentProtocol  {
         
         manager.get("https://fuse.fender.com/web_service/\(endpoint)",
                      parameters: allParameters,
+                     headers: nil,
+                     progress: { progress in } ,
                      success: { (task: URLSessionDataTask, data: Any?) in
                         if let data = data as? Dictionary<String, Any> {
                             onSuccess(data)

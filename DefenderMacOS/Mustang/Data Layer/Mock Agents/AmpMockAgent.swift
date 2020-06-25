@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Flogger
 
 // Fender constants
 private let FenderVendorId: Int = 0x1ed8
@@ -85,7 +84,7 @@ class AmpMockAgent : AmpServiceAgentProtocol {
             var i = 0
             bytes.forEach { if i > 0 && i % 4 == 0 { text += " " }; text += "\(String(format: "%02x", $0))"; i += 1 }
             text += ">"
-            Flogger.log.debug(text)
+            ULog.debug("%@", text)
         }
     }
     

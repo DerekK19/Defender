@@ -3,14 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		6501BEB61E46C856009469E6 /* DXPresetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6501BEB51E46C855009469E6 /* DXPresetList.swift */; };
-		6507759A1DE95DD200F5040C /* Flogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650775991DE95DD100F5040C /* Flogger.framework */; };
-		6507759C1DE9609100F5040C /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6507759B1DE9609100F5040C /* XCGLogger.framework */; };
-		650775A81DEA3DB000F5040C /* NSLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650775A71DEA3DB000F5040C /* NSLogger.framework */; };
+		65237B6824A46551002AB5D3 /* ULog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65237B6724A46551002AB5D3 /* ULog.swift */; };
+		65237B6B24A469DE002AB5D3 /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 65237B6A24A469DE002AB5D3 /* ObjectMapper */; };
+		65237B6E24A46A0E002AB5D3 /* AFNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 65237B6D24A46A0E002AB5D3 /* AFNetworking */; };
 		652564491DA8972A00ACCD4B /* PedalKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652564481DA8972A00ACCD4B /* PedalKnobControl.swift */; };
 		6525644B1DA89FCD00ACCD4B /* EffectKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6525644A1DA89FCD00ACCD4B /* EffectKnobControl.swift */; };
 		65426BA21DB0930300E54D35 /* KnobBaseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65426BA11DB0930300E54D35 /* KnobBaseControl.swift */; };
@@ -29,8 +29,6 @@
 		657C3AC81D56DB8E002DEF17 /* AmpKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C3AC71D56DB8E002DEF17 /* AmpKnobControl.swift */; };
 		657C3AD01D5C46E6002DEF17 /* DisplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C3ACF1D5C46E6002DEF17 /* DisplayVC.swift */; };
 		657C3AD61D5C50B8002DEF17 /* Display.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 657C3AD41D5C50B8002DEF17 /* Display.storyboard */; };
-		6581F99D1D4C5D97005BB5C9 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6581F99B1D4C5D97005BB5C9 /* ObjectMapper.framework */; };
-		658CEBF31DA0D8AA006890A4 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6581F99B1D4C5D97005BB5C9 /* ObjectMapper.framework */; };
 		658CEC031DA35E63006890A4 /* PedalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658CEC021DA35E63006890A4 /* PedalVC.swift */; };
 		658CEC051DA35E81006890A4 /* EffectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658CEC041DA35E81006890A4 /* EffectVC.swift */; };
 		658CEC0B1DA36977006890A4 /* EffectControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658CEC0A1DA36977006890A4 /* EffectControl.swift */; };
@@ -39,7 +37,6 @@
 		658CEC111DA44B97006890A4 /* EffectSlotControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658CEC101DA44B97006890A4 /* EffectSlotControl.swift */; };
 		658D10E21DB73BA3008C3A45 /* ShadeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658D10E11DB73BA3008C3A45 /* ShadeControl.swift */; };
 		65A65BA21DA4740400EDCA32 /* PedalPadControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A65BA11DA4740400EDCA32 /* PedalPadControl.swift */; };
-		65B0A8FE1ECA73E500A9BEE0 /* ObjcExceptionBridging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B0A8FD1ECA73E500A9BEE0 /* ObjcExceptionBridging.framework */; };
 		65B37C961DD1A8ED00433B89 /* ArrowButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B37C951DD1A8EC00433B89 /* ArrowButtonCell.swift */; };
 		65B37C981DD1AC6500433B89 /* ArrowButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B37C971DD1AC6400433B89 /* ArrowButtonControl.swift */; };
 		65B37CB71DD6D05400433B89 /* FuseDocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 65B37CB61DD6D05400433B89 /* FuseDocumentIcon.icns */; };
@@ -111,8 +108,6 @@
 		65C9553A1ECE571B005FA7A3 /* XMLNode+value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954EB1ECE571B005FA7A3 /* XMLNode+value.swift */; };
 		65C9553B1ECE571B005FA7A3 /* fender_mustang_protocol.txt in Resources */ = {isa = PBXBuildFile; fileRef = 65C954EC1ECE571B005FA7A3 /* fender_mustang_protocol.txt */; };
 		65C9554A1ECE571B005FA7A3 /* Mustang.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954FD1ECE571B005FA7A3 /* Mustang.swift */; };
-		65EF3B3C1DCD8F7A00A01153 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */; };
-		65EF3B3D1DCD8F8500A01153 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */; };
 		65F69F131DDD70EE0017188D /* DXAmplifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F121DDD70EE0017188D /* DXAmplifier.swift */; };
 		65F69F161DDD71AB0017188D /* DXAmplifier+DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F151DDD71AB0017188D /* DXAmplifier+DTO.swift */; };
 		65F69F1A1DDD75090017188D /* Transferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F191DDD75090017188D /* Transferable.swift */; };
@@ -153,10 +148,8 @@
 
 /* Begin PBXFileReference section */
 		6501BEB51E46C855009469E6 /* DXPresetList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXPresetList.swift; sourceTree = "<group>"; };
-		650775991DE95DD100F5040C /* Flogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Flogger.framework; path = Carthage/Build/Mac/Flogger.framework; sourceTree = "<group>"; };
-		6507759B1DE9609100F5040C /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Carthage/Build/Mac/XCGLogger.framework; sourceTree = "<group>"; };
-		650775A71DEA3DB000F5040C /* NSLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NSLogger.framework; path = Carthage/Build/Mac/NSLogger.framework; sourceTree = "<group>"; };
 		6510D0631F9D8D6F00517328 /* Defender.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Defender.entitlements; sourceTree = "<group>"; };
+		65237B6724A46551002AB5D3 /* ULog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ULog.swift; sourceTree = "<group>"; };
 		652564481DA8972A00ACCD4B /* PedalKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalKnobControl.swift; sourceTree = "<group>"; };
 		6525644A1DA89FCD00ACCD4B /* EffectKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectKnobControl.swift; sourceTree = "<group>"; };
 		65426BA11DB0930300E54D35 /* KnobBaseControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobBaseControl.swift; sourceTree = "<group>"; };
@@ -180,7 +173,6 @@
 		657C3AC71D56DB8E002DEF17 /* AmpKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmpKnobControl.swift; sourceTree = "<group>"; };
 		657C3ACF1D5C46E6002DEF17 /* DisplayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayVC.swift; sourceTree = "<group>"; };
 		657C3AD51D5C50B8002DEF17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Display.storyboard; sourceTree = "<group>"; };
-		6581F99B1D4C5D97005BB5C9 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/Mac/ObjectMapper.framework; sourceTree = "<group>"; };
 		658CEC021DA35E63006890A4 /* PedalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalVC.swift; sourceTree = "<group>"; };
 		658CEC041DA35E81006890A4 /* EffectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectVC.swift; sourceTree = "<group>"; };
 		658CEC0A1DA36977006890A4 /* EffectControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectControl.swift; sourceTree = "<group>"; };
@@ -189,7 +181,6 @@
 		658CEC101DA44B97006890A4 /* EffectSlotControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectSlotControl.swift; sourceTree = "<group>"; };
 		658D10E11DB73BA3008C3A45 /* ShadeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ShadeControl.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		65A65BA11DA4740400EDCA32 /* PedalPadControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalPadControl.swift; sourceTree = "<group>"; };
-		65B0A8FD1ECA73E500A9BEE0 /* ObjcExceptionBridging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjcExceptionBridging.framework; path = Carthage/Build/Mac/ObjcExceptionBridging.framework; sourceTree = "<group>"; };
 		65B37C951DD1A8EC00433B89 /* ArrowButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowButtonCell.swift; sourceTree = "<group>"; };
 		65B37C971DD1AC6400433B89 /* ArrowButtonControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowButtonControl.swift; sourceTree = "<group>"; };
 		65B37CB61DD6D05400433B89 /* FuseDocumentIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = FuseDocumentIcon.icns; sourceTree = "<group>"; };
@@ -259,7 +250,6 @@
 		65C954EB1ECE571B005FA7A3 /* XMLNode+value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XMLNode+value.swift"; sourceTree = "<group>"; };
 		65C954EC1ECE571B005FA7A3 /* fender_mustang_protocol.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fender_mustang_protocol.txt; sourceTree = "<group>"; };
 		65C954FD1ECE571B005FA7A3 /* Mustang.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mustang.swift; sourceTree = "<group>"; };
-		65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/Mac/AFNetworking.framework; sourceTree = "<group>"; };
 		65F69F121DDD70EE0017188D /* DXAmplifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXAmplifier.swift; sourceTree = "<group>"; };
 		65F69F151DDD71AB0017188D /* DXAmplifier+DTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DXAmplifier+DTO.swift"; sourceTree = "<group>"; };
 		65F69F191DDD75090017188D /* Transferable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transferable.swift; sourceTree = "<group>"; };
@@ -293,14 +283,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6581F99D1D4C5D97005BB5C9 /* ObjectMapper.framework in Frameworks */,
-				65EF3B3C1DCD8F7A00A01153 /* AFNetworking.framework in Frameworks */,
-				650775A81DEA3DB000F5040C /* NSLogger.framework in Frameworks */,
-				6507759C1DE9609100F5040C /* XCGLogger.framework in Frameworks */,
-				6507759A1DE95DD200F5040C /* Flogger.framework in Frameworks */,
+				65237B6E24A46A0E002AB5D3 /* AFNetworking in Frameworks */,
+				65237B6B24A469DE002AB5D3 /* ObjectMapper in Frameworks */,
 				65B37CBC1DD7D0B400433B89 /* BluetoothKit.framework in Frameworks */,
 				65B37D541DD800B700433B89 /* RemoteDefender.framework in Frameworks */,
-				65B0A8FE1ECA73E500A9BEE0 /* ObjcExceptionBridging.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,8 +294,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				658CEBF31DA0D8AA006890A4 /* ObjectMapper.framework in Frameworks */,
-				65EF3B3D1DCD8F8500A01153 /* AFNetworking.framework in Frameworks */,
 				65B37D201DD7F3D100433B89 /* BluetoothKit.framework in Frameworks */,
 				65B37D531DD800B500433B89 /* RemoteDefender.framework in Frameworks */,
 			);
@@ -429,13 +413,7 @@
 		6581F9991D4C5D76005BB5C9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				65B0A8FD1ECA73E500A9BEE0 /* ObjcExceptionBridging.framework */,
-				650775A71DEA3DB000F5040C /* NSLogger.framework */,
-				6507759B1DE9609100F5040C /* XCGLogger.framework */,
-				650775991DE95DD100F5040C /* Flogger.framework */,
 				65B37D511DD8009D00433B89 /* RemoteDefender.framework */,
-				65EF3B3B1DCD8F7A00A01153 /* AFNetworking.framework */,
-				6581F99B1D4C5D97005BB5C9 /* ObjectMapper.framework */,
 				65B37CBB1DD7D0B400433B89 /* BluetoothKit.framework */,
 			);
 			name = Frameworks;
@@ -610,6 +588,7 @@
 		71602D7A1DD5224C003E2D49 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				65237B6724A46551002AB5D3 /* ULog.swift */,
 				71602D7B1DD52284003E2D49 /* PresetDocument.swift */,
 			);
 			path = Classes;
@@ -648,6 +627,10 @@
 			dependencies = (
 			);
 			name = Defender;
+			packageProductDependencies = (
+				65237B6A24A469DE002AB5D3 /* ObjectMapper */,
+				65237B6D24A46A0E002AB5D3 /* AFNetworking */,
+			);
 			productName = Defender;
 			productReference = 655A5A3D1D4C555400E15E1F /* Defender.app */;
 			productType = "com.apple.product-type.application";
@@ -707,6 +690,10 @@
 				Base,
 			);
 			mainGroup = 655A5A341D4C555400E15E1F;
+			packageReferences = (
+				65237B6924A469DE002AB5D3 /* XCRemoteSwiftPackageReference "ObjectMapper" */,
+				65237B6C24A46A0E002AB5D3 /* XCRemoteSwiftPackageReference "AFNetworking" */,
+			);
 			productRefGroup = 655A5A3E1D4C555400E15E1F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -771,21 +758,15 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Mac/ObjectMapper.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/AFNetworking.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/BluetoothKit.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/RemoteDefender.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/Flogger.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/XCGlogger.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/NSLogger.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/ObjcExceptionBridging.framework",
 			);
 			name = "Copy Carthage frameworks (for App Store submission bug)";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 			showEnvVarsInLog = 0;
 		};
 		65EF3B3E1DCD921B00A01153 /* Replace previous version in App Store */ = {
@@ -826,6 +807,7 @@
 				65426BA21DB0930300E54D35 /* KnobBaseControl.swift in Sources */,
 				658CEC0D1DA36AAA006890A4 /* PedalBodyControl.swift in Sources */,
 				65C955201ECE571B005FA7A3 /* DLExpressionPedal.swift in Sources */,
+				65237B6824A46551002AB5D3 /* ULog.swift in Sources */,
 				6501BEB61E46C856009469E6 /* DXPresetList.swift in Sources */,
 				65C955121ECE571B005FA7A3 /* FileMockAgent.swift in Sources */,
 				657C3AC81D56DB8E002DEF17 /* AmpKnobControl.swift in Sources */,
@@ -1079,7 +1061,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 			};
 			name = Release;
@@ -1098,7 +1081,10 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = DefenderMacOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.Defender;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1122,7 +1108,10 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = DefenderMacOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.Defender;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1142,7 +1131,11 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = DefenderMacOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.DefenderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1161,7 +1154,11 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = DefenderMacOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.DefenderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1201,6 +1198,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		65237B6924A469DE002AB5D3 /* XCRemoteSwiftPackageReference "ObjectMapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tristanhimmelman/ObjectMapper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+		65237B6C24A46A0E002AB5D3 /* XCRemoteSwiftPackageReference "AFNetworking" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AFNetworking/AFNetworking.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		65237B6A24A469DE002AB5D3 /* ObjectMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65237B6924A469DE002AB5D3 /* XCRemoteSwiftPackageReference "ObjectMapper" */;
+			productName = ObjectMapper;
+		};
+		65237B6D24A46A0E002AB5D3 /* AFNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65237B6C24A46A0E002AB5D3 /* XCRemoteSwiftPackageReference "AFNetworking" */;
+			productName = AFNetworking;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 655A5A351D4C555400E15E1F /* Project object */;
 }

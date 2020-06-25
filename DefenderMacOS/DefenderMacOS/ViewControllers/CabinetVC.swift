@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import Flogger
 
 protocol CabinetVCDelegate {
     func settingsDidChangeForCabinet(_ sender: CabinetVC)

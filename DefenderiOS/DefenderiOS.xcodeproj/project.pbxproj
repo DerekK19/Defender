@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,12 +13,11 @@
 		6501BEB21E457CC2009469E6 /* WatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6501BEB01E457CC2009469E6 /* WatchMessage.swift */; };
 		6501BEB41E46C6F9009469E6 /* DXPresetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6501BEB31E46C6F9009469E6 /* DXPresetList.swift */; };
 		6501BEB81E46D338009469E6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6501BEB71E46D338009469E6 /* DataManager.swift */; };
-		650775BC1DEA936B00F5040C /* Flogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650775BB1DEA936A00F5040C /* Flogger.framework */; };
-		650775BE1DEA937000F5040C /* NSLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650775BD1DEA937000F5040C /* NSLogger.framework */; };
-		650775C01DEA937200F5040C /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650775BF1DEA937200F5040C /* XCGLogger.framework */; };
 		650775C41DEBFCA600F5040C /* PedalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650775C31DEBFCA600F5040C /* PedalVC.swift */; };
 		650775C51DEBFD4900F5040C /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 650775C71DEBFD4900F5040C /* Main_iPad.storyboard */; };
 		650775C81DEBFD4F00F5040C /* Pedal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 650775CA1DEBFD4F00F5040C /* Pedal.storyboard */; };
+		65237B8E24A482D5002AB5D3 /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 65237B8D24A482D5002AB5D3 /* ObjectMapper */; };
+		65237BE124A4840D002AB5D3 /* ULog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65237BE024A4840D002AB5D3 /* ULog.swift */; };
 		656862651E25D03F00115981 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 656862631E25D03F00115981 /* Interface.storyboard */; };
 		656862671E25D04000115981 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 656862661E25D04000115981 /* Assets.xcassets */; };
 		6568626E1E25D04100115981 /* Watchkit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6568626D1E25D04100115981 /* Watchkit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -31,7 +30,6 @@
 		656EE8321E30765000410BB4 /* PhoneSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EE8301E30765000410BB4 /* PhoneSessionController.swift */; };
 		656EE8341E30767400410BB4 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656EE8331E30767400410BB4 /* WatchConnectivity.framework */; };
 		656EE8361E307AD300410BB4 /* WatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EE8351E307AD300410BB4 /* WatchManager.swift */; };
-		65BBEF461F08B13100C2C90E /* ObjcExceptionBridging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65BBEF451F08B13100C2C90E /* ObjcExceptionBridging.framework */; };
 		65F69F0D1DDD70AB0017188D /* DXAmplifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F0C1DDD70AB0017188D /* DXAmplifier.swift */; };
 		65F69F181DDD745D0017188D /* Transferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F171DDD745D0017188D /* Transferable.swift */; };
 		65F69F1C1DDD93000017188D /* DXMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F1B1DDD93000017188D /* DXMessage.swift */; };
@@ -68,7 +66,6 @@
 		7198C2F11DD93601003238D7 /* DefenderAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C2F01DD93601003238D7 /* DefenderAppTests.swift */; };
 		7198C30A1DD949D1003238D7 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 7198C3091DD949D1003238D7 /* Cartfile */; };
 		7198C3101DD94BAC003238D7 /* BluetoothKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7198C30E1DD94BAC003238D7 /* BluetoothKit.framework */; };
-		7198C3111DD94BAC003238D7 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7198C30F1DD94BAC003238D7 /* ObjectMapper.framework */; };
 		7198C3351DD9570D003238D7 /* RemoteDefender.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7198C3341DD9570D003238D7 /* RemoteDefender.framework */; };
 		7198C33E1DDA833B003238D7 /* RemoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C33D1DDA833B003238D7 /* RemoteManager.swift */; };
 		7198C5EF1DDE47CA003238D7 /* LEDControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C5EE1DDE47CA003238D7 /* LEDControl.swift */; };
@@ -129,12 +126,10 @@
 		6501BEB01E457CC2009469E6 /* WatchMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchMessage.swift; sourceTree = "<group>"; };
 		6501BEB31E46C6F9009469E6 /* DXPresetList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXPresetList.swift; sourceTree = "<group>"; };
 		6501BEB71E46D338009469E6 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		650775BB1DEA936A00F5040C /* Flogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Flogger.framework; path = Carthage/Build/iOS/Flogger.framework; sourceTree = "<group>"; };
-		650775BD1DEA937000F5040C /* NSLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NSLogger.framework; path = Carthage/Build/iOS/NSLogger.framework; sourceTree = "<group>"; };
-		650775BF1DEA937200F5040C /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Carthage/Build/iOS/XCGLogger.framework; sourceTree = "<group>"; };
 		650775C31DEBFCA600F5040C /* PedalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalVC.swift; sourceTree = "<group>"; };
 		650775C61DEBFD4900F5040C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		650775C91DEBFD4F00F5040C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Pedal.storyboard; sourceTree = "<group>"; };
+		65237BE024A4840D002AB5D3 /* ULog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ULog.swift; sourceTree = "<group>"; };
 		656862611E25D03E00115981 /* Watchkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watchkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		656862641E25D03F00115981 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		656862661E25D04000115981 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -150,7 +145,6 @@
 		656EE8301E30765000410BB4 /* PhoneSessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneSessionController.swift; sourceTree = "<group>"; };
 		656EE8331E30767400410BB4 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
 		656EE8351E307AD300410BB4 /* WatchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchManager.swift; sourceTree = "<group>"; };
-		65BBEF451F08B13100C2C90E /* ObjcExceptionBridging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjcExceptionBridging.framework; path = Carthage/Build/iOS/ObjcExceptionBridging.framework; sourceTree = "<group>"; };
 		65F69F0C1DDD70AB0017188D /* DXAmplifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXAmplifier.swift; sourceTree = "<group>"; };
 		65F69F171DDD745D0017188D /* Transferable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transferable.swift; sourceTree = "<group>"; };
 		65F69F1B1DDD93000017188D /* DXMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXMessage.swift; sourceTree = "<group>"; };
@@ -191,7 +185,6 @@
 		7198C2F21DD93601003238D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7198C3091DD949D1003238D7 /* Cartfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = Cartfile; sourceTree = "<group>"; };
 		7198C30E1DD94BAC003238D7 /* BluetoothKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BluetoothKit.framework; path = Carthage/Build/iOS/BluetoothKit.framework; sourceTree = "<group>"; };
-		7198C30F1DD94BAC003238D7 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		7198C3341DD9570D003238D7 /* RemoteDefender.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RemoteDefender.framework; path = Carthage/Build/iOS/RemoteDefender.framework; sourceTree = "<group>"; };
 		7198C33D1DDA833B003238D7 /* RemoteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteManager.swift; sourceTree = "<group>"; };
 		7198C5EE1DDE47CA003238D7 /* LEDControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LEDControl.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -212,11 +205,7 @@
 				656EE8341E30767400410BB4 /* WatchConnectivity.framework in Frameworks */,
 				7198C3351DD9570D003238D7 /* RemoteDefender.framework in Frameworks */,
 				7198C3101DD94BAC003238D7 /* BluetoothKit.framework in Frameworks */,
-				7198C3111DD94BAC003238D7 /* ObjectMapper.framework in Frameworks */,
-				650775BC1DEA936B00F5040C /* Flogger.framework in Frameworks */,
-				650775BE1DEA937000F5040C /* NSLogger.framework in Frameworks */,
-				65BBEF461F08B13100C2C90E /* ObjcExceptionBridging.framework in Frameworks */,
-				650775C01DEA937200F5040C /* XCGLogger.framework in Frameworks */,
+				65237B8E24A482D5002AB5D3 /* ObjectMapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				7198C2DB1DD93601003238D7 /* AppDelegate.swift */,
+				65237BE024A4840D002AB5D3 /* ULog.swift */,
 				7198C3401DDA9C20003238D7 /* View Controllers */,
 				7198C33C1DDA8317003238D7 /* Managers */,
 				7198C5ED1DDE476C003238D7 /* Custom Controls */,
@@ -360,13 +350,8 @@
 			isa = PBXGroup;
 			children = (
 				656EE8331E30767400410BB4 /* WatchConnectivity.framework */,
-				650775BF1DEA937200F5040C /* XCGLogger.framework */,
-				65BBEF451F08B13100C2C90E /* ObjcExceptionBridging.framework */,
-				650775BD1DEA937000F5040C /* NSLogger.framework */,
-				650775BB1DEA936A00F5040C /* Flogger.framework */,
 				7198C3341DD9570D003238D7 /* RemoteDefender.framework */,
 				7198C30E1DD94BAC003238D7 /* BluetoothKit.framework */,
-				7198C30F1DD94BAC003238D7 /* ObjectMapper.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -484,6 +469,9 @@
 				6568627E1E25D04100115981 /* PBXTargetDependency */,
 			);
 			name = DefenderiOS;
+			packageProductDependencies = (
+				65237B8D24A482D5002AB5D3 /* ObjectMapper */,
+			);
 			productName = DefenderApp;
 			productReference = 7198C2D81DD93601003238D7 /* DefenderiOS.app */;
 			productType = "com.apple.product-type.application";
@@ -552,6 +540,9 @@
 				Base,
 			);
 			mainGroup = 7198C2CF1DD93601003238D7;
+			packageReferences = (
+				65237B8C24A482D5002AB5D3 /* XCRemoteSwiftPackageReference "ObjectMapper" */,
+			);
 			productRefGroup = 7198C2D91DD93601003238D7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -630,18 +621,13 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/RemoteDefender.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/BluetoothKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Flogger.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/NSLogger.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/XCGLogger.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ObjcExceptionBridging.framework",
 			);
 			name = "Copy Carthage frameworks (for App Store submission bug)";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -682,6 +668,7 @@
 				71935F341DEF724E0096A919 /* UIImage+Colour.swift in Sources */,
 				719614151DED028700AE3E6E /* Enums.swift in Sources */,
 				71935F271DEE35DE0096A919 /* PedalPadControl.swift in Sources */,
+				65237BE124A4840D002AB5D3 /* ULog.swift in Sources */,
 				7193603A1DF4BEBC0096A919 /* BaseEffectVC.swift in Sources */,
 				71935F321DEF700C0096A919 /* ControlsPageVC.swift in Sources */,
 				7198C5EF1DDE47CA003238D7 /* LEDControl.swift in Sources */,
@@ -842,7 +829,11 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				DEVELOPMENT_TEAM = DX8B97QV93;
 				INFOPLIST_FILE = "Watchkit Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.DefenderApp.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "e1d34be2-faf4-438b-9a7d-83d19bbcc109";
@@ -862,7 +853,11 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = DX8B97QV93;
 				INFOPLIST_FILE = "Watchkit Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.DefenderApp.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "ef665a19-a191-4e89-b0b9-c00f2dab4e43";
@@ -924,7 +919,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -977,10 +972,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -997,7 +993,11 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = DefenderiOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.DefenderApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "509d73e5-050d-4f7b-9d04-361367ee685b";
@@ -1018,7 +1018,11 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = DefenderiOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.DefenderApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0f8247b6-e4b7-4b6c-bf87-0883afaca44b";
@@ -1035,7 +1039,12 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = DX8B97QV93;
 				INFOPLIST_FILE = DefenderiOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.DefenderAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1050,7 +1059,12 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = DX8B97QV93;
 				INFOPLIST_FILE = DefenderiOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.gordonknight.DefenderAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1107,6 +1121,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		65237B8C24A482D5002AB5D3 /* XCRemoteSwiftPackageReference "ObjectMapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tristanhimmelman/ObjectMapper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		65237B8D24A482D5002AB5D3 /* ObjectMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65237B8C24A482D5002AB5D3 /* XCRemoteSwiftPackageReference "ObjectMapper" */;
+			productName = ObjectMapper;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7198C2D01DD93601003238D7 /* Project object */;
 }

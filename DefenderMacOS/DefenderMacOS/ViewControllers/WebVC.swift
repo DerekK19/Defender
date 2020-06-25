@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import Flogger
 
 protocol WebVCDelegate {
     func didSelectPreset(preset: BOPreset?)
@@ -234,9 +233,9 @@ class WebVC: NSViewController {
         pagination = response.pagination
         newPage = pagination!.page
         countLabel.stringValue = "Found \(pagination!.total) items"
-        Flogger.log.debug("For page \(self.newPage), found \(self.pagination!.total) items. Page \(self.pagination!.page) of \(self.pagination!.pages). Limit \(self.pagination!.limit) per page")
+        ULog.debug("For page %d, found %d items. Page %d of %d. Limit %d per page", newPage, pagination!.total, pagination!.page, pagination!.pages, pagination!.limit)
         for item in items {
-            Flogger.log.debug("\(item.title) - \(item.data?.preset?.effects.count ?? 0) effects")
+            ULog.debug("%@ - %d effects", item.title, item.data?.preset?.effects.count ?? 0)
         }
         presets = items
         searched = true

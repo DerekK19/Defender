@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import Flogger
 
 protocol AmpManagerDelegate {
     func deviceConnected(ampManager: AmpManager)
@@ -205,7 +204,7 @@ class AmpManager {
                     if let number = preset.number {
                         self.presets[number] = preset
                     } else {
-                        Flogger.log.error("Got a preset with no number, cannot use it")
+                        ULog.error("Got a preset with no number, cannot use it")
                     }
                 }
                 DispatchQueue.main.async {
@@ -336,12 +335,12 @@ class AmpManager {
         mustang.login(username: username,
                       password: password,
                       onSuccess: {
-                        Flogger.log.verbose("Logged in")
+                        ULog.verbose("Logged in")
                         DispatchQueue.main.async {
                             onCompletion(true)
                         }},
                       onFail: {
-                        Flogger.log.error("Login failure")
+                        ULog.error("Login failure")
                         DispatchQueue.main.async {
                             onCompletion(false)
                         }}
@@ -356,12 +355,12 @@ class AmpManager {
                        pageNumber: pageNumber,
                        maxReturn: maxReturn,
                        onSuccess: { (response) in
-                        Flogger.log.verbose("Searched")
+                        ULog.verbose("Searched")
                         DispatchQueue.main.async {
                             onCompletion(response)
                         }},
                        onFail: {
-                        Flogger.log.error("Search failure")
+                        ULog.error("Search failure")
                         DispatchQueue.main.async {
                             onCompletion(nil)
                         }}
@@ -370,12 +369,12 @@ class AmpManager {
     
     open func logout(onCompletion: @escaping (_ loggedOut: Bool) ->()) {
         mustang.logout(onSuccess: {
-                        Flogger.log.verbose("Logged out")
+                        ULog.verbose("Logged out")
                         DispatchQueue.main.async {
                             onCompletion(true)
                         }},
                       onFail: {
-                        Flogger.log.error("Logout failure")
+                        ULog.error("Logout failure")
                         DispatchQueue.main.async {
                             onCompletion(false)
                         }}
@@ -395,11 +394,11 @@ class AmpManager {
         let backupRoot = "\(NSHomeDirectory())/Documents/Fender/FUSE/Backups"
         fileManager.changeCurrentDirectoryPath(backupRoot)
         if fileManager.currentDirectoryPath != backupRoot {
-            Flogger.log.error("There is no Backups folder - \(backupRoot). Creating")
+            ULog.error("There is no Backups folder - %@. Creating", backupRoot)
             do {
                 try fileManager.createDirectory(atPath: backupRoot, withIntermediateDirectories: true)
             } catch {
-                Flogger.log.error("Unable to create Backups folder. Cannot create backup")
+                ULog.error("Unable to create Backups folder. Cannot create backup")
                 return
             }
         }
@@ -411,7 +410,7 @@ class AmpManager {
             try fileManager.createDirectory(atPath: backupFolder, withIntermediateDirectories: true)
             fileManager.changeCurrentDirectoryPath(backupFolder)
             if fileManager.currentDirectoryPath != backupFolder {
-                Flogger.log.error("Unable to setup backup folder. Giving up")
+                ULog.error("Unable to setup backup folder. Giving up")
                 return
             }
             try fileManager.createDirectory(atPath: "FUSE", withIntermediateDirectories: true)
@@ -441,7 +440,7 @@ class AmpManager {
                 fileManager.createFile(atPath: "FUSE/\(index).fuse", contents: fuseXml)
             }
         } catch {
-            Flogger.log.error("Unable to create backup folder. Giving up")
+            ULog.error("Unable to create backup folder. Giving up")
             return
         }
     }
@@ -454,7 +453,7 @@ class AmpManager {
         let fileManager = FileManager()
         fileManager.changeCurrentDirectoryPath(backupRoot)
         if fileManager.currentDirectoryPath != backupRoot {
-            Flogger.log.error("There is no backup root folder - \(backupRoot)")
+            ULog.error("There is no backup root folder - %@", backupRoot)
             return nil
         }
         var backups = [Date : String]()
@@ -468,18 +467,18 @@ class AmpManager {
                             let backupName = String(bytes: data, encoding: .utf8)
                             backups[date] = backupName
                         } else {
-                            Flogger.log.error("Failed to get backup name for \(folder)")
+                            ULog.error("Failed to get backup name for %@", folder)
                         }
                     } else {
-                        Flogger.log.error("Couldn't convert \(folder) to a date. Ignoring")
+                        ULog.error("Couldn't convert %@ to a date. Ignoring", folder)
                     }
                 } else {
-                    Flogger.log.info("Folder \(folder) doesn't look like a backup. Ignoring")
+                    ULog.info("Folder %@ doesn't look like a backup. Ignoring", folder)
                 }
             }
             return backups
         } catch {
-            Flogger.log.error("Failed to find backups")
+            ULog.error("Failed to find backups")
             return nil
         }
     }
@@ -493,20 +492,20 @@ class AmpManager {
         let fileManager = FileManager()
         fileManager.changeCurrentDirectoryPath(backupRoot)
         if fileManager.currentDirectoryPath != backupRoot {
-            Flogger.log.error("There is no backup root folder - \(backupRoot)")
+            ULog.error("There is no backup root folder %@", backupRoot)
             return
         }
         do {
             let backupFolder = "\(backupRoot)/\(name)"
             fileManager.changeCurrentDirectoryPath(backupFolder)
             if fileManager.currentDirectoryPath != backupFolder {
-                Flogger.log.error("There is no backup folder - \(backupFolder)")
+                ULog.error("There is no backup folder - %@", backupFolder)
                 return
             }
             let fuseFilesNames = try fileManager.contentsOfDirectory(atPath: "FUSE")
             let presetFilesNames = try fileManager.contentsOfDirectory(atPath: "Presets")
             if fuseFilesNames.count != presetFilesNames.count {
-                Flogger.log.error("The number of preset files should be the same as the number of fuse files")
+                ULog.error("The number of preset files should be the same as the number of fuse files")
                 return
             }
             for file in fuseFilesNames {
@@ -526,7 +525,7 @@ class AmpManager {
                                 }
                             }
                             catch {
-                                Flogger.log.error("Couldn't read Preset XML file \(presetPath)")
+                                ULog.error("Couldn't read Preset XML file %@", presetPath)
                             }
                         }
                     }
@@ -535,11 +534,11 @@ class AmpManager {
                     }
                 }
                 catch {
-                    Flogger.log.error("Couldn't read FUSE XML file \(fusePath)")
+                    ULog.error("Couldn't read FUSE XML file %@", fusePath)
                 }
             }
         } catch {
-            Flogger.log.error("Failed to find backups")
+            ULog.error("Failed to find backups")
         }
     }
 

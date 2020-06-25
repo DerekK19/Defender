@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import Flogger
 
 class PresetDocument : NSDocument {
     
@@ -42,12 +41,12 @@ class PresetDocument : NSDocument {
     }
     
     override func save(_ sender: Any?) {
-        Flogger.log.debug("Save \(sender ?? "Unknown")")
+        ULog.debug("Save %@", sender as? String ?? "Unknown")
         super.save(sender)
     }
     
     override func saveAs(_ sender: Any?) {
-        Flogger.log.debug("Save as \(sender ?? "Unknown")")
+        ULog.debug("Save as %@", sender as? String ?? "Unknown")
         super.saveAs(sender)
     }
 }

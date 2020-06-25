@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Flogger
 
 // from mach
 internal let  MACH_PORT_NULL: mach_port_t       = 0
@@ -79,24 +78,24 @@ class BaseServiceAgent {
     // MARK: Logging and debugging
     internal func logError(_ reason: String, kr: kern_return_t) {
         if kr != kIOReturnSuccess {
-            Flogger.log.error("\(reason) 0x\(String(format: "%08x", kr)).")
+            ULog.error("%@ 0x%08x", reason, kr)
         }
     }
     internal func logError(_ reason: String, hr: HRESULT) {
         if hr != 0 {
-            Flogger.log.error("\(reason) 0x\(String(format: "%08x", hr)).")
+            ULog.error("%@ 0x%08x", reason, hr)
         }
     }
     
     internal func logVerbose(_ text: String) {
         if (verbose) {
-            Flogger.log.verbose(text)
+            ULog.verbose("%@", text)
         }
     }
     
     internal func logDebug(_ text: String) {
         if (verbose) {
-            Flogger.log.debug(text)
+            ULog.debug("%@", text)
         }
     }
 }
