@@ -26,6 +26,7 @@
 		655A5A531D4C555500E15E1F /* DefenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A5A521D4C555500E15E1F /* DefenderTests.swift */; };
 		656A5ABB1DA880B700B7BE3E /* LEDControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656A5ABA1DA880B700B7BE3E /* LEDControl.swift */; };
 		656A5ABD1DA883BB00B7BE3E /* NSColor+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656A5ABC1DA883BB00B7BE3E /* NSColor+Brightness.swift */; };
+		6573067024A5A0CE00EC155F /* RemoteDefender in Frameworks */ = {isa = PBXBuildFile; productRef = 6573066F24A5A0CE00EC155F /* RemoteDefender */; };
 		657C3AC81D56DB8E002DEF17 /* AmpKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C3AC71D56DB8E002DEF17 /* AmpKnobControl.swift */; };
 		657C3AD01D5C46E6002DEF17 /* DisplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C3ACF1D5C46E6002DEF17 /* DisplayVC.swift */; };
 		657C3AD61D5C50B8002DEF17 /* Display.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 657C3AD41D5C50B8002DEF17 /* Display.storyboard */; };
@@ -41,10 +42,6 @@
 		65B37C981DD1AC6500433B89 /* ArrowButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B37C971DD1AC6400433B89 /* ArrowButtonControl.swift */; };
 		65B37CB71DD6D05400433B89 /* FuseDocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 65B37CB61DD6D05400433B89 /* FuseDocumentIcon.icns */; };
 		65B37CBA1DD7CCA800433B89 /* RemoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B37CB91DD7CCA800433B89 /* RemoteManager.swift */; };
-		65B37CBC1DD7D0B400433B89 /* BluetoothKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B37CBB1DD7D0B400433B89 /* BluetoothKit.framework */; };
-		65B37D201DD7F3D100433B89 /* BluetoothKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B37CBB1DD7D0B400433B89 /* BluetoothKit.framework */; };
-		65B37D531DD800B500433B89 /* RemoteDefender.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B37D511DD8009D00433B89 /* RemoteDefender.framework */; };
-		65B37D541DD800B700433B89 /* RemoteDefender.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B37D511DD8009D00433B89 /* RemoteDefender.framework */; };
 		65C954FE1ECE571B005FA7A3 /* BOAmplifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954A91ECE571B005FA7A3 /* BOAmplifier.swift */; };
 		65C954FF1ECE571B005FA7A3 /* BOAudioDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954AA1ECE571B005FA7A3 /* BOAudioDevice.swift */; };
 		65C955001ECE571B005FA7A3 /* BOBand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C954AB1ECE571B005FA7A3 /* BOBand.swift */; };
@@ -185,8 +182,6 @@
 		65B37C971DD1AC6400433B89 /* ArrowButtonControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowButtonControl.swift; sourceTree = "<group>"; };
 		65B37CB61DD6D05400433B89 /* FuseDocumentIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = FuseDocumentIcon.icns; sourceTree = "<group>"; };
 		65B37CB91DD7CCA800433B89 /* RemoteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteManager.swift; sourceTree = "<group>"; };
-		65B37CBB1DD7D0B400433B89 /* BluetoothKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BluetoothKit.framework; path = Carthage/Build/Mac/BluetoothKit.framework; sourceTree = "<group>"; };
-		65B37D511DD8009D00433B89 /* RemoteDefender.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RemoteDefender.framework; path = Carthage/Build/Mac/RemoteDefender.framework; sourceTree = "<group>"; };
 		65C954A91ECE571B005FA7A3 /* BOAmplifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BOAmplifier.swift; sourceTree = "<group>"; };
 		65C954AA1ECE571B005FA7A3 /* BOAudioDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BOAudioDevice.swift; sourceTree = "<group>"; };
 		65C954AB1ECE571B005FA7A3 /* BOBand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BOBand.swift; sourceTree = "<group>"; };
@@ -285,8 +280,7 @@
 			files = (
 				65237B6E24A46A0E002AB5D3 /* AFNetworking in Frameworks */,
 				65237B6B24A469DE002AB5D3 /* ObjectMapper in Frameworks */,
-				65B37CBC1DD7D0B400433B89 /* BluetoothKit.framework in Frameworks */,
-				65B37D541DD800B700433B89 /* RemoteDefender.framework in Frameworks */,
+				6573067024A5A0CE00EC155F /* RemoteDefender in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,8 +288,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65B37D201DD7F3D100433B89 /* BluetoothKit.framework in Frameworks */,
-				65B37D531DD800B500433B89 /* RemoteDefender.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,8 +405,6 @@
 		6581F9991D4C5D76005BB5C9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				65B37D511DD8009D00433B89 /* RemoteDefender.framework */,
-				65B37CBB1DD7D0B400433B89 /* BluetoothKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -615,11 +605,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 655A5A621D4C555500E15E1F /* Build configuration list for PBXNativeTarget "Defender" */;
 			buildPhases = (
-				655A5F511D4C580C00E15E1F /* Update/Build Carthage Dependencies */,
 				655A5A3B1D4C555400E15E1F /* Resources */,
 				655A5A391D4C555400E15E1F /* Sources */,
 				655A5A3A1D4C555400E15E1F /* Frameworks */,
-				6581F99E1D4C6772005BB5C9 /* Copy Carthage frameworks (for App Store submission bug) */,
 				65EF3B3E1DCD921B00A01153 /* Replace previous version in App Store */,
 			);
 			buildRules = (
@@ -630,6 +618,7 @@
 			packageProductDependencies = (
 				65237B6A24A469DE002AB5D3 /* ObjectMapper */,
 				65237B6D24A46A0E002AB5D3 /* AFNetworking */,
+				6573066F24A5A0CE00EC155F /* RemoteDefender */,
 			);
 			productName = Defender;
 			productReference = 655A5A3D1D4C555400E15E1F /* Defender.app */;
@@ -693,6 +682,7 @@
 			packageReferences = (
 				65237B6924A469DE002AB5D3 /* XCRemoteSwiftPackageReference "ObjectMapper" */,
 				65237B6C24A46A0E002AB5D3 /* XCRemoteSwiftPackageReference "AFNetworking" */,
+				6573066E24A5A0CE00EC155F /* XCRemoteSwiftPackageReference "remotedefender" */,
 			);
 			productRefGroup = 655A5A3E1D4C555400E15E1F /* Products */;
 			projectDirPath = "";
@@ -737,38 +727,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		655A5F511D4C580C00E15E1F /* Update/Build Carthage Dependencies */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Update/Build Carthage Dependencies";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage-xcode\n";
-			showEnvVarsInLog = 0;
-		};
-		6581F99E1D4C6772005BB5C9 /* Copy Carthage frameworks (for App Store submission bug) */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Mac/BluetoothKit.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/RemoteDefender.framework",
-			);
-			name = "Copy Carthage frameworks (for App Store submission bug)";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-			showEnvVarsInLog = 0;
-		};
 		65EF3B3E1DCD921B00A01153 /* Replace previous version in App Store */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1216,6 +1174,14 @@
 				minimumVersion = 4.0.1;
 			};
 		};
+		6573066E24A5A0CE00EC155F /* XCRemoteSwiftPackageReference "remotedefender" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "ssh://git@stash.gordonknight.co.uk:9999/if/remotedefender.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1228,6 +1194,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 65237B6C24A46A0E002AB5D3 /* XCRemoteSwiftPackageReference "AFNetworking" */;
 			productName = AFNetworking;
+		};
+		6573066F24A5A0CE00EC155F /* RemoteDefender */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6573066E24A5A0CE00EC155F /* XCRemoteSwiftPackageReference "remotedefender" */;
+			productName = RemoteDefender;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

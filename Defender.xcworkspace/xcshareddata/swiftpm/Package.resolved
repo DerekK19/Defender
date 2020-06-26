@@ -11,12 +11,30 @@
         }
       },
       {
+        "package": "BluetoothKit",
+        "repositoryURL": "https://github.com/DerekK19/BluetoothKit.git",
+        "state": {
+          "branch": null,
+          "revision": "489e343f212a65461d95dd73cdb4aa93a8cf22a2",
+          "version": "0.5.0"
+        }
+      },
+      {
         "package": "ObjectMapper",
         "repositoryURL": "https://github.com/tristanhimmelman/ObjectMapper.git",
         "state": {
           "branch": null,
           "revision": "0b96a734de3ea1c87374ae677064f86adb0716ec",
           "version": "4.2.0"
+        }
+      },
+      {
+        "package": "RemoteDefender",
+        "repositoryURL": "ssh://git@stash.gordonknight.co.uk:9999/if/remotedefender.git",
+        "state": {
+          "branch": null,
+          "revision": "9ad7705e9f8ada41c158cd5925259e5d6e94ae45",
+          "version": "0.5.0"
         }
       }
     ]

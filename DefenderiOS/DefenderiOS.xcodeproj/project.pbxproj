@@ -18,6 +18,7 @@
 		650775C81DEBFD4F00F5040C /* Pedal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 650775CA1DEBFD4F00F5040C /* Pedal.storyboard */; };
 		65237B8E24A482D5002AB5D3 /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 65237B8D24A482D5002AB5D3 /* ObjectMapper */; };
 		65237BE124A4840D002AB5D3 /* ULog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65237BE024A4840D002AB5D3 /* ULog.swift */; };
+		6534C57924A5A02200DC8079 /* RemoteDefender in Frameworks */ = {isa = PBXBuildFile; productRef = 6534C57824A5A02200DC8079 /* RemoteDefender */; };
 		656862651E25D03F00115981 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 656862631E25D03F00115981 /* Interface.storyboard */; };
 		656862671E25D04000115981 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 656862661E25D04000115981 /* Assets.xcassets */; };
 		6568626E1E25D04100115981 /* Watchkit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6568626D1E25D04100115981 /* Watchkit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -64,9 +65,6 @@
 		7198C2E31DD93601003238D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7198C2E21DD93601003238D7 /* Assets.xcassets */; };
 		7198C2E61DD93601003238D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7198C2E41DD93601003238D7 /* LaunchScreen.storyboard */; };
 		7198C2F11DD93601003238D7 /* DefenderAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C2F01DD93601003238D7 /* DefenderAppTests.swift */; };
-		7198C30A1DD949D1003238D7 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 7198C3091DD949D1003238D7 /* Cartfile */; };
-		7198C3101DD94BAC003238D7 /* BluetoothKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7198C30E1DD94BAC003238D7 /* BluetoothKit.framework */; };
-		7198C3351DD9570D003238D7 /* RemoteDefender.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7198C3341DD9570D003238D7 /* RemoteDefender.framework */; };
 		7198C33E1DDA833B003238D7 /* RemoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C33D1DDA833B003238D7 /* RemoteManager.swift */; };
 		7198C5EF1DDE47CA003238D7 /* LEDControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198C5EE1DDE47CA003238D7 /* LEDControl.swift */; };
 /* End PBXBuildFile section */
@@ -183,9 +181,6 @@
 		7198C2EC1DD93601003238D7 /* DefenderiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DefenderiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7198C2F01DD93601003238D7 /* DefenderAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefenderAppTests.swift; sourceTree = "<group>"; };
 		7198C2F21DD93601003238D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7198C3091DD949D1003238D7 /* Cartfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = Cartfile; sourceTree = "<group>"; };
-		7198C30E1DD94BAC003238D7 /* BluetoothKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BluetoothKit.framework; path = Carthage/Build/iOS/BluetoothKit.framework; sourceTree = "<group>"; };
-		7198C3341DD9570D003238D7 /* RemoteDefender.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RemoteDefender.framework; path = Carthage/Build/iOS/RemoteDefender.framework; sourceTree = "<group>"; };
 		7198C33D1DDA833B003238D7 /* RemoteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteManager.swift; sourceTree = "<group>"; };
 		7198C5EE1DDE47CA003238D7 /* LEDControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LEDControl.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
@@ -203,8 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				656EE8341E30767400410BB4 /* WatchConnectivity.framework in Frameworks */,
-				7198C3351DD9570D003238D7 /* RemoteDefender.framework in Frameworks */,
-				7198C3101DD94BAC003238D7 /* BluetoothKit.framework in Frameworks */,
+				6534C57924A5A02200DC8079 /* RemoteDefender in Frameworks */,
 				65237B8E24A482D5002AB5D3 /* ObjectMapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,7 +293,6 @@
 		7198C2CF1DD93601003238D7 = {
 			isa = PBXGroup;
 			children = (
-				7198C3091DD949D1003238D7 /* Cartfile */,
 				7198C2DA1DD93601003238D7 /* DefenderiOS */,
 				656EE82D1E30758700410BB4 /* WatchControllers */,
 				656862621E25D03E00115981 /* Watchkit */,
@@ -350,8 +343,6 @@
 			isa = PBXGroup;
 			children = (
 				656EE8331E30767400410BB4 /* WatchConnectivity.framework */,
-				7198C3341DD9570D003238D7 /* RemoteDefender.framework */,
-				7198C30E1DD94BAC003238D7 /* BluetoothKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -456,11 +447,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7198C3001DD93601003238D7 /* Build configuration list for PBXNativeTarget "DefenderiOS" */;
 			buildPhases = (
-				7198C30B1DD949F6003238D7 /* Update/Build Carthage Dependencies */,
 				7198C2D41DD93601003238D7 /* Sources */,
 				7198C2D51DD93601003238D7 /* Frameworks */,
 				7198C2D61DD93601003238D7 /* Resources */,
-				7198C30C1DD94A2A003238D7 /* Copy Carthage frameworks (for App Store submission bug) */,
 				656862871E25D04200115981 /* Embed Watch Content */,
 			);
 			buildRules = (
@@ -471,6 +460,7 @@
 			name = DefenderiOS;
 			packageProductDependencies = (
 				65237B8D24A482D5002AB5D3 /* ObjectMapper */,
+				6534C57824A5A02200DC8079 /* RemoteDefender */,
 			);
 			productName = DefenderApp;
 			productReference = 7198C2D81DD93601003238D7 /* DefenderiOS.app */;
@@ -542,6 +532,7 @@
 			mainGroup = 7198C2CF1DD93601003238D7;
 			packageReferences = (
 				65237B8C24A482D5002AB5D3 /* XCRemoteSwiftPackageReference "ObjectMapper" */,
+				6534C57724A5A02200DC8079 /* XCRemoteSwiftPackageReference "remotedefender" */,
 			);
 			productRefGroup = 7198C2D91DD93601003238D7 /* Products */;
 			projectDirPath = "";
@@ -582,7 +573,6 @@
 				7198C2E31DD93601003238D7 /* Assets.xcassets in Resources */,
 				7196141F1DED161200AE3E6E /* Effect.storyboard in Resources */,
 				650775C81DEBFD4F00F5040C /* Pedal.storyboard in Resources */,
-				7198C30A1DD949D1003238D7 /* Cartfile in Resources */,
 				71935F2C1DEF68EA0096A919 /* Controls.storyboard in Resources */,
 				7198C2E11DD93601003238D7 /* Main_iPhone.storyboard in Resources */,
 			);
@@ -596,41 +586,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		7198C30B1DD949F6003238D7 /* Update/Build Carthage Dependencies */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Update/Build Carthage Dependencies";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage-xcode";
-			showEnvVarsInLog = 0;
-		};
-		7198C30C1DD94A2A003238D7 /* Copy Carthage frameworks (for App Store submission bug) */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/RemoteDefender.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/BluetoothKit.framework",
-			);
-			name = "Copy Carthage frameworks (for App Store submission bug)";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		656862691E25D04100115981 /* Sources */ = {
@@ -1131,6 +1086,14 @@
 				minimumVersion = 4.2.0;
 			};
 		};
+		6534C57724A5A02200DC8079 /* XCRemoteSwiftPackageReference "remotedefender" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "ssh://git@stash.gordonknight.co.uk:9999/if/remotedefender.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1138,6 +1101,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 65237B8C24A482D5002AB5D3 /* XCRemoteSwiftPackageReference "ObjectMapper" */;
 			productName = ObjectMapper;
+		};
+		6534C57824A5A02200DC8079 /* RemoteDefender */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6534C57724A5A02200DC8079 /* XCRemoteSwiftPackageReference "remotedefender" */;
+			productName = RemoteDefender;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
