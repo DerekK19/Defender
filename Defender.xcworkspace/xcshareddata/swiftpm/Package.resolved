@@ -30,7 +30,7 @@
       },
       {
         "package": "RemoteDefender",
-        "repositoryURL": "ssh://git@stash.gordonknight.co.uk:9999/if/remotedefender.git",
+        "repositoryURL": "https://stash.gordonknight.co.uk:8443/scm/if/remotedefender.git",
         "state": {
           "branch": null,
           "revision": "9ad7705e9f8ada41c158cd5925259e5d6e94ae45",

@@ -18,7 +18,6 @@
 		650775C81DEBFD4F00F5040C /* Pedal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 650775CA1DEBFD4F00F5040C /* Pedal.storyboard */; };
 		65237B8E24A482D5002AB5D3 /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 65237B8D24A482D5002AB5D3 /* ObjectMapper */; };
 		65237BE124A4840D002AB5D3 /* ULog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65237BE024A4840D002AB5D3 /* ULog.swift */; };
-		6534C57924A5A02200DC8079 /* RemoteDefender in Frameworks */ = {isa = PBXBuildFile; productRef = 6534C57824A5A02200DC8079 /* RemoteDefender */; };
 		656862651E25D03F00115981 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 656862631E25D03F00115981 /* Interface.storyboard */; };
 		656862671E25D04000115981 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 656862661E25D04000115981 /* Assets.xcassets */; };
 		6568626E1E25D04100115981 /* Watchkit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6568626D1E25D04100115981 /* Watchkit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -31,6 +30,7 @@
 		656EE8321E30765000410BB4 /* PhoneSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EE8301E30765000410BB4 /* PhoneSessionController.swift */; };
 		656EE8341E30767400410BB4 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656EE8331E30767400410BB4 /* WatchConnectivity.framework */; };
 		656EE8361E307AD300410BB4 /* WatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EE8351E307AD300410BB4 /* WatchManager.swift */; };
+		6573067324A5AC3D00EC155F /* RemoteDefender in Frameworks */ = {isa = PBXBuildFile; productRef = 6573067224A5AC3D00EC155F /* RemoteDefender */; };
 		65F69F0D1DDD70AB0017188D /* DXAmplifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F0C1DDD70AB0017188D /* DXAmplifier.swift */; };
 		65F69F181DDD745D0017188D /* Transferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F171DDD745D0017188D /* Transferable.swift */; };
 		65F69F1C1DDD93000017188D /* DXMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F1B1DDD93000017188D /* DXMessage.swift */; };
@@ -197,8 +197,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6573067324A5AC3D00EC155F /* RemoteDefender in Frameworks */,
 				656EE8341E30767400410BB4 /* WatchConnectivity.framework in Frameworks */,
-				6534C57924A5A02200DC8079 /* RemoteDefender in Frameworks */,
 				65237B8E24A482D5002AB5D3 /* ObjectMapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,7 +460,7 @@
 			name = DefenderiOS;
 			packageProductDependencies = (
 				65237B8D24A482D5002AB5D3 /* ObjectMapper */,
-				6534C57824A5A02200DC8079 /* RemoteDefender */,
+				6573067224A5AC3D00EC155F /* RemoteDefender */,
 			);
 			productName = DefenderApp;
 			productReference = 7198C2D81DD93601003238D7 /* DefenderiOS.app */;
@@ -532,7 +532,7 @@
 			mainGroup = 7198C2CF1DD93601003238D7;
 			packageReferences = (
 				65237B8C24A482D5002AB5D3 /* XCRemoteSwiftPackageReference "ObjectMapper" */,
-				6534C57724A5A02200DC8079 /* XCRemoteSwiftPackageReference "remotedefender" */,
+				6573067124A5AC3D00EC155F /* XCRemoteSwiftPackageReference "remotedefender" */,
 			);
 			productRefGroup = 7198C2D91DD93601003238D7 /* Products */;
 			projectDirPath = "";
@@ -1086,9 +1086,9 @@
 				minimumVersion = 4.2.0;
 			};
 		};
-		6534C57724A5A02200DC8079 /* XCRemoteSwiftPackageReference "remotedefender" */ = {
+		6573067124A5AC3D00EC155F /* XCRemoteSwiftPackageReference "remotedefender" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "ssh://git@stash.gordonknight.co.uk:9999/if/remotedefender.git";
+			repositoryURL = "https://stash.gordonknight.co.uk:8443/scm/if/remotedefender.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.5.0;
@@ -1102,9 +1102,9 @@
 			package = 65237B8C24A482D5002AB5D3 /* XCRemoteSwiftPackageReference "ObjectMapper" */;
 			productName = ObjectMapper;
 		};
-		6534C57824A5A02200DC8079 /* RemoteDefender */ = {
+		6573067224A5AC3D00EC155F /* RemoteDefender */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6534C57724A5A02200DC8079 /* XCRemoteSwiftPackageReference "remotedefender" */;
+			package = 6573067124A5AC3D00EC155F /* XCRemoteSwiftPackageReference "remotedefender" */;
 			productName = RemoteDefender;
 		};
 /* End XCSwiftPackageProductDependency section */

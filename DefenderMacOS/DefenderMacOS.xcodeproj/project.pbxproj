@@ -26,7 +26,7 @@
 		655A5A531D4C555500E15E1F /* DefenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A5A521D4C555500E15E1F /* DefenderTests.swift */; };
 		656A5ABB1DA880B700B7BE3E /* LEDControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656A5ABA1DA880B700B7BE3E /* LEDControl.swift */; };
 		656A5ABD1DA883BB00B7BE3E /* NSColor+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656A5ABC1DA883BB00B7BE3E /* NSColor+Brightness.swift */; };
-		6573067024A5A0CE00EC155F /* RemoteDefender in Frameworks */ = {isa = PBXBuildFile; productRef = 6573066F24A5A0CE00EC155F /* RemoteDefender */; };
+		6573067624A5AC7400EC155F /* RemoteDefender in Frameworks */ = {isa = PBXBuildFile; productRef = 6573067524A5AC7400EC155F /* RemoteDefender */; };
 		657C3AC81D56DB8E002DEF17 /* AmpKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C3AC71D56DB8E002DEF17 /* AmpKnobControl.swift */; };
 		657C3AD01D5C46E6002DEF17 /* DisplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C3ACF1D5C46E6002DEF17 /* DisplayVC.swift */; };
 		657C3AD61D5C50B8002DEF17 /* Display.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 657C3AD41D5C50B8002DEF17 /* Display.storyboard */; };
@@ -278,9 +278,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6573067624A5AC7400EC155F /* RemoteDefender in Frameworks */,
 				65237B6E24A46A0E002AB5D3 /* AFNetworking in Frameworks */,
 				65237B6B24A469DE002AB5D3 /* ObjectMapper in Frameworks */,
-				6573067024A5A0CE00EC155F /* RemoteDefender in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,7 +618,7 @@
 			packageProductDependencies = (
 				65237B6A24A469DE002AB5D3 /* ObjectMapper */,
 				65237B6D24A46A0E002AB5D3 /* AFNetworking */,
-				6573066F24A5A0CE00EC155F /* RemoteDefender */,
+				6573067524A5AC7400EC155F /* RemoteDefender */,
 			);
 			productName = Defender;
 			productReference = 655A5A3D1D4C555400E15E1F /* Defender.app */;
@@ -682,7 +682,7 @@
 			packageReferences = (
 				65237B6924A469DE002AB5D3 /* XCRemoteSwiftPackageReference "ObjectMapper" */,
 				65237B6C24A46A0E002AB5D3 /* XCRemoteSwiftPackageReference "AFNetworking" */,
-				6573066E24A5A0CE00EC155F /* XCRemoteSwiftPackageReference "remotedefender" */,
+				6573067424A5AC7400EC155F /* XCRemoteSwiftPackageReference "remotedefender" */,
 			);
 			productRefGroup = 655A5A3E1D4C555400E15E1F /* Products */;
 			projectDirPath = "";
@@ -1174,9 +1174,9 @@
 				minimumVersion = 4.0.1;
 			};
 		};
-		6573066E24A5A0CE00EC155F /* XCRemoteSwiftPackageReference "remotedefender" */ = {
+		6573067424A5AC7400EC155F /* XCRemoteSwiftPackageReference "remotedefender" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "ssh://git@stash.gordonknight.co.uk:9999/if/remotedefender.git";
+			repositoryURL = "https://stash.gordonknight.co.uk:8443/scm/if/remotedefender.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.5.0;
@@ -1195,9 +1195,9 @@
 			package = 65237B6C24A46A0E002AB5D3 /* XCRemoteSwiftPackageReference "AFNetworking" */;
 			productName = AFNetworking;
 		};
-		6573066F24A5A0CE00EC155F /* RemoteDefender */ = {
+		6573067524A5AC7400EC155F /* RemoteDefender */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6573066E24A5A0CE00EC155F /* XCRemoteSwiftPackageReference "remotedefender" */;
+			package = 6573067424A5AC7400EC155F /* XCRemoteSwiftPackageReference "remotedefender" */;
 			productName = RemoteDefender;
 		};
 /* End XCSwiftPackageProductDependency section */
