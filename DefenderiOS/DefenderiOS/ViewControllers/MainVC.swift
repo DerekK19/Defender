@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RemoteDefender
 
 class MainVC: UIViewController {
 
@@ -148,7 +147,7 @@ class MainVC: UIViewController {
         if verbose {
             var text = "\n"
             if let number = preset?.number {
-                text += String(format:"  Preset %d)", number)
+                text += String(format:"  Preset %d", number)
             } else {
                 text += "  Preset -unknown-"
             }

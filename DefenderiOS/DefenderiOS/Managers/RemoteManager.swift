@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RemoteDefender
 
 protocol RemoteManagerDelegate {
     func remoteManagerAvailable(_ manager: RemoteManager)

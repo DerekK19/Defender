@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="V2o-XO-bI7">
-    <device id="ipad9_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="V2o-XO-bI7">
+    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,7 +13,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="8Y7-33-RqC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -32,17 +27,17 @@
         <!--Defender-->
         <scene sceneID="br4-rn-e6b">
             <objects>
-                <viewController title="Defender" id="Qhg-OR-SCW" customClass="MainVC" customModule="DefenderApp" sceneMemberID="viewController">
+                <viewController title="Defender" id="Qhg-OR-SCW" customClass="MainVC" customModule="DefenderiOS" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Lu4-9h-hlq"/>
                         <viewControllerLayoutGuide type="bottom" id="phU-id-jpd"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="vNT-po-8dY">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                    <view key="view" contentMode="scaleToFill" id="vNT-po-8dY">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="974"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetooth-logo" translatesAutoresizingMaskIntoConstraints="NO" id="K9X-k2-428">
-                                <rect key="frame" x="20" y="27" width="14" height="20"/>
+                                <rect key="frame" x="20" y="27" width="13.5" height="20"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="4wu-fU-WUi"/>
@@ -52,16 +47,16 @@
                                     <outletCollection property="gestureRecognizers" destination="CCk-un-n40" appends="YES" id="sPX-cd-jaF"/>
                                 </connections>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="upI-4m-Bfx" customClass="LEDControl" customModule="DefenderApp" customModuleProvider="target">
-                                <rect key="frame" x="42" y="33" width="7" height="7"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="upI-4m-Bfx" customClass="LEDControl" customModule="DefenderiOS" customModuleProvider="target">
+                                <rect key="frame" x="41.5" y="33.5" width="7" height="7"/>
                                 <color key="backgroundColor" red="1" green="0.69158153200000005" blue="0.1166794162" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="7" id="Y7I-1h-l4K"/>
                                     <constraint firstAttribute="width" secondItem="upI-4m-Bfx" secondAttribute="height" multiplier="1:1" id="daw-mR-hMa"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ygr-Yb-kG4" customClass="LEDControl" customModule="DefenderApp" customModuleProvider="target">
-                                <rect key="frame" x="54" y="33" width="7" height="7"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ygr-Yb-kG4" customClass="LEDControl" customModule="DefenderiOS" customModuleProvider="target">
+                                <rect key="frame" x="53.5" y="33.5" width="7" height="7"/>
                                 <color key="backgroundColor" red="1" green="0.69158153200000005" blue="0.1166794162" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ygr-Yb-kG4" secondAttribute="height" multiplier="1:1" id="DIK-kp-4XU"/>
@@ -69,7 +64,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6Q-Lq-Qhd">
-                                <rect key="frame" x="70" y="27" width="42" height="21"/>
+                                <rect key="frame" x="69.5" y="26.5" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -81,7 +76,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hV4-XI-yHj">
-                                <rect key="frame" x="20" y="83" width="49.5" height="21"/>
+                                <rect key="frame" x="20" y="83.5" width="49.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -101,7 +96,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="K9X-k2-428" firstAttribute="centerY" secondItem="Q6Q-Lq-Qhd" secondAttribute="centerY" id="9RS-bs-VgO"/>
                             <constraint firstItem="f6v-oU-9lI" firstAttribute="centerY" secondItem="hV4-XI-yHj" secondAttribute="centerY" id="H0Q-hv-HzP"/>
@@ -130,7 +125,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
-                        <outlet property="amplifierLabel" destination="uZs-F0-ttS" id="C8t-9j-av2"/>
+                        <outlet property="amplifierLabel" destination="uZs-F0-ttS" id="6VT-Tu-2RD"/>
                         <outlet property="bluetoothLabel" destination="Q6Q-Lq-Qhd" id="Kuc-Yn-zsX"/>
                         <outlet property="bluetoothLogo" destination="K9X-k2-428" id="mFM-TI-eDG"/>
                         <outlet property="nextPreset" destination="f6v-oU-9lI" id="Omv-q6-PUX"/>

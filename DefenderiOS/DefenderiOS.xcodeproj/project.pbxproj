@@ -30,7 +30,13 @@
 		656EE8321E30765000410BB4 /* PhoneSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EE8301E30765000410BB4 /* PhoneSessionController.swift */; };
 		656EE8341E30767400410BB4 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656EE8331E30767400410BB4 /* WatchConnectivity.framework */; };
 		656EE8361E307AD300410BB4 /* WatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EE8351E307AD300410BB4 /* WatchManager.swift */; };
-		6573067924A5BBB600EC155F /* RemoteDefender in Frameworks */ = {isa = PBXBuildFile; productRef = 6573067824A5BBB600EC155F /* RemoteDefender */; };
+		6573069224A6B73800EC155F /* BluetoothKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6573069124A6B73800EC155F /* BluetoothKit */; };
+		657306B524A6F69400EC155F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657306AD24A6F69400EC155F /* Constants.swift */; };
+		657306B624A6F69400EC155F /* Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657306AE24A6F69400EC155F /* Peripheral.swift */; };
+		657306B724A6F69400EC155F /* Central.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657306AF24A6F69400EC155F /* Central.swift */; };
+		657306B824A6F69400EC155F /* CentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657306B124A6F69400EC155F /* CentralManager.swift */; };
+		657306B924A6F69400EC155F /* PeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657306B224A6F69400EC155F /* PeripheralManager.swift */; };
+		657306BA24A6F69400EC155F /* RemoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657306B424A6F69400EC155F /* RemoteData.swift */; };
 		65F69F0D1DDD70AB0017188D /* DXAmplifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F0C1DDD70AB0017188D /* DXAmplifier.swift */; };
 		65F69F181DDD745D0017188D /* Transferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F171DDD745D0017188D /* Transferable.swift */; };
 		65F69F1C1DDD93000017188D /* DXMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F1B1DDD93000017188D /* DXMessage.swift */; };
@@ -143,6 +149,12 @@
 		656EE8301E30765000410BB4 /* PhoneSessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneSessionController.swift; sourceTree = "<group>"; };
 		656EE8331E30767400410BB4 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
 		656EE8351E307AD300410BB4 /* WatchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchManager.swift; sourceTree = "<group>"; };
+		657306AD24A6F69400EC155F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		657306AE24A6F69400EC155F /* Peripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Peripheral.swift; sourceTree = "<group>"; };
+		657306AF24A6F69400EC155F /* Central.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Central.swift; sourceTree = "<group>"; };
+		657306B124A6F69400EC155F /* CentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CentralManager.swift; sourceTree = "<group>"; };
+		657306B224A6F69400EC155F /* PeripheralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralManager.swift; sourceTree = "<group>"; };
+		657306B424A6F69400EC155F /* RemoteData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteData.swift; sourceTree = "<group>"; };
 		65F69F0C1DDD70AB0017188D /* DXAmplifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXAmplifier.swift; sourceTree = "<group>"; };
 		65F69F171DDD745D0017188D /* Transferable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transferable.swift; sourceTree = "<group>"; };
 		65F69F1B1DDD93000017188D /* DXMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXMessage.swift; sourceTree = "<group>"; };
@@ -197,8 +209,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6573067924A5BBB600EC155F /* RemoteDefender in Frameworks */,
 				656EE8341E30767400410BB4 /* WatchConnectivity.framework in Frameworks */,
+				6573069224A6B73800EC155F /* BluetoothKit in Frameworks */,
 				65237B8E24A482D5002AB5D3 /* ObjectMapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,6 +267,36 @@
 				656EE8301E30765000410BB4 /* PhoneSessionController.swift */,
 			);
 			path = WatchControllers;
+			sourceTree = "<group>";
+		};
+		657306AC24A6F69400EC155F /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				657306AD24A6F69400EC155F /* Constants.swift */,
+				657306AE24A6F69400EC155F /* Peripheral.swift */,
+				657306AF24A6F69400EC155F /* Central.swift */,
+				657306B024A6F69400EC155F /* Managers */,
+				657306B324A6F69400EC155F /* Models */,
+			);
+			name = Remote;
+			path = ../../Remote;
+			sourceTree = "<group>";
+		};
+		657306B024A6F69400EC155F /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				657306B124A6F69400EC155F /* CentralManager.swift */,
+				657306B224A6F69400EC155F /* PeripheralManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		657306B324A6F69400EC155F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				657306B424A6F69400EC155F /* RemoteData.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		65894A601ED24F3E0093C980 /* Supporting Files */ = {
@@ -323,6 +365,7 @@
 				7198C33C1DDA8317003238D7 /* Managers */,
 				7198C5ED1DDE476C003238D7 /* Custom Controls */,
 				65F69F0B1DDD703F0017188D /* Common Models */,
+				657306AC24A6F69400EC155F /* Remote */,
 				719614181DED040E00AE3E6E /* Extensions */,
 				7198C33F1DDA9C08003238D7 /* Resources */,
 				65894A601ED24F3E0093C980 /* Supporting Files */,
@@ -460,7 +503,7 @@
 			name = DefenderiOS;
 			packageProductDependencies = (
 				65237B8D24A482D5002AB5D3 /* ObjectMapper */,
-				6573067824A5BBB600EC155F /* RemoteDefender */,
+				6573069124A6B73800EC155F /* BluetoothKit */,
 			);
 			productName = DefenderApp;
 			productReference = 7198C2D81DD93601003238D7 /* DefenderiOS.app */;
@@ -532,7 +575,7 @@
 			mainGroup = 7198C2CF1DD93601003238D7;
 			packageReferences = (
 				65237B8C24A482D5002AB5D3 /* XCRemoteSwiftPackageReference "ObjectMapper" */,
-				6573067724A5BBB600EC155F /* XCRemoteSwiftPackageReference "remotedefender" */,
+				6573069024A6B73800EC155F /* XCRemoteSwiftPackageReference "BluetoothKit" */,
 			);
 			productRefGroup = 7198C2D91DD93601003238D7 /* Products */;
 			projectDirPath = "";
@@ -621,11 +664,14 @@
 				712DC3ED1DECCDFC004E5BE1 /* EffectPageVC.swift in Sources */,
 				712DC3EF1DECCE6B004E5BE1 /* EffectVC.swift in Sources */,
 				71935F341DEF724E0096A919 /* UIImage+Colour.swift in Sources */,
+				657306B724A6F69400EC155F /* Central.swift in Sources */,
 				719614151DED028700AE3E6E /* Enums.swift in Sources */,
 				71935F271DEE35DE0096A919 /* PedalPadControl.swift in Sources */,
 				65237BE124A4840D002AB5D3 /* ULog.swift in Sources */,
 				7193603A1DF4BEBC0096A919 /* BaseEffectVC.swift in Sources */,
+				657306B824A6F69400EC155F /* CentralManager.swift in Sources */,
 				71935F321DEF700C0096A919 /* ControlsPageVC.swift in Sources */,
+				657306B624A6F69400EC155F /* Peripheral.swift in Sources */,
 				7198C5EF1DDE47CA003238D7 /* LEDControl.swift in Sources */,
 				650775C41DEBFCA600F5040C /* PedalVC.swift in Sources */,
 				7196141A1DED042B00AE3E6E /* UIColor+Brightness.swift in Sources */,
@@ -638,10 +684,13 @@
 				7196141C1DED0D3E00AE3E6E /* KnobBaseControl.swift in Sources */,
 				656EE8361E307AD300410BB4 /* WatchManager.swift in Sources */,
 				7198C2DE1DD93601003238D7 /* MainVC.swift in Sources */,
+				657306B924A6F69400EC155F /* PeripheralManager.swift in Sources */,
 				7198C2DC1DD93601003238D7 /* AppDelegate.swift in Sources */,
 				65F69F1C1DDD93000017188D /* DXMessage.swift in Sources */,
+				657306BA24A6F69400EC155F /* RemoteData.swift in Sources */,
 				65FA118F1DF3DE7500FBD280 /* DXKnob.swift in Sources */,
 				712DC3E91DECCC0A004E5BE1 /* PedalPageVC.swift in Sources */,
+				657306B524A6F69400EC155F /* Constants.swift in Sources */,
 				712DC3EB1DECCD29004E5BE1 /* PresetVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1086,9 +1135,9 @@
 				minimumVersion = 4.2.0;
 			};
 		};
-		6573067724A5BBB600EC155F /* XCRemoteSwiftPackageReference "remotedefender" */ = {
+		6573069024A6B73800EC155F /* XCRemoteSwiftPackageReference "BluetoothKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "ssh://stash.gordonknight.co.uk:9999/if/remotedefender.git";
+			repositoryURL = "https://github.com/DerekK19/BluetoothKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.5.0;
@@ -1102,10 +1151,10 @@
 			package = 65237B8C24A482D5002AB5D3 /* XCRemoteSwiftPackageReference "ObjectMapper" */;
 			productName = ObjectMapper;
 		};
-		6573067824A5BBB600EC155F /* RemoteDefender */ = {
+		6573069124A6B73800EC155F /* BluetoothKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6573067724A5BBB600EC155F /* XCRemoteSwiftPackageReference "remotedefender" */;
-			productName = RemoteDefender;
+			package = 6573069024A6B73800EC155F /* XCRemoteSwiftPackageReference "BluetoothKit" */;
+			productName = BluetoothKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
