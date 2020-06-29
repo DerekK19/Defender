@@ -41,6 +41,7 @@ internal protocol FileServiceAgentProtocol {
 }
 
 internal protocol WebServiceAgentProtocol {
+    func verify(onCompletion: @escaping (_ available: Bool) -> ())
     func login(username: String, password: String, onSuccess: @escaping () -> (), onFail: @escaping () -> ())
     func logout(onSuccess: @escaping () -> (), onFail: @escaping () -> ())
     func search(forTitle title: String, pageNumber: UInt, maxReturn: UInt, onSuccess: @escaping (_ response: DLSearchResponse) -> (), onFail: @escaping () -> ())

@@ -48,6 +48,54 @@ struct BOPreset {
     private var _band: BOBand?
     private var _fuse: BOFuse?
 
+    var debugDescription: String {
+        var text = "\n"
+        if let number = number {
+            text += String(format:"  Preset %d - %@\n", number, name)
+        } else {
+            text += String(format:"  Preset -unknown- - %@\n", name)
+        }
+        if let gain = gain1 {
+            text += String(format: "   Gain: %0.2f\n", gain)
+        } else {
+            text += "   Gain: -unset-\n"
+        }
+        if let volume = volume {
+            text += String(format: "   Volume: %0.2f\n", volume)
+        } else {
+            text += "   Volume: -unset-\n"
+        }
+        if let treble = treble {
+            text += String(format: "   Treble: %0.2f\n", treble)
+        } else {
+            text += "   Treble: -unset-\n"
+        }
+        if let middle = middle {
+            text += String(format: "   Middle: %0.2f\n", middle)
+        } else {
+            text += "   Middle: -unset-\n"
+        }
+        if let bass = bass {
+            text += String(format: "   Bass: %0.2f\n", bass)
+        } else {
+            text += "   Bass: -unset-\n"
+        }
+        if let presence = presence {
+            text += String(format: "   Reverb/Presence: %0.2f\n", presence)
+        } else {
+            text += "   Reverb/Presence: -unset-\n"
+        }
+        text += String(format: "   Model: %@\n", moduleName ?? "-unknown-")
+        text += String(format: "   Cabinet: %@\n", cabinetName ?? "-unknown-")
+        for effect in effects {
+            text += String(format: "   %@: %@ - %@ (colour %d)\n", effect.type.rawValue, effect.name ?? "-empty-", effect.enabled ? "ON" : "OFF", effect.colour)
+            text += String(format: "    Knobs: %d - ", effect.knobs.count)
+            effect.knobs.forEach { text += String(format: "%0.2f ", $0.value) }
+            text += String(format: "slot %d (%d %d %d)\n", effect.slot, effect.aValue1, effect.aValue2, effect.aValue3)
+        }
+        return text
+    }
+    
     init(dl: DLPreset) {
         if let dlAmplifier  = dl.amplifier {
             self.amplifier = BOAmplifier(dl: dlAmplifier)
@@ -188,5 +236,4 @@ struct BOPreset {
         }
         return nil
     }
-    
 }

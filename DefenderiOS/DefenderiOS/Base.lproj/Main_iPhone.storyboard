@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zu6-vR-tOg">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zu6-vR-tOg">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Defender-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Defender" modalPresentationStyle="currentContext" id="BYZ-38-t0r" customClass="MainVC" customModule="DefenderApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Defender" modalPresentationStyle="currentContext" id="BYZ-38-t0r" customClass="MainVC" customModule="DefenderiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1u-Bv-Rx7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetooth-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Wgr-lO-Hh5">
-                                        <rect key="frame" x="8" y="10" width="14" height="20"/>
+                                        <rect key="frame" x="8" y="10" width="13.5" height="20"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="BW0-n5-fQO"/>
@@ -37,16 +32,16 @@
                                             <outletCollection property="gestureRecognizers" destination="v31-N2-F7L" appends="YES" id="fkS-tS-Klv"/>
                                         </connections>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IP7-wW-toh" customClass="LEDControl" customModule="DefenderApp" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="16.5" width="7" height="7"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IP7-wW-toh" customClass="LEDControl" customModule="DefenderiOS" customModuleProvider="target">
+                                        <rect key="frame" x="29.5" y="16.5" width="7" height="7"/>
                                         <color key="backgroundColor" red="1" green="0.69158153200000005" blue="0.1166794162" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="7" id="1fj-xP-ECz"/>
                                             <constraint firstAttribute="width" secondItem="IP7-wW-toh" secondAttribute="height" multiplier="1:1" id="RdH-47-BJP"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="859-jC-vVc" customClass="LEDControl" customModule="DefenderApp" customModuleProvider="target">
-                                        <rect key="frame" x="42" y="16.5" width="7" height="7"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="859-jC-vVc" customClass="LEDControl" customModule="DefenderiOS" customModuleProvider="target">
+                                        <rect key="frame" x="41.5" y="16.5" width="7" height="7"/>
                                         <color key="backgroundColor" red="1" green="0.69158153200000005" blue="0.1166794162" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="7" id="osd-dC-ZGu"/>
@@ -54,7 +49,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GoT-f9-hXl">
-                                        <rect key="frame" x="58" y="10" width="42" height="21"/>
+                                        <rect key="frame" x="57.5" y="9.5" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -66,20 +61,20 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iA8-DL-jp5">
-                                        <rect key="frame" x="8" y="54.5" width="49.5" height="21"/>
+                                        <rect key="frame" x="8" y="55" width="49.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rd-Uz-fem">
-                                        <rect key="frame" x="297" y="50" width="31" height="30"/>
+                                        <rect key="frame" x="297" y="50.5" width="31" height="30"/>
                                         <state key="normal" title="Prev"/>
                                         <connections>
                                             <action selector="willGetPrevPreset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5BE-vM-fQT"/>
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gJ-ko-ZqR">
-                                        <rect key="frame" x="335" y="50" width="32" height="30"/>
+                                        <rect key="frame" x="335" y="50.5" width="32" height="30"/>
                                         <state key="normal" title="Next"/>
                                         <connections>
                                             <action selector="willGetNextPreset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wef-96-U6c"/>
@@ -109,9 +104,9 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFQ-0D-o8O">
-                                <rect key="frame" x="0.0" y="80" width="375" height="523"/>
+                                <rect key="frame" x="0.0" y="80" width="375" height="543"/>
                                 <connections>
-                                    <segue destination="tje-St-VXC" kind="embed" identifier="embedPreset" id="6G7-Ca-T1s"/>
+                                    <segue destination="tje-St-VXC" kind="embed" identifier="embedPagedPreset" id="6G7-Ca-T1s"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -150,10 +145,10 @@
             </objects>
             <point key="canvasLocation" x="1076" y="121.88905547226388"/>
         </scene>
-        <!--PresetVC-->
+        <!--Paged PresetVC-->
         <scene sceneID="80I-Kk-6Od">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="tje-St-VXC" customClass="PresetVC" customModule="DefenderApp" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="tje-St-VXC" customClass="PagedPresetVC" customModule="DefenderiOS" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H99-TV-XhR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1830" y="197"/>
@@ -179,7 +174,7 @@
         <!--Pedal PageVC-->
         <scene sceneID="xLw-zy-qIP">
             <objects>
-                <viewController storyboardIdentifier="pedalPage" id="EQn-AB-Ffy" customClass="PedalPageVC" customModule="DefenderApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="pedalPage" id="EQn-AB-Ffy" customClass="PedalPageVC" customModule="DefenderiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SMX-LJ-awd"/>
                         <viewControllerLayoutGuide type="bottom" id="oxA-BK-Q6S"/>
@@ -214,7 +209,7 @@
         <!--Effect PageVC-->
         <scene sceneID="Rer-xH-TxM">
             <objects>
-                <viewController storyboardIdentifier="effectPage" id="1fC-Zq-L2m" customClass="EffectPageVC" customModule="DefenderApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="effectPage" id="1fC-Zq-L2m" customClass="EffectPageVC" customModule="DefenderiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v2u-pT-Hgf"/>
                         <viewControllerLayoutGuide type="bottom" id="ij2-Nh-OZl"/>
@@ -249,7 +244,7 @@
         <!--Controls PageVC-->
         <scene sceneID="oZj-Pf-IUp">
             <objects>
-                <viewController storyboardIdentifier="controlsPage" id="jNO-Ug-GmM" customClass="ControlsPageVC" customModule="DefenderApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="controlsPage" id="jNO-Ug-GmM" customClass="ControlsPageVC" customModule="DefenderiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AOD-zl-nEz"/>
                         <viewControllerLayoutGuide type="bottom" id="ZWb-i4-JaW"/>

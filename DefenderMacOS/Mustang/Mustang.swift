@@ -105,6 +105,10 @@ open class Mustang {
         )
     }
 
+    func verifyWeb(onCompletion: @escaping (_ available: Bool) -> ()) {
+        controller.verifyWeb(onCompletion: onCompletion)
+    }
+    
     func login(username: String, password: String, onSuccess: @escaping () -> (), onFail: @escaping () -> ()) {
         controller.login(username: username, password: password, onSuccess: onSuccess, onFail: onFail)
     }

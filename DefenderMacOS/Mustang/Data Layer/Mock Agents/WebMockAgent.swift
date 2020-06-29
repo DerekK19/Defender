@@ -23,6 +23,10 @@ internal class WebMockAgent: WebServiceAgentProtocol  {
         manager = AFHTTPSessionManager(sessionConfiguration: URLSessionConfiguration.default)
     }
     
+    func verify(onCompletion: @escaping (_ available: Bool) -> ()) {
+        onCompletion(true)
+    }
+    
     func login(username: String, password: String, onSuccess: @escaping () -> (), onFail: @escaping () -> ()) {
         let requestSerializer = AFHTTPRequestSerializer()
         manager.requestSerializer = requestSerializer

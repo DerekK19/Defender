@@ -155,6 +155,10 @@ class MustangController {
     func confirmChangeForAmplifier(_ amplifier: BOAmplifier, onSuccess: @escaping (_ saved: Bool?) -> ()) {
     }
     
+    func verifyWeb(onCompletion: @escaping (_ available: Bool) -> ()) {
+        webAgent.verify(onCompletion: onCompletion)
+    }
+    
     func login(username: String, password: String, onSuccess: @escaping () -> (), onFail: @escaping () -> ()) {
         webAgent.login(username: username, password: password, onSuccess: onSuccess, onFail: onFail)
     }

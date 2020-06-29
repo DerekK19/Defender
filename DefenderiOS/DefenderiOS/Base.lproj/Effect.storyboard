@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="loi-c4-2Nu">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="loi-c4-2Nu">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--EffectVC-->
         <scene sceneID="5xc-Wp-SxI">
             <objects>
-                <viewController id="loi-c4-2Nu" customClass="EffectVC" customModule="DefenderApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="loi-c4-2Nu" customClass="EffectVC" customModule="DefenderiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HEV-Kk-cJf"/>
                         <viewControllerLayoutGuide type="bottom" id="mOv-gQ-SFV"/>
@@ -23,13 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="240" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIU-tW-Gvt" customClass="EffectSlotControl" customModule="DefenderApp" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIU-tW-Gvt" customClass="EffectSlotControl" customModule="DefenderiOS" customModuleProvider="target">
                                 <rect key="frame" x="5" y="5" width="230" height="390"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Txe-Me-N49" customClass="EffectControl" customModule="DefenderApp" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Txe-Me-N49" customClass="EffectControl" customModule="DefenderiOS" customModuleProvider="target">
                                         <rect key="frame" x="5" y="5" width="220" height="380"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRg-jU-SGS" customClass="LEDControl" customModule="DefenderApp" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRg-jU-SGS" customClass="LEDControl" customModule="DefenderiOS" customModuleProvider="target">
                                                 <rect key="frame" x="2" y="2" width="7" height="7"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -58,15 +53,15 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="baB-QU-U5v">
                                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="119"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTw-2z-NR0" customClass="EffectKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                        <rect key="frame" x="17" y="43.5" width="71.5" height="71.5"/>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTw-2z-NR0" customClass="EffectKnobControl" customModule="DefenderiOS" customModuleProvider="target">
+                                                                        <rect key="frame" x="17" y="43.5" width="71" height="71.5"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="GTw-2z-NR0" secondAttribute="height" multiplier="1:1" id="9zk-xO-e0i"/>
                                                                         </constraints>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFH-92-v3P">
-                                                                        <rect key="frame" x="53" y="119" width="0.0" height="0.0"/>
+                                                                        <rect key="frame" x="52.5" y="119" width="0.0" height="0.0"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
@@ -84,8 +79,8 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a8S-Kh-v1d">
                                                                 <rect key="frame" x="0.0" y="124" width="105" height="119"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlN-3q-rvO" customClass="EffectKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                        <rect key="frame" x="17" y="43.5" width="71.5" height="71.5"/>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlN-3q-rvO" customClass="EffectKnobControl" customModule="DefenderiOS" customModuleProvider="target">
+                                                                        <rect key="frame" x="17" y="43.5" width="71" height="71.5"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="dlN-3q-rvO" secondAttribute="height" multiplier="1:1" id="1Qt-V0-268"/>
@@ -109,8 +104,8 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2o-RG-822">
                                                                 <rect key="frame" x="0.0" y="248" width="105" height="119"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pzr-eb-yEI" customClass="EffectKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                        <rect key="frame" x="17" y="43.5" width="71.5" height="71.5"/>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pzr-eb-yEI" customClass="EffectKnobControl" customModule="DefenderiOS" customModuleProvider="target">
+                                                                        <rect key="frame" x="17" y="43.5" width="71" height="71.5"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="pzr-eb-yEI" secondAttribute="height" multiplier="1:1" id="pUm-5n-TeD"/>
@@ -144,8 +139,8 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w91-9i-3tE">
                                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="119"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0SE-RU-uCf" customClass="EffectKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                        <rect key="frame" x="17" y="43.5" width="71.5" height="71.5"/>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0SE-RU-uCf" customClass="EffectKnobControl" customModule="DefenderiOS" customModuleProvider="target">
+                                                                        <rect key="frame" x="17" y="43.5" width="71" height="71.5"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="0SE-RU-uCf" secondAttribute="height" multiplier="1:1" id="yxA-Rg-JDQ"/>
@@ -169,8 +164,8 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LxQ-lg-0yT">
                                                                 <rect key="frame" x="0.0" y="124" width="105" height="119"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fin-yu-9l8" customClass="EffectKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                        <rect key="frame" x="17" y="43.5" width="71.5" height="71.5"/>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fin-yu-9l8" customClass="EffectKnobControl" customModule="DefenderiOS" customModuleProvider="target">
+                                                                        <rect key="frame" x="17" y="43.5" width="71" height="71.5"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="fin-yu-9l8" secondAttribute="height" multiplier="1:1" id="Jwb-as-5Og"/>
@@ -194,8 +189,8 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2n0-YP-muI">
                                                                 <rect key="frame" x="0.0" y="248" width="105" height="119"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fJR-b8-3yb" customClass="EffectKnobControl" customModule="DefenderApp" customModuleProvider="target">
-                                                                        <rect key="frame" x="17" y="43.5" width="71.5" height="71.5"/>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fJR-b8-3yb" customClass="EffectKnobControl" customModule="DefenderiOS" customModuleProvider="target">
+                                                                        <rect key="frame" x="17" y="43.5" width="71" height="71.5"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="fJR-b8-3yb" secondAttribute="height" multiplier="1:1" id="O8W-oZ-bAh"/>
@@ -243,17 +238,17 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgB-3h-9l4">
-                                        <rect key="frame" x="114.5" y="100" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="115" y="100" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="80"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uIv-7v-qHf" customClass="ShadeControl" customModule="DefenderApp" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uIv-7v-qHf" customClass="ShadeControl" customModule="DefenderiOS" customModuleProvider="target">
                                         <rect key="frame" x="5" y="5" width="220" height="380"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="uIv-7v-qHf" firstAttribute="top" secondItem="TIU-tW-Gvt" secondAttribute="top" constant="5" id="2KV-KO-GCo"/>
                                     <constraint firstItem="xgB-3h-9l4" firstAttribute="top" secondItem="TIU-tW-Gvt" secondAttribute="top" constant="100" id="EuH-gP-YCm"/>
@@ -268,7 +263,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="TIU-tW-Gvt" firstAttribute="top" secondItem="HEV-Kk-cJf" secondAttribute="bottom" constant="5" id="BoH-U1-f0T"/>
                             <constraint firstAttribute="trailing" secondItem="TIU-tW-Gvt" secondAttribute="trailing" constant="5" id="V2M-AT-B45"/>

@@ -263,7 +263,7 @@ extension PedalVC: PedalKnobDelegate {
                 if value != currentValue {
                     switch sender {
                     case knobUpperLeft:
-                        ULog.debug("New upper left knob is %.2f", value)
+                        ULog.verbose("New upper left knob is %.2f", value)
                         effect!.knobs[upperLeftIndex!].value = value
                         delegate?.settingsDidChangeForPedal(self, slotNumber: slotNumber, effect: effect!)
                     case knobUpperMiddle:

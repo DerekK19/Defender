@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol PresetVCDelegate {
-    func settingsDidChangeForPreset(_ sender: PresetVC, preset: DXPreset?)
+protocol PagedPresetVCDelegate {
+    func settingsDidChangeForPreset(_ sender: PagedPresetVC, preset: DXPreset?)
 }
 
-class PresetVC: UIPageViewController {
+class PagedPresetVC: UIPageViewController {
     
-    var presetDelegate: PresetVCDelegate?
+    var presetDelegate: PagedPresetVCDelegate?
     
     internal var powerState: PowerState = .off {
         didSet {
@@ -128,7 +128,7 @@ class PresetVC: UIPageViewController {
 
 // MARK: UIPageViewControllerDataSource
 
-extension PresetVC: UIPageViewControllerDataSource {
+extension PagedPresetVC: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -158,7 +158,7 @@ extension PresetVC: UIPageViewControllerDataSource {
     }
 }
 
-extension PresetVC: ControlsVCDelegate {
+extension PagedPresetVC: ControlsVCDelegate {
     
     func settingsDidChangeForControls(_ sender: ControlsVC, preset: DXPreset?) {
         ULog.verbose("Changed controls for preset")
@@ -167,7 +167,7 @@ extension PresetVC: ControlsVCDelegate {
     }
 }
 
-extension PresetVC: PedalVCDelegate {
+extension PagedPresetVC: PedalVCDelegate {
     
     func settingsDidChangeForPedal(_ sender: PedalVC, slotNumber: Int, effect: DXEffect) {
         ULog.verbose("Changed Pedal in slot %d", slotNumber)
@@ -176,7 +176,7 @@ extension PresetVC: PedalVCDelegate {
     }
 }
 
-extension PresetVC: EffectVCDelegate {
+extension PagedPresetVC: EffectVCDelegate {
     
     func settingsDidChangeForEffect(_ sender: EffectVC, slotNumber: Int, effect: DXEffect) {
         ULog.verbose("Changed Effect in slot %d", slotNumber)

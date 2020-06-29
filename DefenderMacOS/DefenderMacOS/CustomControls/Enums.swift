@@ -11,6 +11,7 @@ import Cocoa
 enum PowerState {
     case off
     case on
+    case powering
 }
 
 enum EffectState {

@@ -144,27 +144,27 @@ extension EffectVC: EffectKnobDelegate {
     func valueDidChangeForKnob(_ sender: EffectKnobControl, value: Float) {
         switch sender {
         case knob1:
-            ULog.debug("New knob 1 is %.2f", value)
+            ULog.verbose("New knob 1 is %.2f", value)
             effect!.knobs[0].value = value
             delegate?.settingsDidChangeForEffect(self)
         case knob2:
-            ULog.debug("New knob 2 is %.2f", value)
+            ULog.verbose("New knob 2 is %.2f", value)
             effect!.knobs[1].value = value
             delegate?.settingsDidChangeForEffect(self)
         case knob3:
-            ULog.debug("New knob 3 is %.2f", value)
+            ULog.verbose("New knob 3 is %.2f", value)
             effect!.knobs[2].value = value
             delegate?.settingsDidChangeForEffect(self)
         case knob4:
-            ULog.debug("New knob 4 is %.2f", value)
+            ULog.verbose("New knob 4 is %.2f", value)
             effect!.knobs[3].value = value
             delegate?.settingsDidChangeForEffect(self)
         case knob5:
-            ULog.debug("New knob 5 is %.2f", value)
+            ULog.verbose("New knob 5 is %.2f", value)
             effect!.knobs[4].value = value
             delegate?.settingsDidChangeForEffect(self)
         case knob6:
-            ULog.debug("New knob 6 is %.2f", value)
+            ULog.verbose("New knob 6 is %.2f", value)
             effect!.knobs[5].value = value
             delegate?.settingsDidChangeForEffect(self)
         default:

@@ -16,7 +16,6 @@
 		65426BA21DB0930300E54D35 /* KnobBaseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65426BA11DB0930300E54D35 /* KnobBaseControl.swift */; };
 		655602AA1E009FE5004A4CD4 /* CabinetSlotControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655602A91E009FE4004A4CD4 /* CabinetSlotControl.swift */; };
 		655602AC1E00A041004A4CD4 /* CabinetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655602AB1E00A041004A4CD4 /* CabinetVC.swift */; };
-		655602B01E00A3E1004A4CD4 /* Cabinet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 655602AF1E00A3E1004A4CD4 /* Cabinet.storyboard */; };
 		655602B21E0117A8004A4CD4 /* NSColor+Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655602B11E0117A8004A4CD4 /* NSColor+Colours.swift */; };
 		655602B41E013A85004A4CD4 /* CabinetControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655602B31E013A85004A4CD4 /* CabinetControl.swift */; };
 		655A5A411D4C555400E15E1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A5A401D4C555400E15E1F /* AppDelegate.swift */; };
@@ -33,6 +32,7 @@
 		657306A924A6F66600EC155F /* CentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657306A224A6F66500EC155F /* CentralManager.swift */; };
 		657306AA24A6F66600EC155F /* PeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657306A324A6F66500EC155F /* PeripheralManager.swift */; };
 		657306AB24A6F66600EC155F /* RemoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657306A524A6F66500EC155F /* RemoteData.swift */; };
+		657306CD24A813A100EC155F /* Cabinet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 657306CF24A813A100EC155F /* Cabinet.storyboard */; };
 		657C3AC81D56DB8E002DEF17 /* AmpKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C3AC71D56DB8E002DEF17 /* AmpKnobControl.swift */; };
 		657C3AD01D5C46E6002DEF17 /* DisplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C3ACF1D5C46E6002DEF17 /* DisplayVC.swift */; };
 		657C3AD61D5C50B8002DEF17 /* Display.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 657C3AD41D5C50B8002DEF17 /* Display.storyboard */; };
@@ -158,7 +158,6 @@
 		65426BA11DB0930300E54D35 /* KnobBaseControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobBaseControl.swift; sourceTree = "<group>"; };
 		655602A91E009FE4004A4CD4 /* CabinetSlotControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabinetSlotControl.swift; sourceTree = "<group>"; };
 		655602AB1E00A041004A4CD4 /* CabinetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabinetVC.swift; sourceTree = "<group>"; };
-		655602AF1E00A3E1004A4CD4 /* Cabinet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cabinet.storyboard; sourceTree = "<group>"; };
 		655602B11E0117A8004A4CD4 /* NSColor+Colours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Colours.swift"; sourceTree = "<group>"; };
 		655602B31E013A85004A4CD4 /* CabinetControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabinetControl.swift; sourceTree = "<group>"; };
 		655A5A3D1D4C555400E15E1F /* Defender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Defender.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,6 +178,7 @@
 		657306A224A6F66500EC155F /* CentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CentralManager.swift; sourceTree = "<group>"; };
 		657306A324A6F66500EC155F /* PeripheralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralManager.swift; sourceTree = "<group>"; };
 		657306A524A6F66500EC155F /* RemoteData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteData.swift; sourceTree = "<group>"; };
+		657306CE24A813A100EC155F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Cabinet.storyboard; sourceTree = "<group>"; };
 		657C3AC71D56DB8E002DEF17 /* AmpKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmpKnobControl.swift; sourceTree = "<group>"; };
 		657C3ACF1D5C46E6002DEF17 /* DisplayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayVC.swift; sourceTree = "<group>"; };
 		657C3AD51D5C50B8002DEF17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Display.storyboard; sourceTree = "<group>"; };
@@ -440,7 +440,7 @@
 				7194EA401DCFC62C004E2D9C /* Pedal.storyboard */,
 				7194EA431DCFC631004E2D9C /* Effect.storyboard */,
 				7194EA3B1DCFC61E004E2D9C /* Web.storyboard */,
-				655602AF1E00A3E1004A4CD4 /* Cabinet.storyboard */,
+				657306CF24A813A100EC155F /* Cabinet.storyboard */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -754,7 +754,7 @@
 				7194EA3D1DCFC61E004E2D9C /* Web.storyboard in Resources */,
 				65B37CB71DD6D05400433B89 /* FuseDocumentIcon.icns in Resources */,
 				65C955171ECE571B005FA7A3 /* MU_Clapton-Cocaine.fuse in Resources */,
-				655602B01E00A3E1004A4CD4 /* Cabinet.storyboard in Resources */,
+				657306CD24A813A100EC155F /* Cabinet.storyboard in Resources */,
 				65C955181ECE571B005FA7A3 /* MU_Claptons Tweed2.fuse in Resources */,
 				65C955131ECE571B005FA7A3 /* M2_Preset0.fuse in Resources */,
 			);
@@ -931,6 +931,14 @@
 				655A5A471D4C555500E15E1F /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		657306CF24A813A100EC155F /* Cabinet.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				657306CE24A813A100EC155F /* Base */,
+			);
+			name = Cabinet.storyboard;
 			sourceTree = "<group>";
 		};
 		657C3AD41D5C50B8002DEF17 /* Display.storyboard */ = {

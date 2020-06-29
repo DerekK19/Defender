@@ -97,7 +97,7 @@ class DisplayVC: NSViewController {
     
     fileprivate func setValueForFxField(_ textField: NSTextField, effect: BOEffect?, presetKnown: Bool) {
         switch powerState {
-        case .off:
+        case .off, .powering:
             textField.isHidden = true
             textField.backgroundColor = displayBackgroundColour
             textField.textColor = displayBackgroundColour

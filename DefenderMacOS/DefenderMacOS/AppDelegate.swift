@@ -11,6 +11,8 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    @IBOutlet weak var powerMenuItem: NSMenuItem!
+
     var remoteManager = RemoteManager()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {

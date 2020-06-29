@@ -37,6 +37,11 @@
 		657306B824A6F69400EC155F /* CentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657306B124A6F69400EC155F /* CentralManager.swift */; };
 		657306B924A6F69400EC155F /* PeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657306B224A6F69400EC155F /* PeripheralManager.swift */; };
 		657306BA24A6F69400EC155F /* RemoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657306B424A6F69400EC155F /* RemoteData.swift */; };
+		657306BD24A70CB100EC155F /* Controls_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 657306BB24A70CB100EC155F /* Controls_iPad.storyboard */; };
+		657306BF24A70FF700EC155F /* OnePagePresetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657306BE24A70FF700EC155F /* OnePagePresetVC.swift */; };
+		657306C524A80A4E00EC155F /* Effect_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 657306C324A80A4E00EC155F /* Effect_iPad.storyboard */; };
+		657306CC24A8137D00EC155F /* Cabinet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 657306CB24A8137D00EC155F /* Cabinet.storyboard */; };
+		657306D124A814A000EC155F /* CabinetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657306D024A814A000EC155F /* CabinetVC.swift */; };
 		65F69F0D1DDD70AB0017188D /* DXAmplifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F0C1DDD70AB0017188D /* DXAmplifier.swift */; };
 		65F69F181DDD745D0017188D /* Transferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F171DDD745D0017188D /* Transferable.swift */; };
 		65F69F1C1DDD93000017188D /* DXMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F1B1DDD93000017188D /* DXMessage.swift */; };
@@ -44,7 +49,7 @@
 		65F69F2A1DE011550017188D /* DXEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F69F291DE011550017188D /* DXEffect.swift */; };
 		65FA118F1DF3DE7500FBD280 /* DXKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FA118E1DF3DE7400FBD280 /* DXKnob.swift */; };
 		712DC3E91DECCC0A004E5BE1 /* PedalPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DC3E81DECCC0A004E5BE1 /* PedalPageVC.swift */; };
-		712DC3EB1DECCD29004E5BE1 /* PresetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DC3EA1DECCD29004E5BE1 /* PresetVC.swift */; };
+		712DC3EB1DECCD29004E5BE1 /* PagedPresetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DC3EA1DECCD29004E5BE1 /* PagedPresetVC.swift */; };
 		712DC3ED1DECCDFC004E5BE1 /* EffectPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DC3EC1DECCDFC004E5BE1 /* EffectPageVC.swift */; };
 		712DC3EF1DECCE6B004E5BE1 /* EffectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DC3EE1DECCE6B004E5BE1 /* EffectVC.swift */; };
 		712DC3F31DECD59C004E5BE1 /* PedalBodyControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DC3F21DECD59C004E5BE1 /* PedalBodyControl.swift */; };
@@ -155,6 +160,11 @@
 		657306B124A6F69400EC155F /* CentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CentralManager.swift; sourceTree = "<group>"; };
 		657306B224A6F69400EC155F /* PeripheralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralManager.swift; sourceTree = "<group>"; };
 		657306B424A6F69400EC155F /* RemoteData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteData.swift; sourceTree = "<group>"; };
+		657306BC24A70CB100EC155F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Controls_iPad.storyboard; sourceTree = "<group>"; };
+		657306BE24A70FF700EC155F /* OnePagePresetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePagePresetVC.swift; sourceTree = "<group>"; };
+		657306C424A80A4E00EC155F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Effect_iPad.storyboard; sourceTree = "<group>"; };
+		657306CB24A8137D00EC155F /* Cabinet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cabinet.storyboard; sourceTree = "<group>"; };
+		657306D024A814A000EC155F /* CabinetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabinetVC.swift; sourceTree = "<group>"; };
 		65F69F0C1DDD70AB0017188D /* DXAmplifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXAmplifier.swift; sourceTree = "<group>"; };
 		65F69F171DDD745D0017188D /* Transferable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transferable.swift; sourceTree = "<group>"; };
 		65F69F1B1DDD93000017188D /* DXMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXMessage.swift; sourceTree = "<group>"; };
@@ -162,7 +172,7 @@
 		65F69F291DE011550017188D /* DXEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXEffect.swift; sourceTree = "<group>"; };
 		65FA118E1DF3DE7400FBD280 /* DXKnob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DXKnob.swift; sourceTree = "<group>"; };
 		712DC3E81DECCC0A004E5BE1 /* PedalPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedalPageVC.swift; sourceTree = "<group>"; };
-		712DC3EA1DECCD29004E5BE1 /* PresetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetVC.swift; sourceTree = "<group>"; };
+		712DC3EA1DECCD29004E5BE1 /* PagedPresetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagedPresetVC.swift; sourceTree = "<group>"; };
 		712DC3EC1DECCDFC004E5BE1 /* EffectPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectPageVC.swift; sourceTree = "<group>"; };
 		712DC3EE1DECCE6B004E5BE1 /* EffectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectVC.swift; sourceTree = "<group>"; };
 		712DC3F21DECD59C004E5BE1 /* PedalBodyControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PedalBodyControl.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -407,8 +417,11 @@
 				7198C2DF1DD93601003238D7 /* Main_iPhone.storyboard */,
 				650775C71DEBFD4900F5040C /* Main_iPad.storyboard */,
 				71935F2E1DEF68EA0096A919 /* Controls.storyboard */,
+				657306BB24A70CB100EC155F /* Controls_iPad.storyboard */,
 				650775CA1DEBFD4F00F5040C /* Pedal.storyboard */,
 				719614211DED161200AE3E6E /* Effect.storyboard */,
+				657306C324A80A4E00EC155F /* Effect_iPad.storyboard */,
+				657306CB24A8137D00EC155F /* Cabinet.storyboard */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -417,12 +430,14 @@
 			isa = PBXGroup;
 			children = (
 				7198C2DD1DD93601003238D7 /* MainVC.swift */,
-				712DC3EA1DECCD29004E5BE1 /* PresetVC.swift */,
+				712DC3EA1DECCD29004E5BE1 /* PagedPresetVC.swift */,
+				657306BE24A70FF700EC155F /* OnePagePresetVC.swift */,
 				71935F311DEF700B0096A919 /* ControlsPageVC.swift */,
 				712DC3E81DECCC0A004E5BE1 /* PedalPageVC.swift */,
 				712DC3EC1DECCDFC004E5BE1 /* EffectPageVC.swift */,
 				719360391DF4BEBC0096A919 /* BaseEffectVC.swift */,
 				71935F281DEF685B0096A919 /* ControlsVC.swift */,
+				657306D024A814A000EC155F /* CabinetVC.swift */,
 				650775C31DEBFCA600F5040C /* PedalVC.swift */,
 				712DC3EE1DECCE6B004E5BE1 /* EffectVC.swift */,
 			);
@@ -611,13 +626,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				657306BD24A70CB100EC155F /* Controls_iPad.storyboard in Resources */,
 				650775C51DEBFD4900F5040C /* Main_iPad.storyboard in Resources */,
 				7198C2E61DD93601003238D7 /* LaunchScreen.storyboard in Resources */,
 				7198C2E31DD93601003238D7 /* Assets.xcassets in Resources */,
 				7196141F1DED161200AE3E6E /* Effect.storyboard in Resources */,
 				650775C81DEBFD4F00F5040C /* Pedal.storyboard in Resources */,
+				657306C524A80A4E00EC155F /* Effect_iPad.storyboard in Resources */,
 				71935F2C1DEF68EA0096A919 /* Controls.storyboard in Resources */,
 				7198C2E11DD93601003238D7 /* Main_iPhone.storyboard in Resources */,
+				657306CC24A8137D00EC155F /* Cabinet.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,11 +705,13 @@
 				657306B924A6F69400EC155F /* PeripheralManager.swift in Sources */,
 				7198C2DC1DD93601003238D7 /* AppDelegate.swift in Sources */,
 				65F69F1C1DDD93000017188D /* DXMessage.swift in Sources */,
+				657306D124A814A000EC155F /* CabinetVC.swift in Sources */,
 				657306BA24A6F69400EC155F /* RemoteData.swift in Sources */,
 				65FA118F1DF3DE7500FBD280 /* DXKnob.swift in Sources */,
+				657306BF24A70FF700EC155F /* OnePagePresetVC.swift in Sources */,
 				712DC3E91DECCC0A004E5BE1 /* PedalPageVC.swift in Sources */,
 				657306B524A6F69400EC155F /* Constants.swift in Sources */,
-				712DC3EB1DECCD29004E5BE1 /* PresetVC.swift in Sources */,
+				712DC3EB1DECCD29004E5BE1 /* PagedPresetVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -746,6 +766,22 @@
 				656862641E25D03F00115981 /* Base */,
 			);
 			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		657306BB24A70CB100EC155F /* Controls_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				657306BC24A70CB100EC155F /* Base */,
+			);
+			name = Controls_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		657306C324A80A4E00EC155F /* Effect_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				657306C424A80A4E00EC155F /* Base */,
+			);
+			name = Effect_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		71935F2E1DEF68EA0096A919 /* Controls.storyboard */ = {

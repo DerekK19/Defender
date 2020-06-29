@@ -41,12 +41,12 @@ class PresetDocument : NSDocument {
     }
     
     override func save(_ sender: Any?) {
-        ULog.debug("Save %@", sender as? String ?? "Unknown")
+        ULog.verbose("Save %@", sender as? String ?? "Unknown")
         super.save(sender)
     }
     
     override func saveAs(_ sender: Any?) {
-        ULog.debug("Save as %@", sender as? String ?? "Unknown")
+        ULog.verbose("Save as %@", sender as? String ?? "Unknown")
         super.saveAs(sender)
     }
 }

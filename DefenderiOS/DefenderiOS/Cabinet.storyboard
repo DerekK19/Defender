@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y7N-2z-aH5">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--CabinetVC-->
+        <scene sceneID="uMe-tZ-JRt">
+            <objects>
+                <viewController id="y7N-2z-aH5" customClass="CabinetVC" customModule="DefenderiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hln-zE-IPj">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="he2-91-FyM" customClass="EffectSlotControl" customModule="DefenderiOS" customModuleProvider="target">
+                                <rect key="frame" x="5" y="5" width="390" height="390"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wYZ-k5-Tzr" customClass="LEDControl" customModule="DefenderiOS" customModuleProvider="target">
+                                        <rect key="frame" x="12" y="12" width="7" height="7"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="wYZ-k5-Tzr" secondAttribute="height" multiplier="1:1" id="7IP-ya-TIK"/>
+                                            <constraint firstAttribute="height" constant="7" id="rtJ-MM-uJJ"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRU-2h-4S6">
+                                        <rect key="frame" x="195" y="20" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="80"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nkJ-5U-Hvb">
+                                        <rect key="frame" x="10" y="53.5" width="370" height="326.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="nkJ-5U-Hvb" secondAttribute="height" multiplier="170:150" id="970-38-20o"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39N-Z2-6Vc" customClass="ShadeControl" customModule="DefenderiOS" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="5" width="380" height="380"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="TRU-2h-4S6" firstAttribute="top" secondItem="he2-91-FyM" secondAttribute="top" constant="20" id="IPZ-VW-QYv"/>
+                                    <constraint firstItem="39N-Z2-6Vc" firstAttribute="leading" secondItem="he2-91-FyM" secondAttribute="leading" constant="5" id="Osu-ec-pTD"/>
+                                    <constraint firstAttribute="trailing" secondItem="nkJ-5U-Hvb" secondAttribute="trailing" constant="10" id="Tmv-z9-cx0"/>
+                                    <constraint firstItem="39N-Z2-6Vc" firstAttribute="top" secondItem="he2-91-FyM" secondAttribute="top" constant="5" id="UsI-Vw-f6L"/>
+                                    <constraint firstAttribute="trailing" secondItem="39N-Z2-6Vc" secondAttribute="trailing" constant="5" id="VPR-dh-h8J"/>
+                                    <constraint firstItem="nkJ-5U-Hvb" firstAttribute="leading" secondItem="he2-91-FyM" secondAttribute="leading" constant="10" id="dwX-4v-5Lv"/>
+                                    <constraint firstAttribute="bottom" secondItem="nkJ-5U-Hvb" secondAttribute="bottom" constant="10" id="e4c-sF-51m"/>
+                                    <constraint firstItem="TRU-2h-4S6" firstAttribute="centerX" secondItem="he2-91-FyM" secondAttribute="centerX" id="khQ-E3-G8h"/>
+                                    <constraint firstItem="wYZ-k5-Tzr" firstAttribute="top" secondItem="he2-91-FyM" secondAttribute="top" constant="12" id="n7S-CW-cFJ"/>
+                                    <constraint firstItem="wYZ-k5-Tzr" firstAttribute="leading" secondItem="he2-91-FyM" secondAttribute="leading" constant="12" id="o2w-IL-ml8"/>
+                                    <constraint firstAttribute="bottom" secondItem="39N-Z2-6Vc" secondAttribute="bottom" constant="5" id="uZb-En-2zr"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="AMq-rJ-flq" firstAttribute="bottom" secondItem="he2-91-FyM" secondAttribute="bottom" constant="5" id="9l1-DW-7aS"/>
+                            <constraint firstItem="he2-91-FyM" firstAttribute="top" secondItem="hln-zE-IPj" secondAttribute="top" constant="5" id="QlM-n8-rus"/>
+                            <constraint firstItem="AMq-rJ-flq" firstAttribute="trailing" secondItem="he2-91-FyM" secondAttribute="trailing" constant="5" id="kTy-0n-9pc"/>
+                            <constraint firstItem="he2-91-FyM" firstAttribute="leading" secondItem="AMq-rJ-flq" secondAttribute="leading" constant="5" id="q5f-FI-dN1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AMq-rJ-flq"/>
+                    </view>
+                    <size key="freeformSize" width="400" height="400"/>
+                    <connections>
+                        <outlet property="cabinetImage" destination="nkJ-5U-Hvb" id="fXQ-ng-u6F"/>
+                        <outlet property="powerLED" destination="wYZ-k5-Tzr" id="tZG-Tn-FAK"/>
+                        <outlet property="shade" destination="39N-Z2-6Vc" id="n9d-r8-pSA"/>
+                        <outlet property="slot" destination="he2-91-FyM" id="tHn-vt-d5p"/>
+                        <outlet property="slotLabel" destination="TRU-2h-4S6" id="ACA-PC-pnB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R7O-il-5Ux" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-36.231884057971016" y="140.625"/>
+        </scene>
+    </scenes>
+</document>

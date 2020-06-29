@@ -70,8 +70,8 @@ enum DataMode {
 
 class BaseServiceAgent {
     
-    let verbose = true
-    let dataDebug = true
+    let verbose = false
+    let dataDebug = false
     
     let vendorId = FenderVendorId
     

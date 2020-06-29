@@ -329,6 +329,10 @@ class AmpManager {
         }
     }
 
+    open func verifyWeb(onCompletion: @escaping (_ available: Bool) ->()) {
+        mustang.verifyWeb(onCompletion: onCompletion)
+    }
+    
     open func login(username: String,
                     password: String,
                     onCompletion: @escaping (_ loggedIn: Bool) ->()) {

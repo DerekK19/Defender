@@ -72,6 +72,8 @@ class MainVC: NSViewController {
 
     fileprivate var documentController = NSDocumentController.shared
     
+   var powerMenuItem: NSMenuItem?
+
     var currentPreset: BOPreset?
     
     let verbose = true
@@ -105,6 +107,9 @@ class MainVC: NSViewController {
 
         view.wantsLayer = true
 
+        if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
+            powerMenuItem = appDelegate.powerMenuItem
+        }
         bluetoothLogo.isHidden = true
         txLED.backgroundColour = NSColor.clear
         rxLED.backgroundColour = NSColor.clear
@@ -180,6 +185,9 @@ class MainVC: NSViewController {
                 webVC = segue.destinationController as? WebVC
                 webVC?.ampManager = ampManager
                 webVC?.delegate = self
+                ampManager.verifyWeb(onCompletion: { (available) in
+                    self.webVC?.available = available
+                })
             case "embedCabinet":
                 cabinetVC = segue.destinationController as? CabinetVC
             case "embedEffect1":
@@ -222,26 +230,34 @@ class MainVC: NSViewController {
     
     // MARK: Action functions
     
-    @IBAction func willPowerAmplifier(_ sender: ActionButtonControl) {
+    @IBAction func willPowerAmplifier(_ sender: Any) {
         if !ampManager.hasAnAmplifier { return }
-        if sender.state == NSControl.StateValue.off {
+        let button = sender as? ActionButtonControl
+        let menu = sender as? NSMenuItem
+        if button == nil && menu == nil { return }
+        if button?.state == .off || menu?.state == .on {
             ULog.verbose(" Powering off")
             cabinetVC?.state = .off
             powerState = .off
             setPreset(nil)
             sendNoAmplifier()
             preloadButton.isHidden = true
+            powerButton.state = .off
+            powerMenuItem?.title = "Power On"
+            powerMenuItem?.state = .off
         } else {
             ULog.verbose(" Powering on")
-            sender.state = NSControl.StateValue.off
-            powerState = .on
+            powerButton.state = .on
+            powerState = .powering
             cabinetVC?.state = .on
             sendCurrentAmplifier()
             ampManager.getPresets() {
                 self.powerState = .on
                 self.valueDidChangeForWheel(self.wheel, value: 0)
                 self.preloadButton.isHidden = self.ampManager.mocking
-                sender.state = NSControl.StateValue.on
+                self.powerButton.state = .on
+                self.powerMenuItem?.state = .on
+                self.powerMenuItem?.title = "Power Off"
             }
         }
     }
@@ -312,14 +328,46 @@ class MainVC: NSViewController {
         }
     }
     
-    @IBAction func willPreloadAllPresets(_ sender: NSButton) {
-        preloadButton.isEnabled = false
-        ampManager.loadAllPresets() { (allLoaded) in
-            self.preloadButton.isHidden = allLoaded
-            self.preloadButton.isEnabled = !allLoaded
+    @IBAction func willPreloadAllPresets(_ sender: NSObject) {
+        if !preloadButton.isHidden {
+            preloadButton.isEnabled = false
+            ampManager.loadAllPresets() { (allLoaded) in
+                self.preloadButton.isHidden = allLoaded
+                self.preloadButton.isEnabled = !allLoaded
+            }
         }
     }
 
+    @IBAction func willGetPreviousPreset(_ sender: NSObject) {
+        guard var number = currentPreset?.number else { return }
+        if number == 0 {
+            number = 99
+        } else {
+            number -= 1
+        }
+        saveButton.setState(.active)
+        exitButton.setState(.active)
+        ampManager.getPreset(Int(number),
+                             fromAmplifier: true) { (preset) in
+            self.setPreset(preset)
+        }
+    }
+
+    @IBAction func willGetNextPreset(_ sender: NSObject) {
+        guard var number = currentPreset?.number else { return }
+        number += 1
+        if number >= 99 {
+            number = 0
+        }
+        saveButton.setState(.active)
+        exitButton.setState(.active)
+        ampManager.getPreset(Int(number),
+                             fromAmplifier: true) { (preset) in
+            self.setPreset(preset)
+        }
+        displayPreset(currentPreset)
+    }
+    
     // MARK: Private Functions
     fileprivate func reset() {
         statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
@@ -338,6 +386,7 @@ class MainVC: NSViewController {
         currentPreset = preset
         displayPreset(preset)
         sendCurrentPreset()
+        logPreset(preset)
     }
     
     fileprivate func configureAmplifiers() {
@@ -421,7 +470,7 @@ class MainVC: NSViewController {
     func sendCurrentAmplifier() {
         var message: DXMessage!
         if let amp = ampManager.currentAmplifier {
-            if powerState == .on {
+            if powerState == .on || powerState == .powering {
                 message = DXMessage(command: .amplifier, data: DXAmplifier(dto: amp))
                 sendMessage(message)
                 return
@@ -463,53 +512,9 @@ class MainVC: NSViewController {
     
     // MARK: Debug logging
     internal func logPreset(_ preset: BOPreset?) {
+        guard let preset = preset else { return }
         if verbose {
-            var text = "\n"
-            if let number = preset?.number {
-                text += String(format:"  Preset %d", number)
-            } else {
-                text += "  Preset -unknown-"
-            }
-            text += " - \(preset?.name ?? "-unknown-")\n"
-            if let gain = preset?.gain1 {
-                text += String(format: "   Gain: %0.2f\n", gain)
-            } else {
-                text += "   Gain: -unset-\n"
-            }
-            if let volume = preset?.volume {
-                text += String(format: "   Volume: %0.2f\n", volume)
-            } else {
-                text += "   Volume: -unset-\n"
-            }
-            if let treble = preset?.treble {
-                text += String(format: "   Treble: %0.2f\n", treble)
-            } else {
-                text += "   Treble: -unset-\n"
-            }
-            if let middle = preset?.middle {
-                text += String(format: "   Middle: %0.2f\n", middle)
-            } else {
-                text += "   Middle: -unset-\n"
-            }
-            if let bass = preset?.bass {
-                text += String(format: "   Bass: %0.2f\n", bass)
-            } else {
-                text += "   Bass: -unset-\n"
-            }
-            if let presence = preset?.presence {
-                text += String(format: "   Reverb/Presence: %0.2f\n", presence)
-            } else {
-                text += "   Reverb/Presence: -unset-\n"
-            }
-            text += String(format: "   Model: %@\n", preset?.moduleName ?? "-unknown-")
-            text += String(format: "   Cabinet: %@)\n", preset?.cabinetName ?? "-unknown-")
-            for effect in preset?.effects ?? [BOEffect]() {
-                text += String(format: "   %@: %@ - %@ (colour %d)\n", effect.type.rawValue, effect.name ?? "-empty-", effect.enabled ? "ON" : "OFF", effect.colour)
-                text += String(format: "    Knobs: %d - ", effect.knobs.count)
-                effect.knobs.forEach { text += String(format: "%0.2f ", $0.value) }
-                text += String(format: "slot %d (%d %d %d)\n", effect.slot, effect.aValue1, effect.aValue2, effect.aValue3)
-            }
-            ULog.info("%@", text)
+            ULog.info("%@", preset.debugDescription)
         }
     }
     
@@ -520,22 +525,22 @@ extension MainVC: AmpKnobDelegate {
     func valueDidChangeForKnob(_ sender: AmpKnobControl, value: Float) {
         switch sender {
         case gainKnob:
-            ULog.debug("New gain is %.2f", value)
+            ULog.verbose("New gain is %.2f", value)
             currentPreset?.gain1 = value
         case volumeKnob:
-            ULog.debug("New volume is %.2f", value)
+            ULog.verbose("New volume is %.2f", value)
             currentPreset?.volume = value
         case trebleKnob:
-            ULog.debug("New treble is %.2f", value)
+            ULog.verbose("New treble is %.2f", value)
             currentPreset?.treble = value
         case middleKnob:
-            ULog.debug("New middle is %.2f", value)
+            ULog.verbose("New middle is %.2f", value)
             currentPreset?.middle = value
         case bassKnob:
-            ULog.debug("New bass is %.2f", value)
+            ULog.verbose("New bass is %.2f", value)
             currentPreset?.bass = value
         case presenceKnob:
-            ULog.debug("New presence is %.2f", value)
+            ULog.verbose("New presence is %.2f", value)
             currentPreset?.presence = value
         default:
             ULog.error("Don't know what knob sent this event")
@@ -583,7 +588,7 @@ extension MainVC: WheelDelegate {
         case .active:
             switch sender {
             case wheel:
-                ULog.debug("Wheel value is changing to %d", value)
+                ULog.verbose("Wheel value is changing to %d", value)
                 displayPreset(value)
             default:
                 ULog.error("Don't know what wheel sent this event")
@@ -602,13 +607,12 @@ extension MainVC: WheelDelegate {
         case .active:
             switch sender {
             case wheel:
-                ULog.debug("Wheel value changed to %d", value)
+                ULog.verbose("Wheel value changed to %d", value)
                 saveButton.setState(.active)
                 exitButton.setState(.active)
                 ampManager.getPreset(value,
                                      fromAmplifier: true) { (preset) in
                     self.setPreset(preset)
-                    self.logPreset(self.currentPreset)
                 }
             default:
                 ULog.error("Don't know what wheel sent this event")
@@ -726,7 +730,6 @@ extension MainVC: RemoteManagerDelegate {
                         ampManager.getPreset(Int(number),
                                                   fromAmplifier: true) { (preset) in
                             self.setPreset(preset)
-                            self.logPreset(preset)
                         }
                     }
                 }
