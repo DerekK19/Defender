@@ -13,7 +13,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var bluetoothLogo: UIImageView!
     @IBOutlet weak var txLED: LEDControl!
     @IBOutlet weak var rxLED: LEDControl!
-    @IBOutlet weak var bluetoothLabel: UILabel!
+    @IBOutlet weak var bluetoothLabel: UILabel! // Never set isHidden true for this label. It will pad the rest of the screen width when the other labels are hidden
     @IBOutlet weak var amplifierLabel: UILabel!
     @IBOutlet weak var presetLabel: UILabel!
     @IBOutlet weak var prevPreset: UIButton!
@@ -29,11 +29,15 @@ class MainVC: UIViewController {
     
     let verbose = true
 
+    // MARK: - UIView overrides
     override func viewDidLoad() {
         super.viewDidLoad()
 
         bluetoothLogo.isHidden = true
-        bluetoothLabel.isHidden = true
+        amplifierLabel.isHidden = true
+        presetLabel.isHidden = true
+        prevPreset.isHidden = true
+        nextPreset.isHidden = true
         txLED.backgroundColour = .clear
         rxLED.backgroundColour = .clear
 
@@ -77,7 +81,7 @@ class MainVC: UIViewController {
         }
     }
     
-    // MARK: Action functions
+    // MARK: - Action functions
     
     @IBAction func didTapBluetoothLogo(_ sender: AnyObject) {
         if bluetoothLogo.alpha != 1.0 {
@@ -109,7 +113,7 @@ class MainVC: UIViewController {
         }
     }
     
-    // MARK: Private functions
+    // MARK: - Private functions
     
     func sendGetAmplifier() {
         let message = DXMessage(command: .amplifier, data: nil)
@@ -147,7 +151,7 @@ class MainVC: UIViewController {
 
     }
     
-    // MARK: Debug logging
+    // MARK: - Debug logging
     internal func logPreset(_ preset: DXPreset?) {
         guard let preset = preset else { return }
         if verbose {
@@ -156,6 +160,7 @@ class MainVC: UIViewController {
     }
 }
 
+// MARK: - Paged Preset Delegate - Preset for iPhone app
 extension MainVC: PagedPresetVCDelegate {
     func settingsDidChangeForPreset(_ sender: PagedPresetVC, preset: DXPreset?) {
         ULog.info("Preset changed")
@@ -165,6 +170,7 @@ extension MainVC: PagedPresetVCDelegate {
     }
 }
 
+// MARK: - One Page Preset Delegate - Preset for iPad app
 extension MainVC: OnePagePresetVCDelegate {
     func settingsDidChangeForPreset(_ sender: OnePagePresetVC, preset: DXPreset?) {
         ULog.info("Preset changed")
@@ -174,6 +180,7 @@ extension MainVC: OnePagePresetVCDelegate {
     }
 }
 
+// MARK: - Remote Manager Delegate - communication with the Mac app
 extension MainVC: RemoteManagerDelegate {
     func remoteManagerAvailable(_ manager: RemoteManager) {
         bluetoothLogo.isHidden = false
@@ -182,7 +189,6 @@ extension MainVC: RemoteManagerDelegate {
     
     func remoteManagerConnected(_ manager: RemoteManager) {
         bluetoothLogo.alpha = 1.0
-        bluetoothLabel.isHidden = false
         amplifierLabel.isHidden = false
         amplifierLabel.text = ""
         presetLabel.isHidden = false
@@ -238,7 +244,6 @@ extension MainVC: RemoteManagerDelegate {
     func remoteManagerDisconnected(_ manager: RemoteManager) {
         presetVC?.powerState = .off
         bluetoothLogo.alpha = 0.5
-        bluetoothLabel.isHidden = true
         amplifierLabel.isHidden = true
         amplifierLabel.text = ""
         presetLabel.isHidden = true
@@ -251,7 +256,6 @@ extension MainVC: RemoteManagerDelegate {
     func remoteManagerUnavailable(_ manager: RemoteManager) {
         presetVC?.powerState = .off
         bluetoothLogo.isHidden = true
-        bluetoothLabel.isHidden = true
         amplifierLabel.isHidden = true
         amplifierLabel.text = ""
         presetLabel.isHidden = true
@@ -261,6 +265,7 @@ extension MainVC: RemoteManagerDelegate {
     }
 }
 
+// MARK: - Watch Manager Delegate - Communication with the Watch app
 extension MainVC: WatchManagerDelegate {
     func watchManager(_ manager: WatchManager, didChoosePreset index: UInt8) {
         ULog.verbose("Choose preset: %d", index)

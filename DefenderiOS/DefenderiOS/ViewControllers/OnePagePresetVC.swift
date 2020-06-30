@@ -75,6 +75,7 @@ class OnePagePresetVC: UIViewController {
         }
     }
 
+    // MARK: - UIView overrides
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -125,79 +126,9 @@ class OnePagePresetVC: UIViewController {
         }
     }
     
-//    private func newControlsVC() -> BaseEffectVC {
-//        guard let controlsVC = UIStoryboard(name: "Controls", bundle: nil).instantiateInitialViewController() as? ControlsVC else {
-//            ULog.error("Unable to create controls view controller")
-//            fatalError()
-//        }
-//        controlsVC.delegate = self
-//        return controlsVC
-//    }
-//
-//    private func newPedalVC(slotNumber: Int) -> BaseEffectVC {
-//        guard let pedalVC = UIStoryboard(name: "Pedal", bundle: nil).instantiateInitialViewController() as? PedalVC else {
-//            ULog.error("Unable to create a pedal view controller")
-//            fatalError()
-//        }
-//        pedalVC.slotNumber = slotNumber
-//        pedalVC.delegate = self
-//        return pedalVC
-//    }
-//
-//    private func newEffectVC(slotNumber: Int) -> BaseEffectVC {
-//        guard let effectVC = UIStoryboard(name: "Effect", bundle: nil).instantiateInitialViewController() as? EffectVC else {
-//                ULog.error("Unable to create a effect view controller")
-//                fatalError()
-//        }
-//        effectVC.slotNumber = slotNumber
-//        effectVC.delegate = self
-//        return effectVC
-//    }
-//
-//    fileprivate func replaceEffect(_ effect: DXEffect, inSlot: Int) {
-//        if effects != nil {
-//            for index in 0..<effects!.count {
-//                if effects![index].slot == effect.slot {
-//                    effects![index] = effect
-//                }
-//            }
-//        }
-//        preset?.effects = effects
-//    }
 }
 
-// // MARK: UIPageViewControllerDataSource
-//
-//extension OnePagePresetVC: UIPageViewControllerDataSource {
-//
-//    func pageViewController(_ pageViewController: UIPageViewController,
-//                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
-//        guard let effectVC: BaseEffectVC = viewController as? BaseEffectVC else { return nil }
-//        guard let viewControllerIndex = orderedViewControllers.firstIndex(of: effectVC) else { return nil }
-//
-//        let previousIndex = viewControllerIndex - 1
-//
-//        guard previousIndex >= 0 else { return nil }
-//        guard orderedViewControllers.count > previousIndex else { return nil }
-//
-//        return orderedViewControllers[previousIndex]
-//    }
-//
-//    func pageViewController(_ pageViewController: UIPageViewController,
-//                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
-//        guard let effectVC: BaseEffectVC = viewController as? BaseEffectVC else { return nil }
-//        guard let viewControllerIndex = orderedViewControllers.firstIndex(of: effectVC) else { return nil }
-//
-//        let nextIndex = viewControllerIndex + 1
-//        let orderedViewControllersCount = orderedViewControllers.count
-//
-//        guard orderedViewControllersCount != nextIndex else { return nil }
-//        guard orderedViewControllersCount > nextIndex else { return nil }
-//
-//        return orderedViewControllers[nextIndex]
-//    }
-//}
-//
+// MARK: - Controls Delegate - communication from knob controls
 extension OnePagePresetVC: ControlsVCDelegate {
     
     func settingsDidChangeForControls(_ sender: ControlsVC, preset: DXPreset?) {
@@ -207,29 +138,29 @@ extension OnePagePresetVC: ControlsVCDelegate {
     }
 }
 
+// MARK: - Pedal Delegate - communication from pedals
 extension OnePagePresetVC: PedalVCDelegate {
     
     func settingsDidChangeForPedal(_ sender: PedalVC, slotNumber: Int, effect: DXEffect) {
         ULog.verbose("Changed Pedal in slot %d", slotNumber)
-//        replaceEffect(effect, inSlot: slotNumber)
         presetDelegate?.settingsDidChangeForPreset(self, preset: preset)
     }
 }
 
+// MARK: - Effect Delegate - communication from effects
 extension OnePagePresetVC: EffectVCDelegate {
     
     func settingsDidChangeForEffect(_ sender: EffectVC, slotNumber: Int, effect: DXEffect) {
         ULog.verbose("Changed Effect in slot %d", slotNumber)
-//        replaceEffect(effect, inSlot: slotNumber)
         presetDelegate?.settingsDidChangeForPreset(self, preset: preset)
     }
 }
 
+// MARK: - Cabinet Delegate - communication from cabinet
 extension OnePagePresetVC: CabinetVCDelegate {
     
     func settingsDidChangeForCabinet(_ sender: CabinetVC, slotNumber: Int, effect: DXEffect) {
         ULog.verbose("Changed Cabinet in slot %d", slotNumber)
-//        replaceEffect(effect, inSlot: slotNumber)
         presetDelegate?.settingsDidChangeForPreset(self, preset: preset)
     }
 }

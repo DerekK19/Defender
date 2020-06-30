@@ -72,6 +72,7 @@ class PagedPresetVC: UIPageViewController {
                 self.newEffectVC(slotNumber: 7)]
     }()
     
+    // MARK: - UIView overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -85,6 +86,7 @@ class PagedPresetVC: UIPageViewController {
         }
     }
     
+    // MARK: - Private functions
     private func newControlsVC() -> BaseEffectVC {
         guard let controlsVC = UIStoryboard(name: "Controls", bundle: nil).instantiateInitialViewController() as? ControlsVC else {
             ULog.error("Unable to create controls view controller")
@@ -126,8 +128,7 @@ class PagedPresetVC: UIPageViewController {
     }
 }
 
-// MARK: UIPageViewControllerDataSource
-
+// MARK: - Page View DataSource - page definitions
 extension PagedPresetVC: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
@@ -158,6 +159,7 @@ extension PagedPresetVC: UIPageViewControllerDataSource {
     }
 }
 
+// MARK: - Controls Delegate - communication from knob controls
 extension PagedPresetVC: ControlsVCDelegate {
     
     func settingsDidChangeForControls(_ sender: ControlsVC, preset: DXPreset?) {
@@ -167,6 +169,7 @@ extension PagedPresetVC: ControlsVCDelegate {
     }
 }
 
+// MARK: - Pedal Delegate - communication from pedals
 extension PagedPresetVC: PedalVCDelegate {
     
     func settingsDidChangeForPedal(_ sender: PedalVC, slotNumber: Int, effect: DXEffect) {
@@ -176,6 +179,7 @@ extension PagedPresetVC: PedalVCDelegate {
     }
 }
 
+// MARK: - Effect Delegate - communication from effects
 extension PagedPresetVC: EffectVCDelegate {
     
     func settingsDidChangeForEffect(_ sender: EffectVC, slotNumber: Int, effect: DXEffect) {

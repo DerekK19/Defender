@@ -32,12 +32,6 @@ class CabinetVC: BaseEffectVC {
     var fullBackgroundColour = UIColor.black
     var pedalBackgroundColour = UIColor.black
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
     var state: EffectState = .disabled {
         didSet {
             var newBackgroundColour = UIColor()
@@ -61,6 +55,12 @@ class CabinetVC: BaseEffectVC {
             let currentState = powerState
             powerState = currentState
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
     }
     
     internal func configureWith(preset: DXPreset?) {
