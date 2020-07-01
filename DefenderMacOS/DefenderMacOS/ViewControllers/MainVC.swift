@@ -339,33 +339,11 @@ class MainVC: NSViewController {
     }
 
     @IBAction func willGetPreviousPreset(_ sender: NSObject) {
-        guard var number = currentPreset?.number else { return }
-        if number == 0 {
-            number = 99
-        } else {
-            number -= 1
-        }
-        saveButton.setState(.active)
-        exitButton.setState(.active)
-        ampManager.getPreset(Int(number),
-                             fromAmplifier: true) { (preset) in
-            self.setPreset(preset)
-        }
+        wheel.wheelRotate(by: -1)
     }
 
     @IBAction func willGetNextPreset(_ sender: NSObject) {
-        guard var number = currentPreset?.number else { return }
-        number += 1
-        if number >= 99 {
-            number = 0
-        }
-        saveButton.setState(.active)
-        exitButton.setState(.active)
-        ampManager.getPreset(Int(number),
-                             fromAmplifier: true) { (preset) in
-            self.setPreset(preset)
-        }
-        displayPreset(currentPreset)
+        wheel.wheelRotate(by: 1)
     }
     
     // MARK: Private Functions
@@ -658,6 +636,12 @@ extension MainVC: AmpManagerDelegate {
         sendCurrentAmplifier()
         statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
         statusLabel.stringValue = "\(ampManager.currentAmplifierName) connected"
+    }
+    
+    func presetChanged(ampManager: AmpManager, to preset: BOPreset) {
+        guard let number = preset.number else { return }
+        wheel.setIntValueTo(Int(number))
+        setPreset(preset)
     }
     
     func gainChanged(ampManager: AmpManager, by: Float) {

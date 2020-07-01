@@ -10,6 +10,7 @@ import Cocoa
 
 internal protocol AmpServiceAgentProtocol {
     func getDevices() -> [DLHIDDevice]
+    func setCurrentAmplifier(_ amplifier: DLAmplifier)
     func getPresetsForAmplifier(_ amplifier: DLAmplifier, onSuccess: @escaping (_ presets: [DLPreset]) -> (), onFail: @escaping () -> ())
     func getPresetForAmplifier(_ amplifier: DLAmplifier, preset: UInt8, onSuccess: @escaping (_ preset: DLPreset) -> (), onFail: @escaping () -> ())
     func setPresetForAmplifier(_ amplifier: DLAmplifier, preset: DLPreset, onSuccess: @escaping (_ preset: DLPreset) -> (), onFail: @escaping () -> ())

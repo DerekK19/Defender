@@ -14,6 +14,7 @@ protocol AmpManagerDelegate {
     func deviceOpened(ampManager: AmpManager)
     func presetCountChanged(ampManager: AmpManager, to: UInt)
     func deviceClosed(ampManager: AmpManager)
+    func presetChanged(ampManager: AmpManager, to preset: BOPreset)
     func gainChanged(ampManager: AmpManager, by: Float)
     func volumeChanged(ampManager: AmpManager, by: Float)
     func trebleChanged(ampManager: AmpManager, by: Float)
@@ -34,6 +35,7 @@ class AmpManager {
     internal private(set) var currentAmplifier: BOAmplifier?
     
     private var presets = [UInt8 : BOPreset] ()
+    private var latestPreset: BOPreset?
     private var latestGain: Float?
     private var latestVolume: Float?
     private var latestTreble: Float?
@@ -58,7 +60,7 @@ class AmpManager {
 
     var presetNames : [String] {
         get {
-            return presets.sorted(by: { $0.key < $1.key }).map { $0.value.name }
+            return presets.sorted(by: { $0.key < $1.key }).map { $0.value.name ?? "Unnamed" }
         }
     }
     
@@ -79,12 +81,13 @@ class AmpManager {
         NotificationCenter.default.addObserver(self, selector: #selector(deviceConnected), name: NSNotification.Name(rawValue: Mustang.deviceConnectedNotificationName), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deviceOpened), name: NSNotification.Name(rawValue: Mustang.deviceOpenedNotificationName), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deviceClosed), name: NSNotification.Name(rawValue: Mustang.deviceClosedNotificationName), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(gainChanged), name: NSNotification.Name(rawValue: Mustang.gainChangedNotificationName), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(volumeChanged), name: NSNotification.Name(rawValue: Mustang.volumeChangedNotificationName), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(trebleChanged), name: NSNotification.Name(rawValue: Mustang.trebleChangedNotificationName), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(middleChanged), name: NSNotification.Name(rawValue: Mustang.middleChangedNotificationName), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(bassChanged), name: NSNotification.Name(rawValue: Mustang.bassChangedNotificationName), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(presenceChanged), name: NSNotification.Name(rawValue: Mustang.presenceChangedNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didSelectPreset), name: NSNotification.Name(rawValue: Mustang.didSelectPreset), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(gainChanged), name: NSNotification.Name(rawValue: Mustang.gainDidChange), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(volumeChanged), name: NSNotification.Name(rawValue: Mustang.volumeDidChange), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(trebleChanged), name: NSNotification.Name(rawValue: Mustang.trebleDidChange), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(middleChanged), name: NSNotification.Name(rawValue: Mustang.middleDidChange), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(bassChanged), name: NSNotification.Name(rawValue: Mustang.bassDidChange), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(presenceChanged), name: NSNotification.Name(rawValue: Mustang.presenceDidChange), object: nil)
     }
 
     @objc fileprivate func deviceConnected() {
@@ -92,6 +95,7 @@ class AmpManager {
         currentAmplifier = nil
         amplifiers = mustang.getConnectedAmplifiers()
         currentAmplifier = amplifiers.first
+        mustang.setCurrentAmplifier(currentAmplifier)
         DispatchQueue.main.async {
             self.delegate?.deviceConnected(ampManager: self)
         }
@@ -116,6 +120,19 @@ class AmpManager {
         currentAmplifier = nil
         DispatchQueue.main.async {
             self.delegate?.deviceDisconnected(ampManager: self)
+        }
+    }
+    
+    @objc fileprivate func didSelectPreset(notification: Notification) {
+        if let userInfo = notification.userInfo as? [String: Any] {
+            if let preset = userInfo["value"] as? BOPreset {
+                if let _ = latestPreset {
+                    DispatchQueue.main.async {
+                        self.delegate?.presetChanged(ampManager: self, to: preset)
+                    }
+                }
+                latestPreset = preset
+            }
         }
     }
     
@@ -228,8 +245,9 @@ class AmpManager {
                             self.mustang.getPreset(
                                 amplifier,
                                 preset: UInt8(i)) { (preset) in
-                                    if let preset = preset {
+                                    if var preset = preset {
                                         if let number = preset.number {
+                                            if preset.name == nil { preset.name = self.presetNames[Int(number)] }
                                             self.presets[number] = preset
                                         }
                                     }
@@ -272,8 +290,10 @@ class AmpManager {
                 mustang.getPreset(
                     amplifier,
                     preset: UInt8(preset)) { (preset) in
-                        if let preset = preset {
+                        if var preset = preset {
                             if let number = preset.number {
+                                if preset.name == nil { preset.name = self.presetNames[Int(number)]}
+                                self.latestPreset = preset
                                 self.presets[number] = preset
                                 DispatchQueue.main.async {
                                     onCompletion(preset)
@@ -318,7 +338,7 @@ class AmpManager {
                 mustang.savePreset(
                     amplifier,
                     preset: number,
-                    name: preset.name) { (saved) in
+                    name: preset.name ?? "Unnamed") { (saved) in
                         DispatchQueue.main.async {
                             onCompletion(saved)
                         }
@@ -428,7 +448,7 @@ class AmpManager {
                 presetDoc?.characterEncoding = "utf-8"
                 presetDoc?.version = "1.0"
                 let presetXml = presetDoc?.xmlData(options: XMLNode.Options(rawValue: XMLNode.Options.RawValue(Int(xmlOptions.rawValue))))
-                fileManager.createFile(atPath: "Presets/\(index)_\(preset.value.name).fuse", contents: presetXml)
+                fileManager.createFile(atPath: "Presets/\(index)_\(preset.value.name ?? "Unknown").fuse", contents: presetXml)
                 let fuseDoc = XMLDocument()
                 let fuseElement = presetDoc?.rootElement()?.elements(forName: "FUSE").first
                 let bandElement = presetDoc?.rootElement()?.elements(forName: "Band").first

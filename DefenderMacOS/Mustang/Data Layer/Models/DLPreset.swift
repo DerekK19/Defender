@@ -17,7 +17,7 @@ class DLPreset: Mappable {
     
     var amplifier: DLAmplifier?
     var number: UInt8?
-    var name: String!
+    var name: String?
     var current: Bool!
     var module: Int!
     var volume: Int!
@@ -53,7 +53,7 @@ class DLPreset: Mappable {
         mapping(map: map)
     }
     
-    init(withAmplifier amplifier: DLAmplifier?, number: UInt8?, name: String, current: Bool) {
+    init(withAmplifier amplifier: DLAmplifier?, number: UInt8?, name: String?, current: Bool) {
         self.amplifier = amplifier
         self.number = number
         self.name = name
@@ -62,7 +62,7 @@ class DLPreset: Mappable {
         self.usbGain = 0
     }
     
-    convenience init(withAmplifier amplifier: DLAmplifier?, number: UInt8?, name: String, current: Bool, module: Int, volume: Int, gain1: Int, gain2: Int, masterVolume: Int, treble: Int, middle: Int, bass: Int, presence: Int, depth: Int, bias: Int, noiseGate: Int, threshold: Int, cabinet: Int, sag: Int, brightness: Int, unknown1: UInt8, unknown2: UInt8, unknown3: UInt8, unknown4: UInt8, unknown5: UInt8, unknown6: UInt8, unknown7: UInt8, unknown8: UInt8, effects: [DLEffect], band: DLBand?, fuse: DLFuse?) {
+    convenience init(withAmplifier amplifier: DLAmplifier?, number: UInt8?, name: String?, current: Bool, module: Int, volume: Int, gain1: Int, gain2: Int, masterVolume: Int, treble: Int, middle: Int, bass: Int, presence: Int, depth: Int, bias: Int, noiseGate: Int, threshold: Int, cabinet: Int, sag: Int, brightness: Int, unknown1: UInt8, unknown2: UInt8, unknown3: UInt8, unknown4: UInt8, unknown5: UInt8, unknown6: UInt8, unknown7: UInt8, unknown8: UInt8, effects: [DLEffect], band: DLBand?, fuse: DLFuse?) {
         self.init(withAmplifier: amplifier, number: number, name: name, current: current)
         self.module = module
         self.volume = volume

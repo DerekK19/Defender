@@ -70,7 +70,6 @@ enum DataMode {
 
 class BaseServiceAgent {
     
-    let verbose = false
     let dataDebug = false
     
     let vendorId = FenderVendorId
@@ -88,13 +87,13 @@ class BaseServiceAgent {
     }
     
     internal func logVerbose(_ text: String) {
-        if (verbose) {
+        if dataDebug {
             ULog.verbose("%@", text)
         }
     }
     
     internal func logDebug(_ text: String) {
-        if (verbose) {
+        if dataDebug {
             ULog.debug("%@", text)
         }
     }

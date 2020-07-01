@@ -25,6 +25,10 @@ class AmpMockAgent : AmpServiceAgentProtocol {
         return [DLHIDDevice(withVendor: FenderVendorId, product: MustangProductId, name: MustangName, locationId: 12345)]
     }
     
+    func setCurrentAmplifier(_ amplifier: DLAmplifier) {
+        
+    }
+    
     func getPresetsForAmplifier(_ amplifier: DLAmplifier, onSuccess: @escaping ([DLPreset]) -> (), onFail: @escaping () -> ()) {
         var presets = [DLPreset]()
         MustangAgent.serialize(MustangMockData().initialisationResponse, forAmplifier: amplifier, intoPresets: &presets)

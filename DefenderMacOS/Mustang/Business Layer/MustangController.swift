@@ -78,6 +78,10 @@ class MustangController {
         return nil
     }
     
+    func setCurrentAmplifier(_ amplifier: BOAmplifier) {
+        ampAgent.setCurrentAmplifier(amplifier.dataObject)
+    }
+    
     func getPresetsForAmplifier(_ amplifier: BOAmplifier, onSuccess: @escaping (_ presets: [BOPreset]) -> ()) {
         ampAgent.getPresetsForAmplifier(
             amplifier.dataObject,

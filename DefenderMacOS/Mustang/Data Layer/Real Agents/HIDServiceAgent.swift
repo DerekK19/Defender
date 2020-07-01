@@ -46,6 +46,7 @@ private var portInterestIterator: io_iterator_t = 0
 
 internal protocol HIDServiceAgentDelegate {
     func HIDAgent(agent: HIDServiceAgent, didChangeSetting: [UInt8], length: Int)
+    func HIDAgent(agent: HIDServiceAgent, didSelectPreset: [[UInt8]])
 }
 
 internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
@@ -61,8 +62,12 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
     var reportSemaphore: DispatchSemaphore
     var reportTimeout: Int64
     var reportResponse = [[UInt8]]()
+    var oobResponse: [[UInt8]]?
     var reportExpect: Int?
     var reportTerminator: [UInt8]?
+    
+    let oobPresetStarter: [UInt8]    = [0x1c, 0x01, 0x04, 0x00]
+    let oobPresetTerminator: [UInt8] = [0x1c, 0x01, 0x00, 0x00]
     
     // MARK: Constructors
     override init() {
@@ -260,7 +265,20 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
         // copy bytes into array
         (message as NSData).getBytes(&array, length: reportLength * MemoryLayout<UInt8>.size)
         if reportExpect == nil && reportTerminator == nil {
-            delegate?.HIDAgent(agent: self, didChangeSetting: array, length: Int(reportLength))
+            debugPrint("inpt", bytes: array)
+            if array.starts(with: oobPresetStarter) {
+                oobResponse = [[UInt8]]()
+            } else if array.starts(with: oobPresetTerminator) {
+                if let oobResponse = oobResponse {
+                    delegate?.HIDAgent(agent: self, didSelectPreset: oobResponse)
+                }
+                oobResponse = nil
+            }
+            if oobResponse == nil {
+                delegate?.HIDAgent(agent: self, didChangeSetting: array, length: Int(reportLength))
+            } else {
+                oobResponse?.append(array)
+            }
         } else {
             debugPrint("recv", bytes: array)
             reportResponse.append(array)
@@ -543,49 +561,8 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
         }
     }
     
-    // MARK: Logging and debugging
-    fileprivate func debugPrint(_ reason: String, bytes: [UInt8]) {
-        if dataDebug {
-            var text = "\(reason): <"
-            var i = 0
-            bytes.forEach { if i > 0 && i % 4 == 0 { text += " " }; text += "\(String(format: "%02x", $0))"; i += 1 }
-            text += ">"
-            ULog.debug("%@", text)
-        }
-    }
-    
-    fileprivate func debugPrint(_ devicePtr: HIDDeviceType) {
-        let vendorId: Int? = getPropertyForDevice(devicePtr, property: kIOHIDVendorIDKey as CFString)
-        let productId: Int? = getPropertyForDevice(devicePtr, property: kIOHIDProductIDKey as CFString)
-        let version: Int? = getPropertyForDevice(devicePtr, property: kIOHIDVersionNumberKey as CFString)
-        let manufacturer: String? = getPropertyForDevice(devicePtr, property: kIOHIDManufacturerKey as CFString)
-        let product: String? = getPropertyForDevice(devicePtr, property: kIOHIDProductKey as CFString)
-        let serial: String? = getPropertyForDevice(devicePtr, property: kIOHIDSerialNumberKey as CFString)
-        let location: Int? = getPropertyForDevice(devicePtr, property: kIOHIDLocationIDKey as CFString)
-        let uniqueId: Int? = getPropertyForDevice(devicePtr, property: kIOHIDUniqueIDKey as CFString)
-        let transport: String? = getPropertyForDevice(devicePtr, property: kIOHIDTransportKey as CFString)
-        let maxInReport: Int? = getPropertyForDevice(devicePtr, property: kIOHIDMaxInputReportSizeKey as CFString)
-        let maxOutReport: Int? = getPropertyForDevice(devicePtr, property: kIOHIDMaxOutputReportSizeKey as CFString)
-        let maxFeatureReport: Int? = getPropertyForDevice(devicePtr, property: kIOHIDMaxFeatureReportSizeKey as CFString)
-        let reportInterval: Int? = getPropertyForDevice(devicePtr, property: kIOHIDReportIntervalKey as CFString)
-        
-        var text = "HID device\n"
-        text += " vendor: 0x\(vendorId != nil ? String(format: "%04x", vendorId!) : "Unknown")\n"
-        text += " product Id: 0x\(productId != nil ? String(format: "%04x", productId!) : "Unknown")\n"
-        text += " version 0x\(version != nil ? String(format: "%04x", version!) : "Unknown")\n"
-        text += " unique Id: 0x\(uniqueId != nil ? String(format: "%04x", uniqueId!) : "Unknown")\n"
-        text += " manufacturer: \(manufacturer != nil ? manufacturer! : "Unknown")\n"
-        text += " product: \(product != nil ? product! : "Unknown")\n"
-        text += " serial: \(serial != nil ? serial! : "Unknown")\n"
-        text += " location: 0x\(location != nil ? String(format: "%04x", location!) : "Unknown")\n"
-        text += " transport: \(transport != nil ? transport! : "Unknown")\n"
-        text += " in report: \(maxInReport != nil ? String(format: "%d", maxInReport!) : "Unknown")\n"
-        text += " out report: \(maxOutReport != nil ? String(format: "%d", maxOutReport!) : "Unknown")\n"
-        text += " feature report: \(maxFeatureReport != nil ? String(format: "%d", maxFeatureReport!) : "Unknown")\n"
-        text += " report interval: \(reportInterval != nil ? String(format: "%d", reportInterval!) : "Unknown")\n"
-        logDebug(text)
-    }
-    
+    // MARK: - Logging and debugging
+
     fileprivate func descriptionForMessageType(_ messageType: natural_t) -> String {
         switch messageType {
         case kIOMessageServiceIsTerminated:
@@ -625,6 +602,47 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
         }
     }
     
+    fileprivate func debugPrint(_ reason: String, bytes: [UInt8]) {
+        if dataDebug {
+            var text = ""
+            var i = 0
+            bytes.forEach { if i > 0 && i % 4 == 0 { text += " " }; text += "\(String(format: "%02x", $0))"; i += 1 }
+            ULog.debug("%@: <%@>", reason, text)
+        }
+    }
+    
+    fileprivate func debugPrint(_ devicePtr: HIDDeviceType) {
+        let vendorId: Int? = getPropertyForDevice(devicePtr, property: kIOHIDVendorIDKey as CFString)
+        let productId: Int? = getPropertyForDevice(devicePtr, property: kIOHIDProductIDKey as CFString)
+        let version: Int? = getPropertyForDevice(devicePtr, property: kIOHIDVersionNumberKey as CFString)
+        let manufacturer: String? = getPropertyForDevice(devicePtr, property: kIOHIDManufacturerKey as CFString)
+        let product: String? = getPropertyForDevice(devicePtr, property: kIOHIDProductKey as CFString)
+        let serial: String? = getPropertyForDevice(devicePtr, property: kIOHIDSerialNumberKey as CFString)
+        let location: Int? = getPropertyForDevice(devicePtr, property: kIOHIDLocationIDKey as CFString)
+        let uniqueId: Int? = getPropertyForDevice(devicePtr, property: kIOHIDUniqueIDKey as CFString)
+        let transport: String? = getPropertyForDevice(devicePtr, property: kIOHIDTransportKey as CFString)
+        let maxInReport: Int? = getPropertyForDevice(devicePtr, property: kIOHIDMaxInputReportSizeKey as CFString)
+        let maxOutReport: Int? = getPropertyForDevice(devicePtr, property: kIOHIDMaxOutputReportSizeKey as CFString)
+        let maxFeatureReport: Int? = getPropertyForDevice(devicePtr, property: kIOHIDMaxFeatureReportSizeKey as CFString)
+        let reportInterval: Int? = getPropertyForDevice(devicePtr, property: kIOHIDReportIntervalKey as CFString)
+        
+        var text = "HID device\n"
+        text += " vendor: 0x\(vendorId != nil ? String(format: "%04x", vendorId!) : "Unknown")\n"
+        text += " product Id: 0x\(productId != nil ? String(format: "%04x", productId!) : "Unknown")\n"
+        text += " version 0x\(version != nil ? String(format: "%04x", version!) : "Unknown")\n"
+        text += " unique Id: 0x\(uniqueId != nil ? String(format: "%04x", uniqueId!) : "Unknown")\n"
+        text += " manufacturer: \(manufacturer != nil ? manufacturer! : "Unknown")\n"
+        text += " product: \(product != nil ? product! : "Unknown")\n"
+        text += " serial: \(serial != nil ? serial! : "Unknown")\n"
+        text += " location: 0x\(location != nil ? String(format: "%04x", location!) : "Unknown")\n"
+        text += " transport: \(transport != nil ? transport! : "Unknown")\n"
+        text += " in report: \(maxInReport != nil ? String(format: "%d", maxInReport!) : "Unknown")\n"
+        text += " out report: \(maxOutReport != nil ? String(format: "%d", maxOutReport!) : "Unknown")\n"
+        text += " feature report: \(maxFeatureReport != nil ? String(format: "%d", maxFeatureReport!) : "Unknown")\n"
+        text += " report interval: \(reportInterval != nil ? String(format: "%d", reportInterval!) : "Unknown")\n"
+        ULog.debug("%@", text)
+    }
+    
     fileprivate func debugPrint(_ value: IOHIDValue) {
         let len = IOHIDValueGetLength(value)
         let int = UInt8(IOHIDValueGetIntegerValue(value) & 0xff)
@@ -642,10 +660,10 @@ internal class HIDServiceAgent: BaseServiceAgent, HIDServiceAgentProtocol {
             var i = 0
             message.forEach { if i > 0 && i % 4 == 0 { bytes += " " }; bytes += "\(String(format: "%02x", $0))"; i += 1 }
             bytes += ">"
-            //logDebug("value type: ele \(ele) usa \(usa) pag \(String(format: "%02x", pag)) uni \(uni) typ \(typ.rawValue), tim \(tim) len \(len) \(bytes)")
+            ULog.debug("value type: ele %@ usa %d pag %02x uni %d typ %d, tim %@ len %d %@", String(describing: ele), usa, pag, uni, typ.rawValue, tim.description, len, bytes)
         } else {
             bytes = "\(int)"
-            logDebug("value type: ele \(ele) usa \(usa) pag \(String(format: "%02x", pag)) uni \(uni) typ \(typ.rawValue), tim \(tim) len \(len) \(bytes)")
+            ULog.debug("value type: ele %@ usa %d pag %02x uni %d typ %d, tim %@ len %d %@", String(describing: ele), usa, pag, uni, typ.rawValue, tim.description, len, bytes)
         }
     }
 }

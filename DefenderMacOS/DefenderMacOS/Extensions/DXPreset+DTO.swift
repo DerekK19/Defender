@@ -11,7 +11,7 @@ import Foundation
 extension DXPreset {
     
     convenience init(dto: BOPreset) {
-        self.init(name: dto.name)
+        self.init(name: dto.name ?? "")
         number = dto.number
         module = dto.module
         moduleName = dto.moduleName

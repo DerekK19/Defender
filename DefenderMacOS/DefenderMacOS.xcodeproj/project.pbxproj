@@ -509,11 +509,11 @@
 			children = (
 				65C954BA1ECE571B005FA7A3 /* AgentProtocols.swift */,
 				65C954BB1ECE571B005FA7A3 /* BaseServiceAgent.swift */,
-				65C954BC1ECE571B005FA7A3 /* Mock Agents */,
-				65C954CA1ECE571B005FA7A3 /* Models */,
 				65C954DE1ECE571B005FA7A3 /* MustangAgent.swift */,
-				65C954DF1ECE571B005FA7A3 /* Real Agents */,
 				65C954E61ECE571B005FA7A3 /* StorageAgent.swift */,
+				65C954CA1ECE571B005FA7A3 /* Models */,
+				65C954BC1ECE571B005FA7A3 /* Mock Agents */,
+				65C954DF1ECE571B005FA7A3 /* Real Agents */,
 			);
 			path = "Data Layer";
 			sourceTree = "<group>";

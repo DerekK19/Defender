@@ -12,7 +12,7 @@ struct BOPreset {
     var amplifier: BOAmplifier?
     var _amplifier: BOAmplifier?
     var number: UInt8?
-    var name: String
+    var name: String?
     let current: Bool
     var module: Int?
     var moduleName: String?
@@ -51,9 +51,9 @@ struct BOPreset {
     var debugDescription: String {
         var text = "\n"
         if let number = number {
-            text += String(format:"  Preset %d - %@\n", number, name)
+            text += String(format:"  Preset %d - %@\n", number, name ?? "-unknown-")
         } else {
-            text += String(format:"  Preset -unknown- - %@\n", name)
+            text += String(format:"  Preset -unknown- - %@\n", name ?? "-unknown-")
         }
         if let gain = gain1 {
             text += String(format: "   Gain: %0.2f\n", gain)

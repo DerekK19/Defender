@@ -38,8 +38,7 @@ class AmpKnobControl: KnobBaseControl {
     func setFloatValueTo(_ floatValue: Float) {
         super.floatValue = floatValue
         delegate?.valueDidChangeForKnob(self, value: floatValue)
-    }
-    
+    }    
 
     // MARK: Draw function
     override func draw(_ dirtyRect: NSRect) {
