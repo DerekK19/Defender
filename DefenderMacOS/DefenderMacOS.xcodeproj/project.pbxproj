@@ -169,7 +169,6 @@
 		655A5A4E1D4C555500E15E1F /* DefenderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DefenderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		655A5A521D4C555500E15E1F /* DefenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefenderTests.swift; sourceTree = "<group>"; };
 		655A5A541D4C555500E15E1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		655A5F4F1D4C57E100E15E1F /* Cartfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = Cartfile; sourceTree = "<group>"; };
 		656A5ABA1DA880B700B7BE3E /* LEDControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEDControl.swift; sourceTree = "<group>"; };
 		656A5ABC1DA883BB00B7BE3E /* NSColor+Brightness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Brightness.swift"; sourceTree = "<group>"; };
 		6573069E24A6F66500EC155F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -310,7 +309,6 @@
 			isa = PBXGroup;
 			children = (
 				6510D0631F9D8D6F00517328 /* Defender.entitlements */,
-				655A5F4F1D4C57E100E15E1F /* Cartfile */,
 				655A5A3F1D4C555400E15E1F /* DefenderMacOS */,
 				65C954A61ECE571B005FA7A3 /* Mustang */,
 				655A5A511D4C555500E15E1F /* DefenderMacOSTests */,
