@@ -47,7 +47,6 @@ platform :ios do
         backup_file(path: ENV["WatchExtPlist"])
 
         ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "20"
-        ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
         
         ENV["CFBundleIdentifier"] = get_info_plist_value(path: ENV["AppPlist"], key: 'CFBundleIdentifier')
         ENV["CFBundleVersion"] = get_info_plist_value(path: ENV["AppPlist"], key: 'CFBundleVersion')
@@ -191,7 +190,6 @@ platform :mac do
     backup_file(path: ENV["AppPlist"])
 
     ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "20"
-    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
 
     ENV["CFBundleIdentifier"] = get_info_plist_value(path: ENV["AppPlist"], key: 'CFBundleIdentifier')
     ENV["CFBundleVersion"] = get_info_plist_value(path: ENV["AppPlist"], key: 'CFBundleVersion')
