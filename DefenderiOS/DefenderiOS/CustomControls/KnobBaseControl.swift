@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Flogger
 
 class KnobBaseControl: UIView {
     

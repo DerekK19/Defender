@@ -10,6 +10,7 @@ import Cocoa
 
 internal protocol AmpServiceAgentProtocol {
     func getDevices() -> [DLHIDDevice]
+    func setCurrentAmplifier(_ amplifier: DLAmplifier)
     func getPresetsForAmplifier(_ amplifier: DLAmplifier, onSuccess: @escaping (_ presets: [DLPreset]) -> (), onFail: @escaping () -> ())
     func getPresetForAmplifier(_ amplifier: DLAmplifier, preset: UInt8, onSuccess: @escaping (_ preset: DLPreset) -> (), onFail: @escaping () -> ())
     func setPresetForAmplifier(_ amplifier: DLAmplifier, preset: DLPreset, onSuccess: @escaping (_ preset: DLPreset) -> (), onFail: @escaping () -> ())
@@ -41,6 +42,7 @@ internal protocol FileServiceAgentProtocol {
 }
 
 internal protocol WebServiceAgentProtocol {
+    func verify(onCompletion: @escaping (_ available: Bool) -> ())
     func login(username: String, password: String, onSuccess: @escaping () -> (), onFail: @escaping () -> ())
     func logout(onSuccess: @escaping () -> (), onFail: @escaping () -> ())
     func search(forTitle title: String, pageNumber: UInt, maxReturn: UInt, onSuccess: @escaping (_ response: DLSearchResponse) -> (), onFail: @escaping () -> ())

@@ -12,6 +12,8 @@ class AmpServiceAgent : BaseServiceAgent, AmpServiceAgentProtocol {
     
     fileprivate let hidAgent: HIDServiceAgent!
     
+    fileprivate var amplifier : DLAmplifier?
+    
     override init() {
         hidAgent = HIDServiceAgent()
         super.init()
@@ -20,6 +22,10 @@ class AmpServiceAgent : BaseServiceAgent, AmpServiceAgentProtocol {
 
     func getDevices() -> [DLHIDDevice] {
         return hidAgent.getDevices()
+    }
+
+    func setCurrentAmplifier(_ amplifier: DLAmplifier) {
+        self.amplifier = amplifier
     }
 
     func getPresetsForAmplifier(_ amplifier: DLAmplifier, onSuccess: @escaping (_ presets: [DLPreset]) -> (), onFail: @escaping () -> ()) {
@@ -118,53 +124,38 @@ extension AmpServiceAgent: HIDServiceAgentDelegate {
             case 0x00:
                 switch array[7] {
                 case 0x0c:
-                    logDebug("Volume \(floatValue)")
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.volumeChangedNotificationName), object: nil, userInfo: userInfo)
+                    ULog.verbose("Volume %.2f", floatValue)
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.volumeDidChange), object: nil, userInfo: userInfo)
                 case 0x01:
-                    logDebug("Reverb \(floatValue)")
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.presenceChangedNotificationName), object: nil, userInfo: userInfo)
+                    ULog.verbose("Reverb %.2f", floatValue)
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.presenceDidChange), object: nil, userInfo: userInfo)
                 default: break
                 }
             case 0x01:
-                logDebug("Gain \(floatValue)")
-                NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.gainChangedNotificationName), object: nil, userInfo: userInfo)
+                ULog.verbose("Gain %.2f", floatValue)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.gainDidChange), object: nil, userInfo: userInfo)
             case 0x04:
-                logDebug("Treble \(floatValue)")
-                NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.trebleChangedNotificationName), object: nil, userInfo: userInfo)
+                ULog.verbose("Treble %.2f", floatValue)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.trebleDidChange), object: nil, userInfo: userInfo)
             case 0x05:
-                logDebug("Middle \(floatValue)")
-                NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.middleChangedNotificationName), object: nil, userInfo: userInfo)
+                ULog.verbose("Middle %.2f", floatValue)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.middleDidChange), object: nil, userInfo: userInfo)
             case 0x06:
-                logDebug("Bass \(floatValue)")
-                NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.bassChangedNotificationName), object: nil, userInfo: userInfo)
+                ULog.verbose("Bass %.2f", floatValue)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.bassDidChange), object: nil, userInfo: userInfo)
             default: break
             }
             return
         }
-        if array[0] == 0x1c && array[1] == 01 {
-            let userInfo = ["value": array] as [String: Any]
-            switch array[2] {
-            case 0x04:
-                logDebug("Preset")
-                NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.presetChangedNotificationName), object: nil, userInfo: userInfo)
-            case 0x05:
-                logDebug("Amplifier")
-                NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.amplifierChangedNotificationName), object: nil, userInfo: userInfo)
-            case 0x06:
-                logDebug("Stompbox")
-                NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.stompboxChangedNotificationName), object: nil, userInfo: userInfo)
-            case 0x07:
-                logDebug("Modulation")
-                NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.modulationChangedNotificationName), object: nil, userInfo: userInfo)
-            case 0x08:
-                logDebug("Delay")
-                NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.delayChangedNotificationName), object: nil, userInfo: userInfo)
-            case 0x09:
-                logDebug("Reverb")
-                NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.reverbChangedNotificationName), object: nil, userInfo: userInfo)
-            default: break
-            }
-            return
-        }
+    }
+    
+    func HIDAgent(agent: HIDServiceAgent, didSelectPreset data: [[UInt8]]) {
+        guard let amplifier = amplifier else { return }
+        var presets = [DLPreset]()
+        MustangAgent.serialize(data, forAmplifier: amplifier, intoPresets: &presets)
+        guard let preset = presets.first else { return }
+        let boObject = BOPreset(dl: preset)
+        let userInfo = ["value": boObject] as [String : Any]
+        NotificationCenter.default.post(name: Notification.Name(rawValue: Mustang.didSelectPreset), object: nil, userInfo: userInfo)
     }
 }

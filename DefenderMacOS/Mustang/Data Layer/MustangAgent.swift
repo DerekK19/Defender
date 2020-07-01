@@ -33,6 +33,11 @@ internal class MustangAgent {
                 case 0x05:
                     // AMP Settings
                     let number = setting[4]
+                    if presets.filter({ $0.number == number }).count == 0 {
+                        let preset = DLPreset(withAmplifier: amplifier, number: number, name: nil, current: true)
+                        preset.fuse = DLFuse(withInfo: DLInfo(withName: "No Name", author: "Defender", rating: 0, genre1: -1, genre2: -1, genre3: -1, tags: "", fenderid: 0))
+                        presets.append(preset)
+                    }
                     if let preset = presets.filter({ $0.number == number }).first {
                         preset.module = Int(setting[16])
                         preset.volume = Int(setting[32])
@@ -146,7 +151,8 @@ internal class MustangAgent {
         let header:[UInt8] = [0x1c, update ? 0x03 : 0x01, 0x00, 0x00, 0x00, 0x00, 0x01, 0x01]
         var record04:[UInt8] = header + [UInt8](repeating: 0, count: 56)
         record04[2] = 0x04
-        let data = preset.name.data(using: String.Encoding.utf8)
+        let name = preset.name ?? ""
+        let data = name.data(using: String.Encoding.utf8)
         (data as NSData?)?.getBytes(&record04[16], length: min(33, data?.count ?? 0))
         var record05:[UInt8] = header + [UInt8](repeating: 0, count: 56)
         record05[2] = 0x05

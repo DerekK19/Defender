@@ -24,18 +24,13 @@ open class Mustang {
     public static let deviceConnectedNotificationName = "deviceConnected"
     public static let deviceDisconnectedNotificationName = "deviceDisconnected"
     public static let deviceClosedNotificationName = "deviceClosed"
-    public static let gainChangedNotificationName = "gainChanged"
-    public static let volumeChangedNotificationName = "volumeChanged"
-    public static let trebleChangedNotificationName = "trebleChanged"
-    public static let middleChangedNotificationName = "middleChanged"
-    public static let bassChangedNotificationName = "bassChanged"
-    public static let presenceChangedNotificationName = "presenceChanged"
-    public static let presetChangedNotificationName = "presetChanged"
-    public static let amplifierChangedNotificationName = "amplifierChanged"
-    public static let stompboxChangedNotificationName = "stompboxChanged"
-    public static let modulationChangedNotificationName = "modulationChanged"
-    public static let delayChangedNotificationName = "delayChanged"
-    public static let reverbChangedNotificationName = "reverbChanged"
+    public static let gainDidChange = "gainChanged"
+    public static let volumeDidChange = "volumeChanged"
+    public static let trebleDidChange = "trebleChanged"
+    public static let middleDidChange = "middleChanged"
+    public static let bassDidChange = "bassChanged"
+    public static let presenceDidChange = "presenceChanged"
+    public static let didSelectPreset = "presetChanged"
     
     func getUSBDevices() -> [UInt32] {
         let info = controller.getUSBDevices()
@@ -65,6 +60,11 @@ open class Mustang {
         return "Unknown"
     }
     
+    func setCurrentAmplifier(_ amplifier: BOAmplifier?) {
+        guard let amplifier = amplifier else { return }
+        controller.setCurrentAmplifier(amplifier)
+    }
+    
     func getPresets(_ amplifier: BOAmplifier, onCompletion: @escaping (_ presets: [BOPreset]) ->()) {
         controller.getPresetsForAmplifier(
             amplifier,
@@ -80,7 +80,7 @@ open class Mustang {
             preset: preset,
             onSuccess: { (preset) in
                 onCompletion(preset.map { $0 } )
-        }
+            }
         )
     }
 
@@ -105,6 +105,10 @@ open class Mustang {
         )
     }
 
+    func verifyWeb(onCompletion: @escaping (_ available: Bool) -> ()) {
+        controller.verifyWeb(onCompletion: onCompletion)
+    }
+    
     func login(username: String, password: String, onSuccess: @escaping () -> (), onFail: @escaping () -> ()) {
         controller.login(username: username, password: password, onSuccess: onSuccess, onFail: onFail)
     }

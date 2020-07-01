@@ -33,6 +33,59 @@ internal class DXPreset : Transferable {
     var cabinetName: String?
     var effects: [DXEffect]!
     
+    var debugDescription: String {
+        var text = "\n"
+        if let number = number {
+            text += String(format:"  Preset %d", number)
+        } else {
+            text += "  Preset -unknown-"
+        }
+        if let name = name {
+            text += String(format:" - %@\n", name)
+        } else {
+            text += " - -unknown-\n"
+        }
+        if let gain = gain1 {
+            text += String(format: "   Gain: %0.2f\n", gain)
+        } else {
+            text += "   Gain: -unset-\n"
+        }
+        if let volume = volume {
+            text += String(format: "   Volume: %0.2f\n", volume)
+        } else {
+            text += "   Volume: -unset-\n"
+        }
+        if let treble = treble {
+            text += String(format: "   Treble: %0.2f\n", treble)
+        } else {
+            text += "   Treble: -unset-\n"
+        }
+        if let middle = middle {
+            text += String(format: "   Middle: %0.2f\n", middle)
+        } else {
+            text += "   Middle: -unset-\n"
+        }
+        if let bass = bass {
+            text += String(format: "   Bass: %0.2f\n", bass)
+        } else {
+            text += "   Bass: -unset-\n"
+        }
+        if let presence = presence {
+            text += String(format: "   Reverb/Presence: %0.2f\n", presence)
+        } else {
+            text += "   Reverb/Presence: -unset-\n"
+        }
+        text += String(format: "   Model: %@\n", moduleName ?? "-unknown-")
+        text += String(format: "   Cabinet: %@\n", cabinetName ?? "-unknown-")
+        for effect in effects ?? [] {
+            text += String(format: "   %@: %@ - %@\n", effect.type.rawValue, effect.name ?? "-empty-", effect.enabled! ? "ON" : "OFF")
+            text += String(format: "    Knobs: %d - ", effect.knobs.count)
+            effect.knobs.forEach { text += String(format: "%0.2f ", $0.value) }
+            text += String(format: "slot %d\n", effect.slot!)
+        }
+        return text
+    }
+    
     required init?(map: Map) {
         mapping(map: map)
     }

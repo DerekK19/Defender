@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Flogger
 
 protocol ControlsVCDelegate {
     func settingsDidChangeForControls(_ sender: ControlsVC, preset: DXPreset?)
@@ -89,31 +88,31 @@ extension ControlsVC: AmpKnobDelegate {
     func valueDidChangeForKnob(_ sender: AmpKnobControl, value: Float) {
         switch sender {
         case gainKnob:
-            Flogger.log.verbose("New gain is \(value)")
+            ULog.verbose("New gain is %.2f", value)
             preset?.gain1 = value
             delegate?.settingsDidChangeForControls(self, preset: preset)
         case volumeKnob:
-            Flogger.log.verbose("New volume is \(value)")
+            ULog.verbose("New volume is %.2f", value)
             preset?.volume = value
             delegate?.settingsDidChangeForControls(self, preset: preset)
         case trebleKnob:
-            Flogger.log.verbose("New treble is \(value)")
+            ULog.verbose("New treble is %.2f", value)
             preset?.treble = value
             delegate?.settingsDidChangeForControls(self, preset: preset)
         case middleKnob:
-            Flogger.log.verbose("New middle is \(value)")
+            ULog.verbose("New middle is %.2f", value)
             preset?.middle = value
             delegate?.settingsDidChangeForControls(self, preset: preset)
         case bassKnob:
-            Flogger.log.verbose("New bass is \(value)")
+            ULog.verbose("New bass is %.2f", value)
             preset?.bass = value
             delegate?.settingsDidChangeForControls(self, preset: preset)
         case presenceKnob:
-            Flogger.log.verbose("New presence is \(value)")
+            ULog.verbose("New presence is %.2f", value)
             preset?.presence = value
             delegate?.settingsDidChangeForControls(self, preset: preset)
         default:
-            Flogger.log.error("Don't know what knob sent this event")
+            ULog.error("Don't know what knob sent this event")
         }
     }
 }

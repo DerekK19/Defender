@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Flogger
 
 // Fender constants
 private let FenderVendorId: Int = 0x1ed8
@@ -24,6 +23,10 @@ class AmpMockAgent : AmpServiceAgentProtocol {
 
     func getDevices() -> [DLHIDDevice] {
         return [DLHIDDevice(withVendor: FenderVendorId, product: MustangProductId, name: MustangName, locationId: 12345)]
+    }
+    
+    func setCurrentAmplifier(_ amplifier: DLAmplifier) {
+        
     }
     
     func getPresetsForAmplifier(_ amplifier: DLAmplifier, onSuccess: @escaping ([DLPreset]) -> (), onFail: @escaping () -> ()) {
@@ -85,7 +88,7 @@ class AmpMockAgent : AmpServiceAgentProtocol {
             var i = 0
             bytes.forEach { if i > 0 && i % 4 == 0 { text += " " }; text += "\(String(format: "%02x", $0))"; i += 1 }
             text += ">"
-            Flogger.log.debug(text)
+            ULog.debug("%@", text)
         }
     }
     

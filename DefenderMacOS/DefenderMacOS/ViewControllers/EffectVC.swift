@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import Flogger
 
 protocol EffectVCDelegate {
     func settingsDidChangeForEffect(_ sender: EffectVC)
@@ -145,31 +144,31 @@ extension EffectVC: EffectKnobDelegate {
     func valueDidChangeForKnob(_ sender: EffectKnobControl, value: Float) {
         switch sender {
         case knob1:
-            Flogger.log.debug("New knob 1 is \(value)")
+            ULog.verbose("New knob 1 is %.2f", value)
             effect!.knobs[0].value = value
             delegate?.settingsDidChangeForEffect(self)
         case knob2:
-            Flogger.log.debug("New knob 2 is \(value)")
+            ULog.verbose("New knob 2 is %.2f", value)
             effect!.knobs[1].value = value
             delegate?.settingsDidChangeForEffect(self)
         case knob3:
-            Flogger.log.debug("New knob 3 is \(value)")
+            ULog.verbose("New knob 3 is %.2f", value)
             effect!.knobs[2].value = value
             delegate?.settingsDidChangeForEffect(self)
         case knob4:
-            Flogger.log.debug("New knob 4 is \(value)")
+            ULog.verbose("New knob 4 is %.2f", value)
             effect!.knobs[3].value = value
             delegate?.settingsDidChangeForEffect(self)
         case knob5:
-            Flogger.log.debug("New knob 5 is \(value)")
+            ULog.verbose("New knob 5 is %.2f", value)
             effect!.knobs[4].value = value
             delegate?.settingsDidChangeForEffect(self)
         case knob6:
-            Flogger.log.debug("New knob 6 is \(value)")
+            ULog.verbose("New knob 6 is %.2f", value)
             effect!.knobs[5].value = value
             delegate?.settingsDidChangeForEffect(self)
         default:
-            Flogger.log.error("Don't know what knob sent this event")
+            ULog.error("Don't know what knob sent this event")
         }
     }
 }

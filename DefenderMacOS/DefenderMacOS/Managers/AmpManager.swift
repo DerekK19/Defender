@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import Flogger
 
 protocol AmpManagerDelegate {
     func deviceConnected(ampManager: AmpManager)
@@ -15,6 +14,7 @@ protocol AmpManagerDelegate {
     func deviceOpened(ampManager: AmpManager)
     func presetCountChanged(ampManager: AmpManager, to: UInt)
     func deviceClosed(ampManager: AmpManager)
+    func presetChanged(ampManager: AmpManager, to preset: BOPreset)
     func gainChanged(ampManager: AmpManager, by: Float)
     func volumeChanged(ampManager: AmpManager, by: Float)
     func trebleChanged(ampManager: AmpManager, by: Float)
@@ -35,6 +35,7 @@ class AmpManager {
     internal private(set) var currentAmplifier: BOAmplifier?
     
     private var presets = [UInt8 : BOPreset] ()
+    private var latestPreset: BOPreset?
     private var latestGain: Float?
     private var latestVolume: Float?
     private var latestTreble: Float?
@@ -59,7 +60,7 @@ class AmpManager {
 
     var presetNames : [String] {
         get {
-            return presets.sorted(by: { $0.key < $1.key }).map { $0.value.name }
+            return presets.sorted(by: { $0.key < $1.key }).map { $0.value.name ?? "Unnamed" }
         }
     }
     
@@ -80,12 +81,13 @@ class AmpManager {
         NotificationCenter.default.addObserver(self, selector: #selector(deviceConnected), name: NSNotification.Name(rawValue: Mustang.deviceConnectedNotificationName), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deviceOpened), name: NSNotification.Name(rawValue: Mustang.deviceOpenedNotificationName), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deviceClosed), name: NSNotification.Name(rawValue: Mustang.deviceClosedNotificationName), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(gainChanged), name: NSNotification.Name(rawValue: Mustang.gainChangedNotificationName), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(volumeChanged), name: NSNotification.Name(rawValue: Mustang.volumeChangedNotificationName), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(trebleChanged), name: NSNotification.Name(rawValue: Mustang.trebleChangedNotificationName), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(middleChanged), name: NSNotification.Name(rawValue: Mustang.middleChangedNotificationName), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(bassChanged), name: NSNotification.Name(rawValue: Mustang.bassChangedNotificationName), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(presenceChanged), name: NSNotification.Name(rawValue: Mustang.presenceChangedNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didSelectPreset), name: NSNotification.Name(rawValue: Mustang.didSelectPreset), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(gainChanged), name: NSNotification.Name(rawValue: Mustang.gainDidChange), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(volumeChanged), name: NSNotification.Name(rawValue: Mustang.volumeDidChange), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(trebleChanged), name: NSNotification.Name(rawValue: Mustang.trebleDidChange), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(middleChanged), name: NSNotification.Name(rawValue: Mustang.middleDidChange), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(bassChanged), name: NSNotification.Name(rawValue: Mustang.bassDidChange), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(presenceChanged), name: NSNotification.Name(rawValue: Mustang.presenceDidChange), object: nil)
     }
 
     @objc fileprivate func deviceConnected() {
@@ -93,6 +95,7 @@ class AmpManager {
         currentAmplifier = nil
         amplifiers = mustang.getConnectedAmplifiers()
         currentAmplifier = amplifiers.first
+        mustang.setCurrentAmplifier(currentAmplifier)
         DispatchQueue.main.async {
             self.delegate?.deviceConnected(ampManager: self)
         }
@@ -117,6 +120,19 @@ class AmpManager {
         currentAmplifier = nil
         DispatchQueue.main.async {
             self.delegate?.deviceDisconnected(ampManager: self)
+        }
+    }
+    
+    @objc fileprivate func didSelectPreset(notification: Notification) {
+        if let userInfo = notification.userInfo as? [String: Any] {
+            if let preset = userInfo["value"] as? BOPreset {
+                if let _ = latestPreset {
+                    DispatchQueue.main.async {
+                        self.delegate?.presetChanged(ampManager: self, to: preset)
+                    }
+                }
+                latestPreset = preset
+            }
         }
     }
     
@@ -205,7 +221,7 @@ class AmpManager {
                     if let number = preset.number {
                         self.presets[number] = preset
                     } else {
-                        Flogger.log.error("Got a preset with no number, cannot use it")
+                        ULog.error("Got a preset with no number, cannot use it")
                     }
                 }
                 DispatchQueue.main.async {
@@ -229,8 +245,9 @@ class AmpManager {
                             self.mustang.getPreset(
                                 amplifier,
                                 preset: UInt8(i)) { (preset) in
-                                    if let preset = preset {
+                                    if var preset = preset {
                                         if let number = preset.number {
+                                            if preset.name == nil { preset.name = self.presetNames[Int(number)] }
                                             self.presets[number] = preset
                                         }
                                     }
@@ -273,8 +290,10 @@ class AmpManager {
                 mustang.getPreset(
                     amplifier,
                     preset: UInt8(preset)) { (preset) in
-                        if let preset = preset {
+                        if var preset = preset {
                             if let number = preset.number {
+                                if preset.name == nil { preset.name = self.presetNames[Int(number)]}
+                                self.latestPreset = preset
                                 self.presets[number] = preset
                                 DispatchQueue.main.async {
                                     onCompletion(preset)
@@ -319,7 +338,7 @@ class AmpManager {
                 mustang.savePreset(
                     amplifier,
                     preset: number,
-                    name: preset.name) { (saved) in
+                    name: preset.name ?? "Unnamed") { (saved) in
                         DispatchQueue.main.async {
                             onCompletion(saved)
                         }
@@ -330,18 +349,22 @@ class AmpManager {
         }
     }
 
+    open func verifyWeb(onCompletion: @escaping (_ available: Bool) ->()) {
+        mustang.verifyWeb(onCompletion: onCompletion)
+    }
+    
     open func login(username: String,
                     password: String,
                     onCompletion: @escaping (_ loggedIn: Bool) ->()) {
         mustang.login(username: username,
                       password: password,
                       onSuccess: {
-                        Flogger.log.verbose("Logged in")
+                        ULog.verbose("Logged in")
                         DispatchQueue.main.async {
                             onCompletion(true)
                         }},
                       onFail: {
-                        Flogger.log.error("Login failure")
+                        ULog.error("Login failure")
                         DispatchQueue.main.async {
                             onCompletion(false)
                         }}
@@ -356,12 +379,12 @@ class AmpManager {
                        pageNumber: pageNumber,
                        maxReturn: maxReturn,
                        onSuccess: { (response) in
-                        Flogger.log.verbose("Searched")
+                        ULog.verbose("Searched")
                         DispatchQueue.main.async {
                             onCompletion(response)
                         }},
                        onFail: {
-                        Flogger.log.error("Search failure")
+                        ULog.error("Search failure")
                         DispatchQueue.main.async {
                             onCompletion(nil)
                         }}
@@ -370,12 +393,12 @@ class AmpManager {
     
     open func logout(onCompletion: @escaping (_ loggedOut: Bool) ->()) {
         mustang.logout(onSuccess: {
-                        Flogger.log.verbose("Logged out")
+                        ULog.verbose("Logged out")
                         DispatchQueue.main.async {
                             onCompletion(true)
                         }},
                       onFail: {
-                        Flogger.log.error("Logout failure")
+                        ULog.error("Logout failure")
                         DispatchQueue.main.async {
                             onCompletion(false)
                         }}
@@ -395,11 +418,11 @@ class AmpManager {
         let backupRoot = "\(NSHomeDirectory())/Documents/Fender/FUSE/Backups"
         fileManager.changeCurrentDirectoryPath(backupRoot)
         if fileManager.currentDirectoryPath != backupRoot {
-            Flogger.log.error("There is no Backups folder - \(backupRoot). Creating")
+            ULog.error("There is no Backups folder - %@. Creating", backupRoot)
             do {
                 try fileManager.createDirectory(atPath: backupRoot, withIntermediateDirectories: true)
             } catch {
-                Flogger.log.error("Unable to create Backups folder. Cannot create backup")
+                ULog.error("Unable to create Backups folder. Cannot create backup")
                 return
             }
         }
@@ -411,7 +434,7 @@ class AmpManager {
             try fileManager.createDirectory(atPath: backupFolder, withIntermediateDirectories: true)
             fileManager.changeCurrentDirectoryPath(backupFolder)
             if fileManager.currentDirectoryPath != backupFolder {
-                Flogger.log.error("Unable to setup backup folder. Giving up")
+                ULog.error("Unable to setup backup folder. Giving up")
                 return
             }
             try fileManager.createDirectory(atPath: "FUSE", withIntermediateDirectories: true)
@@ -425,7 +448,7 @@ class AmpManager {
                 presetDoc?.characterEncoding = "utf-8"
                 presetDoc?.version = "1.0"
                 let presetXml = presetDoc?.xmlData(options: XMLNode.Options(rawValue: XMLNode.Options.RawValue(Int(xmlOptions.rawValue))))
-                fileManager.createFile(atPath: "Presets/\(index)_\(preset.value.name).fuse", contents: presetXml)
+                fileManager.createFile(atPath: "Presets/\(index)_\(preset.value.name ?? "Unknown").fuse", contents: presetXml)
                 let fuseDoc = XMLDocument()
                 let fuseElement = presetDoc?.rootElement()?.elements(forName: "FUSE").first
                 let bandElement = presetDoc?.rootElement()?.elements(forName: "Band").first
@@ -441,7 +464,7 @@ class AmpManager {
                 fileManager.createFile(atPath: "FUSE/\(index).fuse", contents: fuseXml)
             }
         } catch {
-            Flogger.log.error("Unable to create backup folder. Giving up")
+            ULog.error("Unable to create backup folder. Giving up")
             return
         }
     }
@@ -454,7 +477,7 @@ class AmpManager {
         let fileManager = FileManager()
         fileManager.changeCurrentDirectoryPath(backupRoot)
         if fileManager.currentDirectoryPath != backupRoot {
-            Flogger.log.error("There is no backup root folder - \(backupRoot)")
+            ULog.error("There is no backup root folder - %@", backupRoot)
             return nil
         }
         var backups = [Date : String]()
@@ -468,18 +491,18 @@ class AmpManager {
                             let backupName = String(bytes: data, encoding: .utf8)
                             backups[date] = backupName
                         } else {
-                            Flogger.log.error("Failed to get backup name for \(folder)")
+                            ULog.error("Failed to get backup name for %@", folder)
                         }
                     } else {
-                        Flogger.log.error("Couldn't convert \(folder) to a date. Ignoring")
+                        ULog.error("Couldn't convert %@ to a date. Ignoring", folder)
                     }
                 } else {
-                    Flogger.log.info("Folder \(folder) doesn't look like a backup. Ignoring")
+                    ULog.info("Folder %@ doesn't look like a backup. Ignoring", folder)
                 }
             }
             return backups
         } catch {
-            Flogger.log.error("Failed to find backups")
+            ULog.error("Failed to find backups")
             return nil
         }
     }
@@ -493,20 +516,20 @@ class AmpManager {
         let fileManager = FileManager()
         fileManager.changeCurrentDirectoryPath(backupRoot)
         if fileManager.currentDirectoryPath != backupRoot {
-            Flogger.log.error("There is no backup root folder - \(backupRoot)")
+            ULog.error("There is no backup root folder %@", backupRoot)
             return
         }
         do {
             let backupFolder = "\(backupRoot)/\(name)"
             fileManager.changeCurrentDirectoryPath(backupFolder)
             if fileManager.currentDirectoryPath != backupFolder {
-                Flogger.log.error("There is no backup folder - \(backupFolder)")
+                ULog.error("There is no backup folder - %@", backupFolder)
                 return
             }
             let fuseFilesNames = try fileManager.contentsOfDirectory(atPath: "FUSE")
             let presetFilesNames = try fileManager.contentsOfDirectory(atPath: "Presets")
             if fuseFilesNames.count != presetFilesNames.count {
-                Flogger.log.error("The number of preset files should be the same as the number of fuse files")
+                ULog.error("The number of preset files should be the same as the number of fuse files")
                 return
             }
             for file in fuseFilesNames {
@@ -526,7 +549,7 @@ class AmpManager {
                                 }
                             }
                             catch {
-                                Flogger.log.error("Couldn't read Preset XML file \(presetPath)")
+                                ULog.error("Couldn't read Preset XML file %@", presetPath)
                             }
                         }
                     }
@@ -535,11 +558,11 @@ class AmpManager {
                     }
                 }
                 catch {
-                    Flogger.log.error("Couldn't read FUSE XML file \(fusePath)")
+                    ULog.error("Couldn't read FUSE XML file %@", fusePath)
                 }
             }
         } catch {
-            Flogger.log.error("Failed to find backups")
+            ULog.error("Failed to find backups")
         }
     }
 

@@ -7,20 +7,20 @@
 //
 
 import UIKit
-import Flogger
-import RemoteDefender
 
 class MainVC: UIViewController {
 
     @IBOutlet weak var bluetoothLogo: UIImageView!
     @IBOutlet weak var txLED: LEDControl!
     @IBOutlet weak var rxLED: LEDControl!
-    @IBOutlet weak var bluetoothLabel: UILabel!
+    @IBOutlet weak var bluetoothLabel: UILabel! // Never set isHidden true for this label. It will pad the rest of the screen width when the other labels are hidden
     @IBOutlet weak var amplifierLabel: UILabel!
     @IBOutlet weak var presetLabel: UILabel!
     @IBOutlet weak var prevPreset: UIButton!
     @IBOutlet weak var nextPreset: UIButton!
-    @IBOutlet weak var presetVC: PresetVC?
+
+    @IBOutlet weak var presetVC: PagedPresetVC?
+    @IBOutlet weak var controlsVC: OnePagePresetVC?
 
     fileprivate var remoteManager: RemoteManager?
     fileprivate var watchManager: WatchManager?
@@ -29,13 +29,17 @@ class MainVC: UIViewController {
     
     let verbose = true
 
+    // MARK: - UIView overrides
     override func viewDidLoad() {
         super.viewDidLoad()
 
         bluetoothLogo.isHidden = true
-        bluetoothLabel.isHidden = true
-        txLED.backgroundColour = UIColor.clear
-        rxLED.backgroundColour = UIColor.clear
+        amplifierLabel.isHidden = true
+        presetLabel.isHidden = true
+        prevPreset.isHidden = true
+        nextPreset.isHidden = true
+        txLED.backgroundColour = .clear
+        rxLED.backgroundColour = .clear
 
         bluetoothLabel.text = ""
         amplifierLabel.text = ""
@@ -66,15 +70,18 @@ class MainVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             switch identifier {
-            case "embedPreset":
-                presetVC = segue.destination as? PresetVC
+            case "embedPagedPreset":
+                presetVC = segue.destination as? PagedPresetVC
                 presetVC?.presetDelegate = self
+            case "embedOnePagePreset":
+                controlsVC = segue.destination as? OnePagePresetVC
+                controlsVC?.presetDelegate = self
             default: break
             }
         }
     }
     
-    // MARK: Action functions
+    // MARK: - Action functions
     
     @IBAction func didTapBluetoothLogo(_ sender: AnyObject) {
         if bluetoothLogo.alpha != 1.0 {
@@ -106,7 +113,7 @@ class MainVC: UIViewController {
         }
     }
     
-    // MARK: Private functions
+    // MARK: - Private functions
     
     func sendGetAmplifier() {
         let message = DXMessage(command: .amplifier, data: nil)
@@ -137,75 +144,43 @@ class MainVC: UIViewController {
     
     func sendMessage(_ message: DXMessage) {
         if remoteManager?.send(message) == true {
-            txLED.backgroundColour = UIColor.red
+            txLED.backgroundColour = .red
         } else {
-            Flogger.log.error("Failed to send message. Command = \(String(describing: message.command))")
+            ULog.error("Failed to send message. Command = %@", String(describing: message.command))
         }
 
     }
     
-    // MARK: Debug logging
+    // MARK: - Debug logging
     internal func logPreset(_ preset: DXPreset?) {
+        guard let preset = preset else { return }
         if verbose {
-            var text = ""
-            if let number = preset?.number {
-                text += "  Preset \(number)"
-            } else {
-                text += "  Preset -unknown-"
-            }
-            text += " - \(preset?.name ?? "-unknown-")\n"
-            if let gain = preset?.gain1 {
-                text += "   Gain: \(gain)\n"
-            } else {
-                text += "   Gain: -unset-\n"
-            }
-            if let volume = preset?.volume {
-                text += "   Volume: \(volume)\n"
-            } else {
-                text += "   Volume: -unset-\n"
-            }
-            if let treble = preset?.treble {
-                text += "   Treble: \(treble)\n"
-            } else {
-                text += "   Treble: -unset-\n"
-            }
-            if let middle = preset?.middle {
-                text += "   Middle: \(middle)\n"
-            } else {
-                text += "   Middle: -unset-\n"
-            }
-            if let bass = preset?.bass {
-                text += "   Bass: \(bass)\n"
-            } else {
-                text += "   Bass: -unset-\n"
-            }
-            if let presence = preset?.presence {
-                text += "   Reverb/Presence: \(presence)\n"
-            } else {
-                text += "   Reverb/Presence: -unset-\n"
-            }
-            text += "   Model: \(preset?.moduleName ?? "-unknown-")\n"
-            text += "   Cabinet: \(preset?.cabinetName ?? "-unknown-")\n"
-            for effect in preset?.effects ?? [DXEffect]() {
-                text += "   \(effect.type.rawValue): \(effect.name ?? "-empty-") - \(effect.enabled! ? "ON" : "OFF")\n"
-                text += "    Knobs: \(effect.knobs.count) - "
-                effect.knobs.forEach { text += "\(String(format: "%0.2f", $0.value)) " }
-                text += "slot \(effect.slot!)\n"
-            }
-            Flogger.log.info(text)
+            ULog.info("%@", preset.debugDescription)
         }
     }
 }
 
-extension MainVC: PresetVCDelegate {
-    func settingsDidChangeForPreset(_ sender: PresetVC, preset: DXPreset?) {
-        Flogger.log.info("Preset changed")
+// MARK: - Paged Preset Delegate - Preset for iPhone app
+extension MainVC: PagedPresetVCDelegate {
+    func settingsDidChangeForPreset(_ sender: PagedPresetVC, preset: DXPreset?) {
+        ULog.info("Preset changed")
         if let preset = preset {
             sendChangePreset(preset: preset)
         }
     }
 }
 
+// MARK: - One Page Preset Delegate - Preset for iPad app
+extension MainVC: OnePagePresetVCDelegate {
+    func settingsDidChangeForPreset(_ sender: OnePagePresetVC, preset: DXPreset?) {
+        ULog.info("Preset changed")
+        if let preset = preset {
+            sendChangePreset(preset: preset)
+        }
+    }
+}
+
+// MARK: - Remote Manager Delegate - communication with the Mac app
 extension MainVC: RemoteManagerDelegate {
     func remoteManagerAvailable(_ manager: RemoteManager) {
         bluetoothLogo.isHidden = false
@@ -214,7 +189,6 @@ extension MainVC: RemoteManagerDelegate {
     
     func remoteManagerConnected(_ manager: RemoteManager) {
         bluetoothLogo.alpha = 1.0
-        bluetoothLabel.isHidden = false
         amplifierLabel.isHidden = false
         amplifierLabel.text = ""
         presetLabel.isHidden = false
@@ -225,24 +199,27 @@ extension MainVC: RemoteManagerDelegate {
     }
     
     func remoteManager(_ manager: RemoteManager, didSend success: Bool) {
-        txLED.backgroundColour = UIColor.clear
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+            self.txLED.backgroundColour = .clear
+        }
     }
     
     func remoteManager(_ manager: RemoteManager, didReceive data: Data) {
-        rxLED.backgroundColour = UIColor.green
+        rxLED.backgroundColour = .green
         do {
             let message = try DXMessage(data: data)
-            Flogger.log.verbose("Message: \(message.command.rawValue)")
+            ULog.verbose("Message: %@", message.command.rawValue)
             switch message.command as RequestType {
             case .amplifier:
                 let amp = try DXAmplifier(data: message.content)
                 watchManager?.amplifier(amp.name ?? "No amplifier")
                 amplifierLabel.text = amp.name ?? "No Amplifier"
                 presetVC?.powerState = amp.name == nil ? .off : .on
+                controlsVC?.powerState = amp.name == nil ? .off : .on
                 sendGetPresets()
             case .presets:
                 let presets = try DXPresetList(data: message.content)
-                Flogger.log.verbose("Presets: \(presets.names.count)")
+                ULog.verbose("Presets : %d", presets.names.count)
                 watchManager?.presets(presets.names)
                 sendGetPreset(nil)
             case .preset, .changePreset:
@@ -252,19 +229,21 @@ extension MainVC: RemoteManagerDelegate {
                 presetLabel.text = preset.name
                 presetNumber = preset.number
                 presetVC?.preset = preset
+                controlsVC?.preset = preset
                 prevPreset.isHidden = preset.number == nil
                 nextPreset.isHidden = preset.number == nil
             }
         } catch {
-            Flogger.log.error("Receive Failure: Couldn't decode DXMessage, DXAmplifier or DXPreset")
+            ULog.error("Receive Failure: Couldn't decode DXMessage, DXAmplifier or DXPreset")
         }
-        rxLED.backgroundColour = UIColor.clear
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+            self.rxLED.backgroundColour = .clear
+        }
     }
 
     func remoteManagerDisconnected(_ manager: RemoteManager) {
         presetVC?.powerState = .off
         bluetoothLogo.alpha = 0.5
-        bluetoothLabel.isHidden = true
         amplifierLabel.isHidden = true
         amplifierLabel.text = ""
         presetLabel.isHidden = true
@@ -277,7 +256,6 @@ extension MainVC: RemoteManagerDelegate {
     func remoteManagerUnavailable(_ manager: RemoteManager) {
         presetVC?.powerState = .off
         bluetoothLogo.isHidden = true
-        bluetoothLabel.isHidden = true
         amplifierLabel.isHidden = true
         amplifierLabel.text = ""
         presetLabel.isHidden = true
@@ -287,9 +265,10 @@ extension MainVC: RemoteManagerDelegate {
     }
 }
 
+// MARK: - Watch Manager Delegate - Communication with the Watch app
 extension MainVC: WatchManagerDelegate {
     func watchManager(_ manager: WatchManager, didChoosePreset index: UInt8) {
-        Flogger.log.verbose("Choose preset: \(index)")
+        ULog.verbose("Choose preset: %d", index)
         sendGetPreset(index)
     }
 }

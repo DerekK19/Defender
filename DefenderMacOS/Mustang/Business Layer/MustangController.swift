@@ -78,6 +78,10 @@ class MustangController {
         return nil
     }
     
+    func setCurrentAmplifier(_ amplifier: BOAmplifier) {
+        ampAgent.setCurrentAmplifier(amplifier.dataObject)
+    }
+    
     func getPresetsForAmplifier(_ amplifier: BOAmplifier, onSuccess: @escaping (_ presets: [BOPreset]) -> ()) {
         ampAgent.getPresetsForAmplifier(
             amplifier.dataObject,
@@ -153,6 +157,10 @@ class MustangController {
     }
 
     func confirmChangeForAmplifier(_ amplifier: BOAmplifier, onSuccess: @escaping (_ saved: Bool?) -> ()) {
+    }
+    
+    func verifyWeb(onCompletion: @escaping (_ available: Bool) -> ()) {
+        webAgent.verify(onCompletion: onCompletion)
     }
     
     func login(username: String, password: String, onSuccess: @escaping () -> (), onFail: @escaping () -> ()) {

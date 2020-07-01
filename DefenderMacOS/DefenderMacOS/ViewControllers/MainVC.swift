@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import Flogger
 
 class MainVC: NSViewController {
 
@@ -73,6 +72,8 @@ class MainVC: NSViewController {
 
     fileprivate var documentController = NSDocumentController.shared
     
+   var powerMenuItem: NSMenuItem?
+
     var currentPreset: BOPreset?
     
     let verbose = true
@@ -106,6 +107,9 @@ class MainVC: NSViewController {
 
         view.wantsLayer = true
 
+        if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
+            powerMenuItem = appDelegate.powerMenuItem
+        }
         bluetoothLogo.isHidden = true
         txLED.backgroundColour = NSColor.clear
         rxLED.backgroundColour = NSColor.clear
@@ -181,6 +185,9 @@ class MainVC: NSViewController {
                 webVC = segue.destinationController as? WebVC
                 webVC?.ampManager = ampManager
                 webVC?.delegate = self
+                ampManager.verifyWeb(onCompletion: { (available) in
+                    self.webVC?.available = available
+                })
             case "embedCabinet":
                 cabinetVC = segue.destinationController as? CabinetVC
             case "embedEffect1":
@@ -223,26 +230,34 @@ class MainVC: NSViewController {
     
     // MARK: Action functions
     
-    @IBAction func willPowerAmplifier(_ sender: ActionButtonControl) {
+    @IBAction func willPowerAmplifier(_ sender: Any) {
         if !ampManager.hasAnAmplifier { return }
-        if sender.state == NSControl.StateValue.off {
-            Flogger.log.verbose(" Powering off")
+        let button = sender as? ActionButtonControl
+        let menu = sender as? NSMenuItem
+        if button == nil && menu == nil { return }
+        if button?.state == .off || menu?.state == .on {
+            ULog.verbose(" Powering off")
             cabinetVC?.state = .off
             powerState = .off
             setPreset(nil)
             sendNoAmplifier()
             preloadButton.isHidden = true
+            powerButton.state = .off
+            powerMenuItem?.title = "Power On"
+            powerMenuItem?.state = .off
         } else {
-            Flogger.log.verbose(" Powering on")
-            sender.state = NSControl.StateValue.off
-            powerState = .on
+            ULog.verbose(" Powering on")
+            powerButton.state = .on
+            powerState = .powering
             cabinetVC?.state = .on
             sendCurrentAmplifier()
             ampManager.getPresets() {
                 self.powerState = .on
                 self.valueDidChangeForWheel(self.wheel, value: 0)
                 self.preloadButton.isHidden = self.ampManager.mocking
-                sender.state = NSControl.StateValue.on
+                self.powerButton.state = .on
+                self.powerMenuItem?.state = .on
+                self.powerMenuItem?.title = "Power Off"
             }
         }
     }
@@ -251,7 +266,7 @@ class MainVC: NSViewController {
         if sender.powerState == .on {
             if let currentPreset = currentPreset {
                 if sender.currentState == .warning {
-                    Flogger.log.verbose(" Saving effect")
+                    ULog.verbose(" Saving effect")
                     exitButton.setState(.active)
                     ampManager.setPreset(currentPreset) { (preset) in
                         self.saveButton.setState(.ok)
@@ -259,7 +274,7 @@ class MainVC: NSViewController {
                     }
                 }
                 else if sender.currentState == .ok {
-                    Flogger.log.verbose(" Confirming effect")
+                    ULog.verbose(" Confirming effect")
                     ampManager.savePreset(currentPreset) { (saved) in
                         self.ampManager.resetPreset(self.wheel.intValue) { (preset) in
                             self.displayPreset(preset)
@@ -273,14 +288,14 @@ class MainVC: NSViewController {
     }
 
     @IBAction func willBackup(_ sender: NSMenuItem) {
-        Flogger.log.verbose(" Backing up presets")
+        ULog.verbose(" Backing up presets")
         ampManager.saveBackup()
     }
     
     @IBAction func willRestore(_ sender: NSMenuItem) {
         if let backups = ampManager.backups() {
             if let latest = backups.keys.sorted().last {
-                Flogger.log.verbose("Restoring from backup \"\(backups[latest]!)\" (\(latest))")
+                ULog.verbose("Restoring from backup \"%@\" (%@)", backups[latest]!, latest.description)
                 ampManager.restoreFromBackup(date: latest)
             }
         }
@@ -288,7 +303,7 @@ class MainVC: NSViewController {
     
     @IBAction func willExit(_ sender: ActionButtonControl) {
         if sender.powerState == .on {
-            Flogger.log.verbose(" Cancelling save")
+            ULog.verbose(" Cancelling save")
             saveButton.setState(.active)
             exitButton.setState(.ok)
             ampManager.resetPreset(wheel.intValue) { (preset) in
@@ -313,14 +328,24 @@ class MainVC: NSViewController {
         }
     }
     
-    @IBAction func willPreloadAllPresets(_ sender: NSButton) {
-        preloadButton.isEnabled = false
-        ampManager.loadAllPresets() { (allLoaded) in
-            self.preloadButton.isHidden = allLoaded
-            self.preloadButton.isEnabled = !allLoaded
+    @IBAction func willPreloadAllPresets(_ sender: NSObject) {
+        if !preloadButton.isHidden {
+            preloadButton.isEnabled = false
+            ampManager.loadAllPresets() { (allLoaded) in
+                self.preloadButton.isHidden = allLoaded
+                self.preloadButton.isEnabled = !allLoaded
+            }
         }
     }
 
+    @IBAction func willGetPreviousPreset(_ sender: NSObject) {
+        wheel.wheelRotate(by: -1)
+    }
+
+    @IBAction func willGetNextPreset(_ sender: NSObject) {
+        wheel.wheelRotate(by: 1)
+    }
+    
     // MARK: Private Functions
     fileprivate func reset() {
         statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
@@ -339,6 +364,7 @@ class MainVC: NSViewController {
         currentPreset = preset
         displayPreset(preset)
         sendCurrentPreset()
+        logPreset(preset)
     }
     
     fileprivate func configureAmplifiers() {
@@ -422,7 +448,7 @@ class MainVC: NSViewController {
     func sendCurrentAmplifier() {
         var message: DXMessage!
         if let amp = ampManager.currentAmplifier {
-            if powerState == .on {
+            if powerState == .on || powerState == .powering {
                 message = DXMessage(command: .amplifier, data: DXAmplifier(dto: amp))
                 sendMessage(message)
                 return
@@ -458,59 +484,15 @@ class MainVC: NSViewController {
         if remoteManager?.send(message) == true {
             txLED.backgroundColour = NSColor.red
         } else {
-            Flogger.log.error("Failed to send message. Command = \(String(describing: message.command))")
+            ULog.error("Failed to send message. Command = %@", String(describing: message.command))
         }
     }
     
     // MARK: Debug logging
     internal func logPreset(_ preset: BOPreset?) {
+        guard let preset = preset else { return }
         if verbose {
-            var text = ""
-            if let number = preset?.number {
-                text += "  Preset \(number)"
-            } else {
-                text += "  Preset -unknown-"
-            }
-            text += " - \(preset?.name ?? "-unknown-")\n"
-            if let gain = preset?.gain1 {
-                text += "   Gain: \(gain)\n"
-            } else {
-                text += "   Gain: -unset-\n"
-            }
-            if let volume = preset?.volume {
-                text += "   Volume: \(volume)\n"
-            } else {
-                text += "   Volume: -unset-\n"
-            }
-            if let treble = preset?.treble {
-                text += "   Treble: \(treble)\n"
-            } else {
-                text += "   Treble: -unset-\n"
-            }
-            if let middle = preset?.middle {
-                text += "   Middle: \(middle)\n"
-            } else {
-                text += "   Middle: -unset-\n"
-            }
-            if let bass = preset?.bass {
-                text += "   Bass: \(bass)\n"
-            } else {
-                text += "   Bass: -unset-\n"
-            }
-            if let presence = preset?.presence {
-                text += "   Reverb/Presence: \(presence)\n"
-            } else {
-                text += "   Reverb/Presence: -unset-\n"
-            }
-            text += "   Model: \(preset?.moduleName ?? "-unknown-") (\(preset?.module ?? -1))\n"
-            text += "   Cabinet: \(preset?.cabinetName ?? "-unknown-") (\(preset?.cabinet ?? -1))\n"
-            for effect in preset?.effects ?? [BOEffect]() {
-                text += "   \(effect.type.rawValue): \(effect.name ?? "-empty-") - \(effect.enabled ? "ON" : "OFF") (colour \(effect.colour))\n"
-                text += "    Knobs: \(effect.knobCount) - "
-                effect.knobs.forEach { text += "\(String(format: "%0.2f", $0.value)) " }
-                text += "slot \(effect.slot) (\(effect.aValue1) \(effect.aValue2) \(effect.aValue3))\n"
-            }
-            Flogger.log.info(text)
+            ULog.info("%@", preset.debugDescription)
         }
     }
     
@@ -521,25 +503,25 @@ extension MainVC: AmpKnobDelegate {
     func valueDidChangeForKnob(_ sender: AmpKnobControl, value: Float) {
         switch sender {
         case gainKnob:
-            Flogger.log.debug("New gain is \(value)")
+            ULog.verbose("New gain is %.2f", value)
             currentPreset?.gain1 = value
         case volumeKnob:
-            Flogger.log.debug("New volume is \(value)")
+            ULog.verbose("New volume is %.2f", value)
             currentPreset?.volume = value
         case trebleKnob:
-            Flogger.log.debug("New treble is \(value)")
+            ULog.verbose("New treble is %.2f", value)
             currentPreset?.treble = value
         case middleKnob:
-            Flogger.log.debug("New middle is \(value)")
+            ULog.verbose("New middle is %.2f", value)
             currentPreset?.middle = value
         case bassKnob:
-            Flogger.log.debug("New bass is \(value)")
+            ULog.verbose("New bass is %.2f", value)
             currentPreset?.bass = value
         case presenceKnob:
-            Flogger.log.debug("New presence is \(value)")
+            ULog.verbose("New presence is %.2f", value)
             currentPreset?.presence = value
         default:
-            Flogger.log.error("Don't know what knob sent this event")
+            ULog.error("Don't know what knob sent this event")
         }
         presetDidChange()
         sendCurrentPreset()
@@ -584,10 +566,10 @@ extension MainVC: WheelDelegate {
         case .active:
             switch sender {
             case wheel:
-                Flogger.log.debug("Wheel value is changing to \(value)")
+                ULog.verbose("Wheel value is changing to %d", value)
                 displayPreset(value)
             default:
-                Flogger.log.error("Don't know what wheel sent this event")
+                ULog.error("Don't know what wheel sent this event")
             }
         case .warning:
             currentPreset?.number = UInt8(value)
@@ -603,16 +585,15 @@ extension MainVC: WheelDelegate {
         case .active:
             switch sender {
             case wheel:
-                Flogger.log.debug("Wheel value changed to \(value)")
+                ULog.verbose("Wheel value changed to %d", value)
                 saveButton.setState(.active)
                 exitButton.setState(.active)
                 ampManager.getPreset(value,
                                      fromAmplifier: true) { (preset) in
                     self.setPreset(preset)
-                    self.logPreset(self.currentPreset)
                 }
             default:
-                Flogger.log.error("Don't know what wheel sent this event")
+                ULog.error("Don't know what wheel sent this event")
             }
         case .warning:
             logPreset(currentPreset)
@@ -626,14 +607,14 @@ extension MainVC: WheelDelegate {
 extension MainVC: AmpManagerDelegate {
     
     func deviceConnected(ampManager: AmpManager) {
-        Flogger.log.verbose(" Connected")
+        ULog.verbose(" Connected")
         sendCurrentAmplifier()
         statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
         statusLabel.stringValue = "\(ampManager.currentAmplifierName) connected"
     }
     
     func deviceOpened(ampManager: AmpManager) {
-        Flogger.log.verbose(" Opened")
+        ULog.verbose(" Opened")
         configureAmplifiers()
         sendCurrentPreset()
     }
@@ -644,17 +625,23 @@ extension MainVC: AmpManagerDelegate {
     }
     
     func deviceClosed(ampManager: AmpManager) {
-        Flogger.log.verbose(" Closed")
+        ULog.verbose(" Closed")
         setPreset(nil)
     }
     
     func deviceDisconnected(ampManager: AmpManager) {
-        Flogger.log.verbose(" Disconnected")
+        ULog.verbose(" Disconnected")
         reset()
         setPreset(nil)
         sendCurrentAmplifier()
         statusLED.backgroundColour = ampManager.hasAnAmplifier ? .green : .red
         statusLabel.stringValue = "\(ampManager.currentAmplifierName) connected"
+    }
+    
+    func presetChanged(ampManager: AmpManager, to preset: BOPreset) {
+        guard let number = preset.number else { return }
+        wheel.setIntValueTo(Int(number))
+        setPreset(preset)
     }
     
     func gainChanged(ampManager: AmpManager, by: Float) {
@@ -712,7 +699,7 @@ extension MainVC: RemoteManagerDelegate {
         rxLED.backgroundColour = NSColor.green
         do {
             let message = try DXMessage(data: data)
-            Flogger.log.verbose("Message: \(message.command.rawValue)")
+            ULog.verbose("Message: %@", message.command.rawValue)
             switch message.command as RequestType {
             case .amplifier:
                 sendCurrentAmplifier()
@@ -727,7 +714,6 @@ extension MainVC: RemoteManagerDelegate {
                         ampManager.getPreset(Int(number),
                                                   fromAmplifier: true) { (preset) in
                             self.setPreset(preset)
-                            self.logPreset(preset)
                         }
                     }
                 }
@@ -738,7 +724,7 @@ extension MainVC: RemoteManagerDelegate {
                 presetDidChange()
             }
         } catch {
-            Flogger.log.error("Receive Failure: Couldn't decode DXMessage or DXPreset")
+            ULog.error("Receive Failure: Couldn't decode DXMessage or DXPreset")
         }
         rxLED.backgroundColour = NSColor.clear
     }

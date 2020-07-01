@@ -7,15 +7,14 @@
 //
 
 import UIKit
-import Flogger
 
-protocol PresetVCDelegate {
-    func settingsDidChangeForPreset(_ sender: PresetVC, preset: DXPreset?)
+protocol PagedPresetVCDelegate {
+    func settingsDidChangeForPreset(_ sender: PagedPresetVC, preset: DXPreset?)
 }
 
-class PresetVC: UIPageViewController {
+class PagedPresetVC: UIPageViewController {
     
-    var presetDelegate: PresetVCDelegate?
+    var presetDelegate: PagedPresetVCDelegate?
     
     internal var powerState: PowerState = .off {
         didSet {
@@ -73,6 +72,7 @@ class PresetVC: UIPageViewController {
                 self.newEffectVC(slotNumber: 7)]
     }()
     
+    // MARK: - UIView overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,9 +86,10 @@ class PresetVC: UIPageViewController {
         }
     }
     
+    // MARK: - Private functions
     private func newControlsVC() -> BaseEffectVC {
         guard let controlsVC = UIStoryboard(name: "Controls", bundle: nil).instantiateInitialViewController() as? ControlsVC else {
-            Flogger.log.error("Unable to create controls view controller")
+            ULog.error("Unable to create controls view controller")
             fatalError()
         }
         controlsVC.delegate = self
@@ -97,7 +98,7 @@ class PresetVC: UIPageViewController {
     
     private func newPedalVC(slotNumber: Int) -> BaseEffectVC {
         guard let pedalVC = UIStoryboard(name: "Pedal", bundle: nil).instantiateInitialViewController() as? PedalVC else {
-            Flogger.log.error("Unable to create a pedal view controller")
+            ULog.error("Unable to create a pedal view controller")
             fatalError()
         }
         pedalVC.slotNumber = slotNumber
@@ -107,7 +108,7 @@ class PresetVC: UIPageViewController {
     
     private func newEffectVC(slotNumber: Int) -> BaseEffectVC {
         guard let effectVC = UIStoryboard(name: "Effect", bundle: nil).instantiateInitialViewController() as? EffectVC else {
-                Flogger.log.error("Unable to create a effect view controller")
+                ULog.error("Unable to create a effect view controller")
                 fatalError()
         }
         effectVC.slotNumber = slotNumber
@@ -127,9 +128,8 @@ class PresetVC: UIPageViewController {
     }
 }
 
-// MARK: UIPageViewControllerDataSource
-
-extension PresetVC: UIPageViewControllerDataSource {
+// MARK: - Page View DataSource - page definitions
+extension PagedPresetVC: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -159,28 +159,31 @@ extension PresetVC: UIPageViewControllerDataSource {
     }
 }
 
-extension PresetVC: ControlsVCDelegate {
+// MARK: - Controls Delegate - communication from knob controls
+extension PagedPresetVC: ControlsVCDelegate {
     
     func settingsDidChangeForControls(_ sender: ControlsVC, preset: DXPreset?) {
-        Flogger.log.verbose("Changed controls for preset")
+        ULog.verbose("Changed controls for preset")
         self.preset = preset
         presetDelegate?.settingsDidChangeForPreset(self, preset: preset)
     }
 }
 
-extension PresetVC: PedalVCDelegate {
+// MARK: - Pedal Delegate - communication from pedals
+extension PagedPresetVC: PedalVCDelegate {
     
     func settingsDidChangeForPedal(_ sender: PedalVC, slotNumber: Int, effect: DXEffect) {
-        Flogger.log.verbose("Changed Pedal in slot \(slotNumber)")
+        ULog.verbose("Changed Pedal in slot %d", slotNumber)
         replaceEffect(effect, inSlot: slotNumber)
         presetDelegate?.settingsDidChangeForPreset(self, preset: preset)
     }
 }
 
-extension PresetVC: EffectVCDelegate {
+// MARK: - Effect Delegate - communication from effects
+extension PagedPresetVC: EffectVCDelegate {
     
     func settingsDidChangeForEffect(_ sender: EffectVC, slotNumber: Int, effect: DXEffect) {
-        Flogger.log.verbose("Changed Effect in slot \(slotNumber)")
+        ULog.verbose("Changed Effect in slot %d", slotNumber)
         replaceEffect(effect, inSlot: slotNumber)
         presetDelegate?.settingsDidChangeForPreset(self, preset: preset)
     }

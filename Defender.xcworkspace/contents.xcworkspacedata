@@ -5,12 +5,6 @@
       location = "group:Jenkinsfile"
       assignedFileDataType = "public.ruby-script">
    </FileRef>
-   <FileRef
-      location = "group:DefenderiOS/DefenderiOS.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:DefenderMacOS/DefenderMacOS.xcodeproj">
-   </FileRef>
    <Group
       location = "group:fastlane"
       name = "fastlane">
@@ -48,4 +42,10 @@
          location = "group:SnapshotHelper.swift">
       </FileRef>
    </Group>
+   <FileRef
+      location = "group:DefenderiOS/DefenderiOS.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DefenderMacOS/DefenderMacOS.xcodeproj">
+   </FileRef>
 </Workspace>

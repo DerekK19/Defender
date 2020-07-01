@@ -7,8 +7,6 @@
 //
 
 import Cocoa
-//import Flogger
-
 class KnobBaseControl: NSView {
     
     var pixelsPerTick: Float = 10.0
@@ -90,13 +88,13 @@ class KnobBaseControl: NSView {
     internal func degreesFromFloatValue(_ floatValue: Float) -> CGFloat {
         let fraction = (floatValue - minStop) / (maxStop - minStop)
         let angle = -CGFloat(fraction * 360.0)
-//        Flogger.log.verbose("Float \(floatValue) -> Degrees \(angle)")
+//        ULog.verbose("Float \(floatValue) -> Degrees \(angle)")
         return angle
     }
     internal func radiansFromFloatValue(_ floatValue: Float) -> CGFloat {
         let fraction = minValue + (floatValue * (maxValue - minValue))
         let angle =  -(CGFloat(fraction * Float(Double.pi) * 2.0) + CGFloat(Double.pi / 2.0))
-//        Flogger.log.verbose("Float \(floatValue) -> Radians \(angle)")
+//        ULog.verbose("Float \(floatValue) -> Radians \(angle)")
         return angle
     }
     

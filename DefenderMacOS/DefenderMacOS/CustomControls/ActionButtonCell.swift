@@ -14,7 +14,8 @@ class ActionButtonCell: NSButtonCell {
     var whiteColour: NSColor = NSColor(calibratedRed: 1.00, green: 0.91, blue: 0.85, alpha: 1.0)
     var greenColour: NSColor = NSColor(calibratedRed: 0.95, green: 0.98, blue: 0.66, alpha: 1.0)
     var redColour: NSColor = NSColor(calibratedRed: 0.99, green: 0.54, blue: 0.68, alpha: 1.0)
-    
+    var yellowColour: NSColor = NSColor(calibratedRed: 0.68, green: 0.68, blue: 0.32, alpha: 1.0)
+
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         backgroundColor = whiteColour
@@ -51,6 +52,8 @@ class ActionButtonCell: NSButtonCell {
             case .ok:
                 return greenColour
             }
+        case .powering:
+            return yellowColour
         }
     }
     

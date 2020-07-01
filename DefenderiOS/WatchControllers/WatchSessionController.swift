@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Flogger
 import WatchConnectivity
 
 protocol WatchSessionControllerDelegate {
@@ -69,7 +68,7 @@ class WatchSessionController: NSObject {
     }
     
     fileprivate func log(_ message: Any) {
-         Flogger.log.verbose(message)
+        ULog.verbose("%@", String(describing: message))
     }
 }
 

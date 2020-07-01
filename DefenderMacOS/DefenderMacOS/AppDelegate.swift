@@ -7,18 +7,17 @@
 //
 
 import Cocoa
-import Flogger
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+
+    @IBOutlet weak var powerMenuItem: NSMenuItem!
 
     var remoteManager = RemoteManager()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-#if DEBUG
-        Flogger.setup()
-#endif
+        ULog.setup()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

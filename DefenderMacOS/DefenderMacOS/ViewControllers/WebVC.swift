@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import Flogger
 
 protocol WebVCDelegate {
     func didSelectPreset(preset: BOPreset?)
@@ -50,6 +49,8 @@ class WebVC: NSViewController {
 
     var newPage: UInt = 1
     var pagination: BOSearchPagination?
+
+    var available: Bool = true
     
     var state: EffectState = .disabled {
         didSet {
@@ -72,9 +73,11 @@ class WebVC: NSViewController {
     
     var powerState: PowerState = .off {
         didSet {
-            shade.isOpen = powerState == .on || state == .disabled
+            shade.isOpen = available && (powerState == .on || state == .disabled)
             loginButton.powerState = .on
             searchButton.powerState = .on
+            usernameTextField.isEnabled = shade.isOpen
+            passwordTextField.isEnabled = shade.isOpen
         }
     }
     
@@ -124,6 +127,8 @@ class WebVC: NSViewController {
         customiseTableView()
         state = .disabled
         loggedIn = false
+//        usernameTextField.stringValue = "derekk19"
+//        passwordTextField.stringValue = "Fe62h2zj"
     }
        
     // MARK: Action functions
@@ -234,9 +239,9 @@ class WebVC: NSViewController {
         pagination = response.pagination
         newPage = pagination!.page
         countLabel.stringValue = "Found \(pagination!.total) items"
-        Flogger.log.debug("For page \(self.newPage), found \(self.pagination!.total) items. Page \(self.pagination!.page) of \(self.pagination!.pages). Limit \(self.pagination!.limit) per page")
+        ULog.verbose("For page %d, found %d items. Page %d of %d. Limit %d per page", newPage, pagination!.total, pagination!.page, pagination!.pages, pagination!.limit)
         for item in items {
-            Flogger.log.debug("\(item.title) - \(item.data?.preset?.effects.count ?? 0) effects")
+            ULog.verbose("%@ - %d effects", item.title, item.data?.preset?.effects.count ?? 0)
         }
         presets = items
         searched = true

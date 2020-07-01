@@ -33,7 +33,7 @@ class WheelControl: NSView {
             setNeedsDisplay(bounds)
         }
     }
-    var intValue: Int = 1
+    var intValue: Int = 0
     
     fileprivate var enabled: Bool = true
 
@@ -75,6 +75,20 @@ class WheelControl: NSView {
         delegate?.valueDidChangeForWheel(self, value: intValue)
     }
     
+    func setIntValueTo(_ intValue: Int) {
+        if !enabled { return }
+        if intValue == self.intValue { return }
+        self.intValue = intValue
+        self.intValue = self.intValue % 100
+        if self.intValue < 0 { self.intValue = 100 + self.intValue }
+        self.floatValue = Float(self.intValue)
+    }
+    
+    func wheelRotate(by delta: Int) {
+        setIntValueTo(self.intValue + delta)
+        delegate?.valueDidChangeForWheel(self, value: self.intValue)
+    }
+
     // MARK: Draw function
     override func draw(_ dirtyRect: NSRect) {
         if !isHidden {

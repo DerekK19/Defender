@@ -23,6 +23,10 @@ internal class WebMockAgent: WebServiceAgentProtocol  {
         manager = AFHTTPSessionManager(sessionConfiguration: URLSessionConfiguration.default)
     }
     
+    func verify(onCompletion: @escaping (_ available: Bool) -> ()) {
+        onCompletion(true)
+    }
+    
     func login(username: String, password: String, onSuccess: @escaping () -> (), onFail: @escaping () -> ()) {
         let requestSerializer = AFHTTPRequestSerializer()
         manager.requestSerializer = requestSerializer
@@ -91,7 +95,8 @@ internal class WebMockAgent: WebServiceAgentProtocol  {
         allParameters.merge(with: parameters)
         manager.post("https://fuse.fender.com/webService.php",
                      parameters: allParameters,
-                     progress: nil,
+                     headers: nil,
+                     progress: { progress in },
                      success: { (task: URLSessionDataTask, data: Any?) in
                         if let data = data as? Data {
                             if let xml = String(data: data, encoding: String.Encoding.utf8) {
@@ -134,7 +139,8 @@ internal class WebMockAgent: WebServiceAgentProtocol  {
         allParameters.merge(with: parameters)
         manager.get("https://fuse.fender.com/web_service/\(endpoint)",
             parameters: allParameters,
-            progress: nil,
+            headers: nil,
+            progress: { progress in },
             success: { (task: URLSessionDataTask, data: Any?) in
                 if let data = data as? Dictionary<String, Any> {
                     onSuccess(data)
