@@ -429,7 +429,7 @@ class AmpManager {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale.current
         dateFormatter.dateFormat = backupNameDateFormat
-        let backupFolder = "\(NSHomeDirectory())/Documents/Fender/FUSE/Backups/\(dateFormatter.string(from: Date()))"
+        let backupFolder = "\(backupRoot)/\(dateFormatter.string(from: Date()))"
         do {
             try fileManager.createDirectory(atPath: backupFolder, withIntermediateDirectories: true)
             fileManager.changeCurrentDirectoryPath(backupFolder)
@@ -452,8 +452,8 @@ class AmpManager {
                 let fuseDoc = XMLDocument()
                 let fuseElement = presetDoc?.rootElement()?.elements(forName: "FUSE").first
                 let bandElement = presetDoc?.rootElement()?.elements(forName: "Band").first
-                if let fuseNode = fuseElement!.copy() as? XMLElement {
-                    if let bandNode = bandElement!.copy() as? XMLElement {
+                if let fuseNode = fuseElement?.copy() as? XMLElement {
+                    if let bandNode = bandElement?.copy() as? XMLElement {
                         fuseNode.addChild(bandNode)
                     }
                     fuseDoc.addChild(fuseNode)
