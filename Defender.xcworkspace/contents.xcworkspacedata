@@ -5,6 +5,9 @@
       location = "group:Jenkinsfile"
       assignedFileDataType = "public.ruby-script">
    </FileRef>
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
    <Group
       location = "group:fastlane"
       name = "fastlane">

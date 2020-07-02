@@ -17,7 +17,7 @@
                BlueprintIdentifier = "656862601E25D03E00115981"
                BuildableName = "Watchkit.app"
                BlueprintName = "Watchkit"
-               ReferencedContainer = "container:DefenderApp.xcodeproj">
+               ReferencedContainer = "container:DefenderiOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7198C2D71DD93601003238D7"
-               BuildableName = "DefenderApp.app"
-               BlueprintName = "DefenderApp"
-               ReferencedContainer = "container:DefenderApp.xcodeproj">
+               BuildableName = "DefenderiOS.app"
+               BlueprintName = "DefenderiOS"
+               ReferencedContainer = "container:DefenderiOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
